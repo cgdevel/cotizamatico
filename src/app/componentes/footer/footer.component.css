@@ -1,0 +1,172 @@
+#avisos a,#encuentranos{
+    font-family: 'Exo 2', sans-serif;
+    font: 900;
+    font-size: 17px;
+    color: white;
+}
+#labelp label,#labelp p{
+    font-family: 'Exo 2', sans-serif;
+    font: 900;
+    font-size: 13px;
+    color: white;
+}
+.mlef {
+    margin-left: -0.5rem !important;
+}
+.mrig {
+    margin-right: -0.5rem !important;
+}
+#foo{
+    background-color: #000000;
+    /* padding-left: 30px;  */
+    margin-right: 0px; 
+    margin-left: 0px;
+    margin-top: -33px;
+    font-size: xx-small;
+}
+#gmm{
+    display: inline-flex;
+}
+#gmm1{
+    margin-top: 38px;
+    margin-left: -72px;
+}
+#gmm2{
+    margin-left: 140px;
+    margin-top: -239px;
+    margin-top: 36px;
+}
+#v1{
+    margin-right: -17px;
+    margin-top: 46px;
+}
+#v2{
+    margin-top: 46px;
+}
+#v3{
+    padding-top: 6px;
+    margin-left: -13px;
+    margin-top: 47px;
+}
+#vi{
+    margin-top: 47px;
+}
+#h{
+    margin-top: 46px;
+}
+.card-img-overlay > .card-text{
+    font-family: 'Montserrat', sans-serif;
+    font: 700;
+    font-weight: bold;
+}
+p#chikis, a#chikis{
+    margin-bottom: 0px!important;
+    font-size: 1.3vh !important;
+    color: white!important;
+}
+@media (max-width: 576px) {
+    img.m-1{
+        height: 28%!important;
+        width: 28%!important;
+        margin-left: -38px !important;
+        padding-left: 18px!important;
+    }
+    a.avisos#chikis{
+        font-size: 28%!important;
+    }
+    img#logosymantec {
+        width: 63%!important;
+        height: 50% !important;
+        margin-left: -8px!important;
+        margin-top: 14px!important;
+    } 
+    img#FooterAarcoLogo{
+        width: 37%!important;
+        height: 50% !important;
+        margin-left: 7px!important;
+        margin-top: 17px!important;
+    }
+    p#chikis{
+        font-size: 0.7vh !important;
+        
+    }
+    p#chikis.masc{
+        font-size: 0.5vh !important;
+        
+    }
+    .card{
+      flex: 0 0 25%;
+        max-width: 25%;
+        display: inline flow-root list-item;
+        font-size: 10px;
+    }
+    .card> img{
+        height: 107px;
+    }
+    .card-text> svg {
+        height: 29px;
+        width: 29px;
+    }
+    .card-img-overlay > .card-text{
+        font-size: 1vh;
+    }
+    #GMMt{
+        padding-left: 0.25rem!important;
+        padding-right: 0.25rem!important;
+        padding-top: 2.25rem!important;
+    }
+    #iconosvida{
+        position: relative!important;
+        margin-top: 7px!important;
+    }
+    #vidalab{
+        margin-bottom: -1rem!important;
+    }
+    #iconosgmm{
+        margin-top: 27px!important;
+    }
+    #gmmlab{
+        margin-bottom: -1rem!important;
+        margin-top: -19px!important;
+    }
+    #vi{
+        margin-top: -14px!important;
+    }
+    #h{
+        margin-top: -14px!important;
+    }
+    #gmm1{
+        padding-top: 7px!important;
+        margin-top: -38px!important;
+        margin-left: -3px!important;
+    }
+    #gmm2{
+        padding-top: 7px!important;
+        margin-left: -10px!important;
+        margin-top: -38px!important;
+    }
+    #v1{
+        padding-top: 10px!important; 
+        margin-right: -17px!important;
+        padding-right: 11px!important;
+        margin-left: -17px!important;
+        margin-top: 11px!important;
+    }
+    #v2{
+        margin-top: 10px!important;
+    }
+    #v3{
+        margin-left: 34px!important;
+        padding-top: 6px!important;
+        padding-right: 4px!important;
+        margin-top: -43px!important;
+    }
+    .footllama {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+    a.mlef.mrig>svg{
+        height: 12px;
+        width: 50%;
+    }
+   }

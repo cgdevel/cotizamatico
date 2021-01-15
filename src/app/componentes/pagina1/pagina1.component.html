@@ -1,0 +1,99 @@
+<!-- <p>pagina1 works!</p> -->
+<div class="container" style="margin-bottom: 30px;">
+    <div class="row" style="text-align: center;">
+        <div class="col" >
+            <label id="al"> Cotiza tu seguro auto <label id="facyseg">fácil y seguro</label> </label> 
+        </div>
+    </div>
+    <app-infovehiculo 
+    (gM)="a($event)" 
+    (gA)="b($event)"
+    (gMarca)="c($event)"
+    (gDesc)="d($event)"></app-infovehiculo>
+    <app-infoasegurado 
+    (pasad)="f($event)"
+    (pasam)="g($event)"
+    (pasay)="h($event)"
+    (pastel)="i($event)"
+    (pasnom)="j($event)"
+    (pasemail)="l($event)"
+    (pascp)="k($event)"
+    (pasgen)="m($event)"
+    ></app-infoasegurado>
+    <!-- <div class="row">
+        <div class="col" > 
+            <strong> INFORMACION VEHICULO </strong>
+            <div class="container mw-100">   
+            <div class="row">
+                {{modelo}}  
+            </div>
+            <div class="row"> 
+                {{anno}}
+            </div>
+            <div class="row"> 
+                {{marca}}
+            </div>
+            <div class="row">
+                {{descripcion}}
+            </div>
+            </div>
+        </div>
+        <div class="col"> 
+            <strong> INFORMACION ASEGURADO </strong>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="container mw-100">
+                            <div class="row">{{nombre}}</div>
+                            <div class="row">{{email}}</div>
+                            <div class="row">{{telefono}}</div>
+                            <div class="row">{{genero}}</div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="container">
+                                        <div class="row">
+                                            {{sd}}
+                                        </div>
+                                    </div>
+                                </div>
+                               <div class="col">
+                                    <div class="container">
+                                        <div class="row">
+                                            {{sm}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="container">
+                                        <div class="row">
+                                            {{sy}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">{{cp}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="row justify-content-center">
+        <button id="coti" class="btn btn-primary btn-lg" [routerLink]="['/compara']" routerLinkActive="router-link-active" 
+        [state]='{
+            modsel: modelo, 
+            marsel:marca, 
+            descsel:descripcion, 
+            annosel:anno,
+            nomsel:nombre,
+            emsel:email,
+            telsel:telefono,
+            gensel:genero,
+            cpsel:cp,
+            smsel:sm,
+            sysel:sy,
+            sdsel:sd}' 
+            [disabled]="this.modelo==''||this.marca==''||this.descripcion==''||this.anno==''||this.nombre==''||this.email==''||this.telefono==''||this.genero==''||this.cp==''||this.sm==''||this.sy==''|| this.sd==''">¡Cotizar mi auto <label id="ahora">ahora</label>!</button>
+    </div>
+    </div>
+   

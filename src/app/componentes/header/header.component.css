@@ -1,0 +1,54 @@
+#btnayuda{ 
+  background-image: url(/../assets/images/Botonayuda.png);
+  background-size: contain; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  /* width: 100px; */
+  height: 100px;
+  /* border-left-width: 58px;
+  border-right-width: 66px; */
+}
+#logoempresa{
+    width: 50px;
+    height: 50px;
+}
+#encu{
+    font-family: 'Exo 2', sans-serif;
+    font: 300;
+    font-weight: bolder;
+    color: #FF6963;
+}
+#nom{
+    font-family: 'Exo 2', sans-serif;
+    font: 300;
+    font-size: 20px;
+  
+  }
+  #ase{
+    font-family: 'Exo 2', sans-serif;
+      font: 400;
+      font-style: italic;
+      font-size: 25px;
+      /* padding-left: 10px; */
+    font-weight: bolder;
+  }
+  hr{
+    background-color:chocolate;
+    height: 2px; 
+}
+
+.mlef {
+  margin-left: .5rem !important;
+}
+.mrig {
+  margin-right: .5rem !important;
+}
+
+
+@media (max-width: 576px) { 
+  .correoc{
+    align-items: center; 
+    justify-content: left !important;
+    margin-left: 10px;
+  }
+ }

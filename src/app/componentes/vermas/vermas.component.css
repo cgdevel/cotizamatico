@@ -1,0 +1,74 @@
+.card#estesi>div.card-body>div.row{
+  line-height: 54px;
+}
+tr.btd>td{
+  border: 1px solid #dee2e6!important;
+}
+
+.table td#ultimtab{
+  padding: 0rem!important;
+  border-top: none;
+  
+}
+.table td#quitaiz{
+  /* background-clip: padding-box !important; */
+   border-bottom-left-radius: 10px!important;
+  
+}
+.table td#quitade{
+  /* background-clip: padding-box !important; */
+  border-bottom-right-radius: 10px!important;
+  
+
+}
+#estesi{
+    border-radius: 2.25rem !important;
+    margin-top: 187px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    font-family: 'Exo 2', sans-serif;
+    font: 400;
+    background-color: #f4f4f4!important;
+  }
+  .card#estesi>div.card-body>div.row{
+    line-height: 52px;
+  }
+  tr#padou>td{
+    padding: 0rem!important;
+    background-color: white !important;
+    border-top: 1px solid #fdfeff;
+  }
+  #fivth{
+    font-family: 'Exo 2', sans-serif;
+    font: 500;
+    font-weight: bold;
+    font-size: 20px;
+    color: #ff6666;
+}
+tr#padou>td>img{
+  height:93px;
+  width: 93px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+@media (max-width: 576px) { 
+  .card#estesi > div.card-body> div.row {
+    line-height: 52px!important;
+  }
+ 
+  #estesi{
+    margin-top: 199px;
+    /* font-size: 12px; */
+  }
+  /* .card-body{
+    line-height: 78px;
+  } */
+
+
+ .col-4.col-md-9{ 
+   padding-left: 0px!important;
+padding-right: 23px!important;
+}
+ }
