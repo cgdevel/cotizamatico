@@ -29,16 +29,19 @@
           <label for="nombre">
             Nombre
           </label>
-          <input type="text" class="form-control" id="nombre" value="" autocomplete="off" [(ngModel)]="NOMBRE" (change)="onNombre($event)" onkeypress="return((event.charCode>64 && 91>event.charCode) || (event.charCode>96 && 123>event.charCode) || ( event.charCode == 8))" min="1" [ngClass]="{'Existe' : NOMBRE!='', 'NoExiste': NOMBRE==''}">
+          <input type="text" class="form-control" id="nombre" pattern="/^\w+([\.-]?\w+)*@(?:|hotmail|outlook|yahoo|live|gmail)\.(?:|com|es)" value="" autocomplete="off" [(ngModel)]="NOMBRE" (change)="onNombre($event)" onkeypress="return((event.charCode>64 && 91>event.charCode) || (event.charCode>96 && 123>event.charCode) || ( event.charCode == 8))" min="1" [ngClass]="{'Existe' : NOMBRE!='', 'NoExiste': NOMBRE==''}">
         </div>
         <div class="form-group col-md-5">
           <label for="email">
             <svg fill="url(#gradiente)" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M13.718 10.528c0 .792-.268 1.829-.684 2.642-1.009 1.98-3.063 1.967-3.063-.14 0-.786.27-1.799.687-2.58 1.021-1.925 3.06-1.624 3.06.078zm10.282 1.472c0 6.627-5.373 12-12 12s-12-5.373-12-12 5.373-12 12-12 12 5.373 12 12zm-5-1.194c0-3.246-2.631-5.601-6.256-5.601-4.967 0-7.744 3.149-7.744 7.073 0 3.672 2.467 6.517 7.024 6.517 2.52 0 4.124-.726 5.122-1.288l-.687-.991c-1.022.593-2.251 1.136-4.256 1.136-3.429 0-5.733-2.199-5.733-5.473 0-5.714 6.401-6.758 9.214-5.071 2.624 1.642 2.524 5.578.582 7.083-1.034.826-2.199.799-1.821-.756 0 0 1.212-4.489 1.354-4.975h-1.364l-.271.952c-.278-.785-.943-1.295-1.911-1.295-2.018 0-3.722 2.19-3.722 4.783 0 1.73.913 2.804 2.38 2.804 1.283 0 1.95-.726 2.364-1.373-.3 2.898 5.725 1.557 5.725-3.525z"/></svg>
             Email
           </label>
-          <input type="text" class="form-control" id="email" value="" autocomplete="off" [(ngModel)]="EMAIL" (change)="onEmail($event)" min="1" [ngClass]="{'Existe' : EMAIL!='', 'NoExiste': EMAIL==''}">
-          <ngb-alert  [dismissible]="false" type="danger" *ngIf="EMAIL==''">
-            Llene Email
+          <input type="text" class="form-control" id="email" value="" autocomplete="off" [(ngModel)]="EMAIL" (change)="onEmail($event)" min="1" [ngClass]="{'Existe' : valido, 'NoExiste': !valido}">
+          <ngb-alert  [dismissible]="false" type="danger" *ngIf="!valido && this.EMAIL!=''">
+            Email no válido
+          </ngb-alert>
+          <ngb-alert  [dismissible]="false" type="success" *ngIf="valido">
+            Email válido
           </ngb-alert>
         </div>
         <div class="form-group col-md-3">
@@ -46,11 +49,11 @@
             <svg fill="url(#gradiente)" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/></svg>
             Teléfono
           </label>
-          <input maxlength="10" type="text" class="form-control" id="telefono" value="" autocomplete="off" [(ngModel)]="TELEFONO" onkeypress="return(event.charCode>=48 && 57>=event.charCode)" (change)="onTelefono($event)"  min="1" [ngClass]="{'Existe' : existeT, 'NoExiste': !existeT}">
-          <ngb-alert  [dismissible]="false" type="danger" *ngIf="!existeT && TELEFONO!=''">
+          <input maxlength="10" type="text" class="form-control" id="telefono" value="" autocomplete="off" [(ngModel)]="TELEFONO" onkeypress="return(event.charCode>=48 && 57>=event.charCode)" (change)="onTelefono($event)"  min="1" [ngClass]="{'Existe' : validot, 'NoExiste': !validot}">
+          <ngb-alert  [dismissible]="false" type="danger" *ngIf="!validot && TELEFONO!=''">
             Teléfono no válido, ingrese otro
           </ngb-alert>
-          <ngb-alert  [dismissible]="false" type="success" *ngIf="existeT && TELEFONO!=''">
+          <ngb-alert  [dismissible]="false" type="success" *ngIf="validot">
             Teléfono válido
           </ngb-alert>
         </div>
@@ -242,10 +245,10 @@
                 <div class="row">
                   <input type="text" class="form-control" (change)="onCodigoPostalKeyUp($event)" onkeypress="return(event.charCode>=48 && 57>=event.charCode)" maxlength="5" [(ngModel)]='codigoPostal' [ngClass]="{'Existe':existe,'NoExiste':!existe||codigoPostal==''}">
                   <ngb-alert  [dismissible]="false" type="danger" *ngIf="!existe && codigoPostal!='' && codigoPostal.length==5">
-                    No existe el codigo postal, ingrese otro
+                    No existe el código postal, ingrese otro
                   </ngb-alert>
                   <ngb-alert  [dismissible]="false" type="danger" *ngIf="!existe && codigoPostal!='' && codigoPostal.length<5">
-                    El CP, debe tener 5 dígitos
+                    El código postal, debe tener 5 dígitos
                   </ngb-alert>
                   <ngb-alert  [dismissible]="false" type="success" *ngIf="existe && codigoPostal!=''&& codigoPostal.length==5">
                     Código postal válido

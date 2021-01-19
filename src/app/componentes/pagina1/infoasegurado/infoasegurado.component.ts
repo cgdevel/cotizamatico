@@ -89,7 +89,9 @@ export class InfoaseguradoComponent implements OnInit {
     readonly api: string ="https://apitestcotizamatico.azurewebsites.net/api/catalogos";
     ubicacion: any;
     @Input() codigoPostal: string ='';
+    validot:boolean;
     @Input() TELEFONO: string ='';
+    valido:boolean;
     @Input() EMAIL: string ='';
     @Input() NOMBRE: string ='';
     ubicacionId: number;
@@ -307,25 +309,15 @@ export class InfoaseguradoComponent implements OnInit {
   }
   //Función teléfono
   onTelefono(event){
-    // console.log(event);
-    if (this.TELEFONO.length < 10 || this.TELEFONO=='') {
-      if (this.TELEFONO.length>=1 && this.TELEFONO.length <10) {
-        this.existeT=false
-        // console.log('No se puede validar un teléfono menor a 10 caracteres');
-        this.pastel.emit('')
-        return;
-      } else {
-        if (this.TELEFONO=='') {
-          this.existeT=false
-          // console.log('No se puede validar un teléfono vacío');
-          this.pastel.emit('')
-          return;
-        }  
-      }
-    }else{
-      if (this.TELEFONO.length==10 && this.TELEFONO!='') {
-        this.pastel.emit(this.TELEFONO)
-        this.existeT=true;
+    var regt=/[\(]?[\+]?(\d{2}|\d{3})[\)]?[\s]?((\d{3}[\*\.\-\s]){3}|(\d{2}[\*\.\-\s]){4}|(\d{4}[\*\.\-\s]){2})|\d{10}/
+    this.validot=regt.test(this.TELEFONO)
+    if (this.TELEFONO.length < 10 || this.TELEFONO==''|| !this.validot) {
+      this.existeT=false
+      this.pastel.emit('')
+    } else {
+        if (this.validot && this.TELEFONO!='') {
+      this.existeT=true;
+      this.pastel.emit(this.TELEFONO)
       }
     }
   }
@@ -371,18 +363,22 @@ export class InfoaseguradoComponent implements OnInit {
   }
 //Función codigo email
   onEmail(event) {
+    var reg=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+    // var reg=/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     // console.log(event);
     // console.log(this.EMAIL)
-    if (this.EMAIL=='') {
+    this.valido=reg.test(this.EMAIL)
+    if (this.EMAIL!=''&& !this.valido) {
       this.vacemial=false
       this.pasemail.emit('')
     } else {
-      if (this.EMAIL!='') {
+      if (this.EMAIL!='' && this.valido) {
         this.vacemial=true
         this.pasemail.emit(this.EMAIL)
       }
     }
   }
+  
  //Función nombre
  onNombre(event) {
   // console.log(event);
