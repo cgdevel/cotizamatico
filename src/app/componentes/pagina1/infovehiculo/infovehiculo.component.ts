@@ -58,7 +58,7 @@ getModelo( ) {
       this.gMarca.emit('')
       this.gDesc.emit('')
       // Muestra modelo Seleccinonado
-      console.log(this.modelosel.sDato+'  '+this.modelosel.sLlave)
+      // console.log(this.modelosel.sDato+'  '+this.modelosel.sLlave)
       this.modelo=this.modelosel.sLlave
       this.vermodelo= this.modelosel.sDato
       this.gM.emit(this.vermodelo)
@@ -70,7 +70,7 @@ getModelo( ) {
         "iSubramo": this.modelo,
         "sDescripcion": ""
       }).subscribe((data: any)=> {
-        console.log(data.catalogos)
+        // console.log(data.catalogos)
         this.annos=data.catalogos
       })
   }
@@ -88,7 +88,7 @@ getModelo( ) {
      this.gMarca.emit('')
      this.gDesc.emit('')
     // Muestra año Seleccinonado
-    console.log(this.annosel.sDato+'  '+this.annosel.sLlave)
+    // console.log(this.annosel.sDato+'  '+this.annosel.sLlave)
     this.anno=this.annosel.sLlave
     this.veranno= this.annosel.sDato
     this.gA.emit(this.veranno)
@@ -100,7 +100,7 @@ getModelo( ) {
         "iSubramo": this.modelo,
         "sDescripcion": ""
       }).subscribe((data: any)=> {
-        console.log(data.catalogos)
+        // console.log(data.catalogos)
         this.marcas=data.catalogos
         })
   
@@ -114,7 +114,7 @@ getModelo( ) {
      //Limpia el emisor
      this.gDesc.emit('')
     // Muestra marca seleccionada
-    console.log(this.marcasel.sDato+'  '+this.marcasel.sLlave)
+    // console.log(this.marcasel.sDato+'  '+this.marcasel.sLlave)
     this.marca=this.marcasel.sLlave
     this.vermarca= this.marcasel.sDato
     this.gMarca.emit(this.vermarca)
@@ -127,7 +127,7 @@ getModelo( ) {
       "iSubramo": this.modelo,
       "sDescripcion": ""
     }).subscribe((data: any)=> {
-      console.log(data.catalogos)
+      // console.log(data.catalogos)
       this.descripciones=data.catalogos
       // this.descripciones.forEach(element => {
       //   element.sDato=element.sDato.replace("ABS","\nABS")
@@ -140,7 +140,7 @@ getModelo( ) {
   getDescripcion(){
     
     // Muestra marca seleccionada
-    console.log(this.descripsel.sDato+'  '+this.descripsel.sLlave)
+    // console.log(this.descripsel.sDato+'  '+this.descripsel.sLlave)
     this.descripcion=this.descripsel.sLlave
     this.verdescripcion= this.descripsel.sDato
     this.gDesc.emit(this.verdescripcion)
@@ -154,24 +154,8 @@ getModelo( ) {
         "iSubramo": "00",
         "sDescripcion": ""
       }).subscribe((data: any)=> {
-  console.log(data.catalogos)
+  // console.log(data.catalogos)
   this.modelos=data.catalogos
-            
-  // este es codigo anterior *por si vuelve a lo antiguo xD
-      //   let x: Response = data
-      //   let y= JSON.parse(x.CatalogoJsonString)
-      //   let marcs= Object.values(y)
-      //   let c: Array<any>=[]
-      //   marcs.map(value => {
-      //     c.push(value)
-      //   })
-      //   let limpio: Response={
-      //     CatalogoJsonString: c,
-      //     Error: null
-      //   }
-      //   this.as=limpio
-      // console.log(limpio)
-      //   return limpio
       })
     }
   ngOnInit(): void {

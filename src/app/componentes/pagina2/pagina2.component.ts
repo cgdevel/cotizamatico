@@ -9,15 +9,8 @@ import {Pagina1Component } from  'src/app/componentes/pagina1/pagina1.component'
   styleUrls: ['./pagina2.component.css']
 })
 export class Pagina2Component implements OnInit {
-  //Valores botón tipo de cobertura
-  ampliaplus=false;
-  amplia=false;
-  limitada=false;
-  basica=false;
-  statusAP = "NoSelected";
-  statusA= "NoSelected";
-  statusL= "NoSelected";
-  statusB= "NoSelected";
+  //VARIABLE DE LA QUE DEPENDE EDITAR DATOS
+  show: boolean =false;
   //Variables a las que asigno datos de pagina1 
   vermodelo: any;
   vermarca: any;
@@ -37,7 +30,15 @@ export class Pagina2Component implements OnInit {
   boostatehom:boolean;
   strstateemp:string;
   boostateemp:boolean;
-  show: boolean =false;
+   //Valores botón tipo de cobertura
+   ampliaplus=false;
+   amplia=false;
+   limitada=false;
+   basica=false;
+   statusAP = "NoSelected";
+   statusA= "NoSelected";
+   statusL= "NoSelected";
+   statusB= "NoSelected";
   //Funciones cobertura
   Ampliaplus( ) {
     // tiene selected this.statusAP
@@ -49,10 +50,10 @@ export class Pagina2Component implements OnInit {
     this.statusL= "NoSelected";
     this.statusB= "NoSelected";
     this.statusAP = this. ampliaplus ? "Selected"  :"NoSelected";
-    console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
-    console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
-    console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
-    console.log("Básica :"+' '+this.basica+' '+this.statusB)
+    // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
+    // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
+    // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
+    // console.log("Básica :"+' '+this.basica+' '+this.statusB)
   }
   Amplia( ) {
     // tiene selected this.statusA
@@ -64,10 +65,10 @@ export class Pagina2Component implements OnInit {
     this.statusL= "NoSelected";
     this.statusB= "NoSelected";
     this.statusA= this. amplia ? "Selected" : "NoSelected";
-    console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
-    console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
-    console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
-    console.log("Básica :"+' '+this.basica+' '+this.statusB)
+    // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
+    // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
+    // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
+    // console.log("Básica :"+' '+this.basica+' '+this.statusB)
   }
   Limitada( ) {
     // tiene selected this.statusL
@@ -79,10 +80,10 @@ export class Pagina2Component implements OnInit {
     this.statusA= "NoSelected";
     this.statusB= "NoSelected";
     this.statusL= this. limitada ? "Selected" : "NoSelected" ;
-    console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
-    console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
-    console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
-    console.log("Básica :"+' '+this.basica+' '+this.statusB)
+    // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
+    // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
+    // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
+    // console.log("Básica :"+' '+this.basica+' '+this.statusB)
   }
   Basica( ) {
     // tiene selected this.statusB
@@ -94,10 +95,10 @@ export class Pagina2Component implements OnInit {
     this.statusA= "NoSelected";
     this.statusL= "NoSelected";
     this.statusB= this. basica  ? "Selected" : "NoSelected" ;
-    console.log("Básica :"+' '+this.basica+' '+this.statusB)
-    console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
-    console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
-    console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
+    // console.log("Básica :"+' '+this.basica+' '+this.statusB)
+    // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
+    // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
+    // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
   }
   //Valores botón descuento
   descALTO=false;
@@ -115,9 +116,9 @@ export class Pagina2Component implements OnInit {
     this. descBAJO=false
     this.statusDB="NoSelected"
     this.statusDA = this. descALTO ? "Selected"  :"NoSelected";
-    console.log("Descuento Alto:"+' '+this.descALTO+' '+this.statusDA)
-    console.log("Descuento Medio :"+' '+this.descMEDIO+' '+this.statusDM)
-    console.log("Descuento Bajo :"+' '+this.descBAJO+' '+this.statusDB)
+    // console.log("Descuento Alto:"+' '+this.descALTO+' '+this.statusDA)
+    // console.log("Descuento Medio :"+' '+this.descMEDIO+' '+this.statusDM)
+    // console.log("Descuento Bajo :"+' '+this.descBAJO+' '+this.statusDB)
   }
  Descuentomedio( ) {
     // tiene selected this.statusDM
@@ -127,7 +128,7 @@ export class Pagina2Component implements OnInit {
     this. descBAJO=false
     this.statusDB="NoSelected"
     this.statusDM= this. descMEDIO ? "Selected" : "NoSelected";
-    console.log("Descuento Medio :"+' '+this.descMEDIO+' '+this.statusDM)
+    // console.log("Descuento Medio :"+' '+this.descMEDIO+' '+this.statusDM)
   }
   Descuentobajo( ) {
     // tiene selected this.statusDB
@@ -137,7 +138,7 @@ export class Pagina2Component implements OnInit {
      this. descMEDIO=false
      this.statusDM="NoSelected"
     this.statusDB= this. descBAJO ? "Selected" : "NoSelected" ;
-    console.log("Descuento Bajo :"+' '+this.descBAJO+' '+this.statusDB)
+    // console.log("Descuento Bajo :"+' '+this.descBAJO+' '+this.statusDB)
   }
   //Valores del botones tipo de pago
   mensual=false;
@@ -159,10 +160,10 @@ export class Pagina2Component implements OnInit {
     this.statusS= "NoSelected";
     this.statusAn= "NoSelected";
     this.statusM = this. mensual ? "Selected"  :"NoSelected";
-    console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
-    console.log("Trimestral :"+' '+this.trimestral+' '+this.statusT)
-    console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
-    console.log("Anual :"+' '+this.anual+' '+this.statusAn)
+    // console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
+    // console.log("Trimestral :"+' '+this.trimestral+' '+this.statusT)
+    // console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
+    // console.log("Anual :"+' '+this.anual+' '+this.statusAn)
   }
   Trimestral( ) {
     // tiene selected this.statusT
@@ -174,10 +175,10 @@ export class Pagina2Component implements OnInit {
     this.statusS= "NoSelected";
     this.statusAn= "NoSelected";
     this.statusT= this. trimestral ? "Selected" : "NoSelected";
-    console.log("Trimestral :"+' '+this.trimestral+' '+this.statusT)
-    console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
-    console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
-    console.log("Anual :"+' '+this.anual+' '+this.statusAn)
+    // console.log("Trimestral :"+' '+this.trimestral+' '+this.statusT)
+    // console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
+    // console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
+    // console.log("Anual :"+' '+this.anual+' '+this.statusAn)
     
   }
   Semestral( ) {
@@ -190,10 +191,10 @@ export class Pagina2Component implements OnInit {
     this.statusT= "NoSelected";
     this.statusAn= "NoSelected";
     this.statusS= this. semestral ? "Selected" : "NoSelected" ;
-    console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
-    console.log("Trimestral :"+' '+this.trimestral+' '+this.statusT)
-    console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
-    console.log("Anual :"+' '+this.anual+' '+this.statusAn)
+    // console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
+    // console.log("Trimestral :"+' '+this.trimestral+' '+this.statusT)
+    // console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
+    // console.log("Anual :"+' '+this.anual+' '+this.statusAn)
   }
   Anual( ) {
     // tiene selected this.statusAn
@@ -205,35 +206,35 @@ export class Pagina2Component implements OnInit {
     this.statusT= "NoSelected";
     this.statusS= "NoSelected";
     this.statusAn= this. anual  ? "Selected" : "NoSelected" ;
-    console.log("Anual :"+' '+this.anual+' '+this.statusAn)
-    console.log("Trimestral :"+' '+this.trimestral+' '+this.statusT)
-    console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
-    console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
+    // console.log("Anual :"+' '+this.anual+' '+this.statusAn)
+    // console.log("Trimestral :"+' '+this.trimestral+' '+this.statusT)
+    // console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
+    // console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
   }
   roto:number=0
   RT(event){
     this.roto=event.target.valueAsNumber
-    console.log( 'Robo total:'+' '+this.roto)
+    // console.log( 'Robo total:'+' '+this.roto)
   }
   recica:number=0
   RCC(event){
     this.recica=event.target.valueAsNumber
-    console.log('Responsabilidad civil catastrófica:'+' '+this.recica)
+    // console.log('Responsabilidad civil catastrófica:'+' '+this.recica)
   }
  recibipe:number=0
  RCBP(event){
   this.recibipe=event.target.valueAsNumber
-  console.log( 'Responsabilidad civil bienes y personas:' +' '+this.recibipe)
+  // console.log( 'Responsabilidad civil bienes y personas:' +' '+this.recibipe)
  }
  gemeoc:number=0
  GMO(event){
   this.gemeoc=event.target.valueAsNumber
-  console.log( 'Gastos médicos ocupantes:' +' '+this.gemeoc)
+  // console.log( 'Gastos médicos ocupantes:' +' '+this.gemeoc)
  }
 muacco:number=0
  MAC(event){
   this.muacco=event.target.valueAsNumber
-  console.log( 'Muerte accidental conductor:' +' '+this.muacco)
+  // console.log( 'Muerte accidental conductor:' +' '+this.muacco)
  }
  //Valores del switch
  as:boolean
@@ -243,23 +244,23 @@ muacco:number=0
  rcocu:boolean
  AuSus(event){
   this.as=event.target.checked
-  console.log('Auto Sustituto:'+' '+this.as)
+  // console.log('Auto Sustituto:'+' '+this.as)
  }
  Desb(event){
   this.des=event.target.checked
-  console.log('Desbielamiento:'+' '+this.des)
+  // console.log('Desbielamiento:'+' '+this.des)
  }
  ExRC(event){
   this.erc=event.target.checked
-  console.log('Extensión del R.C:'+' '+this.erc)
+  // console.log('Extensión del R.C:'+' '+this.erc)
  }
  RCExt(event){
   this.rcext=event.target.checked
-  console.log('R.C de extranjeros:'+' '+this.rcext)
+  // console.log('R.C de extranjeros:'+' '+this.rcext)
  }
  RCOcu(event){
   this.rcocu=event.target.checked
-  console.log('R.C de ocupantes:'+' '+this.rcocu)
+  // console.log('R.C de ocupantes:'+' '+this.rcocu)
  }
  toggle(){
   this. show = !this. show;

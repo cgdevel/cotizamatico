@@ -29,10 +29,7 @@
           <label for="nombre">
             Nombre
           </label>
-          <input type="text" class="form-control" id="nombre" value="" autocomplete="off" [(ngModel)]="NOMBRE" (change)="onNombre($event)"  onkeypress="return((event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || ( event.charCode == 8))" min="1" [ngClass]="{'Existe' : NOMBRE!='', 'NoExiste': NOMBRE==''}">
-          <ngb-alert  [dismissible]="false" type="danger" *ngIf="NOMBRE==''">
-            Llene Nombre
-          </ngb-alert>
+          <input type="text" class="form-control" id="nombre" value="" autocomplete="off" [(ngModel)]="NOMBRE" (change)="onNombre($event)" onkeypress="return((event.charCode>64 && 91>event.charCode) || (event.charCode>96 && 123>event.charCode) || ( event.charCode == 8))" min="1" [ngClass]="{'Existe' : NOMBRE!='', 'NoExiste': NOMBRE==''}">
         </div>
         <div class="form-group col-md-5">
           <label for="email">
@@ -50,9 +47,6 @@
             Teléfono
           </label>
           <input maxlength="10" type="text" class="form-control" id="telefono" value="" autocomplete="off" [(ngModel)]="TELEFONO" onkeypress="return(event.charCode>=48 && 57>=event.charCode)" (change)="onTelefono($event)"  min="1" [ngClass]="{'Existe' : existeT, 'NoExiste': !existeT}">
-          <ngb-alert  [dismissible]="false" type="danger" *ngIf="TELEFONO==''">
-            Llene teléfono
-          </ngb-alert>
           <ngb-alert  [dismissible]="false" type="danger" *ngIf="!existeT && TELEFONO!=''">
             Teléfono no válido, ingrese otro
           </ngb-alert>
@@ -247,9 +241,6 @@
                 </div> -->
                 <div class="row">
                   <input type="text" class="form-control" (change)="onCodigoPostalKeyUp($event)" onkeypress="return(event.charCode>=48 && 57>=event.charCode)" maxlength="5" [(ngModel)]='codigoPostal' [ngClass]="{'Existe':existe,'NoExiste':!existe||codigoPostal==''}">
-                  <ngb-alert  [dismissible]="false" type="danger" *ngIf="codigoPostal==''">
-                    Llene código postal
-                  </ngb-alert>
                   <ngb-alert  [dismissible]="false" type="danger" *ngIf="!existe && codigoPostal!='' && codigoPostal.length==5">
                     No existe el codigo postal, ingrese otro
                   </ngb-alert>
