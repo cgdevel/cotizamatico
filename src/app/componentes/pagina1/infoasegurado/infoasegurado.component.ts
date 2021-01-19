@@ -131,13 +131,16 @@ annosel:string='';
 //Funciones botones SOY
   Soymujer() { 
     // tiene selected this.statussoymujer
-    
     this.soymujer = !this. soymujer;
     this. soyhombre=false
     this.statussoyhombre="NoSelected"
     this.soyempresa=false
     this.statussoyempresa="NoSelected"
     this.statussoymujer = this. soymujer ? "Selected"  :"NoSelected";
+    this.pasgenem.emit(this.soyempresa)
+    this.pasgenselem.emit(this.statussoyempresa)
+    this.pasgenselho.emit(this.statussoyhombre)
+    this.pasgenho.emit(this.soyhombre)
     this.pasgenselmu.emit(this.statussoymujer)
     this.pasgenmu.emit(this.soymujer)
     console.log("Mujer"+' '+this.soymujer+' '+this.statussoymujer)
@@ -158,8 +161,12 @@ annosel:string='';
     this.soyempresa=false
     this.statussoyempresa="NoSelected"
     this.statussoyhombre= this. soyhombre ? "Selected" : "NoSelected";
+    this.pasgenem.emit(this.soyempresa)
+    this.pasgenselem.emit(this.statussoyempresa)
     this.pasgenselho.emit(this.statussoyhombre)
     this.pasgenho.emit(this.soyhombre)
+    this.pasgenselmu.emit(this.statussoymujer)
+    this.pasgenmu.emit(this.soymujer)
     console.log("Hombre"+' '+this.soyhombre+' '+this.statussoyhombre)
     console.log("Mujer"+' '+this.soymujer+' '+this.statussoymujer)
     console.log("Empresa"+' '+this.soyempresa+' '+this.statussoyempresa)
@@ -180,6 +187,10 @@ annosel:string='';
     this.statussoyempresa= this. soyempresa ? "Selected" : "NoSelected" ;
     this.pasgenem.emit(this.soyempresa)
     this.pasgenselem.emit(this.statussoyempresa)
+    this.pasgenselho.emit(this.statussoyhombre)
+    this.pasgenho.emit(this.soyhombre)
+    this.pasgenselmu.emit(this.statussoymujer)
+    this.pasgenmu.emit(this.soymujer)
     console.log("Empresa"+' '+this.soyempresa+' '+this.statussoyempresa)
     console.log("Hombre"+' '+this.soyhombre+' '+this.statussoyhombre)
     console.log("Mujer"+' '+this.soymujer+' '+this.statussoymujer)
