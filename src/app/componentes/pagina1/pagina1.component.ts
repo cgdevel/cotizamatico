@@ -22,6 +22,12 @@ export class Pagina1Component implements OnInit {
     marca:string='';
     descripcion:string='';
     anno:string='';
+    statumustr:string='';
+    mujboo:boolean;
+    statuhomstr:string='';
+    homboo:boolean;
+    statuempstr:string='';
+    empboo:boolean;
 
   a(e) {
     console.log(e);
@@ -70,9 +76,29 @@ l(e){
   this.email=e
 }
 
-m(e){
+mu(e){
   console.log(e)
-  this.genero=e
+  this.statumustr=e
+}
+muj(e){
+  console.log(e)
+  this.mujboo=e
+}
+ho (e){
+  console.log(e)
+  this.statuhomstr=e
+}
+hom (e){
+  console.log(e)
+  this.homboo=e
+}
+em (e){
+  console.log(e)
+  this.statuempstr=e
+}
+emp (e){
+  console.log(e)
+  this.empboo=e
 }
   constructor() { }
 

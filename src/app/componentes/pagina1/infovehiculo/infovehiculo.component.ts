@@ -1,4 +1,4 @@
-import { Component, OnInit,EventEmitter,Output} from '@angular/core';
+import { Component, OnInit,EventEmitter,Output, Input} from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
 
@@ -24,10 +24,10 @@ export class InfovehiculoComponent implements OnInit {
   modelos: { sLlave: number; sDato: string; }[];
   marcas: { sLlave: number; sDato: string; }[];
   descripciones: { sLlave: number; sDato: string; }[];
-  modelosel;
-  annosel;
-  marcasel;
-  descripsel;
+  @Input() modelosel;
+  @Input() annosel;
+  @Input() marcasel;
+  @Input() descripsel;
   item:string='';
   modelo: string  = '0'; // Iniciamos
   vermodelo: string        = '';

@@ -31,6 +31,13 @@ export class Pagina2Component implements OnInit {
   mesnaci: any;
   yearnaci: any;
   dianaci: any;
+  strstatemu:string;
+  boostatemu:boolean;
+  strstatehom:string;
+  boostatehom:boolean;
+  strstateemp:string;
+  boostateemp:boolean;
+  show: boolean =false;
   //Funciones cobertura
   Ampliaplus( ) {
     // tiene selected this.statusAP
@@ -254,6 +261,10 @@ muacco:number=0
   this.rcocu=event.target.checked
   console.log('R.C de ocupantes:'+' '+this.rcocu)
  }
+ toggle(){
+  this. show = !this. show;
+
+ }
   constructor(
     private route: ActivatedRoute 
   ) { 
@@ -272,6 +283,12 @@ muacco:number=0
     this.mesnaci=history.state.smsel
     this.yearnaci=history.state.sysel
     this.dianaci=history.state.sdsel
+    this.strstatemu=history.state.must1
+    this.boostatemu=history.state.muboo1
+    this.strstatehom=history.state.host1
+    this.boostatehom=history.state.hoboo1
+    this.strstateemp=history.state.emst1
+    this.boostateemp=history.state.emboo1
   }
 
 

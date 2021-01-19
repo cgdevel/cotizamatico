@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output  } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output  } from '@angular/core';
 import { disableDebugTools } from '@angular/platform-browser';
 import {HttpClient} from '@angular/common/http'
 
@@ -15,9 +15,12 @@ export class InfoaseguradoComponent implements OnInit {
   @Output() pasnom = new EventEmitter<string>();
   @Output() pasemail = new EventEmitter<string>();
   @Output() pascp = new EventEmitter<string>();
-  @Output() pasgen = new EventEmitter<string>();
-  
-  
+  @Output() pasgenmu = new EventEmitter<boolean>();
+  @Output() pasgenselmu=new EventEmitter<string>();
+  @Output() pasgenho = new EventEmitter<boolean>();
+  @Output() pasgenselho=new EventEmitter<string>();
+  @Output() pasgenem = new EventEmitter<boolean>();
+  @Output() pasgenselem=new EventEmitter<string>();
  modsel:string='';
  marsel:string='';
 descsel:string='';
@@ -58,33 +61,36 @@ annosel:string='';
       ['Diciembre',31],
     ]
     this.meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+    console.log(this.meses)
     this.dias=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,23,24,25,26,27,28,29,30,31]
+    console.log(this.dias)
     this.fechaannos=[]
     var today = new Date();
     this.year = today.getFullYear();
     this.date=today.getDate();
     this.month=today.getMonth();
-    console.log(today)
-    console.log(this.date) //numero del dia
-    this.selecteddia=this.date
-    this.verdia=this.selecteddia
-    console.log(this.month)
-    this.selectedmes=this.meses[this.month]
-    this.vermes=this.selectedmes
-    console.log(this.year)
-    this.selectedyear=this.year
-    this.verfechaann=this.selectedyear
+    // console.log(today)
+    // console.log(this.date) //numero del dia
+    // this.selecteddia=this.date
+    // this.verdia=this.selecteddia
+    // console.log(this.month)
+    // this.selectedmes=this.meses[this.month]
+    // this.vermes=this.selectedmes
+    // console.log(this.year)
+    // this.selectedyear=this.year
+    // this.verfechaann=this.selectedyear
    for (let index = 1900; index <= this.year-18; index++) {// VALIDACION PARA QUE SEA MAYOR DE EDAD
      this.fechaannos.push(index)
    }
+   console.log(this.fechaannos)
   }
   // valores para código postal
   readonly api: string ="https://apitestcotizamatico.azurewebsites.net/api/catalogos";
   ubicacion: any;
-  codigoPostal: string ='';
-  TELEFONO: string ='';
-  EMAIL: string ='';
-  NOMBRE: string ='';
+  @Input() codigoPostal: string ='';
+  @Input() TELEFONO: string ='';
+  @Input() EMAIL: string ='';
+  @Input() NOMBRE: string ='';
   ubicacionId: number;
   estado: string;
   municipio: string;
@@ -100,21 +106,22 @@ annosel:string='';
   mesdiabis: (string | number)[][];
   mesdia: (string | number)[][];
   mes: string  = ''; // Iniciamos mes 
-  vermes: string        = '';
+ vermes: string        = '';
   fechaann: string  = ''; // Iniciamos fechaann 
   verfechaann: string        = '';
   dia: string  = ''; // Iniciamos dia
   // console.log(this.mesdiabis[0][1])//DIAS
   // console.log(this.mesdiabis[0][0])//MESES
-  verdia: string        = '';
-  selectedmes;
-  selectedyear;
-  selecteddia;
+   verdia: string        = '';
+  
+@Input() selectedmes;
+@Input() selectedyear;
+@Input()   selecteddia;
   selected;
   //Valores botones soy
-  soymujer=false;
-  soyhombre=false;
-  soyempresa=false;
+  @Input() soymujer=false;
+  @Input() soyhombre=false;
+  @Input() soyempresa=false;
   statussoymujer = "NoSelected";
   statussoyhombre= "NoSelected";
   statussoyempresa= "NoSelected";
@@ -124,19 +131,23 @@ annosel:string='';
 //Funciones botones SOY
   Soymujer() { 
     // tiene selected this.statussoymujer
+    
     this.soymujer = !this. soymujer;
     this. soyhombre=false
     this.statussoyhombre="NoSelected"
     this.soyempresa=false
     this.statussoyempresa="NoSelected"
     this.statussoymujer = this. soymujer ? "Selected"  :"NoSelected";
-    this.pasgen.emit('Mujer')
+    this.pasgenselmu.emit(this.statussoymujer)
+    this.pasgenmu.emit(this.soymujer)
     console.log("Mujer"+' '+this.soymujer+' '+this.statussoymujer)
     console.log("Hombre"+' '+this.soyhombre+' '+this.statussoyhombre)
     console.log("Empresa"+' '+this.soyempresa+' '+this.statussoyempresa)
     //SINO HAY GENERO SELECCIONADO
     if (!this.soyhombre&& !this.soymujer && !this.soyempresa) {
-      this.pasgen.emit('')  
+      this.pasgenselmu.emit('') 
+      this.pasgenselem.emit('') 
+      this.pasgenselho.emit('')  
     }
   }
   Soyhombre() {
@@ -147,13 +158,16 @@ annosel:string='';
     this.soyempresa=false
     this.statussoyempresa="NoSelected"
     this.statussoyhombre= this. soyhombre ? "Selected" : "NoSelected";
-    this.pasgen.emit('Hombre')
+    this.pasgenselho.emit(this.statussoyhombre)
+    this.pasgenho.emit(this.soyhombre)
     console.log("Hombre"+' '+this.soyhombre+' '+this.statussoyhombre)
     console.log("Mujer"+' '+this.soymujer+' '+this.statussoymujer)
     console.log("Empresa"+' '+this.soyempresa+' '+this.statussoyempresa)
     //SINO HAY GENERO SELECCIONADO
     if (!this.soyhombre&& !this.soymujer && !this.soyempresa) {
-      this.pasgen.emit('')  
+      this.pasgenselmu.emit('') 
+      this.pasgenselem.emit('') 
+      this.pasgenselho.emit('')    
     }
   }
   Soyempresa() {
@@ -164,13 +178,16 @@ annosel:string='';
     this.soyhombre=false
     this.statussoyhombre="NoSelected"
     this.statussoyempresa= this. soyempresa ? "Selected" : "NoSelected" ;
-    this.pasgen.emit('Empresa')
+    this.pasgenem.emit(this.soyempresa)
+    this.pasgenselem.emit(this.statussoyempresa)
     console.log("Empresa"+' '+this.soyempresa+' '+this.statussoyempresa)
     console.log("Hombre"+' '+this.soyhombre+' '+this.statussoyhombre)
     console.log("Mujer"+' '+this.soymujer+' '+this.statussoymujer)
     //SINO HAY GENERO SELECCIONADO
     if (!this.soyhombre&& !this.soymujer && !this.soyempresa) {
-      this.pasgen.emit('')  
+      this.pasgenselmu.emit('') 
+      this.pasgenselem.emit('') 
+      this.pasgenselho.emit('')  
     }
   }
   //Funciones selección fecha de nacimiento
