@@ -24,175 +24,125 @@
             </div>
           </div>
         </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-3 col-sm-12">
-              <div class="container">
-                <div class="row">
-                  Mi auto es:
-                </div>
-                <!-- <div class="row">
-                  <div class="dropdown">
-                    <button class="btn model"  type="button" id="btnmodelo" data-toggle="dropdown" aria-haspopup="true"  >
-                      Modelo
-                    </button>
-                    <div class="dropdown-menu" style="overflow-y: scroll;" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" (click)="seleccionaModelo($event)" *ngFor="let modelo of modelos" [attr.data-modelo-id]="modelo.sLlave" role="option">
-                        {{ modelo.sDato }}
-                      </a>
+        <div class="row">
+          <div class="col-md-3 col-sm-12">
+            <div class="container">
+              <div class="row">
+                Mi auto es:
+              </div>
+              <div class="row">
+                <ng-select
+                  style="width: 200px;" 
+                  [items]="modelos"        
+                  bindLabel="sDato"
+                  placeholder="Modelo"
+                  appendTo="body"
+                  [searchable]="false"
+                  [clearable]="false"
+                  [closeOnSelect]="true"
+                  (change)="getModelo()"
+                  [(ngModel)]="modelosel" >
+                  <ng-option  ng-options="item as item.sLlave for item.sDato in modelos">
+                      {{item}}
+                  </ng-option>
+                  <ng-template ng-notfound-tmp >
+                    <div class="ng-option disabled">
+                        No hay modelos que mostrar
                     </div>
-                  </div>
-                </div> -->
-                <div class="row">
-                  <ng-select
-                    style="width: 200px;" 
-                    [items]="modelos"        
-                    bindLabel="sDato"
-                    placeholder="Modelo"
-                    appendTo="body"
-                    [searchable]="false"
-                    [clearable]="false"
-                    [closeOnSelect]="true"
-                    (change)="getModelo()"
-                    [(ngModel)]="modelosel" >
-                    <ng-option  ng-options="item as item.sLlave for item.sDato in modelos">
-                        {{item}}
-                    </ng-option>
-                    <ng-template ng-notfound-tmp >
-                      <div class="ng-option disabled">
-                          No hay modelos que mostrar
-                      </div>
-                    </ng-template>
-                  </ng-select>
-                </div>
+                  </ng-template>
+                </ng-select>
               </div>
             </div>
-            <div class="col-md-3 col-sm-12">
-              <div class="container">
-                <div class="row">
-                  Año:
-                </div>
-                <!-- <div class="row">
-                  <div class="dropdown">
-                    <button class="btn model"  type="button" id="btnyear" data-toggle="dropdown" aria-haspopup="true"  >
-                      Año
-                    </button>
-                    <div class="dropdown-menu" style="overflow-y: scroll;" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" (click)="seleccionaAnn($event)" *ngFor="let option of annos" [attr.data-anno-id]="option.sLlave" role="option">
-                        {{ option.sDato }}
-                      </a>
-                    </div>
-                  </div>
-                </div> -->
-                <div class="row">
-                  <ng-select
-                    style="width: 200px;"
-                    [items]="annos"        
-                    bindLabel="sDato"
-                    placeholder="Año"
-                    appendTo="body"
-                    [searchable]="false"
-                    [clearable]="false"
-                    [closeOnSelect]="true"
-                    (change)="getAnno()"
-                    [(ngModel)]="annosel" >
-                    <ng-template ng-notfound-tmp >
-                        <div class="ng-option disabled">
-                            No hay años que mostrar
-                        </div>
-                    </ng-template>
-                    <ng-option  ng-options="item as item.sLlave for item.sDato in annos">
-                        {{item}}
-                    </ng-option>
-                  </ng-select>
-                </div>
+          </div>
+          <div class="col-md-2 col-sm-12">
+            <div class="container">
+              <div class="row">
+                Año:
               </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-              <div class="container">
-                <div class="row">
-                  Marca:
-                  
-                </div>
-                <!-- <div class="row">
-                  <div class="dropdown">
-                    <button class="btn model"  type="button" id="btnmarca" data-toggle="dropdown" aria-haspopup="true"  >
-                      Marca
-                    </button>
-                    <div class="dropdown-menu" style="overflow-y: scroll;" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" (click)="seleccionaMarca($event)" *ngFor="let option of marcas" [attr.data-marca-id]="option.sLlave" role="option">
-                        {{ option.sDato }}
-                      </a>
-                    </div>
-                  </div>  
-                </div> -->
-                <div class="row">
-                  <ng-select 
-                    style="width: 200px;"
-                    [items]="marcas"        
-                    bindLabel="sDato"
-                    placeholder="Marca"
-                    appendTo="body"
-                    [searchable]="false" 
-                    [clearable]="false"
-                    [closeOnSelect]="true"
-                    (change)="getMarca()"
-                    [(ngModel)]="marcasel" >
-                    <ng-option  ng-options="item as item.sLlave for item.sDato in marcas">
-                        {{item}}
-                    </ng-option>
-                    <ng-template ng-notfound-tmp >
+              <div class="row">
+                <ng-select
+                  style="width: 105px; height: 40px;"
+                  [items]="annos"        
+                  bindLabel="sDato"
+                  placeholder="Año"
+                  appendTo="body"
+                  [searchable]="false"
+                  [clearable]="false"
+                  [closeOnSelect]="true"
+                  (change)="getAnno()"
+                  [(ngModel)]="annosel" >
+                  <ng-template ng-notfound-tmp >
                       <div class="ng-option disabled">
-                          No hay marcas que mostrar
+                          No hay años que mostrar
                       </div>
                   </ng-template>
-                  </ng-select>
-                </div>
+                  <ng-option  ng-options="item as item.sLlave for item.sDato in annos">
+                      {{item}}
+                  </ng-option>
+                </ng-select>
               </div>
             </div>
-            <div class="col-md-3 col-sm-12">
-              <div class="container">
-                <div class="row">
-                  Descripción:
-                </div>
-                <!-- <div class="row">
-                  <div class="dropdown">
-                    <button class="btn model" type="button" id="btndescr" data-toggle="dropdown" aria-haspopup="true"  >
-                      Descripción
-                    </button>
-                    <div class="dropdown-menu" style="overflow-y: scroll;" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" (click)="seleccionaDescip($event)" *ngFor="let option of descripciones" [attr.data-descripcion-id]="option.sLlave" role="option">
-                        {{ option.sDato }}
-                      </a>
+          </div>
+          <div class="col-md-3 col-sm-12">
+            <div class="container">
+              <div class="row">
+                Marca:
+              </div>
+              <div class="row">
+                <ng-select 
+                  style="width: 185px; height: 40px;"
+                  [items]="marcas"        
+                  bindLabel="sDato"
+                  placeholder="Marca"
+                  appendTo="body"
+                  [searchable]="false" 
+                  [clearable]="false"
+                  [closeOnSelect]="true"
+                  (change)="getMarca()"
+                  [(ngModel)]="marcasel" >
+                  <ng-option  ng-options="item as item.sLlave for item.sDato in marcas">
+                      {{item}}
+                  </ng-option>
+                  <ng-template ng-notfound-tmp >
+                    <div class="ng-option disabled">
+                        No hay marcas que mostrar
                     </div>
-                  </div>
-                </div> -->
-                <div class="row">
-                  <ng-select style="width: 200px;"
-                    [items]="descripciones"        
-                    bindLabel="sDato"
-                    placeholder="Descripción"
-                    appendTo="body"
-                    [searchable]="true" 
-                    [clearable]="false"
-                    [closeOnSelect]="true"
-                    (change)="getDescripcion()"
-                    [(ngModel)]="descripsel" >
-                    <ng-option  ng-options="item as item.sLlave for item.sDato in descripciones">
-                        {{item}}
-                    </ng-option>
-                    <ng-template ng-notfound-tmp let-searchTerm="searchTerm" >
-                      <div class="ng-option disabled" style="font-size: 11px !important;">
-                          No hay descripción que coincida con "{{searchTerm}}"
-                      </div>
-                  </ng-template>
-                  </ng-select>
-                 
-                </div>
+                </ng-template>
+                </ng-select>
+                
               </div>
             </div>
-        </div>
-        </div>
+          </div>
+          <div class="col-md-4 col-sm-12">
+            <div class="container">
+              <div class="row">
+                Descripción:
+              </div>
+              <div class="row">
+                <ng-select style="width: 302px;"
+                  [items]="descripciones"        
+                  bindLabel="sDato"
+                  placeholder="Descripción"
+                  appendTo="body"
+                  [searchable]="true" 
+                  [clearable]="false"
+                  [closeOnSelect]="true"
+                  (change)="getDescripcion()"
+                  [(ngModel)]="descripsel" >
+                  <ng-option  ng-options="item as item.sLlave for item.sDato in descripciones">
+                      {{item}}
+                  </ng-option>
+                  <ng-template ng-notfound-tmp let-searchTerm="searchTerm" >
+                    <div class="ng-option disabled" style="font-size: 11px !important;">
+                        No hay descripción que coincida con "{{searchTerm}}"
+                    </div>
+                  </ng-template>
+                </ng-select>
+               
+              </div>
+            </div>
+          </div>
+      </div>
       </div>
     </div>
 </div>
