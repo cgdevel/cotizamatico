@@ -82,7 +82,6 @@ export class InfoaseguradoComponent implements OnInit {
   //ESTAS VARIABLES SON PARA LA VALIDACION (NO VACIO)
     existe:boolean; 
     existeT: boolean;
-    tam:number
     vacemial: boolean;
     vacnom: boolean;
     // valores para código postal
@@ -309,7 +308,7 @@ export class InfoaseguradoComponent implements OnInit {
   }
   //Función teléfono
   onTelefono(event){
-    var regt=/[\(]?[\+]?(\d{2}|\d{3})[\)]?[\s]?((\d{3}[\*\.\-\s]){3}|(\d{2}[\*\.\-\s]){4}|(\d{4}[\*\.\-\s]){2})|\d{10}/
+    var regt=/[\s]?((\d{3}[\*\.\-\s]){3}|(\d{2}[\*\.\-\s]){4}|(\d{4}[\*\.\-\s]){2})|\d{10}/
     this.validot=regt.test(this.TELEFONO)
     if (this.TELEFONO.length < 10 || this.TELEFONO==''|| !this.validot) {
       this.existeT=false
@@ -323,43 +322,46 @@ export class InfoaseguradoComponent implements OnInit {
   }
 //Función codigo postal
   onCodigoPostalKeyUp(event) {
-    this.tam=this.codigoPostal.length
     // console.log(event);
     if (this.codigoPostal.length < 5 && this.codigoPostal!='') {
       this.existe=false
       this.pascp.emit('')
       // console.log('No se puede validar un CP menor a 5 caracteres');
       return;
-    }
-    if(this.codigoPostal=='') {
-      this.existe=false
+    } else {
+      if (this.codigoPostal=='') {
+        this.existe=false
       this.pascp.emit('')
       // console.log('No se puede validar un CP vacío');
       return;
-    }
-    this.http.post(this.api, {
-      "IdAplication": "2", 
-      "NombreCatalogo": "Sepomex", 
-      "Filtro": this.codigoPostal
-    }).subscribe((data: any)=> {
-      // console.log(data.CatalogoJsonString)
-      if (data.Error != null) {
-        this.existe=false
-        this.pascp.emit('')
-        // console.log("No existe")
-        return;
       } else {
-        this.existe=true
-        this.pascp.emit(this.codigoPostal)
-        this.ubicacion = JSON.parse(data.CatalogoJsonString);
-        this.estado = this.ubicacion[0].Municipio.Estado.sEstado;
-        this.municipio = this.ubicacion[0].Municipio.sMunicipio;
-        this.colonia = this.ubicacion[0].Ubicacion[0].sUbicacion;
-        this.ubicacionId = this.ubicacion[0].Ubicacion[0].iIdUbicacion;
-        // console.log(this.estado+'  '+ this.municipio +'  '+ this.colonia+'  '+ this.ubicacionId)
+        if (this.codigoPostal!=''&& this.codigoPostal.length == 5) {
+          this.http.post(this.api, {
+            "IdAplication": "2", 
+            "NombreCatalogo": "Sepomex", 
+            "Filtro": this.codigoPostal
+          }).subscribe((data: any)=> {
+            // console.log(data.CatalogoJsonString)
+            if (data.Error != null) {
+              this.existe=false
+              this.pascp.emit('')
+              // console.log("No existe")
+              return;
+            } else {
+              this.existe=true
+              this.pascp.emit(this.codigoPostal)
+              this.ubicacion = JSON.parse(data.CatalogoJsonString);
+              this.estado = this.ubicacion[0].Municipio.Estado.sEstado;
+              this.municipio = this.ubicacion[0].Municipio.sMunicipio;
+              this.colonia = this.ubicacion[0].Ubicacion[0].sUbicacion;
+              this.ubicacionId = this.ubicacion[0].Ubicacion[0].iIdUbicacion;
+              // console.log(this.estado+'  '+ this.municipio +'  '+ this.colonia+'  '+ this.ubicacionId)
+            }
+            })
+        }
       }
       
-      })
+    }
   }
 //Función codigo email
   onEmail(event) {
