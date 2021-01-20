@@ -110,7 +110,7 @@
     font-family: 'Exo 2', sans-serif;
     font: 500;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
   }
 
   #fivth{
@@ -134,31 +134,43 @@
     font-size: 15px;
     color: #ff6666;
   }
-
-  /* BEFORE */
-.custom-control-input:checked ~ .custom-control-label::before {
+/* MODIFIQUE CSS DE SWITCH */
+/* PARA COMPORTAMIENTO EN ENCENDIDO */
+#switchgrande>.custom-control-input:checked ~ .custom-control-label::before {
+  /* background-image: linear-gradient(to right, rgba(255,105,99,1), rgba(255,143,72,1)); */
     background: -webkit-linear-gradient(right,#FF8F48,#FF6963);
-    border: none !important;
+    border-color: darken(white, 10%);
+  }
+  /* BOLITA EN OFF */
+  #switchgrande>.custom-control-input:not(checked) ~ .custom-control-label::after {
+    background-color: #ff6666;
 }
-.custom-switch .custom-control-label::before {
-    left: -2.25rem;
-    width: 1.75rem;
-    pointer-events: all;
-    border-radius: .5rem;
-    border-color: #ff6666;
+  /* BOLITA EN ON */
+#switchgrande>.custom-control-input:checked ~ .custom-control-label::after {
+  background-color: white;
 }
-/* AFTER */
-.custom-switch .custom-control-input:checked ~ .custom-control-label::after {
-    background-color: #fff;
-    transform: translateX(.75rem);
-}
-.custom-switch .custom-control-input:not(checked) ~ .custom-control-label::after {
-  background-color:  #ff6666;
-}
-.custom-switch .custom-control-label::after {
-    transition: transform .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    background: white;
-}
+/* PARA TAMAÑO  */
+#switchgrande>.custom-switch.custom-switch-lg {
+    padding-bottom: 1rem;
+    padding-left: 2.25rem;
+  }
+  #switchgrande>.custom-control-label{
+      padding-left: .75rem;
+      padding-top: 0.15rem;
+    }
+    #switchgrande>.custom-control-label::before {
+        border-radius: 1rem;
+        height: 1.5rem;
+        width: 5rem;
+      }
+      #switchgrande> .custom-control-label::after {
+        border-radius: .65rem;
+        height: calc(1.5rem - 4px);
+        width: calc(1.5rem - 4px);
+      }
+      #switchgrande>.custom-control-input:checked ~ .custom-control-label::after{
+      transform: translateX(3.4rem);
+      }
 /* slider */
 .slidecontainer {
   width: 100%;

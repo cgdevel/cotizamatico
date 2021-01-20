@@ -459,69 +459,69 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="slidecontainer">
-                            <p id="oferta">Robo total<label [hidden]="roto == 0"> {{this.roto}} %</label></p>
+                            <p id="oferta">Robo total<label style="margin-left: 233px;margin-right: 10px;" [hidden]="roto == 0"> {{this.roto}} %</label></p>
                             <input type="range"  min="0" max="100" value="0"  step="10" class="slider" id="RangeRT" (change)="RT($event)">
                         </div>
                     </div>
                     <div class="row">
                         <div class="slidecontainer">
-                            <p id="oferta">Responsabilidad Civil Catastrófica <label [hidden]="recica == 0"> {{this.recica}} %</label></p>
+                            <p id="oferta">Responsabilidad Civil Catastrófica <label style="margin-left: 50px;margin-right: 10px;" [hidden]="recica == 0"> {{this.recica}} %</label></p>
                             <input type="range"min="0" max="100" value="0"  step="10" class="slider" id="RangeRCC" (change)="RCC($event)">
                         </div>
                     </div>
                     <div class="row">
                         <div class="slidecontainer">
-                            <p id="oferta">Responsabilidad Civil Bienes y Personas <label [hidden]="recibipe == 0"> {{this.recibipe}} %</label></p>
+                            <p id="oferta">Responsabilidad Civil Bienes y Personas <label style="margin-right: 10px; margin-left: 5px;" [hidden]="recibipe == 0"> {{this.recibipe}} %</label></p>
                             <input type="range" min="0" max="100" value="0"  step="10" class="slider" id="RangeRCBP" (change)="RCBP($event)">
                         </div>
                     </div>
                     <div class="row">
                         <div class="slidecontainer">
-                            <p id="oferta">Gastos Médicos Ocupantes <label [hidden]="gemeoc == 0"> {{this.gemeoc}} %</label></p>
+                            <p id="oferta">Gastos Médicos Ocupantes <label style="margin-right: 10px;margin-left: 103px;" [hidden]="gemeoc == 0"> {{this.gemeoc}} %</label></p>
                             <input type="range" min="0" max="100" value="0"  step="10" class="slider" id="RangeGMO" (change)="GMO($event)">
                         </div>
                     </div>
                    
                     <div class="row">
                         <div class="slidecontainer">
-                            <p id="oferta">Muerte accidental del conductor <label [hidden]="muacco == 0"> {{this.muacco}}  %</label></p>
+                            <p id="oferta">Muerte accidental del conductor <label style="margin-right: 10px;margin-left: 62px;" [hidden]="muacco == 0"> {{this.muacco}}  %</label></p>
                             <input type="range" min="0" max="100" value="0"  step="10" class="slider" id="RangeMAC" (change)="MAC($event)">
                         </div>
                     </div>
     
-                    <div class="row">
-                        <span class="mx-2">Auto sustituto</span>
-                        <div class="custom-control custom-switch ">
+                    <div class="row my-2">
+                        <span class="mx-2 my-1">Auto sustituto</span>
+                        <div id='switchgrande' class="custom-control custom-switch custom-switch-lg">
                             <input type="checkbox" class="custom-control-input " id="customSwitch1" (change)="AuSus($event)">
-                            <label class="custom-control-label" for="customSwitch1"></label>
+                            <label style="left:100px" class="custom-control-label" for="customSwitch1"></label>
                         </div>
                     </div>
-                    <div class="row">
-                        <span class="mx-2">Desbielamiento</span>
-                        <div class="custom-control custom-switch ">
+                    <div class="row my-2">
+                        <span class="mx-2 my-1">Desbielamiento</span>
+                        <div id='switchgrande' class="custom-control custom-switch custom-switch-lg">
                             <input type="checkbox" class="custom-control-input" id="customSwitch2" (change)="Desb($event)">
-                            <label class="custom-control-label" for="customSwitch2"></label>
+                            <label  style="left:91px" class="custom-control-label" for="customSwitch2"></label>
                         </div>
                     </div>
-                    <div class="row">
-                        <span class="mx-2">Extensión de R.C</span>
-                        <div class="custom-control custom-switch ">
+                    <div class="row my-2">
+                        <span class="mx-2 my-1">Extensión de R.C</span>
+                        <div id='switchgrande' class="custom-control custom-switch custom-switch-lg">
                             <input type="checkbox" class="custom-control-input" id="customSwitch3" (change)="ExRC($event)">
-                            <label class="custom-control-label" for="customSwitch3"></label>
+                            <label  style="left:86px" class="custom-control-label" for="customSwitch3"></label>
                         </div>
                     </div>
-                    <div class="row">
-                        <span class="mx-2">R.C Extranjero</span>
-                        <div class="custom-control custom-switch ">
+                    <div class="row my-2">
+                        <span class="mx-2 my-1">R.C Extranjero</span>
+                        <div id='switchgrande' class="custom-control custom-switch custom-switch-lg">
                             <input type="checkbox" class="custom-control-input" id="customSwitch4" (change)="RCExt($event)">
-                            <label class="custom-control-label" for="customSwitch4"></label>
+                            <label  style="left:103px" class="custom-control-label" for="customSwitch4"></label>
                         </div>
                     </div>
-                    <div class="row">
-                        <span class="mx-2">R.C Ocupantes</span>
-                        <div class="custom-control custom-switch ">
+                    <div class="row my-2">
+                        <span class="mx-2 my-1">R.C Ocupantes</span>
+                        <div id='switchgrande' class="custom-control custom-switch custom-switch-lg">
                             <input type="checkbox" class="custom-control-input" id="customSwitch5" (change)="RCOcu($event)">
-                            <label class="custom-control-label" for="customSwitch5"></label>
+                            <label style="left:103px" class="custom-control-label" for="customSwitch5"></label>
                         </div>
                     </div>
                 </div>
@@ -668,7 +668,7 @@
         <div class="col-12">
             <div class="custom-control custom-checkbox mr-sm-2">
                 <input type="checkbox" class="custom-control-input" (click)="toggle()" id="customControlAutosizing">
-                <label class="custom-control-label" for="customControlAutosizing">Desea modfiicar su Información?</label>
+                <label class="custom-control-label" for="customControlAutosizing">Desea modificar su Información?</label>
             </div>
         </div>
     </div>
