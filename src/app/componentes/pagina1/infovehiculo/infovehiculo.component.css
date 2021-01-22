@@ -79,8 +79,14 @@
 .mrtop{
   margin-top: 4.5rem;;
   }
-
+ 
 @media (max-width: 576px) {
+  #modelsel{
+    width: 171px !important;
+  }
+  #descrip{
+   width: 165px !important;
+  }
   #labinfove.col-9{
     left: 40px!important;
     top: 10px!important;
@@ -95,3 +101,4 @@
       font-size: 26px !important;
      }
  }
+ 

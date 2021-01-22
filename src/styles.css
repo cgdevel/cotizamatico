@@ -11,3 +11,13 @@
 /* .ng-select .ng-select-container {
   height: -webkit-fill-available !important;
 } */
+.my-custom-class .tooltip-inner{
+  /* background-color: darkgreen!important; */
+  background-color: chocolate!important;
+
+  font-size: 125%;
+}
+.my-custom-class .arrow::before {
+  /* border-top-color: darkgreen!important; */
+  border-top-color: chocolate!important;
+}

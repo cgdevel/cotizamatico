@@ -25,13 +25,13 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-3 col-sm-12">
+          <div id='conte' class="col-12 col-md-3">
             <div class="container">
               <div class="row">
                 Mi auto es:
               </div>
               <div class="row">
-                <ng-select
+                <ng-select id='modelsel'
                   style="width: 200px;" 
                   [items]="modelos"        
                   bindLabel="sDato"
@@ -41,10 +41,11 @@
                   [clearable]="false"
                   [closeOnSelect]="true"
                   (change)="getModelo()"
-                  [(ngModel)]="modelosel" >
-                  <ng-option  ng-options="item as item.sLlave for item.sDato in modelos">
+                  [(ngModel)]="modelosel" [ngbTooltip]="modsel" tooltipClass="my-custom-class">
+                  <ng-option ng-options="item as item.sLlave for item.sDato in modelos">
                       {{item}}
                   </ng-option>
+                  <ng-template #modsel ><b>{{modelosel.sDato}}</b></ng-template>
                   <ng-template ng-notfound-tmp >
                     <div class="ng-option disabled">
                         No hay modelos que mostrar
@@ -54,7 +55,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-2 col-sm-12">
+          <div  id='conte' class="col-md-2 col-sm-12">
             <div class="container">
               <div class="row">
                 Año:
@@ -70,7 +71,7 @@
                   [clearable]="false"
                   [closeOnSelect]="true"
                   (change)="getAnno()"
-                  [(ngModel)]="annosel" >
+                  [(ngModel)]="annosel">
                   <ng-template ng-notfound-tmp >
                       <div class="ng-option disabled">
                           No hay años que mostrar
@@ -83,7 +84,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3 col-sm-12">
+          <div  id='conte' class="col-md-3 col-sm-12">
             <div class="container">
               <div class="row">
                 Marca:
@@ -99,7 +100,8 @@
                   [clearable]="false"
                   [closeOnSelect]="true"
                   (change)="getMarca()"
-                  [(ngModel)]="marcasel" >
+                  [(ngModel)]="marcasel" [ngbTooltip]="marcsel" tooltipClass="my-custom-class">
+                  <ng-template #marcsel><b>{{marcasel.sDato}}</b></ng-template>
                   <ng-option  ng-options="item as item.sLlave for item.sDato in marcas">
                       {{item}}
                   </ng-option>
@@ -113,13 +115,13 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-12">
+          <div  id='conte' class="col-md-4 col-sm-12">
             <div class="container">
               <div class="row">
                 Descripción:
               </div>
               <div class="row">
-                <ng-select style="width: 302px;"
+                <ng-select id="descrip" style="width: 302px;"
                   [items]="descripciones"        
                   bindLabel="sDato"
                   placeholder="Descripción"
@@ -128,7 +130,8 @@
                   [clearable]="false"
                   [closeOnSelect]="true"
                   (change)="getDescripcion()"
-                  [(ngModel)]="descripsel" >
+                  [(ngModel)]="descripsel" [ngbTooltip]="descsel" tooltipClass="my-custom-class">
+                  <ng-template #descsel><b>{{descripsel.sDato}}</b></ng-template>
                   <ng-option  ng-options="item as item.sLlave for item.sDato in descripciones">
                       {{item}}
                   </ng-option>
