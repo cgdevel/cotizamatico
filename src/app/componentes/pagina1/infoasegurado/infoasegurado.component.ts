@@ -126,6 +126,8 @@ export class InfoaseguradoComponent implements OnInit {
     statussoymujer = "NoSelected";
     statussoyhombre= "NoSelected";
     statussoyempresa= "NoSelected";
+    @Input() showchiquito;
+
   constructor(private http:HttpClient){
   }
  

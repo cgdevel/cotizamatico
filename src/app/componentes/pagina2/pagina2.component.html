@@ -324,8 +324,8 @@
                         </div>
                     </div>
                   </div>
-                  <app-infovehiculo *ngIf="this.show"  [modelosel]="vermodelo" [annosel]="veranno" [marcasel]="vermarca" [descripsel]="verdescripcion"></app-infovehiculo>
-                  <app-infoasegurado *ngIf="this.show" [soymujer]="boostatemu" [soyhombre]="boostatehom" [soyempresa]="boostateemp"
+                  <app-infovehiculo *ngIf="show" [showchiquito]="show" [modelosel]="vermodelo" [annosel]="veranno" [marcasel]="vermarca" [descripsel]="verdescripcion"></app-infovehiculo>
+                  <app-infoasegurado *ngIf="show" [showchiquito]="show" [soymujer]="boostatemu" [soyhombre]="boostatehom" [soyempresa]="boostateemp"
                   [NOMBRE]="nombre" [EMAIL]="email" [TELEFONO]="telefono" [codigoPostal]="codigopostal" [selectedmes]="mesnaci" [selectedyear]="yearnaci" [selecteddia]="dianaci" ></app-infoasegurado>              
                 </div>
               </div>

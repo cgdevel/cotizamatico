@@ -28,6 +28,8 @@ export class InfovehiculoComponent implements OnInit {
   @Input() annosel;
   @Input() marcasel;
   @Input() descripsel;
+  @Input() showchiquito;
+
   item:string='';
   modelo: string  = '0'; // Iniciamos
   vermodelo: string        = '';

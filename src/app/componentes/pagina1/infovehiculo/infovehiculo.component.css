@@ -79,7 +79,21 @@
 .mrtop{
   margin-top: 4.5rem;;
   }
- 
+  .svgchi{
+    height:60px !important;
+    width: 50px !important;
+  }
+  .fuentechiquita{
+    font-size: 1rem!important;
+  }
+  .espacionom{
+    left: 19px!important;
+    top: 9px!important;
+  }
+  .nodoce{
+    flex: 0 0 100%!important;
+    max-width: 100%!important;
+  }
 @media (max-width: 576px) {
   #modelsel{
     width: 171px !important;
