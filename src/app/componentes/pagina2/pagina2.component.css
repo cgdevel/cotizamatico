@@ -1,3 +1,7 @@
+#SVGAmpliaPlus,#SVGAmplia,#SVGLimitada,#SVGBasica,#SVGMensual,#SVGTrimes,#SVGSemes,#SVGAnual,#SVGDescAlto,#SVGDescMedio,#SVGDescBajo{
+  width: 79px;
+    height: 63px;
+}
 #titboto{
   justify-content: center;
   color:#2fd4e8;
@@ -224,112 +228,35 @@ border-style: solid;
 
 
 @media (max-width: 576px) {
-  #mostrarmas{
-    margin-left: 176px;
+
+  #SVGAmpliaPlus,#SVGAmplia,#SVGLimitada,#SVGBasica,#SVGMensual,#SVGTrimes,#SVGSemes,#SVGAnual{
+    width: 47px !important;
+    height: 50px !important;
   }
-  #labap{
-    position: relative!important;
-    top: 14px!important;
+  #SVGDescAlto,#SVGDescMedio,#SVGDescBajo{
+    width: 47px !important;
+    height: 50px !important;
+    margin-left: 0px;
   }
-  #ap3{
-    position: absolute!important;
-    left: 46.917px!important;
-    top: 83px!important;
+  #oferta{
+    font-size: 14px!important;
   }
-  #apantiz{
-    left: 24.917px!important;
-    top: 50.467px!important;
+  #srecica{
+    margin-left: 39px !important;
+  }
+#srecibipe{
+  margin-left: 1px !important;
 }
-  #ap1{
-    margin-left: 8px!important;
-    margin-top: 6px!important;
+#sgemeoc{
+  margin-left: 85px !important;
+}
+#smuacco{
+  margin-left: 50px !important;
+}
+  #sroto{
+    margin-left: 199px !important;
   }
-  #ap2{
-    margin-top: 100px!important;
-    margin-left: -23px!important;
-  }
-  #labeiz{
-    margin-left: -5px!important;
-  }
-  #l1{
-    left: 7.917px!important;
-    top: 86px!important;
-  }
-  #l2{
-    margin-left: -23px!important;
-    margin-top: 3px!important;
-    margin-bottom: -3px!important;
-  }
-  #l3{
-    position: relative!important;
-    left: -34px!important;
-    top: 13px!important;
-    right: 0px!important;
-  }
-  #mueve13{
-    left: 14.917px!important;
-    top: 62px!important;
-  }
-  #mueve12{
-    top: 63px!important;
-    left: 52.917px!important;
-  }
-  #mueve11{
-    left:28.917px!important;
-    top: 53px!important;
-  }
-  #mueve10{
-    left: 46.917px!important;
-    top: 95px!important;
-  }
-  #mueve9{
-    margin-left: -40px!important;
-    margin-top: -70px!important;
-  }
-  #antesaiz{
-    left: 4.917px!important;
-    top: 80.467px!important;
-  }
-  #antesiz{
-    left: 3.917px!important;
-     top: 52.467px!important;
-  }
-  #mueve{
-    margin-top: -7px!important;
-    margin-left: -32px!important;
-  }
-  #mueve2{
-    margin-left: -21px!important;
-    margin-top: 27px!important;
-  }
-  #mueve3{
-    margin-top: -164px!important;
-    margin-bottom: 2.5rem!important;
-    margin-left: 0px!important;
-  }
-  #mueve4{
-    left: 49.917px!important;
-    top: 75px!important;
-  }
-  #mueve5{
-    left: 14.917px!important;
-  }
-  #mueve6{
-    top: 94px!important;
-    left: 35.917px!important;
-  }
-  #mueve7{
-    margin-top: 108px!important;
-margin-left: -23px!important;
-  }
-  #mueve8{
-    margin-left: -23px!important;
-    margin-top: 88px!important;
-  }
-  #renglon1{
-    top: 55.467px!important;
-    left: 47.917px!important;
-  }
+  
   .Noselect {
     height: 144px;
     width: 63px;
@@ -346,16 +273,7 @@ margin-left: -23px!important;
     font-size: 0.6rem;
   
   }
-  .btn.pago>label>svg#calendar{
-    margin-left: -13px !important;
-  }
-  .btn.pago>label>svg#moneda{
-    margin-top: -10px !important;
-    margin-left: 19px !important;
-  }
-  .btn.descuento>svg{
-    margin-left: -25px;
-  }
+  
   #mensual.col.px-0{
     padding-left: 15px !important;
     padding-right: 0px !important;

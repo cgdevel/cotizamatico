@@ -290,6 +290,9 @@ muacco:number=0
     this.boostatehom=history.state.hoboo1
     this.strstateemp=history.state.emst1
     this.boostateemp=history.state.emboo1
+    this.amplia=true;
+    this.descMEDIO=true;
+    this.anual=true;
   }
 
 

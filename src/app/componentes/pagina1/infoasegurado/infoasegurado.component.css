@@ -129,21 +129,46 @@
     padding-left: 19px !important;
     left: 0px!important;
     top:0 !important;
-    
     }
+    .noespacionom{
+      left: 40px !important;
+      top: 10px !important;
+  }
+  .fuentechiquita{
+    font-size: 1rem!important;
+  }
+.nofuentechiquita{
+    font-size: 1.1rem !important;
+  }
     .svgchi{
       height:60px !important;
       width: 50px !important;
     }
-    .fuentechiquita{
-      font-size: 1rem!important;
+    .mbrot{
+      margin-bottom: -39px!important;
     }
     @media (max-width: 576px) {
-      #labinfoase.col-9{
-        left: 40px!important;
-        top: 10px!important;
+      .fuentechiquita{
+        font-size: 0.7rem!important;
+      }
+      .nofuentechiquita{
+        font-size: 1.1rem !important;
+      }
+      /* #labinfoase.col-9{
+        left: 36px !important;
+        top: -47px !important;
       }
       #labinfoase>h5{
-        font-size: 1.1rem!important;
-      }
+        font-size: 0.6rem!important;
+    } */
+    .espacionom{
+      left: -22px !important;
+      top: 13px !important;
     }
+    #rowtitulo{
+      margin-top: 0px!important;
+    }
+  .svgchi{
+    margin-left: -27px!important;
+  }
+  }

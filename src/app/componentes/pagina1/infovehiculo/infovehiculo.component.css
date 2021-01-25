@@ -37,6 +37,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
   }
+  
 .model{
     background-image:
       linear-gradient(45deg, transparent 50%, white 50%),
@@ -83,31 +84,67 @@
     height:60px !important;
     width: 50px !important;
   }
-  .fuentechiquita{
-    font-size: 1rem!important;
+  
+  
+  .nodoce{
+    flex: 0 0 100%!important;
+    max-width: 100%!important;
+  }
+  .width130{
+    width: 130px!important;
+  }
+  .width145{
+    width: 145px!important;
   }
   .espacionom{
     left: 19px!important;
     top: 9px!important;
   }
-  .nodoce{
-    flex: 0 0 100%!important;
-    max-width: 100%!important;
+  .noespacionom{
+      left: 40px !important;
+      top: 10px !important;
+  }
+  .fuentechiquita{
+    font-size: 1rem!important;
+  }
+  .nofuentechiquita{
+    font-size: 1.1rem !important;
+  }
+  .mbrot{
+    margin-bottom: -39px!important;
   }
 @media (max-width: 576px) {
+  .svgchi{
+    margin-left: -21px!important;
+  }
+  #rowtitulo{
+    margin-top: 0px!important;
+  }
   #modelsel{
-    width: 171px !important;
+    width: 130px !important;
   }
   #descrip{
-   width: 165px !important;
+   width: 145px !important;
   }
-  #labinfove.col-9{
-    left: 40px!important;
-    top: 10px!important;
+  .fuentechiquita{
+    font-size: 0.7rem!important;
   }
-  #labinfove>h5{
-    font-size: 1.1rem!important;
+  .nofuentechiquita{
+    font-size: 1.1rem !important;
   }
+  .espacionom{
+    left: 11px !important;
+    top: 13px !important;
+    
+  }
+  
+  /* #labinfove.col-9{
+    left: 45px !important;
+    top: -42px !important;
+  } */
+  /* #labinfove>h5{
+    font-size: 0.7rem!important;
+  } */
   button.btn.btn-primary.btn-lg#coti{
         font-size: 20px!important;
      }

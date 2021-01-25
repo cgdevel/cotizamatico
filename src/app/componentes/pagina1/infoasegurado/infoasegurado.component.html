@@ -5,7 +5,7 @@
       <div class="row ">
         <div class="col-md-12 col-sm-12">
           <div class="container" >
-            <div class="row mt-4 ">
+            <div class="row " id='rowtitulo'>
               <div class="col-3">
                 <svg  [ngClass]="{ svgchi :  showchiquito}" fill="url(#gradiente)" xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24">
                   <path d="M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z"/>
@@ -17,8 +17,8 @@
                   </defs>
                 </svg>
               </div>
-              <div id='labinfoase' [ngClass]="{ espacionom :  showchiquito}" class="col-9" style="padding-left: 0px;left: -170px;top: 26px;">
-                <h5 [ngClass]="{ fuentechiquita :  showchiquito}">Información del asegurado</h5>
+              <div id='labinfoase' [ngClass]="{ espacionom :  showchiquito, noespacionom: !showchiquito}" class="col-9" style="padding-left: 0px;left: -170px;top: 26px;">
+                <h5 [ngClass]="{ fuentechiquita :  showchiquito, nofuentechiquita: !showchiquito}">Información del asegurado</h5>
               </div>
             </div>
           </div>
