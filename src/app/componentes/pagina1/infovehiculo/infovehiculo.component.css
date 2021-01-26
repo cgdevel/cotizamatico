@@ -101,21 +101,29 @@
     top: 9px!important;
   }
   .noespacionom{
-      /* left: 40px !important;
-      top: 10px !important; */
-        left: 6px !important;
-        top: 25px !important;
+    left: -75px !important;
+    top: 16px !important;
   }
   .fuentechiquita{
     font-size: 1rem!important;
   }
   .nofuentechiquita{
     font-size: 1.25rem !important;
+    font-weight: bold;
+    width: max-content !important;
   }
   .mbrot{
     margin-bottom: -39px!important;
   }
 @media (max-width: 576px) {
+  svg{
+    height: 150%!important;
+    width: 150%!important;
+    margin-top: 4px!important;
+  }
+  #inave{
+    font-size: 16px!important;
+}
   .svgchi{
     margin-left: -21px!important;
   }
@@ -132,16 +140,16 @@
     font-size: 0.7rem!important;
   }
   .nofuentechiquita{
-    font-size: 1.1rem !important;
+    font-size: 0.8rem !important;
+    width: fit-content !important;
   }
   .espacionom{
     left: 11px !important;
-    top: 13px !important;
-    
+    top: 13px !important; 
   }
   .noespacionom{
-  left: 30px !important;
-  margin-top: -13px !important;
+    left: -1px !important;
+    margin-top: 6px !important;
   }
   /* #labinfove.col-9{
     left: 45px !important;

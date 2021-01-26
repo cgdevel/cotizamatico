@@ -131,14 +131,16 @@
     top:0 !important;
     }
     .noespacionom{
-      left: 40px !important;
-      top: 10px !important;
+      left: -157px !important;
+      top: 23px !important;
   }
   .fuentechiquita{
     font-size: 1rem!important;
   }
 .nofuentechiquita{
-    font-size: 1.1rem !important;
+    font-size: 1.25rem !important;
+    font-weight: bold;
+    width: max-content !important;
   }
     .svgchi{
       height:60px !important;
@@ -148,11 +150,21 @@
       margin-bottom: -39px!important;
     }
     @media (max-width: 576px) {
+      svg{
+        height: 150%!important;
+        width: 150%!important;
+        margin-top: 4px!important;
+      }
+      #inase{
+    font-size: 16px!important;
+
+      }
       .fuentechiquita{
         font-size: 0.7rem!important;
       }
       .nofuentechiquita{
-        font-size: 1.1rem !important;
+        font-size: 0.7rem !important;
+        width: fit-content !important;
       }
       /* #labinfoase.col-9{
         left: 36px !important;
@@ -161,13 +173,17 @@
       #labinfoase>h5{
         font-size: 0.6rem!important;
     } */
+    .noespacionom{
+      left: -6px !important;
+      top: 37px !important;
+  }
     .espacionom{
       left: -22px !important;
       top: 13px !important;
     }
     #rowtitulo{
-      margin-top: 0px!important;
-    }
+    margin-top: 0px!important;
+  }
   .svgchi{
     margin-left: -27px!important;
   }

@@ -35,6 +35,9 @@
    font-weight: bold;
 }
 @media (max-width: 576px) {
+   label#facyseg,label#al{
+      font-size: 23px !important;
+    }
 #coti{
    font-size: 19px!important;
    width: max-content!important;
