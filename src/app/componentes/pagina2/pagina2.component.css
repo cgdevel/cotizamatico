@@ -228,6 +228,27 @@ border-style: solid;
 
 
 @media (max-width: 576px) {
+  label#autosu{
+    left: 60px !important;
+  }
+label#desbie{
+  left: 50px !important;
+  
+}
+label#exRC{
+  left: 45px !important;
+  
+}
+label#RCExt,label#RCOcup{
+  left: 63px !important;
+  
+}
+  /* .row.my-2>#switchgrande>label.custom-control-label{
+    left: 64px !important;
+  } */
+  #mostrarmas{
+    margin-left: 225px!important;
+}
 
   #SVGAmpliaPlus,#SVGAmplia,#SVGLimitada,#SVGBasica,#SVGMensual,#SVGTrimes,#SVGSemes,#SVGAnual{
     width: 47px !important;
@@ -239,22 +260,22 @@ border-style: solid;
     margin-left: 0px;
   }
   #oferta{
-    font-size: 14px!important;
+    font-size: 12px!important;
   }
   #srecica{
-    margin-left: 39px !important;
+    margin-left: 37px !important;
   }
 #srecibipe{
-  margin-left: 1px !important;
+  margin-left: 5px !important;
 }
 #sgemeoc{
-  margin-left: 85px !important;
+  margin-left: 78px !important;
 }
 #smuacco{
-  margin-left: 50px !important;
+  margin-left: 48px !important;
 }
   #sroto{
-    margin-left: 199px !important;
+    margin-left: 174px !important;
   }
   
   .Noselect {
