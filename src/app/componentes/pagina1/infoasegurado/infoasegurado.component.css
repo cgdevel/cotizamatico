@@ -102,7 +102,9 @@
       fill: #c5c5c4
     }
     .Selectap {
-      fill: -webkit-linear-gradient(1.25turn, #FF8F48,#FF6963);
+      /* fill: -webkit-linear-gradient(1.25turn, #FF8F48,#FF6963); */
+      fill:url(#Degradado_sin_nombre_6)
+
     }
     .NoExiste{
       border: 1px solid #ff0707 !important;
@@ -131,9 +133,10 @@
     top:0 !important;
     }
     .noespacionom{
-      left: -157px !important;
-      top: 23px !important;
+      left: -213px !important;
+      top: 9px !important;
   }
+
   .fuentechiquita{
     font-size: 1rem!important;
   }
@@ -150,11 +153,11 @@
       margin-bottom: -39px!important;
     }
     @media (max-width: 576px) {
-      svg{
+      /* svg{
         height: 150%!important;
         width: 150%!important;
         margin-top: 4px!important;
-      }
+      } */
       #inase{
     font-size: 16px!important;
 
