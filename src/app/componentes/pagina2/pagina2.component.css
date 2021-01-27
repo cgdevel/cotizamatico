@@ -228,6 +228,11 @@ border-style: solid;
 
 
 @media (max-width: 576px) {
+  .save{
+    font-size: 14px!important;
+    margin-top: 24px!important;
+    width: 84px!important;
+  }
   div.col-9>h5#oferta{
     margin-left: -18px!important;
   }
