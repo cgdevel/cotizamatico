@@ -228,6 +228,9 @@ border-style: solid;
 
 
 @media (max-width: 576px) {
+  div.col-9>h5#oferta{
+    margin-left: -18px!important;
+  }
   label#autosu{
     left: 60px !important;
   }

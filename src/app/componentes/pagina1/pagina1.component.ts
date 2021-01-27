@@ -13,6 +13,12 @@ export class Pagina1Component implements OnInit {
     telefono:string='';
     genero:string='';
     cp:string='';
+    statumustr:string='';
+    mujboo:boolean;
+    statuhomstr:string='';
+    homboo:boolean;
+    statuempstr:string='';
+    empboo:boolean;
   //Variables fecha de nacimiento
     sm:string='';
     sy:string='';
@@ -22,12 +28,7 @@ export class Pagina1Component implements OnInit {
     marca:string='';
     descripcion:string='';
     anno:string='';
-    statumustr:string='';
-    mujboo:boolean;
-    statuhomstr:string='';
-    homboo:boolean;
-    statuempstr:string='';
-    empboo:boolean;
+   
 
   a(e) {
     // console.log(e);

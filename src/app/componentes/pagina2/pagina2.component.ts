@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgModule } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
 import {Pagina1Component } from  'src/app/componentes/pagina1/pagina1.component'
@@ -266,6 +266,54 @@ muacco:number=0
   this. show = !this. show;
 
  }
+ guarda(){
+  // console.log("Informacion asegurado")
+  // console.log(this.nombre)
+  // console.log(this.email)
+  // console.log(this.telefono)
+  // console.log(this.codigopostal)
+  // console.log(this.mesnaci)
+  // console.log(this.yearnaci)
+  // console.log(this.dianaci)
+  // console.log(this.strstatemu)
+  // console.log(this.boostatemu)
+  // console.log(this.strstatehom)
+  // console.log(this.boostatehom)
+  // console.log(this.strstateemp)
+  // console.log(this.boostateemp)
+  // console.log("Informacion vehículo página 1")
+  // console.log(this.vermodelo+' '+this.vermarca+' '+this.verdescripcion+' '+this.veranno)
+  // console.log("Informacion vehículo editada en página dos")
+  // console.log(this.modelo+' '+this.anno+' '+this.marca+' '+this.descripcion)
+  // console.log("Informacion vehículo actualizada")
+  this.vermodelo=this.modelo
+  this.vermarca=this.anno
+  this.verdescripcion=this.marca
+  this.veranno=this.descripcion
+  // console.log(this.vermodelo+' '+this.vermarca+' '+this.verdescripcion+' '+this.veranno)
+ }
+ //VARIABLES PARA EVENT EMITTER
+ modelo:string='';
+ marca:string='';
+ descripcion:string='';
+ anno:string='';
+ //FUNCIONES EVENT EMITTER DE INFOVEHICULO
+ a(e) {
+  // console.log(e);
+  this.modelo=e
+}
+b(e) {
+  // console.log(e);
+  this.anno=e
+}
+c(e) {
+  // console.log(e);
+  this.marca=e
+}
+d(e) {
+  // console.log(e);
+  this.descripcion=e
+}
   constructor(
     private route: ActivatedRoute 
   ) { 
