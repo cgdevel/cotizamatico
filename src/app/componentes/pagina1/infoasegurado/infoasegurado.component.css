@@ -154,11 +154,14 @@
       margin-bottom: -39px!important;
     }
     @media (max-width: 576px) {
-      /* svg{
-        height: 150%!important;
-        width: 150%!important;
-        margin-top: 4px!important;
-      } */
+      #logc{
+          width: 50px !important;
+          height: 50px !important;
+      }
+      .noespacionom{
+        left: -67px !important;
+        top: 13px !important;
+    }
       #inase{
     font-size: 16px!important;
 
@@ -167,20 +170,10 @@
         font-size: 0.7rem!important;
       }
       .nofuentechiquita{
-        font-size: 0.7rem !important;
-        width: fit-content !important;
+        font-size: 0.8rem !important;
+        width: max-content !important;
       }
-      /* #labinfoase.col-9{
-        left: 36px !important;
-        top: -47px !important;
-      }
-      #labinfoase>h5{
-        font-size: 0.6rem!important;
-    } */
-    .noespacionom{
-      left: -6px !important;
-      top: 37px !important;
-  }
+      
     .espacionom{
       left: -22px !important;
       top: 13px !important;
@@ -191,4 +184,5 @@
   .svgchi{
     margin-left: -27px!important;
   }
+
   }
