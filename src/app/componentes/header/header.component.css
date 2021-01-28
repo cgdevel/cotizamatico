@@ -1,16 +1,8 @@
-#btnayuda{ 
-  background-image: url(/../assets/images/Botonayuda.png);
-  background-size: contain; 
-  background-position: center; 
-  background-repeat: no-repeat;
-  /* width: 100px; */
-  height: 100px;
-  /* border-left-width: 58px;
-  border-right-width: 66px; */
-}
 #logoempresa{
     width: 50px;
     height: 50px;
+    margin-left: 55px;
+    margin-top: 13px;
 }
 #encu{
     font-family: 'Exo 2', sans-serif;
@@ -50,7 +42,21 @@
 }
 
 
-@media (max-width: 576px) { 
+@media (max-width: 576px) {
+  #logoempresa{
+        margin-top: 1px!important;
+} 
+  #nom{
+    margin-bottom: -6px!important;
+    font-size: 20px!important;
+  }
+  #ase{
+    font-size: 14px!important;
+}
+  #logoempresa{
+    margin-left: 19px;
+    margin-top: 44px;
+}
   .correoc{
     align-items: center; 
     justify-content: left !important;

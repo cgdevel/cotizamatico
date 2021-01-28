@@ -267,6 +267,7 @@ muacco:number=0
 
  }
  guarda(){
+   this.show=false
   // console.log("Informacion asegurado")
   // console.log(this.nombre)
   // console.log(this.email)
@@ -287,9 +288,9 @@ muacco:number=0
   // console.log(this.modelo+' '+this.anno+' '+this.marca+' '+this.descripcion)
   // console.log("Informacion vehículo actualizada")
   this.vermodelo=this.modelo
-  this.vermarca=this.anno
-  this.verdescripcion=this.marca
-  this.veranno=this.descripcion
+  this.vermarca=this.marca
+  this.verdescripcion=this.descripcion
+  this.veranno=this.anno
   // console.log(this.vermodelo+' '+this.vermarca+' '+this.verdescripcion+' '+this.veranno)
  }
  //VARIABLES PARA EVENT EMITTER
