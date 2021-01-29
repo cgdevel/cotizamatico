@@ -166,8 +166,8 @@
   label#RCExt{
     left: 10px !important; 
   }
-  .width145{
-    width: 130px!important;
-  }
+  #modelsel {
+    width: 122px !important;
+}
  }
  

@@ -83,9 +83,9 @@
                 Mi auto es:
               </div>
               <div class="row">
-                <ng-select id='modelsel'
-                  style="width: 200px;"
-                  [ngClass]="{width145 :  showchiquito}"  
+                <ng-select
+                  id="modelsel"
+                  [ngStyle]="{'width': !showchiquito ? ' 200px' : ( showchiquito ? '200px' : null) }"
                   [items]="modelos"        
                   bindLabel="sDato"
                   placeholder="Modelo"
@@ -114,8 +114,9 @@
                 Año:
               </div>
               <div class="row">
-                <ng-select id='modelsel'
-                  style="width: 145px; height: 40px;"
+                <ng-select
+                  id="modelsel"
+                  [ngStyle]="{'width': !showchiquito ? ' 145px' : ( showchiquito ? '200px' : null) }"
                   [items]="annos"        
                   bindLabel="sDato"
                   placeholder="Año"
@@ -143,9 +144,9 @@
                 Marca:
               </div>
               <div class="row">
-                <ng-select  id='modelsel'
-                  style="width: 185px; height: 40px;"
-                  [ngClass]="{width145 :  showchiquito}"  
+                <ng-select 
+                  id="modelsel" 
+                  [ngStyle]="{'width': !showchiquito ? ' 185px' : ( showchiquito ? '200px' : null) }"  
                   [items]="marcas"        
                   bindLabel="sDato"
                   placeholder="Marca"
@@ -175,8 +176,9 @@
                 Descripción:
               </div>
               <div class="row">
-                <ng-select style="width: 302px;"
-                  [ngClass]="{width145 :  showchiquito}" 
+                <ng-select 
+                  id="modelsel"
+                  [ngStyle]="{'width': !showchiquito ? ' 302px' : ( showchiquito ? '106px' : null) }"
                   [items]="descripciones"        
                   bindLabel="sDato"
                   placeholder="Descripción"
