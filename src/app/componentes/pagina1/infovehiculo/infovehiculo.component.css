@@ -81,7 +81,6 @@
   margin-top: 4.5rem;;
   }
   .svgchi{
-    height:60px !important;
     width: 50px !important;
   }
   
@@ -130,34 +129,23 @@
   #rowtitulo{
     margin-top: 0px!important;
   }
-  #modelsel{
-    width: 130px !important;
-  }
-  #descrip{
-   width: 145px !important;
-  }
   .fuentechiquita{
     font-size: 0.7rem!important;
+    font-weight: bold !important;
   }
   .nofuentechiquita{
     font-size: 0.8rem !important;
     width: max-content !important;
   }
   .espacionom{
-    left: 11px !important;
-    top: 13px !important; 
+    left: 48px !important;
+    top: -14px !important; 
   }
   .noespacionom{
     left: -1px !important;
     margin-top: 6px !important;
   }
-  /* #labinfove.col-9{
-    left: 45px !important;
-    top: -42px !important;
-  } */
-  /* #labinfove>h5{
-    font-size: 0.7rem!important;
-  } */
+
   button.btn.btn-primary.btn-lg#coti{
         font-size: 20px!important;
      }
@@ -176,8 +164,10 @@
     
   }
   label#RCExt{
-    left: 10px !important;
-    
+    left: 10px !important; 
+  }
+  .width145{
+    width: 130px!important;
   }
  }
  

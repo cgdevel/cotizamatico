@@ -232,6 +232,8 @@ border-style: solid;
     font-size: 14px!important;
     margin-top: 24px!important;
     width: 84px!important;
+    margin-left: -16px!important;
+
   }
   div.col-9>h5#oferta{
     margin-left: -18px!important;
