@@ -3,12 +3,14 @@ import { NgModule } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
 import {Pagina1Component } from  'src/app/componentes/pagina1/pagina1.component'
 
+
 @Component({
   selector: 'app-pagina2',
   templateUrl: './pagina2.component.html',
   styleUrls: ['./pagina2.component.css']
 })
 export class Pagina2Component implements OnInit {
+ 
   //VARIABLE DE LA QUE DEPENDE EDITAR DATOS
   show: boolean =false;
   //Variables a las que asigno datos de pagina1 
@@ -39,6 +41,7 @@ export class Pagina2Component implements OnInit {
    statusA= "NoSelected";
    statusL= "NoSelected";
    statusB= "NoSelected";
+  width: any;
   //Funciones cobertura
   Ampliaplus( ) {
     // tiene selected this.statusAP
@@ -315,12 +318,14 @@ d(e) {
   // console.log(e);
   this.descripcion=e
 }
+
   constructor(
     private route: ActivatedRoute 
   ) { 
    }
 
   ngOnInit(): void {
+    this.width=history.state.sizesel
     this.vermodelo=history.state.modsel
     this.vermarca=history.state.marsel 
     this.verdescripcion=history.state.descsel 

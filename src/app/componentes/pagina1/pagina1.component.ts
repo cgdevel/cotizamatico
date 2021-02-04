@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { fromEvent, Observable, Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-pagina1',
@@ -6,7 +8,10 @@ import { Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./pagina1.component.css']
 })
 export class Pagina1Component implements OnInit {
-
+  size:number;
+  verCarousle: boolean=false;
+  resizeObservable$: Observable<Event>
+  resizeSubscription$: Subscription
   //variabbles datos asegurado
     nombre:string='';
     email:string='';
@@ -104,6 +109,16 @@ emp (e){
   constructor() { }
 
   ngOnInit(): void {
+    this.resizeObservable$ = fromEvent(window, 'resize')
+  this.resizeSubscription$ = this.resizeObservable$.subscribe( event => {
+    this.size=(event.target as Window).innerWidth
+    console.log((event.target as Window).innerWidth)
+    if((event.target as Window).innerWidth <1216 ||(event.target as Window).innerWidth >=126 ){
+      this.verCarousle = true
+    } else {
+      this.verCarousle = false
+    }
+  })
   }
 
 }
