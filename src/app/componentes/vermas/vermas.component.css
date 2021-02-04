@@ -52,27 +52,22 @@ tr#padou>td>img{
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }
-.carousel-caption {
-  color: black !important;
-  text-align: center;
-}
-.carousel-caption.second {
-  color: white !important;
-  text-align: center;
-}
-.carousel-item>img{
+
+.carousel-item>.container.mw-100>.row>.col-12>img{
       width:294px !important;
       height:171px !important;
 }
 #pm{
   margin-top: 0;
   margin-bottom: 0rem;
-  font-size: 45% !important;
+  font-size: 66% !important;
+  font-weight: bold;
 }
 #pm>svg{
-  width: 10% !important;
-  height: 10% !important;
+  width: 28% !important;
+  height: 28% !important;
 }
+
 @media (max-width: 576px) {
  
   /* ::-webkit-scrollbar {
