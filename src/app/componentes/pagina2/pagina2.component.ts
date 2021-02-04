@@ -42,6 +42,7 @@ export class Pagina2Component implements OnInit {
    statusL= "NoSelected";
    statusB= "NoSelected";
   width: any;
+  una: any;
   //Funciones cobertura
   Ampliaplus( ) {
     // tiene selected this.statusAP
@@ -325,7 +326,12 @@ d(e) {
    }
 
   ngOnInit(): void {
-    this.width=history.state.sizesel
+    this.una=history.state.sizeta
+    if(this.una!=''){
+      this.width=this.una
+    }else{
+      this.width=history.state.sizesel
+    }
     this.vermodelo=history.state.modsel
     this.vermarca=history.state.marsel 
     this.verdescripcion=history.state.descsel 
