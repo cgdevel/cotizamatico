@@ -326,12 +326,8 @@ d(e) {
    }
 
   ngOnInit(): void {
-    this.una=history.state.sizeta
-    if(this.una!=''){
-      this.width=this.una
-    }else{
-      this.width=history.state.sizesel
-    }
+    
+    this.width=history.state.sizesel
     this.vermodelo=history.state.modsel
     this.vermarca=history.state.marsel 
     this.verdescripcion=history.state.descsel 
@@ -353,6 +349,7 @@ d(e) {
     this.amplia=true;
     this.descMEDIO=true;
     this.anual=true;
+    this.una=history.state.sizeta
   }
 
 
