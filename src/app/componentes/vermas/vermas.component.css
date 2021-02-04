@@ -56,6 +56,10 @@ tr#padou>td>img{
   color: black !important;
   text-align: center;
 }
+.carousel-caption.second {
+  color: white !important;
+  text-align: center;
+}
 .carousel-item>img{
       width:294px !important;
       height:171px !important;
@@ -64,6 +68,10 @@ tr#padou>td>img{
   margin-top: 0;
   margin-bottom: 0rem;
   font-size: 45% !important;
+}
+#pm>svg{
+  width: 10% !important;
+  height: 10% !important;
 }
 @media (max-width: 576px) {
  
