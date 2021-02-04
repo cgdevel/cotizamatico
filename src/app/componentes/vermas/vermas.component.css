@@ -54,7 +54,8 @@ tr#padou>td>img{
 }
 
 .carousel-item>.container.mw-100>.row>.col-12>img{
-      width:294px !important;
+      width:100% !important;
+      /* width:294px !important; */
       height:171px !important;
 }
 #pm{
