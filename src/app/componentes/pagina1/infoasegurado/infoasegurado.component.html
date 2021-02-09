@@ -39,7 +39,7 @@
           <label for="nombre">
             Nombre
           </label>
-          <input type="text" class="form-control" id="nombre" style="margin-top: 8px;" autocomplete="off" [(ngModel)]="NOMBRE" (change)="onNombre($event)" onkeypress="return((event.charCode>64 && 91>event.charCode) || (event.charCode>96 && 123>event.charCode) || ( event.charCode == 8))" min="1" [ngClass]="{'Existe' : NOMBRE!='', 'NoExiste': NOMBRE==''}">
+          <input type="text" class="form-control" id="nombre" style="margin-top: 8px;" autocomplete="off" [(ngModel)]="NOMBRE" (change)="onNombre($event)" onkeypress="return(!(event.charCode > 32 && ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))" min="1" [ngClass]="{'Existe' : NOMBRE!='', 'NoExiste': NOMBRE==''}">
         </div>
         <div  [ngClass]="{nodoce :  showchiquito}" class="form-group col-12 col-md-5">
           <label for="email">
