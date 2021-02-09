@@ -10,16 +10,21 @@ export class VermasComponent implements OnInit {
   verCarousle: boolean;
   resizeObservable$: Observable<Event>
   resizeSubscription$: Subscription
-  wiii: number;
   constructor() { }
 
   ngOnInit(): void {
-    this.wiii=history.state.tampanta
-      if(this.wiii <1216){
+    if(window.innerWidth < 1216){
+      this.verCarousle = true
+    } else { this.verCarousle = false}
+    this.resizeObservable$ = fromEvent(window, 'resize');
+    this.resizeSubscription$ = this.resizeObservable$.subscribe(event => {
+      let windowEvent = event.target as Window
+      let windowWidth = windowEvent.innerWidth;
+      if(windowWidth < 1216) {
         this.verCarousle = true
       } else {
         this.verCarousle = false
       }
- 
+    })
   }
 }
