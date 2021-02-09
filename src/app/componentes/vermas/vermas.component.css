@@ -46,19 +46,6 @@ tr.btd>td{
     font-size: 20px;
     color: #ff6666;
 }
-/* aqui */
-tr#padou>td>img{
-  height:93px;
-  width: 93px;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-}
-.carousel-item>.container.mw-100>.row>.col-12>img{
-  width:100% !important;
-  /* width:294px !important; */
-  height:171px !important;
-}
-/* aqui */
 tr#padou>td>svg{
   width: 93px;
   height: 93px;
