@@ -123,6 +123,7 @@ export class InfoaseguradoComponent implements OnInit {
     @Input() soymujer=false;
     @Input() soyhombre=false;
     @Input() soyempresa=false;
+    @Input() disabled;
     statussoymujer = "NoSelected";
     statussoyhombre= "NoSelected";
     statussoyempresa= "NoSelected";

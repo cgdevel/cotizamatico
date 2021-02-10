@@ -29,6 +29,7 @@ export class InfovehiculoComponent implements OnInit {
   @Input() marcasel;
   @Input() descripsel;
   @Input() showchiquito;
+  @Input() disabled;
 
   item:string='';
   modelo: string  = '0'; // Iniciamos

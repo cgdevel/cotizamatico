@@ -15,6 +15,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { from } from 'rxjs';
 import { NgbModule, NgbPaginationModule,NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { VermasComponent } from './componentes/vermas/vermas.component';
+import {Pagina3Component } from './componentes/pagina3/pagina3.component'
+
 @NgModule({
   declarations: [AppComponent,
   HeaderComponent,
@@ -23,6 +25,7 @@ import { VermasComponent } from './componentes/vermas/vermas.component';
   InfoaseguradoComponent,
   InfovehiculoComponent,
   Pagina2Component,
+  Pagina3Component,
   LayoutComponent,
   VermasComponent
 ],
@@ -37,6 +40,6 @@ import { VermasComponent } from './componentes/vermas/vermas.component';
      NgbAlertModule
   ],
   providers: [],
-  bootstrap: [AppComponent,HeaderComponent,FooterComponent,InfovehiculoComponent,InfoaseguradoComponent,Pagina1Component,Pagina2Component, VermasComponent]
+  bootstrap: [AppComponent,HeaderComponent,FooterComponent,InfovehiculoComponent,InfoaseguradoComponent,Pagina1Component,Pagina2Component,Pagina3Component, VermasComponent]
 })
 export class AppModule { }

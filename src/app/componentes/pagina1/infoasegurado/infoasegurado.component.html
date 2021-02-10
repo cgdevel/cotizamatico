@@ -39,7 +39,7 @@
           <label for="nombre">
             Nombre
           </label>
-          <input type="text" class="form-control" id="nombre" style="margin-top: 8px;" autocomplete="off" [(ngModel)]="NOMBRE" (change)="onNombre($event)" onkeypress="return(!(event.charCode > 32 && ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))" min="1" [ngClass]="{'Existe' : NOMBRE!='', 'NoExiste': NOMBRE==''}">
+          <input type="text" class="form-control" id="nombre" style="margin-top: 8px;" autocomplete="off" [disabled]="disabled==false" [(ngModel)]="NOMBRE" (change)="onNombre($event)" onkeypress="return(!(event.charCode > 32 && ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))" min="1" [ngClass]="{'Existe' : NOMBRE!='', 'NoExiste': NOMBRE==''}">
         </div>
         <div  [ngClass]="{nodoce :  showchiquito}" class="form-group col-12 col-md-5">
           <label for="email">
@@ -59,7 +59,7 @@
             </svg>
             Email
           </label>
-          <input type="text" class="form-control" id="email" style="margin-top: 4px;" autocomplete="off" [(ngModel)]="EMAIL" (change)="onEmail($event)" min="1" [ngClass]="{'Existe' : valido, 'NoExiste': !valido}">
+          <input type="text" class="form-control" id="email" style="margin-top: 4px;" autocomplete="off" [disabled]="disabled==false" [(ngModel)]="EMAIL" (change)="onEmail($event)" min="1" [ngClass]="{'Existe' : valido, 'NoExiste': !valido}">
           <ngb-alert  [dismissible]="false" type="danger" *ngIf="!valido && this.EMAIL!=''">
             Email no válido
           </ngb-alert>
@@ -87,7 +87,7 @@
             </svg>
             Teléfono
           </label>
-          <input maxlength="10" type="text" class="form-control" id="telefono" style="margin-top: 5px;" autocomplete="off" [(ngModel)]="TELEFONO" onkeypress="return(event.charCode>=48 && 57>=event.charCode)" (change)="onTelefono($event)"  min="1" [ngClass]="{'Existe' : validot, 'NoExiste': !validot}">
+          <input maxlength="10" type="text" class="form-control" id="telefono" style="margin-top: 5px;" autocomplete="off" [disabled]="disabled==false" [(ngModel)]="TELEFONO" onkeypress="return(event.charCode>=48 && 57>=event.charCode)" (change)="onTelefono($event)"  min="1" [ngClass]="{'Existe' : validot, 'NoExiste': !validot}">
           <ngb-alert  [dismissible]="false" type="danger" *ngIf="!validot && TELEFONO!=''">
             Teléfono no válido, ingrese otro
           </ngb-alert>
@@ -102,7 +102,7 @@
               <div class="row">Soy</div>
               <div class="row" style="justify-content: center;">
                 <div class="col-4 px-0">
-                  <button class="btn soy" style="display: block;" (click)=" Soymujer()" >
+                  <button class="btn soy" style="display: block;" (click)=" Soymujer()" [disabled]="disabled==false" >
                     <svg id="logc" [ngClass]="{'Noselectap' : !soymujer, 'Selectap':soymujer }" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 66.72 66.72" width="70px" height="70px" >
                       <defs>
                         <linearGradient id="Degradado_sin_nombre_6" x1="33.36" y1="66.72" x2="33.36" gradientUnits="userSpaceOnUse">
@@ -120,7 +120,7 @@
                   </button>
                 </div>
                 <div class="col-4 px-0">
-                    <button class="btn soy" style="display: block;"  (click)=" Soyhombre()" >
+                    <button class="btn soy" style="display: block;"  (click)=" Soyhombre()" [disabled]="disabled==false">
                       <svg  id="logc" width="70px" heigth="70px" [ngClass]="{'Noselectap' : ! soyhombre, 'Selectap':soyhombre }" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 66.72 66.72">
                         <defs>
                           <linearGradient id="Degradado_sin_nombre_6" x1="33.36" y1="66.72" x2="33.36" gradientUnits="userSpaceOnUse">
@@ -138,7 +138,7 @@
                     </button>
                 </div>
                 <div class="col-4 px-0">
-                    <button class="btn soy" style="display: block;"  (click)=" Soyempresa()" >
+                    <button class="btn soy" style="display: block;"  (click)=" Soyempresa()" [disabled]="disabled==false" >
                       <svg  id="logc" [ngClass]="{'Noselectap' : ! soyempresa, 'Selectap':soyempresa }" width="70px" height="70px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60.44 78.55">
                         <defs>
                           <linearGradient id="Degradado_sin_nombre_6" x1="30.22" y1="78.55" x2="30.22" gradientUnits="userSpaceOnUse">
@@ -186,6 +186,7 @@
                   <div class="row">
                     <ng-select
                       style="width: 81px; height: 40px;"
+                      [disabled]="disabled==false"
                       bindLabel="name"
                       placeholder="Día"
                       appendTo="body"
@@ -227,6 +228,7 @@
                  <div class="row">
                     <ng-select
                           style="width: 173px;height: 40px;"
+                          [disabled]="disabled==false"
                           bindLabel="name"
                           placeholder="Mes"
                           appendTo="body"
@@ -266,6 +268,7 @@
                     <div class="row">
                       <ng-select
                             style="width: 109px;height: 40px;"
+                            [disabled]="disabled==false"
                             bindLabel="name"
                             placeholder="Año"
                             appendTo="body"
@@ -312,7 +315,7 @@
                   Mi código postal es:
                 </div>
                 <div class="row" style="margin-top: 18px;" >
-                  <input type="text" class="form-control" (change)="onCodigoPostalKeyUp($event)" onkeypress="return(event.charCode>=48 && 57>=event.charCode)" maxlength="5" [(ngModel)]='codigoPostal' [ngClass]="{'Existe':existe,'NoExiste':!existe||codigoPostal==''}">
+                  <input [disabled]="disabled==false" type="text" class="form-control" (change)="onCodigoPostalKeyUp($event)" onkeypress="return(event.charCode>=48 && 57>=event.charCode)" maxlength="5" [(ngModel)]='codigoPostal' [ngClass]="{'Existe':existe,'NoExiste':!existe||codigoPostal==''}">
                   <ngb-alert  [dismissible]="false" type="danger" *ngIf="!existe && codigoPostal!='' && codigoPostal.length==5">
                     No existe el código postal, ingrese otro
                   </ngb-alert>
