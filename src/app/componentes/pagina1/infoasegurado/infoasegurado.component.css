@@ -134,8 +134,9 @@
     top:0 !important;
     }
     .noespacionom{
-      left: -213px !important;
+      left: -189px !important;
       top: 9px !important;
+      padding-left: 0px;
   }
 
   .fuentechiquita{

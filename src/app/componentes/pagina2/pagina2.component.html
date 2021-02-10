@@ -779,7 +779,24 @@
               <div class="container mw-100">
                   <div  class="row">
                      <div class="col" >
-                     <button class="btn btn-primary pull-right" id="mostrarmas" [state]='{tampanta:width }' [routerLink]="['/vermas']" routerLinkActive="router-link-active">
+                     <button class="btn btn-primary pull-right" id="mostrarmas" [state]='{                    tampanta:width,                                                        
+                                    modsel: vermodelo, 
+                                    marsel:vermarca, 
+                                    descsel:verdescripcion, 
+                                    annosel:veranno,
+                                    nomsel:nombre,
+                                    emsel:email,
+                                    telsel:telefono,
+                                    must1:strstatemu,
+                                    muboo1:boostatemu,
+                                    host1:strstatehom,
+                                    hoboo1:boostatehom,
+                                    emst1:strstateemp,
+                                    emboo1:boostateemp,
+                                    cpsel:codigopostal,
+                                    smsel:mesnaci,
+                                    sysel:yearnaci,
+                                    sdsel:dianaci}' [routerLink]="['/vermas']" routerLinkActive="router-link-active">
                          Mostrar más
                      </button>
                      </div>
@@ -908,7 +925,27 @@
               <div class="container mw-100">
                 <div  class="row">
                     <div  class="col" >
-                        <button class="btn btn-primary pull-right" id="mostrarmas"[state]='{tampanta:width }' style=" margin-bottom: 27px;" [routerLink]="['/vermas']" routerLinkActive="router-link-active">
+                        <button class="btn btn-primary pull-right" id="mostrarmas"
+                        [state]='{
+                            tampanta:width,                                                        
+                            modsel: vermodelo, 
+                            marsel:vermarca, 
+                            descsel:verdescripcion, 
+                            annosel:veranno,
+                            nomsel:nombre,
+                            emsel:email,
+                            telsel:telefono,
+                            must1:strstatemu,
+                            muboo1:boostatemu,
+                            host1:strstatehom,
+                            hoboo1:boostatehom,
+                            emst1:strstateemp,
+                            emboo1:boostateemp,
+                            cpsel:codigopostal,
+                            smsel:mesnaci,
+                            sysel:yearnaci,
+                            sdsel:dianaci}' style=" margin-bottom: 27px;" 
+                            [routerLink]="['/vermas']" routerLinkActive="router-link-active">
                             Mostrar más
                         </button>
                     </div>
