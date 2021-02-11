@@ -30,6 +30,10 @@ export class InfovehiculoComponent implements OnInit {
   @Input() descripsel;
   @Input() showchiquito;
   @Input() disabled;
+  @Input() modeloselpagina3;
+  @Input() annoselpagina3;
+  @Input() marcaselpagina3;
+  @Input() descripselpagina3;
 
   item:string='';
   modelo: string  = '0'; // Iniciamos

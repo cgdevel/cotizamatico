@@ -37,7 +37,6 @@ export class Pagina3Component implements OnInit {
     this.nombre=history.state.nomsel
     this.email=history.state.emsel
     this.telefono=history.state.telsel
-    this.genero=history.state.gensel
     this.codigopostal=history.state.cpsel
     this.mesnaci=history.state.smsel
     this.yearnaci=history.state.sysel

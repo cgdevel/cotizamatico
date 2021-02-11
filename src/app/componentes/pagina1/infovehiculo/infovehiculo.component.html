@@ -99,7 +99,10 @@
                   <ng-option ng-options="item as item.sLlave for item.sDato in modelos">
                       {{item}}
                   </ng-option>
-                  <ng-template #modsel ><b>{{modelosel.sDato}}</b></ng-template>
+                  <ng-template #modsel>
+                    <b *ngIf="!!modeloselpagina3==false">{{modelosel.sDato}}</b>
+                    <b *ngIf="!!modeloselpagina3">{{modeloselpagina3}}</b>
+                  </ng-template>
                   <ng-template ng-notfound-tmp >
                     <div class="ng-option disabled">
                         No hay modelos que mostrar
@@ -159,7 +162,10 @@
                   [closeOnSelect]="true"
                   (change)="getMarca()"
                   [(ngModel)]="marcasel" [ngbTooltip]="marcsel" tooltipClass="my-custom-class">
-                  <ng-template #marcsel><b>{{marcasel.sDato}}</b></ng-template>
+                  <ng-template #marcsel >
+                    <b *ngIf="!!marcaselpagina3==false">{{marcasel.sDato}}</b>
+                    <b *ngIf="!!marcaselpagina3">{{marcaselpagina3}}</b>
+                  </ng-template>
                   <ng-option  ng-options="item as item.sLlave for item.sDato in marcas">
                       {{item}}
                   </ng-option>
@@ -192,7 +198,10 @@
                   [closeOnSelect]="true"
                   (change)="getDescripcion()"
                   [(ngModel)]="descripsel" [ngbTooltip]="descsel" tooltipClass="my-custom-class">
-                  <ng-template #descsel><b>{{descripsel.sDato}}</b></ng-template>
+                  <ng-template #descsel>
+                    <b  *ngIf="!!descripselpagina3==false">{{descripsel.sDato}}</b>
+                    <b *ngIf="!!descripselpagina3">{{ descripselpagina3 }}</b>
+                  </ng-template>
                   <ng-option  ng-options="item as item.sLlave for item.sDato in descripciones">
                       {{item}}
                   </ng-option>
