@@ -80,7 +80,7 @@ export class InfoaseguradoComponent implements OnInit {
     descsel:string='';
     annosel:string='';
   //ESTAS VARIABLES SON PARA LA VALIDACION (NO VACIO)
-    existe:boolean; 
+  @Input() existe:boolean; 
     existeT: boolean;
     vacemial: boolean;
     vacnom: boolean;
@@ -88,9 +88,9 @@ export class InfoaseguradoComponent implements OnInit {
     readonly api: string ="https://apitestcotizamatico.azurewebsites.net/api/catalogos";
     ubicacion: any;
     @Input() codigoPostal: string ='';
-    validot:boolean;
+    @Input() validot:boolean;
     @Input() TELEFONO: string ='';
-    valido:boolean;
+    @Input() valido:boolean;
     @Input() EMAIL: string ='';
     @Input() NOMBRE: string ='';
     ubicacionId: number;

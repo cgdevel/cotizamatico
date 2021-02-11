@@ -1,45 +1,41 @@
-<div class="container my-5 mx-0 mw-100" id="inase">
-
+<div class="container mx-0 mw-100 my-5 " id="inase">
 <div class="card" id="estesi" >
   <div class="card-body">
-    <div class="container">
-      <div class="row" >
-        <div class="col-md-12 col-sm-12">
-          <div class="container">
-            <div class="row">
-              <div class="col-6 col-md-3">
-               <svg width="30" height="21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 57.24 74.63">
-                <defs>
-                  <style>.clsusuariolog-1{fill:url(#DegradadoU_33);}.clsusuariolog-2{fill:url(#DegradadoU_33-2);}</style>
-                  <linearGradient id="DegradadoU_33" x1="28.62" y1="1.91" x2="28.62" y2="71.85"  gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#ffa96e"/>
-                    <stop offset="1" stop-color="#f66"/>
-                  </linearGradient>
-                  <linearGradient id="DegradadoU_33-2" x1="28.62" y1="1.91" x2="28.62" y2="71.85" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#ffa96e"/>
-                    <stop offset="1" stop-color="#f66"/>
-                  </linearGradient>
-                </defs>
-                <title>Insumos</title>
-                <g id="Capa_6" data-name="Capa 6">
-                  <path class="clsusuariolog-1" d="M28.62,0a15.9,15.9,0,1,1-15.9,15.9A15.9,15.9,0,0,1,28.62,0"/>
-                  <path class="clsusuariolog-2" d="M57.24,61.68C57.24,46.94,44.43,35,28.62,35S0,46.94,0,61.68A25.09,25.09,0,0,0,2.94,73.47c8.29.76,16.87,1.16,25.68,1.16s17.4-.4,25.68-1.16a25.09,25.09,0,0,0,2.94-11.79"/>
-                </g>
-               </svg>
-              </div>
-              <div class="col-6 col-md-9 noespacionom" >
-                  <h5 class="nofuentechiquita">Información del asegurado</h5>
-              </div>
-            </div>
+    <div class="container ">
+      <div class="col-md-12 col-sm-12">
+        <div class="container">
+          <div class="row" style="display:inline-flex;">
+          <div class="col-3">
+          <svg width="30" height="21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 57.24 74.63">
+            <defs>
+              <style>.clsusuariolog-1{fill:url(#DegradadoU_33);}.clsusuariolog-2{fill:url(#DegradadoU_33-2);}</style>
+              <linearGradient id="DegradadoU_33" x1="28.62" y1="1.91" x2="28.62" y2="71.85"  gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#ffa96e"/>
+                <stop offset="1" stop-color="#f66"/>
+              </linearGradient>
+              <linearGradient id="DegradadoU_33-2" x1="28.62" y1="1.91" x2="28.62" y2="71.85" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#ffa96e"/>
+                <stop offset="1" stop-color="#f66"/>
+              </linearGradient>
+            </defs>
+            <title>Insumos</title>
+            <g id="Capa_6" data-name="Capa 6">
+              <path class="clsusuariolog-1" d="M28.62,0a15.9,15.9,0,1,1-15.9,15.9A15.9,15.9,0,0,1,28.62,0"/>
+              <path class="clsusuariolog-2" d="M57.24,61.68C57.24,46.94,44.43,35,28.62,35S0,46.94,0,61.68A25.09,25.09,0,0,0,2.94,73.47c8.29.76,16.87,1.16,25.68,1.16s17.4-.4,25.68-1.16a25.09,25.09,0,0,0,2.94-11.79"/>
+            </g>
+          </svg>
+          </div>
+          <div class="col-9 noespacionom" >
+              <h5 class="nofuentechiquita">Información del asegurado</h5>
+          </div>
           </div>
         </div>
-      </div>
        <div class="row">
         <div  [ngClass]="{nodoce :  showchiquito}"class="form-group col-12 col-md-4">
           <label for="nombre">
             Nombre
           </label>
-          <input type="text" class="form-control" id="nombre" style="margin-top: 8px;" autocomplete="off" [disabled]="disabled==false" [(ngModel)]="NOMBRE" (change)="onNombre($event)" onkeypress="return(!(event.charCode > 32 && ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))" min="1" [ngClass]="{'Existe' : NOMBRE!='', 'NoExiste': NOMBRE==''}">
+          <input type="text" class="form-control" id="nombre" style="margin-top: 8px;" autocomplete="off" [disabled]="disabled==false" [(ngModel)]="NOMBRE" (change)="onNombre($event)" onkeypress="return(!(event.charCode > 32 && ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))" min="1" [ngClass]="{'Existe' : NOMBRE!='' || disabled==false, 'NoExiste': NOMBRE==''}">
         </div>
         <div  [ngClass]="{nodoce :  showchiquito}" class="form-group col-12 col-md-5">
           <label for="email">
@@ -60,10 +56,10 @@
             Email
           </label>
           <input type="text" class="form-control" id="email" style="margin-top: 4px;" autocomplete="off" [disabled]="disabled==false" [(ngModel)]="EMAIL" (change)="onEmail($event)" min="1" [ngClass]="{'Existe' : valido, 'NoExiste': !valido}">
-          <ngb-alert  [dismissible]="false" type="danger" *ngIf="!valido && this.EMAIL!=''">
+          <ngb-alert  [dismissible]="false" type="danger" *ngIf="!valido && this.EMAIL!='' ">
             Email no válido
           </ngb-alert>
-          <ngb-alert  [dismissible]="false" type="success" *ngIf="valido">
+          <ngb-alert  [dismissible]="false" type="success" *ngIf="valido" [hidden]="disabled==false">
             Email válido
           </ngb-alert>
         </div>
@@ -91,7 +87,7 @@
           <ngb-alert  [dismissible]="false" type="danger" *ngIf="!validot && TELEFONO!=''">
             Teléfono no válido, ingrese otro
           </ngb-alert>
-          <ngb-alert  [dismissible]="false" type="success" *ngIf="validot">
+          <ngb-alert  [dismissible]="false" type="success" *ngIf="validot" [hidden]="disabled==false">
             Teléfono válido
           </ngb-alert>
         </div>
@@ -322,7 +318,7 @@
                   <ngb-alert  [dismissible]="false" type="danger" *ngIf="!existe && codigoPostal!='' && codigoPostal.length<5">
                     El código postal, debe tener 5 dígitos
                   </ngb-alert>
-                  <ngb-alert  [dismissible]="false" type="success" *ngIf="existe && codigoPostal!=''&& codigoPostal.length==5">
+                  <ngb-alert  [dismissible]="false" type="success" *ngIf="existe && codigoPostal!=''&& codigoPostal.length==5" [hidden]="disabled==false">
                     Código postal válido
                   </ngb-alert>
                 </div>
@@ -334,4 +330,4 @@
   </div>
 </div>
 </div>
-
+</div>
