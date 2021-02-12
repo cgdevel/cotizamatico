@@ -47,7 +47,6 @@ ubicacionId: number;
         this.ubicacionId = this.ubicacion[0].Ubicacion[0].iIdUbicacion;
 
           })
-          console.log(this.estado)
   }
   ngOnInit(): void {
     this.noedites=false

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { fromEvent, Observable, Subscription } from 'rxjs';
-
+import { from, fromEvent, Observable, Subscription } from 'rxjs';
+import {Location} from '@angular/common'
 @Component({
   selector: 'app-vermas',
   templateUrl: './vermas.component.html',
@@ -28,8 +28,10 @@ export class VermasComponent implements OnInit {
   boostatehom:boolean;
   strstateemp:string;
   boostateemp:boolean;
-  constructor() { }
-
+  constructor( private locate:Location) { }
+  onback(){
+    this.locate.back()
+  }
   ngOnInit(): void {
     this.vermodelo=history.state.modsel
     this.vermarca=history.state.marsel 

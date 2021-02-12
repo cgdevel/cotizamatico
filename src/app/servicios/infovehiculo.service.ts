@@ -11,7 +11,7 @@ export class InfovehiculoService {
     return this.http.post("https://apitestcotizamatico.azurewebsites.net/api/catalogoCotizamaticoBr",query);
   }
   public getApiCPs(query: PeticionCatalogoCps){
-    return this.http.post("https://apitestcotizamatico.azurewebsites.net/api/catalogoCotizamaticoBr",query);
+    return this.http.post("https://apitestcotizamatico.azurewebsites.net/api/catalogos",query);
   }
    constructor(private http:HttpClient){
  }

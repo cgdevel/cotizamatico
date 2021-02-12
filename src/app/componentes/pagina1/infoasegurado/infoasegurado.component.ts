@@ -358,7 +358,7 @@ export class InfoaseguradoComponent implements OnInit {
               this.municipio = this.ubicacion[0].Municipio.sMunicipio;
               this.colonia = this.ubicacion[0].Ubicacion[0].sUbicacion;
               this.ubicacionId = this.ubicacion[0].Ubicacion[0].iIdUbicacion;
-              // console.log(this.estado+'  '+ this.municipio +'  '+ this.colonia+'  '+ this.ubicacionId)
+              console.log(this.estado+'  '+ this.municipio +'  '+ this.colonia+'  '+ this.ubicacionId)
             }
 
                 })
