@@ -12,13 +12,14 @@ import { ResponseCatalogo } from '../interphaces/response/ResponseCatalogo.model
 export class InfovehiculoService {
   constructor(private http: HttpClient) {}
 
-  public getApiInfovehiculo(query: PeticionCatalogo) {
+  getApiInfovehiculo(query: PeticionCatalogo) {
     return this.http.post<any>(
       `${environment.url_api_autos}/catalogoCotizamaticoBr`,
       query
     );
   }
-  public getApiCPs(query: PeticionCatalogoCps) {
+
+  getApiCPs(query: PeticionCatalogoCps) {
     return this.http.post<any>(`${environment.url_api_autos}/catalogos`, query);
   }
 
