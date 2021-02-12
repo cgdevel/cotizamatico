@@ -1,13 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output  } from '@angular/core';
 import { disableDebugTools } from '@angular/platform-browser';
 import {HttpClient} from '@angular/common/http'
-
+import {InfovehiculoService} from '../../../servicios/infovehiculo.service'
 @Component({
   selector: 'app-infoasegurado',
   templateUrl: './infoasegurado.component.html',
   styleUrls: ['./infoasegurado.component.css']
 })
 export class InfoaseguradoComponent implements OnInit {
+  constructor( private InfovehiculoService: InfovehiculoService, private http:HttpClient){
+  }
   ngOnInit( ): void {
     this.mesdiabis=[
       ['Enero',31],
@@ -85,7 +87,6 @@ export class InfoaseguradoComponent implements OnInit {
     vacemial: boolean;
     vacnom: boolean;
     // valores para código postal
-    readonly api: string ="https://apitestcotizamatico.azurewebsites.net/api/catalogos";
     ubicacion: any;
     @Input() codigoPostal: string ='';
     @Input() validot:boolean;
@@ -129,8 +130,6 @@ export class InfoaseguradoComponent implements OnInit {
     statussoyempresa= "NoSelected";
     @Input() showchiquito;
 
-  constructor(private http:HttpClient){
-  }
  
 //Funciones botones SOY
   Soymujer() { 
@@ -341,12 +340,12 @@ export class InfoaseguradoComponent implements OnInit {
       return;
       } else {
         if (this.codigoPostal!=''&& this.codigoPostal.length == 5) {
-          this.http.post(this.api, {
-            "IdAplication": "2", 
-            "NombreCatalogo": "Sepomex", 
-            "Filtro": this.codigoPostal
-          }).subscribe((data: any)=> {
-            // console.log(data.CatalogoJsonString)
+          this.InfovehiculoService.getApiCPs({ 
+            IdAplication: 2, 
+            NombreCatalogo: "Sepomex", 
+            Filtro: this.codigoPostal
+          }
+          ).subscribe((data: any)=> {
             if (data.Error != null) {
               this.existe=false
               this.pascp.emit('')
@@ -362,7 +361,8 @@ export class InfoaseguradoComponent implements OnInit {
               this.ubicacionId = this.ubicacion[0].Ubicacion[0].iIdUbicacion;
               // console.log(this.estado+'  '+ this.municipio +'  '+ this.colonia+'  '+ this.ubicacionId)
             }
-            })
+
+                })
         }
       }
       

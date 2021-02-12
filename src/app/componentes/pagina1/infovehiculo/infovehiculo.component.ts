@@ -1,7 +1,7 @@
 import { Component, OnInit,EventEmitter,Output, Input} from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { Observable } from 'rxjs';
-
+import { from, Observable } from 'rxjs';
+import {InfovehiculoService} from '../../../servicios/infovehiculo.service'
 
 //  para añadir script import * as $ from 'jquery'; 
 
@@ -12,7 +12,8 @@ import { Observable } from 'rxjs';
 })
 export class InfovehiculoComponent implements OnInit {
   readonly api: string ="https://apitestcotizamatico.azurewebsites.net/api/catalogoCotizamaticoBr";
-  constructor(private http:HttpClient){
+  
+  constructor(private InfovehiculoService: InfovehiculoService, private http:HttpClient){
   }
   @Output() gM = new EventEmitter<string>();
   @Output() gA = new EventEmitter<string>();
@@ -46,7 +47,6 @@ export class InfovehiculoComponent implements OnInit {
   verdescripcion: string       = '';
  
 getModelo( ) {
-   
       // Limpia los select restantes
       this.annos=[]
       this.annosel=''
@@ -69,17 +69,16 @@ getModelo( ) {
       this.modelo=this.modelosel.sLlave
       this.vermodelo= this.modelosel.sDato
       this.gM.emit(this.vermodelo)
-      //API
-      this.http.post(this.api, {
-        "iTipoCatalogo": "20",
-        "iModelo": "00",
-        "iMarca": "0",
-        "iSubramo": this.modelo,
-        "sDescripcion": ""
-      }).subscribe((data: any)=> {
+      this.InfovehiculoService.getApiInfovehiculo({ 
+        iTipoCatalogo: "20",
+        iModelo:  "00",
+        iMarca: "0",
+        iSubramo:  this.modelo,
+        sDescripcion: ""}
+      ).subscribe((data: any)=> {
         // console.log(data.catalogos)
         this.annos=data.catalogos
-      })
+            })
   }
   getAnno() {
     // Limpia los select restantes
@@ -99,18 +98,16 @@ getModelo( ) {
     this.anno=this.annosel.sLlave
     this.veranno= this.annosel.sDato
     this.gA.emit(this.veranno)
-    //API
-    this.http.post(this.api, {
-        "iTipoCatalogo": "30",
-        "iModelo": this.anno,
-        "iMarca": "0",
-        "iSubramo": this.modelo,
-        "sDescripcion": ""
-      }).subscribe((data: any)=> {
-        // console.log(data.catalogos)
-        this.marcas=data.catalogos
-        })
-  
+    this.InfovehiculoService.getApiInfovehiculo({ 
+      iTipoCatalogo: "30",
+      iModelo:  this.anno,
+      iMarca: "0",
+      iSubramo:  this.modelo,
+      sDescripcion: ""}
+    ).subscribe((data: any)=> {
+      // console.log(data.catalogos)
+      this.marcas=data.catalogos
+          })
   }
   getMarca(){
     // Limpia los select restantes
@@ -125,24 +122,16 @@ getModelo( ) {
     this.marca=this.marcasel.sLlave
     this.vermarca= this.marcasel.sDato
     this.gMarca.emit(this.vermarca)
-
-    // API
-    this.http.post(this.api, {
-      "iTipoCatalogo": "40",
-      "iModelo": this.anno,
-      "iMarca": this.marca,
-      "iSubramo": this.modelo,
-      "sDescripcion": ""
-    }).subscribe((data: any)=> {
+    this.InfovehiculoService.getApiInfovehiculo({ 
+      iTipoCatalogo: "40",
+      iModelo:  this.anno,
+      iMarca: this.marca,
+      iSubramo: this.modelo,
+      sDescripcion: ""}
+    ).subscribe((data: any)=> {
       // console.log(data.catalogos)
       this.descripciones=data.catalogos
-      // this.descripciones.forEach(element => {
-      //   element.sDato=element.sDato.replace("ABS","\nABS")
-      //   console.log(element.sDato)
-      // });
-      })
-
-    
+          })
   }
   getDescripcion(){
     
@@ -154,16 +143,16 @@ getModelo( ) {
 
   }  
   getmodels(){
-      this.http.post(this.api, {
-        "iTipoCatalogo": "10",
-        "iModelo": "00",
-        "iMarca": "0",
-        "iSubramo": "00",
-        "sDescripcion": ""
-      }).subscribe((data: any)=> {
-  // console.log(data.catalogos)
-  this.modelos=data.catalogos
-      })
+    this.InfovehiculoService.getApiInfovehiculo({ 
+            iTipoCatalogo: "10",
+            iModelo: "00",
+            iMarca: "0",
+            iSubramo: "00",
+            sDescripcion: ""}
+  ).subscribe((data: any)=> {
+      // console.log(data.catalogos)
+      this.modelos=data.catalogos
+          })
     }
   ngOnInit(): void {
     this.getmodels()
