@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output  } from '@angular/core';
 import { disableDebugTools } from '@angular/platform-browser';
-import {HttpClient} from '@angular/common/http'
 import {InfovehiculoService} from '../../../servicios/infovehiculo.service'
 @Component({
   selector: 'app-infoasegurado',
@@ -8,7 +7,7 @@ import {InfovehiculoService} from '../../../servicios/infovehiculo.service'
   styleUrls: ['./infoasegurado.component.css']
 })
 export class InfoaseguradoComponent implements OnInit {
-  constructor( private InfovehiculoService: InfovehiculoService, private http:HttpClient){
+  constructor( private InfovehiculoService: InfovehiculoService){
   }
   ngOnInit( ): void {
     this.mesdiabis=[

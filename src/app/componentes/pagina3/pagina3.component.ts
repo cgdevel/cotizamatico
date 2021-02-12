@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-
+import {InfovehiculoService} from '../../../app/servicios/infovehiculo.service'
 @Component({
   selector: 'app-pagina3',
   templateUrl: './pagina3.component.html',
   styleUrls: ['./pagina3.component.css']
 })
 export class Pagina3Component implements OnInit {
+  constructor( private Infovehiculo: InfovehiculoService ) {}
  noedites:boolean;
  //Variables a las que asigno datos de pagina1 
  vermodelo: any;
@@ -26,8 +27,28 @@ export class Pagina3Component implements OnInit {
  boostatehom:boolean;
  strstateemp:string;
  boostateemp:boolean;
-  constructor() { }
+// VARIABLES CP
+ ubicacion: any;
+ubicacionId: number;
+    estado: string;
+    municipio: string;
+    colonia: string;
+  
+  getUbicacion(){
+    this.Infovehiculo.getApiCPs({ 
+      IdAplication: 2, 
+      NombreCatalogo: "Sepomex", 
+      Filtro: this.codigopostal
+    }).subscribe((data: any)=> {
+        this.ubicacion = JSON.parse(data.CatalogoJsonString);
+        this.estado = this.ubicacion[0].Municipio.Estado.sEstado;
+        this.municipio = this.ubicacion[0].Municipio.sMunicipio;
+        this.colonia = this.ubicacion[0].Ubicacion[0].sUbicacion;
+        this.ubicacionId = this.ubicacion[0].Ubicacion[0].iIdUbicacion;
 
+          })
+          console.log(this.estado)
+  }
   ngOnInit(): void {
     this.noedites=false
     this.vermodelo=history.state.modsel
@@ -38,6 +59,7 @@ export class Pagina3Component implements OnInit {
     this.email=history.state.emsel
     this.telefono=history.state.telsel
     this.codigopostal=history.state.cpsel
+    console.log(this.codigopostal)
     this.mesnaci=history.state.smsel
     this.yearnaci=history.state.sysel
     this.dianaci=history.state.sdsel
@@ -47,6 +69,7 @@ export class Pagina3Component implements OnInit {
     this.boostatehom=history.state.hoboo1
     this.strstateemp=history.state.emst1
     this.boostateemp=history.state.emboo1
+    this.getUbicacion()
   }
 
 }
