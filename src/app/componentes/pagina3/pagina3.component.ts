@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { element } from 'protractor';
 import {InfovehiculoService} from '../../../app/servicios/infovehiculo.service'
 @Component({
   selector: 'app-pagina3',
@@ -7,7 +8,10 @@ import {InfovehiculoService} from '../../../app/servicios/infovehiculo.service'
 })
 export class Pagina3Component implements OnInit {
   constructor( private Infovehiculo: InfovehiculoService ) {}
+  colonias =[];
+  cols:{ Numero: number; Nomcolonia: string; }[];
  noedites:boolean;
+ item:string='';
  //Variables a las que asigno datos de pagina1 
  vermodelo: any;
  vermarca: any;
@@ -33,20 +37,32 @@ ubicacionId: number;
     estado: string;
     municipio: string;
     colonia: string;
-  
+    coloniasel;
+    
+
+
   getUbicacion(){
     this.Infovehiculo.getApiCPs({ 
       IdAplication: 2, 
       NombreCatalogo: "Sepomex", 
       Filtro: this.codigopostal
     }).subscribe((data: any)=> {
+      //  console.log(data)
         this.ubicacion = JSON.parse(data.CatalogoJsonString);
         this.estado = this.ubicacion[0].Municipio.Estado.sEstado;
         this.municipio = this.ubicacion[0].Municipio.sMunicipio;
         this.colonia = this.ubicacion[0].Ubicacion[0].sUbicacion;
         this.ubicacionId = this.ubicacion[0].Ubicacion[0].iIdUbicacion;
+        console.log(this.ubicacion[0].Ubicacion.length)
+        this.ubicacion[0].Ubicacion.forEach(element => {
+        console.log(element.iIdUbicacion+" "+element.sUbicacion)
+        var objeto ={ numero: element.iIdUbicacion, Ubicacion: element.sUbicacion }
+        this.colonias.push(objeto)
+        })// foreach ubicacion
+      })// suscribecierra
+      console.log(this.colonias)
 
-          })
+      
   }
   ngOnInit(): void {
     this.noedites=false
@@ -58,7 +74,7 @@ ubicacionId: number;
     this.email=history.state.emsel
     this.telefono=history.state.telsel
     this.codigopostal=history.state.cpsel
-    console.log(this.codigopostal)
+    console.log("CP"+" "+this.codigopostal)
     this.mesnaci=history.state.smsel
     this.yearnaci=history.state.sysel
     this.dianaci=history.state.sdsel
@@ -69,6 +85,8 @@ ubicacionId: number;
     this.strstateemp=history.state.emst1
     this.boostateemp=history.state.emboo1
     this.getUbicacion()
+    
+    
   }
 
 }
