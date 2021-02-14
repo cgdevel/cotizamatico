@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule , PreloadAllModules } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { Pagina1Component } from './componentes/pagina1/pagina1.component';
 import { Pagina2Component } from './componentes/pagina2/pagina2.component';
-import { VermasComponent} from './componentes/vermas/vermas.component';
+import { VermasComponent } from './componentes/vermas/vermas.component';
 import { Pagina3Component } from './componentes/pagina3/pagina3.component';
-
 
 const routes: Routes = [
   {
@@ -27,12 +26,12 @@ const routes: Routes = [
       },
       {
         path: 'vermas',
-        component:  VermasComponent,
+        component: VermasComponent,
       },
       {
         path: 'contrata',
         component: Pagina3Component,
-      }
+      },
     ],
   },
 ];
