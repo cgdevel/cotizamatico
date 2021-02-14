@@ -4,7 +4,7 @@
     <div class="container ">
       <div class="col-md-12 col-sm-12">
         <div class="container">
-          <div class="row" style="display:inline-flex;">
+          <div class="row" style="display:inline-flex;margin-left: -36px;">
           <div class="col-3">
           <svg width="30" height="21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 57.24 74.63">
             <defs>
@@ -30,14 +30,14 @@
           </div>
           </div>
         </div>
-       <div class="row">
-        <div  [ngClass]="{nodoce :  showchiquito}"class="form-group col-12 col-md-4">
+       <div class="row"  [ngClass]="{contrata : disabled==false}">
+        <div [ngClass]="{nodoce :  showchiquito, contrata : disabled==false}"class="form-group col-12 col-md-4">
           <label for="nombre">
             Nombre
           </label>
           <input type="text" class="form-control" id="nombre" style="margin-top: 8px;" autocomplete="off" [disabled]="disabled==false" [(ngModel)]="NOMBRE" (change)="onNombre($event)" onkeypress="return(!(event.charCode > 32 && ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))" min="1" [ngClass]="{'Existe' : NOMBRE!='' || disabled==false, 'NoExiste': NOMBRE==''}">
         </div>
-        <div  [ngClass]="{nodoce :  showchiquito}" class="form-group col-12 col-md-5">
+        <div  [ngClass]="{nodoce :  showchiquito, contrata : disabled==false}" class="form-group col-12 col-md-5">
           <label for="email">
             <svg width="8%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 70.5 70.5">
               <defs>
@@ -63,7 +63,7 @@
             Email válido
           </ngb-alert>
         </div>
-        <div  [ngClass]="{nodoce :  showchiquito}" class="form-group col-12 col-md-3">
+        <div  [ngClass]="{nodoce :  showchiquito, contrata : disabled==false}" class="form-group col-12 col-md-3">
           <label for="telefono">
             <svg width='13%' xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64.39 64.39">
               <defs>
@@ -92,14 +92,14 @@
           </ngb-alert>
         </div>
       </div>
-      <div class="row">
-          <div  [ngClass]="{nodoce :  showchiquito}" class="col-md-4 col-sm-4">
+      <div class="row" [ngClass]="{contrata : disabled==false}">
+          <div  [ngClass]="{nodoce :  showchiquito, contrata : disabled==false, col6: soyempresa==true}" class="col-md-4 col-sm-4">
             <div class="container">
               <div class="row">Soy</div>
               <div class="row" style="justify-content: center;">
-                <div class="col-4 px-0">
-                  <button class="btn soy" style="display: block;" (click)=" Soymujer()" [disabled]="disabled==false" >
-                    <svg id="logc" [ngClass]="{'Noselectap' : !soymujer, 'Selectap':soymujer }" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 66.72 66.72" width="70px" height="70px" >
+                <div class="col-4 px-0" [ngClass]="{dedoce : reso<1201 }">
+                  <button class="btn soy"  style="display: block;" (click)=" Soymujer()" [disabled]="disabled==false" >
+                    <svg id="logc" [ngClass]="{'Noselectap' : !soymujer, 'Selectap':soymujer}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 66.72 66.72" width="70px" height="70px" >
                       <defs>
                         <linearGradient id="Degradado_sin_nombre_6" x1="33.36" y1="66.72" x2="33.36" gradientUnits="userSpaceOnUse">
                           <stop offset="0" stop-color="#f66"/>
@@ -115,7 +115,7 @@
                     </svg>
                   </button>
                 </div>
-                <div class="col-4 px-0">
+                <div class="col-4 px-0" [ngClass]="{dedoce : reso<1201 }">
                     <button class="btn soy" style="display: block;"  (click)=" Soyhombre()" [disabled]="disabled==false">
                       <svg  id="logc" width="70px" heigth="70px" [ngClass]="{'Noselectap' : ! soyhombre, 'Selectap':soyhombre }" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 66.72 66.72">
                         <defs>
@@ -133,7 +133,7 @@
                       </svg>
                     </button>
                 </div>
-                <div class="col-4 px-0">
+                <div class="col-4 px-0" [ngClass]="{dedoce : reso<1201 }">
                     <button class="btn soy" style="display: block;"  (click)=" Soyempresa()" [disabled]="disabled==false" >
                       <svg  id="logc" [ngClass]="{'Noselectap' : ! soyempresa, 'Selectap':soyempresa }" width="70px" height="70px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60.44 78.55">
                         <defs>
@@ -154,7 +154,7 @@
               </div>
             </div>
           </div>
-          <div  [ngClass]="{nodoce :  showchiquito}" class="form-group col-md-5 col-sm-5">
+          <div  [ngClass]="{nodoce :  showchiquito, contrata : disabled==false,dedoce : reso<1201}" class="form-group col-md-5 col-sm-5" *ngIf="!soyempresa" >
             <div class="container" style="display: inline;">
               <div class="row">
                 <svg style="margin-top: -14px;" width="10%" heigth="10%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 68.39 68.39">
@@ -176,7 +176,7 @@
               </div>
               <div class="row" style="margin-top: 21px;" >
                 <!-- style="justify-content: space-evenly;padding-right: 36px;padding-left: 0px;margin-right: 20px;margin-left: -86px;" -->
-                <div  [ngClass]="{nodoce :  showchiquito}" class="col-md-3 col-sm-12 " >
+                <div  [ngClass]="{nodoce :  showchiquito,dedoce : reso<1201}" class="col-md-3 col-sm-12 " >
                   <!-- style="margin-left: -15px;" -->
                  <div class="container">
                   <div class="row">
@@ -206,7 +206,7 @@
                   </div>
                  </div>
                 </div>
-                <div  [ngClass]="{nodoce :  showchiquito}" class="col-md-5 col-sm-12" >
+                <div  [ngClass]="{nodoce :  showchiquito,dedoce : reso<1201}" class="col-md-5 col-sm-12" >
                 <!-- style="padding-left: 0px;" -->
                  <!-- <div class="row">
                     <div class="dropdown">
@@ -245,7 +245,7 @@
                   </ng-select>
                  </div>
                 </div>
-                <div  [ngClass]="{nodoce :  showchiquito}" class="col-md-4 col-sm-12" >
+                <div  [ngClass]="{nodoce :  showchiquito,dedoce : reso<1201}" class="col-md-4 col-sm-12" >
                   <!-- style="margin-left: 45px;" -->
                   <div class="container">
                     <!-- <div class="row">
@@ -289,7 +289,7 @@
               </div>
             </div>
           </div>
-          <div   [ngClass]="{nodoce :  showchiquito}" class="form-group col-md-3 col-sm-3 " style="letter-spacing: -0.023em;margin-left: 0px;padding-left: 35px;padding-right: 28px;">
+          <div   [ngClass]="{nodoce :  showchiquito, contrata : disabled==false,dedoce : reso<1201}" class="form-group col-md-3 col-sm-3 " style="letter-spacing: -0.023em;margin-left: 0px;padding-left: 35px;padding-right: 28px;">
             <!-- -md-4 col-sm-12 -->
               <div class="container" style="display: inline;">
                 <div class="row"  >

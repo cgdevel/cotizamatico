@@ -3,3 +3,6 @@
     font: 300;
     font-size: 20px;
 }
+.columna{
+    display: flex !important;
+}

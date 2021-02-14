@@ -7,6 +7,8 @@ import {InfovehiculoService} from '../../../servicios/infovehiculo.service'
   styleUrls: ['./infoasegurado.component.css']
 })
 export class InfoaseguradoComponent implements OnInit {
+  @Input() reso:number; 
+  gema: number;
   constructor( private InfovehiculoService: InfovehiculoService){
   }
   ngOnInit( ): void {
@@ -47,6 +49,7 @@ export class InfoaseguradoComponent implements OnInit {
     this.year = today.getFullYear();
     this.date=today.getDate();
     this.month=today.getMonth();
+    this.gema=this.year-75
     // console.log(today)
     // console.log(this.date) //numero del dia
     // this.selecteddia=this.date
@@ -57,7 +60,7 @@ export class InfoaseguradoComponent implements OnInit {
     // console.log(this.year)
     // this.selectedyear=this.year
     // this.verfechaann=this.selectedyear
-   for (let index = 1900; index <= this.year-18; index++) {// VALIDACION PARA QUE SEA MAYOR DE EDAD
+   for (let index = this.gema; index <= this.year-18; index++) {// VALIDACION PARA QUE SEA MAYOR DE EDAD
      this.fechaannos.push(index)
    }
   //  console.log(this.fechaannos)
