@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import "~@ng-select/ng-select/themes/default.theme.css";
- /* para textos de ngselec /
+/* para textos de ngselec /
   / .ng-select.ng-select-single .ng-select-container .ng-value-container, .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value {
     overflow: hidden !important;
     text-overflow: ellipsis !important;
@@ -11,13 +11,56 @@
 /* .ng-select .ng-select-container {
   height: -webkit-fill-available !important;
 } */
-.my-custom-class .tooltip-inner{
+.my-custom-class .tooltip-inner {
   /* background-color: darkgreen!important; */
-  background-color: chocolate!important;
-
-  font-size: 125%;
+  background-color: chocolate !important;
+  font-family: "Exo 2", sans-serif;
+  font-size: 14px;
 }
 .my-custom-class .arrow::before {
   /* border-top-color: darkgreen!important; */
-  border-top-color: chocolate!important;
+  border-top-color: chocolate !important;
+}
+
+.ng-option {
+  font-family: "Exo 2", sans-serif;
+  font-size: 14px;
+  white-space: normal !important;
+}
+
+.ng-select .ng-arrow-wrapper {
+  width: 25px;
+  background-image: linear-gradient(#ff8f48, #ff6963);
+  height: 39px !important;
+  max-height: 190px !important;
+}
+
+.ng-select .ng-arrow-wrapper .ng-arrow {
+  border-color: #fff transparent transparent;
+  border-style: solid;
+  border-width: 5px 5px 2.5px;
+}
+
+.ng-select .ng-select-container {
+  color: #333;
+  background-color: #fff;
+  min-height: 36px;
+  align-items: center;
+  border: solid;
+  border-left-width: 1px;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-color: rgb(0, 0, 0);
+  max-height: 190px;
+}
+
+.ng-select.ng-select-opened > .ng-select-container .ng-arrow {
+  top: -2px;
+  border-color: transparent transparent #fff;
+  border-width: 0 5px 5px;
 }

@@ -1,18 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { PeticionCatalogo } from '../interphaces/peticion';
 import { PeticionCatalogoCps } from '../interphaces/peticioncps';
+import { RequestCatalogo } from '../interphaces/request/RequestCatalogo.model';
+import { ResponseCatalogo } from '../interphaces/response/ResponseCatalogo.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class InfovehiculoService {
-  public getApiInfovehiculo(query: PeticionCatalogo){
-    return this.http.post("https://apitestcotizamatico.azurewebsites.net/api/catalogoCotizamaticoBr",query);
+  constructor(private http: HttpClient) {}
+
+  getApiInfovehiculo(query: PeticionCatalogo) {
+    return this.http.post<any>(
+      `${environment.url_api_autos}/catalogoCotizamaticoBr`,
+      query
+    );
   }
-  public getApiCPs(query: PeticionCatalogoCps){
-    return this.http.post("https://apitestcotizamatico.azurewebsites.net/api/catalogos",query);
+
+  getApiCPs(query: PeticionCatalogoCps) {
+    return this.http.post<any>(`${environment.url_api_autos}/catalogos`, query);
   }
-   constructor(private http:HttpClient){
- }
+
+  getCatalogos(request: RequestCatalogo) {
+    return this.http.post<ResponseCatalogo>(
+      `${environment.url_api_autos}/catalogoCotizamaticoBr`,
+      request
+    );
+  }
 }

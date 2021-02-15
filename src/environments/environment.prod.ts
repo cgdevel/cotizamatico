@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  url_api_autos: 'https://apitestcotizamatico.azurewebsites.net/api/',
 };
