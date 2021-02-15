@@ -94,6 +94,7 @@ export class InfoaseguradoComponent implements OnInit {
     @Input() validot:boolean;
     @Input() TELEFONO: string ='';
     @Input() valido:boolean;
+    @Input() validonom:boolean;
     @Input() EMAIL: string ='';
     @Input() NOMBRE: string ='';
     ubicacionId: number;
@@ -196,6 +197,17 @@ export class InfoaseguradoComponent implements OnInit {
     this.pasgenho.emit(this.soyhombre)
     this.pasgenselmu.emit(this.statussoymujer)
     this.pasgenmu.emit(this.soymujer)
+    //Limpia fecha selecccionada
+    this.selecteddia=""
+    this.verdia=""
+    this.selectedyear=""
+    this.verfechaann=""
+    this.selectedmes=""
+    this.vermes=""
+    this.pasam.emit(this.vermes)
+    this.pasay.emit(this.verfechaann)
+    this.pasad.emit(this.verdia)
+
     // console.log("Empresa"+' '+this.soyempresa+' '+this.statussoyempresa)
     // console.log("Hombre"+' '+this.soyhombre+' '+this.statussoyhombre)
     // console.log("Mujer"+' '+this.soymujer+' '+this.statussoymujer)
@@ -390,13 +402,17 @@ export class InfoaseguradoComponent implements OnInit {
   
  //Función nombre
  onNombre(event) {
+  var array_emparejamientos={};
+  var reg=/^(([A-Z a-z])\w+(\s))(([A-Z a-z]+\w\s))(([A-Z a-z]+\w)\s?)$/
+  array_emparejamientos = this.NOMBRE.match(reg);
+  this.validonom=reg.test(this.NOMBRE)
   // console.log(event);
   // console.log(this.NOMBRE)
-  if (this.NOMBRE=='') {
+  if (this.NOMBRE==''|| this.NOMBRE!=''&& !this.validonom) {
     this.vacnom=false
     this.pasnom.emit('')
   } else {
-    if (this.NOMBRE!='') {
+    if (this.NOMBRE!=''&& this.validonom) {
       this.vacnom=true
       this.pasnom.emit(this.NOMBRE)
     }

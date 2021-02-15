@@ -35,7 +35,13 @@
           <label for="nombre">
             Nombre
           </label>
-          <input type="text" class="form-control" id="nombre" style="margin-top: 8px;" autocomplete="off" [disabled]="disabled==false" [(ngModel)]="NOMBRE" (change)="onNombre($event)" onkeypress="return(!(event.charCode > 32 && ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))" min="1" [ngClass]="{'Existe' : NOMBRE!='' || disabled==false, 'NoExiste': NOMBRE==''}">
+          <input type="text" class="form-control" id="nombre" style="margin-top: 8px;" autocomplete="off" [disabled]="disabled==false" [(ngModel)]="NOMBRE" (change)="onNombre($event)" onkeypress="return(!(event.charCode > 32 && ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))" min="1" [ngClass]="{'Existe' :validonom==true || disabled==false, 'NoExiste': validonom==false || NOMBRE==''}">
+          <ngb-alert  [dismissible]="false" type="danger" *ngIf="!validonom && this.NOMBRE!='' ">
+           Falta ingresar apellidos
+          </ngb-alert>
+          <ngb-alert  [dismissible]="false" type="success" *ngIf="validonom" [hidden]="disabled==false">
+            Nombre completo 
+          </ngb-alert>
         </div>
         <div  [ngClass]="{nodoce :  showchiquito, contrata : disabled==false}" class="form-group col-12 col-md-5">
           <label for="email">
