@@ -114,17 +114,79 @@ export class InfovehiculoComponent implements OnInit {
       .subscribe(
         (cat) => {
           if (!cat.bSuccess) {
-            console.log('Error: Catálogos Tipo de Vehículo');
+            console.log('Error: Catálogos Años');
             console.log(cat.sMensaje);
           }
 
-          this.catTipoVehiculo = cat.catalogos;
+          this.catAnioVehiculo = cat.catalogos;
         },
         (err) => {
-          console.log('Error: Catálogos Tipo de Vehículo');
+          console.log('Error: Catálogos Años');
           console.log(err.message);
         }
       );
+  }
+
+  selectAnioVehiculo(){
+    this.catMarcaVehiculo = [];
+    this.itemMarcaVehiculo = this.itemVacio;
+    this.catDescripcionVehiculo = [];
+    this.itemDescripcionVehiculo = this.itemVacio;
+
+    this.infovehiculoService
+      .getCatalogos({
+        iMarca: 0,
+        iModelo: Number(this.itemAnioVehiculo.sLlave),
+        iSubramo: Number(this.itemTipoVehiculo.sLlave),
+        iTipoCatalogo: 30,
+        sDescripcion: '',
+      })
+      .subscribe(
+        (cat) => {
+          if (!cat.bSuccess) {
+            console.log('Error: Catálogos Marcas');
+            console.log(cat.sMensaje);
+          }
+
+          this.catMarcaVehiculo = cat.catalogos;
+        },
+        (err) => {
+          console.log('Error: Catálogos Marcas');
+          console.log(err.message);
+        }
+      );
+  }
+
+  selectMarca(){
+    this.catDescripcionVehiculo = [];
+    this.itemDescripcionVehiculo = this.itemVacio;
+
+    this.infovehiculoService
+      .getCatalogos({
+        iMarca: Number(this.itemMarcaVehiculo.sLlave),
+        iModelo: Number(this.itemAnioVehiculo.sLlave),
+        iSubramo: Number(this.itemTipoVehiculo.sLlave),
+        iTipoCatalogo: 40,
+        sDescripcion: '',
+      })
+      .subscribe(
+        (cat) => {
+          if (!cat.bSuccess) {
+            console.log('Error: Catálogos Descripción');
+            console.log(cat.sMensaje);
+          }
+
+          this.catDescripcionVehiculo = cat.catalogos;
+        },
+        (err) => {
+          console.log('Error: Catálogos Descripción');
+          console.log(err.message);
+        }
+      );
+  }
+
+  selectDescripcion(){
+    
   }
 
   getModelo() {
