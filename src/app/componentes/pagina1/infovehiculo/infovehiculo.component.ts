@@ -11,22 +11,22 @@ import { InfovehiculoService } from '../../../servicios/infovehiculo.service';
 })
 export class InfovehiculoComponent implements OnInit {
   constructor(private infovehiculoService: InfovehiculoService) {}
-  @Output() gM = new EventEmitter<string>();
-  @Output() gA = new EventEmitter<string>();
-  @Output() gMarca = new EventEmitter<string>();
-  @Output() gDesc = new EventEmitter<string>();
+  @Output() emitTipoVehiculo = new EventEmitter<CatalogoModel>();
+  @Output() emitAnioVehiculo = new EventEmitter<CatalogoModel>();
+  @Output() emitMarcaVehiculo = new EventEmitter<CatalogoModel>();
+  @Output() emitDescripcion = new EventEmitter<CatalogoModel>();
 
-  @Input() modelosel;
-  @Input() annosel;
-  @Input() marcasel;
-  @Input() descripsel;
-  @Input() showchiquito;
+  @Input() modelosel: CatalogoModel;
+  @Input() annosel: CatalogoModel;
+  @Input() marcasel: CatalogoModel;
+  @Input() descripsel: CatalogoModel;
+  @Input() showchiquito: boolean;
 
-  @Input() disabled;
-  @Input() modeloselpagina3;
-  @Input() annoselpagina3;
-  @Input() marcaselpagina3;
-  @Input() descripselpagina3;
+  @Input() disabled: boolean;
+  @Input() modeloselpagina3: CatalogoModel;
+  @Input() annoselpagina3: CatalogoModel;
+  @Input() marcaselpagina3: CatalogoModel;
+  @Input() descripselpagina3: CatalogoModel;
 
   catTipoVehiculo: CatalogoModel[];
   itemTipoVehiculo: CatalogoModel;
@@ -103,6 +103,8 @@ export class InfovehiculoComponent implements OnInit {
     this.catDescripcionVehiculo = [];
     this.itemDescripcionVehiculo = this.itemVacio;
 
+    this.emitTipoVehiculo.emit(this.itemTipoVehiculo);
+
     this.infovehiculoService
       .getCatalogos({
         iMarca: 0,
@@ -127,11 +129,13 @@ export class InfovehiculoComponent implements OnInit {
       );
   }
 
-  selectAnioVehiculo(){
+  selectAnioVehiculo() {
     this.catMarcaVehiculo = [];
     this.itemMarcaVehiculo = this.itemVacio;
     this.catDescripcionVehiculo = [];
     this.itemDescripcionVehiculo = this.itemVacio;
+
+    this.emitAnioVehiculo.emit(this.itemAnioVehiculo);
 
     this.infovehiculoService
       .getCatalogos({
@@ -157,9 +161,11 @@ export class InfovehiculoComponent implements OnInit {
       );
   }
 
-  selectMarca(){
+  selectMarca() {
     this.catDescripcionVehiculo = [];
     this.itemDescripcionVehiculo = this.itemVacio;
+
+    this.emitMarcaVehiculo.emit(this.itemMarcaVehiculo);
 
     this.infovehiculoService
       .getCatalogos({
@@ -185,122 +191,7 @@ export class InfovehiculoComponent implements OnInit {
       );
   }
 
-  selectDescripcion(){
-    
-  }
-
-  getModelo() {
-    // Limpia los select restantes
-    this.annos = [];
-    this.annosel = '';
-    this.veranno = '';
-    this.anno = '';
-    this.marcas = [];
-    this.marcasel = '';
-    this.vermarca = '';
-    this.marca = '';
-    this.descripciones = [];
-    this.descripsel = '';
-    this.verdescripcion = '';
-    this.descripcion = '';
-    //Limpia el emisor
-    this.gA.emit('');
-    this.gMarca.emit('');
-    this.gDesc.emit('');
-    // Muestra modelo Seleccinonado
-    // console.log(this.modelosel.sDato+'  '+this.modelosel.sLlave)
-    this.modelo = this.modelosel.sLlave;
-    this.vermodelo = this.modelosel.sDato;
-    this.gM.emit(this.vermodelo);
-    this.infovehiculoService
-      .getApiInfovehiculo({
-        iTipoCatalogo: '20',
-        iModelo: '00',
-        iMarca: '0',
-        iSubramo: this.modelo,
-        sDescripcion: '',
-      })
-      .subscribe((data: any) => {
-        // console.log(data.catalogos)
-        this.annos = data.catalogos;
-      });
-  }
-  getAnno() {
-    // Limpia los select restantes
-    this.marcas = [];
-    this.marcasel = '';
-    this.vermarca = '';
-    this.marca = '';
-    this.descripciones = [];
-    this.descripsel = '';
-    this.verdescripcion = '';
-    this.descripcion = '';
-    //Limpia el emisor
-    this.gMarca.emit('');
-    this.gDesc.emit('');
-    // Muestra año Seleccinonado
-    // console.log(this.annosel.sDato+'  '+this.annosel.sLlave)
-    this.anno = this.annosel.sLlave;
-    this.veranno = this.annosel.sDato;
-    this.gA.emit(this.veranno);
-    this.infovehiculoService
-      .getApiInfovehiculo({
-        iTipoCatalogo: '30',
-        iModelo: this.anno,
-        iMarca: '0',
-        iSubramo: this.modelo,
-        sDescripcion: '',
-      })
-      .subscribe((data: any) => {
-        // console.log(data.catalogos)
-        this.marcas = data.catalogos;
-      });
-  }
-  getMarca() {
-    // Limpia los select restantes
-    this.descripciones = [];
-    this.descripsel = '';
-    this.verdescripcion = '';
-    this.descripcion = '';
-    //Limpia el emisor
-    this.gDesc.emit('');
-    // Muestra marca seleccionada
-    // console.log(this.marcasel.sDato+'  '+this.marcasel.sLlave)
-    this.marca = this.marcasel.sLlave;
-    this.vermarca = this.marcasel.sDato;
-    this.gMarca.emit(this.vermarca);
-    this.infovehiculoService
-      .getApiInfovehiculo({
-        iTipoCatalogo: '40',
-        iModelo: this.anno,
-        iMarca: this.marca,
-        iSubramo: this.modelo,
-        sDescripcion: '',
-      })
-      .subscribe((data: any) => {
-        // console.log(data.catalogos)
-        this.descripciones = data.catalogos;
-      });
-  }
-  getDescripcion() {
-    // Muestra marca seleccionada
-    // console.log(this.descripsel.sDato+'  '+this.descripsel.sLlave)
-    this.descripcion = this.descripsel.sLlave;
-    this.verdescripcion = this.descripsel.sDato;
-    this.gDesc.emit(this.verdescripcion);
-  }
-  getmodels() {
-    this.infovehiculoService
-      .getApiInfovehiculo({
-        iTipoCatalogo: '10',
-        iModelo: '00',
-        iMarca: '0',
-        iSubramo: '00',
-        sDescripcion: '',
-      })
-      .subscribe((data: any) => {
-        // console.log(data.catalogos)
-        this.modelos = data.catalogos;
-      });
+  selectDescripcion() {
+    this.emitDescripcion.emit(this.itemDescripcionVehiculo);
   }
 }
