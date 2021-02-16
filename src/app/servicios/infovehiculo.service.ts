@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { PeticionCatalogo } from '../interphaces/peticion';
 import { PeticionCatalogoCps } from '../interphaces/peticioncps';
 import { RequestCatalogo } from '../interphaces/request/RequestCatalogo.model';
