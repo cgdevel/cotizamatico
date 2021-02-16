@@ -1,3 +1,15 @@
+.col6{
+  flex: 0 0 50%!important ;
+max-width: 50%!important ;
+}
+.contrata{
+  display: contents !important ;
+}
+.dedoce{
+display: contents !important;
+}
+
+
 #estesi{
     border-radius: 2.25rem !important;
     margin-top: 20px;
@@ -59,9 +71,9 @@
   margin-top: 4.5rem;;
   }
   .soy{
-    /* Agregaste esto jueves */
-      padding-top: 1.375rem;
-      padding-bottom: 22px;
+    box-shadow: none;
+      padding: 22px 12px 22px 12px;
+      border-color: black;
       font-family: 'Exo 2', sans-serif;
       font: 600;
       height: max-content;
@@ -70,7 +82,6 @@
       margin-bottom: 30px; */
       /* background-color:#ebebeb !important; */
       border-radius: 30px !important;
-      color: #000000 !important;
       /* display: ruby-base-container !important; */
     }
    

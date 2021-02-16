@@ -29,10 +29,10 @@
     (pasgenem)="emp($event)">
   </app-infoasegurado>
 
-  <div class="row justify-content-center">
-    <button id="coti" class="btn btn-primary btn-lg" [routerLink]="['/compara']" routerLinkActive="router-link-active"
-      [state]='{
-            modsel:modelo,
+    <div class="row justify-content-center" *ngIf="!empboo">
+        <button id="coti" class="btn btn-primary btn-lg" [routerLink]="['/compara']" routerLinkActive="router-link-active"
+        [state]='{
+            modsel: modelo,
             marsel:marca,
             descsel:descripcion,
             annosel:anno,
@@ -50,20 +50,27 @@
             sysel:sy,
             sdsel:sd,
             sizesel:size }'
-      [disabled]="
-            this.modelo === '' ||
-            this.marca === '' ||
-            this.descripcion === '' ||
-            this.anno === '' ||
-            this.nombre === ''||
-            this.email === '' ||
-            this.telefono === '' ||
-            this.cp === '' ||
-            this.sm === '' ||
-            this.sy === '' ||
-            this.sd === '' ||
-            (statumustr === '' && statuhomstr  === '' && statuempstr === '')">
-            ¡Cotizar mi auto <label id="ahora">ahora</label>!
-    </button>
-  </div>
-</div>
+            [disabled]="this.modelo==''||this.marca==''||this.descripcion==''||this.anno==''||this.nombre==''||this.email==''||this.telefono==''||this.cp==''||!(statumustr!=''&&this.sm!=''&&this.sy!=''&& this.sd!='')||!(statuhomstr!=''&&this.sm!=''&&this.sy!=''&& this.sd!='')">¡Cotizar mi auto <label id="ahora">ahora</label>!</button>
+    </div>
+    <div class="row justify-content-center" *ngIf="empboo">
+        <button id="coti" class="btn btn-primary btn-lg" [routerLink]="['/compara']" routerLinkActive="router-link-active"
+        [state]='{
+            modsel: modelo,
+            marsel:marca,
+            descsel:descripcion,
+            annosel:anno,
+            nomsel:nombre,
+            emsel:email,
+            telsel:telefono,
+            must1:statumustr,
+            muboo1:mujboo,
+            host1:statuhomstr,
+            hoboo1:homboo,
+            emst1:statuempstr,
+            emboo1:empboo,
+            cpsel:cp,
+            sizesel:size }'
+            [disabled]="this.modelo==''||this.marca==''||this.descripcion==''||this.anno==''||this.nombre==''||this.email==''||this.telefono==''||this.cp==''||statuempstr==''">¡Cotizar mi auto <label id="ahora">ahora</label>!</button>
+    </div>
+    </div>
+

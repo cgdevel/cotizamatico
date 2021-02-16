@@ -1,7 +1,9 @@
+<div class="container mw-90"  [ngClass]="{columna :  !noedites}">
+    <app-infovehiculo  [modeloselpagina3]="vermodelo" [annoselpagina3]="veranno" [marcaselpagina3]="vermarca" [descripselpagina3]="verdescripcion" [modelosel]="vermodelo" [disabled]="noedites" [annosel]="veranno" [marcasel]="vermarca" [descripsel]="verdescripcion"></app-infovehiculo>
+    <app-infoasegurado [existe]="true" [validot]="true" [valido]="true" [validonom]="true" [soymujer]="boostatemu" [disabled]="noedites" [soyhombre]="boostatehom" [soyempresa]="boostateemp" [NOMBRE]="nombre" [EMAIL]="email" [TELEFONO]="telefono" [codigoPostal]="codigopostal" [selectedmes]="mesnaci" [selectedyear]="yearnaci" [selecteddia]="dianaci"></app-infoasegurado>
+</div>
 <div class="container mw-90">
-    <app-infovehiculo [modeloselpagina3]="vermodelo" [annoselpagina3]="veranno" [marcaselpagina3]="vermarca" [descripselpagina3]="verdescripcion" [modelosel]="vermodelo" [disabled]="noedites" [annosel]="veranno" [marcasel]="vermarca" [descripsel]="verdescripcion"></app-infovehiculo>
-    <app-infoasegurado [existe]="true" [validot]="true" [valido]="true" [soymujer]="boostatemu" [disabled]="noedites" [soyhombre]="boostatehom" [soyempresa]="boostateemp" [NOMBRE]="nombre" [EMAIL]="email" [TELEFONO]="telefono" [codigoPostal]="codigopostal" [selectedmes]="mesnaci" [selectedyear]="yearnaci" [selecteddia]="dianaci"></app-infoasegurado>
-    <div class="row">
+    <div class="row" >
         <div class="col-12 col-md-3" id="inase">
             <input type="text" class="form-control" [disabled]="true" [value]="estado"> 
         </div>
@@ -10,15 +12,15 @@
         </div>
         <div class="col-12 col-md-3" id="inase">
             <ng-select 
-            [items]="colonias"        
-            bindLabel="Ubicacion"
+            [items]="cols"        
+            bindLabel="sUbicacion"
             placeholder="Colonia"
             appendTo="body"
             [searchable]="false" 
             [clearable]="false"
             [closeOnSelect]="true"
             [(ngModel)]="coloniasel">
-            <ng-option  ng-options="item as colonias.numero for colonias.Ubicacion in colonias">
+            <ng-option  ng-options="item as cols.iIdUbicacion for cols.sUbicacion in cols">
                 {{item}}
             </ng-option>
             <ng-template ng-notfound-tmp >
@@ -30,5 +32,4 @@
         </div>
     </div>
 </div>
-
 

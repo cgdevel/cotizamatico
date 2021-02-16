@@ -5,11 +5,16 @@
         <div class="row">
           <div class="col-md-12 col-sm-12">
             <div class="container">
-              <div class="row" id="rowtitulo" style="display: inline-flex">
-                <div class="col-3">
-                  <svg style="margin-top: 10px" [ngClass]="{ svgchi: showchiquito }" width="34"
-                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="0 0 127.42 86.97">
+              <div class="row "  id='rowtitulo' style="display:inline-flex;margin-left: -32px;">
+                  <div class="col-3">
+                  <svg
+                    style="margin-top: 10px"
+                    [ngClass]="{ svgchi: showchiquito }"
+                    width="34"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 0 127.42 86.97"
+                  >
                     <defs>
                       <style>
                         .clsauto-1 {
@@ -110,7 +115,7 @@
         </div>
 
         <div class="row">
-          <div [ngClass]="{ nodoce: showchiquito }" class="col-12 col-md-3">
+          <div [ngClass]="{nodoce :  showchiquito, contrata : disabled==false}" class="col-12 col-md-3">
             <div class="container">
               <div class="row">Mi auto es:</div>
               <div class="row">
@@ -143,8 +148,7 @@
               </div>
             </div>
           </div>
-
-          <div [ngClass]="{ nodoce: showchiquito }" class="col-md-2 col-sm-12">
+          <div [ngClass]="{nodoce :  showchiquito, contrata : disabled==false}" class="col-md-2 col-sm-12">
             <div class="container">
               <div class="row">Año:</div>
               <div class="row">
@@ -169,8 +173,7 @@
               </div>
             </div>
           </div>
-
-          <div [ngClass]="{ nodoce: showchiquito }" class="col-md-3 col-sm-12">
+          <div [ngClass]="{nodoce :  showchiquito, contrata : disabled==false}" class="col-md-3 col-sm-12">
             <div class="container">
               <div class="row">Marca:</div>
               <div class="row">
@@ -204,7 +207,7 @@
             </div>
           </div>
 
-          <div [ngClass]="{ nodoce: showchiquito }" class="col-md-4 col-sm-12">
+          <div [ngClass]="{nodoce :  showchiquito, contrata : disabled==false}" class="col-md-4 col-sm-12">
             <div class="container">
               <div class="row">Descripción:</div>
               <div class="row">

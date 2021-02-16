@@ -7,54 +7,40 @@ import { InfovehiculoService } from '../../../servicios/infovehiculo.service';
   styleUrls: ['./infoasegurado.component.css'],
 })
 export class InfoaseguradoComponent implements OnInit {
-  constructor(private infovehiculoService: InfovehiculoService) {}
-
-  ngOnInit(): void {
-    this.mesdiabis = [
-      ['Enero', 31],
-      ['Febrero', 29],
-      ['Marzo', 31],
-      ['Abril', 30],
-      ['Mayo', 31],
-      ['Junio', 30],
-      ['Julio', 31],
-      ['Agosto', 31],
-      ['Septiembre', 30],
-      ['Octubre', 31],
-      ['Noviembre', 30],
-      ['Diciembre', 31],
-    ];
-
-    this.mesdia = [
-      ['Enero', 31],
-      ['Febrero', 28],
-      ['Marzo', 31],
-      ['Abril', 30],
-      ['Mayo', 31],
-      ['Junio', 30],
-      ['Julio', 31],
-      ['Agosto', 31],
-      ['Septiembre', 30],
-      ['Octubre', 31],
-      ['Noviembre', 30],
-      ['Diciembre', 31],
-    ];
-
-    this.meses = [
-      'Enero',
-      'Febrero',
-      'Marzo',
-      'Abril',
-      'Mayo',
-      'Junio',
-      'Julio',
-      'Agosto',
-      'Septiembre',
-      'Octubre',
-      'Noviembre',
-      'Diciembre',
-    ];
-
+  @Input() reso:number;
+  gema: number;
+  constructor( private InfovehiculoService: InfovehiculoService){
+  }
+  ngOnInit( ): void {
+    this.mesdiabis=[
+      ['Enero',31],
+      ['Febrero',29],
+      ['Marzo',31],
+      ['Abril',30],
+      ['Mayo',31],
+      ['Junio',30],
+      ['Julio',31],
+      ['Agosto',31],
+      ['Septiembre',30],
+      ['Octubre',31],
+      ['Noviembre',30],
+      ['Diciembre',31],
+    ]
+    this.mesdia=[
+      ['Enero',31],
+      ['Febrero',28],
+      ['Marzo',31],
+      ['Abril',30],
+      ['Mayo',31],
+      ['Junio',30],
+      ['Julio',31],
+      ['Agosto',31],
+      ['Septiembre',30],
+      ['Octubre',31],
+      ['Noviembre',30],
+      ['Diciembre',31],
+    ]
+    this.meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
     // console.log(this.meses)
     this.dias = [
       1,
@@ -93,8 +79,9 @@ export class InfoaseguradoComponent implements OnInit {
     this.fechaannos = [];
     var today = new Date();
     this.year = today.getFullYear();
-    this.date = today.getDate();
-    this.month = today.getMonth();
+    this.date=today.getDate();
+    this.month=today.getMonth();
+    this.gema=this.year-75
     // console.log(today)
     // console.log(this.date) //numero del dia
     // this.selecteddia=this.date
@@ -105,11 +92,10 @@ export class InfoaseguradoComponent implements OnInit {
     // console.log(this.year)
     // this.selectedyear=this.year
     // this.verfechaann=this.selectedyear
-    for (let index = 1900; index <= this.year - 18; index++) {
-      // VALIDACION PARA QUE SEA MAYOR DE EDAD
-      this.fechaannos.push(index);
-    }
-    //  console.log(this.fechaannos)
+   for (let index = this.gema; index <= this.year-18; index++) {// VALIDACION PARA QUE SEA MAYOR DE EDAD
+     this.fechaannos.push(index)
+   }
+  //  console.log(this.fechaannos)
   }
   @Output() pasad = new EventEmitter<string>();
   @Output() pasam = new EventEmitter<string>();
@@ -131,37 +117,54 @@ export class InfoaseguradoComponent implements OnInit {
   descsel: string = '';
   annosel: string = '';
   //ESTAS VARIABLES SON PARA LA VALIDACION (NO VACIO)
-  @Input() existe: boolean;
-  existeT: boolean;
-  vacemial: boolean;
-  vacnom: boolean;
-  // valores para código postal
-  ubicacion: any;
-  @Input() codigoPostal: string = '';
-  @Input() validot: boolean;
-  @Input() TELEFONO: string = '';
-  @Input() valido: boolean;
-  @Input() EMAIL: string = '';
-  @Input() NOMBRE: string = '';
-  ubicacionId: number;
-  estado: string;
-  municipio: string;
-  colonia: string;
-  bisiesto: boolean;
-  // Valores selección fecha
-  year;
-  month;
-  date;
-  dias;
-  meses;
-  fechaannos;
-  mesdiabis: (string | number)[][];
-  mesdia: (string | number)[][];
-  mes: string = ''; // Iniciamos mes
-  vermes: string = '';
-  fechaann: string = ''; // Iniciamos fechaann
-  verfechaann: string = '';
-  dia: string = ''; // Iniciamos dia
+  @Input() existe:boolean;
+    existeT: boolean;
+    vacemial: boolean;
+    vacnom: boolean;
+    // valores para código postal
+    ubicacion: any;
+    @Input() codigoPostal: string ='';
+    @Input() validot:boolean;
+    @Input() TELEFONO: string ='';
+    @Input() valido:boolean;
+    @Input() validonom:boolean;
+    @Input() EMAIL: string ='';
+    @Input() NOMBRE: string ='';
+    ubicacionId: number;
+    estado: string;
+    municipio: string;
+    colonia: string;
+    bisiesto: boolean;
+    // Valores selección fecha
+    year;
+    month;
+    date;
+    dias;
+    meses;
+    fechaannos;
+    mesdiabis: (string | number)[][];
+    mesdia: (string | number)[][];
+    mes: string  = ''; // Iniciamos mes
+    vermes: string        = '';
+    fechaann: string  = ''; // Iniciamos fechaann
+    verfechaann: string        = '';
+    dia: string  = ''; // Iniciamos dia
+    // console.log(this.mesdiabis[0][1])//DIAS
+    // console.log(this.mesdiabis[0][0])//MESES
+    verdia: string        = '';
+    @Input() selectedmes;
+    @Input() selectedyear;
+    @Input() selecteddia;
+    selected;
+    //Valores botones soy
+    @Input() soymujer=false;
+    @Input() soyhombre=false;
+    @Input() soyempresa=false;
+    @Input() disabled;
+    statussoymujer = "NoSelected";
+    statussoyhombre= "NoSelected";
+    statussoyempresa= "NoSelected";
+    @Input() showchiquito;
 
   verdia: string = '';
   @Input() selectedmes;
@@ -229,18 +232,29 @@ export class InfoaseguradoComponent implements OnInit {
   }
   Soyempresa() {
     // tiene selected this.statusDB
-    this.soyempresa = !this.soyempresa;
-    this.soymujer = false;
-    this.statussoymujer = 'NoSelected';
-    this.soyhombre = false;
-    this.statussoyhombre = 'NoSelected';
-    this.statussoyempresa = this.soyempresa ? 'Selected' : 'NoSelected';
-    this.pasgenem.emit(this.soyempresa);
-    this.pasgenselem.emit(this.statussoyempresa);
-    this.pasgenselho.emit(this.statussoyhombre);
-    this.pasgenho.emit(this.soyhombre);
-    this.pasgenselmu.emit(this.statussoymujer);
-    this.pasgenmu.emit(this.soymujer);
+    this. soyempresa = !this. soyempresa;
+    this. soymujer=false
+    this.statussoymujer="NoSelected"
+    this.soyhombre=false
+    this.statussoyhombre="NoSelected"
+    this.statussoyempresa= this. soyempresa ? "Selected" : "NoSelected" ;
+    this.pasgenem.emit(this.soyempresa)
+    this.pasgenselem.emit(this.statussoyempresa)
+    this.pasgenselho.emit(this.statussoyhombre)
+    this.pasgenho.emit(this.soyhombre)
+    this.pasgenselmu.emit(this.statussoymujer)
+    this.pasgenmu.emit(this.soymujer)
+    //Limpia fecha selecccionada
+    this.selecteddia=""
+    this.verdia=""
+    this.selectedyear=""
+    this.verfechaann=""
+    this.selectedmes=""
+    this.vermes=""
+    this.pasam.emit(this.vermes)
+    this.pasay.emit(this.verfechaann)
+    this.pasad.emit(this.verdia)
+
     // console.log("Empresa"+' '+this.soyempresa+' '+this.statussoyempresa)
     // console.log("Hombre"+' '+this.soyhombre+' '+this.statussoyhombre)
     // console.log("Mujer"+' '+this.soymujer+' '+this.statussoymujer)
@@ -527,7 +541,7 @@ export class InfoaseguradoComponent implements OnInit {
         return;
       } else {
         if (this.codigoPostal != '' && this.codigoPostal.length == 5) {
-          this.infovehiculoService
+          this.InfovehiculoService
             .getApiCPs({
               IdAplication: 2,
               NombreCatalogo: 'Sepomex',
@@ -581,18 +595,21 @@ export class InfoaseguradoComponent implements OnInit {
     }
   }
 
-  // Función nombre
-  onNombre(event) {
-    // console.log(event);
-    // console.log(this.NOMBRE)
-    if (this.NOMBRE == '') {
-      this.vacnom = false;
-      this.pasnom.emit('');
-    } else {
-      if (this.NOMBRE != '') {
-        this.vacnom = true;
-        this.pasnom.emit(this.NOMBRE);
-      }
+ //Función nombre
+ onNombre(event) {
+  var array_emparejamientos={};
+  var reg=/^(([A-Z a-z])\w+(\s))(([A-Z a-z]+\w\s))(([A-Z a-z]+\w)\s?)$/
+  array_emparejamientos = this.NOMBRE.match(reg);
+  this.validonom=reg.test(this.NOMBRE)
+  // console.log(event);
+  // console.log(this.NOMBRE)
+  if (this.NOMBRE==''|| this.NOMBRE!=''&& !this.validonom) {
+    this.vacnom=false
+    this.pasnom.emit('')
+  } else {
+    if (this.NOMBRE!=''&& this.validonom) {
+      this.vacnom=true
+      this.pasnom.emit(this.NOMBRE)
     }
   }
 }

@@ -9,7 +9,9 @@ import {InfovehiculoService} from '../../../app/servicios/infovehiculo.service'
 export class Pagina3Component implements OnInit {
   constructor( private Infovehiculo: InfovehiculoService ) {}
   colonias =[];
-  cols:{ Numero: number; Nomcolonia: string; }[];
+  cols:{ 
+    iIdUbicacion: number,
+    sUbicacion:string }[];
  noedites:boolean;
  item:string='';
  //Variables a las que asigno datos de pagina1 
@@ -47,22 +49,12 @@ ubicacionId: number;
       NombreCatalogo: "Sepomex", 
       Filtro: this.codigopostal
     }).subscribe((data: any)=> {
-      //  console.log(data)
-        this.ubicacion = JSON.parse(data.CatalogoJsonString);
+      this.ubicacion = JSON.parse(data.CatalogoJsonString);
+      console.log(this.ubicacion)
         this.estado = this.ubicacion[0].Municipio.Estado.sEstado;
         this.municipio = this.ubicacion[0].Municipio.sMunicipio;
-        this.colonia = this.ubicacion[0].Ubicacion[0].sUbicacion;
-        this.ubicacionId = this.ubicacion[0].Ubicacion[0].iIdUbicacion;
-        console.log(this.ubicacion[0].Ubicacion.length)
-        this.ubicacion[0].Ubicacion.forEach(element => {
-        console.log(element.iIdUbicacion+" "+element.sUbicacion)
-        var objeto ={ numero: element.iIdUbicacion, Ubicacion: element.sUbicacion }
-        this.colonias.push(objeto)
-        })// foreach ubicacion
+        this.cols=this.ubicacion[0].Ubicacion
       })// suscribecierra
-      console.log(this.colonias)
-
-      
   }
   ngOnInit(): void {
     this.noedites=false
