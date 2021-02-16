@@ -571,7 +571,7 @@
                                 </button>
                             </div>
                             <div class="row">
-                                Esta cotización es válida por quince días.
+                                Esta cotización es válida por quince días. 
                             </div>
                            </div>
                         </div>
@@ -638,12 +638,18 @@
                         </div>
                         <div class="col-md-3 col-sm-3">
                             <div class="container mw-100">
-                                <div id="tan" class="row">
-                                   Conocer bancos y tarjetas participantes
+                                <div id="tan" class="row" [ngbTooltip]="qualitastar" tooltipClass="my-custom-class">
+                                   Conocer bancos y tarjetas participantes 
                                 </div>
-                                <div id='tof'  class="row">
+                                <ng-template #qualitastar>
+                                    <b>{{'Visa, MasterCard, Amex,Afirme, Bajio, Banjercito, Inbursa, Invex, Mifel, Azteca, Multiva, Liverpool, Santander, Amexpress, HSBC, Scotiabank, Banorte,  Banregio'}}</b>
+                                </ng-template>
+                                <div id='tof'  class="row" [ngbTooltip]="qualitasmen" tooltipClass="my-custom-class">
                                     El mejor precio garantizado
                                 </div>
+                                <ng-template #qualitasmen>
+                                    <b>{{'3,6,9 y 12 meses'}}</b>
+                                </ng-template>
                                 <div id='tof' class="row">
                                     Compra online 100% segura
                                 </div>

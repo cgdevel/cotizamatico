@@ -7,6 +7,7 @@ import {InfovehiculoService} from '../../../app/servicios/infovehiculo.service'
   styleUrls: ['./pagina3.component.css']
 })
 export class Pagina3Component implements OnInit {
+  nombraseguradora: any;
   constructor( private Infovehiculo: InfovehiculoService ) {}
   colonias =[];
   cols:{ 
@@ -76,6 +77,8 @@ ubicacionId: number;
     this.boostatehom=history.state.hoboo1
     this.strstateemp=history.state.emst1
     this.boostateemp=history.state.emboo1
+    this.nombraseguradora=history.state.asesel
+    console.log(this.nombraseguradora)
     this.getUbicacion()
     
     
