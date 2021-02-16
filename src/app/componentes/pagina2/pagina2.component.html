@@ -377,7 +377,7 @@
                         </button>
                     </div>
                   </div> 
-                  <app-infovehiculo (gM)="a($event)"  (gA)="b($event)" (gMarca)="c($event)" (gDesc)="d($event)" *ngIf="show" [showchiquito]="show" [modelosel]="vermodelo" [annosel]="veranno" [marcasel]="vermarca" [descripsel]="verdescripcion"></app-infovehiculo>
+                  <app-infovehiculo (emitTipoVehiculo)="handlerVehiculoTipo($event)"  (emitAnioVehiculo)="handlerVehiculoAnio($event)" (emitMarcaVehiculo)="handlerVehiculoMarca($event)" (emitDescripcion)="handlerVehiculoDescripcion($event)" *ngIf="show" [showchiquito]="show" [modelosel]="vermodelo" [annosel]="veranno" [marcasel]="vermarca" [descripsel]="verdescripcion"></app-infovehiculo>
                   <!-- <app-infoasegurado *ngIf="show" [showchiquito]="show" [soymujer]="boostatemu" [soyhombre]="boostatehom" [soyempresa]="boostateemp"
                   [NOMBRE]="nombre" [EMAIL]="email" [TELEFONO]="telefono" [codigoPostal]="codigopostal" [selectedmes]="mesnaci" [selectedyear]="yearnaci" [selecteddia]="dianaci" ></app-infoasegurado>               -->
                 </div>

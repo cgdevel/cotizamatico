@@ -35,19 +35,19 @@ export class Pagina1Component implements OnInit {
     anno:string='';
    
 
-  a(e) {
+  handlerVehiculoTipo(e) {
     // console.log(e);
     this.modelo=e
   }
-  b(e) {
+  handlerVehiculoAnio(e) {
     // console.log(e);
     this.anno=e
   }
-  c(e) {
+  handlerVehiculoMarca(e) {
     // console.log(e);
     this.marca=e
   }
-  d(e) {
+  handlerVehiculoDescripcion(e) {
     // console.log(e);
     this.descripcion=e
   }

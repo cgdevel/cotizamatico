@@ -303,19 +303,19 @@ muacco:number=0
  descripcion:string='';
  anno:string='';
  //FUNCIONES EVENT EMITTER DE INFOVEHICULO
- a(e) {
+ handlerVehiculoTipo(e) {
   // console.log(e);
   this.modelo=e
 }
-b(e) {
+handlerVehiculoAnio(e) {
   // console.log(e);
   this.anno=e
 }
-c(e) {
+handlerVehiculoMarca(e) {
   // console.log(e);
   this.marca=e
 }
-d(e) {
+handlerVehiculoDescripcion(e) {
   // console.log(e);
   this.descripcion=e
 }

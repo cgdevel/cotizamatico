@@ -87,21 +87,21 @@
                   id="modelsel"
                   [disabled]="disabled==false" 
                   [ngStyle]="{'width': !showchiquito ? ' 200px' : ( showchiquito ? '200px' : null) }"
-                  [items]="modelos"        
+                  [items]="catTipoVehiculo"        
                   bindLabel="sDato"
                   placeholder="Modelo"
                   appendTo="body"
                   [searchable]="false"
                   [clearable]="false"
                   [closeOnSelect]="true"
-                  (change)="getModelo()"
-                  [(ngModel)]="modelosel" [ngbTooltip]="modsel" tooltipClass="my-custom-class">
-                  <ng-option ng-options="item as item.sLlave for item.sDato in modelos">
+                  (change)="selectTipoVehiculo()"
+                  [(ngModel)]="itemTipoVehiculo" [ngbTooltip]="modsel" tooltipClass="my-custom-class">
+                  <ng-option ng-options="item as item.sLlave for item.sDato in catTipoVehiculo">
                       {{item}}
                   </ng-option>
                   <ng-template #modsel>
-                    <b *ngIf="!!modeloselpagina3==false">{{modelosel.sDato}}</b>
-                    <b *ngIf="!!modeloselpagina3">{{modeloselpagina3}}</b>
+                    <b>{{itemTipoVehiculo.sDato}}</b>
+                    <!-- <b *ngIf="!!modeloselpagina3">{{itemTipoVehiculo}}</b> -->
                   </ng-template>
                   <ng-template ng-notfound-tmp >
                     <div class="ng-option disabled">
@@ -129,7 +129,7 @@
                   [searchable]="false"
                   [clearable]="false"
                   [closeOnSelect]="true"
-                  (change)="getAnno()"
+                  (change)="selectAnioVehiculo()"
                   [(ngModel)]="annosel">
                   <ng-template ng-notfound-tmp >
                       <div class="ng-option disabled">
@@ -160,7 +160,7 @@
                   [searchable]="false" 
                   [clearable]="false"
                   [closeOnSelect]="true"
-                  (change)="getMarca()"
+                  (change)="selectMarca()"
                   [(ngModel)]="marcasel" [ngbTooltip]="marcsel" tooltipClass="my-custom-class">
                   <ng-template #marcsel >
                     <b *ngIf="!!marcaselpagina3==false">{{marcasel.sDato}}</b>
@@ -196,7 +196,7 @@
                   [searchable]="true" 
                   [clearable]="false"
                   [closeOnSelect]="true"
-                  (change)="getDescripcion()"
+                  (change)="selectDescripcion()"
                   [(ngModel)]="descripsel" [ngbTooltip]="descsel" tooltipClass="my-custom-class">
                   <ng-template #descsel>
                     <b  *ngIf="!!descripselpagina3==false">{{descripsel.sDato}}</b>

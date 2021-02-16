@@ -5,11 +5,12 @@
             <label id="al"> Cotiza tu seguro auto <label id="facyseg">fácil y seguro</label> </label> 
         </div>
     </div>
-    <app-infovehiculo 
-    (gM)="a($event)" 
-    (gA)="b($event)"
-    (gMarca)="c($event)"
-    (gDesc)="d($event)"></app-infovehiculo>
+    <app-infovehiculo
+    (emitTipoVehiculo)="handlerVehiculoTipo($event)"
+    (emitAnioVehiculo)="handlerVehiculoAnio($event)"
+    (emitMarcaVehiculo)="handlerVehiculoMarca($event)"
+    (emitDescripcion)="handlerVehiculoDescripcion($event)">
+  </app-infovehiculo>
     <app-infoasegurado
     [reso]="size" 
     (pasad)="f($event)"
