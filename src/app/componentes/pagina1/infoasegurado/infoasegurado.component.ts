@@ -326,17 +326,94 @@ export class InfoaseguradoComponent implements OnInit {
   }
   //Función teléfono
   onTelefono(event){
-    var regt=/[\s]?((\d{3}[\*\.\-\s]){3}|(\d{2}[\*\.\-\s]){4}|(\d{4}[\*\.\-\s]){2})|\d{10}/
-    this.validot=regt.test(this.TELEFONO)
-    if (this.TELEFONO.length < 10 || this.TELEFONO==''|| !this.validot) {
+    if (this.TELEFONO!=''&&this.TELEFONO.length == 10 ) {
+      var regt1=/[1]{4}/
+      var regt2=/[2]{4}/
+      var regt3=/[3]{4}/
+      var regt4=/[4]{4}/
+      var regt5=/[5]{4}/
+      var regt6=/[6]{4}/
+      var regt7=/[7]{4}/
+      var regt8=/[8]{4}/
+      var regt9=/[9]{4}/
+      var regt0=/[0]{4}/
+    this.validot=regt1.test(this.TELEFONO)
+    if (this.validot) {
       this.existeT=false
       this.pastel.emit('')
     } else {
-        if (this.validot && this.TELEFONO!='') {
-      this.existeT=true;
-      this.pastel.emit(this.TELEFONO)
+      this.validot=regt2.test(this.TELEFONO)
+        if (this.validot) {
+          this.existeT=false
+          this.pastel.emit('')
+        } else {
+    this.validot=regt3.test(this.TELEFONO)
+        if (this.validot) {
+            this.existeT=false
+            this.pastel.emit('')
+        } else {
+    this.validot=regt4.test(this.TELEFONO)
+        if (this.validot) {
+      this.existeT=false
+      this.pastel.emit('')
+      } else {
+    this.validot=regt5.test(this.TELEFONO)
+    if (this.validot) {
+      this.existeT=false
+      this.pastel.emit('')
+      } else {
+    this.validot=regt6.test(this.TELEFONO)
+    if (this.validot) {
+      this.existeT=false
+      this.pastel.emit('')
+      } else {
+    this.validot=regt7.test(this.TELEFONO)
+    if (this.validot) {
+      this.existeT=false
+      this.pastel.emit('')
+      } else {
+    this.validot=regt8.test(this.TELEFONO)
+    if (this.validot) {
+      this.existeT=false
+      this.pastel.emit('')
+      } else {
+    this.validot=regt9.test(this.TELEFONO)
+    if (this.validot) {
+      this.existeT=false
+      this.pastel.emit('')
+      } else {
+    this.validot=regt0.test(this.TELEFONO)
+    if (this.validot) {
+      this.existeT=false
+      this.pastel.emit('')
+      } else {
+        this.existeT=true;
+        this.pastel.emit(this.TELEFONO)
+             }   
+              }
+            }
+          }      
+              }
+            }
+          }
+        }
       }
     }
+    } else {
+      this.existeT=false
+      this.pastel.emit('')
+    }
+    // var regt=/[\s]?((\d{3}[\*\.\-\s]){3}|(\d{2}[\*\.\-\s]){4}|(\d{4}[\*\.\-\s]){2})|\d{10}/
+    // this.validot=regt.test(this.TELEFONO)
+    // if (this.TELEFONO.length < 10 || this.TELEFONO==''|| !this.validot) {
+    //   this.existeT=false
+    //   this.pastel.emit('')
+    // } else {
+    //     if (this.validot && this.TELEFONO!='') {
+    //   this.existeT=true;
+    //   this.pastel.emit(this.TELEFONO)
+    //   }
+    // }
   }
 //Función codigo postal
   onCodigoPostalKeyUp(event) {

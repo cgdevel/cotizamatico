@@ -89,11 +89,11 @@
             </svg>
             Teléfono
           </label>
-          <input maxlength="10" type="text" class="form-control" id="telefono" style="margin-top: 5px;" autocomplete="off" [disabled]="disabled==false" [(ngModel)]="TELEFONO" onkeypress="return(event.charCode>=48 && 57>=event.charCode)" (change)="onTelefono($event)"  min="1" [ngClass]="{'Existe' : validot, 'NoExiste': !validot}">
-          <ngb-alert  [dismissible]="false" type="danger" *ngIf="!validot && TELEFONO!=''">
+          <input maxlength="10" type="text" class="form-control" id="telefono" style="margin-top: 5px;" autocomplete="off" [disabled]="disabled==false" [(ngModel)]="TELEFONO" onkeypress="return(event.charCode>=48 && 57>=event.charCode)" (change)="onTelefono($event)"  min="1" [ngClass]="{'Existe' : existeT, 'NoExiste': !existeT}">
+          <ngb-alert  [dismissible]="false" type="danger" *ngIf="existeT==false && TELEFONO!=''">
             Teléfono no válido, ingrese otro
           </ngb-alert>
-          <ngb-alert  [dismissible]="false" type="success" *ngIf="validot" [hidden]="disabled==false">
+          <ngb-alert  [dismissible]="false" type="success" *ngIf="existeT==true" [hidden]="disabled==false">
             Teléfono válido
           </ngb-alert>
         </div>
