@@ -1,5 +1,5 @@
 <div class="container mw-90"  [ngClass]="{columna :  !noedites}">
-    <app-infovehiculo  [modeloselpagina3]="vermodelo" [annoselpagina3]="veranno" [marcaselpagina3]="vermarca" [descripselpagina3]="verdescripcion" [modelosel]="vermodelo" [disabled]="noedites" [annosel]="veranno" [marcasel]="vermarca" [descripsel]="verdescripcion"></app-infovehiculo>
+    <app-infovehiculo  [disabled]="noedites" [itemTipoVehiculo]="vermodelo" [itemAnioVehiculo]="veranno" [itemMarcaVehiculo]="vermarca" [itemDescripcionVehiculo]="verdescripcion"></app-infovehiculo>
     <app-infoasegurado [existe]="true" [validot]="true" [valido]="true" [validonom]="true" [soymujer]="boostatemu" [disabled]="noedites" [soyhombre]="boostatehom" [soyempresa]="boostateemp" [NOMBRE]="nombre" [EMAIL]="email" [TELEFONO]="telefono" [codigoPostal]="codigopostal" [selectedmes]="mesnaci" [selectedyear]="yearnaci" [selecteddia]="dianaci"></app-infoasegurado>
 </div>
 <div class="container mw-90">

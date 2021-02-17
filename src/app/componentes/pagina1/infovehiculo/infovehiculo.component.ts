@@ -16,10 +16,6 @@ export class InfovehiculoComponent implements OnInit {
   @Output() emitMarcaVehiculo = new EventEmitter<CatalogoModel>();
   @Output() emitDescripcion = new EventEmitter<CatalogoModel>();
 
-  @Input() modelosel: CatalogoModel;
-  @Input() annosel: CatalogoModel;
-  @Input() marcasel: CatalogoModel;
-  @Input() descripsel: CatalogoModel;
   @Input() showchiquito: boolean;
 
   @Input() disabled: boolean;
@@ -29,16 +25,16 @@ export class InfovehiculoComponent implements OnInit {
   @Input() descripselpagina3: CatalogoModel;
 
   catTipoVehiculo: CatalogoModel[];
-  itemTipoVehiculo: CatalogoModel;
+  @Input() itemTipoVehiculo: CatalogoModel;
 
   catAnioVehiculo: CatalogoModel[];
-  itemAnioVehiculo: CatalogoModel;
+  @Input() itemAnioVehiculo: CatalogoModel;
 
   catMarcaVehiculo: CatalogoModel[];
-  itemMarcaVehiculo: CatalogoModel;
+  @Input() itemMarcaVehiculo: CatalogoModel;
 
   catDescripcionVehiculo: CatalogoModel[];
-  itemDescripcionVehiculo: CatalogoModel;
+  @Input() itemDescripcionVehiculo: CatalogoModel;
 
   annos: CatalogoModel[];
   modelos: CatalogoModel[];
@@ -100,9 +96,7 @@ export class InfovehiculoComponent implements OnInit {
     this.itemMarcaVehiculo = this.itemVacio;
     this.catDescripcionVehiculo = [];
     this.itemDescripcionVehiculo = this.itemVacio;
-
     this.emitTipoVehiculo.emit(this.itemTipoVehiculo);
-
     this.infovehiculoService
       .getCatalogos({
         iMarca: 0,
@@ -132,9 +126,7 @@ export class InfovehiculoComponent implements OnInit {
     this.itemMarcaVehiculo = this.itemVacio;
     this.catDescripcionVehiculo = [];
     this.itemDescripcionVehiculo = this.itemVacio;
-
     this.emitAnioVehiculo.emit(this.itemAnioVehiculo);
-
     this.infovehiculoService
       .getCatalogos({
         iMarca: 0,

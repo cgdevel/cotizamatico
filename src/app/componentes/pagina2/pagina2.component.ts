@@ -329,9 +329,13 @@ handlerVehiculoDescripcion(e) {
     
     this.width=history.state.sizesel
     this.vermodelo=history.state.modsel
-    this.vermarca=history.state.marsel 
-    this.verdescripcion=history.state.descsel 
+    console.log(this.vermodelo)
     this.veranno=history.state.annosel
+    console.log(this.veranno)
+    this.vermarca=history.state.marsel
+    console.log(this.vermarca)
+    this.verdescripcion=history.state.descsel
+    console.log(this.verdescripcion)
     this.nombre=history.state.nomsel
     this.email=history.state.emsel
     this.telefono=history.state.telsel

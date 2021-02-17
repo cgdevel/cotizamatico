@@ -122,7 +122,7 @@
                   id="modelsel"
                   [disabled]="disabled==false" 
                   [ngStyle]="{'width': !showchiquito ? ' 145px' : ( showchiquito ? '200px' : null) }"
-                  [items]="annos"        
+                  [items]="catAnioVehiculo"        
                   bindLabel="sDato"
                   placeholder="Año"
                   appendTo="body"
@@ -130,13 +130,13 @@
                   [clearable]="false"
                   [closeOnSelect]="true"
                   (change)="selectAnioVehiculo()"
-                  [(ngModel)]="annosel">
+                  [(ngModel)]="itemAnioVehiculo">
                   <ng-template ng-notfound-tmp >
                       <div class="ng-option disabled">
                           No hay años que mostrar
                       </div>
                   </ng-template>
-                  <ng-option  ng-options="item as item.sLlave for item.sDato in annos">
+                  <ng-option  ng-options="item as item.sLlave for item.sDato in catAnioVehiculo">
                       {{item}}
                   </ng-option>
                 </ng-select>
@@ -153,7 +153,7 @@
                   id="modelsel"
                   [disabled]="disabled==false" 
                   [ngStyle]="{'width': !showchiquito ? ' 185px' : ( showchiquito ? '200px' : null) }"  
-                  [items]="marcas"        
+                  [items]="catMarcaVehiculo"        
                   bindLabel="sDato"
                   placeholder="Marca"
                   appendTo="body"
@@ -161,12 +161,12 @@
                   [clearable]="false"
                   [closeOnSelect]="true"
                   (change)="selectMarca()"
-                  [(ngModel)]="marcasel" [ngbTooltip]="marcsel" tooltipClass="my-custom-class">
+                  [(ngModel)]="itemMarcaVehiculo" [ngbTooltip]="marcsel" tooltipClass="my-custom-class">
                   <ng-template #marcsel >
-                    <b *ngIf="!!marcaselpagina3==false">{{marcasel.sDato}}</b>
-                    <b *ngIf="!!marcaselpagina3">{{marcaselpagina3}}</b>
+                    <b>{{itemMarcaVehiculo.sDato}}</b>
+                    <!-- <b *ngIf="!!marcaselpagina3">{{marcaselpagina3}}</b> -->
                   </ng-template>
-                  <ng-option  ng-options="item as item.sLlave for item.sDato in marcas">
+                  <ng-option  ng-options="item as item.sLlave for item.sDato in catMarcaVehiculo">
                       {{item}}
                   </ng-option>
                   <ng-template ng-notfound-tmp >
@@ -189,7 +189,7 @@
                   id="modelsel"
                   [disabled]="disabled==false" 
                   [ngStyle]="{'width': !showchiquito ? ' 302px' : ( showchiquito ? '200px' : null) }"
-                  [items]="descripciones"        
+                  [items]="catDescripcionVehiculo"        
                   bindLabel="sDato"
                   placeholder="Descripción"
                   appendTo="body"
@@ -197,10 +197,10 @@
                   [clearable]="false"
                   [closeOnSelect]="true"
                   (change)="selectDescripcion()"
-                  [(ngModel)]="descripsel" [ngbTooltip]="descsel" tooltipClass="my-custom-class">
+                  [(ngModel)]="itemDescripcionVehiculo" [ngbTooltip]="descsel" tooltipClass="my-custom-class">
                   <ng-template #descsel>
-                    <b  *ngIf="!!descripselpagina3==false">{{descripsel.sDato}}</b>
-                    <b *ngIf="!!descripselpagina3">{{ descripselpagina3 }}</b>
+                    <b>{{itemDescripcionVehiculo.sDato}}</b>
+                    <!-- <b *ngIf="!!descripselpagina3">{{ descripselpagina3 }}</b> -->
                   </ng-template>
                   <ng-option  ng-options="item as item.sLlave for item.sDato in descripciones">
                       {{item}}
