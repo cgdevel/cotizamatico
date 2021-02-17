@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
 import { NgModule } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
 import {Pagina1Component } from  'src/app/componentes/pagina1/pagina1.component'
@@ -14,10 +15,10 @@ export class Pagina2Component implements OnInit {
   //VARIABLE DE LA QUE DEPENDE EDITAR DATOS
   show: boolean =false;
   //Variables a las que asigno datos de pagina1 
-  vermodelo: any;
-  vermarca: any;
-  verdescripcion: any;
-  veranno: any;
+  vermodelo: CatalogoModel ;
+  vermarca: CatalogoModel ;
+  verdescripcion: CatalogoModel ;
+  veranno: CatalogoModel ;
   nombre: any;
   email: any;
   telefono: any;
@@ -291,10 +292,10 @@ muacco:number=0
   // console.log("Informacion vehículo editada en página dos")
   // console.log(this.modelo+' '+this.anno+' '+this.marca+' '+this.descripcion)
   // console.log("Informacion vehículo actualizada")
-  this.vermodelo=this.modelo
-  this.vermarca=this.marca
-  this.verdescripcion=this.descripcion
-  this.veranno=this.anno
+  this.vermodelo.sDato=this.modelo
+  this.vermarca.sDato=this.marca
+  this.verdescripcion.sDato=this.descripcion
+  this.veranno.sDato=this.anno
   // console.log(this.vermodelo+' '+this.vermarca+' '+this.verdescripcion+' '+this.veranno)
  }
  //VARIABLES PARA EVENT EMITTER

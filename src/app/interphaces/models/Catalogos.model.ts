@@ -1,4 +1,4 @@
 export interface CatalogoModel {
-  sLlave: string;
-  sDato: number;
+  sLlave: number;
+  sDato: string;
 }

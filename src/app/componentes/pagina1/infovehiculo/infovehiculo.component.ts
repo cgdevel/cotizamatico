@@ -19,23 +19,19 @@ export class InfovehiculoComponent implements OnInit {
   @Input() showchiquito: boolean;
 
   @Input() disabled: boolean;
-  @Input() modeloselpagina3: CatalogoModel;
-  @Input() annoselpagina3: CatalogoModel;
-  @Input() marcaselpagina3: CatalogoModel;
-  @Input() descripselpagina3: CatalogoModel;
-
-  catTipoVehiculo: CatalogoModel[];
+  @Input() modeloselpagina3: any;
+  @Input() annoselpagina3:any;
+  @Input() marcaselpagina3: any;
+  @Input() descripselpagina3: any;
   @Input() itemTipoVehiculo: CatalogoModel;
-
-  catAnioVehiculo: CatalogoModel[];
   @Input() itemAnioVehiculo: CatalogoModel;
-
-  catMarcaVehiculo: CatalogoModel[];
   @Input() itemMarcaVehiculo: CatalogoModel;
-
-  catDescripcionVehiculo: CatalogoModel[];
   @Input() itemDescripcionVehiculo: CatalogoModel;
 
+  catTipoVehiculo: CatalogoModel[];
+  catAnioVehiculo: CatalogoModel[];
+  catMarcaVehiculo: CatalogoModel[];
+  catDescripcionVehiculo: CatalogoModel[];
   annos: CatalogoModel[];
   modelos: CatalogoModel[];
   marcas: CatalogoModel[];
@@ -44,13 +40,10 @@ export class InfovehiculoComponent implements OnInit {
   itemVacio: CatalogoModel;
 
   item: string;
-  modelo: string; // Iniciamos
+  itemtipo:string;
   vermodelo: string;
-  anno: string; // Iniciamos
   veranno: string;
-  marca: string; // Iniciamos
   vermarca: string;
-  descripcion: string; // Iniciamos
   verdescripcion: string;
 
   ngOnInit(): void {
@@ -89,7 +82,7 @@ export class InfovehiculoComponent implements OnInit {
       );
   }
 
-  selectTipoVehiculo() {
+ selectTipoVehiculo() {
     this.catAnioVehiculo = [];
     this.itemAnioVehiculo = this.itemVacio;
     this.catMarcaVehiculo = [];
