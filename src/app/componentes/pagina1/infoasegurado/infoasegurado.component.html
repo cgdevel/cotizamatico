@@ -90,8 +90,11 @@
             Teléfono
           </label>
           <input maxlength="10" type="text" class="form-control" id="telefono" style="margin-top: 5px;" autocomplete="off" [disabled]="disabled==false" [(ngModel)]="TELEFONO" onkeypress="return(event.charCode>=48 && 57>=event.charCode)" (change)="onTelefono($event)"  min="1" [ngClass]="{'Existe' : existeT, 'NoExiste': !existeT}">
-          <ngb-alert  [dismissible]="false" type="danger" *ngIf="existeT==false && TELEFONO!=''">
+          <ngb-alert  [dismissible]="false" type="danger" *ngIf="existeT==false && TELEFONO!=''&&TELEFONO.length==10">
             Teléfono no válido, ingrese otro
+          </ngb-alert>
+          <ngb-alert  [dismissible]="false" type="danger" *ngIf="TELEFONO.length<10 && TELEFONO!=''">
+            El número debe tener diez dígitos
           </ngb-alert>
           <ngb-alert  [dismissible]="false" type="success" *ngIf="existeT==true" [hidden]="disabled==false">
             Teléfono válido

@@ -85,7 +85,7 @@ export class InfoaseguradoComponent implements OnInit {
     annosel:string='';
   //ESTAS VARIABLES SON PARA LA VALIDACION (NO VACIO)
   @Input() existe:boolean; 
-    existeT: boolean;
+  @Input()  existeT: boolean;
     vacemial: boolean;
     vacnom: boolean;
     // valores para código postal
