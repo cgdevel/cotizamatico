@@ -59,7 +59,7 @@
           </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-12">
+            <div class="col-md-4 col-12 mb-4">
               <!-- -md-4 col-sm-12 -->
               <p class="m-0 mb-2">Soy: </p>
                 <div class="row d-flex justify-content-between">
@@ -67,7 +67,7 @@
                   <!-- [disabled]="this.soymujer || this.soyempresa " -->
                   <!-- [disabled]="this.soyhombre || this.soymujer " -->
                   <div class="col-4 d-flex justify-content-center">
-                    <button class="m-0 soy btn" style="display: block;" (click)=" Soymujer()" >
+                    <button class="m-0 btn" style="display: block;" (click)=" Soymujer()" >
                       <svg id="logc" [ngClass]="{'Noselectap' : !soymujer, 'Selectap':soymujer}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 66.72 66.72" width="34px" height="34px" >
                         <defs>
                           <linearGradient id="Degradado_sin_nombre_6" x1="33.36" y1="66.72" x2="33.36" gradientUnits="userSpaceOnUse">
@@ -85,7 +85,7 @@
                     </button>
                   </div>
                   <div class="col-4 d-flex justify-content-center">
-                      <button class="m-0 soy btn" style="display: block;"  (click)=" Soyhombre()" >
+                      <button class="m-0 btn" style="display: block;"  (click)=" Soyhombre()" >
                         <svg  id="logc" width="34px" heigth="34px" [ngClass]="{'Noselectap' : ! soyhombre, 'Selectap':soyhombre }" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 66.72 66.72">
                           <defs>
                             <linearGradient id="Degradado_sin_nombre_6" x1="33.36" y1="66.72" x2="33.36" gradientUnits="userSpaceOnUse">
@@ -103,7 +103,7 @@
                       </button>
                   </div>
                   <div class="col-4 d-flex justify-content-center">
-                      <button class="m-0 soy btn" style="display: block;"  (click)=" Soyempresa()" >
+                      <button class="m-0 btn" style="display: block;"  (click)=" Soyempresa()" >
                         <svg  id="logc" [ngClass]="{'Noselectap' : ! soyempresa, 'Selectap':soyempresa }" width="34px" height="34px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60.44 78.55">
                           <defs>
                             <linearGradient id="Degradado_sin_nombre_6" x1="30.22" y1="78.55" x2="30.22" gradientUnits="userSpaceOnUse">
@@ -122,16 +122,12 @@
                   </div>
                 </div>
             </div>
-            <div class="form-group col-md-5 col-sm-5">
-              <div class="container" style="display: inline;">
-                <div class="row">
-                  Mi fecha de nacimiento es:
-                </div>
+            <div class="form-group col-md-4 col-sm-5">
+              <p class="m-0 mb-2">Fecha de nacimiento</p>
                 <div class="row"  >
                   <!-- style="justify-content: space-evenly;padding-right: 36px;padding-left: 0px;margin-right: 20px;margin-left: -86px;" -->
-                  <div class="col-md-4 col-sm-12 " >
+                  <div class="col-md-4 col-sm-12 mb-3" >
                     <!-- style="margin-left: -15px;" -->
-                   <div class="container">
                     <!-- <div class="row">
                       <div class="dropdown">
                         <button class="btn nacimiento"  type="button" id="btndia" data-toggle="dropdown" aria-haspopup="true"  >
@@ -144,9 +140,8 @@
                         </div>
                         </div>
                     </div> -->
-                    <div class="row">
+
                       <ng-select
-                        style="width: 94px;"
                         bindLabel="name"
                         placeholder="Día"
                         appendTo="body"
@@ -164,13 +159,10 @@
                               No hay días que mostrar
                           </div>
                         </ng-template>
-
                       </ng-select>
-
-                    </div>
-                   </div>
                   </div>
-                  <div class="col-md-4 col-sm-12" >
+
+                  <div class="col-md-4 col-sm-12 mb-3" >
                   <!-- style="padding-left: 0px;" -->
                    <!-- <div class="row">
                       <div class="dropdown">
@@ -185,9 +177,7 @@
                       </div>
                     </div>
                    </div> -->
-                   <div class="row">
                       <ng-select
-                            style="width: 142px;"
                             bindLabel="name"
                             placeholder="Mes"
                             appendTo="body"
@@ -206,11 +196,10 @@
                               </div>
                             </ng-template>
                     </ng-select>
-                   </div>
                   </div>
-                  <div class="col-md-4 col-sm-12" >
+
+                  <div class="col-md-4 col-sm-12 mb-3" >
                     <!-- style="margin-left: 45px;" -->
-                    <div class="container">
                       <!-- <div class="row">
                         <div class="dropdown">
                           <button class="btn nacimiento"  type="button" id="btnnacann" data-toggle="dropdown" aria-haspopup="true">
@@ -224,9 +213,7 @@
                           </div>
                         </div>
                       </div> -->
-                      <div class="row">
                         <ng-select
-                              style="width: 94px;"
                               bindLabel="name"
                               placeholder="Año"
                               appendTo="body"
@@ -244,20 +231,15 @@
                                 </div>
                               </ng-template>
                       </ng-select>
-                     </div>
-                    </div>
                   </div>
 
                 </div>
-              </div>
+              
 
             </div>
-            <div class="form-group col-md-3" style="letter-spacing: -0.023em;margin-left: 0px;padding-left: 35px;padding-right: 28px;">
+            <div class="form-group col-md-4">
               <!-- -md-4 col-sm-12 -->
-                <div class="container" style="display: inline;">
-                  <div class="row"  >
-                    Mi código postal es:
-                  </div>
+                  <p class="m-0 mb-2">Código postal: </p>
                   <!-- <div class="row">
                     <div class="dropdown">
                       <button class="btn nacimiento"  type="button" id="btncodigopostal" data-toggle="dropdown" aria-haspopup="true" style="background-size: 5px 5px, 5px 5px, 2.5em 4.5em !important;">
@@ -271,7 +253,7 @@
                       </div>
                     </div>
                   </div> -->
-                  <div class="row">
+                  
                     <input type="text" class="form-control" (change)="onCodigoPostalKeyUp($event)" onkeypress="return(event.charCode >= 48 && event.charCode <= 57)" maxlength="5" [(ngModel)]='codigoPostal' [ngClass]="{'Existe':existe,'NoExiste':!existe||codigoPostal==''}">
                     <ngb-alert  [dismissible]="false" type="danger" *ngIf="codigoPostal==''">
                       Llene código postal
@@ -285,9 +267,7 @@
                     <ngb-alert  [dismissible]="false" type="success" *ngIf="existe && codigoPostal!=''&& codigoPostal.length==5">
                       Código postal válido
                     </ngb-alert>
-                  </div>
-
-                </div>
+                  
             </div>
         </div>
 
