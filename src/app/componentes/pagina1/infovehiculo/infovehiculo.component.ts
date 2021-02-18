@@ -92,6 +92,7 @@ export class InfovehiculoComponent implements OnInit {
     this.itemMarcaVehiculo = this.itemVacio;
     this.catDescripcionVehiculo = [];
     this.itemDescripcionVehiculo = this.itemVacio;
+    this.modeloselpagina2 = this.itemVacio;
     this.marcaselpagina2 = this.itemVacio;
     this.annoselpagina2 = this.itemVacio;
     this.descripselpagina2 = this.itemVacio;
