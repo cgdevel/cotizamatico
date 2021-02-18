@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { element } from 'protractor';
 import {InfovehiculoService} from '../../../app/servicios/infovehiculo.service'
+import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
+
 @Component({
   selector: 'app-pagina3',
   templateUrl: './pagina3.component.html',
@@ -16,10 +18,10 @@ export class Pagina3Component implements OnInit {
  noedites:boolean;
  item:string='';
  //Variables a las que asigno datos de pagina1 
- vermodelo: any;
- vermarca: any;
- verdescripcion: any;
- veranno: any;
+ vermodelo: CatalogoModel ;
+ vermarca: CatalogoModel ;
+ verdescripcion: CatalogoModel ;
+ veranno: CatalogoModel ;
  nombre: any;
  email: any;
  telefono: any;

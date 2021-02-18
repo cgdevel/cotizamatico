@@ -293,8 +293,8 @@
                 </div>
             </div>
         </div>
-    </div>
-      <div class="row">
+    </div>  
+    <div class="row">
         <div class="col-md-4 col-sm-12">
             <div class="card" id="estesi">
                 <div class="card-body">
@@ -377,7 +377,7 @@
                         </button>
                     </div>
                   </div> 
-                  <app-infovehiculo (emitTipoVehiculo)="handlerVehiculoTipo($event)"  (emitAnioVehiculo)="handlerVehiculoAnio($event)" (emitMarcaVehiculo)="handlerVehiculoMarca($event)" (emitDescripcion)="handlerVehiculoDescripcion($event)"   *ngIf="show" [showchiquito]="show"></app-infovehiculo>
+                  <app-infovehiculo (emitTipoVehiculo)="handlerVehiculoTipo($event)"  (emitAnioVehiculo)="handlerVehiculoAnio($event)" (emitMarcaVehiculo)="handlerVehiculoMarca($event)" (emitDescripcion)="handlerVehiculoDescripcion($event)"   *ngIf="show" [showchiquito]="show" [modeloselpagina2]="vermodelo" [annoselpagina2]="veranno" [marcaselpagina2]="vermarca" [descripselpagina2]="verdescripcion" ></app-infovehiculo>
                   <!-- <app-infoasegurado *ngIf="show" [showchiquito]="show" [soymujer]="boostatemu" [soyhombre]="boostatehom" [soyempresa]="boostateemp"
                   [NOMBRE]="nombre" [EMAIL]="email" [TELEFONO]="telefono" [codigoPostal]="codigopostal" [selectedmes]="mesnaci" [selectedyear]="yearnaci" [selecteddia]="dianaci" ></app-infoasegurado>               -->
                 </div>
@@ -960,7 +960,6 @@
               </div>
         </div>
     </div>
-    
 </div>
     
 

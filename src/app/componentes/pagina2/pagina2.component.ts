@@ -292,17 +292,17 @@ muacco:number=0
   // console.log("Informacion vehículo editada en página dos")
   // console.log(this.modelo+' '+this.anno+' '+this.marca+' '+this.descripcion)
   // console.log("Informacion vehículo actualizada")
-  this.vermodelo.sDato=this.modelo
-  this.vermarca.sDato=this.marca
-  this.verdescripcion.sDato=this.descripcion
-  this.veranno.sDato=this.anno
+  this.vermodelo.sDato=this.modelo.sDato
+  this.vermarca.sDato=this.marca.sDato
+  this.verdescripcion.sDato=this.descripcion.sDato
+  this.veranno.sDato=this.anno.sDato
   // console.log(this.vermodelo+' '+this.vermarca+' '+this.verdescripcion+' '+this.veranno)
  }
  //VARIABLES PARA EVENT EMITTER
- modelo:string='';
- marca:string='';
- descripcion:string='';
- anno:string='';
+ modelo: CatalogoModel;
+ marca: CatalogoModel;
+ descripcion: CatalogoModel;
+ anno: CatalogoModel;
  //FUNCIONES EVENT EMITTER DE INFOVEHICULO
  handlerVehiculoTipo(e) {
   // console.log(e);

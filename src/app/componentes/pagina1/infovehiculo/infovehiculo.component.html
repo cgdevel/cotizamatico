@@ -95,13 +95,18 @@
                   [clearable]="false"
                   [closeOnSelect]="true"
                   (change)="selectTipoVehiculo()"
-                  [(ngModel)]="itemTipoVehiculo" [ngbTooltip]="modsel" tooltipClass="my-custom-class">
+                  [(ngModel)]="!!modeloselpagina3 ? 
+                                modeloselpagina3: 
+                                !! modeloselpagina2 ? 
+                                modeloselpagina2 
+                                : itemTipoVehiculo " [ngbTooltip]="modsel" tooltipClass="my-custom-class">
                   <ng-option ng-options="item as item.sLlave for item.sDato in catTipoVehiculo">
                       {{item}}
                   </ng-option>
                   <ng-template #modsel>
-                    <b>{{itemTipoVehiculo.sDato}}</b>
-                    <!-- <b *ngIf="!!modeloselpagina3">{{itemTipoVehiculo}}</b> -->
+                    <b *ngIf="!!itemTipoVehiculo">{{itemTipoVehiculo.sDato}}</b>
+                    <b *ngIf="!!modeloselpagina3">{{modeloselpagina3.sDato}}</b>
+                    <b *ngIf="!!modeloselpagina2">{{modeloselpagina2.sDato}}</b>
                   </ng-template>
                   <ng-template ng-notfound-tmp >
                     <div class="ng-option disabled">
@@ -130,7 +135,11 @@
                   [clearable]="false"
                   [closeOnSelect]="true"
                   (change)="selectAnioVehiculo()"
-                  [(ngModel)]="itemAnioVehiculo">
+                  [(ngModel)]="!! annoselpagina3? 
+                              annoselpagina3: 
+                              !! annoselpagina2 ? 
+                              annoselpagina2 
+                              : itemAnioVehiculo">
                   <ng-template ng-notfound-tmp >
                       <div class="ng-option disabled">
                           No hay años que mostrar
@@ -161,10 +170,15 @@
                   [clearable]="false"
                   [closeOnSelect]="true"
                   (change)="selectMarca()"
-                  [(ngModel)]="itemMarcaVehiculo" [ngbTooltip]="marcsel" tooltipClass="my-custom-class">
+                  [(ngModel)]="!! marcaselpagina3? 
+                              marcaselpagina3: 
+                              !! marcaselpagina2 ? 
+                              marcaselpagina2 
+                              : itemMarcaVehiculo" [ngbTooltip]="marcsel" tooltipClass="my-custom-class">
                   <ng-template #marcsel >
-                    <b>{{itemMarcaVehiculo.sDato}}</b>
-                    <!-- <b *ngIf="!!marcaselpagina3">{{marcaselpagina3}}</b> -->
+                    <b *ngIf="!!itemMarcaVehiculo">{{itemMarcaVehiculo.sDato}}</b>
+                    <b *ngIf="!!marcaselpagina3">{{marcaselpagina3.sDato}}</b>
+                    <b *ngIf="!!marcaselpagina2">{{marcaselpagina2.sDato}}</b>
                   </ng-template>
                   <ng-option  ng-options="item as item.sLlave for item.sDato in catMarcaVehiculo">
                       {{item}}
@@ -197,10 +211,15 @@
                   [clearable]="false"
                   [closeOnSelect]="true"
                   (change)="selectDescripcion()"
-                  [(ngModel)]="itemDescripcionVehiculo" [ngbTooltip]="descsel" tooltipClass="my-custom-class">
+                  [(ngModel)]="!! descripselpagina3 ? 
+                              descripselpagina3: 
+                              !! descripselpagina2 ? 
+                              descripselpagina2 
+                              : itemDescripcionVehiculo" [ngbTooltip]="descsel" tooltipClass="my-custom-class">
                   <ng-template #descsel>
-                    <b>{{itemDescripcionVehiculo.sDato}}</b>
-                    <!-- <b *ngIf="!!descripselpagina3">{{ descripselpagina3 }}</b> -->
+                    <b  *ngIf="!!itemDescripcionVehiculo">{{itemDescripcionVehiculo.sDato}}</b>
+                    <b *ngIf="!!descripselpagina3">{{ descripselpagina3.sDato }}</b>
+                    <b *ngIf="!!descripselpagina2">{{ descripselpagina2.sDato }}</b>
                   </ng-template>
                   <ng-option  ng-options="item as item.sLlave for item.sDato in descripciones">
                       {{item}}

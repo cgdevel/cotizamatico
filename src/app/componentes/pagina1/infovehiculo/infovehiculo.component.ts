@@ -19,14 +19,14 @@ export class InfovehiculoComponent implements OnInit {
   @Input() showchiquito: boolean;
 
   @Input() disabled: boolean;
-  @Input() modeloselpagina3: any;
-  @Input() annoselpagina3:any;
-  @Input() marcaselpagina3: any;
-  @Input() descripselpagina3: any;
-  @Input() itemTipoVehiculo: CatalogoModel;
-  @Input() itemAnioVehiculo: CatalogoModel;
-  @Input() itemMarcaVehiculo: CatalogoModel;
-  @Input() itemDescripcionVehiculo: CatalogoModel;
+  @Input() modeloselpagina3: CatalogoModel ;
+  @Input() annoselpagina3:CatalogoModel ;
+  @Input() marcaselpagina3: CatalogoModel ;
+  @Input() descripselpagina3: CatalogoModel ;
+  @Input() modeloselpagina2: CatalogoModel ;
+  @Input() annoselpagina2:CatalogoModel ;
+  @Input() marcaselpagina2: CatalogoModel ;
+  @Input() descripselpagina2: CatalogoModel ;
 
   catTipoVehiculo: CatalogoModel[];
   catAnioVehiculo: CatalogoModel[];
@@ -38,7 +38,10 @@ export class InfovehiculoComponent implements OnInit {
   descripciones: CatalogoModel[];
 
   itemVacio: CatalogoModel;
-
+  itemTipoVehiculo: CatalogoModel;
+  itemAnioVehiculo: CatalogoModel;
+  itemMarcaVehiculo: CatalogoModel;
+  itemDescripcionVehiculo: CatalogoModel;
   item: string;
   itemtipo:string;
   vermodelo: string;
