@@ -1,69 +1,65 @@
-#logoempresa{
-    width: 50px;
-    height: 50px;
-    margin-left: 55px;
-    margin-top: 13px;
+#logoempresa {
+  width: 45px;
+  height: 45px;
 }
-#encu{
-    font-family: 'Exo 2', sans-serif;
-    font: 300;
-    font-weight: bolder;
-    color: #FF6963;
+#encu {
+  font-family: "Exo 2", sans-serif;
+  font: 300;
+  font-weight: bolder;
+  color: #ff6963;
 }
-#telcorreo{
-  font-family: 'Exo 2', sans-serif !important;
-  font: 300!important;
-  font-weight: bolder!important;
+#telcorreo {
+  font-family: "Exo 2", sans-serif !important;
+  font: 300 !important;
+  font-weight: bolder !important;
 }
-#nom{
-    font-family: 'Exo 2', sans-serif;
-    font: 300;
-    font-size: 20px;
-  
-  }
-  #ase{
-    font-family: 'Exo 2', sans-serif;
-      font: 400;
-      font-style: italic;
-      font-size: 25px;
-      /* padding-left: 10px; */
-    font-weight: bolder;
-  }
-  hr{
-    background-color:chocolate;
-    height: 2px; 
+#nom {
+  font-family: "Exo 2", sans-serif;
+  font: 300;
+  font-size: 18px;
+  margin-bottom: -6px !important;
+}
+#asesor {
+  text-transform: uppercase;
+  font-family: "Exo 2", sans-serif;
+  font: 400;
+  font-style: italic;
+  font-weight: bolder;
+  color: #ff6666;
+  font-size: 20px;
+}
+hr {
+  background-color: chocolate;
+  height: 2px;
 }
 
 .mlef {
-  margin-left: .5rem !important;
+  margin-left: 0.5rem !important;
 }
 .mrig {
-  margin-right: .5rem !important;
+  margin-right: 0.5rem !important;
 }
 
+#carro {
+  width: 250px;
+}
 
 @media (max-width: 576px) {
-  #carro{
-    width: 100% !important;
-    margin-left: 0px !important;
-  }
-  #logoempresa{
-        margin-top: 1px!important;
-} 
-  #nom{
-    margin-bottom: -6px!important;
-    font-size: 20px!important;
-  }
-  #ase{
-    font-size: 14px!important;
-}
-  #logoempresa{
-    margin-left: 19px;
-    margin-top: 44px;
-}
-  .correoc{
-    align-items: center; 
+  .correoc {
+    align-items: center;
     justify-content: left !important;
     margin-left: 10px;
   }
- }
+
+  #asesor {
+    font-size: 16px;
+  }
+}
+
+p {
+  font-family: "Exo 2", sans-serif;
+}
+
+header {
+  border-bottom: 2px solid #ff6963;
+}

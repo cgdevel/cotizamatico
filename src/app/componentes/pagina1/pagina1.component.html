@@ -1,8 +1,10 @@
 <!-- <p>pagina1 works!</p> -->
-<div class="container mw-90 mb-5 pb-5">
+<div class="container mw-90">
   <div class="row text-center">
-    <div class="col-12 pt-4 pb-1">
-      <label id="al"> Cotiza tu seguro auto <label id="facyseg">fácil y seguro</label> </label>
+    <div class="col-12 py-3">
+      <label id="al" class="mb-0">
+        Cotiza tu seguro de auto <label id="facyseg">fácil y seguro</label>
+      </label>
     </div>
   </div>
 
@@ -10,7 +12,8 @@
     (emitTipoVehiculo)="handlerVehiculoTipo($event)"
     (emitAnioVehiculo)="handlerVehiculoAnio($event)"
     (emitMarcaVehiculo)="handlerVehiculoMarca($event)"
-    (emitDescripcion)="handlerVehiculoDescripcion($event)">
+    (emitDescripcion)="handlerVehiculoDescripcion($event)"
+  >
   </app-infovehiculo>
 
   <app-infoasegurado
@@ -26,51 +29,93 @@
     (pasgenselho)="ho($event)"
     (pasgenho)="hom($event)"
     (pasgenselem)="em($event)"
-    (pasgenem)="emp($event)">
+    (pasgenem)="emp($event)"
+  >
   </app-infoasegurado>
 
-    <div class="row justify-content-center" *ngIf="!empboo">
-        <button id="coti" class="btn btn-primary btn-lg" [routerLink]="['/compara']" routerLinkActive="router-link-active"
-        [state]='{
-            modsel: modelo,
-            marsel:marca,
-            descsel:descripcion,
-            annosel:anno,
-            nomsel:nombre,
-            emsel:email,
-            telsel:telefono,
-            must1:statumustr,
-            muboo1:mujboo,
-            host1:statuhomstr,
-            hoboo1:homboo,
-            emst1:statuempstr,
-            emboo1:empboo,
-            cpsel:cp,
-            smsel:sm,
-            sysel:sy,
-            sdsel:sd,
-            sizesel:size }'
-            [disabled]="this.modelo==''||this.marca==''||this.descripcion==''||this.anno==''||this.nombre==''||this.email==''||this.telefono==''||this.cp==''||!(statumustr!=''&&this.sm!=''&&this.sy!=''&& this.sd!='')||!(statuhomstr!=''&&this.sm!=''&&this.sy!=''&& this.sd!='')">¡Cotizar mi auto <label id="ahora">ahora</label>!</button>
-    </div>
-    <div class="row justify-content-center" *ngIf="empboo">
-        <button id="coti" class="btn btn-primary btn-lg" [routerLink]="['/compara']" routerLinkActive="router-link-active"
-        [state]='{
-            modsel: modelo,
-            marsel:marca,
-            descsel:descripcion,
-            annosel:anno,
-            nomsel:nombre,
-            emsel:email,
-            telsel:telefono,
-            must1:statumustr,
-            muboo1:mujboo,
-            host1:statuhomstr,
-            hoboo1:homboo,
-            emst1:statuempstr,
-            emboo1:empboo,
-            cpsel:cp,
-            sizesel:size }'
-            [disabled]="this.modelo==''||this.marca==''||this.descripcion==''||this.anno==''||this.nombre==''||this.email==''||this.telefono==''||this.cp==''||statuempstr==''">¡Cotizar mi auto <label id="ahora">ahora</label>!</button>
-    </div>
-    </div>
-
+  <div class="row justify-content-center" *ngIf="!empboo">
+    <button
+      id="coti"
+      class="btn btn-primary btn-lg"
+      [routerLink]="['/compara']"
+      routerLinkActive="router-link-active"
+      [state]="{
+        modsel: modelo,
+        marsel: marca,
+        descsel: descripcion,
+        annosel: anno,
+        nomsel: nombre,
+        emsel: email,
+        telsel: telefono,
+        must1: statumustr,
+        muboo1: mujboo,
+        host1: statuhomstr,
+        hoboo1: homboo,
+        emst1: statuempstr,
+        emboo1: empboo,
+        cpsel: cp,
+        smsel: sm,
+        sysel: sy,
+        sdsel: sd,
+        sizesel: size
+      }"
+      [disabled]="
+        this.modelo == '' ||
+        this.marca == '' ||
+        this.descripcion == '' ||
+        this.anno == '' ||
+        this.nombre == '' ||
+        this.email == '' ||
+        this.telefono == '' ||
+        this.cp == '' ||
+        !(
+          statumustr != '' &&
+          this.sm != '' &&
+          this.sy != '' &&
+          this.sd != ''
+        ) ||
+        !(statuhomstr != '' && this.sm != '' && this.sy != '' && this.sd != '')
+      "
+    >
+      ¡Cotizar mi auto <label id="ahora">ahora</label>!
+    </button>
+  </div>
+  <div class="row justify-content-center" *ngIf="empboo">
+    <button
+      id="coti"
+      class="btn btn-primary btn-lg"
+      [routerLink]="['/compara']"
+      routerLinkActive="router-link-active"
+      [state]="{
+        modsel: modelo,
+        marsel: marca,
+        descsel: descripcion,
+        annosel: anno,
+        nomsel: nombre,
+        emsel: email,
+        telsel: telefono,
+        must1: statumustr,
+        muboo1: mujboo,
+        host1: statuhomstr,
+        hoboo1: homboo,
+        emst1: statuempstr,
+        emboo1: empboo,
+        cpsel: cp,
+        sizesel: size
+      }"
+      [disabled]="
+        this.modelo == '' ||
+        this.marca == '' ||
+        this.descripcion == '' ||
+        this.anno == '' ||
+        this.nombre == '' ||
+        this.email == '' ||
+        this.telefono == '' ||
+        this.cp == '' ||
+        statuempstr == ''
+      "
+    >
+      ¡Cotizar mi auto <label id="ahora">ahora</label>!
+    </button>
+  </div>
+</div>
