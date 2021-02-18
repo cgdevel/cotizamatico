@@ -11,7 +11,7 @@ import {Pagina1Component } from  'src/app/componentes/pagina1/pagina1.component'
   styleUrls: ['./pagina2.component.css']
 })
 export class Pagina2Component implements OnInit {
- 
+  aseguradora:string;
   //VARIABLE DE LA QUE DEPENDE EDITAR DATOS
   show: boolean =false;
   //Variables a las que asigno datos de pagina1 
@@ -105,6 +105,23 @@ export class Pagina2Component implements OnInit {
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
     // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
   }
+  axxa(){
+    this.aseguradora='AXXA'
+    console.log(this.aseguradora)
+    return this.aseguradora;
+  }
+qualitas(){
+  this.aseguradora='QUALITAS'
+    console.log(this.aseguradora)
+    return this.aseguradora;
+
+}
+afirme(){
+  this.aseguradora='AFIRME'
+    console.log(this.aseguradora)
+    return this.aseguradora;
+
+}
   //Valores botón descuento
   descALTO=false;
   descMEDIO=false;

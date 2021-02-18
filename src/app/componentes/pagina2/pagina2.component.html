@@ -548,7 +548,7 @@
                         <div class="col-md-3 col-sm-3">
                            <div class="container mw-100">
                             <div class="row">
-                                <button class="btn" id="btnconaho" [routerLink]="['/contrata']" routerLinkActive="router-link-active"
+                                <button class="btn" id="btnconaho" (click)="qualitas()" [routerLink]="['/contrata']" routerLinkActive="router-link-active"
                                 [state]='{
                                     modsel: vermodelo, 
                                     marsel:vermarca, 
@@ -566,7 +566,7 @@
                                     cpsel:codigopostal,
                                     smsel:mesnaci,
                                     sysel:yearnaci,
-                                    sdsel:dianaci}'>
+                                    sdsel:dianaci,asesel:qualitas()}'>
                                     Contratar ahora
                                 </button>
                             </div>
@@ -753,7 +753,7 @@
                         <div class="col-md-3 col-sm-3">
                             <div class="container mw-100 ">
                                 <div class="row">
-                                    <button class="btn" id="btnconaho" [routerLink]="['/contrata']" routerLinkActive="router-link-active"[state]='{
+                                    <button class="btn" id="btnconaho" (click)="axxa()" [routerLink]="['/contrata']" routerLinkActive="router-link-active"[state]='{
                                     modsel: vermodelo, 
                                     marsel:vermarca, 
                                     descsel:verdescripcion, 
@@ -770,7 +770,7 @@
                                     cpsel:codigopostal,
                                     smsel:mesnaci,
                                     sysel:yearnaci,
-                                    sdsel:dianaci}'>
+                                    sdsel:dianaci,asesel:axxa()}'>
                                         Contratar ahora
                                     </button>
                                 </div>
@@ -899,7 +899,7 @@
                         <div class="col-md-3 col-sm-3">
                             <div class="container mw-100">
                                 <div class="row">
-                                    <button class="btn" id="btnconaho" [routerLink]="['/contrata']" routerLinkActive="router-link-active"[state]='{
+                                    <button class="btn" id="btnconaho" [routerLink]="['/contrata']" (click)="afirme()" routerLinkActive="router-link-active"[state]='{
                                     modsel: vermodelo, 
                                     marsel:vermarca, 
                                     descsel:verdescripcion, 
@@ -916,7 +916,7 @@
                                     cpsel:codigopostal,
                                     smsel:mesnaci,
                                     sysel:yearnaci,
-                                    sdsel:dianaci}'>
+                                    sdsel:dianaci,asesel:afirme()}'>
                                         Contratar ahora
                                     </button>
                                 </div>
