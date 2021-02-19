@@ -9,7 +9,11 @@ import {InfovehiculoService} from '../../../servicios/infovehiculo.service'
 export class InfoaseguradoComponent implements OnInit {
   @Input() reso:number; 
   gema: number;
-  constructor( private InfovehiculoService: InfovehiculoService){
+  cols:{ 
+    iIdUbicacion: number,
+    sUbicacion:string }[];
+    
+  constructor(private InfovehiculoService: InfovehiculoService ){
   }
   ngOnInit( ): void {
     this.mesdiabis=[
@@ -63,6 +67,7 @@ export class InfoaseguradoComponent implements OnInit {
    for (let index = this.gema; index <= this.year-18; index++) {// VALIDACION PARA QUE SEA MAYOR DE EDAD
      this.fechaannos.push(index)
    }
+
   //  console.log(this.fechaannos)
   }
   @Output() pasad = new EventEmitter<string>();
@@ -86,6 +91,8 @@ export class InfoaseguradoComponent implements OnInit {
   //ESTAS VARIABLES SON PARA LA VALIDACION (NO VACIO)
   @Input() existe:boolean; 
   @Input()  existeT: boolean;
+  @Input()  vienede3: boolean;
+
     vacemial: boolean;
     vacnom: boolean;
     // valores para código postal

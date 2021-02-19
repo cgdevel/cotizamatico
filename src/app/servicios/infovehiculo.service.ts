@@ -4,11 +4,13 @@ import { environment } from '../../environments/environment';
 import { PeticionCatalogo } from '../interphaces/peticion';
 import { PeticionCatalogoCps } from '../interphaces/peticioncps';
 import { RequestCatalogo } from '../interphaces/request/RequestCatalogo.model';
-import {ResponseCatalogo} from '../interphaces/response/ResponseCatalogo.model'
+import {ResponseCatalogo} from '../interphaces/response/ResponseCatalogo.model';
+
 @Injectable({
   providedIn: 'root'
 })
 export class InfovehiculoService {
+  
   public getApiInfovehiculo(query: PeticionCatalogo){
     return this.http.post<any>(
       `${environment.url_api_autos}/catalogoCotizamaticoBr`,
@@ -24,6 +26,7 @@ export class InfovehiculoService {
   public getApiCPs(query: PeticionCatalogoCps){
     return this.http.post("https://apitestcotizamatico.azurewebsites.net/api/catalogos",query);
   }
+
    constructor(private http:HttpClient){
  }
 
