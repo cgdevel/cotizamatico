@@ -47,7 +47,6 @@ export class InfovehiculoService {
      {NacString:'GABONESA',NacClave:  'GAB'},
      {NacString:'GAMBIANA',NacClave:  'GMB'},
      {NacString:' GHANATA',NacClave:  'GHA'},
-     {NacString:'GUINEA',NacClave:  'GNB'},
      {NacString:'GUINEA',NacClave:  'GIN'},
      {NacString:' GUINEA ECUATORIANA',NacClave:  'GNQ'},
      {NacString:'LIBIA',NacClave:  'LBY'},
