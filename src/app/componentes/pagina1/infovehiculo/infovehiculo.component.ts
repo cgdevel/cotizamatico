@@ -16,18 +16,6 @@ export class InfovehiculoComponent implements OnInit {
   @Output() emitMarcaVehiculo = new EventEmitter<CatalogoModel>();
   @Output() emitDescripcion = new EventEmitter<CatalogoModel>();
 
-  @Input() modelosel: CatalogoModel;
-  @Input() annosel: CatalogoModel;
-  @Input() marcasel: CatalogoModel;
-  @Input() descripsel: CatalogoModel;
-  @Input() showchiquito: boolean;
-
-  @Input() disabled: boolean;
-  @Input() modeloselpagina3: CatalogoModel;
-  @Input() annoselpagina3: CatalogoModel;
-  @Input() marcaselpagina3: CatalogoModel;
-  @Input() descripselpagina3: CatalogoModel;
-
   catTipoVehiculo: CatalogoModel[];
   itemTipoVehiculo: CatalogoModel;
 
@@ -40,14 +28,27 @@ export class InfovehiculoComponent implements OnInit {
   catDescripcionVehiculo: CatalogoModel[];
   itemDescripcionVehiculo: CatalogoModel;
 
+  item: string;
+
+  @Input() disabled: boolean;
+  @Input() modeloselpagina3: CatalogoModel;
+  @Input() annoselpagina3: CatalogoModel;
+  @Input() marcaselpagina3: CatalogoModel;
+  @Input() descripselpagina3: CatalogoModel;
+
+  /* Por borrar */
+
+  @Input() modelosel: CatalogoModel;
+  @Input() annosel: CatalogoModel;
+  @Input() marcasel: CatalogoModel;
+  @Input() descripsel: CatalogoModel;
+  @Input() showchiquito: boolean;
+
   annos: CatalogoModel[];
   modelos: CatalogoModel[];
   marcas: CatalogoModel[];
   descripciones: CatalogoModel[];
 
-  itemVacio: CatalogoModel;
-
-  item: string;
   modelo: string; // Iniciamos
   vermodelo: string;
   anno: string; // Iniciamos
@@ -57,7 +58,14 @@ export class InfovehiculoComponent implements OnInit {
   descripcion: string; // Iniciamos
   verdescripcion: string;
 
+  itemVacio: CatalogoModel;
+
   ngOnInit(): void {
+    this.catAnioVehiculo = [];
+    this.catDescripcionVehiculo = [];
+    this.catMarcaVehiculo = [];
+    this.catTipoVehiculo = [];
+
     this.getTiposVehiculos();
   }
 

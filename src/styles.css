@@ -13,7 +13,13 @@
   border-top-color: chocolate !important;
 }
 
-.ng-option {
+.my-custom-class .arrow::after {
+  /* border-top-color: darkgreen!important; */
+  border-top-color: chocolate !important;
+}
+
+.ng-option,
+.alert-danger {
   font-family: "Exo 2", sans-serif;
   font-size: 14px;
   white-space: normal !important;
@@ -54,8 +60,4 @@
   top: -2px;
   border-color: transparent transparent #fff;
   border-width: 0 5px 5px;
-}
-
-.contenedor-datos {
-  padding: 0;
 }
