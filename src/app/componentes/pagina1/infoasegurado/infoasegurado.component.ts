@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { disableDebugTools } from '@angular/platform-browser';
 import { InfovehiculoService } from '../../../servicios/infovehiculo.service';
 
 @Component({
@@ -10,9 +11,104 @@ export class InfoaseguradoComponent implements OnInit {
   @Input() reso: number;
   gema: number;
 
+  /* Nuevas Variables */
+  @Output() emitClienteNombre = new EventEmitter<string>();
+  @Input() clienteNombre: string;
+  valClienteNombre: boolean;
+
+  @Output() emitClienteMail = new EventEmitter<string>();
+  @Input() clienteMail: string;
+  valClienteMailVacio: boolean;
+  valClienteMailNoValido: boolean;
+
+  @Output() emitClienteTelefono = new EventEmitter<string>();
+  @Input() clienteTelefono: string;
+  valClienteTelefonoVacio: boolean;
+  valClienteTelefonoNoValido: boolean;
+
+  /* Varaibles Erika */
+  @Output() pasad = new EventEmitter<string>();
+  @Output() pasam = new EventEmitter<string>();
+  @Output() pasay = new EventEmitter<string>();
+  @Output() pastel = new EventEmitter<string>();
+  @Output() pasnom = new EventEmitter<string>();
+  @Output() pasemail = new EventEmitter<string>();
+  @Output() pascp = new EventEmitter<string>();
+  @Output() pasgenmu = new EventEmitter<boolean>();
+  @Output() pasgenselmu = new EventEmitter<string>();
+  @Output() pasgenho = new EventEmitter<boolean>();
+  @Output() pasgenselho = new EventEmitter<string>();
+  @Output() pasgenem = new EventEmitter<boolean>();
+  @Output() pasgenselem = new EventEmitter<string>();
+
+  //CON ESTAS VARIABLES SERAN IDENTIFICADOS LO DATOS QUE PASAMOS A LA PAGINA2 A TRAVES DL ROUTER
+  modsel: string;
+  marsel: string;
+  descsel: string;
+  annosel: string;
+
+  /* Variables para corregir errores */
+  annos: [];
+
+  // ESTAS VARIABLES SON PARA LA VALIDACION (NO VACIO)
+  @Input() existe: boolean;
+  existeT: boolean;
+  vacemial: boolean;
+  vacnom: boolean;
+  // valores para código postal
+  ubicacion: any;
+  @Input() codigoPostal: string;
+  @Input() validot: boolean;
+  @Input() TELEFONO: string;
+  @Input() valido: boolean;
+  @Input() validonom: boolean;
+  @Input() EMAIL: string;
+  @Input() NOMBRE: string;
+  ubicacionId: number;
+  estado: string;
+  municipio: string;
+  colonia: string;
+  bisiesto: boolean;
+  // Valores selección fecha
+  year;
+  month;
+  date;
+  dias;
+  meses;
+  fechaannos;
+  mesdiabis: (string | number)[][];
+  mesdia: (string | number)[][];
+  mes: string; // Iniciamos mes
+  vermes: string;
+  fechaann: string; // Iniciamos fechaann
+  verfechaann: string;
+  dia: string; // Iniciamos dia
+  // console.log(this.mesdiabis[0][1])//DIAS
+  // console.log(this.mesdiabis[0][0])//MESES
+  verdia: string;
+  @Input() selectedmes;
+  @Input() selectedyear;
+  @Input() selecteddia;
+  selected;
+  //Valores botones soy
+  @Input() soymujer = false;
+  @Input() soyhombre = false;
+  @Input() soyempresa = false;
+  @Input() disabled;
+  statussoymujer = 'NoSelected';
+  statussoyhombre = 'NoSelected';
+  statussoyempresa = 'NoSelected';
+  @Input() showchiquito;
+
   constructor(private infovehiculoService: InfovehiculoService) {}
 
   ngOnInit(): void {
+    this.valClienteNombre = true;
+    this.valClienteMailVacio = true;
+    this.valClienteMailNoValido = true;
+    this.valClienteTelefonoNoValido = true;
+    this.valClienteTelefonoVacio = true;
+
     this.mesdiabis = [
       ['Enero', 31],
       ['Febrero', 29],
@@ -116,78 +212,144 @@ export class InfoaseguradoComponent implements OnInit {
     //  console.log(this.fechaannos)
   }
 
-  @Output() pasad = new EventEmitter<string>();
-  @Output() pasam = new EventEmitter<string>();
-  @Output() pasay = new EventEmitter<string>();
-  @Output() pastel = new EventEmitter<string>();
-  @Output() pasnom = new EventEmitter<string>();
-  @Output() pasemail = new EventEmitter<string>();
-  @Output() pascp = new EventEmitter<string>();
-  @Output() pasgenmu = new EventEmitter<boolean>();
-  @Output() pasgenselmu = new EventEmitter<string>();
-  @Output() pasgenho = new EventEmitter<boolean>();
-  @Output() pasgenselho = new EventEmitter<string>();
-  @Output() pasgenem = new EventEmitter<boolean>();
-  @Output() pasgenselem = new EventEmitter<string>();
+  onNombreChanged() {
+    // let arrayEmparejamientos = {};
+    // const reg = /^(([A-Z a-z])\w+(\s))(([A-Z a-z]+\w\s))(([A-Z a-z]+\w)\s?)$/;
+    // arrayEmparejamientos = this.clienteNombre.match(reg);
+    // this.valClienteNombre = reg.test(this.clienteNombre);
+    this.valClienteNombre = this.clienteNombre !== '';
 
-  //CON ESTAS VARIABLES SERAN IDENTIFICADOS LO DATOS QUE PASAMOS A LA PAGINA2 A TRAVES DL ROUTER
-  modsel: string = '';
-  marsel: string = '';
-  descsel: string = '';
-  annosel: string = '';
+    console.log(this.clienteNombre);
+    console.log(this.valClienteNombre);
 
-  /* Variables para corregir errores */
-  annos: [];
+    if (
+      this.clienteNombre === '' ||
+      (this.clienteNombre !== '' && !this.valClienteNombre)
+    ) {
+      this.valClienteNombre = false;
+      this.emitClienteNombre.emit('');
+    } else {
+      if (this.clienteNombre !== '' && this.valClienteNombre) {
+        this.valClienteNombre = true;
+        this.emitClienteNombre.emit(this.clienteNombre);
+      }
+    }
+  }
 
-  //ESTAS VARIABLES SON PARA LA VALIDACION (NO VACIO)
-  @Input() existe: boolean;
-  existeT: boolean;
-  vacemial: boolean;
-  vacnom: boolean;
-  // valores para código postal
-  ubicacion: any;
-  @Input() codigoPostal: string = '';
-  @Input() validot: boolean;
-  @Input() TELEFONO: string = '';
-  @Input() valido: boolean;
-  @Input() validonom: boolean;
-  @Input() EMAIL: string = '';
-  @Input() NOMBRE: string = '';
-  ubicacionId: number;
-  estado: string;
-  municipio: string;
-  colonia: string;
-  bisiesto: boolean;
-  // Valores selección fecha
-  year;
-  month;
-  date;
-  dias;
-  meses;
-  fechaannos;
-  mesdiabis: (string | number)[][];
-  mesdia: (string | number)[][];
-  mes: string = ''; // Iniciamos mes
-  vermes: string = '';
-  fechaann: string = ''; // Iniciamos fechaann
-  verfechaann: string = '';
-  dia: string = ''; // Iniciamos dia
-  // console.log(this.mesdiabis[0][1])//DIAS
-  // console.log(this.mesdiabis[0][0])//MESES
-  verdia: string = '';
-  @Input() selectedmes;
-  @Input() selectedyear;
-  @Input() selecteddia;
-  selected;
-  //Valores botones soy
-  @Input() soymujer = false;
-  @Input() soyhombre = false;
-  @Input() soyempresa = false;
-  @Input() disabled;
-  statussoymujer = 'NoSelected';
-  statussoyhombre = 'NoSelected';
-  statussoyempresa = 'NoSelected';
-  @Input() showchiquito;
+  onMailChanged() {
+    if (this.clienteMail === '') {
+      this.emitClienteMail.emit('');
+      this.valClienteMailNoValido = true;
+      this.valClienteMailVacio = false;
+      return;
+    }
+
+    this.valClienteMailVacio = true;
+    const reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    this.valClienteMailNoValido = reg.test(this.clienteMail);
+
+    if (this.valClienteMailNoValido) {
+      this.emitClienteMail.emit(this.clienteMail);
+    } else {
+      this.emitClienteMail.emit('');
+    }
+  }
+
+  onTelefonoChange() {
+    if (this.clienteTelefono === '') {
+      this.valClienteTelefonoVacio = false;
+      this.valClienteTelefonoNoValido = true;
+      return;
+    }
+
+    this.valClienteTelefonoVacio = true;
+
+    if (this.clienteTelefono !== '' && this.clienteTelefono.length === 10) {
+      var regt1 = /[1]{4}/;
+      var regt2 = /[2]{4}/;
+      var regt3 = /[3]{4}/;
+      var regt4 = /[4]{4}/;
+      var regt5 = /[5]{4}/;
+      var regt6 = /[6]{4}/;
+      var regt7 = /[7]{4}/;
+      var regt8 = /[8]{4}/;
+      var regt9 = /[9]{4}/;
+      var regt0 = /[0]{4}/;
+
+      this.valClienteTelefonoNoValido = regt1.test(this.clienteTelefono);
+      if (this.valClienteTelefonoNoValido) {
+        this.emitClienteTelefono.emit('');
+      } else {
+        this.valClienteTelefonoNoValido = regt2.test(this.clienteTelefono);
+        if (this.valClienteTelefonoNoValido) {
+          this.emitClienteTelefono.emit('');
+        } else {
+          this.valClienteTelefonoNoValido = regt3.test(this.clienteTelefono);
+          if (this.valClienteTelefonoNoValido) {
+            this.emitClienteTelefono.emit('');
+          } else {
+            this.valClienteTelefonoNoValido = regt4.test(this.clienteTelefono);
+            if (this.valClienteTelefonoNoValido) {
+              this.emitClienteTelefono.emit('');
+            } else {
+              this.valClienteTelefonoNoValido = regt5.test(
+                this.clienteTelefono
+              );
+              if (this.valClienteTelefonoNoValido) {
+                this.emitClienteTelefono.emit('');
+              } else {
+                this.valClienteTelefonoNoValido = regt6.test(
+                  this.clienteTelefono
+                );
+                if (this.valClienteTelefonoNoValido) {
+                  this.emitClienteTelefono.emit('');
+                } else {
+                  this.valClienteTelefonoNoValido = regt7.test(
+                    this.clienteTelefono
+                  );
+                  if (this.valClienteTelefonoNoValido) {
+                    this.emitClienteTelefono.emit('');
+                  } else {
+                    this.valClienteTelefonoNoValido = regt8.test(
+                      this.clienteTelefono
+                    );
+                    if (this.valClienteTelefonoNoValido) {
+                      this.emitClienteTelefono.emit('');
+                    } else {
+                      this.valClienteTelefonoNoValido = regt9.test(
+                        this.clienteTelefono
+                      );
+                      if (this.valClienteTelefonoNoValido) {
+                        this.emitClienteTelefono.emit('');
+                      } else {
+                        this.valClienteTelefonoNoValido = regt0.test(
+                          this.clienteTelefono
+                        );
+                        if (this.valClienteTelefonoNoValido) {
+                          this.emitClienteTelefono.emit('');
+                        } else {
+                          this.emitClienteTelefono.emit(this.clienteTelefono);
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    } else {
+      this.existeT = false;
+      this.pastel.emit('');
+    }
+  }
+
+  onTipoPersonaMasculinoChange() {}
+
+  onTipoPersonaFemeninoChange() {}
+
+  onTipoPersonaMoralChange() {}
 
   //Funciones botones SOY
   Soymujer() {
@@ -518,21 +680,6 @@ export class InfoaseguradoComponent implements OnInit {
       // console.log("Te falta")
     }
   }
-  // Función teléfono
-  onTelefono(event) {
-    var regt = /[\s]?((\d{3}[\*\.\-\s]){3}|(\d{2}[\*\.\-\s]){4}|(\d{4}[\*\.\-\s]){2})|\d{10}/;
-    this.validot = regt.test(this.TELEFONO);
-    if (this.TELEFONO.length < 10 || this.TELEFONO == '' || !this.validot) {
-      this.existeT = false;
-      this.pastel.emit('');
-    } else {
-      if (this.validot && this.TELEFONO != '') {
-        this.existeT = true;
-        this.pastel.emit(this.TELEFONO);
-      }
-    }
-  }
-
   // Función codigo postal
   onCodigoPostalKeyUp(event) {
     // console.log(event);
@@ -581,43 +728,6 @@ export class InfoaseguradoComponent implements OnInit {
               }
             });
         }
-      }
-    }
-  }
-
-  // Función codigo email
-  onEmail(event) {
-    var reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-    // var reg=/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    // console.log(event);
-    // console.log(this.EMAIL)
-    this.valido = reg.test(this.EMAIL);
-    if (this.EMAIL != '' && !this.valido) {
-      this.vacemial = false;
-      this.pasemail.emit('');
-    } else {
-      if (this.EMAIL != '' && this.valido) {
-        this.vacemial = true;
-        this.pasemail.emit(this.EMAIL);
-      }
-    }
-  }
-
-  //Función nombre
-  onNombre(event) {
-    var array_emparejamientos = {};
-    var reg = /^(([A-Z a-z])\w+(\s))(([A-Z a-z]+\w\s))(([A-Z a-z]+\w)\s?)$/;
-    array_emparejamientos = this.NOMBRE.match(reg);
-    this.validonom = reg.test(this.NOMBRE);
-    // console.log(event);
-    // console.log(this.NOMBRE)
-    if (this.NOMBRE == '' || (this.NOMBRE != '' && !this.validonom)) {
-      this.vacnom = false;
-      this.pasnom.emit('');
-    } else {
-      if (this.NOMBRE != '' && this.validonom) {
-        this.vacnom = true;
-        this.pasnom.emit(this.NOMBRE);
       }
     }
   }

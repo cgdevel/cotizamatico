@@ -31,11 +31,6 @@ export class Pagina1Component implements OnInit {
   sd: string;
 
   // Variables carro
-  modelo: string;
-  marca: string;
-  descripcion: string;
-  anno: string;
-
   vehiculoTipo: CatalogoModel;
   vehiculoAnio: CatalogoModel;
   vehiculoMarca: CatalogoModel;
