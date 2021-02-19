@@ -15,7 +15,29 @@
                         Nacionalidad
                     </div>
                     <div class="col">
-                        
+                        <ng-select 
+                            [items]="Nacion"       
+                            bindLabel="NacString"
+                            placeholder="Nacionalidades"
+                            appendTo="body"
+                            style="width: 140px;"
+                            [searchable]="true" 
+                            [clearable]="false"
+                            [closeOnSelect]="true"
+                            [(ngModel)]="nacionalidadsel" [ngbTooltip]="nacsel" tooltipClass="my-custom-class">
+                            <ng-template #nacsel>
+                                <b  *ngIf="!!nacionalidadsel">{{nacionalidadsel.NacString}}</b>
+                            </ng-template>
+                            <ng-option  ng-options="item as item.NacClave for item.NacString in Nacion">
+                                {{item}}
+                            </ng-option>
+                            <ng-template ng-notfound-tmp let-searchTerm="searchTerm" >
+                            <div class="ng-option disabled" style="font-size: 11px !important;">
+                                No hay descripción que coincida con "{{searchTerm}}"
+                            </div>
+                            </ng-template>
+                        </ng-select>
+                     
                     </div>
                 </div>
             </div>
@@ -103,7 +125,7 @@
                      No hay colonias que mostrar
                  </div>
                </ng-template>
-             </ng-select>
+                </ng-select>
               </div>
               </div>
                <div class="row">
