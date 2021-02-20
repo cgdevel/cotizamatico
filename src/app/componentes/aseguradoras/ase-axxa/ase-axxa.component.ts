@@ -39,59 +39,59 @@ export class AseAXXAComponent implements OnInit {
   nummonth: number;
   constructor(private InfovehiculoService: InfovehiculoService) { }
 
-  getUbicacion(){
-    this.InfovehiculoService.getApiCPs({ 
-      IdAplication: 2, 
-      NombreCatalogo: "Sepomex", 
-      Filtro: this.CP
-    }).subscribe((data: any)=> {
-      this.ubicacion = JSON.parse(data.CatalogoJsonString);
-      console.log(this.ubicacion)
-        this.estado = this.ubicacion[0].Municipio.Estado.sEstado;
-        this.municipio = this.ubicacion[0].Municipio.sMunicipio;
-        this.cols=this.ubicacion[0].Ubicacion
-      })// suscribecierra
-  }
-  getrfc(){
-    this.RFC=''
-    this.Nombre=this.Nombre.toUpperCase();
-    console.log(this.nacionalidadsel.NacString+' '+ this.Nombre)
-      if(this.nacionalidadsel.NacString!='MEXICANA'){
-        var str = new String(this.naciye)
-        if (this.nummonth<10) {
-          if (this.Dia<10) {
-            this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+"0"+this.Dia+"XXX"            
+    getUbicacion(){
+      this.InfovehiculoService.getApiCPs({ 
+        IdAplication: 2, 
+        NombreCatalogo: "Sepomex", 
+        Filtro: this.CP
+      }).subscribe((data: any)=> {
+        this.ubicacion = JSON.parse(data.CatalogoJsonString);
+        console.log(this.ubicacion)
+          this.estado = this.ubicacion[0].Municipio.Estado.sEstado;
+          this.municipio = this.ubicacion[0].Municipio.sMunicipio;
+          this.cols=this.ubicacion[0].Ubicacion
+        })// suscribecierra
+    }
+    getrfc(){
+      this.RFC=''
+      this.Nombre=this.Nombre.toUpperCase();
+      console.log(this.nacionalidadsel.NacString+' '+ this.Nombre)
+        if(this.nacionalidadsel.NacString!='MEXICANA'){
+          var str = new String(this.naciye)
+          if (this.nummonth<10) {
+            if (this.Dia<10) {
+              this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+"0"+this.Dia+"XXX"            
+            }
+            this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+this.Dia+"XXX"            
+          }else {
+            if (this.Dia<10) {
+              this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+this.nummonth+"0"+this.Dia+"XXX"
+            } else {
+              this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+this.nummonth+this.Dia+"XXX"
+            }
           }
-          this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+this.Dia+"XXX"            
         }else {
-          if (this.Dia<10) {
-            this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+this.nummonth+"0"+this.Dia+"XXX"
-          } else {
-            this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+this.nummonth+this.Dia+"XXX"
+          var str = new String(this.naciye)
+          var n = this.Nombre.indexOf(" ");
+          var strnmate =this.Nombre.charAt(n+1)
+          var t=this.Nombre.lastIndexOf(" ")+1
+          var strnom = this.Nombre.charAt(t)
+          var strnpate=this.Nombre.charAt(0)+this.Nombre.charAt(1)
+          if (this.nummonth<10) {
+            if (this.Dia<10) {
+              this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+"0"+this.Dia+"XXX"            
+            }
+            this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+this.Dia+"XXX"            
+          }else {
+            if (this.Dia<10) {
+              this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+this.nummonth+"0"+this.Dia+"XXX"
+            } else {
+              this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+this.nummonth+this.Dia+"XXX"
+            }
           }
-        }
-      }else {
-        var str = new String(this.naciye)
-        var n = this.Nombre.indexOf(" ");
-        var strnmate =this.Nombre.charAt(n+1)
-        var t=this.Nombre.lastIndexOf(" ")+1
-        var strnom = this.Nombre.charAt(t)
-        var strnpate=this.Nombre.charAt(0)+this.Nombre.charAt(1)
-        if (this.nummonth<10) {
-          if (this.Dia<10) {
-            this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+"0"+this.Dia+"XXX"            
-          }
-          this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+this.Dia+"XXX"            
-        }else {
-          if (this.Dia<10) {
-            this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+this.nummonth+"0"+this.Dia+"XXX"
-          } else {
-            this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+this.nummonth+this.Dia+"XXX"
-          }
-        }
-      } 
+        } 
     }//rfc
-    
+      
     ngOnInit(): void {
       this.meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
       var today = new Date();
