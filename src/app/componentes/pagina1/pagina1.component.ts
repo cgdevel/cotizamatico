@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
+import { FechasModel } from 'src/app/interphaces/models/Fechas.model';
 import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
 
 @Component({
@@ -42,8 +43,8 @@ export class Pagina1Component implements OnInit {
   clienteMail: string;
   clienteTelefono: string;
   clienteTipoPersona: string;
-  clienteFechaNacimiento: string;
   clienteCodigoPostal: string;
+  clienteFechaNacimiento: FechasModel;
 
   datosValidos: boolean;
 
@@ -59,23 +60,9 @@ export class Pagina1Component implements OnInit {
     this.clienteMail = '';
     this.clienteTelefono = '';
     this.clienteTipoPersona = '';
-    this.clienteFechaNacimiento = '';
+    this.clienteFechaNacimiento = { anio: '', dia: '', mes: '' };
     this.clienteCodigoPostal = '';
     this.datosValidos = false;
-
-    this.resizeObservable$ = fromEvent(window, 'resize');
-    this.resizeSubscription$ = this.resizeObservable$.subscribe((event) => {
-      this.size = (event.target as Window).innerWidth;
-      console.log((event.target as Window).innerWidth);
-      if (
-        (event.target as Window).innerWidth < 1216 ||
-        (event.target as Window).innerWidth >= 126
-      ) {
-        this.verCarousle = true;
-      } else {
-        this.verCarousle = false;
-      }
-    });
   }
 
   handlerVehiculoTipo(e: CatalogoModel) {
@@ -115,7 +102,6 @@ export class Pagina1Component implements OnInit {
   }
 
   handlerClienteTelefono(e: string) {
-    console.log(e);
     this.clienteTelefono = e;
     this.ValidarDatosObligatorios();
   }
@@ -130,9 +116,13 @@ export class Pagina1Component implements OnInit {
     this.ValidarDatosObligatorios();
   }
 
+  handlerClienteFechaNacimiento(e: FechasModel) {
+    this.clienteFechaNacimiento = e;
+    this.ValidarDatosObligatorios();
+  }
+
   ValidarDatosObligatorios() {
     this.datosValidos = false;
-    debugger;
 
     if (this.vehiculoTipo === this.itemVacio) {
       return;
@@ -159,7 +149,11 @@ export class Pagina1Component implements OnInit {
       return;
     } else {
       if (this.clienteTipoPersona !== 'Moral') {
-        if (this.clienteFechaNacimiento === '') {
+        if (
+          this.clienteFechaNacimiento.anio === '' ||
+          this.clienteFechaNacimiento.dia === '' ||
+          this.clienteFechaNacimiento.mes === ''
+        ) {
           return;
         }
       }

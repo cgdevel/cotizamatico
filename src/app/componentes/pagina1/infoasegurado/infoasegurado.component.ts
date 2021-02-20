@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { disableDebugTools } from '@angular/platform-browser';
-import { RequestCatalogoCotizamatico } from 'src/app/interphaces/request/RequestCatalogoCotizamatico.model';
+
 import { InfovehiculoService } from '../../../servicios/infovehiculo.service';
+
+import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
+import { FechasModel } from '../../../interphaces/models/Fechas.model';
+import { RequestCatalogoCotizamatico } from '../../../interphaces/request/RequestCatalogoCotizamatico.model';
 
 @Component({
   selector: 'app-infoasegurado',
@@ -34,6 +37,15 @@ export class InfoaseguradoComponent implements OnInit {
   valCodigoPostalLongitud: boolean;
   valCodigoPostalValidando: boolean;
   valCodigoPostalValido: boolean;
+
+  @Output() emitClienteNacimiento = new EventEmitter<FechasModel>();
+  catNacimientoDias: CatalogoModel[];
+  catNacimientoMeses: CatalogoModel[];
+  catNacimientoAnios: CatalogoModel[];
+  itemNacimientoDia: CatalogoModel;
+  itemNacimientoMes: CatalogoModel;
+  itemNacimeintoAnio: CatalogoModel;
+  itemVacio: CatalogoModel;
 
   /* Varaibles Erika */
   @Output() pasad = new EventEmitter<string>();
@@ -116,96 +128,7 @@ export class InfoaseguradoComponent implements OnInit {
     this.valCodigoPostalVacio = true;
     this.valCodigoPostalValidando = true;
     this.valCodigoPostalValido = true;
-
-    this.mesdiabis = [
-      ['Enero', 31],
-      ['Febrero', 29],
-      ['Marzo', 31],
-      ['Abril', 30],
-      ['Mayo', 31],
-      ['Junio', 30],
-      ['Julio', 31],
-      ['Agosto', 31],
-      ['Septiembre', 30],
-      ['Octubre', 31],
-      ['Noviembre', 30],
-      ['Diciembre', 31],
-    ];
-
-    this.mesdia = [
-      ['Enero', 31],
-      ['Febrero', 28],
-      ['Marzo', 31],
-      ['Abril', 30],
-      ['Mayo', 31],
-      ['Junio', 30],
-      ['Julio', 31],
-      ['Agosto', 31],
-      ['Septiembre', 30],
-      ['Octubre', 31],
-      ['Noviembre', 30],
-      ['Diciembre', 31],
-    ];
-
-    this.meses = [
-      'Enero',
-      'Febrero',
-      'Marzo',
-      'Abril',
-      'Mayo',
-      'Junio',
-      'Julio',
-      'Agosto',
-      'Septiembre',
-      'Octubre',
-      'Noviembre',
-      'Diciembre',
-    ];
-
-    // console.log(this.meses)
-    this.dias = [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20,
-      21,
-      23,
-      24,
-      25,
-      26,
-      27,
-      28,
-      29,
-      30,
-      31,
-    ];
-
-    // this.fechaannos = [];
-    // const today = new Date();
-    // this.year = today.getFullYear();
-    // this.date = today.getDate();
-    // this.month = today.getMonth();
-    // this.gema = this.year - 75;
-
-    // for (let index = this.gema; index <= this.year - 18; index++) {
-    //   this.fechaannos.push(index);
-    // }
+    this.getFechaNacimientoDias();
   }
 
   onNombreChanged() {
@@ -241,90 +164,20 @@ export class InfoaseguradoComponent implements OnInit {
     if (this.clienteTelefono === '') {
       this.valClienteTelefonoVacio = false;
       this.valClienteTelefonoNoValido = true;
+      this.emitClienteTelefono.emit('');
       return;
     }
 
     this.valClienteTelefonoVacio = true;
 
-    if (this.clienteTelefono !== '' && this.clienteTelefono.length === 10) {
-      const regt1 = /[1]{4}/;
-      const regt2 = /[2]{4}/;
-      const regt3 = /[3]{4}/;
-      const regt4 = /[4]{4}/;
-      const regt5 = /[5]{4}/;
-      const regt6 = /[6]{4}/;
-      const regt7 = /[7]{4}/;
-      const regt8 = /[8]{4}/;
-      const regt9 = /[9]{4}/;
-      const regt0 = /[0]{4}/;
-
-      this.valClienteTelefonoNoValido = regt1.test(this.clienteTelefono);
-      if (this.valClienteTelefonoNoValido) {
-        this.emitClienteTelefono.emit('');
-      } else {
-        this.valClienteTelefonoNoValido = regt2.test(this.clienteTelefono);
-        if (this.valClienteTelefonoNoValido) {
-          this.emitClienteTelefono.emit('');
-        } else {
-          this.valClienteTelefonoNoValido = regt3.test(this.clienteTelefono);
-          if (this.valClienteTelefonoNoValido) {
-            this.emitClienteTelefono.emit('');
-          } else {
-            this.valClienteTelefonoNoValido = regt4.test(this.clienteTelefono);
-            if (this.valClienteTelefonoNoValido) {
-              this.emitClienteTelefono.emit('');
-            } else {
-              this.valClienteTelefonoNoValido = regt5.test(
-                this.clienteTelefono
-              );
-              if (this.valClienteTelefonoNoValido) {
-                this.emitClienteTelefono.emit('');
-              } else {
-                this.valClienteTelefonoNoValido = regt6.test(
-                  this.clienteTelefono
-                );
-                if (this.valClienteTelefonoNoValido) {
-                  this.emitClienteTelefono.emit('');
-                } else {
-                  this.valClienteTelefonoNoValido = regt7.test(
-                    this.clienteTelefono
-                  );
-                  if (this.valClienteTelefonoNoValido) {
-                    this.emitClienteTelefono.emit('');
-                  } else {
-                    this.valClienteTelefonoNoValido = regt8.test(
-                      this.clienteTelefono
-                    );
-                    if (this.valClienteTelefonoNoValido) {
-                      this.emitClienteTelefono.emit('');
-                    } else {
-                      this.valClienteTelefonoNoValido = regt9.test(
-                        this.clienteTelefono
-                      );
-                      if (this.valClienteTelefonoNoValido) {
-                        this.emitClienteTelefono.emit('');
-                      } else {
-                        this.valClienteTelefonoNoValido = regt0.test(
-                          this.clienteTelefono
-                        );
-                        if (this.valClienteTelefonoNoValido) {
-                          this.emitClienteTelefono.emit('');
-                        } else {
-                          this.emitClienteTelefono.emit(this.clienteTelefono);
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    } else {
+    if (this.clienteTelefono.length !== 10) {
       this.valClienteTelefonoNoValido = false;
       this.emitClienteTelefono.emit('');
+      return;
     }
+
+    this.valClienteTelefonoNoValido = true;
+    this.emitClienteTelefono.emit(this.clienteTelefono);
   }
 
   onTipoPersonaFemeninoChange() {
@@ -384,6 +237,61 @@ export class InfoaseguradoComponent implements OnInit {
       }
 
       this.emitClienteCodigoPostal.emit(this.codigoPostal);
+    });
+  }
+
+  getFechaNacimientoDias() {
+    this.catNacimientoDias = [];
+    this.itemNacimientoDia = this.itemVacio;
+
+    this.catNacimientoMeses = [];
+    this.itemNacimientoMes = this.itemVacio;
+
+    this.catNacimientoAnios = [];
+    this.itemNacimeintoAnio = this.itemVacio;
+
+    this.catNacimientoDias = this.infovehiculoService.getCatalogoFechaDias().catalogos;
+  }
+
+  selectNacimientoDia() {
+    this.catNacimientoMeses = [];
+    this.itemNacimientoMes = this.itemVacio;
+
+    this.catNacimientoAnios = [];
+    this.itemNacimeintoAnio = this.itemVacio;
+
+    this.catNacimientoMeses = this.infovehiculoService.getCatalogoFechaMeses(
+      this.itemNacimientoDia.sLlave
+    ).catalogos;
+
+    this.emitClienteNacimiento.emit({
+      anio: '',
+      mes: '',
+      dia: this.itemNacimientoDia.sLlave,
+    });
+  }
+
+  selectNacimientoMes() {
+    this.catNacimientoAnios = [];
+    this.itemNacimeintoAnio = this.itemVacio;
+
+    this.catNacimientoAnios = this.infovehiculoService.getCatalogoFechaAnios(
+      this.itemNacimientoDia.sLlave,
+      this.itemNacimientoMes.sLlave
+    ).catalogos;
+
+    this.emitClienteNacimiento.emit({
+      anio: '',
+      mes: this.itemNacimientoMes.sLlave,
+      dia: this.itemNacimientoDia.sLlave,
+    });
+  }
+
+  selectNacimientoAnio() {
+    this.emitClienteNacimiento.emit({
+      anio: this.itemNacimeintoAnio.sLlave,
+      mes: this.itemNacimientoMes.sLlave,
+      dia: this.itemNacimientoDia.sLlave,
     });
   }
 

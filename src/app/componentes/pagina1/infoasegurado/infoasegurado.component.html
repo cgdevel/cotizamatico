@@ -163,42 +163,21 @@
             <p class="m-0 mb-2">Fecha de nacimiento</p>
             <div class="row">
               <div class="col-md-4 col-sm-12 mb-3">
-                <div class="row">
-                  <div class="dropdown">
-                    <div class="dropdown-menu" style="overflow-y: scroll;" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" (click)=" capturardia($event)" *ngFor="let dia of dias" role="option">
-                        {{ dia }}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <ng-select bindLabel="name" placeholder="Día" appendTo="body" [searchable]="false" [clearable]="false"
-                  [closeOnSelect]="true" (change)="getdia()" [(ngModel)]="selecteddia">
-                  <ng-option [value]="item" *ngFor="let item of dias">
+                <ng-select id="cmbNacimietoDia" [items]="catNacimientoDias" bindLabel="sDato" placeholder="DÍA"
+                  [searchable]="false" [clearable]="false" [closeOnSelect]="true" (change)="selectNacimientoDia()"
+                  [(ngModel)]="itemNacimientoDia">
+                  <ng-option ng-options="item as item.sLlave for item.sDato in catNacimientoDias">
                     {{ item }}
                   </ng-option>
-                  <ng-template ng-notfound-tmp>
-                    <div class="ng-option disabled">
-                      No hay días que mostrar
-                    </div>
-                  </ng-template>
                 </ng-select>
               </div>
 
               <div class="col-md-4 col-sm-12 mb-3">
-                <div class="row">
-                  <div class="dropdown">
-                    <div class="dropdown-menu" style="overflow-y: scroll;" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" (click)="capturarmes($event)" *ngFor="let mes of meses" role="option">
-                        {{ mes }}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <ng-select bindLabel="name" placeholder="Mes" appendTo="body" [searchable]="false" [clearable]="false"
-                  [closeOnSelect]="true" (change)="getmes()" [(ngModel)]="selectedmes">
-                  <ng-option [value]="item" *ngFor="let item of meses">
-                    {{ item }}
+                <ng-select id="cmbNacimietoMes" bindLabel="sDato" placeholder="MES" [searchable]="false"
+                  [clearable]="false" [closeOnSelect]="true" (change)="selectNacimientoMes()"
+                  [(ngModel)]="itemNacimientoMes">
+                  <ng-option [value]="item" *ngFor="let item of catNacimientoMeses">
+                    {{ item.sDato }}
                   </ng-option>
                   <ng-template ng-notfound-tmp>
                     <div class="ng-option disabled">
@@ -209,20 +188,11 @@
               </div>
 
               <div class="col-md-4 col-sm-12 mb-3">
-                <div class="row">
-                  <div class="dropdown">
-                    <div class="dropdown-menu" style="overflow-y: scroll;" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" (click)="capturarfechaann($event)" *ngFor="let fechaann of fechaannos"
-                        role="option">
-                        {{ fechaann }}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <ng-select bindLabel="name" placeholder="Año" appendTo="body" [searchable]="false" [clearable]="false"
-                  [closeOnSelect]="true" (change)="getanno()" [(ngModel)]="selectedyear">
-                  <ng-option [value]="item" *ngFor="let item of fechaannos">
-                    {{ item }}
+                <ng-select id="cmbNacimietoAnio" bindLabel="sDato" placeholder="AÑO"
+                  [searchable]="false" [clearable]="false" [closeOnSelect]="true" (change)="selectNacimientoAnio()"
+                  [(ngModel)]="itemNacimeintoAnio">
+                  <ng-option [value]="item" *ngFor="let item of catNacimientoAnios">
+                    {{ item.sDato }}
                   </ng-option>
                   <ng-template ng-notfound-tmp>
                     <div class="ng-option disabled">
@@ -236,13 +206,9 @@
 
           <div class="form-group col-md-4">
             <p class="m-0 mb-2">Código postal:</p>
-            <input type="text"
-              class="form-control"
-              (change)="onCodigoPostalChanged()"
-              onkeypress="return(event.charCode >= 48 && event.charCode <= 57)"
-              maxlength="5"
-              [(ngModel)]="clienteCodigoPostal"
-              [ngClass]="{
+            <input type="text" class="form-control" (change)="onCodigoPostalChanged()"
+              onkeypress="return(event.charCode >= 48 && event.charCode <= 57)" maxlength="5"
+              [(ngModel)]="clienteCodigoPostal" [ngClass]="{
                 Existe: (valCodigoPostalLongitud && valCodigoPostalVacio && valCodigoPostalValidando && this.valCodigoPostalValido),
                 NoExiste: !(valCodigoPostalLongitud && valCodigoPostalVacio && valCodigoPostalValidando && this.valCodigoPostalValido)
               }" />
