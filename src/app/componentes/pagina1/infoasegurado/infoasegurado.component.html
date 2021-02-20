@@ -71,10 +71,12 @@
         <div class="row">
           <div class="col-md-4 col-12 mb-4">
             <p class="m-0 mb-2">Soy:</p>
+
             <div class="row d-flex justify-content-between">
-              <div class="col-4 d-flex justify-content-center">
-                <button class="m-0 btn" style="display: block" (click)="Soymujer()">
-                  <svg id="logc" [ngClass]="{ Noselectap: !soymujer, Selectap: soymujer }"
+              <div class="col-4 d-flex justify-content-center" [ngbTooltip]="ttPersonaFemenino"
+                tooltipClass="my-custom-class">
+                <button class="m-0 btn" style="display: block" (click)="onTipoPersonaFemeninoChange()">
+                  <svg id="logc" [ngClass]="{ Noselectap: !clienteEsFemenino, Selectap: clienteEsFemenino }"
                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     viewBox="0 0 66.72 66.72" width="34px" height="34px">
                     <defs>
@@ -94,9 +96,15 @@
                   </svg>
                 </button>
               </div>
-              <div class="col-4 d-flex justify-content-center">
-                <button class="m-0 btn" style="display: block" (click)="Soyhombre()">
-                  <svg id="logc" width="34px" heigth="34px" [ngClass]="{ Noselectap: !soyhombre, Selectap: soyhombre }"
+              <ng-template #ttPersonaFemenino>
+                <b>Femenino</b>
+              </ng-template>
+
+              <div class="col-4 d-flex justify-content-center" [ngbTooltip]="ttPersonaMasculino"
+                tooltipClass="my-custom-class">
+                <button class="m-0 btn" style="display: block" (click)="onTipoPersonaMasculinoChange()">
+                  <svg id="logc" width="34px" heigth="34px"
+                    [ngClass]="{ Noselectap: !clienteEsMasculino, Selectap: clienteEsMasculino }"
                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     viewBox="0 0 66.72 66.72">
                     <defs>
@@ -116,11 +124,16 @@
                   </svg>
                 </button>
               </div>
-              <div class="col-4 d-flex justify-content-center">
-                <button class="m-0 btn" style="display: block" (click)="Soyempresa()">
+              <ng-template #ttPersonaMasculino>
+                <b>Masculino</b>
+              </ng-template>
+
+              <div class="col-4 d-flex justify-content-center" [ngbTooltip]="ttPersonaMoral"
+                tooltipClass="my-custom-class">
+                <button class="m-0 btn" style="display: block" (click)="onTipoPersonaMoralChange()">
                   <svg id="logc" [ngClass]="{
-                      Noselectap: !soyempresa,
-                      Selectap: soyempresa
+                      Noselectap: !clienteEsMoral,
+                      Selectap: clienteEsMoral
                     }" width="34px" height="34px" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60.44 78.55">
                     <defs>
@@ -140,21 +153,18 @@
                   </svg>
                 </button>
               </div>
+              <ng-template #ttPersonaMoral>
+                <b>Moral</b>
+              </ng-template>
             </div>
           </div>
 
-        <!--
-
-          <div class="form-group col-md-4 col-sm-5">
+          <div class="form-group col-md-4 col-sm-5" *ngIf="!clienteEsMoral">
             <p class="m-0 mb-2">Fecha de nacimiento</p>
             <div class="row">
               <div class="col-md-4 col-sm-12 mb-3">
                 <div class="row">
                   <div class="dropdown">
-                    <button class="btn nacimiento" type="button" id="btndia" data-toggle="dropdown"
-                      aria-haspopup="true">
-                      Día
-                    </button>
                     <div class="dropdown-menu" style="overflow-y: scroll;" aria-labelledby="dropdownMenuButton">
                       <a class="dropdown-item" (click)=" capturardia($event)" *ngFor="let dia of dias" role="option">
                         {{ dia }}
@@ -178,10 +188,6 @@
               <div class="col-md-4 col-sm-12 mb-3">
                 <div class="row">
                   <div class="dropdown">
-                    <button class="btn nacimiento" type="button" id="btnmes" data-toggle="dropdown"
-                      aria-haspopup="true">
-                      Mes
-                    </button>
                     <div class="dropdown-menu" style="overflow-y: scroll;" aria-labelledby="dropdownMenuButton">
                       <a class="dropdown-item" (click)="capturarmes($event)" *ngFor="let mes of meses" role="option">
                         {{ mes }}
@@ -205,10 +211,6 @@
               <div class="col-md-4 col-sm-12 mb-3">
                 <div class="row">
                   <div class="dropdown">
-                    <button class="btn nacimiento" type="button" id="btnnacann" data-toggle="dropdown"
-                      aria-haspopup="true">
-                      Año
-                    </button>
                     <div class="dropdown-menu" style="overflow-y: scroll;" aria-labelledby="dropdownMenuButton">
                       <a class="dropdown-item" (click)="capturarfechaann($event)" *ngFor="let fechaann of fechaannos"
                         role="option">
@@ -234,46 +236,30 @@
 
           <div class="form-group col-md-4">
             <p class="m-0 mb-2">Código postal:</p>
-            <div class="row">
-              <div class="dropdown">
-                <button class="btn nacimiento" type="button" id="btncodigopostal" data-toggle="dropdown"
-                  aria-haspopup="true" style="background-size: 5px 5px, 5px 5px, 2.5em 4.5em !important;">
-                  Código Postal
-                </button>
-                <div class="dropdown-menu" style="overflow-y: scroll;" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" role="option">
-                    (click)="capturarfechaann($event)" *ngFor="let fechaann of fechaannos"
-                    {{ fechaann }}
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <input type="text" class="form-control" (change)="onCodigoPostalKeyUp($event)"
-              onkeypress="return(event.charCode >= 48 && event.charCode <= 57)" maxlength="5" [(ngModel)]="codigoPostal"
+            <input type="text"
+              class="form-control"
+              (change)="onCodigoPostalChanged()"
+              onkeypress="return(event.charCode >= 48 && event.charCode <= 57)"
+              maxlength="5"
+              [(ngModel)]="clienteCodigoPostal"
               [ngClass]="{
-                Existe: existe,
-                NoExiste: !existe || codigoPostal == ''
+                Existe: (valCodigoPostalLongitud && valCodigoPostalVacio && valCodigoPostalValidando && this.valCodigoPostalValido),
+                NoExiste: !(valCodigoPostalLongitud && valCodigoPostalVacio && valCodigoPostalValidando && this.valCodigoPostalValido)
               }" />
-            <ngb-alert [dismissible]="false" type="danger" *ngIf="codigoPostal == ''">
-              Llene código postal
+            <ngb-alert [dismissible]="false" type="danger" *ngIf="!valCodigoPostalVacio">
+              Dato Obligatorio
             </ngb-alert>
-            <ngb-alert [dismissible]="false" type="danger"
-              *ngIf="!existe && codigoPostal != '' && codigoPostal.length == 5">
-              No existe el codigo postal, ingrese otro
+            <ngb-alert [dismissible]="false" type="danger" *ngIf="!valCodigoPostalLongitud">
+              El CP debe tener 5 dígitos
             </ngb-alert>
-            <ngb-alert [dismissible]="false" type="danger"
-              *ngIf="!existe && codigoPostal != '' && codigoPostal.length < 5">
-              El CP, debe tener 5 dígitos
+            <ngb-alert [dismissible]="false" type="danger" *ngIf="!valCodigoPostalValidando">
+              Validando el CP
             </ngb-alert>
-            <ngb-alert [dismissible]="false" type="success"
-              *ngIf="existe && codigoPostal != '' && codigoPostal.length == 5">
-              Código postal válido
+            <ngb-alert [dismissible]="false" type="danger" *ngIf="!valCodigoPostalValido">
+              El CP no es valido
             </ngb-alert>
           </div>
         </div>
-
-      -->
       </div>
     </div>
   </div>

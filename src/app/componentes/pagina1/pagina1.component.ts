@@ -30,16 +30,39 @@ export class Pagina1Component implements OnInit {
   sy: string;
   sd: string;
 
-  // Variables carro
+  /* Valores vehículo */
   vehiculoTipo: CatalogoModel;
   vehiculoAnio: CatalogoModel;
   vehiculoMarca: CatalogoModel;
   vehiculoDescripcion: CatalogoModel;
   itemVacio: CatalogoModel;
 
+  /* Valores cliente */
+  clienteNombre: string;
+  clienteMail: string;
+  clienteTelefono: string;
+  clienteTipoPersona: string;
+  clienteFechaNacimiento: string;
+  clienteCodigoPostal: string;
+
+  datosValidos: boolean;
+
   constructor() {}
 
   ngOnInit(): void {
+    this.itemVacio = { sDato: '', sLlave: '' };
+    this.vehiculoTipo = this.itemVacio;
+    this.vehiculoAnio = this.itemVacio;
+    this.vehiculoMarca = this.itemVacio;
+    this.vehiculoDescripcion = this.itemVacio;
+    this.clienteNombre = '';
+    this.clienteMail = '';
+    this.clienteTelefono = '';
+    this.clienteTipoPersona = '';
+    this.clienteFechaNacimiento = '';
+    this.clienteCodigoPostal = '';
+    this.datosValidos = false;
+
     this.resizeObservable$ = fromEvent(window, 'resize');
     this.resizeSubscription$ = this.resizeObservable$.subscribe((event) => {
       this.size = (event.target as Window).innerWidth;
@@ -56,31 +79,97 @@ export class Pagina1Component implements OnInit {
   }
 
   handlerVehiculoTipo(e: CatalogoModel) {
-    console.log(e);
     this.vehiculoTipo = e;
     this.vehiculoAnio = this.itemVacio;
     this.vehiculoMarca = this.itemVacio;
     this.vehiculoDescripcion = this.itemVacio;
+    this.ValidarDatosObligatorios();
   }
 
   handlerVehiculoAnio(e: CatalogoModel) {
-    console.log(e);
     this.vehiculoAnio = e;
     this.vehiculoMarca = this.itemVacio;
     this.vehiculoDescripcion = this.itemVacio;
+    this.ValidarDatosObligatorios();
   }
 
   handlerVehiculoMarca(e: CatalogoModel) {
-    console.log(e);
     this.vehiculoMarca = e;
     this.vehiculoDescripcion = this.itemVacio;
+    this.ValidarDatosObligatorios();
   }
 
   handlerVehiculoDescripcion(e: CatalogoModel) {
-    console.log(e);
     this.vehiculoDescripcion = e;
+    this.ValidarDatosObligatorios();
   }
 
+  handlerClienteNombre(e: string) {
+    this.clienteNombre = e;
+    this.ValidarDatosObligatorios();
+  }
+
+  handlerClienteMail(e: string) {
+    this.clienteMail = e;
+    this.ValidarDatosObligatorios();
+  }
+
+  handlerClienteTelefono(e: string) {
+    console.log(e);
+    this.clienteTelefono = e;
+    this.ValidarDatosObligatorios();
+  }
+
+  handlerClienteTipoPersona(e: string) {
+    this.clienteTipoPersona = e;
+    this.ValidarDatosObligatorios();
+  }
+
+  handlerClienteCodigoPostal(e: string) {
+    this.clienteCodigoPostal = e;
+    this.ValidarDatosObligatorios();
+  }
+
+  ValidarDatosObligatorios() {
+    this.datosValidos = false;
+    debugger;
+
+    if (this.vehiculoTipo === this.itemVacio) {
+      return;
+    }
+    if (this.vehiculoAnio === this.itemVacio) {
+      return;
+    }
+    if (this.vehiculoMarca === this.itemVacio) {
+      return;
+    }
+    if (this.vehiculoDescripcion === this.itemVacio) {
+      return;
+    }
+    if (this.clienteNombre === '') {
+      return;
+    }
+    if (this.clienteMail === '') {
+      return;
+    }
+    if (this.clienteTelefono === '') {
+      return;
+    }
+    if (this.clienteTipoPersona === '') {
+      return;
+    } else {
+      if (this.clienteTipoPersona !== 'Moral') {
+        if (this.clienteFechaNacimiento === '') {
+          return;
+        }
+      }
+    }
+    if (this.clienteCodigoPostal === '') {
+      return;
+    }
+
+    this.datosValidos = true;
+  }
 
   f(e) {
     console.log(e);

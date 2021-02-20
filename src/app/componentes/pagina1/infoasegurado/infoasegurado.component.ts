@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { disableDebugTools } from '@angular/platform-browser';
+import { RequestCatalogoCotizamatico } from 'src/app/interphaces/request/RequestCatalogoCotizamatico.model';
 import { InfovehiculoService } from '../../../servicios/infovehiculo.service';
 
 @Component({
@@ -8,10 +9,6 @@ import { InfovehiculoService } from '../../../servicios/infovehiculo.service';
   styleUrls: ['./infoasegurado.component.css'],
 })
 export class InfoaseguradoComponent implements OnInit {
-  @Input() reso: number;
-  gema: number;
-
-  /* Nuevas Variables */
   @Output() emitClienteNombre = new EventEmitter<string>();
   @Input() clienteNombre: string;
   valClienteNombre: boolean;
@@ -25,6 +22,18 @@ export class InfoaseguradoComponent implements OnInit {
   @Input() clienteTelefono: string;
   valClienteTelefonoVacio: boolean;
   valClienteTelefonoNoValido: boolean;
+
+  @Output() emitClienteTipoPersona = new EventEmitter<string>();
+  @Input() clienteEsFemenino: boolean;
+  @Input() clienteEsMasculino: boolean;
+  @Input() clienteEsMoral: boolean;
+
+  @Output() emitClienteCodigoPostal = new EventEmitter<string>();
+  @Input() clienteCodigoPostal: string;
+  valCodigoPostalVacio: boolean;
+  valCodigoPostalLongitud: boolean;
+  valCodigoPostalValidando: boolean;
+  valCodigoPostalValido: boolean;
 
   /* Varaibles Erika */
   @Output() pasad = new EventEmitter<string>();
@@ -41,14 +50,9 @@ export class InfoaseguradoComponent implements OnInit {
   @Output() pasgenem = new EventEmitter<boolean>();
   @Output() pasgenselem = new EventEmitter<string>();
 
-  //CON ESTAS VARIABLES SERAN IDENTIFICADOS LO DATOS QUE PASAMOS A LA PAGINA2 A TRAVES DL ROUTER
-  modsel: string;
-  marsel: string;
-  descsel: string;
-  annosel: string;
-
   /* Variables para corregir errores */
   annos: [];
+  gema: string;
 
   // ESTAS VARIABLES SON PARA LA VALIDACION (NO VACIO)
   @Input() existe: boolean;
@@ -90,10 +94,7 @@ export class InfoaseguradoComponent implements OnInit {
   @Input() selectedyear;
   @Input() selecteddia;
   selected;
-  //Valores botones soy
-  @Input() soymujer = false;
-  @Input() soyhombre = false;
-  @Input() soyempresa = false;
+  // Valores botones soy
   @Input() disabled;
   statussoymujer = 'NoSelected';
   statussoyhombre = 'NoSelected';
@@ -108,6 +109,13 @@ export class InfoaseguradoComponent implements OnInit {
     this.valClienteMailNoValido = true;
     this.valClienteTelefonoNoValido = true;
     this.valClienteTelefonoVacio = true;
+    this.clienteEsFemenino = false;
+    this.clienteEsMasculino = false;
+    this.clienteEsMoral = false;
+    this.valCodigoPostalLongitud = true;
+    this.valCodigoPostalVacio = true;
+    this.valCodigoPostalValidando = true;
+    this.valCodigoPostalValido = true;
 
     this.mesdiabis = [
       ['Enero', 31],
@@ -188,51 +196,25 @@ export class InfoaseguradoComponent implements OnInit {
       31,
     ];
 
-    // console.log(this.dias)
-    this.fechaannos = [];
-    const today = new Date();
-    this.year = today.getFullYear();
-    this.date = today.getDate();
-    this.month = today.getMonth();
-    this.gema = this.year - 75;
-    // console.log(today)
-    // console.log(this.date) //numero del dia
-    // this.selecteddia=this.date
-    // this.verdia=this.selecteddia
-    // console.log(this.month)
-    // this.selectedmes=this.meses[this.month]
-    // this.vermes=this.selectedmes
-    // console.log(this.year)
-    // this.selectedyear=this.year
-    // this.verfechaann=this.selectedyear
-    for (let index = this.gema; index <= this.year - 18; index++) {
-      // VALIDACION PARA QUE SEA MAYOR DE EDAD
-      this.fechaannos.push(index);
-    }
-    //  console.log(this.fechaannos)
+    // this.fechaannos = [];
+    // const today = new Date();
+    // this.year = today.getFullYear();
+    // this.date = today.getDate();
+    // this.month = today.getMonth();
+    // this.gema = this.year - 75;
+
+    // for (let index = this.gema; index <= this.year - 18; index++) {
+    //   this.fechaannos.push(index);
+    // }
   }
 
   onNombreChanged() {
-    // let arrayEmparejamientos = {};
-    // const reg = /^(([A-Z a-z])\w+(\s))(([A-Z a-z]+\w\s))(([A-Z a-z]+\w)\s?)$/;
-    // arrayEmparejamientos = this.clienteNombre.match(reg);
-    // this.valClienteNombre = reg.test(this.clienteNombre);
-    this.valClienteNombre = this.clienteNombre !== '';
-
-    console.log(this.clienteNombre);
-    console.log(this.valClienteNombre);
-
-    if (
-      this.clienteNombre === '' ||
-      (this.clienteNombre !== '' && !this.valClienteNombre)
-    ) {
+    if (this.clienteNombre === '') {
       this.valClienteNombre = false;
       this.emitClienteNombre.emit('');
     } else {
-      if (this.clienteNombre !== '' && this.valClienteNombre) {
-        this.valClienteNombre = true;
-        this.emitClienteNombre.emit(this.clienteNombre);
-      }
+      this.valClienteNombre = true;
+      this.emitClienteNombre.emit(this.clienteNombre);
     }
   }
 
@@ -265,16 +247,16 @@ export class InfoaseguradoComponent implements OnInit {
     this.valClienteTelefonoVacio = true;
 
     if (this.clienteTelefono !== '' && this.clienteTelefono.length === 10) {
-      var regt1 = /[1]{4}/;
-      var regt2 = /[2]{4}/;
-      var regt3 = /[3]{4}/;
-      var regt4 = /[4]{4}/;
-      var regt5 = /[5]{4}/;
-      var regt6 = /[6]{4}/;
-      var regt7 = /[7]{4}/;
-      var regt8 = /[8]{4}/;
-      var regt9 = /[9]{4}/;
-      var regt0 = /[0]{4}/;
+      const regt1 = /[1]{4}/;
+      const regt2 = /[2]{4}/;
+      const regt3 = /[3]{4}/;
+      const regt4 = /[4]{4}/;
+      const regt5 = /[5]{4}/;
+      const regt6 = /[6]{4}/;
+      const regt7 = /[7]{4}/;
+      const regt8 = /[8]{4}/;
+      const regt9 = /[9]{4}/;
+      const regt0 = /[0]{4}/;
 
       this.valClienteTelefonoNoValido = regt1.test(this.clienteTelefono);
       if (this.valClienteTelefonoNoValido) {
@@ -340,102 +322,72 @@ export class InfoaseguradoComponent implements OnInit {
         }
       }
     } else {
-      this.existeT = false;
-      this.pastel.emit('');
+      this.valClienteTelefonoNoValido = false;
+      this.emitClienteTelefono.emit('');
     }
   }
 
-  onTipoPersonaMasculinoChange() {}
-
-  onTipoPersonaFemeninoChange() {}
-
-  onTipoPersonaMoralChange() {}
-
-  //Funciones botones SOY
-  Soymujer() {
-    // tiene selected this.statussoymujer
-    this.soymujer = !this.soymujer;
-    this.soyhombre = false;
-    this.statussoyhombre = 'NoSelected';
-    this.soyempresa = false;
-    this.statussoyempresa = 'NoSelected';
-    this.statussoymujer = this.soymujer ? 'Selected' : 'NoSelected';
-    this.pasgenem.emit(this.soyempresa);
-    this.pasgenselem.emit(this.statussoyempresa);
-    this.pasgenselho.emit(this.statussoyhombre);
-    this.pasgenho.emit(this.soyhombre);
-    this.pasgenselmu.emit(this.statussoymujer);
-    this.pasgenmu.emit(this.soymujer);
-    // console.log("Mujer"+' '+this.soymujer+' '+this.statussoymujer)
-    // console.log("Hombre"+' '+this.soyhombre+' '+this.statussoyhombre)
-    // console.log("Empresa"+' '+this.soyempresa+' '+this.statussoyempresa)
-    //SINO HAY GENERO SELECCIONADO
-    if (!this.soyhombre && !this.soymujer && !this.soyempresa) {
-      this.pasgenselmu.emit('');
-      this.pasgenselem.emit('');
-      this.pasgenselho.emit('');
-    }
+  onTipoPersonaFemeninoChange() {
+    this.clienteEsFemenino = true;
+    this.clienteEsMasculino = false;
+    this.clienteEsMoral = false;
+    this.emitClienteTipoPersona.emit('Femenino');
   }
-  Soyhombre() {
-    // tiene selected this.statusDM
-    this.soyhombre = !this.soyhombre;
-    this.soymujer = false;
-    this.statussoymujer = 'NoSelected';
-    this.soyempresa = false;
-    this.statussoyempresa = 'NoSelected';
-    this.statussoyhombre = this.soyhombre ? 'Selected' : 'NoSelected';
-    this.pasgenem.emit(this.soyempresa);
-    this.pasgenselem.emit(this.statussoyempresa);
-    this.pasgenselho.emit(this.statussoyhombre);
-    this.pasgenho.emit(this.soyhombre);
-    this.pasgenselmu.emit(this.statussoymujer);
-    this.pasgenmu.emit(this.soymujer);
-    // console.log("Hombre"+' '+this.soyhombre+' '+this.statussoyhombre)
-    // console.log("Mujer"+' '+this.soymujer+' '+this.statussoymujer)
-    // console.log("Empresa"+' '+this.soyempresa+' '+this.statussoyempresa)
-    //SINO HAY GENERO SELECCIONADO
-    if (!this.soyhombre && !this.soymujer && !this.soyempresa) {
-      this.pasgenselmu.emit('');
-      this.pasgenselem.emit('');
-      this.pasgenselho.emit('');
-    }
-  }
-  Soyempresa() {
-    // tiene selected this.statusDB
-    this.soyempresa = !this.soyempresa;
-    this.soymujer = false;
-    this.statussoymujer = 'NoSelected';
-    this.soyhombre = false;
-    this.statussoyhombre = 'NoSelected';
-    this.statussoyempresa = this.soyempresa ? 'Selected' : 'NoSelected';
-    this.pasgenem.emit(this.soyempresa);
-    this.pasgenselem.emit(this.statussoyempresa);
-    this.pasgenselho.emit(this.statussoyhombre);
-    this.pasgenho.emit(this.soyhombre);
-    this.pasgenselmu.emit(this.statussoymujer);
-    this.pasgenmu.emit(this.soymujer);
-    //Limpia fecha selecccionada
-    this.selecteddia = '';
-    this.verdia = '';
-    this.selectedyear = '';
-    this.verfechaann = '';
-    this.selectedmes = '';
-    this.vermes = '';
-    this.pasam.emit(this.vermes);
-    this.pasay.emit(this.verfechaann);
-    this.pasad.emit(this.verdia);
 
-    // console.log("Empresa"+' '+this.soyempresa+' '+this.statussoyempresa)
-    // console.log("Hombre"+' '+this.soyhombre+' '+this.statussoyhombre)
-    // console.log("Mujer"+' '+this.soymujer+' '+this.statussoymujer)
-    //SINO HAY GENERO SELECCIONADO
-    if (!this.soyhombre && !this.soymujer && !this.soyempresa) {
-      this.pasgenselmu.emit('');
-      this.pasgenselem.emit('');
-      this.pasgenselho.emit('');
-    }
+  onTipoPersonaMasculinoChange() {
+    this.clienteEsFemenino = false;
+    this.clienteEsMasculino = true;
+    this.clienteEsMoral = false;
+    this.emitClienteTipoPersona.emit('Masculino');
   }
-  //Funciones selección fecha de nacimiento
+
+  onTipoPersonaMoralChange() {
+    this.clienteEsFemenino = false;
+    this.clienteEsMasculino = false;
+    this.clienteEsMoral = true;
+    this.emitClienteTipoPersona.emit('Moral');
+  }
+
+  onCodigoPostalChanged() {
+    this.valCodigoPostalLongitud = true;
+    this.valCodigoPostalVacio = true;
+    this.valCodigoPostalValidando = true;
+    this.valCodigoPostalValido = true;
+
+    if (this.clienteCodigoPostal === '') {
+      this.valCodigoPostalVacio = false;
+      this.emitClienteCodigoPostal.emit('');
+      return;
+    }
+
+    if (this.clienteCodigoPostal.length < 5) {
+      this.valCodigoPostalLongitud = false;
+      this.emitClienteCodigoPostal.emit('');
+      return;
+    }
+
+    this.valCodigoPostalValidando = false;
+
+    const req: RequestCatalogoCotizamatico = {
+      Filtro: this.clienteCodigoPostal,
+      IdAplication: 2,
+      NombreCatalogo: 'Sepomex',
+    };
+
+    this.infovehiculoService.getCatalogosCotizamatico(req).subscribe((data) => {
+      this.valCodigoPostalValidando = true;
+
+      if (data.Error !== null) {
+        this.valCodigoPostalValido = false;
+        this.emitClienteCodigoPostal.emit('');
+        return;
+      }
+
+      this.emitClienteCodigoPostal.emit(this.codigoPostal);
+    });
+  }
+
+  // Funciones selección fecha de nacimiento
   getmes() {
     // console.log(this.selectedmes)
     this.vermes = this.selectedmes;
@@ -678,57 +630,6 @@ export class InfoaseguradoComponent implements OnInit {
         31,
       ];
       // console.log("Te falta")
-    }
-  }
-  // Función codigo postal
-  onCodigoPostalKeyUp(event) {
-    // console.log(event);
-    if (this.codigoPostal.length < 5 && this.codigoPostal != '') {
-      this.existe = false;
-      this.pascp.emit('');
-      // console.log('No se puede validar un CP menor a 5 caracteres');
-      return;
-    } else {
-      if (this.codigoPostal == '') {
-        this.existe = false;
-        this.pascp.emit('');
-        // console.log('No se puede validar un CP vacío');
-        return;
-      } else {
-        if (this.codigoPostal != '' && this.codigoPostal.length == 5) {
-          this.infovehiculoService
-            .getApiCPs({
-              IdAplication: 2,
-              NombreCatalogo: 'Sepomex',
-              Filtro: this.codigoPostal,
-            })
-            .subscribe((data: any) => {
-              if (data.Error != null) {
-                this.existe = false;
-                this.pascp.emit('');
-                // console.log("No existe")
-                return;
-              } else {
-                this.existe = true;
-                this.pascp.emit(this.codigoPostal);
-                this.ubicacion = JSON.parse(data.CatalogoJsonString);
-                this.estado = this.ubicacion[0].Municipio.Estado.sEstado;
-                this.municipio = this.ubicacion[0].Municipio.sMunicipio;
-                this.colonia = this.ubicacion[0].Ubicacion[0].sUbicacion;
-                this.ubicacionId = this.ubicacion[0].Ubicacion[0].iIdUbicacion;
-                console.log(
-                  this.estado +
-                    '  ' +
-                    this.municipio +
-                    '  ' +
-                    this.colonia +
-                    '  ' +
-                    this.ubicacionId
-                );
-              }
-            });
-        }
-      }
     }
   }
 }

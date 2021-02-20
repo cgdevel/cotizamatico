@@ -8,16 +8,18 @@
     </div>
   </div>
 
-  <app-infovehiculo
-    (emitTipoVehiculo)="handlerVehiculoTipo($event)"
-    (emitAnioVehiculo)="handlerVehiculoAnio($event)"
-    (emitMarcaVehiculo)="handlerVehiculoMarca($event)"
-    (emitDescripcion)="handlerVehiculoDescripcion($event)">
+  <app-infovehiculo (emitTipoVehiculo)="handlerVehiculoTipo($event)" (emitAnioVehiculo)="handlerVehiculoAnio($event)"
+    (emitMarcaVehiculo)="handlerVehiculoMarca($event)" (emitDescripcion)="handlerVehiculoDescripcion($event)">
   </app-infovehiculo>
 
-  <app-infoasegurado (pasad)="f($event)" (pasam)="g($event)" (pasay)="h($event)" (pastel)="i($event)"
+  <!-- <app-infoasegurado (pasad)="f($event)" (pasam)="g($event)" (pasay)="h($event)" (pastel)="i($event)"
     (pasnom)="j($event)" (pasemail)="l($event)" (pascp)="k($event)" (pasgenselmu)="mu($event)" (pasgenmu)="muj($event)"
     (pasgenselho)="ho($event)" (pasgenho)="hom($event)" (pasgenselem)="em($event)" (pasgenem)="emp($event)">
+  </app-infoasegurado> -->
+
+  <app-infoasegurado (emitClienteNombre)="handlerClienteNombre($event)" (emitClienteMail)="handlerClienteMail($event)"
+    (emitClienteTelefono)="handlerClienteTelefono($event)" (emitClienteTipoPersona)="handlerClienteTipoPersona($event)"
+    (emitClienteCodigoPostal)="handlerClienteCodigoPostal($event)">
   </app-infoasegurado>
 
   <div class="row justify-content-center">
@@ -56,8 +58,7 @@
       mi auto <label id="ahora">ahora</label>!</button>
     -->
     <button id="coti" class="btn btn-primary btn-lg" [routerLink]="['/compara']" routerLinkActive="router-link-active"
-      [state]='{ }'
-      [disabled]="true">¡Cotizar
+      [state]='{ }' [disabled]="!datosValidos">¡Cotizar
       mi auto <label id="ahora">ahora</label>!</button>
   </div>
 </div>
