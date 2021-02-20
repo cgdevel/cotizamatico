@@ -11,19 +11,19 @@
                     </div>
                 </div>
                 <div class="row" style="margin-bottom: 11px;">
-                    <div class="col">
+                    <div class="col-5">
                         Nacionalidad
                     </div>
-                    <div class="col">
+                    <div class="col-7">
                         <ng-select 
                             [items]="Nacion"       
                             bindLabel="NacString"
-                            placeholder="Nacionalidades"
                             appendTo="body"
-                            style="width: 140px;"
+                            style="width: 168px;"
                             [searchable]="true" 
                             [clearable]="false"
                             [closeOnSelect]="true"
+                            (change)="getrfc()"
                             [(ngModel)]="nacionalidadsel" [ngbTooltip]="nacsel" tooltipClass="my-custom-class">
                             <ng-template #nacsel>
                                 <b  *ngIf="!!nacionalidadsel">{{nacionalidadsel.NacString}}</b>
@@ -136,7 +136,18 @@
                </div>
             </div>
         </div>
-        
+        <div class="col-12 col-md-4" id="inase">
+           <div class="container mw-100">
+               <div class="row">
+                   <div class="col">
+                       RFC
+                   </div>
+                   <div class="col">
+                        <input type="text" class="form-control" [value]="!!RFC ? RFC :''">
+                   </div>
+               </div>
+           </div>
+        </div>
     </div>
 </div>
        

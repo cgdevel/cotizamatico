@@ -11,11 +11,11 @@
 /* .ng-select .ng-select-container {
   height: -webkit-fill-available !important;
 } */
-.my-custom-class .tooltip-inner{
+.my-custom-class .tooltip-inner {
   /* background-color: darkgreen!important; */
-  background-color: chocolate!important;
-
-  font-size: 125%;
+  background-color: chocolate !important;
+  font-family: "Exo 2", sans-serif;
+  font-size: 14px;
 }
 .my-custom-class .arrow::before {
   /* border-top-color: darkgreen!important; */

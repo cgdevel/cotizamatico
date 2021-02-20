@@ -1,6 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { isThisTypeNode } from 'typescript';
-import { threadId } from 'worker_threads';
 import {InfovehiculoService} from '../../../servicios/infovehiculo.service'
 import {RequestNacionalidad } from '../../../../app/interphaces/nacionali';
 
@@ -16,13 +14,18 @@ export class AseAXXAComponent implements OnInit {
   @Input()  CP: string ='';
   @Input()  edad:number;
   @Input()  nomase:string ='';
+  @Input()  Nombre: string ='';
+  @Input()  Mes: string ='';
+  @Input()  Dia: number;
   Nacion = new Array<RequestNacionalidad>();
   year;
+  month;
   // VARIABLES CP
   ubicacion: any;
   ubicacionId: number;
   estado: string;
   municipio: string;
+  RFC: string;
   nacionalidadsel;
   item:string='';
   cols:{ 
@@ -31,6 +34,9 @@ export class AseAXXAComponent implements OnInit {
   coloniasel;
   NomInterior : string;
   NomExterior: string;
+  meses: string[];
+  naciye: number;
+  nummonth: number;
   constructor(private InfovehiculoService: InfovehiculoService) { }
 
   getUbicacion(){
@@ -46,18 +52,79 @@ export class AseAXXAComponent implements OnInit {
         this.cols=this.ubicacion[0].Ubicacion
       })// suscribecierra
   }
-
+  getrfc(){
+    this.RFC=''
+    this.Nombre=this.Nombre.toUpperCase();
+    console.log(this.nacionalidadsel.NacString+' '+ this.Nombre)
+      if(this.nacionalidadsel.NacString!='MEXICANA'){
+        var str = new String(this.naciye)
+        if (this.nummonth<10) {
+          if (this.Dia<10) {
+            this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+"0"+this.Dia+"XXX"            
+          }
+          this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+this.Dia+"XXX"            
+        }else {
+          if (this.Dia<10) {
+            this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+this.nummonth+"0"+this.Dia+"XXX"
+          } else {
+            this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+this.nummonth+this.Dia+"XXX"
+          }
+        }
+      }else {
+        var str = new String(this.naciye)
+        var n = this.Nombre.indexOf(" ");
+        var strnmate =this.Nombre.charAt(n+1)
+        var t=this.Nombre.lastIndexOf(" ")+1
+        var strnom = this.Nombre.charAt(t)
+        var strnpate=this.Nombre.charAt(0)+this.Nombre.charAt(1)
+        if (this.nummonth<10) {
+          if (this.Dia<10) {
+            this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+"0"+this.Dia+"XXX"            
+          }
+          this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+this.Dia+"XXX"            
+        }else {
+          if (this.Dia<10) {
+            this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+this.nummonth+"0"+this.Dia+"XXX"
+          } else {
+            this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+this.nummonth+this.Dia+"XXX"
+          }
+        }
+      } 
+    }//rfc
+    
+    ngOnInit(): void {
+      this.meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+      var today = new Date();
+      this.year = today.getFullYear();
+      this.month=today.getMonth();
+      // console.log(this.month)
+      for (let index = 0; index < this.meses.length; index++) {
+        const element = this.meses[index];
+        if (element==this.Mes) {
+          // console.log(index)
+          if (this.month>=index) {
+            this.nummonth=index+1
+            this.naciye=this.edad
+            !!this.edad ? this.edad=this.year-this.edad : this.edad=0;
+            // console.log( "ya los cumpliste"+" "+this.edad)
+          }else{
+            this.nummonth=index+1
+            this.naciye=this.edad
+            this.year=this.year-1
+            !!this.edad ?this.edad=this.year-this.edad : this.edad=0;
+            // console.log(this.edad)
+          }
+        }
+      }
+    this.getUbicacion()
+    this.InfovehiculoService.getNacionalidades()
+    // console.log(this.InfovehiculoService.Nacionalidades)
+    this.Nacion=this.InfovehiculoService.getNacionalidades()
+    // console.log(this.Nacion)
+    }//Init
+  
+  }
+  
 
   
-  ngOnInit(): void {
-    var today = new Date();
-    this.year = today.getFullYear();
-    !!this.edad ?this.edad=this.year-this.edad : this.edad=0;
-  this.getUbicacion()
-  this.InfovehiculoService.getNacionalidades()
-  // console.log(this.InfovehiculoService.Nacionalidades)
-  this.Nacion=this.InfovehiculoService.getNacionalidades()
-  // console.log(this.Nacion)
-  }
-
-}
+  

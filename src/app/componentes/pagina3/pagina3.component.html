@@ -1,12 +1,12 @@
 <div class="container mw-90">
     <app-infovehiculo  [disabled]="noedites" [modeloselpagina3]="vermodelo" [annoselpagina3]="veranno" [marcaselpagina3]="vermarca" [descripselpagina3]="verdescripcion"></app-infovehiculo>
-    <app-infoasegurado  [vienede3]="pasa3" [existeT]="true" [existe]="true" [validot]="true" [valido]="true" [validonom]="true" [soymujer]="boostatemu" [disabled]="noedites" [soyhombre]="boostatehom" [soyempresa]="boostateemp" [NOMBRE]="nombre" [EMAIL]="email" [TELEFONO]="telefono" [codigoPostal]="codigopostal" [selectedmes]="mesnaci" [selectedyear]="yearnaci" [selecteddia]="dianaci"></app-infoasegurado>
+    <app-infoasegurado [vienede3]="pasa3" [existeT]="true" [existe]="true" [validot]="true" [valido]="true" [validonom]="true" [soymujer]="boostatemu" [disabled]="noedites" [soyhombre]="boostatehom" [soyempresa]="boostateemp" [NOMBRE]="nombre" [EMAIL]="email" [TELEFONO]="telefono" [codigoPostal]="codigopostal" [selectedmes]="mesnaci" [selectedyear]="yearnaci" [selecteddia]="dianaci"></app-infoasegurado>
 </div>
 <div class="container mw-90">
     <div class="row">
         {{nombraseguradora}}
     </div>
-    <app-ase-axxa *ngIf="nombraseguradora=='AXXA'" [nomase]="nombre" [edad]="yearnaci" [CP]="codigopostal" [mujer]="boostatemu" [hombre]="boostatehom" [empresa]="boostatehom"></app-ase-axxa>
+    <app-ase-axxa *ngIf="nombraseguradora=='AXXA'" [Dia]="dianaci" [Mes]="mesnaci"  [nomase]="nombre" [edad]="yearnaci" [CP]="codigopostal" [mujer]="boostatemu" [hombre]="boostatehom" [empresa]="boostatehom" [Nombre]="nombre"></app-ase-axxa>
     <app-ase-chubb *ngIf="nombraseguradora=='CHUBB'" ></app-ase-chubb>
     <app-ase-sura *ngIf="nombraseguradora=='SURA'" ></app-ase-sura>
     <app-ase-zurcih *ngIf="nombraseguradora=='ZURICH'" ></app-ase-zurcih>
