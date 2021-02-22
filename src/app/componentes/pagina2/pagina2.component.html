@@ -541,19 +541,19 @@
           <div class="row">
             <h5 id="oferta">Mi auto es: </h5>
           </div>
-          <div class="row" style="margin-left: 2px;">{{vermodelo}}</div>
+          <div class="row" style="margin-left: 2px;">{{vermodelo.sDato}}</div>
           <div class="row">
             <h5 id="oferta">Año: </h5>
           </div>
-          <div class="row" style="margin-left: 2px;">{{veranno}}</div>
+          <div class="row" style="margin-left: 2px;">{{veranno.sDato}}</div>
           <div class="row">
             <h5 id="oferta">Marca: </h5>
           </div>
-          <div class="row" style="margin-left: 2px;">{{vermarca}} </div>
+          <div class="row" style="margin-left: 2px;">{{vermarca.sDato}} </div>
           <div class="row">
             <h5 id="oferta">Descripción: </h5>
           </div>
-          <div class="row" style="margin-left: 2px;">{{verdescripcion}}</div>
+          <div class="row" style="margin-left: 2px;">{{verdescripcion.sDato}}</div>
           <div class="row">
             <div class="col-8">
               <button (click)="toggle()" class="btn btn-primary"
@@ -569,11 +569,11 @@
           </div>
           <app-infovehiculo
             *ngIf="show"
-            (emitTipoVehiculo)="handlerVehiculoTipo($event)"
-            (emitAnioVehiculo)="handlerVehiculoAnio($event)"
-            (emitMarcaVehiculo)="handlerVehiculoMarca($event)"
-            (emitDescripcion)="handlerVehiculoDescripcion($event)"
-            [showchiquito]="show" [modelosel]="vermodelo" [annosel]="veranno" [marcasel]="vermarca" [descripsel]="verdescripcion">
+            (emitTipoVehiculo)="emitTipoVehiculo($event)"
+            (emitAnioVehiculo)="emitAnioVehiculo($event)"
+            (emitMarcaVehiculo)="emitMarcaVehiculo($event)"
+            (emitDescripcion)="emitDescripcion($event)"
+            [showchiquito]="show" [modeloselpagina2]="vermodelo" [annoselpagina2]="veranno" [marcaselpagina2]="vermarca" [descripselpagina2]="verdescripcion">
           </app-infovehiculo>
           <!-- <app-infoasegurado *ngIf="show" [showchiquito]="show" [soymujer]="boostatemu" [soyhombre]="boostatehom" [soyempresa]="boostateemp"
                   [NOMBRE]="nombre" [EMAIL]="email" [TELEFONO]="telefono" [codigoPostal]="codigopostal" [selectedmes]="mesnaci" [selectedyear]="yearnaci" [selecteddia]="dianaci" ></app-infoasegurado>               -->

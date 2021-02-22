@@ -2,7 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgModule } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
 import {Pagina1Component } from  'src/app/componentes/pagina1/pagina1.component'
-
+import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
 
 @Component({
   selector: 'app-pagina2',
@@ -14,10 +14,10 @@ export class Pagina2Component implements OnInit {
   //VARIABLE DE LA QUE DEPENDE EDITAR DATOS
   show: boolean =false;
   //Variables a las que asigno datos de pagina1 
-  vermodelo: any;
-  vermarca: any;
-  verdescripcion: any;
-  veranno: any;
+  vermodelo: CatalogoModel ;
+  vermarca: CatalogoModel ;
+  verdescripcion: CatalogoModel ;
+  veranno: CatalogoModel ;
   nombre: any;
   email: any;
   telefono: any;
@@ -291,17 +291,17 @@ muacco:number=0
   // console.log("Informacion vehículo editada en página dos")
   // console.log(this.modelo+' '+this.anno+' '+this.marca+' '+this.descripcion)
   // console.log("Informacion vehículo actualizada")
-  this.vermodelo=this.modelo
-  this.vermarca=this.marca
-  this.verdescripcion=this.descripcion
-  this.veranno=this.anno
+  this.vermodelo.sDato=this.modelo.sDato
+  this.vermarca.sDato=this.marca.sDato
+  this.verdescripcion.sDato=this.descripcion.sDato
+  this.veranno.sDato=this.anno.sDato
   // console.log(this.vermodelo+' '+this.vermarca+' '+this.verdescripcion+' '+this.veranno)
  }
  //VARIABLES PARA EVENT EMITTER
- modelo:string='';
- marca:string='';
- descripcion:string='';
- anno:string='';
+ modelo: CatalogoModel;
+ marca: CatalogoModel;
+ descripcion: CatalogoModel;
+ anno: CatalogoModel;
  //FUNCIONES EVENT EMITTER DE INFOVEHICULO
  emitTipoVehiculo(e) {
   // console.log(e);
@@ -328,10 +328,10 @@ emitDescripcion(e) {
   ngOnInit(): void {
     
     this.width=history.state.sizesel
-    this.vermodelo=history.state.modsel
-    this.vermarca=history.state.marsel 
-    this.verdescripcion=history.state.descsel 
-    this.veranno=history.state.annosel
+    this.vermodelo=history.state.tipove
+    this.veranno=history.state.anniove
+    this.vermarca=history.state.marcave 
+    this.verdescripcion=history.state.descve 
     this.nombre=history.state.nomsel
     this.email=history.state.emsel
     this.telefono=history.state.telsel

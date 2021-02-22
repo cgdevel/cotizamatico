@@ -71,7 +71,18 @@
       class="btn btn-primary btn-lg"
       [routerLink]="['/compara']"
       routerLinkActive="router-link-active"
-      [state]="{}"
+      [state]="{
+        tipove:this.vehiculoTipo,
+        anniove:this.vehiculoAnio,
+        marcave:this.vehiculoMarca,
+        descve:this.vehiculoDescripcion,
+        namease:this.clienteNombre,
+        emailase:this.clienteMail,
+        phonease:this.clienteTelefono,
+        tipoperase:this.clienteTipoPersona,
+        cpase:this.clienteCodigoPostal,
+        fechanacase:this.clienteFechaNacimiento
+      }"
       [disabled]="!datosValidos"
     >
       ¡Cotizar mi auto <label id="ahora">ahora</label>!
