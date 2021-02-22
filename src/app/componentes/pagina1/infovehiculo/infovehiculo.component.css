@@ -209,3 +209,8 @@
     width: 122px !important;
   }
 }
+
+.card {
+  border: none;
+  box-shadow: 0 1px 8px 1px rgb(0 0 0 / 8%), 0 1px 6px 0 rgb(0 29 124 / 5%);
+}

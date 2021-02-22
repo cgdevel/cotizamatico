@@ -1,15 +1,19 @@
 <!-- <p>pagina1 works!</p> -->
 <div class="container mw-90">
   <div class="row text-center">
-    <div class="col-12 py-3">
+    <div class="col-12 py-4">
       <label id="al" class="mb-0">
         Cotiza tu seguro de auto <label id="facyseg">fácil y seguro</label>
       </label>
     </div>
   </div>
 
-  <app-infovehiculo (emitTipoVehiculo)="handlerVehiculoTipo($event)" (emitAnioVehiculo)="handlerVehiculoAnio($event)"
-    (emitMarcaVehiculo)="handlerVehiculoMarca($event)" (emitDescripcion)="handlerVehiculoDescripcion($event)">
+  <app-infovehiculo
+    (emitTipoVehiculo)="handlerVehiculoTipo($event)"
+    (emitAnioVehiculo)="handlerVehiculoAnio($event)"
+    (emitMarcaVehiculo)="handlerVehiculoMarca($event)"
+    (emitDescripcion)="handlerVehiculoDescripcion($event)"
+  >
   </app-infovehiculo>
 
   <!-- <app-infoasegurado (pasad)="f($event)" (pasam)="g($event)" (pasay)="h($event)" (pastel)="i($event)"
@@ -17,9 +21,14 @@
     (pasgenselho)="ho($event)" (pasgenho)="hom($event)" (pasgenselem)="em($event)" (pasgenem)="emp($event)">
   </app-infoasegurado> -->
 
-  <app-infoasegurado (emitClienteNombre)="handlerClienteNombre($event)" (emitClienteMail)="handlerClienteMail($event)"
-    (emitClienteTelefono)="handlerClienteTelefono($event)" (emitClienteTipoPersona)="handlerClienteTipoPersona($event)"
-    (emitClienteCodigoPostal)="handlerClienteCodigoPostal($event)" (emitClienteNacimiento)="handlerClienteFechaNacimiento($event)">
+  <app-infoasegurado
+    (emitClienteNombre)="handlerClienteNombre($event)"
+    (emitClienteMail)="handlerClienteMail($event)"
+    (emitClienteTelefono)="handlerClienteTelefono($event)"
+    (emitClienteTipoPersona)="handlerClienteTipoPersona($event)"
+    (emitClienteCodigoPostal)="handlerClienteCodigoPostal($event)"
+    (emitClienteNacimiento)="handlerClienteFechaNacimiento($event)"
+  >
   </app-infoasegurado>
 
   <div class="row justify-content-center">
@@ -57,8 +66,15 @@
             !(statumustr!=''&&this.sm!=''&&this.sy!=''&& this.sd!='')||!(statuhomstr!=''&&this.sm!=''&&this.sy!=''&& this.sd!='')">¡Cotizar
       mi auto <label id="ahora">ahora</label>!</button>
     -->
-    <button id="coti" class="btn btn-primary btn-lg" [routerLink]="['/compara']" routerLinkActive="router-link-active"
-      [state]='{ }' [disabled]="!datosValidos">¡Cotizar
-      mi auto <label id="ahora">ahora</label>!</button>
+    <button
+      id="coti"
+      class="btn btn-primary btn-lg"
+      [routerLink]="['/compara']"
+      routerLinkActive="router-link-active"
+      [state]="{}"
+      [disabled]="!datosValidos"
+    >
+      ¡Cotizar mi auto <label id="ahora">ahora</label>!
+    </button>
   </div>
 </div>

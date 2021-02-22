@@ -87,8 +87,14 @@
 }
 .Existe {
   border: 1px solid #ced4da;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
+
+input[type="text"]:focus {
+  border-color: #ff8f48;
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25) !important;
+  outline: 0;
+}
+
 .Tiene {
   border-color: #007eff !important;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
@@ -166,4 +172,9 @@
   .svgchi {
     margin-left: -27px !important;
   }
+}
+
+.card {
+  border: none;
+  box-shadow: 0 1px 10px 1px rgb(0 0 0 / 8%), 0 1px 6px 0 rgb(0 29 124 / 5%);
 }
