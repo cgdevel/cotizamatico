@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {InfovehiculoService} from '../../../servicios/infovehiculo.service'
 import {RequestNacionalidad } from '../../../../app/interphaces/nacionali';
+import {NacionalitiesService} from '../../../servicios/nacionalities.service'
+import {InfovehiculoService} from '../../../servicios/infovehiculo.service'
 
 @Component({
   selector: 'app-ase-axxa',
@@ -37,7 +38,7 @@ export class AseAXXAComponent implements OnInit {
   meses: string[];
   naciye: number;
   nummonth: number;
-  constructor(private InfovehiculoService: InfovehiculoService) { }
+  constructor(private InfovehiculoService: InfovehiculoService,private NacionalitiesService: NacionalitiesService) { }
 
     getUbicacion(){
       this.InfovehiculoService.getApiCPs({ 
@@ -117,9 +118,9 @@ export class AseAXXAComponent implements OnInit {
         }
       }
     this.getUbicacion()
-    this.InfovehiculoService.getNacionalidades()
+    // this.NacionalitiesService.getNacionalidades()
     // console.log(this.InfovehiculoService.Nacionalidades)
-    this.Nacion=this.InfovehiculoService.getNacionalidades()
+    this.Nacion=this.NacionalitiesService.getNacionalidades()
     // console.log(this.Nacion)
     }//Init
   
