@@ -65,7 +65,7 @@ export class InfoaseguradoComponent implements OnInit {
   /* Variables para corregir errores */
   annos: [];
   gema: string;
-
+ item: string;
   // ESTAS VARIABLES SON PARA LA VALIDACION (NO VACIO)
   @Input() existe: boolean;
   existeT: boolean;
@@ -132,13 +132,21 @@ export class InfoaseguradoComponent implements OnInit {
   }
 
   onNombreChanged() {
-    if (this.clienteNombre === '') {
-      this.valClienteNombre = false;
-      this.emitClienteNombre.emit('');
-    } else {
-      this.valClienteNombre = true;
-      this.emitClienteNombre.emit(this.clienteNombre);
+    var array_emparejamientos={};
+  var reg=/^(([A-Z a-z])\w+(\s))(([A-Z a-z]+\w\s))(([A-Z a-z]+\w)\s?)$/
+  array_emparejamientos = this.clienteNombre.match(reg);
+  this.validonom=reg.test(this.clienteNombre)
+  // console.log(event);
+  // console.log(this.clienteNombre)
+  if (this.clienteNombre==''|| this.clienteNombre!=''&& !this.validonom) {
+    this.valClienteNombre=false
+    this.emitClienteNombre.emit('')
+  } else {
+    if (this.clienteNombre!=''&& this.validonom) {
+      this.valClienteNombre=true
+      this.emitClienteNombre.emit(this.clienteNombre)
     }
+  }
   }
 
   onMailChanged() {
@@ -160,26 +168,97 @@ export class InfoaseguradoComponent implements OnInit {
     }
   }
 
-  onTelefonoChange() {
-    if (this.clienteTelefono === '') {
-      this.valClienteTelefonoVacio = false;
-      this.valClienteTelefonoNoValido = true;
-      this.emitClienteTelefono.emit('');
-      return;
-    }
-
-    this.valClienteTelefonoVacio = true;
-
-    if (this.clienteTelefono.length !== 10) {
+  onTelefonoChange() {  
+    if (this.clienteTelefono!=''&&this.clienteTelefono.length == 10 ) {
+      var regt1=/[1]{4}/
+      var regt2=/[2]{4}/
+      var regt3=/[3]{4}/
+      var regt4=/[4]{4}/
+      var regt5=/[5]{4}/
+      var regt6=/[6]{4}/
+      var regt7=/[7]{4}/
+      var regt8=/[8]{4}/
+      var regt9=/[9]{4}/
+      var regt0=/[0]{4}/
+    this.validot=regt1.test(this.clienteTelefono)
+    if (this.validot) {
       this.valClienteTelefonoNoValido = false;
       this.emitClienteTelefono.emit('');
-      return;
-    }
-
-    this.valClienteTelefonoNoValido = true;
+    } else {
+      this.validot=regt2.test(this.clienteTelefono)
+        if (this.validot) {
+          this.valClienteTelefonoNoValido = false;
+          this.emitClienteTelefono.emit('');
+        } else {
+    this.validot=regt3.test(this.clienteTelefono)
+        if (this.validot) {
+            this.valClienteTelefonoNoValido = false;
+            this.emitClienteTelefono.emit('');
+        } else {
+    this.validot=regt4.test(this.clienteTelefono)
+        if (this.validot) {
+      this.valClienteTelefonoNoValido = false;
+      this.emitClienteTelefono.emit('');
+      } else {
+    this.validot=regt5.test(this.clienteTelefono)
+    if (this.validot) {
+      this.valClienteTelefonoNoValido = false;
+      this.emitClienteTelefono.emit('');
+      } else {
+    this.validot=regt6.test(this.clienteTelefono)
+    if (this.validot) {
+      this.valClienteTelefonoNoValido = false;
+      this.emitClienteTelefono.emit('');
+      } else {
+    this.validot=regt7.test(this.clienteTelefono)
+    if (this.validot) {
+      this.valClienteTelefonoNoValido = false;
+      this.emitClienteTelefono.emit('');
+      } else {
+    this.validot=regt8.test(this.clienteTelefono)
+    if (this.validot) {
+      this.valClienteTelefonoNoValido = false;
+      this.emitClienteTelefono.emit('');
+      } else {
+    this.validot=regt9.test(this.clienteTelefono)
+    if (this.validot) {
+      this.valClienteTelefonoNoValido = false;
+      this.emitClienteTelefono.emit('');
+      } else {
+    this.validot=regt0.test(this.clienteTelefono)
+    if (this.validot) {
+      this.valClienteTelefonoNoValido = false;
+      this.emitClienteTelefono.emit('');
+      } else {
+        this.valClienteTelefonoNoValido = true;
+        this.valClienteTelefonoVacio = true;
     this.emitClienteTelefono.emit(this.clienteTelefono);
-  }
-
+             }   
+              }
+            }
+          }      
+              }
+            }
+          }
+        }
+      }
+    }
+    } else {
+      if (this.clienteTelefono === '') {
+        this.valClienteTelefonoVacio = false;
+        this.valClienteTelefonoNoValido = false;
+        this.emitClienteTelefono.emit('');
+        return;
+      }
+      if (this.clienteTelefono.length !== 10) {
+        this.valClienteTelefonoNoValido = false;
+        this.valClienteTelefonoNoValido = false;
+        this.emitClienteTelefono.emit('');
+        return;
+      }
+    }
+    
+}
   onTipoPersonaFemeninoChange() {
     this.clienteEsFemenino = true;
     this.clienteEsMasculino = false;
