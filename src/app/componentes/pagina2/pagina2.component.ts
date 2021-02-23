@@ -10,7 +10,7 @@ import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
   styleUrls: ['./pagina2.component.css']
 })
 export class Pagina2Component implements OnInit {
- 
+  aseguradora:string;
   //VARIABLE DE LA QUE DEPENDE EDITAR DATOS
   show: boolean =false;
   //Variables a las que asigno datos de pagina1 
@@ -319,7 +319,22 @@ emitDescripcion(e) {
   // console.log(e);
   this.descripcion=e
 }
+afirme(){
+  this.aseguradora='AFIRME'
+  console.log(this.aseguradora)
+  return this.aseguradora;
+}
+axxa(){
+  this.aseguradora='AXXA'
+  console.log(this.aseguradora)
+  return this.aseguradora;
+}
+qualitas(){
+  this.aseguradora='QUALITAS'
+    console.log(this.aseguradora)
+    return this.aseguradora;
 
+}
   constructor(
     private route: ActivatedRoute 
   ) { 

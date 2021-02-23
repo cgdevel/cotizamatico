@@ -20,6 +20,16 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { VermasComponent } from './componentes/vermas/vermas.component';
 import { Pagina3Component } from './componentes/pagina3/pagina3.component';
+import { AseAXXAComponent } from './componentes/aseguradoras/ase-axxa/ase-axxa.component';
+import { AseCHUBBComponent } from './componentes/aseguradoras/ase-chubb/ase-chubb.component';
+import { AseSURAComponent } from './componentes/aseguradoras/ase-sura/ase-sura.component';
+import { AseZURCIHComponent } from './componentes/aseguradoras/ase-zurcih/ase-zurcih.component';
+import { AseMAPFREComponent } from './componentes/aseguradoras/ase-mapfre/ase-mapfre.component';
+import { AseQUALITASComponent } from './componentes/aseguradoras/ase-qualitas/ase-qualitas.component';
+import { AseBANORTEComponent } from './componentes/aseguradoras/ase-banorte/ase-banorte.component';
+import { AseHDIComponent } from './componentes/aseguradoras/ase-hdi/ase-hdi.component';
+import { AseAFIRMEComponent } from './componentes/aseguradoras/ase-afirme/ase-afirme.component';
+import { AseANNAComponent } from './componentes/aseguradoras/ase-anna/ase-anna.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +43,16 @@ import { Pagina3Component } from './componentes/pagina3/pagina3.component';
     Pagina3Component,
     LayoutComponent,
     VermasComponent,
+    AseAXXAComponent,
+    AseCHUBBComponent,
+    AseSURAComponent,
+    AseZURCIHComponent,
+    AseMAPFREComponent,
+    AseQUALITASComponent,
+    AseBANORTEComponent,
+    AseHDIComponent,
+    AseAFIRMEComponent,
+    AseANNAComponent,
   ],
   imports: [
     FormsModule,

@@ -28,10 +28,69 @@ export class VermasComponent implements OnInit {
   boostatehom:boolean;
   strstateemp:string;
   boostateemp:boolean;
+  aseguradora:string;
   constructor( private locate:Location) { }
   onback(){
     this.locate.back()
   }
+  axxa(){
+    this.aseguradora='AXXA'
+    console.log(this.aseguradora)
+    return this.aseguradora;
+  }
+  chubb(){
+    this.aseguradora='CHUBB'
+    console.log(this.aseguradora)
+    return this.aseguradora;
+
+  }
+sura(){
+  this.aseguradora='SURA'
+    console.log(this.aseguradora)
+    return this.aseguradora;
+
+}
+zurich(){
+  this.aseguradora='ZURICH'
+    console.log(this.aseguradora)
+    return this.aseguradora;
+
+}
+mapfre(){
+  this.aseguradora='MAPRE'
+    console.log(this.aseguradora)
+    return this.aseguradora;
+
+}
+qualitas(){
+  this.aseguradora='QUALITAS'
+    console.log(this.aseguradora)
+    return this.aseguradora;
+
+}
+banorte(){
+  this.aseguradora='BANORTE'
+    console.log(this.aseguradora)
+    return this.aseguradora;
+
+}
+hdi(){
+  this.aseguradora='HDI'
+    console.log(this.aseguradora)
+    return this.aseguradora;
+
+}
+afirme(){
+  this.aseguradora='AFIRME'
+    console.log(this.aseguradora)
+    return this.aseguradora;
+
+}
+anna(){
+  this.aseguradora='ANNA'
+    console.log(this.aseguradora)
+    return this.aseguradora;
+}
   ngOnInit(): void {
     this.vermodelo=history.state.modsel
     this.vermarca=history.state.marsel 

@@ -1,35 +1,19 @@
-<div class="container mw-90"  [ngClass]="{columna :  !noedites}">
-    <!-- <app-infovehiculo  [modeloselpagina3]="vermodelo" [annoselpagina3]="veranno" [marcaselpagina3]="vermarca" [descripselpagina3]="verdescripcion" [modelosel]="vermodelo" [disabled]="noedites" [annosel]="veranno" [marcasel]="vermarca" [descripsel]="verdescripcion"></app-infovehiculo>
-    <app-infoasegurado [existe]="true" [validot]="true" [valido]="true" [validonom]="true" [soymujer]="boostatemu" [disabled]="noedites" [soyhombre]="boostatehom" [soyempresa]="boostateemp" [NOMBRE]="nombre" [EMAIL]="email" [TELEFONO]="telefono" [codigoPostal]="codigopostal" [selectedmes]="mesnaci" [selectedyear]="yearnaci" [selecteddia]="dianaci"></app-infoasegurado> -->
+<div class="container mw-90">
+    <app-infovehiculo  [disabled]="noedites" [modeloselpagina3]="vermodelo" [annoselpagina3]="veranno" [marcaselpagina3]="vermarca" [descripselpagina3]="verdescripcion"></app-infovehiculo>
+    <!-- <app-infoasegurado [vienede3]="pasa3" [existeT]="true" [existe]="true" [validot]="true" [valido]="true" [validonom]="true" [soymujer]="boostatemu" [disabled]="noedites" [soyhombre]="boostatehom" [soyempresa]="boostateemp" [NOMBRE]="nombre" [EMAIL]="email" [TELEFONO]="telefono" [codigoPostal]="codigopostal" [selectedmes]="mesnaci" [selectedyear]="yearnaci" [selecteddia]="dianaci"></app-infoasegurado> -->
 </div>
 <div class="container mw-90">
-    <div class="row" >
-        <div class="col-12 col-md-3" id="inase">
-            <input type="text" class="form-control" [disabled]="true" [value]="estado">
-        </div>
-        <div class="col-12 col-md-3" id="inase">
-            <input type="text" class="form-control" [disabled]="true" [value]="municipio">
-        </div>
-        <div class="col-12 col-md-3" id="inase">
-            <ng-select
-            [items]="cols"
-            bindLabel="sUbicacion"
-            placeholder="Colonia"
-            appendTo="body"
-            [searchable]="false"
-            [clearable]="false"
-            [closeOnSelect]="true"
-            [(ngModel)]="coloniasel">
-            <ng-option  ng-options="item as cols.iIdUbicacion for cols.sUbicacion in cols">
-                {{item}}
-            </ng-option>
-            <ng-template ng-notfound-tmp >
-              <div class="ng-option disabled">
-                  No hay colonias que mostrar
-              </div>
-          </ng-template>
-          </ng-select>
-        </div>
+    <div class="row">
+        {{nombraseguradora}}
     </div>
+    <app-ase-axxa *ngIf="nombraseguradora=='AXXA'"></app-ase-axxa>
+    <app-ase-chubb *ngIf="nombraseguradora=='CHUBB'" ></app-ase-chubb>
+    <app-ase-sura *ngIf="nombraseguradora=='SURA'" ></app-ase-sura>
+    <app-ase-zurcih *ngIf="nombraseguradora=='ZURICH'" ></app-ase-zurcih>
+    <app-ase-mapfre *ngIf="nombraseguradora=='MAPRE'" ></app-ase-mapfre>
+    <app-ase-qualitas *ngIf="nombraseguradora=='QUALITAS'" ></app-ase-qualitas>
+    <app-ase-banorte *ngIf="nombraseguradora=='BANORTE'" ></app-ase-banorte>
+    <app-ase-hdi *ngIf="nombraseguradora=='HDI'" ></app-ase-hdi>
+    <app-ase-afirme *ngIf="nombraseguradora=='AFIRME'" ></app-ase-afirme>
+    <app-ase-anna *ngIf="nombraseguradora=='ANNA'" ></app-ase-anna>
 </div>
-
