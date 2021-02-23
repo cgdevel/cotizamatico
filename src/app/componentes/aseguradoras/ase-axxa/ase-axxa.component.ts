@@ -59,16 +59,16 @@ export class AseAXXAComponent implements OnInit {
       console.log(this.nacionalidadsel.NacString+' '+ this.Nombre)
         if(this.nacionalidadsel.NacString!='MEXICANA'){
           var str = new String(this.naciye)
-          if (this.nummonth<10) {
-            if (this.Dia<10) {
-              this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+"0"+this.Dia+"XXX"            
-            }
-            this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+this.Dia+"XXX"            
-          }else {
-            if (this.Dia<10) {
-              this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+this.nummonth+"0"+this.Dia+"XXX"
-            } else {
+          if (this.nummonth<10 && this.Dia<10) {
+            this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+"0"+this.Dia+"XXX"      
+          }else {  if (this.nummonth>=10 &&  this.Dia>=10) {
               this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+this.nummonth+this.Dia+"XXX"
+            }else {if (this.nummonth<10 &&  this.Dia>=10) {
+                this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+this.Dia+"XXX"
+              }else { if (this.nummonth>=10 &&  this.Dia<10) {
+                  this.RFC="XXXX"+str.charAt(2)+str.charAt(3)+this.nummonth+"0"+this.Dia+"XXX"
+                }
+              }
             }
           }
         }else {
@@ -78,16 +78,19 @@ export class AseAXXAComponent implements OnInit {
           var t=this.Nombre.lastIndexOf(" ")+1
           var strnom = this.Nombre.charAt(t)
           var strnpate=this.Nombre.charAt(0)+this.Nombre.charAt(1)
-          if (this.nummonth<10) {
-            if (this.Dia<10) {
-              this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+"0"+this.Dia+"XXX"            
-            }
-            this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+this.Dia+"XXX"            
+          if (this.nummonth<10 && this.Dia<10){
+            this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+"0"+this.Dia+"XXX"            
           }else {
-            if (this.Dia<10) {
-              this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+this.nummonth+"0"+this.Dia+"XXX"
+            if (this.nummonth<10 && this.Dia>=10) {
+              this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+"0"+this.nummonth+this.Dia+"XXX"  
             } else {
-              this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+this.nummonth+this.Dia+"XXX"
+              if (this.nummonth>=10 && this.Dia<10) {
+                this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+this.nummonth+"0"+this.Dia+"XXX" 
+              }else {
+                if (this.nummonth>=10 && this.Dia>=10) {
+                  this.RFC=strnpate+strnmate+strnom+str.charAt(2)+str.charAt(3)+this.nummonth+this.Dia+"XXX"
+                }
+              } 
             }
           }
         } 
