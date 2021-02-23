@@ -37,42 +37,72 @@
         </div>
 
         <div class="row">
-          <div class="form-group col-md-4" [ngbTooltip]="llenanom" tooltipClass="my-custom-class">
-            <ng-template #llenanom >
-              <b  *ngIf="disabled!=false">{{'Si usted tiene dos nombres sólo ingrese el primero, comience por apellidos'}}</b>
-            </ng-template>
-            <label for="nombre">Nombre</label>
-            <input
-              type="text"
-              class="form-control"
-              id="nombre"
-              value=""
-              autocomplete="off"
-              [(ngModel)]="clienteNombre"
-              (change)="onNombreChanged()"
-              onkeypress="return(!(event.charCode > 32 && ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))"
-              min="1"
-              [ngClass]="{
-                Existe: validonom,
-                NoExiste: !validonom
-              }"
-            />
-            <ngb-alert
-              [dismissible]="false"
-              type="danger"
-              *ngIf="!valClienteNombre  && clienteNombre==''"
-              class="alert-danger"
-            >
-              Dato Obligatorio
-            </ngb-alert>
-            <ngb-alert
-            [dismissible]="false"
-            type="danger"
-            *ngIf="!validonom && !valClienteNombre && clienteNombre!='' "
-            class="alert-danger"
-          >
-            Falta(n) apellido(s)
-          </ngb-alert>
+          <div class="form-group col-md-4">
+
+            <div class="container mw-100 px-0">
+              <div class="row">
+                <label for="nombre">Nombre</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre"
+                  value=""
+                  autocomplete="off"
+                  [(ngModel)]="clienteNombre"
+                  (change)="onNombreChanged()"
+                  onkeypress="return(!(event.charCode > 32 && ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))"
+                  min="1"
+                  [ngClass]="{
+                    Existe: valClienteNombre,
+                    NoExiste: !valClienteNombre
+                  }"
+                />
+                <ngb-alert
+                  [dismissible]="false"
+                  type="danger"
+                  *ngIf="!valClienteNombre  && clienteNombre==''"
+                  class="alert-danger"
+                >
+                  Dato Obligatorio
+                </ngb-alert>
+              </div>
+              <div class="row" *ngIf="disabledase==false">
+                <label for="nombre">Apellido Paterno</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre"
+                  value=""
+                  autocomplete="off"
+                  [(ngModel)]="clienteApellidoPaterno"
+                  (change)="onApPatChanged()"
+                  [ngClass]="{    
+                    Existe: valClienteApellidoPaterno,
+                    NoExiste: !valClienteApellidoPaterno
+                  }"
+                  onkeypress="return(!(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))"
+                  min="1"
+                />
+              </div>
+              <div class="row"  *ngIf="disabledase==false">
+                <label for="nombre">Apellido paterno</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre"
+                  value=""
+                  autocomplete="off"
+                  [(ngModel)]="clienteApellidoMaterno"
+                  (change)="onApMatChanged()"
+                  [ngClass]="{    
+                    Existe: valClienteApellidoMaterno,
+                    NoExiste: !valClienteApellidoMaterno
+                  }"
+                  onkeypress="return(!(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))"
+                  min="1"
+                />
+              </div>
+            </div>
           </div>
 
           <div class="form-group col-md-4">
@@ -164,8 +194,8 @@
                   <svg
                     id="logc"
                     [ngClass]="{
-                      Noselectap: !clienteEsFemenino,
-                      Selectap: clienteEsFemenino
+                      Noselectap: !!clienteEsFemenino ? !clienteEsFemenino : !clienteEsFemeninop3,
+                      Selectap: !!clienteEsFemenino ? clienteEsFemenino : clienteEsFemeninop3
                     }"
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -216,8 +246,8 @@
                     width="34px"
                     heigth="34px"
                     [ngClass]="{
-                      Noselectap: !clienteEsMasculino,
-                      Selectap: clienteEsMasculino
+                      Noselectap: !!clienteEsMasculino ? !clienteEsMasculino : !clienteEsMasculinop3,
+                      Selectap: !!clienteEsMasculino ? clienteEsMasculino : clienteEsMasculinop3
                     }"
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -264,8 +294,8 @@
                   <svg
                     id="logc"
                     [ngClass]="{
-                      Noselectap: !clienteEsMoral,
-                      Selectap: clienteEsMoral
+                      Noselectap: !!clienteEsMoral ? !clienteEsMoral : !clienteEsMoralp3,
+                      Selectap: !!clienteEsMoral ? clienteEsMoral : clienteEsMoralp3
                     }"
                     width="34px"
                     height="34px"
@@ -316,7 +346,7 @@
                   [clearable]="false"
                   [closeOnSelect]="true"
                   (change)="selectNacimientoDia()"
-                  [(ngModel)]="itemNacimientoDia"
+                  [(ngModel)]="!!itemNacimientoDia ?itemNacimientoDia :itemNacimientoDiap3"
                 >
                   <ng-option
                     ng-options="item as item.sLlave for item.sDato in catNacimientoDias"
@@ -335,7 +365,7 @@
                   [clearable]="false"
                   [closeOnSelect]="true"
                   (change)="selectNacimientoMes()"
-                  [(ngModel)]="itemNacimientoMes"
+                  [(ngModel)]="!!itemNacimientoMes ? itemNacimientoMes :itemNacimientoMesp3"
                 >
                   <ng-option
                     [value]="item"
@@ -360,7 +390,7 @@
                   [clearable]="false"
                   [closeOnSelect]="true"
                   (change)="selectNacimientoAnio()"
-                  [(ngModel)]="itemNacimeintoAnio"
+                  [(ngModel)]="!!itemNacimeintoAnio ? itemNacimeintoAnio :itemNacimeintoAniop3"
                 >
                   <ng-option
                     [value]="item"
@@ -379,56 +409,90 @@
           </div>
 
           <div class="form-group col-md-4">
-            <p class="m-0 mb-2">Código postal:</p>
-            <input
-              type="text"
-              class="form-control"
-              (change)="onCodigoPostalChanged()"
-              onkeypress="return(event.charCode >= 48 && event.charCode <= 57)"
-              maxlength="5"
-              [(ngModel)]="clienteCodigoPostal"
-              [ngClass]="{
-                Existe:
-                  valCodigoPostalLongitud &&
-                  valCodigoPostalVacio &&
-                  valCodigoPostalValidando &&
-                  this.valCodigoPostalValido,
-                NoExiste: !(
-                  valCodigoPostalLongitud &&
-                  valCodigoPostalVacio &&
-                  valCodigoPostalValidando &&
-                  this.valCodigoPostalValido
-                )
-              }"
-            />
-            <ngb-alert
-              [dismissible]="false"
-              type="danger"
-              *ngIf="!valCodigoPostalVacio"
-            >
-              Dato Obligatorio
-            </ngb-alert>
-            <ngb-alert
-              [dismissible]="false"
-              type="danger"
-              *ngIf="!valCodigoPostalLongitud"
-            >
-              El CP debe tener 5 dígitos
-            </ngb-alert>
-            <ngb-alert
-              [dismissible]="false"
-              type="danger"
-              *ngIf="!valCodigoPostalValidando"
-            >
-              Validando el CP
-            </ngb-alert>
-            <ngb-alert
-              [dismissible]="false"
-              type="danger"
-              *ngIf="!valCodigoPostalValido"
-            >
-              El CP no es valido
-            </ngb-alert>
+            <div class="container mw-100">
+              <div class="row">
+                <div class="col px-1">
+                  <p class="m-0 mb-2">Código postal:</p>
+                  <input
+                    type="text"
+                    class="form-control"
+                    (change)="onCodigoPostalChanged()"
+                    onkeypress="return(event.charCode >= 48 && event.charCode <= 57)"
+                    maxlength="5"
+                    [(ngModel)]="!!clienteCodigoPostal ? clienteCodigoPostal :clienteCodigoPostalp3"
+                    [ngClass]="{
+                      Existe:
+                        valCodigoPostalLongitud &&
+                        valCodigoPostalVacio &&
+                        valCodigoPostalValidando &&
+                        this.valCodigoPostalValido,
+                      NoExiste: !(
+                        valCodigoPostalLongitud &&
+                        valCodigoPostalVacio &&
+                        valCodigoPostalValidando &&
+                        this.valCodigoPostalValido
+                      )
+                    }"
+                  />
+                  <ngb-alert
+                    [dismissible]="false"
+                    type="danger"
+                    *ngIf="!valCodigoPostalVacio"
+                  >
+                    Dato Obligatorio
+                  </ngb-alert>
+                  <ngb-alert
+                    [dismissible]="false"
+                    type="danger"
+                    *ngIf="!valCodigoPostalLongitud"
+                  >
+                    El CP debe tener 5 dígitos
+                  </ngb-alert>
+                  <ngb-alert
+                    [dismissible]="false"
+                    type="danger"
+                    *ngIf="!valCodigoPostalValidando"
+                  >
+                    Validando el CP
+                  </ngb-alert>
+                  <ngb-alert
+                    [dismissible]="false"
+                    type="danger"
+                    *ngIf="!valCodigoPostalValido"
+                  >
+                    El CP no es valido
+                  </ngb-alert>
+                </div>
+                <!-- <div class="col px-1">
+                  <p class="m-0 mb-2">RFC:</p>
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="13"
+                    [(ngModel)]="clienteRFC"
+                    (change)="onRFCChanged()"
+                    [ngClass]="{
+                      Existe: valClienteRFC,
+                      NoExiste: !valClienteRFC
+                    }"
+                  />
+                  <ngb-alert
+                    [dismissible]="false"
+                    type="danger"
+                    *ngIf="clienteRFC==''"
+                  >
+                    Dato Obligatorio
+                  </ngb-alert>
+                  <ngb-alert
+                    [dismissible]="false"
+                    type="danger"
+                    *ngIf="!valClienteRFC && clienteRFC!=''"
+                  >
+                    RFC no válido
+                  </ngb-alert>
+                </div> -->
+              </div>
+            </div>
           </div>
         </div>
       </div>

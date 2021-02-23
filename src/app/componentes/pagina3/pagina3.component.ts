@@ -1,39 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { element } from 'protractor';
 import {InfovehiculoService} from '../../../app/servicios/infovehiculo.service'
+import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
+import { FechasModel } from 'src/app/interphaces/models/Fechas.model';
 @Component({
   selector: 'app-pagina3',
   templateUrl: './pagina3.component.html',
   styleUrls: ['./pagina3.component.css']
 })
 export class Pagina3Component implements OnInit {
+  mujer:boolean;
+  hombre:boolean;
+  empresa:boolean;
+  validonompag3: boolean;
   constructor( private Infovehiculo: InfovehiculoService ) {}
   colonias =[];
   cols:{ 
     iIdUbicacion: number,
     sUbicacion:string }[];
  noedites:boolean;
+ sisirve:boolean;
  item:string='';
  nombraseguradora: any;
  //Variables a las que asigno datos de pagina1 
- vermodelo: any;
- vermarca: any;
- verdescripcion: any;
- veranno: any;
+ vermodelo: CatalogoModel;
+ vermarca: CatalogoModel;
+ verdescripcion: CatalogoModel;
+ veranno: CatalogoModel;
  nombre: any;
  email: any;
  telefono: any;
  genero: any;
  codigopostal: any;
- mesnaci: any;
- yearnaci: any;
- dianaci: any;
- strstatemu:string;
- boostatemu:boolean;
- strstatehom:string;
- boostatehom:boolean;
- strstateemp:string;
- boostateemp:boolean;
+ fechanacimiento: FechasModel;
 // VARIABLES CP
  ubicacion: any;
 ubicacionId: number;
@@ -57,6 +56,20 @@ ubicacionId: number;
         this.cols=this.ubicacion[0].Ubicacion
       })// suscribecierra
   }
+
+  verificanombre(){
+  var array_emparejamientos={};
+  var reg=/^(([A-Z a-z])\w+(\s))(([A-Z a-z]+\w\s))(([A-Z a-z]+\w)\s?)$/
+  array_emparejamientos = this.nombre.match(reg);
+  this.validonompag3=reg.test(this.nombre)
+  // console.log(event);
+  console.log(this.nombre)
+  if (this.validonompag3) {
+   return this.sisirve=true
+  } else {
+    return this.sisirve=false
+  }
+  }
   ngOnInit(): void {
     this.noedites=false
     this.vermodelo=history.state.modsel
@@ -64,19 +77,16 @@ ubicacionId: number;
     this.verdescripcion=history.state.descsel 
     this.veranno=history.state.annosel
     this.nombre=history.state.nomsel
+    this.verificanombre()
     this.email=history.state.emsel
     this.telefono=history.state.telsel
-    this.codigopostal=history.state.cpsel
-    console.log("CP"+" "+this.codigopostal)
-    this.mesnaci=history.state.smsel
-    this.yearnaci=history.state.sysel
-    this.dianaci=history.state.sdsel
-    this.strstatemu=history.state.must1
-    this.boostatemu=history.state.muboo1
-    this.strstatehom=history.state.host1
-    this.boostatehom=history.state.hoboo1
-    this.strstateemp=history.state.emst1
-    this.boostateemp=history.state.emboo1
+    this.codigopostal=history.state.codigosel
+    console.log(this.codigopostal)
+    this.genero=history.state.generosel
+    this.genero=='Femenino' ? this.mujer=true : this.mujer=false
+    this.genero=='Masculino' ? this.hombre=true : this.hombre=false
+    this.genero=='Moral'  ? this.empresa=true :this.empresa=false
+    this.fechanacimiento =history.state.fechasel
     this.getUbicacion()
     this.nombraseguradora=history.state.asesel
     

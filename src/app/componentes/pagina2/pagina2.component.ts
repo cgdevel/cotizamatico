@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
 import {Pagina1Component } from  'src/app/componentes/pagina1/pagina1.component'
 import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
+import { FechasModel } from 'src/app/interphaces/models/Fechas.model';
 
 @Component({
   selector: 'app-pagina2',
@@ -23,15 +24,7 @@ export class Pagina2Component implements OnInit {
   telefono: any;
   genero: any;
   codigopostal: any;
-  mesnaci: any;
-  yearnaci: any;
-  dianaci: any;
-  strstatemu:string;
-  boostatemu:boolean;
-  strstatehom:string;
-  boostatehom:boolean;
-  strstateemp:string;
-  boostateemp:boolean;
+  fechanac:FechasModel ;
    //Valores botón tipo de cobertura
    ampliaplus=false;
    amplia=false;
@@ -341,26 +334,18 @@ qualitas(){
    }
 
   ngOnInit(): void {
-    
-    this.width=history.state.sizesel
     this.vermodelo=history.state.tipove
+    console.log(this.vermodelo)
     this.veranno=history.state.anniove
     this.vermarca=history.state.marcave 
     this.verdescripcion=history.state.descve 
-    this.nombre=history.state.nomsel
-    this.email=history.state.emsel
-    this.telefono=history.state.telsel
-    this.genero=history.state.gensel
-    this.codigopostal=history.state.cpsel
-    this.mesnaci=history.state.smsel
-    this.yearnaci=history.state.sysel
-    this.dianaci=history.state.sdsel
-    this.strstatemu=history.state.must1
-    this.boostatemu=history.state.muboo1
-    this.strstatehom=history.state.host1
-    this.boostatehom=history.state.hoboo1
-    this.strstateemp=history.state.emst1
-    this.boostateemp=history.state.emboo1
+    this.nombre=history.state.namease
+    this.email=history.state.emailase
+    this.telefono=history.state.phonease
+    this.genero=history.state.tipoperase
+    this.codigopostal=history.state.cpase
+    console.log(this.codigopostal)
+    this.fechanac=history.state.fechanacase
     this.amplia=true;
     this.descMEDIO=true;
     this.anual=true;

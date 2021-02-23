@@ -14,12 +14,18 @@ import { RequestCatalogoCotizamatico } from '../../../interphaces/request/Reques
 export class InfoaseguradoComponent implements OnInit {
   @Output() emitClienteNombre = new EventEmitter<string>();
   @Input() clienteNombre: string;
-  valClienteNombre: boolean;
-
+  @Input() valClienteNombre: boolean;
+  @Output() emitClienteApellidoPaterno = new EventEmitter<string>();
+  @Input() clienteApellidoPaterno: string;
+  @Input() valClienteApellidoPaterno: boolean;
+  @Output() emitClienteApellidoMaterno = new EventEmitter<string>();
+  @Input() clienteApellidoMaterno: string;
+  @Input() valClienteApellidoMaterno: boolean;
+ 
   @Output() emitClienteMail = new EventEmitter<string>();
   @Input() clienteMail: string;
-  valClienteMailVacio: boolean;
-  valClienteMailNoValido: boolean;
+  @Input() valClienteMailVacio: boolean;
+  @Input() valClienteMailNoValido: boolean;
 
   @Output() emitClienteTelefono = new EventEmitter<string>();
   @Input() clienteTelefono: string;
@@ -27,18 +33,25 @@ export class InfoaseguradoComponent implements OnInit {
   valClienteTelefonoNoValido: boolean;
 
   @Output() emitClienteTipoPersona = new EventEmitter<string>();
-  @Input() clienteEsFemenino: boolean;
-  @Input() clienteEsMasculino: boolean;
-  @Input() clienteEsMoral: boolean;
-
+  clienteEsFemenino: boolean;
+  clienteEsMasculino: boolean;
+  clienteEsMoral: boolean;
+  @Input() clienteEsFemeninop3: boolean;
+  @Input()   clienteEsMasculinop3: boolean;
+  @Input()   clienteEsMoralp3: boolean;
   @Output() emitClienteCodigoPostal = new EventEmitter<string>();
-  @Input() clienteCodigoPostal: string;
+  clienteCodigoPostal: string;
+  @Input() clienteCodigoPostalp3: string;
   valCodigoPostalVacio: boolean;
   valCodigoPostalLongitud: boolean;
   valCodigoPostalValidando: boolean;
   valCodigoPostalValido: boolean;
 
   @Output() emitClienteNacimiento = new EventEmitter<FechasModel>();
+  @Input() itemNacimientoDiap3: CatalogoModel;
+   @Input() itemNacimientoMesp3: CatalogoModel;
+   @Input() itemNacimeintoAniop3: CatalogoModel;
+
   catNacimientoDias: CatalogoModel[];
   catNacimientoMeses: CatalogoModel[];
   catNacimientoAnios: CatalogoModel[];
@@ -46,73 +59,19 @@ export class InfoaseguradoComponent implements OnInit {
   itemNacimientoMes: CatalogoModel;
   itemNacimeintoAnio: CatalogoModel;
   itemVacio: CatalogoModel;
-
-  /* Varaibles Erika */
-  @Output() pasad = new EventEmitter<string>();
-  @Output() pasam = new EventEmitter<string>();
-  @Output() pasay = new EventEmitter<string>();
-  @Output() pastel = new EventEmitter<string>();
-  @Output() pasnom = new EventEmitter<string>();
-  @Output() pasemail = new EventEmitter<string>();
-  @Output() pascp = new EventEmitter<string>();
-  @Output() pasgenmu = new EventEmitter<boolean>();
-  @Output() pasgenselmu = new EventEmitter<string>();
-  @Output() pasgenho = new EventEmitter<boolean>();
-  @Output() pasgenselho = new EventEmitter<string>();
-  @Output() pasgenem = new EventEmitter<boolean>();
-  @Output() pasgenselem = new EventEmitter<string>();
-
-  /* Variables para corregir errores */
-  annos: [];
-  gema: string;
  item: string;
   // ESTAS VARIABLES SON PARA LA VALIDACION (NO VACIO)
   @Input() existe: boolean;
   existeT: boolean;
   vacemial: boolean;
   vacnom: boolean;
-  // valores para código postal
-  ubicacion: any;
   @Input() codigoPostal: string;
   @Input() validot: boolean;
-  @Input() TELEFONO: string;
   @Input() valido: boolean;
   @Input() validonom: boolean;
-  @Input() EMAIL: string;
-  @Input() NOMBRE: string;
-  ubicacionId: number;
-  estado: string;
-  municipio: string;
-  colonia: string;
-  bisiesto: boolean;
-  // Valores selección fecha
-  year;
-  month;
-  date;
-  dias;
-  meses;
-  fechaannos;
-  mesdiabis: (string | number)[][];
-  mesdia: (string | number)[][];
-  mes: string; // Iniciamos mes
-  vermes: string;
-  fechaann: string; // Iniciamos fechaann
-  verfechaann: string;
-  dia: string; // Iniciamos dia
-  // console.log(this.mesdiabis[0][1])//DIAS
-  // console.log(this.mesdiabis[0][0])//MESES
-  verdia: string;
-  @Input() selectedmes;
-  @Input() selectedyear;
-  @Input() selecteddia;
-  selected;
   // Valores botones soy
-  @Input() disabled;
-  statussoymujer = 'NoSelected';
-  statussoyhombre = 'NoSelected';
-  statussoyempresa = 'NoSelected';
-  @Input() showchiquito;
-
+  @Input() disabledase;
+  @Input() disable;
   constructor(private infovehiculoService: InfovehiculoService) {}
 
   ngOnInit(): void {
@@ -128,27 +87,38 @@ export class InfoaseguradoComponent implements OnInit {
     this.valCodigoPostalVacio = true;
     this.valCodigoPostalValidando = true;
     this.valCodigoPostalValido = true;
+    this.valClienteApellidoMaterno=true;
+    this.valClienteApellidoPaterno=true;
     this.getFechaNacimientoDias();
   }
 
   onNombreChanged() {
-    var array_emparejamientos={};
-  var reg=/^(([A-Z a-z])\w+(\s))(([A-Z a-z]+\w\s))(([A-Z a-z]+\w)\s?)$/
-  array_emparejamientos = this.clienteNombre.match(reg);
-  this.validonom=reg.test(this.clienteNombre)
-  // console.log(event);
-  // console.log(this.clienteNombre)
-  if (this.clienteNombre==''|| this.clienteNombre!=''&& !this.validonom) {
-    this.valClienteNombre=false
-    this.emitClienteNombre.emit('')
-  } else {
-    if (this.clienteNombre!=''&& this.validonom) {
-      this.valClienteNombre=true
-      this.emitClienteNombre.emit(this.clienteNombre)
+    if (this.clienteNombre === '') {
+      this.valClienteNombre = false;
+      this.emitClienteNombre.emit('');
+    } else {
+      this.valClienteNombre = true;
+      this.emitClienteNombre.emit(this.clienteNombre);
     }
   }
+  onApPatChanged(){
+    if (this.clienteApellidoPaterno === '') {
+      this.valClienteApellidoPaterno = false;
+      this.emitClienteApellidoPaterno.emit('');
+    } else {
+      this.valClienteApellidoPaterno = true;
+      this.emitClienteApellidoPaterno.emit(this.clienteApellidoPaterno);
+    }
   }
-
+  onApMatChanged(){
+    if (this.clienteApellidoMaterno === '') {
+      this.valClienteApellidoMaterno = false;
+      this.emitClienteApellidoMaterno.emit('');
+    } else {
+      this.valClienteApellidoMaterno = true;
+      this.emitClienteApellidoMaterno.emit(this.clienteApellidoMaterno);
+    }
+  }
   onMailChanged() {
     if (this.clienteMail === '') {
       this.emitClienteMail.emit('');
@@ -263,6 +233,9 @@ export class InfoaseguradoComponent implements OnInit {
     this.clienteEsFemenino = true;
     this.clienteEsMasculino = false;
     this.clienteEsMoral = false;
+    this.clienteEsFemeninop3= true;
+    this.clienteEsMasculinop3 = false;
+    this.clienteEsMoralp3 = false;
     this.emitClienteTipoPersona.emit('Femenino');
   }
 
@@ -270,6 +243,9 @@ export class InfoaseguradoComponent implements OnInit {
     this.clienteEsFemenino = false;
     this.clienteEsMasculino = true;
     this.clienteEsMoral = false;
+    this.clienteEsFemeninop3= false;
+    this.clienteEsMasculinop3 = true;
+    this.clienteEsMoralp3 = false;
     this.emitClienteTipoPersona.emit('Masculino');
   }
 
@@ -277,6 +253,9 @@ export class InfoaseguradoComponent implements OnInit {
     this.clienteEsFemenino = false;
     this.clienteEsMasculino = false;
     this.clienteEsMoral = true;
+    this.clienteEsFemeninop3=false;
+    this.clienteEsMasculinop3=false;
+    this.clienteEsMoralp3=true;
     this.emitClienteTipoPersona.emit('Moral');
   }
 
@@ -338,15 +317,16 @@ export class InfoaseguradoComponent implements OnInit {
 
     this.catNacimientoAnios = [];
     this.itemNacimeintoAnio = this.itemVacio;
-
+    !!this.itemNacimientoDia.sLlave ? this.itemNacimientoDia.sLlave=this.itemNacimientoDia.sLlave : this.itemNacimientoDia.sLlave=this.itemNacimientoDiap3.sLlave
     this.catNacimientoMeses = this.infovehiculoService.getCatalogoFechaMeses(
-      this.itemNacimientoDia.sLlave
+      !!this.itemNacimientoDia.sLlave ? this.itemNacimientoDia.sLlave : this.itemNacimientoDiap3.sLlave
     ).catalogos;
-
+    
     this.emitClienteNacimiento.emit({
       anio: '',
       mes: '',
-      dia: this.itemNacimientoDia.sLlave,
+      dia:     !!this.itemNacimientoDia.sLlave ? this.itemNacimientoDia.sLlave : this.itemNacimientoDiap3.sLlave
+      ,
     });
   }
 
@@ -374,249 +354,4 @@ export class InfoaseguradoComponent implements OnInit {
     });
   }
 
-  // Funciones selección fecha de nacimiento
-  getmes() {
-    // console.log(this.selectedmes)
-    this.vermes = this.selectedmes;
-    this.pasam.emit(this.vermes);
-    this.calculabis();
-  }
-  getanno() {
-    // Limpia
-    // this.selecteddia=""
-    // this.verdia=""
-    // console.log(this.selectedyear)
-    this.verfechaann = this.selectedyear;
-    this.pasay.emit(this.verfechaann);
-    this.calculabis();
-  }
-  getdia() {
-    // console.log(this.selecteddia)
-    this.verdia = this.selecteddia;
-    this.pasad.emit(this.verdia);
-    var num = parseInt(this.selecteddia, 10);
-    if (num == 28) {
-      // console.log(" 1 if 28")
-      this.meses = [
-        'Enero',
-        'Febrero',
-        'Marzo',
-        'Abril',
-        'Mayo',
-        'Junio',
-        'Julio',
-        'Agosto',
-        'Septiembre',
-        'Octubre',
-        'Noviembre',
-        'Diciembre',
-      ];
-      if (
-        this.selecteddia != '' &&
-        this.verdia != '' &&
-        this.verfechaann != '' &&
-        this.selectedyear != ''
-      ) {
-        this.calculabis();
-      } else {
-        // console.log('Algo falló')
-      }
-    } else {
-      if (num == 29) {
-        // console.log("2 if 29")
-        this.meses = [
-          'Enero',
-          'Febrero',
-          'Marzo',
-          'Abril',
-          'Mayo',
-          'Junio',
-          'Julio',
-          'Agosto',
-          'Septiembre',
-          'Octubre',
-          'Noviembre',
-          'Diciembre',
-        ];
-        if (
-          this.selecteddia != '' &&
-          this.verdia != '' &&
-          this.verfechaann != '' &&
-          this.selectedyear != ''
-        ) {
-          this.calculabis();
-        } else {
-          // console.log('Algo falló')
-        }
-      } else {
-        if (num == 30) {
-          // console.log("3 if 30")
-          this.meses = [
-            'Enero',
-            'Marzo',
-            'Abril',
-            'Mayo',
-            'Junio',
-            'Julio',
-            'Agosto',
-            'Septiembre',
-            'Octubre',
-            'Noviembre',
-            'Diciembre',
-          ];
-          this.calculabis();
-        } else {
-          if (num == 31) {
-            // console.log("4 if 31")
-            this.meses = [
-              'Enero',
-              'Marzo',
-              'Mayo',
-              'Julio',
-              'Agosto',
-              'Octubre',
-              'Diciembre',
-            ];
-            this.calculabis();
-          } else {
-            // console.log("5 if < 28")
-            this.dias = [
-              1,
-              2,
-              3,
-              4,
-              5,
-              6,
-              7,
-              8,
-              9,
-              10,
-              11,
-              12,
-              13,
-              14,
-              15,
-              16,
-              17,
-              18,
-              19,
-              20,
-              21,
-              23,
-              24,
-              25,
-              26,
-              27,
-              28,
-              29,
-              30,
-              31,
-            ];
-            this.meses = [
-              'Enero',
-              'Febrero',
-              'Marzo',
-              'Abril',
-              'Mayo',
-              'Junio',
-              'Julio',
-              'Agosto',
-              'Septiembre',
-              'Octubre',
-              'Noviembre',
-              'Diciembre',
-            ];
-            this.calculabis();
-          }
-        }
-      }
-    }
-  }
-  // Función para determinar tipo de año (bisiesto/ no bisiesto)
-  calculabis() {
-    this.dias = [];
-    if (this.verfechaann != '' && this.vermes != '') {
-      var numerican = Number(this.verfechaann);
-      // console.log(this.verfechaann+' ' + this.vermes)
-      numerican % 4 == 0
-        ? numerican % 100 == 0
-          ? numerican % 400 == 0
-            ? (this.bisiesto = true)
-            : (this.bisiesto = false)
-          : (this.bisiesto = true)
-        : (this.bisiesto = false);
-      //this.bisiesto ? (console.log(this.mesdiabis)) :(console.log(this.mesdia))
-      if (this.bisiesto) {
-        // console.log(numerican  +' '+"BISIESTO")
-        this.dias = [];
-        for (let index = 0; index < this.mesdiabis.length; index++) {
-          if (this.mesdiabis[index][0] == this.vermes) {
-            var hastaaquibi = Number(this.mesdiabis[index][1]);
-            // console.log( hastaaquibi +' '+ this.vermes)
-            for (let index = 1; index <= hastaaquibi; index++) {
-              this.dias.push(index);
-            }
-          }
-        }
-      } else {
-        if (!this.bisiesto) {
-          // console.log(numerican +' '+"NO BISIESTO")
-          for (let index = 0; index < this.mesdia.length; index++) {
-            if (this.mesdia[index][0] == this.vermes) {
-              var hastaaqui = Number(this.mesdia[index][1]);
-              // console.log(this.mesdia[index][1])
-              // console.log( hastaaqui+' '+ this.vermes)
-              for (let index = 1; index <= hastaaqui; index++) {
-                this.dias.push(index);
-              }
-              if (
-                !this.bisiesto &&
-                this.selecteddia == 29 &&
-                this.selectedmes == 'Febrero'
-              ) {
-                // Limpia día
-                this.selecteddia = '';
-                this.verdia = '';
-                this.pasad.emit('');
-              }
-            }
-          }
-        }
-      }
-    } else {
-      this.dias = [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        23,
-        24,
-        25,
-        26,
-        27,
-        28,
-        29,
-        30,
-        31,
-      ];
-      // console.log("Te falta")
-    }
-  }
 }

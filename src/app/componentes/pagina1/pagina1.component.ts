@@ -13,24 +13,7 @@ export class Pagina1Component implements OnInit {
   verCarousle: boolean;
   resizeObservable$: Observable<Event>;
   resizeSubscription$: Subscription;
-  // variabbles datos asegurado
-  nombre: string;
-  email: string;
-  telefono: string;
-  genero: string;
-  cp: string;
-  statumustr: string;
-  mujboo: boolean;
-  statuhomstr: string;
-  homboo: boolean;
-  statuempstr: string;
-  empboo: boolean;
-
-  // Variables fecha de nacimiento
-  sm: string;
-  sy: string;
-  sd: string;
-
+ 
   /* Valores vehículo */
   vehiculoTipo: CatalogoModel;
   vehiculoAnio: CatalogoModel;

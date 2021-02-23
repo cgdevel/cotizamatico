@@ -1,6 +1,6 @@
 <div class="container mw-90">
     <app-infovehiculo  [disabled]="noedites" [modeloselpagina3]="vermodelo" [annoselpagina3]="veranno" [marcaselpagina3]="vermarca" [descripselpagina3]="verdescripcion"></app-infovehiculo>
-    <!-- <app-infoasegurado [vienede3]="pasa3" [existeT]="true" [existe]="true" [validot]="true" [valido]="true" [validonom]="true" [soymujer]="boostatemu" [disabled]="noedites" [soyhombre]="boostatehom" [soyempresa]="boostateemp" [NOMBRE]="nombre" [EMAIL]="email" [TELEFONO]="telefono" [codigoPostal]="codigopostal" [selectedmes]="mesnaci" [selectedyear]="yearnaci" [selecteddia]="dianaci"></app-infoasegurado> -->
+    <app-infoasegurado [disable]="noedites" [disabledase]="sisirve" [clienteNombre]="nombre" [clienteMail]="email" [clienteTelefono]="telefono" [clienteEsFemeninop3]="mujer" [clienteEsMasculinop3]="hombre" [clienteEsMoralp3]="empresa" [clienteCodigoPostalp3]='codigopostal' [itemNacimeintoAniop3]="fechanacimiento.anio" [itemNacimientoMesp3]="fechanacimiento.mes" [itemNacimientoDiap3]="fechanacimiento.dia"></app-infoasegurado>
 </div>
 <div class="container mw-90">
     <div class="row">
