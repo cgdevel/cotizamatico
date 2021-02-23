@@ -1,4 +1,4 @@
-<div class="container mw-100">
+<div class="container mw-100 py-4">
   <div class="row">
     <div class="col-md-4 col-sm-12">
       <!-- [disabled]="this.amplia || this.limitada || this.basica" -->
@@ -1075,25 +1075,27 @@
               <h6>Mi auto es:</h6>
             </div>
           </div>
-          <div class="row" style="margin-left: 2px;">{{vermodelo.sDato}}</div>
+          <div class="row" style="margin-left: 2px">{{ vermodelo.sDato }}</div>
           <div class="row">
             <div class="col-12">
               <h6>Año:</h6>
             </div>
           </div>
-          <div class="row" style="margin-left: 2px;">{{veranno.sDato}}</div>
+          <div class="row" style="margin-left: 2px">{{ veranno.sDato }}</div>
           <div class="row">
             <div class="col-12">
               <h6>Marca:</h6>
             </div>
           </div>
-          <div class="row" style="margin-left: 2px;">{{vermarca.sDato}} </div>
+          <div class="row" style="margin-left: 2px">{{ vermarca.sDato }}</div>
           <div class="row">
             <div class="col-12">
               <h6>Descripción:</h6>
             </div>
           </div>
-          <div class="row" style="margin-left: 2px;">{{verdescripcion.sDato}}</div>
+          <div class="row" style="margin-left: 2px">
+            {{ verdescripcion.sDato }}
+          </div>
           <div class="row">
             <div class="col-8">
               <button
@@ -1127,7 +1129,12 @@
             (emitAnioVehiculo)="emitAnioVehiculo($event)"
             (emitMarcaVehiculo)="emitMarcaVehiculo($event)"
             (emitDescripcion)="emitDescripcion($event)"
-            [showchiquito]="show" [modeloselpagina2]="vermodelo" [annoselpagina2]="veranno" [marcaselpagina2]="vermarca" [descripselpagina2]="verdescripcion">
+            [showchiquito]="show"
+            [modeloselpagina2]="vermodelo"
+            [annoselpagina2]="veranno"
+            [marcaselpagina2]="vermarca"
+            [descripselpagina2]="verdescripcion"
+          >
           </app-infovehiculo>
           <!-- <app-infoasegurado *ngIf="show" [showchiquito]="show" [soymujer]="boostatemu" [soyhombre]="boostatehom" [soyempresa]="boostateemp"
                   [NOMBRE]="nombre" [EMAIL]="email" [TELEFONO]="telefono" [codigoPostal]="codigopostal" [selectedmes]="mesnaci" [selectedyear]="yearnaci" [selecteddia]="dianaci" ></app-infoasegurado>               -->
@@ -1589,27 +1596,34 @@
               <div class="col-md-3 col-sm-3">
                 <div class="container mw-100">
                   <div class="row">
-                    <button class="btn" id="btnconaho" [routerLink]="['/contrata']"
-                      routerLinkActive="router-link-active" [state]='{
-                                    modsel: vermodelo,
-                                    marsel:vermarca,
-                                    descsel:verdescripcion,
-                                    annosel:veranno,
-                                    nomsel:nombre,
-                                    emsel:email,
-                                    telsel:telefono,
-                                    must1:strstatemu,
-                                    muboo1:boostatemu,
-                                    host1:strstatehom,
-                                    hoboo1:boostatehom,
-                                    emst1:strstateemp,
-                                    emboo1:boostateemp,
-                                    cpsel:codigopostal,
-                                    smsel:mesnaci,
-                                    sysel:yearnaci,
-                                    sdsel:dianaci,asesel:qualitas()}'>
-                                    Contratar ahora
-                                </button>
+                    <button
+                      class="btn"
+                      id="btnconaho"
+                      [routerLink]="['/contrata']"
+                      routerLinkActive="router-link-active"
+                      [state]="{
+                        modsel: vermodelo,
+                        marsel: vermarca,
+                        descsel: verdescripcion,
+                        annosel: veranno,
+                        nomsel: nombre,
+                        emsel: email,
+                        telsel: telefono,
+                        must1: strstatemu,
+                        muboo1: boostatemu,
+                        host1: strstatehom,
+                        hoboo1: boostatehom,
+                        emst1: strstateemp,
+                        emboo1: boostateemp,
+                        cpsel: codigopostal,
+                        smsel: mesnaci,
+                        sysel: yearnaci,
+                        sdsel: dianaci,
+                        asesel: qualitas()
+                      }"
+                    >
+                      Contratar ahora
+                    </button>
                   </div>
                   <div class="row">
                     Esta cotización es válida por quince días.
@@ -1935,27 +1949,34 @@
             <div class="col-md-3 col-sm-3">
               <div class="container mw-100">
                 <div class="row">
-                  <button class="btn" id="btnconaho" [routerLink]="['/contrata']" routerLinkActive="router-link-active"
-                    [state]='{
-                                    modsel: vermodelo,
-                                    marsel:vermarca,
-                                    descsel:verdescripcion,
-                                    annosel:veranno,
-                                    nomsel:nombre,
-                                    emsel:email,
-                                    telsel:telefono,
-                                    must1:strstatemu,
-                                    muboo1:boostatemu,
-                                    host1:strstatehom,
-                                    hoboo1:boostatehom,
-                                    emst1:strstateemp,
-                                    emboo1:boostateemp,
-                                    cpsel:codigopostal,
-                                    smsel:mesnaci,
-                                    sysel:yearnaci,
-                                    sdsel:dianaci,asesel:axxa()}'>
-                                    Contratar ahora
-                                </button>
+                  <button
+                    class="btn"
+                    id="btnconaho"
+                    [routerLink]="['/contrata']"
+                    routerLinkActive="router-link-active"
+                    [state]="{
+                      modsel: vermodelo,
+                      marsel: vermarca,
+                      descsel: verdescripcion,
+                      annosel: veranno,
+                      nomsel: nombre,
+                      emsel: email,
+                      telsel: telefono,
+                      must1: strstatemu,
+                      muboo1: boostatemu,
+                      host1: strstatehom,
+                      hoboo1: boostatehom,
+                      emst1: strstateemp,
+                      emboo1: boostateemp,
+                      cpsel: codigopostal,
+                      smsel: mesnaci,
+                      sysel: yearnaci,
+                      sdsel: dianaci,
+                      asesel: axxa()
+                    }"
+                  >
+                    Contratar ahora
+                  </button>
                 </div>
                 <div class="row">
                   Esta cotización es válida por quince días.
@@ -2219,27 +2240,34 @@
             <div class="col-md-3 col-sm-3">
               <div class="container mw-100">
                 <div class="row">
-                  <button class="btn" id="btnconaho" [routerLink]="['/contrata']" routerLinkActive="router-link-active"
-                    [state]='{
-                                    modsel: vermodelo,
-                                    marsel:vermarca,
-                                    descsel:verdescripcion,
-                                    annosel:veranno,
-                                    nomsel:nombre,
-                                    emsel:email,
-                                    telsel:telefono,
-                                    must1:strstatemu,
-                                    muboo1:boostatemu,
-                                    host1:strstatehom,
-                                    hoboo1:boostatehom,
-                                    emst1:strstateemp,
-                                    emboo1:boostateemp,
-                                    cpsel:codigopostal,
-                                    smsel:mesnaci,
-                                    sysel:yearnaci,
-                                    sdsel:dianaci,asesel:afirme()}'>
-                                    Contratar ahora
-                                </button>
+                  <button
+                    class="btn"
+                    id="btnconaho"
+                    [routerLink]="['/contrata']"
+                    routerLinkActive="router-link-active"
+                    [state]="{
+                      modsel: vermodelo,
+                      marsel: vermarca,
+                      descsel: verdescripcion,
+                      annosel: veranno,
+                      nomsel: nombre,
+                      emsel: email,
+                      telsel: telefono,
+                      must1: strstatemu,
+                      muboo1: boostatemu,
+                      host1: strstatehom,
+                      hoboo1: boostatehom,
+                      emst1: strstateemp,
+                      emboo1: boostateemp,
+                      cpsel: codigopostal,
+                      smsel: mesnaci,
+                      sysel: yearnaci,
+                      sdsel: dianaci,
+                      asesel: afirme()
+                    }"
+                  >
+                    Contratar ahora
+                  </button>
                 </div>
                 <div class="row">
                   Esta cotización es válida por quince días.
