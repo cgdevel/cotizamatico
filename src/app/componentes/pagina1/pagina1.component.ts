@@ -67,22 +67,16 @@ export class Pagina1Component implements OnInit {
 
   handlerVehiculoTipo(e: CatalogoModel) {
     this.vehiculoTipo = e;
-    this.vehiculoAnio = this.itemVacio;
-    this.vehiculoMarca = this.itemVacio;
-    this.vehiculoDescripcion = this.itemVacio;
     this.ValidarDatosObligatorios();
   }
 
   handlerVehiculoAnio(e: CatalogoModel) {
     this.vehiculoAnio = e;
-    this.vehiculoMarca = this.itemVacio;
-    this.vehiculoDescripcion = this.itemVacio;
     this.ValidarDatosObligatorios();
   }
 
   handlerVehiculoMarca(e: CatalogoModel) {
     this.vehiculoMarca = e;
-    this.vehiculoDescripcion = this.itemVacio;
     this.ValidarDatosObligatorios();
   }
 
@@ -165,59 +159,4 @@ export class Pagina1Component implements OnInit {
     this.datosValidos = true;
   }
 
-  f(e) {
-    console.log(e);
-    this.sd = e;
-  }
-  g(e) {
-    // console.log(e);
-    this.sm = e;
-  }
-  h(e) {
-    // console.log(e);
-    this.sy = e;
-  }
-  i(e) {
-    // console.log(e)
-    this.telefono = e;
-  }
-
-  j(e) {
-    // console.log(e)
-    this.nombre = e;
-  }
-
-  k(e) {
-    // console.log(e)
-    this.cp = e;
-  }
-  l(e) {
-    // console.log(e)
-    this.email = e;
-  }
-
-  mu(e) {
-    // console.log(e)
-    this.statumustr = e;
-  }
-  muj(e) {
-    // console.log(e)
-    this.mujboo = e;
-  }
-  ho(e) {
-    // console.log(e)
-    this.statuhomstr = e;
-  }
-  hom(e) {
-    // console.log(e)
-    this.homboo = e;
-  }
-  em(e) {
-    // console.log(e)
-    this.statuempstr = e;
-  }
-  emp(e) {
-    // console.log(e)
-    this.empboo = e;
-  }
 }

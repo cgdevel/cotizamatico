@@ -177,7 +177,11 @@
               [clearable]="false"
               [closeOnSelect]="true"
               (change)="selectTipoVehiculo()"
-              [(ngModel)]="itemTipoVehiculo"
+              [(ngModel)]="!!modeloselpagina3 ? 
+              modeloselpagina3: 
+              !! modeloselpagina2 ? 
+              modeloselpagina2 
+              : itemTipoVehiculo"
               [ngbTooltip]="ttTipoVehiculo"
               tooltipClass="my-custom-class"
             >
@@ -187,10 +191,9 @@
                 {{ item }}
               </ng-option>
               <ng-template #ttTipoVehiculo>
-                <b *ngIf="!!modeloselpagina3 === false">{{
-                  itemTipoVehiculo === undifined ? "" : itemTipoVehiculo.sDato
-                }}</b>
-                <b *ngIf="!!modeloselpagina3">{{ modeloselpagina3 }}</b>
+                <b *ngIf="!!itemTipoVehiculo">{{itemTipoVehiculo.sDato}}</b>
+                <b *ngIf="!!modeloselpagina3">{{modeloselpagina3.sDato}}</b>
+                <b *ngIf="!!modeloselpagina2">{{modeloselpagina2.sDato}}</b>
               </ng-template>
               <ng-template ng-notfound-tmp>
                 <div class="ng-option disabled">No hay modelos que mostrar</div>
@@ -213,7 +216,11 @@
               [clearable]="false"
               [closeOnSelect]="true"
               (change)="selectAnioVehiculo()"
-              [(ngModel)]="itemAnioVehiculo"
+              [(ngModel)]="!! annoselpagina3? 
+              annoselpagina3: 
+              !! annoselpagina2 ? 
+              annoselpagina2 
+              : itemAnioVehiculo"
             >
               <ng-template ng-notfound-tmp>
                 <div class="ng-option disabled">No hay años que mostrar</div>
@@ -241,15 +248,18 @@
               [clearable]="false"
               [closeOnSelect]="true"
               (change)="selectMarca()"
-              [(ngModel)]="itemMarcaVehiculo"
+              [(ngModel)]="!! marcaselpagina3? 
+              marcaselpagina3: 
+              !! marcaselpagina2 ? 
+              marcaselpagina2 
+              : itemMarcaVehiculo"
               [ngbTooltip]="ttMarcas"
               tooltipClass="my-custom-class"
             >
               <ng-template #ttMarcas>
-                <b *ngIf="!!marcaselpagina3 == false">{{
-                  itemMarcaVehiculo === undifined ? "" : itemMarcaVehiculo.sDato
-                }}</b>
-                <b *ngIf="!!marcaselpagina3">{{ marcaselpagina3 }}</b>
+                <b *ngIf="!!itemMarcaVehiculo">{{itemMarcaVehiculo.sDato}}</b>
+                <b *ngIf="!!marcaselpagina3">{{marcaselpagina3.sDato}}</b>
+                <b *ngIf="!!marcaselpagina2">{{marcaselpagina2.sDato}}</b>
               </ng-template>
               <ng-option
                 ng-options="item as item.sLlave for item.sDato in catMarcaVehiculo"
@@ -278,17 +288,18 @@
               [clearable]="false"
               [closeOnSelect]="true"
               (change)="selectDescripcion()"
-              [(ngModel)]="itemDescripcionVehiculo"
+              [(ngModel)]="!! descripselpagina3 ? 
+              descripselpagina3: 
+              !! descripselpagina2 ? 
+              descripselpagina2 
+              : itemDescripcionVehiculo"
               [ngbTooltip]="ttDescripcion"
               tooltipClass="my-custom-class"
             >
               <ng-template #ttDescripcion>
-                <b *ngIf="!!descripselpagina3 == false">{{
-                  itemDescripcionVehiculo === undifined
-                    ? ""
-                    : itemDescripcionVehiculo.sDato
-                }}</b>
-                <b *ngIf="!!descripselpagina3">{{ descripselpagina3 }}</b>
+                <b  *ngIf="!!itemDescripcionVehiculo">{{itemDescripcionVehiculo.sDato}}</b>
+                <b *ngIf="!!descripselpagina3">{{ descripselpagina3.sDato }}</b>
+                <b *ngIf="!!descripselpagina2">{{ descripselpagina2.sDato }}</b>
               </ng-template>
               <ng-option
                 ng-options="item as item.sLlave for item.sDato in catDescripcionVehiculo"

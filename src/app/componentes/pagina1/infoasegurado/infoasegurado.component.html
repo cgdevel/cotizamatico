@@ -37,7 +37,10 @@
         </div>
 
         <div class="row">
-          <div class="form-group col-md-4">
+          <div class="form-group col-md-4" [ngbTooltip]="llenanom" tooltipClass="my-custom-class">
+            <ng-template #llenanom >
+              <b  *ngIf="disabled!=false">{{'Si usted tiene dos nombres sólo ingrese el primero, comience por apellidos'}}</b>
+            </ng-template>
             <label for="nombre">Nombre</label>
             <input
               type="text"
@@ -47,21 +50,29 @@
               autocomplete="off"
               [(ngModel)]="clienteNombre"
               (change)="onNombreChanged()"
-              onkeypress="return((event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode === 8))"
+              onkeypress="return(!(event.charCode > 32 && ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))"
               min="1"
               [ngClass]="{
-                Existe: valClienteNombre,
-                NoExiste: !valClienteNombre
+                Existe: validonom,
+                NoExiste: !validonom
               }"
             />
             <ngb-alert
               [dismissible]="false"
               type="danger"
-              *ngIf="!valClienteNombre"
+              *ngIf="!valClienteNombre  && clienteNombre==''"
               class="alert-danger"
             >
               Dato Obligatorio
             </ngb-alert>
+            <ngb-alert
+            [dismissible]="false"
+            type="danger"
+            *ngIf="!validonom && !valClienteNombre && clienteNombre!='' "
+            class="alert-danger"
+          >
+            Falta(n) apellido(s)
+          </ngb-alert>
           </div>
 
           <div class="form-group col-md-4">
@@ -121,14 +132,14 @@
             <ngb-alert
               [dismissible]="false"
               type="danger"
-              *ngIf="!valClienteTelefonoVacio"
+              *ngIf="!valClienteTelefonoVacio && !valClienteTelefonoNoValido"
             >
               Dato Obligatorio
             </ngb-alert>
             <ngb-alert
               [dismissible]="false"
               type="danger"
-              *ngIf="!valClienteTelefonoNoValido"
+              *ngIf="!valClienteTelefonoNoValido && valClienteTelefonoVacio"
             >
               Teléfono no válido
             </ngb-alert>

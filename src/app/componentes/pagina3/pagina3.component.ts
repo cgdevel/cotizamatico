@@ -14,6 +14,7 @@ export class Pagina3Component implements OnInit {
     sUbicacion:string }[];
  noedites:boolean;
  item:string='';
+ nombraseguradora: any;
  //Variables a las que asigno datos de pagina1 
  vermodelo: any;
  vermarca: any;
@@ -77,7 +78,7 @@ ubicacionId: number;
     this.strstateemp=history.state.emst1
     this.boostateemp=history.state.emboo1
     this.getUbicacion()
-    
+    this.nombraseguradora=history.state.asesel
     
   }
 
