@@ -91,15 +91,9 @@ export class InfoaseguradoComponent implements OnInit {
     this.valClienteApellidoMaterno = true;
     this.valClienteApellidoPaterno = true;
     // this.getFechaNacimientoDias();
-    const today = new Date();
-    this.year = today.getFullYear();
     this.catNacimientoAnios = this.MesesConDias.getAnnioSinMesesniDia();
     this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion();
-    //this.catNacimientoDias = this.MesesConDias.getDiasSinMesSinAnnio();
   }
-
-
-
   onNombreChanged() {
     if (this.clienteNombre === '') {
       this.valClienteNombre = false;

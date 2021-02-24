@@ -8,7 +8,7 @@ import { CatalogoModel } from '../interphaces/models/Catalogos.model';
 export class MesesConDiasService {
 Months: CatalogoModel[] = [];
 Meses: Mesesbisiynobisi[] = [];
-Dias: CatalogoModel[] = [];
+
   year: number;
   bisiesto: boolean;
   constructor() { }
@@ -83,13 +83,7 @@ getMesesconDuracion(){
     return this.Months;
     }
 }
-getDiasSinMesSinAnnio(){
-  for (let i = 1; i <= 31; i--) {
-    this.Dias.push({ sLlave: i.toString(), sDato: i.toString() });
-  }
-  console.log(this.Dias);
-  return this.Dias;
-}
+
 getAnnioSinMesesniDia(){
 const anios: CatalogoModel[] = [];
 const anioInicio = new Date().getFullYear() - 18;

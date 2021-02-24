@@ -346,12 +346,12 @@
                   [clearable]="false"
                   [closeOnSelect]="true"
                   (change)="selectNacimientoDia()"
-                  [(ngModel)]="!!itemNacimientoDia ?itemNacimientoDia :itemNacimientoDiap3"
+                  [(ngModel)]="itemNacimientoDia"
                 >
                   <ng-option
                     ng-options="item as item.sLlave for item.sDato in catNacimientoDias"
                   >
-                    {{ item }}
+                    {{item}}
                   </ng-option>
                 </ng-select>
               </div>
