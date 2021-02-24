@@ -95,7 +95,7 @@ export class InfoaseguradoComponent implements OnInit {
     this.year = today.getFullYear();
     this.catNacimientoAnios = this.MesesConDias.getAnnioSinMesesniDia();
     this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion();
-    // this.catNacimientoDias = this.MesesConDias.getDiasSinMesSinAnnio();
+    //this.catNacimientoDias = this.MesesConDias.getDiasSinMesSinAnnio();
   }
 
 
