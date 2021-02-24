@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
 import { InfovehiculoService } from '../../../servicios/infovehiculo.service';
-
 import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
 import { FechasModel } from '../../../interphaces/models/Fechas.model';
 import { RequestCatalogoCotizamatico } from '../../../interphaces/request/RequestCatalogoCotizamatico.model';
+import {MesesConDiasService } from '../../../servicios/meses-con-dias.service';
 
 @Component({
   selector: 'app-infoasegurado',
@@ -21,7 +20,7 @@ export class InfoaseguradoComponent implements OnInit {
   @Output() emitClienteApellidoMaterno = new EventEmitter<string>();
   @Input() clienteApellidoMaterno: string;
   @Input() valClienteApellidoMaterno: boolean;
- 
+
   @Output() emitClienteMail = new EventEmitter<string>();
   @Input() clienteMail: string;
   @Input() valClienteMailVacio: boolean;
@@ -37,8 +36,8 @@ export class InfoaseguradoComponent implements OnInit {
   clienteEsMasculino: boolean;
   clienteEsMoral: boolean;
   @Input() clienteEsFemeninop3: boolean;
-  @Input()   clienteEsMasculinop3: boolean;
-  @Input()   clienteEsMoralp3: boolean;
+  @Input() clienteEsMasculinop3: boolean;
+  @Input() clienteEsMoralp3: boolean;
   @Output() emitClienteCodigoPostal = new EventEmitter<string>();
   clienteCodigoPostal: string;
   @Input() clienteCodigoPostalp3: string;
@@ -49,8 +48,8 @@ export class InfoaseguradoComponent implements OnInit {
 
   @Output() emitClienteNacimiento = new EventEmitter<FechasModel>();
   @Input() itemNacimientoDiap3: CatalogoModel;
-   @Input() itemNacimientoMesp3: CatalogoModel;
-   @Input() itemNacimeintoAniop3: CatalogoModel;
+  @Input() itemNacimientoMesp3: CatalogoModel;
+  @Input() itemNacimeintoAniop3: CatalogoModel;
 
   catNacimientoDias: CatalogoModel[];
   catNacimientoMeses: CatalogoModel[];
@@ -59,7 +58,8 @@ export class InfoaseguradoComponent implements OnInit {
   itemNacimientoMes: CatalogoModel;
   itemNacimeintoAnio: CatalogoModel;
   itemVacio: CatalogoModel;
- item: string;
+  item: string;
+  year: any;
   // ESTAS VARIABLES SON PARA LA VALIDACION (NO VACIO)
   @Input() existe: boolean;
   existeT: boolean;
@@ -72,7 +72,8 @@ export class InfoaseguradoComponent implements OnInit {
   // Valores botones soy
   @Input() disabledase;
   @Input() disable;
-  constructor(private infovehiculoService: InfovehiculoService) {}
+  bisiesto: boolean;
+  constructor(private infovehiculoService: InfovehiculoService, private MesesConDias: MesesConDiasService) {}
 
   ngOnInit(): void {
     this.valClienteNombre = true;
@@ -87,10 +88,17 @@ export class InfoaseguradoComponent implements OnInit {
     this.valCodigoPostalVacio = true;
     this.valCodigoPostalValidando = true;
     this.valCodigoPostalValido = true;
-    this.valClienteApellidoMaterno=true;
-    this.valClienteApellidoPaterno=true;
-    this.getFechaNacimientoDias();
+    this.valClienteApellidoMaterno = true;
+    this.valClienteApellidoPaterno = true;
+    // this.getFechaNacimientoDias();
+    const today = new Date();
+    this.year = today.getFullYear();
+    this.catNacimientoAnios = this.MesesConDias.getAnnioSinMesesniDia();
+    this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion();
+    // this.catNacimientoDias = this.MesesConDias.getDiasSinMesSinAnnio();
   }
+
+
 
   onNombreChanged() {
     if (this.clienteNombre === '') {
@@ -101,7 +109,7 @@ export class InfoaseguradoComponent implements OnInit {
       this.emitClienteNombre.emit(this.clienteNombre);
     }
   }
-  onApPatChanged(){
+  onApPatChanged() {
     if (this.clienteApellidoPaterno === '') {
       this.valClienteApellidoPaterno = false;
       this.emitClienteApellidoPaterno.emit('');
@@ -110,7 +118,7 @@ export class InfoaseguradoComponent implements OnInit {
       this.emitClienteApellidoPaterno.emit(this.clienteApellidoPaterno);
     }
   }
-  onApMatChanged(){
+  onApMatChanged() {
     if (this.clienteApellidoMaterno === '') {
       this.valClienteApellidoMaterno = false;
       this.emitClienteApellidoMaterno.emit('');
@@ -138,81 +146,81 @@ export class InfoaseguradoComponent implements OnInit {
     }
   }
 
-  onTelefonoChange() {  
-    if (this.clienteTelefono!=''&&this.clienteTelefono.length == 10 ) {
-      var regt1=/[1]{4}/
-      var regt2=/[2]{4}/
-      var regt3=/[3]{4}/
-      var regt4=/[4]{4}/
-      var regt5=/[5]{4}/
-      var regt6=/[6]{4}/
-      var regt7=/[7]{4}/
-      var regt8=/[8]{4}/
-      var regt9=/[9]{4}/
-      var regt0=/[0]{4}/
-    this.validot=regt1.test(this.clienteTelefono)
-    if (this.validot) {
-      this.valClienteTelefonoNoValido = false;
-      this.emitClienteTelefono.emit('');
-    } else {
-      this.validot=regt2.test(this.clienteTelefono)
+  onTelefonoChange() {
+    if (this.clienteTelefono !== '' && this.clienteTelefono.length === 10) {
+      const regt1 = /[1]{4}/;
+      const regt2 = /[2]{4}/;
+      const regt3 = /[3]{4}/;
+      const regt4 = /[4]{4}/;
+      const regt5 = /[5]{4}/;
+      const regt6 = /[6]{4}/;
+      const  regt7 = /[7]{4}/;
+      const regt8 = /[8]{4}/;
+      const  regt9 = /[9]{4}/;
+      const regt0 = /[0]{4}/;
+      this.validot = regt1.test(this.clienteTelefono);
+      if (this.validot) {
+        this.valClienteTelefonoNoValido = false;
+        this.emitClienteTelefono.emit('');
+      } else {
+        this.validot = regt2.test(this.clienteTelefono);
         if (this.validot) {
           this.valClienteTelefonoNoValido = false;
           this.emitClienteTelefono.emit('');
         } else {
-    this.validot=regt3.test(this.clienteTelefono)
-        if (this.validot) {
+          this.validot = regt3.test(this.clienteTelefono);
+          if (this.validot) {
             this.valClienteTelefonoNoValido = false;
             this.emitClienteTelefono.emit('');
-        } else {
-    this.validot=regt4.test(this.clienteTelefono)
-        if (this.validot) {
-      this.valClienteTelefonoNoValido = false;
-      this.emitClienteTelefono.emit('');
-      } else {
-    this.validot=regt5.test(this.clienteTelefono)
-    if (this.validot) {
-      this.valClienteTelefonoNoValido = false;
-      this.emitClienteTelefono.emit('');
-      } else {
-    this.validot=regt6.test(this.clienteTelefono)
-    if (this.validot) {
-      this.valClienteTelefonoNoValido = false;
-      this.emitClienteTelefono.emit('');
-      } else {
-    this.validot=regt7.test(this.clienteTelefono)
-    if (this.validot) {
-      this.valClienteTelefonoNoValido = false;
-      this.emitClienteTelefono.emit('');
-      } else {
-    this.validot=regt8.test(this.clienteTelefono)
-    if (this.validot) {
-      this.valClienteTelefonoNoValido = false;
-      this.emitClienteTelefono.emit('');
-      } else {
-    this.validot=regt9.test(this.clienteTelefono)
-    if (this.validot) {
-      this.valClienteTelefonoNoValido = false;
-      this.emitClienteTelefono.emit('');
-      } else {
-    this.validot=regt0.test(this.clienteTelefono)
-    if (this.validot) {
-      this.valClienteTelefonoNoValido = false;
-      this.emitClienteTelefono.emit('');
-      } else {
-        this.valClienteTelefonoNoValido = true;
-        this.valClienteTelefonoVacio = true;
-    this.emitClienteTelefono.emit(this.clienteTelefono);
-             }   
-              }
-            }
-          }      
+          } else {
+            this.validot = regt4.test(this.clienteTelefono);
+            if (this.validot) {
+              this.valClienteTelefonoNoValido = false;
+              this.emitClienteTelefono.emit('');
+            } else {
+              this.validot = regt5.test(this.clienteTelefono);
+              if (this.validot) {
+                this.valClienteTelefonoNoValido = false;
+                this.emitClienteTelefono.emit('');
+              } else {
+                this.validot = regt6.test(this.clienteTelefono);
+                if (this.validot) {
+                  this.valClienteTelefonoNoValido = false;
+                  this.emitClienteTelefono.emit('');
+                } else {
+                  this.validot = regt7.test(this.clienteTelefono);
+                  if (this.validot) {
+                    this.valClienteTelefonoNoValido = false;
+                    this.emitClienteTelefono.emit('');
+                  } else {
+                    this.validot = regt8.test(this.clienteTelefono);
+                    if (this.validot) {
+                      this.valClienteTelefonoNoValido = false;
+                      this.emitClienteTelefono.emit('');
+                    } else {
+                      this.validot = regt9.test(this.clienteTelefono);
+                      if (this.validot) {
+                        this.valClienteTelefonoNoValido = false;
+                        this.emitClienteTelefono.emit('');
+                      } else {
+                        this.validot = regt0.test(this.clienteTelefono);
+                        if (this.validot) {
+                          this.valClienteTelefonoNoValido = false;
+                          this.emitClienteTelefono.emit('');
+                        } else {
+                          this.valClienteTelefonoNoValido = true;
+                          this.valClienteTelefonoVacio = true;
+                          this.emitClienteTelefono.emit(this.clienteTelefono);
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
         }
       }
-    }
     } else {
       if (this.clienteTelefono === '') {
         this.valClienteTelefonoVacio = false;
@@ -227,13 +235,12 @@ export class InfoaseguradoComponent implements OnInit {
         return;
       }
     }
-    
-}
+  }
   onTipoPersonaFemeninoChange() {
     this.clienteEsFemenino = true;
     this.clienteEsMasculino = false;
     this.clienteEsMoral = false;
-    this.clienteEsFemeninop3= true;
+    this.clienteEsFemeninop3 = true;
     this.clienteEsMasculinop3 = false;
     this.clienteEsMoralp3 = false;
     this.emitClienteTipoPersona.emit('Femenino');
@@ -243,7 +250,7 @@ export class InfoaseguradoComponent implements OnInit {
     this.clienteEsFemenino = false;
     this.clienteEsMasculino = true;
     this.clienteEsMoral = false;
-    this.clienteEsFemeninop3= false;
+    this.clienteEsFemeninop3 = false;
     this.clienteEsMasculinop3 = true;
     this.clienteEsMoralp3 = false;
     this.emitClienteTipoPersona.emit('Masculino');
@@ -253,9 +260,9 @@ export class InfoaseguradoComponent implements OnInit {
     this.clienteEsFemenino = false;
     this.clienteEsMasculino = false;
     this.clienteEsMoral = true;
-    this.clienteEsFemeninop3=false;
-    this.clienteEsMasculinop3=false;
-    this.clienteEsMoralp3=true;
+    this.clienteEsFemeninop3 = false;
+    this.clienteEsMasculinop3 = false;
+    this.clienteEsMoralp3 = true;
     this.emitClienteTipoPersona.emit('Moral');
   }
 
@@ -299,59 +306,15 @@ export class InfoaseguradoComponent implements OnInit {
   }
 
   getFechaNacimientoDias() {
-    this.catNacimientoDias = [];
-    this.itemNacimientoDia = this.itemVacio;
-
-    this.catNacimientoMeses = [];
-    this.itemNacimientoMes = this.itemVacio;
-
-    this.catNacimientoAnios = [];
-    this.itemNacimeintoAnio = this.itemVacio;
-
-    this.catNacimientoDias = this.infovehiculoService.getCatalogoFechaDias().catalogos;
   }
 
   selectNacimientoDia() {
-    this.catNacimientoMeses = [];
-    this.itemNacimientoMes = this.itemVacio;
-
-    this.catNacimientoAnios = [];
-    this.itemNacimeintoAnio = this.itemVacio;
-    !!this.itemNacimientoDia.sLlave ? this.itemNacimientoDia.sLlave=this.itemNacimientoDia.sLlave : this.itemNacimientoDia.sLlave=this.itemNacimientoDiap3.sLlave
-    this.catNacimientoMeses = this.infovehiculoService.getCatalogoFechaMeses(
-      !!this.itemNacimientoDia.sLlave ? this.itemNacimientoDia.sLlave : this.itemNacimientoDiap3.sLlave
-    ).catalogos;
-    
-    this.emitClienteNacimiento.emit({
-      anio: '',
-      mes: '',
-      dia:     !!this.itemNacimientoDia.sLlave ? this.itemNacimientoDia.sLlave : this.itemNacimientoDiap3.sLlave
-      ,
-    });
   }
 
   selectNacimientoMes() {
-    this.catNacimientoAnios = [];
-    this.itemNacimeintoAnio = this.itemVacio;
-
-    this.catNacimientoAnios = this.infovehiculoService.getCatalogoFechaAnios(
-      this.itemNacimientoDia.sLlave,
-      this.itemNacimientoMes.sLlave
-    ).catalogos;
-
-    this.emitClienteNacimiento.emit({
-      anio: '',
-      mes: this.itemNacimientoMes.sLlave,
-      dia: this.itemNacimientoDia.sLlave,
-    });
   }
 
   selectNacimientoAnio() {
-    this.emitClienteNacimiento.emit({
-      anio: this.itemNacimeintoAnio.sLlave,
-      mes: this.itemNacimientoMes.sLlave,
-      dia: this.itemNacimientoDia.sLlave,
-    });
-  }
 
+  }
 }
