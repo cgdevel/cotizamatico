@@ -62,7 +62,7 @@ export class Pagina1Component implements OnInit {
     this.vehiculoMarca = e;
     this.ValidarDatosObligatorios();
   }
-
+  
   handlerVehiculoDescripcion(e: CatalogoModel) {
     this.vehiculoDescripcion = e;
     this.ValidarDatosObligatorios();

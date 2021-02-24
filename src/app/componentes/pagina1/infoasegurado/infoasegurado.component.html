@@ -425,7 +425,7 @@
                     (change)="onCodigoPostalChanged()"
                     onkeypress="return(event.charCode >= 48 && event.charCode <= 57)"
                     maxlength="5"
-                    [(ngModel)]="!!clienteCodigoPostal ? clienteCodigoPostal :clienteCodigoPostalp3"
+                    [(ngModel)]="clienteCodigoPostal"
                     [ngClass]="{
                       Existe:
                         valCodigoPostalLongitud &&

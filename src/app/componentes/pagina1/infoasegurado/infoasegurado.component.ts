@@ -266,7 +266,6 @@ export class InfoaseguradoComponent implements OnInit {
     this.valCodigoPostalVacio = true;
     this.valCodigoPostalValidando = true;
     this.valCodigoPostalValido = true;
-
     if (this.clienteCodigoPostal === '') {
       this.valCodigoPostalVacio = false;
       this.emitClienteCodigoPostal.emit('');
@@ -301,6 +300,13 @@ export class InfoaseguradoComponent implements OnInit {
   }
 
   selectNacimientoDia() {
+  if ( this.itemNacimientoDia.sDato !== '' && this.itemNacimientoMes.sDato !== '' && this.itemNacimeintoAnio.sDato !== '' ) {
+    this.emitClienteNacimiento.emit({
+      dia: this.itemNacimientoDia.sDato,
+      mes: this.itemNacimientoMes.sDato,
+      anio: this.itemNacimeintoAnio.sDato
+    });
+  }
   }
 
   selectNacimientoMes() {
@@ -318,13 +324,28 @@ export class InfoaseguradoComponent implements OnInit {
     }
     const no = Number(this.itemNacimientoMes.sLlave);
     this.catNacimientoDias = this.dameduracion(this.itemNacimientoMes.sLlave);
+    if ( this.itemNacimientoDia.sDato !== '' && this.itemNacimientoMes.sDato !== '' && this.itemNacimeintoAnio.sDato !== '' ) {
+      this.emitClienteNacimiento.emit({
+        dia: this.itemNacimientoDia.sDato,
+        mes: this.itemNacimientoMes.sDato,
+        anio: this.itemNacimeintoAnio.sDato
+      });
+    }
   }
 
   selectNacimientoAnio() {
     this.catNacimientoMeses = [];
     this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion(this.itemNacimeintoAnio.sDato);
-    console.log(this.catNacimientoMeses);
+    // console.log(this.catNacimientoMeses);
+    this.catNacimientoDias = [];
     this.catNacimientoDias = this.dameduracion(this.itemNacimientoMes.sLlave);
+    if ( this.itemNacimientoDia.sDato !== '' && this.itemNacimientoMes.sDato !== '' && this.itemNacimeintoAnio.sDato !== '' ) {
+      this.emitClienteNacimiento.emit({
+        dia: this.itemNacimientoDia.sDato,
+        mes: this.itemNacimientoMes.sDato,
+        anio: this.itemNacimeintoAnio.sDato
+      });
+    }
   }
 
   dameduracion( mes: string){

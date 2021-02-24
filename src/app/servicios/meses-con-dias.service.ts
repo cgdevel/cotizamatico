@@ -64,6 +64,7 @@ getMesesconDuracion(annio?: string){
     DuracionNoBisi: 31}
     );
   if (annio === '') {
+    this.Months = [];
     const today = new Date();
     this.year = today.getFullYear();
     this.year % 4 === 0  ? (this.year % 100 === 0 ? (this.year % 400 === 0 ? (this.bisiesto = true) :
