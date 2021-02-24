@@ -349,10 +349,16 @@
                   [(ngModel)]="itemNacimientoDia"
                 >
                   <ng-option
-                    ng-options="item as item.sLlave for item.sDato in catNacimientoDias"
+                    [value]="item"
+                    *ngFor="let item of catNacimientoDias"
                   >
-                    {{item}}
+                    {{ item.sDato }}
                   </ng-option>
+                  <ng-template ng-notfound-tmp>
+                    <div class="ng-option disabled">
+                      No hay días que mostrar
+                    </div>
+                  </ng-template>
                 </ng-select>
               </div>
 

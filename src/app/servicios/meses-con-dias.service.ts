@@ -94,4 +94,12 @@ for (let i = anioInicio; i >= anioFin; i--) {
 return anios;
 }
 
+getdiassinnada(){
+  const days: CatalogoModel[] = [];
+  for (let index = 1; index <= 31; index++) {
+    days.push({sDato: index.toString(), sLlave: index.toString()});
+  }
+  return days;
+}
+
 }

@@ -90,9 +90,10 @@ export class InfoaseguradoComponent implements OnInit {
     this.valCodigoPostalValido = true;
     this.valClienteApellidoMaterno = true;
     this.valClienteApellidoPaterno = true;
-    // this.getFechaNacimientoDias();
     this.catNacimientoAnios = this.MesesConDias.getAnnioSinMesesniDia();
     this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion();
+    // console.log(this.MesesConDias.getdiassinnada());
+    this.catNacimientoDias = this.MesesConDias.getdiassinnada();
   }
   onNombreChanged() {
     if (this.clienteNombre === '') {
@@ -306,9 +307,15 @@ export class InfoaseguradoComponent implements OnInit {
   }
 
   selectNacimientoMes() {
+    this.catNacimientoDias = [];
+    // console.log(this.itemNacimientoMes.sLlave);
+    const no = Number(this.itemNacimientoMes.sLlave);
+    console.log(no);
+    for (let index = 1; index <= no ; index++) {
+      this.catNacimientoDias.push({sLlave: index.toString(), sDato : index.toString()});
+    }
   }
 
   selectNacimientoAnio() {
-
   }
 }
