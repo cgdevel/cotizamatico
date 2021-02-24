@@ -300,27 +300,41 @@ export class InfoaseguradoComponent implements OnInit {
     });
   }
 
-  getFechaNacimientoDias() {
-  }
-
   selectNacimientoDia() {
   }
 
   selectNacimientoMes() {
-    this.catNacimientoDias = [];
-    // console.log(this.itemNacimientoMes.sLlave);
-    const no = Number(this.itemNacimientoMes.sLlave);
-    console.log(no);
-    for (let index = 1; index <= no ; index++) {
-      this.catNacimientoDias.push({sLlave: index.toString(), sDato : index.toString()});
+    if (this.itemNacimientoDia !== undefined ) {
+      const no = Number(this.itemNacimientoMes.sLlave);
+      this.catNacimientoDias = [];
+      const noo = Number(this.itemNacimientoDia.sDato);
+      if ( noo > no) {
+        this.itemNacimientoDia = {sDato: '', sLlave: ''};
+        this.catNacimientoDias = this.dameduracion(this.itemNacimientoMes.sLlave);
+      }else{
+        this.catNacimientoDias = this.dameduracion(this.itemNacimientoMes.sLlave);
+        this.itemNacimientoDia = this.itemNacimientoDia;
     }
-    const noo = Number(this.itemNacimientoDia.sDato);
-    noo > no ? this.itemNacimientoDia = {sDato: '', sLlave: ''}  : this.itemNacimientoDia = this.itemNacimientoDia ;
+    }
+    const no = Number(this.itemNacimientoMes.sLlave);
+    this.catNacimientoDias = this.dameduracion(this.itemNacimientoMes.sLlave);
   }
 
   selectNacimientoAnio() {
     this.catNacimientoMeses = [];
     this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion(this.itemNacimeintoAnio.sDato);
     console.log(this.catNacimientoMeses);
+    this.catNacimientoDias = this.dameduracion(this.itemNacimientoMes.sLlave);
+  }
+
+  dameduracion( mes: string){
+    const numeromes = Number(mes);
+    const mesdura: CatalogoModel[] = [];
+    // console.log(numeromes);
+    for (let index = 1; index <= numeromes ; index++) {
+      mesdura.push({sLlave: index.toString(), sDato : index.toString()});
+    }
+    // console.log(mesdura);
+    return mesdura;
   }
 }
