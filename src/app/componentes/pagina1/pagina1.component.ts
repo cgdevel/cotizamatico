@@ -13,7 +13,6 @@ export class Pagina1Component implements OnInit {
   verCarousle: boolean;
   resizeObservable$: Observable<Event>;
   resizeSubscription$: Subscription;
- 
   /* Valores vehículo */
   vehiculoTipo: CatalogoModel;
   vehiculoAnio: CatalogoModel;
@@ -62,7 +61,6 @@ export class Pagina1Component implements OnInit {
     this.vehiculoMarca = e;
     this.ValidarDatosObligatorios();
   }
-  
   handlerVehiculoDescripcion(e: CatalogoModel) {
     this.vehiculoDescripcion = e;
     this.ValidarDatosObligatorios();

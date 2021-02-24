@@ -142,11 +142,13 @@ input[type="text"]:focus {
   background-color: #f8d7da;
   border-color: #f5c6cb;
 }
+
 @media (max-width: 576px) {
   #logc {
     width: 50px !important;
     height: 50px !important;
   }
+  
   .noespacionom {
     left: -8px !important;
     top: 13px !important;

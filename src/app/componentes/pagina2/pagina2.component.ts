@@ -1,7 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { NgModule } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {Pagina1Component } from 'src/app/componentes/pagina1/pagina1.component';
 import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
 import { FechasModel } from 'src/app/interphaces/models/Fechas.model';
 
