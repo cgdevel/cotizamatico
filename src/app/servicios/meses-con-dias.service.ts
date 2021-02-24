@@ -12,7 +12,7 @@ Meses: Mesesbisiynobisi[] = [];
   year: number;
   bisiesto: boolean;
   constructor() { }
-getMesesconDuracion(){
+getMesesconDuracion(annio?: string){
   this.Meses.push(
     {IdMes: 1,
     NombreMes: 'Enero',
@@ -63,25 +63,50 @@ getMesesconDuracion(){
     DuracionBisi: 31,
     DuracionNoBisi: 31}
     );
-  const today = new Date();
-  this.year = today.getFullYear();
-  this.year % 4 === 0  ? (this.year % 100 === 0 ? (this.year % 400 === 0 ? (this.bisiesto = true) :
-  (this.bisiesto = false)) : (this.bisiesto = true)) : (this.bisiesto = false);
-  if (this.bisiesto) {
-    for (let index = 0; index < this.Meses.length; index++) {
-      const element = this.Meses[index].NombreMes.toString();
-      const indexS = this.Meses[index].DuracionBisi.toString();
-      this.Months.push({sLlave: indexS, sDato: element});
-    }
-    return this.Months;
+  if (annio === '') {
+    const today = new Date();
+    this.year = today.getFullYear();
+    this.year % 4 === 0  ? (this.year % 100 === 0 ? (this.year % 400 === 0 ? (this.bisiesto = true) :
+    (this.bisiesto = false)) : (this.bisiesto = true)) : (this.bisiesto = false);
+    if (this.bisiesto) {
+      for (let index = 0; index < this.Meses.length; index++) {
+        const element = this.Meses[index].NombreMes.toString();
+        const indexS = this.Meses[index].DuracionBisi.toString();
+        this.Months.push({sLlave: indexS, sDato: element});
+      }
+      return this.Months;
+    } else {
+      for (let index = 0; index < this.Meses.length; index++) {
+        const element = this.Meses[index].NombreMes.toString();
+        const indexS = this.Meses[index].DuracionNoBisi.toString();
+        this.Months.push({sLlave: indexS, sDato: element});
+      }
+      return this.Months;
+      }
   } else {
-    for (let index = 0; index < this.Meses.length; index++) {
-      const element = this.Meses[index].NombreMes.toString();
-      const indexS = this.Meses[index].DuracionNoBisi.toString();
-      this.Months.push({sLlave: indexS, sDato: element});
-    }
-    return this.Months;
-    }
+    // console.log(annio);
+    this.year = Number(annio);
+    // console.log(this.year);
+    this.year % 4 === 0  ? (this.year % 100 === 0 ? (this.year % 400 === 0 ? (this.bisiesto = true) :
+  (this.bisiesto = false)) : (this.bisiesto = true)) : (this.bisiesto = false);
+    if (this.bisiesto) {
+      this.Months = [];
+      for (let index = 0; index < this.Meses.length; index++) {
+        const element = this.Meses[index].NombreMes.toString();
+        const indexS = this.Meses[index].DuracionBisi.toString();
+        this.Months.push({sLlave: indexS, sDato: element});
+      }
+      return this.Months;
+    } else {
+      this.Months = [];
+      for (let index = 0; index < this.Meses.length; index++) {
+        const element = this.Meses[index].NombreMes.toString();
+        const indexS = this.Meses[index].DuracionNoBisi.toString();
+        this.Months.push({sLlave: indexS, sDato: element});
+      }
+      return this.Months;
+      }
+  }
 }
 
 getAnnioSinMesesniDia(){

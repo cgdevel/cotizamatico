@@ -314,8 +314,13 @@ export class InfoaseguradoComponent implements OnInit {
     for (let index = 1; index <= no ; index++) {
       this.catNacimientoDias.push({sLlave: index.toString(), sDato : index.toString()});
     }
+    const noo = Number(this.itemNacimientoDia.sDato);
+    noo > no ? this.itemNacimientoDia = {sDato: '', sLlave: ''}  : this.itemNacimientoDia = this.itemNacimientoDia ;
   }
 
   selectNacimientoAnio() {
+    this.catNacimientoMeses = [];
+    this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion(this.itemNacimeintoAnio.sDato);
+    console.log(this.catNacimientoMeses);
   }
 }
