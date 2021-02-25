@@ -71,6 +71,7 @@ ubicacionId: number;
   }
   }
   ngOnInit(): void {
+    // console.log(history.state)
     this.noedites = false;
     this.vermodelo = history.state.modsel;
     this.vermarca = history.state.marsel;

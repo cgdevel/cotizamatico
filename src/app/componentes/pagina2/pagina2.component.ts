@@ -332,6 +332,7 @@ qualitas(){
 }
 
   ngOnInit(): void {
+    console.log(history.state)
     this.vermodelo = history.state.tipove;
     console.log(this.vermodelo);
     this.veranno = history.state.anniove;

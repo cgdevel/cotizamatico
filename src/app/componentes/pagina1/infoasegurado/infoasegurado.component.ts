@@ -39,7 +39,7 @@ export class InfoaseguradoComponent implements OnInit {
   @Input() clienteEsMasculinop3: boolean;
   @Input() clienteEsMoralp3: boolean;
   @Output() emitClienteCodigoPostal = new EventEmitter<string>();
-  clienteCodigoPostal: string;
+  @Input() clienteCodigoPostal: string;
   @Input() clienteCodigoPostalp3: string;
   valCodigoPostalVacio: boolean;
   valCodigoPostalLongitud: boolean;
@@ -54,9 +54,9 @@ export class InfoaseguradoComponent implements OnInit {
   catNacimientoDias: CatalogoModel[];
   catNacimientoMeses: CatalogoModel[];
   catNacimientoAnios: CatalogoModel[];
-  itemNacimientoDia: CatalogoModel;
-  itemNacimientoMes: CatalogoModel;
-  itemNacimeintoAnio: CatalogoModel;
+  @Input() itemNacimientoDia: CatalogoModel;
+  @Input() itemNacimientoMes: CatalogoModel;
+  @Input() itemNacimeintoAnio: CatalogoModel;
   itemVacio: CatalogoModel;
   item: string;
   year: any;
@@ -94,6 +94,7 @@ export class InfoaseguradoComponent implements OnInit {
     this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion();
     // console.log(this.MesesConDias.getdiassinnada());
     this.catNacimientoDias = this.MesesConDias.getdiassinnada();
+    console.log('codigo p' , this.clienteCodigoPostalp3)
   }
   onNombreChanged() {
     if (this.clienteNombre === '') {
@@ -295,7 +296,7 @@ export class InfoaseguradoComponent implements OnInit {
         return;
       }
 
-      this.emitClienteCodigoPostal.emit(this.codigoPostal);
+      this.emitClienteCodigoPostal.emit(this.clienteCodigoPostal);
     });
   }
 
