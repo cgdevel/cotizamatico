@@ -60,7 +60,9 @@
                   tooltipClass="my-custom-class"
                 />
                 <ng-template #ttClienteNombre>
-                  <b *ngIf="valClienteNombre==true">{{'Tiene dos opciones para llenar este campo: 1) Sólo con su nombre 2)Con su nombre completo, iniciando por apelllidos'}}</b>
+                  <b *ngIf="valClienteNombre==true">Tiene dos opciones para llenar este campo:
+                    <br> 1) Sólo con su nombre
+                    <br> 2)Con su nombre completo, iniciando por apelllidos</b>
                 </ng-template>
                 <ngb-alert
                   [dismissible]="false"

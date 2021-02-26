@@ -1,4 +1,4 @@
-<div class="container mw-100">
+<div class="container mw-100" *ngIf="!empresa">
     <div class="row" style="justify-content: center;">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300" style="width: 174px;">
             <defs>
@@ -42,17 +42,9 @@
                 </g>
         </svg>
     </div>
-    <!-- <div class="row">
-        {{Nombre}}
-        <br>
-        {{ApellidoP}}
-        <br>
-        {{ApellidoM}}
-        <br>
-    </div> -->
     <div class="row">
         <div class="col-12 col-md-4" id="inase">
-            <div class="container mw-100 ">
+            <div class="container mw-100" >
                 <div class="row" style="margin-bottom: 11px;">
                     <div class="col">
                         Edad
@@ -74,7 +66,8 @@
                             [searchable]="true" 
                             [clearable]="false"
                             [closeOnSelect]="true"
-                            (change)="getrfc( generarfcaccu==true ? generarfcaccu : false, this.ApellidoP,this.ApellidoM,this.Nombre)"
+                            (change)="getrfc( generarfcaccu==true ? generarfcaccu : false, this.ApellidoP,this.ApellidoM,this.Nombre,this.nacionalidadsel.NacString)"
+                            [disabled]="!!this.ApellidoP &&  !! this.ApellidoM && !! this.Nombre && generarfcaccu== false || generarfcaccu==true ? false :true  "
                             [(ngModel)]="nacionalidadsel" [ngbTooltip]="nacsel" tooltipClass="my-custom-class">
                             <ng-template #nacsel>
                                 <b  *ngIf="!!nacionalidadsel">{{nacionalidadsel.NacString}}</b>
@@ -88,7 +81,6 @@
                             </div>
                             </ng-template>
                         </ng-select>
-                     
                     </div>
                 </div>
             </div>
