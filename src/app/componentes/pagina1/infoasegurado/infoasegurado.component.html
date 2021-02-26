@@ -83,6 +83,14 @@
                   onkeypress="return(!(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))"
                   min="1"
                 />
+                <ngb-alert
+                  [dismissible]="false"
+                  type="danger"
+                  *ngIf="!valClienteApellidoPaterno  && clienteApellidoPaterno==''"
+                  class="alert-danger"
+                >
+                  Dato Obligatorio
+                </ngb-alert>
               </div>
               <div class="row"  *ngIf="disabledase==false">
                 <label for="nombre">Apellido paterno</label>
@@ -101,6 +109,14 @@
                   onkeypress="return(!(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))"
                   min="1"
                 />
+                <ngb-alert
+                  [dismissible]="false"
+                  type="danger"
+                  *ngIf="!valClienteApellidoMaterno  && clienteApellidoMaterno==''"
+                  class="alert-danger"
+                >
+                  Dato Obligatorio
+                </ngb-alert>
               </div>
             </div>
           </div>

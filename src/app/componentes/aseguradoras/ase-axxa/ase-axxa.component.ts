@@ -14,10 +14,12 @@ export class AseAXXAComponent implements OnInit {
   @Input() empresa: boolean;
   @Input()  CP = '';
   @Input()  edad: number;
-  @Input()  nomase = '';
   @Input()  Nombre = '';
+  @Input()  ApellidoP = '';
+  @Input()  ApellidoM = '';
   @Input()  Mes = '';
   @Input()  Dia: number;
+  @Input() generarfcaccu;
   Nacion = new Array<RequestNacionalidad>();
   year;
   month;
@@ -51,9 +53,10 @@ export class AseAXXAComponent implements OnInit {
         this.estado = this.ubicacion[0].Municipio.Estado.sEstado;
         this.municipio = this.ubicacion[0].Municipio.sMunicipio;
         this.cols = this.ubicacion[0].Ubicacion;
-        });// suscribecierra
+        }); // suscribecierra
     }
-    getrfc(){
+    getrfc(si?: boolean, apep ?: string, apem ?: string, nom?: string){
+    if (si === true) {
       this.RFC = '';
       this.Nombre = this.Nombre.toUpperCase();
       console.log(this.nacionalidadsel.NacString + ' ' + this.Nombre);
@@ -94,11 +97,53 @@ export class AseAXXAComponent implements OnInit {
             }
           }
         }
+    } else {
+      if (this.ApellidoM !== '' && this.ApellidoP !== '' && this.Nombre !== ''){
+        if (this.nacionalidadsel.NacString !== 'MEXICANA'){
+          let str = new String(this.naciye);
+          if (this.nummonth < 10 && this.Dia < 10) {
+            this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + '0' + this.Dia + 'XXX';
+          }else {  if (this.nummonth >= 10 &&  this.Dia >= 10) {
+              this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + this.nummonth + this.Dia + 'XXX';
+            }else {if (this.nummonth < 10 &&  this.Dia >= 10) {
+                this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + this.Dia + 'XXX';
+              }else { if (this.nummonth >= 10 &&  this.Dia < 10) {
+                  this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + this.nummonth + '0' + this.Dia + 'XXX';
+                }
+              }
+            }
+          }
+        }else{
+          nom = nom.toUpperCase();
+          apep = apep.toUpperCase();
+          apem = apem.toUpperCase();
+          let str = new String(this.naciye);
+          let strnpate = apep.charAt(0) + apep.charAt(1);
+          let strnmate = apem.charAt(0);
+          let strnom = nom.charAt(0);
+          if (this.nummonth < 10 && this.Dia < 10){
+            this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + '0' + this.Dia + 'XXX';
+          }else {
+            if (this.nummonth < 10 && this.Dia >= 10) {
+              this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + this.Dia + 'XXX';
+            } else {
+              if (this.nummonth >= 10 && this.Dia < 10) {
+                this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + this.nummonth + '0' + this.Dia + 'XXX';
+              }else {
+                if (this.nummonth >= 10 && this.Dia >= 10) {
+                  this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + this.nummonth + this.Dia + 'XXX';
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     }// rfc
 
     ngOnInit(): void {
       this.meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-      var today = new Date();
+      let today = new Date();
       this.year = today.getFullYear();
       this.month = today.getMonth();
       // console.log(this.month)
@@ -121,6 +166,7 @@ export class AseAXXAComponent implements OnInit {
         }
       }
       this.getUbicacion();
+      this.getrfc(this.generarfcaccu);
     // this.NacionalitiesService.getNacionalidades()
     // console.log(this.InfovehiculoService.Nacionalidades)
       this.Nacion = this.NacionalitiesService.getNacionalidades();

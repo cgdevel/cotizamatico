@@ -1,10 +1,14 @@
 <div class="container mw-90">
     <app-infovehiculo  [disabled]="noedites" [modeloselpagina3]="vermodelo" [annoselpagina3]="veranno" [marcaselpagina3]="vermarca" [descripselpagina3]="verdescripcion"></app-infovehiculo>
-    <app-infoasegurado [disable]="noedites" [disabledase]="sisirve" [clienteNombre]="nombre" [clienteMail]="email" [clienteTelefono]="telefono" [clienteEsFemeninop3]="mujer" [clienteEsMasculinop3]="hombre" [clienteEsMoralp3]="empresa" [clienteCodigoPostal]='codigopostal' [itemNacimeintoAnio]="fechanacimiento.anio" [itemNacimientoMes]="fechanacimiento.mes" [itemNacimientoDia]="fechanacimiento.dia"></app-infoasegurado>
+    <app-infoasegurado [disable]="noedites" [disabledase]="sisirve" [clienteNombre]="nombre" [clienteMail]="email" [clienteTelefono]="telefono" [clienteEsFemeninop3]="mujer" [clienteEsMasculinop3]="hombre" [clienteEsMoralp3]="empresa" [clienteCodigoPostal]='codigopostal' [itemNacimeintoAnio]="fechanacimiento.anio" [itemNacimientoMes]="fechanacimiento.mes" [itemNacimientoDia]="fechanacimiento.dia"
+        (emitClienteApellidoPaterno)="ApellidoPAterno($event)"
+        (emitClienteApellidoMaterno)="ApellidoMAterno($event)"
+        (emitClienteNombre) ="ClienteNombre ($event) "
+      ></app-infoasegurado>
 </div>
 <div class="container mw-90">
 
-    <app-ase-axxa *ngIf="nombraseguradora=='AXXA'" [Dia]="fechanacimiento.dia" [Mes]="fechanacimiento.mes"  [nomase]="nombre" [edad]="fechanacimiento.anio" [CP]="codigopostal" [mujer]="mujer" [hombre]="hombre" [empresa]="empresa" [Nombre]="nombre"></app-ase-axxa>
+    <app-ase-axxa *ngIf="nombraseguradora=='AXXA'" [Dia]="fechanacimiento.dia" [Mes]="fechanacimiento.mes" [ApellidoP]="ApePateCliente" [ApellidoM]="ApeMateCliente" [Nombre]="ClienteNomb" [edad]="fechanacimiento.anio" [CP]="codigopostal" [mujer]="mujer" [hombre]="hombre" [empresa]="empresa" [Nombre]="nombre" [generarfcaccu]="sisirve"></app-ase-axxa>
     <app-ase-chubb *ngIf="nombraseguradora=='CHUBB'" ></app-ase-chubb>
     <app-ase-sura *ngIf="nombraseguradora=='SURA'" ></app-ase-sura>
     <app-ase-zurcih *ngIf="nombraseguradora=='ZURICH'" ></app-ase-zurcih>

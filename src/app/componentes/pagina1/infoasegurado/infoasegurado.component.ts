@@ -94,7 +94,6 @@ export class InfoaseguradoComponent implements OnInit {
     this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion();
     // console.log(this.MesesConDias.getdiassinnada());
     this.catNacimientoDias = this.MesesConDias.getdiassinnada();
-    console.log('codigo p' , this.clienteCodigoPostalp3)
   }
   onNombreChanged() {
     if (this.clienteNombre === '') {

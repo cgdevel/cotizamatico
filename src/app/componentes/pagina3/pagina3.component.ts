@@ -13,6 +13,9 @@ export class Pagina3Component implements OnInit {
   hombre: boolean;
   empresa: boolean;
   validonompag3: boolean;
+  ApePateCliente: string;
+  ApeMateCliente: string;
+  ClienteNomb: string;
   constructor( private Infovehiculo: InfovehiculoService ) {}
   colonias = [];
   cols: {
@@ -41,8 +44,15 @@ ubicacionId: number;
     colonia: string;
     coloniasel;
 
-
-
+    ApellidoPAterno(e){
+      this.ApePateCliente = e;
+    }
+    ApellidoMAterno(e){
+      this.ApeMateCliente = e;
+    }
+    ClienteNombre(e){
+      this.ClienteNomb = e;
+    }
   getUbicacion(){
     this.Infovehiculo.getApiCPs({
       IdAplication: 2,
