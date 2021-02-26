@@ -56,7 +56,7 @@ export class AseAXXAComponent implements OnInit {
         }); // suscribecierra
     }
     getrfc(si?: boolean, apep ?: string, apem ?: string, nom?: string){
-    console.log(si);
+    // console.log(si);
     if (si == true) {
       this.RFC = '';
       this.Nombre = this.Nombre.toUpperCase();
