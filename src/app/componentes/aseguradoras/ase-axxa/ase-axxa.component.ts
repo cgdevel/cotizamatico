@@ -19,7 +19,7 @@ export class AseAXXAComponent implements OnInit {
   @Input()  ApellidoM = '';
   @Input()  Mes = '';
   @Input()  Dia: number;
-  @Input() generarfcaccu;
+  @Input() generarfcaccu: boolean;
   Nacion = new Array<RequestNacionalidad>();
   year;
   month;
@@ -29,7 +29,7 @@ export class AseAXXAComponent implements OnInit {
   estado: string;
   municipio: string;
   RFC: string;
-  nacionalidadsel;
+  nacionalidadsel: RequestNacionalidad;
   item = '';
   cols: {
     iIdUbicacion: number,
@@ -56,7 +56,8 @@ export class AseAXXAComponent implements OnInit {
         }); // suscribecierra
     }
     getrfc(si?: boolean, apep ?: string, apem ?: string, nom?: string){
-    if (si === true) {
+    console.log(si);
+    if (si == true) {
       this.RFC = '';
       this.Nombre = this.Nombre.toUpperCase();
       console.log(this.nacionalidadsel.NacString + ' ' + this.Nombre);
@@ -98,7 +99,7 @@ export class AseAXXAComponent implements OnInit {
           }
         }
     } else {
-      if (this.ApellidoM !== '' && this.ApellidoP !== '' && this.Nombre !== ''){
+      if (this.ApellidoM !== '' && this.ApellidoP !== '' && this.Nombre !== '' &&  this.nacionalidadsel.NacString !== ''){
         if (this.nacionalidadsel.NacString !== 'MEXICANA'){
           let str = new String(this.naciye);
           if (this.nummonth < 10 && this.Dia < 10) {
@@ -166,11 +167,10 @@ export class AseAXXAComponent implements OnInit {
         }
       }
       this.getUbicacion();
-      this.getrfc(this.generarfcaccu);
-    // this.NacionalitiesService.getNacionalidades()
-    // console.log(this.InfovehiculoService.Nacionalidades)
       this.Nacion = this.NacionalitiesService.getNacionalidades();
-    // console.log(this.Nacion)
+      this.getrfc(this.generarfcaccu);
+      // console.log(this.InfovehiculoService.Nacionalidades)
+      // console.log(this.NacionalitiesService.getNacionalidades());
     }// Init
 
 

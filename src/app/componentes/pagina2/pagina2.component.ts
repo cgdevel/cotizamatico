@@ -316,17 +316,17 @@ emitDescripcion(e) {
 }
 afirme(){
   this.aseguradora = 'AFIRME';
-  console.log(this.aseguradora);
+  // console.log(this.aseguradora);
   return this.aseguradora;
 }
 axxa(){
   this.aseguradora = 'AXXA';
-  console.log(this.aseguradora);
+  // console.log(this.aseguradora);
   return this.aseguradora;
 }
 qualitas(){
   this.aseguradora = 'QUALITAS';
-  console.log(this.aseguradora);
+  // console.log(this.aseguradora);
   return this.aseguradora;
 
 }
@@ -339,6 +339,7 @@ qualitas(){
     this.vermarca = history.state.marcave;
     this.verdescripcion = history.state.descve;
     this.nombre = history.state.namease;
+    console.log(this.nombre);
     this.email = history.state.emailase;
     this.telefono = history.state.phonease;
     this.genero = history.state.tipoperase;

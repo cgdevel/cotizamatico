@@ -124,6 +124,7 @@
           <div class="form-group col-md-4">
             <label for="email"> Email </label>
             <input
+              [disabled]="disable == false"
               type="text"
               class="form-control"
               id="email"
@@ -158,6 +159,7 @@
           <div class="form-group col-md-4">
             <label for="telefono"> Teléfono </label>
             <input
+             [disabled]="disable == false"
               maxlength="10"
               type="text"
               class="form-control"
@@ -203,6 +205,7 @@
                 tooltipClass="my-custom-class"
               >
                 <button
+                  [disabled]="disable == false"
                   class="m-0 btn"
                   style="display: block"
                   (click)="onTipoPersonaFemeninoChange()"
@@ -253,6 +256,7 @@
                 tooltipClass="my-custom-class"
               >
                 <button
+                  [disabled]="disable == false"
                   class="m-0 btn"
                   style="display: block"
                   (click)="onTipoPersonaMasculinoChange()"
@@ -306,6 +310,7 @@
                   class="m-0 btn"
                   style="display: block"
                   (click)="onTipoPersonaMoralChange()"
+                  [disabled]="disable == false"
                 >
                   <svg
                     id="logc"
@@ -354,6 +359,7 @@
             <div class="row">
               <div class="col-md-4 col-sm-12 mb-3">
                 <ng-select
+                  [disabled]="disable == false"
                   id="cmbNacimietoDia"
                   [items]="catNacimientoDias"
                   bindLabel="sDato"
@@ -380,6 +386,7 @@
 
               <div class="col-md-4 col-sm-12 mb-3">
                 <ng-select
+                  [disabled]="disable == false"
                   id="cmbNacimietoMes"
                   bindLabel="sDato"
                   placeholder="MES"
@@ -406,6 +413,7 @@
               <div class="col-md-4 col-sm-12 mb-3">
                 <ng-select
                   id="cmbNacimietoAnio"
+                  [disabled]="disable == false"
                   bindLabel="sDato"
                   placeholder="AÑO"
                   [searchable]="false"
@@ -436,6 +444,7 @@
                 <div class="col px-1">
                   <p class="m-0 mb-2">Código postal:</p>
                   <input
+                    [disabled]="disable == false"
                     type="text"
                     class="form-control"
                     (change)="onCodigoPostalChanged()"

@@ -42,14 +42,14 @@
                 </g>
         </svg>
     </div>
-    <div class="row">
+    <!-- <div class="row">
         {{Nombre}}
         <br>
         {{ApellidoP}}
         <br>
         {{ApellidoM}}
         <br>
-    </div>
+    </div> -->
     <div class="row">
         <div class="col-12 col-md-4" id="inase">
             <div class="container mw-100 ">
@@ -74,7 +74,7 @@
                             [searchable]="true" 
                             [clearable]="false"
                             [closeOnSelect]="true"
-                            (change)="getrfc(generarfcaccu,this.ApellidoP,this.ApellidoM,this.Nombre)"
+                            (change)="getrfc(generarfcaccu==true ? generarfcaccu : false, this.ApellidoP,this.ApellidoM,this.Nombre)"
                             [(ngModel)]="nacionalidadsel" [ngbTooltip]="nacsel" tooltipClass="my-custom-class">
                             <ng-template #nacsel>
                                 <b  *ngIf="!!nacionalidadsel">{{nacionalidadsel.NacString}}</b>

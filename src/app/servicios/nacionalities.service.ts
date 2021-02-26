@@ -179,8 +179,8 @@ export class NacionalitiesService {
       {NacString: 'ESLOVENIA', NacClave: 'SVN'},	
       {NacString: 'ESLOVAQUIA', NacClave: 'XES'}	
        )
-      return this.Nacionalidades
-      console.log(this.Nacionalidades)
+    // console.log(this.Nacionalidades);
+    return this.Nacionalidades;
    }
    constructor(private http: HttpClient){
   }

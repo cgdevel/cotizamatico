@@ -67,13 +67,13 @@ ubicacionId: number;
       }); // suscribecierra
   }
 
-  verificanombre(){
+  verificanombre(cnam : string){
   let ArrayEmparejamientos = {};
   const reg = /^(([A-Z a-z])\w+(\s))(([A-Z a-z]+\w\s))(([A-Z a-z]+\w)\s?)$/;
-  ArrayEmparejamientos = this.nombre.match(reg);
-  this.validonompag3 = reg.test(this.nombre);
+  ArrayEmparejamientos = cnam.match(reg);
+  this.validonompag3 = reg.test(cnam);
   // console.log(event);
-  console.log(this.nombre);
+  console.log(cnam);
   if (this.validonompag3) {
    return this.sisirve = true;
   } else {
@@ -88,7 +88,8 @@ ubicacionId: number;
     this.verdescripcion = history.state.descsel;
     this.veranno = history.state.annosel;
     this.nombre = history.state.nomsel;
-    this.verificanombre();
+    console.log(this.nombre);
+    this.verificanombre(this.nombre);
     this.email = history.state.emsel;
     this.telefono = history.state.telsel;
     this.codigopostal = history.state.codigosel;
