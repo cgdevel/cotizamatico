@@ -57,12 +57,12 @@ export class AseAXXAComponent implements OnInit {
     }
     getrfc(si?: boolean, apep ?: string, apem ?: string, nom?: string){
     // console.log(si);
-    if (si == true) {
+    if (si === true) {
       this.RFC = '';
       this.Nombre = this.Nombre.toUpperCase();
       console.log(this.nacionalidadsel.NacString + ' ' + this.Nombre);
       if (this.nacionalidadsel.NacString !== 'MEXICANA'){
-          let str = new String(this.naciye);
+          const str = String(this.naciye);
           if (this.nummonth < 10 && this.Dia < 10) {
             this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + '0' + this.Dia + 'XXX';
           }else {  if (this.nummonth >= 10 &&  this.Dia >= 10) {
@@ -76,12 +76,12 @@ export class AseAXXAComponent implements OnInit {
             }
           }
         }else {
-          let str = new String(this.naciye);
-          let n = this.Nombre.indexOf(' ');
-          let strnmate = this.Nombre.charAt(n + 1);
-          let t = this.Nombre.lastIndexOf(' ') + 1;
-          let strnom = this.Nombre.charAt(t);
-          let strnpate = this.Nombre.charAt(0) + this.Nombre.charAt(1);
+          const str = String(this.naciye);
+          const n = this.Nombre.indexOf(' ');
+          const strnmate = this.Nombre.charAt(n + 1);
+          const t = this.Nombre.lastIndexOf(' ') + 1;
+          const strnom = this.Nombre.charAt(t);
+          const strnpate = this.Nombre.charAt(0) + this.Nombre.charAt(1);
           if (this.nummonth < 10 && this.Dia < 10){
             this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + '0' + this.Dia + 'XXX';
           }else {
@@ -101,7 +101,7 @@ export class AseAXXAComponent implements OnInit {
     } else {
       if (this.ApellidoM !== '' && this.ApellidoP !== '' && this.Nombre !== '' &&  this.nacionalidadsel.NacString !== ''){
         if (this.nacionalidadsel.NacString !== 'MEXICANA'){
-          let str = new String(this.naciye);
+          const str = String(this.naciye);
           if (this.nummonth < 10 && this.Dia < 10) {
             this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + '0' + this.Dia + 'XXX';
           }else {  if (this.nummonth >= 10 &&  this.Dia >= 10) {
@@ -118,10 +118,10 @@ export class AseAXXAComponent implements OnInit {
           nom = nom.toUpperCase();
           apep = apep.toUpperCase();
           apem = apem.toUpperCase();
-          let str = new String(this.naciye);
-          let strnpate = apep.charAt(0) + apep.charAt(1);
-          let strnmate = apem.charAt(0);
-          let strnom = nom.charAt(0);
+          const str = String(this.naciye);
+          const strnpate = apep.charAt(0) + apep.charAt(1);
+          const strnmate = apem.charAt(0);
+          const strnom = nom.charAt(0);
           if (this.nummonth < 10 && this.Dia < 10){
             this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + '0' + this.Dia + 'XXX';
           }else {
@@ -144,7 +144,7 @@ export class AseAXXAComponent implements OnInit {
 
     ngOnInit(): void {
       this.meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-      let today = new Date();
+      const today = new Date();
       this.year = today.getFullYear();
       this.month = today.getMonth();
       // console.log(this.month)
