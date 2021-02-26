@@ -38,11 +38,11 @@
 
         <div class="row">
           <div class="form-group col-md-4">
-
             <div class="container mw-100 px-0">
               <div class="row">
                 <label for="nombre">Nombre</label>
                 <input
+                  [disabled]="clienteNombreCompleto == true"
                   type="text"
                   class="form-control"
                   id="nombre"
@@ -56,7 +56,12 @@
                     Existe: valClienteNombre,
                     NoExiste: !valClienteNombre
                   }"
+                  [ngbTooltip]="ttClienteNombre"
+                  tooltipClass="my-custom-class"
                 />
+                <ng-template #ttClienteNombre>
+                  <b *ngIf="valClienteNombre==true">{{'Tiene dos opciones para llenar este campo: 1) Sólo con su nombre 2)Con su nombre completo, iniciando por apelllidos'}}</b>
+                </ng-template>
                 <ngb-alert
                   [dismissible]="false"
                   type="danger"

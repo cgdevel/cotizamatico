@@ -1,6 +1,6 @@
 <div class="container mw-90">
     <app-infovehiculo  [disabled]="noedites" [modeloselpagina3]="vermodelo" [annoselpagina3]="veranno" [marcaselpagina3]="vermarca" [descripselpagina3]="verdescripcion"></app-infovehiculo>
-    <app-infoasegurado [disable]="noedites" [disabledase]="sisirve" [clienteNombre]="nombre" [clienteMail]="email" [clienteTelefono]="telefono" [clienteEsFemeninop3]="mujer" [clienteEsMasculinop3]="hombre" [clienteEsMoralp3]="empresa" [clienteCodigoPostal]='codigopostal' [itemNacimeintoAnio]="fechanacimiento.anio" [itemNacimientoMes]="fechanacimiento.mes" [itemNacimientoDia]="fechanacimiento.dia"
+    <app-infoasegurado [clienteNombreCompleto]="sisirve" [disable]="noedites" [disabledase]="sisirve" [clienteNombre]="nombre" [clienteMail]="email" [clienteTelefono]="telefono" [clienteEsFemeninop3]="mujer" [clienteEsMasculinop3]="hombre" [clienteEsMoralp3]="empresa" [clienteCodigoPostal]='codigopostal' [itemNacimeintoAnio]="fechanacimiento.anio" [itemNacimientoMes]="fechanacimiento.mes" [itemNacimientoDia]="fechanacimiento.dia"
         (emitClienteApellidoPaterno)="ApellidoPAterno($event)"
         (emitClienteApellidoMaterno)="ApellidoMAterno($event)"
         (emitClienteNombre) ="ClienteNombre ($event) "

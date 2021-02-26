@@ -13,6 +13,7 @@ import {MesesConDiasService } from '../../../servicios/meses-con-dias.service';
 export class InfoaseguradoComponent implements OnInit {
   @Output() emitClienteNombre = new EventEmitter<string>();
   @Input() clienteNombre: string;
+  @Input() clienteNombreCompleto: boolean;
   @Input() valClienteNombre: boolean;
   @Output() emitClienteApellidoPaterno = new EventEmitter<string>();
   @Input() clienteApellidoPaterno: string;

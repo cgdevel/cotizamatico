@@ -74,7 +74,7 @@
                             [searchable]="true" 
                             [clearable]="false"
                             [closeOnSelect]="true"
-                            (change)="getrfc(generarfcaccu==true ? generarfcaccu : false, this.ApellidoP,this.ApellidoM,this.Nombre)"
+                            (change)="getrfc( generarfcaccu==true ? generarfcaccu : false, this.ApellidoP,this.ApellidoM,this.Nombre)"
                             [(ngModel)]="nacionalidadsel" [ngbTooltip]="nacsel" tooltipClass="my-custom-class">
                             <ng-template #nacsel>
                                 <b  *ngIf="!!nacionalidadsel">{{nacionalidadsel.NacString}}</b>
