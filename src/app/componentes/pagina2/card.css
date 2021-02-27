@@ -1,0 +1,38 @@
+.gmm__card {
+  font-family: "Exo", sans-serif;
+  background-color: #ebebeb;
+  border-radius: 36px;
+  padding: 2rem;
+  box-shadow: 0 1px 8px 1px rgb(0 0 0 / 8%), 0 1px 6px 0 rgb(0 29 124 / 5%);
+  border: 2px solid white;
+  font-size: 22px;
+  font-weight: 300;
+  color: #4a4b4b;
+}
+
+.gmm__card p {
+  margin-bottom: 4px;
+}
+
+.gmm__left {
+  border-right: 4px solid white;
+}
+
+.gmm__right p {
+  margin-bottom: 4px;
+}
+
+.gmm__right {
+  color: #7390fe;
+}
+
+.gmm__right svg {
+  width: 30px;
+  height: 30px;
+}
+
+@media (max-width: 576px) {
+  .gmm__right p {
+    margin-bottom: 8px;
+  }
+}

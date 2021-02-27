@@ -17,6 +17,7 @@
   font-family: "Exo 2", sans-serif;
   font: 400;
   font-weight: 700;
+  font-size: 16px;
 }
 #tof {
   font-size: 10px !important;
@@ -34,12 +35,9 @@
 }
 #estesi {
   border-radius: 12px !important;
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-bottom: 20px;
   font-family: "Exo 2", sans-serif;
   font: 400;
+  font-size: 14px;
 }
 #estesi > .card-header:first-child {
   background-color: #21c7ed;
@@ -70,21 +68,21 @@
   /* display: ruby-base-container !important; */
 }
 .Noselect {
-  height: 200px;
+  /* height: 200px;
   width: 95px;
   margin-top: 30px;
-  margin-bottom: 30px;
-  /* background-color:#ebebeb !important; */
+  margin-bottom: 30px; */
   background-color: #ebebeb !important;
-  border-radius: 30px !important;
+  border-radius: 8px !important;
 }
 .Select {
-  height: 200px;
+  /* height: 200px;
   width: 95px;
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 30px; */
+  box-shadow: 0 1px 10px 1px rgb(0 0 0 / 8%), 0 1px 6px 0 rgb(0 29 124 / 5%);
   background: -webkit-linear-gradient(#ff8f48, #ff6963);
-  border-radius: 30px;
+  border-radius: 8px;
   color: white !important;
 }
 .Noselectap {
@@ -140,6 +138,7 @@
   font-size: 20px;
   font-weight: bold;
   border-radius: 10px;
+  box-shadow: 0 1px 10px 1px rgb(0 0 0 / 8%), 0 1px 6px 0 rgb(0 29 124 / 5%);
 }
 #tan {
   font-family: "Exo 2", sans-serif;
@@ -323,6 +322,8 @@
   }
 }
 
+/* David H */
+
 .card {
   border: none;
   box-shadow: 0 1px 10px 1px rgb(0 0 0 / 8%), 0 1px 6px 0 rgb(0 29 124 / 5%);
@@ -341,4 +342,42 @@ span {
 
 .custom-control {
   display: inline-block;
+}
+
+.type__btn {
+  font-size: 12px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.type__svg {
+  height: 34px;
+  width: 38px;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.form-group {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.form-control {
+  font-size: 12px;
+}
+
+.card__row p {
+  margin-bottom: 6px;
+}
+.offer {
+  border-radius: 8px;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid #ff6666;
+  color: #ff6666;
+  padding: 1px 6px;
 }
