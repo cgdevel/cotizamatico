@@ -1052,7 +1052,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-8 col-sm-12">
+    <!-- <div class="col-md-8 col-sm-12">
       <div class="card mb-4" id="estesi">
         <div id="mejop" class="card-header text-center">
           ¡ESTA ES TU MEJOR OPCIÓN!
@@ -1975,7 +1975,43 @@
           </div>
         </div>
       </div>
+    </div> -->
+    
+    
+    <div class="col-md-8 col-sm-12">
+      <div class="card mb-4" id="estesi" *ngFor = "let item of Aseguradoras">
+        {{item.Compania}}
+      </div>
+      <div class="container mw-100 d-none">
+        <div class="row">
+          <div class="col">
+            <button
+              class="btn btn-primary pull-right"
+              id="mostrarmas"
+              [state]="{
+                modsel: vermodelo,
+                marsel: vermarca,
+                descsel: verdescripcion,
+                annosel: veranno,
+                nomsel: nombre,
+                emsel: email,
+                telsel: telefono,
+                generosel: genero,
+                codigosel: codigopostal,
+                fechasel: fechanac
+              }"
+              style="margin-bottom: 27px"
+              [routerLink]="['/vermas']"
+              routerLinkActive="router-link-active"
+            >
+              Mostrar más
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
+    
+    
     <div class="col-md-4 col-sm-12">
       <div class="card mb-4" id="estesi">
         <div class="card-body car__container">

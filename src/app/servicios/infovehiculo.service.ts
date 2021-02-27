@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { environmentAse } from '../../enviromentsAse/environmentAse';
 import { PeticionCatalogo } from '../interphaces/peticion';
 import { PeticionCatalogoCps } from '../interphaces/peticioncps';
 import { RequestCatalogo } from '../interphaces/request/RequestCatalogo.model';
@@ -8,6 +9,7 @@ import { ResponseCatalogo } from '../interphaces/response/ResponseCatalogo.model
 import { RequestCatalogoCotizamatico } from '../interphaces/request/RequestCatalogoCotizamatico.model';
 import { ResponseCatalogoCotizamatico } from '../interphaces/response/ResponseCatalogoCotizamatico.model';
 import { CatalogoModel } from '../interphaces/models/Catalogos.model';
+import { PeticionAutoAse } from '../interphaces/PeticionAutoAse';
 
 @Injectable({
   providedIn: 'root',
@@ -137,4 +139,13 @@ export class InfovehiculoService {
 
     return resp;
   }
+
+
+  getApiAseguradoras(query: PeticionAutoAse) {
+    return this.http.post<any>(
+      `${environmentAse.url_api_autos_aseguradoras}`,
+      query
+    );
+  }
+
 }

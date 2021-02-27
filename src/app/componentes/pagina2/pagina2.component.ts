@@ -2,6 +2,8 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
 import { FechasModel } from 'src/app/interphaces/models/Fechas.model';
+import { Aseguradoras } from 'src/app/interphaces/models/Aseguradoras.model';
+import { InfovehiculoService } from '../../servicios/infovehiculo.service';
 
 @Component({
   selector: 'app-pagina2',
@@ -9,10 +11,9 @@ import { FechasModel } from 'src/app/interphaces/models/Fechas.model';
   styleUrls: ['./pagina2.component.css']
 })
 export class Pagina2Component implements OnInit {
-  constructor(
-    private route: ActivatedRoute
-  ) {
-   }
+  constructor( private route: ActivatedRoute , private infovehiculoService: InfovehiculoService) {}
+  AseguradorasPoDesc: Aseguradoras[] = [];
+  Aseguradoras: Aseguradoras[] = [];
   aseguradora: string;
   // VARIABLE DE LA QUE DEPENDE EDITAR DATOS
   show = false;
@@ -331,13 +332,44 @@ qualitas(){
 
 }
 
+ getAsePorDescrip(Desc: string ){
+  this.infovehiculoService.getApiAseguradoras
+  ({
+     IdCotizamatico: Desc
+  })
+  .subscribe(
+    (cat) => {
+      if (cat == undefined) {
+        console.log('Error');
+      }
+      // console.log(cat);
+      for (let index = 0; index < cat.length; index++) {
+        const element = cat[index];
+        this.AseguradorasPoDesc.push( {IdModeloCotizamatico: element.IdModeloCotizamatico,
+          IdAseguradora: element.IdAseguradora,
+          Compania: element.Compania,
+          IdModeloAseguradora: element.IdModeloAseguradora,
+          Marca: element.Marca,
+          Submarca: element.Submarca,
+          Modelo: element.Modelo,
+          Descripcion: element.Descripcion} );
+      }
+    },
+    (err) => {
+      console.log('Error');
+    }
+  );
+  return this.AseguradorasPoDesc;
+ }
+
   ngOnInit(): void {
-    console.log(history.state)
+    // console.log(history.state)
     this.vermodelo = history.state.tipove;
-    console.log(this.vermodelo);
     this.veranno = history.state.anniove;
     this.vermarca = history.state.marcave;
     this.verdescripcion = history.state.descve;
+    this.Aseguradoras = this.getAsePorDescrip(this.verdescripcion.sLlave);
+    // console.log(this.Aseguradoras);
     this.nombre = history.state.namease;
     console.log(this.nombre);
     this.email = history.state.emailase;
