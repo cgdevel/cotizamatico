@@ -1,4 +1,4 @@
-<div class="container mw-100">
+<div class="container mw-100" *ngIf="mujercontrata==true  ||  hombrecontrata==true">
     <div class="row" style="justify-content: center;">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300" style="width: 174px;">
             <defs>
@@ -193,7 +193,7 @@
         </div>
     </div>
 </div>
-<div class="container mw-100" *ngIf="!empresacontrata">
+<div class="container mw-100" *ngIf="empresacontrata==true" >
     <div class="row" style="justify-content: center;">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300" style="width: 174px;">
             <defs>
