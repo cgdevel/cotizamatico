@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { element } from 'protractor';
 import {InfovehiculoService} from '../../../app/servicios/infovehiculo.service';
 import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
@@ -16,7 +16,13 @@ export class Pagina3Component implements OnInit {
   ApePateCliente: string;
   ApeMateCliente: string;
   ClienteNomb: string;
-  constructor( private Infovehiculo: InfovehiculoService ) {}
+  persona: string;
+  @Output() emitBoolMujer = new EventEmitter<boolean>();
+  @Output() emitBoolHombre = new EventEmitter<boolean>();
+  @Output() emitBoolEmpreesa = new EventEmitter<boolean>();
+  // aseguradora: string;
+
+    constructor( private Infovehiculo: InfovehiculoService ) {}
   colonias = [];
   cols: {
     iIdUbicacion: number,
@@ -53,6 +59,12 @@ ubicacionId: number;
     ClienteNombre(e){
       this.ClienteNomb = e;
     }
+    TipoP(e){
+      this.persona = e;
+      this.persona === 'Femenino' ? this.mujer = true : this.mujer = false;
+      this.persona === 'Masculino' ? this.hombre = true : this.hombre = false;
+      this.persona === 'Moral'  ? this.empresa = true : this.empresa = false;
+    }
   getUbicacion(){
     this.Infovehiculo.getApiCPs({
       IdAplication: 2,
@@ -66,8 +78,8 @@ ubicacionId: number;
       this.cols = this.ubicacion[0].Ubicacion;
       }); // suscribecierra
   }
-
-  verificanombre(cnam : string){
+ 
+  verificanombre(cnam: string){
   let ArrayEmparejamientos = {};
   const reg = /^(([A-Z a-z])\w+(\s))(([A-Z a-z]+\w\s))(([A-Z a-z]+\w)\s?)$/;
   ArrayEmparejamientos = cnam.match(reg);
@@ -81,26 +93,25 @@ ubicacionId: number;
   }
   }
   ngOnInit(): void {
-    // console.log(history.state)
+    console.log(history.state);
     this.noedites = false;
     this.vermodelo = history.state.modsel;
     this.vermarca = history.state.marsel;
     this.verdescripcion = history.state.descsel;
     this.veranno = history.state.annosel;
     this.nombre = history.state.nomsel;
-    console.log(this.nombre);
     this.verificanombre(this.nombre);
     this.email = history.state.emsel;
     this.telefono = history.state.telsel;
     this.codigopostal = history.state.codigosel;
     console.log(this.codigopostal);
+    this.nombraseguradora = history.state.asesel;
     this.genero = history.state.generosel;
     this.genero === 'Femenino' ? this.mujer = true : this.mujer = false;
     this.genero === 'Masculino' ? this.hombre = true : this.hombre = false;
     this.genero === 'Moral'  ? this.empresa = true : this.empresa = false;
     this.fechanacimiento = history.state.fechasel;
     this.getUbicacion();
-    this.nombraseguradora = history.state.asesel;
 
   }
 

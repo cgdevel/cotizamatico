@@ -9,9 +9,9 @@ import {InfovehiculoService} from '../../../servicios/infovehiculo.service';
   styleUrls: ['./ase-axxa.component.css']
 })
 export class AseAXXAComponent implements OnInit {
-  @Input() mujer: boolean;
-  @Input() hombre: boolean;
-  @Input() empresa: boolean;
+  @Input() mujercontrata: boolean;
+  @Input() hombrecontrata: boolean;
+  @Input() empresacontrata: boolean;
   @Input()  CP = '';
   @Input()  edad: number;
   @Input()  Nombre = '';
@@ -40,8 +40,11 @@ export class AseAXXAComponent implements OnInit {
   meses: string[];
   naciye: number;
   nummonth: number;
+  genero: string;
+  mujer: boolean;
+  hombre: boolean;
+  empresa: boolean;
   constructor(private InfovehiculoService: InfovehiculoService, private NacionalitiesService: NacionalitiesService) { }
-
     getUbicacion(){
       this.InfovehiculoService.getApiCPs({
         IdAplication: 2,
@@ -56,6 +59,7 @@ export class AseAXXAComponent implements OnInit {
         }); // suscribecierra
     }
     getrfc(si?: boolean, apep ?: string, apem ?: string, nom?: string){
+    this.nacionalidadsel.NacString = 'MEXICANA';
     // console.log(si);
     if (si === true) {
       this.RFC = '';
@@ -141,7 +145,7 @@ export class AseAXXAComponent implements OnInit {
       }
     }
     }// rfc
-
+    
     ngOnInit(): void {
       this.meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
       const today = new Date();
@@ -169,6 +173,7 @@ export class AseAXXAComponent implements OnInit {
       this.getUbicacion();
       this.Nacion = this.NacionalitiesService.getNacionalidades();
       this.getrfc(this.generarfcaccu);
+      console.log(this.mujer);
       // console.log(this.InfovehiculoService.Nacionalidades)
       // console.log(this.NacionalitiesService.getNacionalidades());
     }// Init
