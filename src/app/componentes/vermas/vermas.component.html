@@ -2416,7 +2416,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="carousel-item"  *ngFor = "let items of Aseguradoras">
+                        <div class="carousel-item"  *ngFor = "let items of Aseguradoras | slice : 1">
                           <div class="container mw-100"  *ngIf="items.Compania=='AXA SEG' ">
                             <div class="row">
                               <div class="col-12">
