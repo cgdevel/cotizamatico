@@ -1119,7 +1119,7 @@
                                 telsel: telefono,               
                                 generosel: genero,
                                 codigosel: codigopostal,
-                                fechasel: fechanaci,asesel:item.Compania}'>
+                                fechasel: fechanaci,asesel:Aseguradoras[0].Compania}'>
                                   Contratar
                                 </button>
                               </div>
@@ -1257,7 +1257,7 @@
                                 telsel: telefono,               
                                 generosel: genero,
                                 codigosel: codigopostal,
-                                fechasel: fechanaci,asesel:item.Compania}'>
+                                fechasel: fechanaci,asesel:Aseguradoras[0].Compania}'>
                                   Contratar
                                 </button>
                               </div>
@@ -1392,7 +1392,7 @@
                                 telsel: telefono,               
                                 generosel: genero,
                                 codigosel: codigopostal,
-                                fechasel: fechanaci,asesel:item.Compania}'>
+                                fechasel: fechanaci,asesel:Aseguradoras[0].Compania}'>
                                   Contratar
                                 </button>
                               </div>
@@ -1536,7 +1536,7 @@
                                 telsel: telefono,               
                                 generosel: genero,
                                 codigosel: codigopostal,
-                                fechasel: fechanaci,asesel:item.Compania}'>
+                                fechasel: fechanaci,asesel:Aseguradoras[0].Compania}'>
                                   Contratar
                                 </button>
                               </div>
@@ -1675,7 +1675,7 @@
                                 telsel: telefono,               
                                 generosel: genero,
                                 codigosel: codigopostal,
-                                fechasel: fechanaci,asesel:item.Compania}'>
+                                fechasel: fechanaci,asesel:Aseguradoras[0].Compania}'>
                                   Contratar
                                 </button>
                               </div>
@@ -1832,7 +1832,7 @@
                                 telsel: telefono,               
                                 generosel: genero,
                                 codigosel: codigopostal,
-                                fechasel: fechanaci,asesel:item.Compania}'>
+                                fechasel: fechanaci,asesel:Aseguradoras[0].Compania}'>
                                   Contratar
                                 </button>
                               </div>
@@ -1982,7 +1982,7 @@
                                 telsel: telefono,               
                                 generosel: genero,
                                 codigosel: codigopostal,
-                                fechasel: fechanaci,asesel:item.Compania}'>
+                                fechasel: fechanaci,asesel:Aseguradoras[0].Compania}'>
                                   Contratar
                                 </button>
                               </div>
@@ -2121,7 +2121,7 @@
                                 telsel: telefono,               
                                 generosel: genero,
                                 codigosel: codigopostal,
-                                fechasel: fechanaci,asesel:item.Compania}'>
+                                fechasel: fechanaci,asesel:Aseguradoras[0].Compania}'>
                                   Contratar
                                 </button>
                               </div>
@@ -2266,7 +2266,7 @@
                               telsel: telefono,               
                               generosel: genero,
                               codigosel: codigopostal,
-                              fechasel: fechanaci,asesel:item.Compania}'>
+                              fechasel: fechanaci,asesel:Aseguradoras[0].Compania}'>
                                   Contratar
                                 </button>
                               </div>
@@ -2409,7 +2409,7 @@
                                 telsel: telefono,               
                                 generosel: genero,
                                 codigosel: codigopostal,
-                                fechasel: fechanaci,asesel:item.Compania}'>
+                                fechasel: fechanaci,asesel:Aseguradoras[0].Compania}'>
                                   Contratar
                                 </button>
                               </div>
@@ -2417,7 +2417,7 @@
                           </div>
                         </div>
                         <div class="carousel-item"  *ngFor = "let items of Aseguradoras">
-                          <div class="container mw-100"  *ngIf="items.Compania=='AXA SEG' && Aseguradoras[0].Compania!=items.Compania ">
+                          <div class="container mw-100"  *ngIf="items.Compania=='AXA SEG' ">
                             <div class="row">
                               <div class="col-12">
                                 <svg class="d-block w-100" alt="First slide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300">
@@ -2557,7 +2557,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="container mw-100"  *ngIf="items.Compania=='CHUBB'  && Aseguradoras[0].Compania!=items.Compania  ">
+                          <div class="container mw-100"  *ngIf="items.Compania=='CHUBB' ">
                             <div class="row">
                               <div class="col-12">
                                 <svg class="d-block w-100" alt="Second slide"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300">
@@ -2695,7 +2695,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="container mw-100"  *ngIf="items.Compania=='SURA'  && Aseguradoras[0].Compania!=items.Compania  " >
+                          <div class="container mw-100"  *ngIf="items.Compania=='SURA' " >
                             <div class="row">
                               <div class="col-12">
                                 <svg class="d-block w-100" alt="Third slide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300">
@@ -2830,7 +2830,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="container mw-100" *ngIf="items.Compania=='ZURICH'   && Aseguradoras[0].Compania!=items.Compania  ">
+                          <div class="container mw-100" *ngIf="items.Compania=='ZURICH'  ">
                             <div class="row">
                               <div class="col-12">
                                 <svg class="d-block w-100" alt="Fourth slide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300">
@@ -2974,7 +2974,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="container mw-100"  *ngIf="items.Compania=='MAPFRE T'  && Aseguradoras[0].Compania!=items.Compania   ">
+                          <div class="container mw-100"  *ngIf="items.Compania=='MAPFRE T'  ">
                             <div class="row">
                               <div class="col-12">
                                 <svg class="d-block w-100" alt="Fifth slide"xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300">
@@ -3113,7 +3113,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="container mw-100"  *ngIf="items.Compania=='QUALITAS'  && Aseguradoras[0].Compania!=items.Compania   ">
+                          <div class="container mw-100"  *ngIf="items.Compania=='QUALITAS'  ">
                             <div class="row">
                               <div class="col-12">
                                 <svg class="d-block w-100" alt="Sixth slide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300">
@@ -3270,7 +3270,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="container mw-100"  *ngIf="items.Compania=='BANORTE'  && Aseguradoras[0].Compania!=items.Compania   ">
+                          <div class="container mw-100"  *ngIf="items.Compania=='BANORTE'  ">
                             <div class="row">
                               <div class="col-12">
                                 <svg class="d-block w-100" alt="Seventh slide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300">
@@ -3420,7 +3420,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="container mw-100"  *ngIf="items.Compania=='HDI'  && Aseguradoras[0].Compania!=items.Compania  ">
+                          <div class="container mw-100"  *ngIf="items.Compania=='HDI' ">
                             <div class="row">
                               <div class="col-12">
                                 <svg class="d-block w-100" alt="Eighth slide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300">
@@ -3559,7 +3559,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="container mw-100" *ngIf="items.Compania=='AFIRME'  && Aseguradoras[0].Compania!=items.Compania  ">
+                          <div class="container mw-100" *ngIf="items.Compania=='AFIRME' ">
                             <div class="row">
                               <div class="col-12">
                                 <svg class="d-block w-100" alt="Nineth slide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300">
@@ -3704,7 +3704,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="container mw-100" *ngIf="items.Compania=='ANA SEG'  && Aseguradoras[0].Compania!=items.Compania  ">
+                          <div class="container mw-100" *ngIf="items.Compania=='ANA SEG' ">
                             <div class="row">
                               <div class="col-12">
                                 <svg class="d-block w-100" alt="Tenth slide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300">
