@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { from, fromEvent, Observable, Subscription } from 'rxjs';
 import {Location} from '@angular/common';
 import { FechasModel } from 'src/app/interphaces/models/Fechas.model';
-
+import { Aseguradoras } from 'src/app/interphaces/models/Aseguradoras.model';
+import { InfovehiculoService } from '../../servicios/infovehiculo.service';
+  
 @Component({
   selector: 'app-vermas',
   templateUrl: './vermas.component.html',
@@ -23,71 +25,47 @@ export class VermasComponent implements OnInit {
   codigopostal: any;
   fechanaci: FechasModel;
   aseguradora: string;
-  constructor( private locate: Location) { }
+  AseguradorasPoDesc: Aseguradoras[] = [];
+  Aseguradoras: Aseguradoras[] = [];
+  constructor( private locate: Location , private infovehiculoService: InfovehiculoService) { }
+  getAsePorDescrip(Desc: string ){
+    this.infovehiculoService.getApiAseguradoras
+    ({
+       IdCotizamatico: Desc
+    })
+    .subscribe(
+      (cat) => {
+        if (cat == undefined) {
+          console.log('Error');
+        }
+        // console.log(cat);
+        for (let index = 0; index < cat.length; index++) {
+          const element = cat[index];
+          this.AseguradorasPoDesc.push( {IdModeloCotizamatico: element.IdModeloCotizamatico,
+            IdAseguradora: element.IdAseguradora,
+            Compania: element.Compania,
+            IdModeloAseguradora: element.IdModeloAseguradora,
+            Marca: element.Marca,
+            Submarca: element.Submarca,
+            Modelo: element.Modelo,
+            Descripcion: element.Descripcion} );
+        }
+      },
+      (err) => {
+        console.log('Error');
+      }
+    );
+    return this.AseguradorasPoDesc;
+   }
   onback(){
     this.locate.back();
   }
-  axxa(){
-    this.aseguradora = 'AXXA';
-    console.log(this.aseguradora);
-    return this.aseguradora;
-  }
-  chubb(){
-  this.aseguradora = 'CHUBB';
-  console.log(this.aseguradora);
-  return this.aseguradora;
-  }
-sura(){
-  this.aseguradora = 'SURA';
-  console.log(this.aseguradora);
-  return this.aseguradora;
 
-}
-zurich(){
-  this.aseguradora = 'ZURICH';
-  console.log(this.aseguradora);
-  return this.aseguradora;
-
-}
-mapfre(){
-  this.aseguradora = 'MAPRE';
-  console.log(this.aseguradora);
-  return this.aseguradora;
-
-}
-qualitas(){
-  this.aseguradora = 'QUALITAS';
-  console.log(this.aseguradora);
-  return this.aseguradora;
-
-}
-banorte(){
-  this.aseguradora = 'BANORTE';
-  console.log(this.aseguradora);
-  return this.aseguradora;
-
-}
-hdi(){
-  this.aseguradora = 'HDI';
-  console.log(this.aseguradora);
-  return this.aseguradora;
-
-}
-afirme(){
-  this.aseguradora = 'AFIRME';
-  console.log(this.aseguradora);
-  return this.aseguradora;
-
-}
-anna(){
-  this.aseguradora = 'ANNA';
-  console.log(this.aseguradora);
-  return this.aseguradora;
-}
   ngOnInit(): void {
     this.vermodelo = history.state.modsel;
     this.vermarca = history.state.marsel;
     this.verdescripcion = history.state.descsel;
+    this.Aseguradoras = this.getAsePorDescrip(this.verdescripcion.sLlave);
     this.veranno = history.state.annosel;
     this.nombre = history.state.nomsel;
     this.email = history.state.emsel;
