@@ -169,7 +169,7 @@
             <ng-select
               id="cmbTipoVehiculo"
               [disabled]="disabled === false"
-              *ngIf="disabled === true"
+              [hidden]="disabled==false"
               [items]="catTipoVehiculo"
               bindLabel="sDato"
               placeholder="TIPO DE VEHÍCULO"
@@ -212,7 +212,7 @@
             <ng-select
               id="cmbAnioVehiculo"
               [disabled]="disabled == false"
-              *ngIf="disabled === true"
+              [hidden]="disabled==false"
               [items]="catAnioVehiculo"
               bindLabel="sDato"
               placeholder="AÑO"
@@ -248,7 +248,7 @@
             <ng-select
               id="cmbMarcas"
               [disabled]="disabled == false"
-              *ngIf="disabled === true"
+              [hidden]="disabled==false"
               [items]="catMarcaVehiculo"
               bindLabel="sDato"
               placeholder="MARCA"
@@ -292,7 +292,7 @@
             <ng-select
               id="cmbDescripcion"
               [disabled]="disabled == false"
-              *ngIf="disabled === true"
+              [hidden]="disabled==false"
               [items]="catDescripcionVehiculo"
               bindLabel="sDato"
               placeholder="DESCRIPCIÓN"

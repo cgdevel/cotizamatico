@@ -294,9 +294,11 @@ export class Pagina2Component implements OnInit {
   // console.log("Informacion vehículo actualizada")
    this.vermodelo.sDato = this.modelo.sDato;
    this.vermarca.sDato = this.marca.sDato;
-   this.verdescripcion.sDato = this.descripcion.sDato;
    this.veranno.sDato = this.anno.sDato;
-  // console.log(this.vermodelo+' '+this.vermarca+' '+this.verdescripcion+' '+this.veranno)
+   this.verdescripcion.sDato = this.descripcion.sDato;
+   this.Aseguradoras=[];
+   this.Aseguradoras = this.getAsePorDescrip(this.descripcion.sLlave);
+   // console.log(this.vermodelo+' '+this.vermarca+' '+this.verdescripcion+' '+this.veranno)
  }
  // FUNCIONES EVENT EMITTER DE INFOVEHICULO
  emitTipoVehiculo(e) {
@@ -333,6 +335,7 @@ qualitas(){
 }
 
  getAsePorDescrip(Desc: string ){
+  this.AseguradorasPoDesc=[];
   this.infovehiculoService.getApiAseguradoras
   ({
      IdCotizamatico: Desc

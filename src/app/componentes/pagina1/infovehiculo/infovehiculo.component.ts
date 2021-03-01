@@ -67,7 +67,6 @@ export class InfovehiculoComponent implements OnInit {
     this.catDescripcionVehiculo = [];
     this.catMarcaVehiculo = [];
     this.catTipoVehiculo = [];
-
     this.getTiposVehiculos();
   }
 
