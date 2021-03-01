@@ -162,13 +162,14 @@
 
         <div class="row">
           <div
-            [ngClass]="{ nodoce: showchiquito, contrata: disabled == false }"
+            [ngClass]="{ nodoce: showchiquito}"
             class="col-12 col-md-3 mb-4"
           >
             <p class="m-0 mb-2">Mi auto es</p>
             <ng-select
               id="cmbTipoVehiculo"
               [disabled]="disabled === false"
+              *ngIf="disabled === true"
               [items]="catTipoVehiculo"
               bindLabel="sDato"
               placeholder="TIPO DE VEHÍCULO"
@@ -199,15 +200,19 @@
                 <div class="ng-option disabled">No hay modelos que mostrar</div>
               </ng-template>
             </ng-select>
+           <p *ngIf='disabled == false'>
+              {{ modeloselpagina3.sDato}}
+            </p>
           </div>
           <div
-            [ngClass]="{ nodoce: showchiquito, contrata: disabled == false }"
+            [ngClass]="{ nodoce: showchiquito}"
             class="col-12 col-md-3 mb-4"
           >
             <p class="m-0 mb-2">Año:</p>
             <ng-select
               id="cmbAnioVehiculo"
               [disabled]="disabled == false"
+              *ngIf="disabled === true"
               [items]="catAnioVehiculo"
               bindLabel="sDato"
               placeholder="AÑO"
@@ -231,15 +236,19 @@
                 {{ item }}
               </ng-option>
             </ng-select>
+           <label *ngIf='disabled == false'>
+              {{ annoselpagina3.sDato}}
+            </label>
           </div>
           <div
-            [ngClass]="{ nodoce: showchiquito, contrata: disabled == false }"
+            [ngClass]="{ nodoce: showchiquito}"
             class="col-12 col-md-3 mb-4"
           >
             <p class="m-0 mb-2">Marca:</p>
             <ng-select
               id="cmbMarcas"
               [disabled]="disabled == false"
+              *ngIf="disabled === true"
               [items]="catMarcaVehiculo"
               bindLabel="sDato"
               placeholder="MARCA"
@@ -270,16 +279,20 @@
                 <div class="ng-option disabled">No hay marcas que mostrar</div>
               </ng-template>
             </ng-select>
+            <label *ngIf='disabled == false'>
+              {{marcaselpagina3.sDato}}
+            </label>
           </div>
 
           <div
-            [ngClass]="{ nodoce: showchiquito, contrata: disabled == false }"
+            [ngClass]="{ nodoce: showchiquito}"
             class="col-12 col-md-3 mb-4"
           >
             <p class="m-0 mb-2">Descripción</p>
             <ng-select
               id="cmbDescripcion"
               [disabled]="disabled == false"
+              *ngIf="disabled === true"
               [items]="catDescripcionVehiculo"
               bindLabel="sDato"
               placeholder="DESCRIPCIÓN"
@@ -315,6 +328,9 @@
                 </div>
               </ng-template>
             </ng-select>
+           <label *ngIf='disabled == false'>
+              {{descripselpagina3.sDato}}
+            </label>
           </div>
         </div>
       </div>
