@@ -40,7 +40,7 @@ hr {
   margin-right: 0.5rem !important;
 }
 
-#carro {
+#logo-cotizamatico {
   width: 250px;
 }
 
@@ -76,6 +76,6 @@ header {
   box-shadow: 0 1px 8px 1px rgb(0 0 0 / 8%), 0 1px 6px 0 rgb(0 29 124 / 5%);
 }
 
-.svg__icon svg {
+.svg__icon img {
   width: 16px;
 }
