@@ -296,7 +296,7 @@ export class Pagina2Component implements OnInit {
    this.vermarca.sDato = this.marca.sDato;
    this.veranno.sDato = this.anno.sDato;
    this.verdescripcion.sDato = this.descripcion.sDato;
-   this.Aseguradoras=[];
+   this.Aseguradoras = [];
    this.Aseguradoras = this.getAsePorDescrip(this.descripcion.sLlave);
    // console.log(this.vermodelo+' '+this.vermarca+' '+this.verdescripcion+' '+this.veranno)
  }
@@ -335,14 +335,14 @@ qualitas(){
 }
 
  getAsePorDescrip(Desc: string ){
-  this.AseguradorasPoDesc=[];
+  this.AseguradorasPoDesc = [];
   this.infovehiculoService.getApiAseguradoras
   ({
      IdCotizamatico: Desc
   })
   .subscribe(
     (cat) => {
-      if (cat == undefined) {
+      if (cat === undefined) {
         console.log('Error');
       }
       // console.log(cat);
@@ -372,7 +372,7 @@ qualitas(){
     this.vermarca = history.state.marcave;
     this.verdescripcion = history.state.descve;
     this.Aseguradoras = this.getAsePorDescrip(this.verdescripcion.sLlave);
-    // console.log(this.Aseguradoras);
+    console.log(this.Aseguradoras);
     this.nombre = history.state.namease;
     console.log(this.nombre);
     this.email = history.state.emailase;
