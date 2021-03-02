@@ -124,7 +124,6 @@
             </div>
         </div>
     </div>
-     
     <div class="row">
         <div class="col-12 col-md-4" id="inase">
            <div class="container mw-100">
@@ -192,6 +191,108 @@
            </div>
         </div>
     </div>
+
+
+    <div class="row">
+        <div class="col">
+            <div class="container mw-100">
+                <label for="nombre">Número de Serie</label>
+                <input
+                  [ngClass]="{ }"
+                  id="NumdeSerie"
+                  [(ngModel)]="numdeserie"
+                  (change)="onNumSeChange()" 
+                  maxlength="17"
+                  type="text"
+                  class="form-control"
+                  autocomplete="off"
+                  onkeypress="return(!!(( 97 <= event.charCode  && event.charCode < 105 ) ||
+                   ( 106 <= event.charCode  && event.charCode < 113 ) ||
+                    ( 114 <= event.charCode  && event.charCode < 123 )||
+                     ( 65 <= event.charCode  && event.charCode < 73 )||
+                      ( 74 <= event.charCode  && event.charCode < 81 )||
+                       ( 82 <= event.charCode  && event.charCode < 91 )||
+                        ( 48 <= event.charCode  && event.charCode < 58 ) )  || (event.charCode==32))"
+                        [ngClass]="{
+                            Existe: !valClienteNumSerieVacio && !valClienteNumSerieNoValido,
+                            NoExiste: valClienteNumSerieVacio || valClienteNumSerieNoValido
+                          }"
+                />
+    <!-- para que admita "q" ( 106 <= event.charCode  && event.charCode < 123 ) -->     
+    <!-- para que admita "i" ( 97 <= event.charCode  && event.charCode < 112 ) -->       
+                <ngb-alert
+                [dismissible]="false"
+                type="danger"
+                *ngIf="valClienteNumSerieVacio "
+                >
+                Dato Obligatorio
+                </ngb-alert>                  
+            </div>
+        </div> 
+        <div class="col">
+        <label for="nombre">Número de Placas</label>
+            <input
+                [ngClass]="{ }"
+                id="NumdeSerie"
+                [(ngModel)]="numdeplacas"
+                (change)="onNumPlaChange()" 
+                maxlength="17"
+                maxlength="17"
+                type="text"
+                class="form-control"
+                autocomplete="off"
+                onkeypress="return( !!(
+                ( 97 <= event.charCode  && event.charCode < 123 )||
+                ( 65 <= event.charCode  && event.charCode < 91 )||
+                ( 48 <= event.charCode  && event.charCode < 58 ) ))"
+                [ngClass]="{
+                    Existe: !valClienteNumPlacasVacio && !valClienteNumPlacasNoValido,
+                    NoExiste: valClienteNumPlacasVacio || valClienteNumPlacasNoValido
+                    }"
+            />
+    <!-- para que admita "q" ( 106 <= event.charCode  && event.charCode < 123 ) -->     
+    <!-- para que admita "i" ( 97 <= event.charCode  && event.charCode < 112 ) -->       
+            <ngb-alert
+            [dismissible]="false"
+            type="danger"
+            *ngIf="valClienteNumPlacasVacio "
+            >
+            Dato Obligatorio
+            </ngb-alert> 
+        </div>
+        <div class="col">
+            <label for="nombre">Número de Motor</label>
+            <input
+                [ngClass]="{ }"
+                id="NumdeSerie"
+                [(ngModel)]="numdeMotor"
+                (change)="onNumMotorChange()" 
+                maxlength="17"
+                maxlength="17"
+                type="text"
+                class="form-control"
+                autocomplete="off"
+                onkeypress="return( !!(
+                ( 97 <= event.charCode  && event.charCode < 123 )||
+                ( 65 <= event.charCode  && event.charCode < 91 )||
+                ( 48 <= event.charCode  && event.charCode < 58 ) ))"
+                [ngClass]="{
+                    Existe: !valClienteNumMotorVacio && !valClienteNumMotorNoValido,
+                    NoExiste: valClienteNumMotorVacio || valClienteNumMotorNoValido
+                    }"
+            />
+        </div>
+        <div class="col">Valor factura</div>
+        <div class="col">Color</div>
+    </div>
+    <div class="row">
+        <div class="col">Conductor</div>
+        <div class="col">Datos del contratante</div>
+        <div class="col">REPUVE</div>
+        <div class="col">Forma de pago</div>
+        <div class="col">Medio de pago</div>
+    </div>
+
 </div>
 <div class="container mw-100" *ngIf="empresacontrata==true" >
     <div class="row" style="justify-content: center;">
