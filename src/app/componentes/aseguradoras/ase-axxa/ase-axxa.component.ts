@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {RequestNacionalidad } from '../../../../app/interphaces/nacionali';
-import {NacionalitiesService} from '../../../servicios/nacionalities.service';
 import {InfovehiculoService} from '../../../servicios/infovehiculo.service';
 
 @Component({
@@ -44,7 +43,16 @@ export class AseAXXAComponent implements OnInit {
   mujer: boolean;
   hombre: boolean;
   empresa: boolean;
-  constructor(private InfovehiculoService: InfovehiculoService, private NacionalitiesService: NacionalitiesService) { }
+  numdeserie: string;
+  valClienteNumSerieVacio: boolean;
+  valClienteNumSerieNoValido: boolean;
+  numdeplacas: string;
+  valClienteNumPlacasNoValido: boolean;
+  valClienteNumPlacasVacio: boolean;
+  numdeMotor: string;
+  valClienteNumMotorNoValido: boolean;
+  valClienteNumMotorVacio: boolean;
+  constructor(private InfovehiculoService: InfovehiculoService) { }
     getUbicacion(){
       this.InfovehiculoService.getApiCPs({
         IdAplication: 2,
@@ -59,7 +67,6 @@ export class AseAXXAComponent implements OnInit {
         }); // suscribecierra
     }
     getrfc(si?: boolean, apep ?: string, apem ?: string, nom?: string){
-    this.nacionalidadsel.NacString = 'MEXICANA';
     // console.log(si);
     if (si === true) {
       this.RFC = '';
@@ -145,8 +152,45 @@ export class AseAXXAComponent implements OnInit {
       }
     }
     }// rfc
-    
+    onNumSeChange(){
+      if (this.numdeserie === '') {
+        this.valClienteNumSerieVacio = true;
+      }else{
+        if ( this.numdeserie.length < 17 ) {
+          this.valClienteNumSerieNoValido = true;
+        } else {
+          this.valClienteNumSerieVacio = false;
+          this.valClienteNumSerieNoValido = false;
+        }
+      }
+    }
+    onNumPlaChange(){
+      if (this.numdeplacas === '') {
+        this.valClienteNumPlacasVacio = true;
+      }else{
+        if ( this.numdeplacas.length < 17 ) {
+          this.valClienteNumPlacasNoValido = true;
+        } else {
+          this.valClienteNumPlacasVacio = false;
+          this.valClienteNumPlacasNoValido = false;
+        }
+      }
+    }
+    onNumMotorChange(){
+      if (this.numdeMotor === '') {
+        this.valClienteNumMotorVacio = true;
+      }else{
+        if ( this.numdeMotor.length < 17 ) {
+          this.valClienteNumMotorNoValido = true;
+        } else {
+          this.valClienteNumMotorVacio = false;
+          this.valClienteNumMotorNoValido = false;
+        }
+      }
+    }
     ngOnInit(): void {
+      this.valClienteNumSerieVacio = false;
+      this.valClienteNumSerieNoValido = false;
       this.meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
       const today = new Date();
       this.year = today.getFullYear();
@@ -171,7 +215,7 @@ export class AseAXXAComponent implements OnInit {
         }
       }
       this.getUbicacion();
-      this.Nacion = this.NacionalitiesService.getNacionalidades();
+      this.Nacion = this.InfovehiculoService.getNacionalidades();
       this.getrfc(this.generarfcaccu);
       console.log(this.mujer);
       // console.log(this.InfovehiculoService.Nacionalidades)

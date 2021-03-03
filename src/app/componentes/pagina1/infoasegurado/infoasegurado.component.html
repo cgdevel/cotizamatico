@@ -16,55 +16,110 @@
         </div>
 
         <div class="row">
-          <div class="form-group col-md-4">
-            <div class="container mw-100 px-0">
-              <div class="row">
-                <label for="nombre">Nombre</label>
-                <input [disabled]="clienteNombreCompleto == true" type="text" class="form-control" id="nombre" value=""
-                  autocomplete="off" [(ngModel)]="clienteNombre" (change)="onNombreChanged()"
-                  onkeypress="return(!(event.charCode > 32 && ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))"
-                  min="1" [ngClass]="{
-                    Existe: valClienteNombre,
-                    NoExiste: !valClienteNombre
-                  }" [ngbTooltip]="ttClienteNombre" tooltipClass="my-custom-class" />
-                <ng-template #ttClienteNombre>
-                  <b *ngIf=" !clienteNombre">Tiene dos opciones para llenar este campo:
-                    <br> 1) Sólo con su nombre
-                    <br> 2)Con su nombre completo, iniciando por apelllidos</b>
-                </ng-template>
-                <ngb-alert [dismissible]="false" type="danger" *ngIf="!valClienteNombre  && clienteNombre==''"
-                  class="alert-danger">
-                  Dato Obligatorio
-                </ngb-alert>
-              </div>
-              <div class="row" *ngIf="disabledase==false && (clienteEsMasculinop3 || clienteEsFemeninop3) ">
-                <label for="nombre">Apellido Paterno</label>
-                <input type="text" class="form-control" id="nombre" value="" autocomplete="off"
-                  [(ngModel)]="clienteApellidoPaterno" (change)="onApPatChanged()" [ngClass]="{
-                    Existe: valClienteApellidoPaterno,
-                    NoExiste: !valClienteApellidoPaterno
-                  }"
-                  onkeypress="return(!(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))"
-                  min="1" />
-                <ngb-alert [dismissible]="false" type="danger"
-                  *ngIf="!valClienteApellidoPaterno  && clienteApellidoPaterno==''" class="alert-danger">
-                  Dato Obligatorio
-                </ngb-alert>
-              </div>
-              <div class="row" *ngIf="disabledase==false && (clienteEsMasculinop3 || clienteEsFemeninop3) ">
-                <label for="nombre">Apellido paterno</label>
-                <input type="text" class="form-control" id="nombre" value="" autocomplete="off"
-                  [(ngModel)]="clienteApellidoMaterno" (change)="onApMatChanged()" [ngClass]="{
-                    Existe: valClienteApellidoMaterno,
-                    NoExiste: !valClienteApellidoMaterno
-                  }"
-                  onkeypress="return(!(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))"
-                  min="1" />
-                <ngb-alert [dismissible]="false" type="danger"
-                  *ngIf="!valClienteApellidoMaterno  && clienteApellidoMaterno==''" class="alert-danger">
-                  Dato Obligatorio
-                </ngb-alert>
-              </div>
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input
+                [disabled]="clienteNombreCompleto == true"
+                type="text"
+                class="form-control"
+                id="nombre"
+                value=""
+                autocomplete="off"
+                [(ngModel)]="clienteNombre"
+                (change)="onNombreChanged()"
+                onkeypress="return(!(event.charCode > 32 && ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))"
+                min="1"
+                [ngClass]="{
+                  Existe: valClienteNombre,
+                  NoExiste: !valClienteNombre
+                }"
+                [ngbTooltip]="ttClienteNombre"
+                tooltipClass="my-custom-class"
+              />
+              <ng-template #ttClienteNombre>
+                <b *ngIf="!clienteNombre"
+                  >Tiene dos opciones para llenar este campo: <br />
+                  1) Sólo con su nombre <br />
+                  2)Con su nombre completo, iniciando por apelllidos</b
+                >
+              </ng-template>
+              <ngb-alert
+                [dismissible]="false"
+                type="danger"
+                *ngIf="!valClienteNombre && clienteNombre == ''"
+                class="alert-danger"
+              >
+                Dato Obligatorio
+              </ngb-alert>
+            </div>
+            <div
+              class="form-group"
+              *ngIf="
+                disabledase == false &&
+                (clienteEsMasculinop3 || clienteEsFemeninop3)
+              "
+            >
+              <label for="nombre">Apellido Paterno</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                value=""
+                autocomplete="off"
+                [(ngModel)]="clienteApellidoPaterno"
+                (change)="onApPatChanged()"
+                [ngClass]="{
+                  Existe: valClienteApellidoPaterno,
+                  NoExiste: !valClienteApellidoPaterno
+                }"
+                onkeypress="return(!(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))"
+                min="1"
+              />
+              <ngb-alert
+                [dismissible]="false"
+                type="danger"
+                *ngIf="
+                  !valClienteApellidoPaterno && clienteApellidoPaterno == ''
+                "
+                class="alert-danger"
+              >
+                Dato Obligatorio
+              </ngb-alert>
+            </div>
+            <div
+              class="form-group"
+              *ngIf="
+                disabledase == false &&
+                (clienteEsMasculinop3 || clienteEsFemeninop3)
+              "
+            >
+              <label for="nombre">Apellido paterno</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                value=""
+                autocomplete="off"
+                [(ngModel)]="clienteApellidoMaterno"
+                (change)="onApMatChanged()"
+                [ngClass]="{
+                  Existe: valClienteApellidoMaterno,
+                  NoExiste: !valClienteApellidoMaterno
+                }"
+                onkeypress="return(!(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))"
+                min="1"
+              />
+              <ngb-alert
+                [dismissible]="false"
+                type="danger"
+                *ngIf="
+                  !valClienteApellidoMaterno && clienteApellidoMaterno == ''
+                "
+                class="alert-danger"
+              >
+                Dato Obligatorio
+              </ngb-alert>
             </div>
           </div>
 
@@ -85,9 +140,19 @@
 
           <div class="form-group col-md-4">
             <label for="telefono"> Teléfono </label>
-            <input [disabled]="disable == false" maxlength="10" type="text" class="form-control" id="telefono" value=""
-              autocomplete="off" [(ngModel)]="clienteTelefono" (change)="onTelefonoChange()"
-              onkeypress="return(event.charCode >= 48 && event.charCode <= 57)" min="1" [ngClass]="{
+            <input
+              [disabled]="disable == false"
+              maxlength="10"
+              type="text"
+              class="form-control"
+              id="telefono"
+              value=""
+              autocomplete="off"
+              [(ngModel)]="clienteTelefono"
+              (change)="onTelefonoChange()"
+              onkeypress="return(event.charCode >= 48 && event.charCode <= 57)"
+              min="1"
+              [ngClass]="{
                 Existe: valClienteTelefonoVacio && valClienteTelefonoNoValido,
                 NoExiste: !(
                   valClienteTelefonoVacio && valClienteTelefonoNoValido
@@ -109,15 +174,33 @@
             <p class="m-0 mb-2">Soy:</p>
 
             <div class="row d-flex justify-content-between">
-              <div class="col-4 d-flex justify-content-center" [ngbTooltip]="ttPersonaFemenino"
-                tooltipClass="my-custom-class">
-                <button [disabled]="disable == false" class="m-0 btn" style="display: block"
-                  (click)="onTipoPersonaFemeninoChange()">
-                  <svg id="logc" [ngClass]="{
-                      Noselectap: !!clienteEsFemenino ? !clienteEsFemenino : !clienteEsFemeninop3,
-                      Selectap: !!clienteEsFemenino ? clienteEsFemenino : clienteEsFemeninop3
-                    }" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="0 0 66.72 66.72" width="34px" height="34px">
+              <div
+                class="col-4 d-flex justify-content-center"
+                [ngbTooltip]="ttPersonaFemenino"
+                tooltipClass="my-custom-class"
+              >
+                <button
+                  [disabled]="disable == false"
+                  class="m-0 btn"
+                  style="display: block"
+                  (click)="onTipoPersonaFemeninoChange()"
+                >
+                  <svg
+                    id="logc"
+                    [ngClass]="{
+                      Noselectap: !!clienteEsFemenino
+                        ? !clienteEsFemenino
+                        : !clienteEsFemeninop3,
+                      Selectap: !!clienteEsFemenino
+                        ? clienteEsFemenino
+                        : clienteEsFemeninop3
+                    }"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 0 66.72 66.72"
+                    width="34px"
+                    height="34px"
+                  >
                     <defs>
                       <linearGradient id="Degradadosinnombre6" x1="33.36" y1="66.72" x2="33.36"
                         gradientUnits="userSpaceOnUse">
@@ -139,15 +222,34 @@
                 <b>Femenino</b>
               </ng-template>
 
-              <div class="col-4 d-flex justify-content-center" [ngbTooltip]="ttPersonaMasculino"
-                tooltipClass="my-custom-class">
-                <button [disabled]="disable == false" class="m-0 btn" style="display: block"
-                  (click)="onTipoPersonaMasculinoChange()">
-                  <svg id="logc" width="34px" heigth="34px" [ngClass]="{
-                      Noselectap: !!clienteEsMasculino ? !clienteEsMasculino : !clienteEsMasculinop3,
-                      Selectap: !!clienteEsMasculino ? clienteEsMasculino : clienteEsMasculinop3
-                    }" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="0 0 66.72 66.72">
+
+              <div
+                class="col-4 d-flex justify-content-center"
+                [ngbTooltip]="ttPersonaMasculino"
+                tooltipClass="my-custom-class"
+              >
+                <button
+                  [disabled]="disable == false"
+                  class="m-0 btn"
+                  style="display: block"
+                  (click)="onTipoPersonaMasculinoChange()"
+                >
+                  <svg
+                    id="logc"
+                    width="34px"
+                    heigth="34px"
+                    [ngClass]="{
+                      Noselectap: !!clienteEsMasculino
+                        ? !clienteEsMasculino
+                        : !clienteEsMasculinop3,
+                      Selectap: !!clienteEsMasculino
+                        ? clienteEsMasculino
+                        : clienteEsMasculinop3
+                    }"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 0 66.72 66.72"
+                  >
                     <defs>
                       <linearGradient id="Degradado_sin_nombre_6" x1="33.36" y1="66.72" x2="33.36"
                         gradientUnits="userSpaceOnUse">
@@ -168,16 +270,33 @@
               <ng-template #ttPersonaMasculino>
                 <b>Masculino</b>
               </ng-template>
-
-              <div class="col-4 d-flex justify-content-center" [ngbTooltip]="ttPersonaMoral"
-                tooltipClass="my-custom-class">
-                <button class="m-0 btn" style="display: block" (click)="onTipoPersonaMoralChange()"
-                  [disabled]="disable == false">
-                  <svg id="logc" [ngClass]="{
-                      Noselectap: !!clienteEsMoral ? !clienteEsMoral : !clienteEsMoralp3,
-                      Selectap: !!clienteEsMoral ? clienteEsMoral : clienteEsMoralp3
-                    }" width="34px" height="34px" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60.44 78.55">
+              <div
+                class="col-4 d-flex justify-content-center"
+                [ngbTooltip]="ttPersonaMoral"
+                tooltipClass="my-custom-class"
+              >
+                <button
+                  class="m-0 btn"
+                  style="display: block"
+                  (click)="onTipoPersonaMoralChange()"
+                  [disabled]="disable == false"
+                >
+                  <svg
+                    id="logc"
+                    [ngClass]="{
+                      Noselectap: !!clienteEsMoral
+                        ? !clienteEsMoral
+                        : !clienteEsMoralp3,
+                      Selectap: !!clienteEsMoral
+                        ? clienteEsMoral
+                        : clienteEsMoralp3
+                    }"
+                    width="34px"
+                    height="34px"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 0 60.44 78.55"
+                  >
                     <defs>
                       <linearGradient id="Degradado_sin_nombre_6" x1="30.22" y1="78.55" x2="30.22"
                         gradientUnits="userSpaceOnUse">
@@ -201,8 +320,16 @@
             </div>
           </div>
 
-          <div class="form-group col-md-4 col-sm-12" *ngIf="!! clienteEsMasculino ? clienteEsMasculinop3 ==true :clienteEsMasculinop3 == true ||
-          !!clienteEsFemenino ? clienteEsFemenino ==true : clienteEsFemeninop3 == true ">
+          <div
+            class="form-group col-md-4 col-sm-12"
+            *ngIf="
+              !!clienteEsMasculino
+                ? clienteEsMasculinop3 == true
+                : clienteEsMasculinop3 == true || !!clienteEsFemenino
+                ? clienteEsFemenino == true
+                : clienteEsFemeninop3 == true
+            "
+          >
             <p class="m-0 mb-2">Fecha de nacimiento</p>
             <div class="row">
               <div class="col-md-4 col-sm-12 mb-3">

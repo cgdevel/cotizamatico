@@ -632,7 +632,7 @@
           <button class="btn btn-primary" [state]="{
               modsel: vermodelo,
               marsel: vermarca,
-              descsel: !! descripcion ? descripcion :verdescripcion,
+              descsel: !!descripcion ? descripcion : verdescripcion,
               annosel: veranno,
               nomsel: nombre,
               emsel: email,
@@ -646,7 +646,6 @@
         </div>
       </div>
     </div>
-
 
     <div class="col-md-4 col-sm-12">
       <div class="card mb-4" id="estesi">
@@ -685,8 +684,11 @@
             {{ verdescripcion.sDato }}
           </div>
           <div class="row">
-            <div class="col-8">
-              <button (click)="toggle()" class="btn btn-primary" style="
+            <div class="col-12 mb-4">
+              <button
+                (click)="toggle()"
+                class="btn btn-primary"
+                style="
                   background-color: #21c7ed;
                   border-color: #21c7ed;
                   margin-top: 14px;
@@ -706,6 +708,17 @@
             (emitDescripcion)="emitDescripcion($event)" [showchiquito]="show" [modeloselpagina2]="vermodelo"
             [annoselpagina2]="veranno" [marcaselpagina2]="vermarca" [descripselpagina2]="verdescripcion">
           </app-infovehiculo>
+          <div class="col-12">
+            <button
+              (click)="guarda()"
+              *ngIf="show"
+              class="btn save"
+              id="btnconaho"
+              style="margin-top: 24px"
+            >
+              Guardar
+            </button>
+          </div>
           <!-- <app-infoasegurado *ngIf="show" [showchiquito]="show" [soymujer]="boostatemu" [soyhombre]="boostatehom" [soyempresa]="boostateemp"
                   [NOMBRE]="nombre" [EMAIL]="email" [TELEFONO]="telefono" [codigoPostal]="codigopostal" [selectedmes]="mesnaci" [selectedyear]="yearnaci" [selecteddia]="dianaci" ></app-infoasegurado>               -->
         </div>
@@ -724,7 +737,7 @@
           <div class="row mb-4">
             <div class="col-12">
               <p class="mb-0 d-flex justify-content-between">
-                Responsabilidad Civil Catastrófica
+                R.C Catastrófica
                 <label> {{ this.recica }} %</label>
               </p>
               <input type="range" min="0" max="100" value="0" step="10" class="slider" id="RangeRCC"
@@ -734,7 +747,7 @@
           <div class="row mb-4">
             <div class="col-12">
               <p class="mb-0 d-flex justify-content-between">
-                Responsabilidad Civil Bienes y Personas
+                R.C Bienes y Personas
                 <label> {{ this.recibipe }} %</label>
               </p>
               <input type="range" min="0" max="100" value="0" step="10" class="slider" id="RangeRCBP"
