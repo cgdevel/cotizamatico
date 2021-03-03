@@ -115,3 +115,7 @@ tr#padou > td > svg {
 .card-body {
   font-weight: 500;
 }
+
+.svg__movil {
+  width: 140px;
+}
