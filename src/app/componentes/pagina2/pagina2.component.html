@@ -585,24 +585,26 @@
     </div>
   </div>
   <div class="row">
-
     <div class="col-md-8 col-sm-12">
       <div class="card mb-4" id="estesi" *ngFor="let item of Aseguradoras">
         <div class="container">
           <div class="row">
             <div class="col">
               {{item.Compania}}
-              <img src="../../../assets/iconosase/AXA.svg" style="width: 174px;" *ngIf="item.Compania=='AXA SEG'" />
-              <img src="../../../assets/iconosase/CHUBB.svg" style="width: 174px;" *ngIf="item.Compania=='CHUBB'" />
-              <img src="../../../assets/iconosase/SURA.svg" style="width: 174px;" *ngIf="item.Compania=='SURA'" />
-              <img src="../../../assets/iconosase/ZURICH.svg" style="width: 174px;" *ngIf="item.Compania=='ZURICH'" />
-              <img src="../../../assets/iconosase/MAPFRE.svg" style="width: 174px;" *ngIf="item.Compania=='MAPFRE T'" />
-              <img src="../../../assets/iconosase/QUALITAS.svg" style="width: 174px;" *ngIf="item.Compania=='QUALITAS'" />
-              <img src="../../../assets/iconosase/BANORTE.svg" style="width: 174px;" *ngIf="item.Compania=='BANORTE'" />
-              <img src="../../../assets/iconosase/HDI.svg" style="width: 174px;" *ngIf="item.Compania=='HDI'" />
-              <img src="../../../assets/iconosase/AFIRME.svg" style="width: 174px;" *ngIf="item.Compania=='AFIRME'" />
-              <img src="../../../assets/iconosase/ANA.svg" style="width: 174px;" *ngIf="item.Compania=='ANA SEG'" />
-              <img src="../../../assets/iconosase/AIG.svg" style="width: 174px;" *ngIf="item.Compania=='AIG SEG'" />
+              <img src="../../../assets/iconosase/AXA.svg" style="width: 174px;" *ngIf="item.Compania==='AXA SEG'" />
+              <img src="../../../assets/iconosase/CHUBB.svg" style="width: 174px;" *ngIf="item.Compania==='CHUBB'" />
+              <img src="../../../assets/iconosase/SURA.svg" style="width: 174px;" *ngIf="item.Compania==='SURA'" />
+              <img src="../../../assets/iconosase/ZURICH.svg" style="width: 174px;" *ngIf="item.Compania==='ZURICH'" />
+              <img src="../../../assets/iconosase/MAPFRE.svg" style="width: 174px;"
+                *ngIf="item.Compania==='MAPFRE T'" />
+              <img src="../../../assets/iconosase/QUALITAS.svg" style="width: 174px;"
+                *ngIf="item.Compania==='QUALITAS'" />
+              <img src="../../../assets/iconosase/BANORTE.svg" style="width: 174px;"
+                *ngIf="item.Compania==='BANORTE'" />
+              <img src="../../../assets/iconosase/HDI.svg" style="width: 174px;" *ngIf="item.Compania==='HDI'" />
+              <img src="../../../assets/iconosase/AFIRME.svg" style="width: 174px;" *ngIf="item.Compania==='AFIRME'" />
+              <img src="../../../assets/iconosase/ANA.svg" style="width: 174px;" *ngIf="item.Compania==='ANA SEG'" />
+              <img src="../../../assets/iconosase/AIG.svg" style="width: 174px;" *ngIf="item.Compania==='AIG SEG'" />
             </div>
             <div class="col">
               <button class="btn btn-primary" [routerLink]="['/contrata']" routerLinkActive="router-link-active"
