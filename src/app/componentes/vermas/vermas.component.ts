@@ -4,7 +4,9 @@ import {Location} from '@angular/common';
 import { FechasModel } from 'src/app/interphaces/models/Fechas.model';
 import { Aseguradoras } from 'src/app/interphaces/models/Aseguradoras.model';
 import { InfovehiculoService } from '../../servicios/infovehiculo.service';
-  
+import aseguradorasSeed from '../../seeds/aseguradora.json';
+import AseguradoraJson from '../../interphaces/aseguradoras';
+
 @Component({
   selector: 'app-vermas',
   templateUrl: './vermas.component.html',
@@ -26,7 +28,8 @@ export class VermasComponent implements OnInit {
   fechanaci: FechasModel;
   aseguradora: string;
   AseguradorasPoDesc: Aseguradoras[] = [];
-  Aseguradoras: Aseguradoras[] = [];
+  aseguradorasFromSer: AseguradoraJson[] = [];
+  Aseguradoras: AseguradoraJson[] = [];
   constructor( private locate: Location , private infovehiculoService: InfovehiculoService) { }
   getAsePorDescrip(Desc: string ){
     this.infovehiculoService.getApiAseguradoras
@@ -50,12 +53,20 @@ export class VermasComponent implements OnInit {
             Modelo: element.Modelo,
             Descripcion: element.Descripcion} );
         }
+        for (let ase = 0; ase < this.AseguradorasPoDesc.length; ase++) {
+          for (let asejson = 0; asejson < aseguradorasSeed.length; asejson++){
+            if (this.AseguradorasPoDesc[ase].Compania == aseguradorasSeed[asejson].nombre){
+              console.log(this.AseguradorasPoDesc[ase].Compania, aseguradorasSeed[asejson].nombre);
+              this.aseguradorasFromSer.push(aseguradorasSeed[asejson]);
+            }
+          }
+        }
       },
       (err) => {
         console.log('Error');
       }
     );
-    return this.AseguradorasPoDesc;
+    return this.aseguradorasFromSer;
    }
   onback(){
     this.locate.back();

@@ -1,0 +1,585 @@
+[
+    {
+        "nombre": "AXA SEG",
+        "primerPago": 1340,
+        "pagos": 430,
+        "total": 5779,
+        "logo": "../../../assets/iconosase/AXA.svg",
+        "coberturas": [
+            {
+                "nombre": "Daños Materiales",
+                "cobertura": true
+            },
+            {
+                "nombre": "Robo Total",
+                "cobertura": true
+            },
+            {
+                "nombre": "Responsabilidad Civil",
+                "cobertura": true
+            },
+            {
+                "nombre": "Gastos Médicos Ocupantes",
+                "cobertura": true
+            },
+            {
+                "nombre": "Asistencia legal",
+                "cobertura": true
+            },
+            {
+                "nombre": "Servicios de aistencia",
+                "cobertura": true
+            },
+            {
+                "nombre": "Auto sustituto",
+                "cobertura": true
+            },
+            {
+                "nombre": "Eliminación de deducible",
+                "cobertura": true
+            },
+            {
+                "nombre": "RC en el extranjero",
+                "cobertura": true
+            },
+            {
+                "nombre": "Valor 110",
+                "cobertura": true
+            },
+            {
+                "nombre": "Extension RC",
+                "cobertura": true
+            }
+        ]
+    },
+    {
+        "nombre": "SURA",
+        "primerPago": 1340,
+        "pagos": 430,
+        "total": 5779,
+        "logo": "../../../assets/iconosase/ZURICH.svg",
+        "coberturas": [
+            {
+                "nombre": "Daños Materiales",
+                "cobertura": true
+            },
+            {
+                "nombre": "Robo Total",
+                "cobertura": true
+            },
+            {
+                "nombre": "Responsabilidad Civil",
+                "cobertura": true
+            },
+            {
+                "nombre": "Gastos Médicos Ocupantes",
+                "cobertura": true
+            },
+            {
+                "nombre": "Asistencia legal",
+                "cobertura": true
+            },
+            {
+                "nombre": "Servicios de aistencia",
+                "cobertura": true
+            },
+            {
+                "nombre": "Auto sustituto",
+                "cobertura": true
+            },
+            {
+                "nombre": "Eliminación de deducible",
+                "cobertura": true
+            },
+            {
+                "nombre": "RC en el extranjero",
+                "cobertura": true
+            },
+            {
+                "nombre": "Valor 110",
+                "cobertura": false
+            },
+            {
+                "nombre": "Extension RC",
+                "cobertura": true
+            }
+        ]
+    },
+    {
+        "nombre": "ZURICH",
+        "primerPago": 1340,
+        "pagos": 430,
+        "total": 5779,
+        "logo": "../../../assets/iconosase/CHUBB.svg",
+        "coberturas": [
+            {
+                "nombre": "Daños Materiales",
+                "cobertura": true
+            },
+            {
+                "nombre": "Robo Total",
+                "cobertura": true
+            },
+            {
+                "nombre": "Responsabilidad Civil",
+                "cobertura": true
+            },
+            {
+                "nombre": "Gastos Médicos Ocupantes",
+                "cobertura": true
+            },
+            {
+                "nombre": "Asistencia legal",
+                "cobertura": true
+            },
+            {
+                "nombre": "Servicios de aistencia",
+                "cobertura": true
+            },
+            {
+                "nombre": "Auto sustituto",
+                "cobertura": true
+            },
+            {
+                "nombre": "Eliminación de deducible",
+                "cobertura": true
+            },
+            {
+                "nombre": "RC en el extranjero",
+                "cobertura": true
+            },
+            {
+                "nombre": "Valor 110",
+                "cobertura": true
+            },
+            {
+                "nombre": "Extension RC",
+                "cobertura": true
+            }
+        ]
+    },
+    {
+        "nombre": "QUALITAS",
+        "primerPago": 1340,
+        "pagos": 430,
+        "total": 5779,
+        "logo": "../../../assets/iconosase/QUALITAS.svg",
+        "coberturas": [
+            {
+                "nombre": "Daños Materiales",
+                "cobertura": true
+            },
+            {
+                "nombre": "Robo Total",
+                "cobertura": true
+            },
+            {
+                "nombre": "Responsabilidad Civil",
+                "cobertura": true
+            },
+            {
+                "nombre": "Gastos Médicos Ocupantes",
+                "cobertura": true
+            },
+            {
+                "nombre": "Asistencia legal",
+                "cobertura": true
+            },
+            {
+                "nombre": "Servicios de aistencia",
+                "cobertura": true
+            },
+            {
+                "nombre": "Auto sustituto",
+                "cobertura": true
+            },
+            {
+                "nombre": "Eliminación de deducible",
+                "cobertura": true
+            },
+            {
+                "nombre": "RC en el extranjero",
+                "cobertura": true
+            },
+            {
+                "nombre": "Valor 110",
+                "cobertura": true
+            },
+            {
+                "nombre": "Extension RC",
+                "cobertura": true
+            }
+        ]
+    },
+    {
+        "nombre": "AFIRME",
+        "primerPago": 1340,
+        "pagos": 430,
+        "total": 5779,
+        "logo": "../../../assets/iconosase/AFIRME.svg",
+        "coberturas": [
+            {
+                "nombre": "Daños Materiales",
+                "cobertura": true
+            },
+            {
+                "nombre": "Robo Total",
+                "cobertura": true
+            },
+            {
+                "nombre": "Responsabilidad Civil",
+                "cobertura": true
+            },
+            {
+                "nombre": "Gastos Médicos Ocupantes",
+                "cobertura": true
+            },
+            {
+                "nombre": "Asistencia legal",
+                "cobertura": true
+            },
+            {
+                "nombre": "Servicios de aistencia",
+                "cobertura": true
+            },
+            {
+                "nombre": "Auto sustituto",
+                "cobertura": true
+            },
+            {
+                "nombre": "Eliminación de deducible",
+                "cobertura": true
+            },
+            {
+                "nombre": "RC en el extranjero",
+                "cobertura": true
+            },
+            {
+                "nombre": "Valor 110",
+                "cobertura": true
+            },
+            {
+                "nombre": "Extension RC",
+                "cobertura": true
+            }
+        ]
+    },
+    {
+        "nombre": "AIG MEX",
+        "primerPago": 1340,
+        "pagos": 430,
+        "total": 5779,
+        "logo": "../../../assets/iconosase/AIG.svg",
+        "coberturas": [
+            {
+                "nombre": "Daños Materiales",
+                "cobertura": true
+            },
+            {
+                "nombre": "Robo Total",
+                "cobertura": true
+            },
+            {
+                "nombre": "Responsabilidad Civil",
+                "cobertura": true
+            },
+            {
+                "nombre": "Gastos Médicos Ocupantes",
+                "cobertura": true
+            },
+            {
+                "nombre": "Asistencia legal",
+                "cobertura": true
+            },
+            {
+                "nombre": "Servicios de aistencia",
+                "cobertura": true
+            },
+            {
+                "nombre": "Auto sustituto",
+                "cobertura": true
+            },
+            {
+                "nombre": "Eliminación de deducible",
+                "cobertura": true
+            },
+            {
+                "nombre": "RC en el extranjero",
+                "cobertura": true
+            },
+            {
+                "nombre": "Valor 110",
+                "cobertura": true
+            },
+            {
+                "nombre": "Extension RC",
+                "cobertura": true
+            }
+        ]
+    },
+    {
+        "nombre": "ANA SEG",
+        "primerPago": 1340,
+        "pagos": 430,
+        "total": 5779,
+        "logo": "../../../assets/iconosase/ANA.svg",
+        "coberturas": [
+            {
+                "nombre": "Daños Materiales",
+                "cobertura": true
+            },
+            {
+                "nombre": "Robo Total",
+                "cobertura": true
+            },
+            {
+                "nombre": "Responsabilidad Civil",
+                "cobertura": true
+            },
+            {
+                "nombre": "Gastos Médicos Ocupantes",
+                "cobertura": true
+            },
+            {
+                "nombre": "Asistencia legal",
+                "cobertura": true
+            },
+            {
+                "nombre": "Servicios de aistencia",
+                "cobertura": true
+            },
+            {
+                "nombre": "Auto sustituto",
+                "cobertura": true
+            },
+            {
+                "nombre": "Eliminación de deducible",
+                "cobertura": true
+            },
+            {
+                "nombre": "RC en el extranjero",
+                "cobertura": true
+            },
+            {
+                "nombre": "Valor 110",
+                "cobertura": true
+            },
+            {
+                "nombre": "Extension RC",
+                "cobertura": true
+            }
+        ]
+    },
+    {
+        "nombre": "BANORTE",
+        "primerPago": 1340,
+        "pagos": 430,
+        "total": 5779,
+        "logo": "../../../assets/iconosase/BANORTE.svg",
+        "coberturas": [
+            {
+                "nombre": "Daños Materiales",
+                "cobertura": true
+            },
+            {
+                "nombre": "Robo Total",
+                "cobertura": true
+            },
+            {
+                "nombre": "Responsabilidad Civil",
+                "cobertura": true
+            },
+            {
+                "nombre": "Gastos Médicos Ocupantes",
+                "cobertura": true
+            },
+            {
+                "nombre": "Asistencia legal",
+                "cobertura": true
+            },
+            {
+                "nombre": "Servicios de aistencia",
+                "cobertura": true
+            },
+            {
+                "nombre": "Auto sustituto",
+                "cobertura": true
+            },
+            {
+                "nombre": "Eliminación de deducible",
+                "cobertura": true
+            },
+            {
+                "nombre": "RC en el extranjero",
+                "cobertura": true
+            },
+            {
+                "nombre": "Valor 110",
+                "cobertura": true
+            },
+            {
+                "nombre": "Extension RC",
+                "cobertura": true
+            }
+        ]
+    },
+    {
+        "nombre": "CHUBB",
+        "primerPago": 1340,
+        "pagos": 430,
+        "total": 5779,
+        "logo": "../../../assets/iconosase/SURA.svg",
+        "coberturas": [
+            {
+                "nombre": "Daños Materiales",
+                "cobertura": true
+            },
+            {
+                "nombre": "Robo Total",
+                "cobertura": true
+            },
+            {
+                "nombre": "Responsabilidad Civil",
+                "cobertura": true
+            },
+            {
+                "nombre": "Gastos Médicos Ocupantes",
+                "cobertura": true
+            },
+            {
+                "nombre": "Asistencia legal",
+                "cobertura": true
+            },
+            {
+                "nombre": "Servicios de aistencia",
+                "cobertura": true
+            },
+            {
+                "nombre": "Auto sustituto",
+                "cobertura": true
+            },
+            {
+                "nombre": "Eliminación de deducible",
+                "cobertura": true
+            },
+            {
+                "nombre": "RC en el extranjero",
+                "cobertura": true
+            },
+            {
+                "nombre": "Valor 110",
+                "cobertura": true
+            },
+            {
+                "nombre": "Extension RC",
+                "cobertura": true
+            }
+        ]
+    },
+    {
+        "nombre": "HDI",
+        "primerPago": 1340,
+        "pagos": 430,
+        "total": 5779,
+        "logo": "../../../assets/iconosase/HDI.svg",
+        "coberturas": [
+            {
+                "nombre": "Daños Materiales",
+                "cobertura": true
+            },
+            {
+                "nombre": "Robo Total",
+                "cobertura": true
+            },
+            {
+                "nombre": "Responsabilidad Civil",
+                "cobertura": true
+            },
+            {
+                "nombre": "Gastos Médicos Ocupantes",
+                "cobertura": true
+            },
+            {
+                "nombre": "Asistencia legal",
+                "cobertura": true
+            },
+            {
+                "nombre": "Servicios de aistencia",
+                "cobertura": true
+            },
+            {
+                "nombre": "Auto sustituto",
+                "cobertura": true
+            },
+            {
+                "nombre": "Eliminación de deducible",
+                "cobertura": true
+            },
+            {
+                "nombre": "RC en el extranjero",
+                "cobertura": true
+            },
+            {
+                "nombre": "Valor 110",
+                "cobertura": true
+            },
+            {
+                "nombre": "Extension RC",
+                "cobertura": true
+            }
+        ]
+    },
+    {
+        "nombre": "MAPFRE T",
+        "primerPago": 1340,
+        "pagos": 430,
+        "total": 5779,
+        "logo": "../../../assets/iconosase/MAPFRE.svg",
+        "coberturas": [
+            {
+                "nombre": "Daños Materiales",
+                "cobertura": true
+            },
+            {
+                "nombre": "Robo Total",
+                "cobertura": true
+            },
+            {
+                "nombre": "Responsabilidad Civil",
+                "cobertura": true
+            },
+            {
+                "nombre": "Gastos Médicos Ocupantes",
+                "cobertura": true
+            },
+            {
+                "nombre": "Asistencia legal",
+                "cobertura": true
+            },
+            {
+                "nombre": "Servicios de aistencia",
+                "cobertura": true
+            },
+            {
+                "nombre": "Auto sustituto",
+                "cobertura": true
+            },
+            {
+                "nombre": "Eliminación de deducible",
+                "cobertura": true
+            },
+            {
+                "nombre": "RC en el extranjero",
+                "cobertura": true
+            },
+            {
+                "nombre": "Valor 110",
+                "cobertura": true
+            },
+            {
+                "nombre": "Extension RC",
+                "cobertura": true
+            }
+        ]
+    }
+]
