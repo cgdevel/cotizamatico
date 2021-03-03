@@ -1,0 +1,41 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="0 0 76.13 76.13"
+>
+  <defs>
+    <style>
+      .clsfbheader-1 {
+        fill: url(#Degradado);
+      }
+      .clsfbheader-2 {
+        fill: #fff;
+      }
+    </style>
+    <linearGradient
+      id="Degradado"
+      x1="38.06"
+      y1="76.13"
+      x2="38.06"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop offset="0" stop-color="#f66" />
+      <stop offset="0.34" stop-color="#ff7a52" />
+      <stop offset="0.68" stop-color="#f84" />
+      <stop offset="1" stop-color="#ff8c40" />
+    </linearGradient>
+  </defs>
+  <title>Insumos</title>
+  <g id="Capa_6" data-name="Capa 6">
+    <circle
+      class="clsfbheader-1"
+      cx="38.06"
+      cy="38.06"
+      r="38.06"
+    />
+    <path
+      class="clsfbheader-2"
+      d="M47.41,16.8H40.2a7.66,7.66,0,0,0-7.66,7.66v6.07H28.72a.54.54,0,0,0-.54.53v6.3a.54.54,0,0,0,.54.54h3.82V58.79a.54.54,0,0,0,.53.54h7.64a.54.54,0,0,0,.53-.54V37.9h5.54a.53.53,0,0,0,.53-.5l.54-6.29a.54.54,0,0,0-.54-.58H41.24V26.06a1.9,1.9,0,0,1,1.9-1.9h4.27a.53.53,0,0,0,.53-.53v-6.3A.53.53,0,0,0,47.41,16.8Z"
+    />
+  </g>
+</svg>
