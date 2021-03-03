@@ -16,11 +16,6 @@
   >
   </app-infovehiculo>
 
-  <!-- <app-infoasegurado (pasad)="f($event)" (pasam)="g($event)" (pasay)="h($event)" (pastel)="i($event)"
-    (pasnom)="j($event)" (pasemail)="l($event)" (pascp)="k($event)" (pasgenselmu)="mu($event)" (pasgenmu)="muj($event)"
-    (pasgenselho)="ho($event)" (pasgenho)="hom($event)" (pasgenselem)="em($event)" (pasgenem)="emp($event)">
-  </app-infoasegurado> -->
-
   <app-infoasegurado
     (emitClienteNombre)="handlerClienteNombre($event)"
     (emitClienteMail)="handlerClienteMail($event)"
@@ -32,40 +27,6 @@
   </app-infoasegurado>
 
   <div class="row justify-content-center">
-    <!--
-    <button id="coti" class="btn btn-primary btn-lg" [routerLink]="['/compara']" routerLinkActive="router-link-active"
-      [state]='{
-            modsel:modelo,
-            marsel:marca,
-            descsel:descripcion,
-            annosel:anno,
-            nomsel:nombre,
-            emsel:email,
-            telsel:telefono,
-            must1:statumustr,
-            muboo1:mujboo,
-            host1:statuhomstr,
-            hoboo1:homboo,
-            emst1:statuempstr,
-            emboo1:empboo,
-            cpsel:cp,
-            smsel:sm,
-            sysel:sy,
-            sdsel:sd,
-            sizesel:size }'
-      [disabled]="
-            this.vehiculoTipo !== this.itemVacio &&
-            this.vehiculoAnio !== this.itemVacio &&
-            this.vehiculoMarca !== this.itemVacio &&
-            this.vehiculoDescripcion !== this.itemVacio &&
-
-            this.nombre==''||
-            this.email==''||
-            this.telefono==''||
-            this.cp==''||
-            !(statumustr!=''&&this.sm!=''&&this.sy!=''&& this.sd!='')||!(statuhomstr!=''&&this.sm!=''&&this.sy!=''&& this.sd!='')">¡Cotizar
-      mi auto <label id="ahora">ahora</label>!</button>
-    -->
     <button
       id="coti"
       class="btn btn-primary btn-lg"
