@@ -1,0 +1,49 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="0 0 76.13 76.13"
+>
+  <defs>
+    <style>
+      .clsinheader-1 {
+        fill: url(#Deg);
+      }
+      .clsinheader-2 {
+        fill: #fff;
+      }
+    </style>
+    <linearGradient
+      id="Deg"
+      x1="38.06"
+      y1="76.13"
+      x2="38.06"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop offset="0" stop-color="#f66" />
+      <stop offset="0.34" stop-color="#ff7a52" />
+      <stop offset="0.68" stop-color="#f84" />
+      <stop offset="1" stop-color="#ff8c40" />
+    </linearGradient>
+  </defs>
+  <title>Insumos</title>
+  <g id="Capa_6" data-name="Capa 6">
+    <circle
+      class="clsinheader-1"
+      cx="38.06"
+      cy="38.06"
+      r="38.06"
+    />
+    <path
+      class="clsinheader-2"
+      d="M47.55,31.27a7.94,7.94,0,0,0-7.22,4V32.43a.59.59,0,0,0-.59-.59H32.92a.58.58,0,0,0-.59.59c.07,3.74,0,19.63,0,22.91a.58.58,0,0,0,.59.59h6.83a.6.6,0,0,0,.59-.59V42.47a5.52,5.52,0,0,1,.26-1.95,4.39,4.39,0,0,1,4.11-2.93c2.9,0,4.06,2.21,4.06,5.45v12.3a.58.58,0,0,0,.59.59h6.83a.59.59,0,0,0,.59-.59V42.11C56.77,34.71,52.82,31.27,47.55,31.27Z"
+    />
+    <path
+      class="clsinheader-2"
+      d="M23.64,20.2a4.29,4.29,0,1,0,4.29,4.28A4.28,4.28,0,0,0,23.64,20.2Z"
+    />
+    <path
+      class="clsinheader-2"
+      d="M27.3,31.84H20.47a.58.58,0,0,0-.59.59V55.34a.58.58,0,0,0,.59.59H27.3a.59.59,0,0,0,.59-.59V32.43A.59.59,0,0,0,27.3,31.84Zm-5.6,3.49h-.05s0,0,.05-.08Z"
+    />
+  </g>
+</svg>
