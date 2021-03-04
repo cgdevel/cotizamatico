@@ -19,6 +19,7 @@ export class AseAXXAComponent implements OnInit {
   @Input()  Mes = '';
   @Input()  Dia: number;
   @Input() generarfcaccu: boolean;
+  @Input() Pago = '';
   Nacion = new Array<RequestNacionalidad>();
   year;
   month;

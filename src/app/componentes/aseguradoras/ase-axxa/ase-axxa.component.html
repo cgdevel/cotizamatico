@@ -198,7 +198,6 @@
             <div class="container mw-100">
                 <label for="nombre">Número de Serie</label>
                 <input
-                  [ngClass]="{ }"
                   id="NumdeSerie"
                   [(ngModel)]="numdeserie"
                   (change)="onNumSeChange()" 
@@ -289,7 +288,16 @@
         <div class="col">Conductor</div>
         <div class="col">Datos del contratante</div>
         <div class="col">REPUVE</div>
-        <div class="col">Forma de pago</div>
+        <div class="col">
+            <label for="nombre">Forma de pago</label>
+            <input
+                id="FromaDePago"
+                type="text"
+                class="form-control"
+                autocomplete="off"
+                [value]="Pago"
+            />
+        </div>
         <div class="col">Medio de pago</div>
     </div>
 

@@ -49,7 +49,7 @@ ubicacionId: number;
     municipio: string;
     colonia: string;
     coloniasel;
-    p: string;
+    FormadePago: string;
 
     ApellidoPAterno(e){
       this.ApePateCliente = e;
@@ -114,8 +114,8 @@ ubicacionId: number;
     this.genero === 'Masculino' ? this.hombre = true : this.hombre = false;
     this.genero === 'Moral'  ? this.empresa = true : this.empresa = false;
     this.fechanacimiento = history.state.fechasel;
-    this.p = history.state.pag;
-    console.log(this.p);
+    this.FormadePago = history.state.pag;
+    console.log(this.FormadePago);
     this.getUbicacion();
 
   }

@@ -9,7 +9,7 @@
 </div>
 <div class="container mw-90">
 
-    <app-ase-axxa *ngIf="nombraseguradora=='AXA SEG'"  [Dia]="fechanacimiento.dia" [Mes]="fechanacimiento.mes" [ApellidoP]="ApePateCliente" [ApellidoM]="ApeMateCliente" [Nombre]="ClienteNomb" [edad]="fechanacimiento.anio" [CP]="codigopostal" [mujercontrata]="mujer" [hombrecontrata]="hombre" [empresacontrata]="empresa" [Nombre]="nombre" [generarfcaccu]="sisirve"></app-ase-axxa>
+    <app-ase-axxa *ngIf="nombraseguradora=='AXA SEG'"  [Dia]="fechanacimiento.dia" [Mes]="fechanacimiento.mes" [ApellidoP]="ApePateCliente" [ApellidoM]="ApeMateCliente" [Nombre]="ClienteNomb" [edad]="fechanacimiento.anio" [CP]="codigopostal" [mujercontrata]="mujer" [hombrecontrata]="hombre" [empresacontrata]="empresa" [Nombre]="nombre" [generarfcaccu]="sisirve" [Pago]="FormadePago"></app-ase-axxa>
     <app-ase-chubb *ngIf="nombraseguradora=='CHUBB'" ></app-ase-chubb>
     <app-ase-sura *ngIf="nombraseguradora=='SURA'" ></app-ase-sura>
     <app-ase-zurcih *ngIf="nombraseguradora=='ZURICH'" ></app-ase-zurcih>
