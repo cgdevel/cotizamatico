@@ -16,6 +16,7 @@ export class Pagina2Component implements OnInit {
   AseguradorasPoDesc: Aseguradoras[] = [];
   Aseguradoras: Aseguradoras[] = [];
   aseguradora: string;
+  pago: string = 'Anual';
   // VARIABLE DE LA QUE DEPENDE EDITAR DATOS
   show = false;
   // Variables a las que asigno datos de pagina1
@@ -181,7 +182,8 @@ export class Pagina2Component implements OnInit {
     // console.log("Trimestral :"+' '+this.trimestral+' '+this.statusT)
     // console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
     // console.log("Anual :"+' '+this.anual+' '+this.statusAn)
-    this.emitFormaPago.emit(  'Mensual' );
+    // this.emitFormaPago(  'Mensual' );
+    this.pago = 'Mensual';
   }
   Trimestral( ) {
     // tiene selected this.statusT
@@ -197,7 +199,8 @@ export class Pagina2Component implements OnInit {
     // console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
     // console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
     // console.log("Anual :"+' '+this.anual+' '+this.statusAn)
-    this.emitFormaPago.emit( 'Trimestral' );
+    // this.emitFormaPago( 'Trimestral' );
+    this.pago = 'Trimestral'
     console.log(this.emitFormaPago);
   }
   Semestral( ) {
@@ -214,7 +217,8 @@ export class Pagina2Component implements OnInit {
     // console.log("Trimestral :"+' '+this.trimestral+' '+this.statusT)
     // console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
     // console.log("Anual :"+' '+this.anual+' '+this.statusAn)
-    this.emitFormaPago.emit( 'Semestral' );
+    // this.emitFormaPago( 'Semestral' );
+    this.pago= 'Semestral'
   }
   Anual( ) {
     // tiene selected this.statusAn
@@ -230,7 +234,8 @@ export class Pagina2Component implements OnInit {
     // console.log("Trimestral :"+' '+this.trimestral+' '+this.statusT)
     // console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
     // console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
-    this.emitFormaPago.emit( 'Anual');
+    // this.emitFormaPago( 'Anual');
+    this.pago='Anual'
   }
   RT(event){
     this.roto = event.target.valueAsNumber;
