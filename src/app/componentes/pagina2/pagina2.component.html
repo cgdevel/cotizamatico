@@ -1111,7 +1111,7 @@
               <img
                 src="../../../assets/iconosase/AIG.svg"
                 style="width: 140px"
-                *ngIf="item.Compania === 'AIG SEG'"
+                *ngIf="item.Compania === 'AIG MEX'"
               />
             </div>
             <div class="col pt-3">
@@ -1130,7 +1130,8 @@
                   generosel: genero,
                   codigosel: codigopostal,
                   fechasel: fechanac,
-                  asesel: item.Compania
+                  asesel: item.Compania,
+                  formpag:emitFormaPago
                 }"
               >
                 Contrata
@@ -1216,17 +1217,6 @@
                 Modificar Información
               </button>
             </div>
-            <div class="col-4">
-              <button
-                (click)="guarda()"
-                *ngIf="show"
-                class="btn save"
-                id="btnconaho"
-                style="margin-top: 24px"
-              >
-                Guardar
-              </button>
-            </div>
           </div>
           <app-infovehiculo
             *ngIf="show"
@@ -1252,8 +1242,6 @@
               Guardar
             </button>
           </div>
-          <!-- <app-infoasegurado *ngIf="show" [showchiquito]="show" [soymujer]="boostatemu" [soyhombre]="boostatehom" [soyempresa]="boostateemp"
-                  [NOMBRE]="nombre" [EMAIL]="email" [TELEFONO]="telefono" [codigoPostal]="codigopostal" [selectedmes]="mesnaci" [selectedyear]="yearnaci" [selecteddia]="dianaci" ></app-infoasegurado>               -->
         </div>
       </div>
       <div class="card mb-4" id="estesi">

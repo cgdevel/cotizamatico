@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
 import { FechasModel } from 'src/app/interphaces/models/Fechas.model';
@@ -11,6 +11,7 @@ import { InfovehiculoService } from '../../servicios/infovehiculo.service';
   styleUrls: ['./pagina2.component.css']
 })
 export class Pagina2Component implements OnInit {
+  @Output() emitFormaPago = new EventEmitter<  string >();
   constructor( private route: ActivatedRoute , private infovehiculoService: InfovehiculoService) {}
   AseguradorasPoDesc: Aseguradoras[] = [];
   Aseguradoras: Aseguradoras[] = [];
@@ -180,6 +181,7 @@ export class Pagina2Component implements OnInit {
     // console.log("Trimestral :"+' '+this.trimestral+' '+this.statusT)
     // console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
     // console.log("Anual :"+' '+this.anual+' '+this.statusAn)
+    this.emitFormaPago.emit(  'Mensual' );
   }
   Trimestral( ) {
     // tiene selected this.statusT
@@ -195,7 +197,8 @@ export class Pagina2Component implements OnInit {
     // console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
     // console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
     // console.log("Anual :"+' '+this.anual+' '+this.statusAn)
-
+    this.emitFormaPago.emit( 'Trimestral' );
+    console.log(this.emitFormaPago);
   }
   Semestral( ) {
     // tiene selected this.statusS
@@ -211,6 +214,7 @@ export class Pagina2Component implements OnInit {
     // console.log("Trimestral :"+' '+this.trimestral+' '+this.statusT)
     // console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
     // console.log("Anual :"+' '+this.anual+' '+this.statusAn)
+    this.emitFormaPago.emit( 'Semestral' );
   }
   Anual( ) {
     // tiene selected this.statusAn
@@ -226,6 +230,7 @@ export class Pagina2Component implements OnInit {
     // console.log("Trimestral :"+' '+this.trimestral+' '+this.statusT)
     // console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
     // console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
+    this.emitFormaPago.emit( 'Anual');
   }
   RT(event){
     this.roto = event.target.valueAsNumber;

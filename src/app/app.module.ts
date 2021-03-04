@@ -30,6 +30,7 @@ import { AseBANORTEComponent } from './componentes/aseguradoras/ase-banorte/ase-
 import { AseHDIComponent } from './componentes/aseguradoras/ase-hdi/ase-hdi.component';
 import { AseAFIRMEComponent } from './componentes/aseguradoras/ase-afirme/ase-afirme.component';
 import { AseANNAComponent } from './componentes/aseguradoras/ase-anna/ase-anna.component';
+import { AseAIGComponent } from './componentes/aseguradoras/ase-aig/ase-aig.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { AseANNAComponent } from './componentes/aseguradoras/ase-anna/ase-anna.c
     AseHDIComponent,
     AseAFIRMEComponent,
     AseANNAComponent,
+    AseAIGComponent,
   ],
   imports: [
     FormsModule,

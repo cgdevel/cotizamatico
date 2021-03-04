@@ -78,7 +78,7 @@ ubicacionId: number;
       this.cols = this.ubicacion[0].Ubicacion;
       }); // suscribecierra
   }
- 
+
   verificanombre(cnam: string){
   let ArrayEmparejamientos = {};
   const reg = /^(([A-Z a-z])\w+(\s))(([A-Z a-z]+\w\s))(([A-Z a-z]+\w)\s?)$/;
@@ -91,6 +91,8 @@ ubicacionId: number;
   } else {
     return this.sisirve = false;
   }
+  }
+  dameformadepago(e){
   }
   ngOnInit(): void {
     console.log(history.state);
@@ -111,6 +113,8 @@ ubicacionId: number;
     this.genero === 'Masculino' ? this.hombre = true : this.hombre = false;
     this.genero === 'Moral'  ? this.empresa = true : this.empresa = false;
     this.fechanacimiento = history.state.fechasel;
+    console.log(history.state.formpag);
+
     this.getUbicacion();
 
   }
