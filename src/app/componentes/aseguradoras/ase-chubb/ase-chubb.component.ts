@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {RequestNacionalidad } from '../../../../app/interphaces/nacionali';
 import {InfovehiculoService} from '../../../servicios/infovehiculo.service';
+import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
 
 @Component({
   selector: 'app-ase-chubb',
@@ -21,14 +22,23 @@ export class AseCHUBBComponent implements OnInit {
   @Input() generarfcaccu: boolean;
   @Input() Pago = '';
   mediopag='';
-  BenefPrefFis='';
+  NombreBenefPrefFis='';
+  CorreoBenefPrefFis='';
+  RFCBenefPrefFis='';  
   BenefPrefMor='';
+  RFCBenefPrefMor='';
+  RaSocBenefPrefMor='';
+  ocupacionsel: CatalogoModel;
+  estadocivilsel: CatalogoModel;
   MediosDePago= [
     { id: 1, name: 'Efectivo',avatar:'../../../assets/iconos/iconmonstr-banknote-15.svg' },
     { id: 2, name: 'Tarjeta de crédito',avatar:'../../../assets/iconos/iconmonstr-credit-card-6.svg' },
     { id: 3, name: 'Tarjeta de débito' ,avatar:'../../../assets/iconos/iconmonstr-credit-card-6.svg'}
 ];
   Nacion = new Array<RequestNacionalidad>();
+  Ocup = new Array<CatalogoModel>();
+  EsCivs = new Array<CatalogoModel>();
+
   year;
   month;
   // VARIABLES CP
@@ -66,6 +76,8 @@ export class AseCHUBBComponent implements OnInit {
   valClienteNumExtNoValido: boolean;
   valClienteNumExtVacio: boolean;
   rfcbool: boolean;
+  showFis: boolean;
+  showMor: boolean;
   constructor(private InfovehiculoService: InfovehiculoService) { }
     getUbicacion(){
       this.InfovehiculoService.getApiCPs({
@@ -205,11 +217,11 @@ export class AseCHUBBComponent implements OnInit {
       }
     }
     onRFCChange(){
-      if (!this.RFC && this.nacionalidadsel.NacString=='MEXICANA') {
+      if (this.RFC=='' && this.nacionalidadsel.NacString!='') {
         this.valClienteRFCNoValido= true;
         this.valClienteRFCVacio= true;
       }else{
-        if (!!this.RFC && this.nacionalidadsel.NacString=='MEXICANA') {
+        if (this.RFC!='' && this.nacionalidadsel.NacString=='MEXICANA') {
           this.valClienteRFCVacio=false;
           const reg =/([A-Z]{4})([0-9]{9})/;
           this.rfcbool = reg.test(this.RFC);
@@ -219,7 +231,7 @@ export class AseCHUBBComponent implements OnInit {
       }
     }
     onNumExtChange(){
-      if (!this.NomExterior) {
+      if (this.NomExterior=='') {
         this.valClienteNumExtVacio=true;
       } else {
         if(this.NomExterior.length<5){
@@ -230,6 +242,12 @@ export class AseCHUBBComponent implements OnInit {
           this.valClienteNumExtVacio=false;
         }
       }
+    }
+    muestraDaBePrefFis(){
+      this. showFis = !this. showFis;
+    }
+    muestraDaBePrefMor(){
+      this. showMor = !this. showMor;
     }
     ngOnInit(): void {
       this.mediopag=this.MediosDePago[0].name;
@@ -264,8 +282,12 @@ export class AseCHUBBComponent implements OnInit {
       }
       this.getUbicacion();
       this.Nacion = this.InfovehiculoService.getNacionalidades();
+      this.Ocup=this.InfovehiculoService.getOcupaciones();
+      this.EsCivs=this.InfovehiculoService.getEstadoCivil();
       this.getrfc(this.generarfcaccu);
+      console.log(this.Ocup);
       console.log(this.mujer);
+      
       // console.log(this.InfovehiculoService.Nacionalidades)
       // console.log(this.NacionalitiesService.getNacionalidades());
     }// Init

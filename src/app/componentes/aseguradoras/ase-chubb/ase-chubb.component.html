@@ -60,7 +60,7 @@
             </div>
             <div class="col">
                  <div class="form-group">
-                    <label for="medio">Nacionalidad</label>
+                    <label for="Nacionalidad">Nacionalidad</label>
                     <ng-select 
                         [items]="Nacion"       
                         bindLabel="NacString"
@@ -109,11 +109,11 @@
                 <input maxlength="5" 
                     type="text" 
                     class="form-control" 
-                    id="telefono" 
+                    id="NumExt" 
                     style="margin-top: 5px;" 
                     autocomplete="off" 
-                    [(ngModel)]="NomExterior" 
                     (change)="onNumExtChange()" 
+                    [(ngModel)]="NomExterior" 
                     onkeypress="return(
                         !!( 
                             ( 97 <= event.charCode  && event.charCode < 123 ) ||
@@ -211,32 +211,112 @@
         </div>
         <div class="row">
             <div class="col">
-                <label for="BenefPrefFis">Beneficiario Preferente (Persona Física)</label>
-                <input
-                    id="BenefPrefFis"
-                    type="text"
-                    class="form-control"
-                    autocomplete="off"
-                    [(ngModel)]="BenefPrefFis"
-                    [ngbTooltip]="ttClienteNombre"
-                    tooltipClass="my-custom-class"
-                /> 
-                <ng-template #ttClienteNombre>
-                    <b *ngIf="!BenefPrefFis"
-                      >Llene este campo de la siguiente manera: <br />
-                        Nombre completo, iniciando por apelllidos</b
-                    >
-                </ng-template>
+                <input (click)="muestraDaBePrefFis()" type="checkbox" class="form-check-input" id="BeneficiarioPreferenteFis">
+                <label class="form-check-label" for="BeneficiarioPreferenteFis">Beneficiario Preferente (Persona Física)*</label>
+                <div class="container mw-100 px-0" id="DatosBeneficiarioPreferenteFis" *ngIf="showFis">
+                    <label for="NombreBenefPrefMor">Nombre</label>
+                    <input
+                        id="NombreBenefPrefMor"
+                        type="text"
+                        class="form-control"
+                        autocomplete="off"
+                        [(ngModel)]="NombreBenefPrefFis"
+                        [ngbTooltip]="ttClienteNombre"
+                        tooltipClass="my-custom-class"
+                    />
+                    <ng-template #ttClienteNombre>
+                        <b *ngIf="!NombreBenefPrefFis">
+                          Llene este campo de la siguiente manera: 
+                          <br/>
+                          Nombre completo, iniciando por apelllidos
+                        </b>
+                    </ng-template>
+                    <br>
+                    <label for="CorreoBenefPrefFis">Correo</label>
+                    <input
+                        id="CorreoBenefPrefFis"
+                        type="text"
+                        class="form-control"
+                        autocomplete="off"
+                        [(ngModel)]="CorreoBenefPrefFis"
+                    />
+                    <br>
+                    <label for="RFCBenefPrefFis">RFC</label>
+                    <input
+                        id="RFCBenefPrefFis"
+                        type="text"
+                        class="form-control"
+                        autocomplete="off"
+                        [(ngModel)]="RFCBenefPrefFis"
+                    />
+                </div>
             </div>
             <div class="col">
-                <label for="BenefPrefMor">Beneficiario Preferente (Persona Moral)</label>
-                <input
-                    id="BenefPrefMor"
-                    type="text"
-                    class="form-control"
-                    autocomplete="off"
-                    [(ngModel)]="BenefPrefMor"
-                />
+                <label></label>
+                <input (click)="muestraDaBePrefMor()" type="checkbox" class="form-check-input" id="BeneficiarioPreferenteMor">
+                <label class="form-check-label" for="BeneficiarioPreferenteMor">Beneficiario Prefrente (Persona Moral)*</label>
+                <div class="container mw-100 px-0" id="DatosBeneficiarioPreferenteMor" *ngIf="showMor">
+                    <label for="RFCBenefPrefMor">RFC</label>
+                    <input
+                        id="RFCBenefPrefMor"
+                        type="text"
+                        class="form-control"
+                        autocomplete="off"
+                        [(ngModel)]="RFCBenefPrefMor"
+                    />
+                    <br>
+                    <label for="RaSocBenefPrefMor">Razón Social</label>
+                    <input
+                        id="RaSocBenefPrefMor"
+                        type="text"
+                        class="form-control"
+                        autocomplete="off"
+                        [(ngModel)]="RaSocBenefPrefMor"
+                    />
+                </div>
+               
+            </div>
+            <div class="col">
+                <label for="Ocupacion">Ocupación</label>
+                <br>
+                <ng-select 
+                        [items]="Ocup"       
+                        bindLabel="sDato"
+                        appendTo="body"
+                        [searchable]="true" 
+                        [clearable]="false"
+                        [closeOnSelect]="true"
+                        placeholder="Ocupación"
+                        [(ngModel)]="ocupacionsel" [ngbTooltip]="ocusel" tooltipClass="my-custom-class">
+                        <ng-template #ocusel>
+                            <b  *ngIf="!!ocupacionsel">{{ocupacionsel.sDato}}</b>
+                        </ng-template>
+                        <ng-option  ng-options="item as item.sLlave for item.sDato in Ocup">
+                            {{item}}
+                        </ng-option>
+                        <ng-template ng-notfound-tmp let-searchTerm="searchTerm" >
+                        <div class="ng-option disabled" style="font-size: 11px !important;">
+                            No hay descripción que coincida con "{{searchTerm}}"
+                        </div>
+                        </ng-template>
+                </ng-select>
+            </div>
+            <div class="col">
+                <label for="EC">Estado Civil</label>
+                <ng-select 
+                    [items]="EsCivs"
+                    id="EC"        
+                    bindLabel="sDato"
+                    placeholder="Estado Civil"
+                    appendTo="body"
+                    [searchable]="false" 
+                    [clearable]="false"
+                    [closeOnSelect]="true"
+                    [(ngModel)]="estadocivilsel">
+                    <ng-option  ng-options="item as item.sLlave for item.sDato in EsCivs">
+                        {{item}}
+                    </ng-option>
+               </ng-select>
             </div>
         </div>
     </div>

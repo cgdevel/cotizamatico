@@ -205,11 +205,11 @@ export class AseAXXAComponent implements OnInit {
       }
     }
     onRFCChange(){
-      if (!this.RFC && this.nacionalidadsel.NacString=='MEXICANA') {
+      if (this.RFC=='' && this.nacionalidadsel.NacString!='') {
         this.valClienteRFCNoValido= true;
         this.valClienteRFCVacio= true;
       }else{
-        if (!!this.RFC && this.nacionalidadsel.NacString=='MEXICANA') {
+        if (this.RFC!='' && this.nacionalidadsel.NacString=='MEXICANA') {
           this.valClienteRFCVacio=false;
           const reg =/([A-Z]{4})([0-9]{9})/;
           this.rfcbool = reg.test(this.RFC);

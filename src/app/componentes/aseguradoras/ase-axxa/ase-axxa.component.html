@@ -111,11 +111,11 @@
                 <input maxlength="5" 
                     type="text" 
                     class="form-control" 
-                    id="telefono" 
+                    id="NumExt" 
                     style="margin-top: 5px;" 
                     autocomplete="off" 
-                    [(ngModel)]="NomExterior" 
                     (change)="onNumExtChange()" 
+                    [(ngModel)]="NomExterior" 
                     onkeypress="return(
                         !!( 
                             ( 97 <= event.charCode  && event.charCode < 123 ) ||
@@ -190,7 +190,11 @@
             </div>
             <div class="col">
                 <label for="RFC">RFC</label>
-                <input type="text" class="form-control" (change)="onRFCChange()" [(ngModel)]="RFC" maxlength="13"
+                <input type="text" 
+                class="form-control" 
+                maxlength="13"
+                (change)="onRFCChange()" 
+                [(ngModel)]="RFC" 
                 [ngClass]="{
                     Existe: !valClienteRFCNoValido && !valClienteRFCVacio,
                     NoExiste: valClienteRFCNoValido || valClienteRFCVacio 
