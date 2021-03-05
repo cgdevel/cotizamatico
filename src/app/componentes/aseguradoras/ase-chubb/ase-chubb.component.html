@@ -1,4 +1,4 @@
-<div class="container mw-100">
+<div class="container mw-100" *ngIf="mujercontrata==true  ||  hombrecontrata==true" style="font-family: Exo 2, sans-serif;font-size: 20px;">
     <div class="row" style="justify-content: center;">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300" style =" width:174px;">
             <defs>
@@ -39,5 +39,340 @@
               </g>
             </g>
           </svg>
+    </div>
+    <div class="container mw-100 px-0" id="DatosContratante" style="margin: 40px;">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <div class="container">
+                <div class="row mb-4 align-items-center justify-content-center">
+                  <img src="../../../../assets/iconos/icono-datos-vehiculo.svg">
+                  <h5 class="ml-lg-3 m-0 text-center">
+                    <b>Datos del contratante </b>
+                  </h5>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="Edad">Edad</label>
+                <input type="text" class="form-control" [value]="edad" [disabled]="true" />
+            </div>
+            <div class="col">
+                 <div class="form-group">
+                    <label for="medio">Nacionalidad</label>
+                    <ng-select 
+                        [items]="Nacion"       
+                        bindLabel="NacString"
+                        appendTo="body"
+                        [searchable]="true" 
+                        [clearable]="false"
+                        [closeOnSelect]="true"
+                        placeholder="Nacionalidad"
+                        (change)="getrfc( generarfcaccu==true ? generarfcaccu : false, this.ApellidoP,this.ApellidoM,this.Nombre)"
+                        [disabled]="!!this.ApellidoP &&  !! this.ApellidoM && !! this.Nombre && generarfcaccu== false || generarfcaccu==true ? false :true  "
+                        [(ngModel)]="nacionalidadsel" [ngbTooltip]="nacsel" tooltipClass="my-custom-class">
+                        <ng-template #nacsel>
+                            <b  *ngIf="!!nacionalidadsel">{{nacionalidadsel.NacString}}</b>
+                        </ng-template>
+                        <ng-option  ng-options="item as item.NacClave for item.NacString in Nacion">
+                            {{item}}
+                        </ng-option>
+                        <ng-template ng-notfound-tmp let-searchTerm="searchTerm" >
+                        <div class="ng-option disabled" style="font-size: 11px !important;">
+                            No hay descripción que coincida con "{{searchTerm}}"
+                        </div>
+                        </ng-template>
+                    </ng-select>
+                </div>
+            </div>
+            <div class="col">
+                <label for="Sexo">Sexo</label>
+                <input type="text" class="form-control" [value]=" mujercontrata==true ? 'Femenino' : hombrecontrata==true ? 'Masculino' : 'Persona moral'" [disabled]="true">
+            </div>
+            <div class="col">
+                <label for="TipPers">Tipo de persona</label>
+                <input type="text" class="form-control" [value]=" empresacontrata==false ? 'Física' :'Moral' " [disabled]="true">      
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="Estado"> Estado</label>
+                <input type="text" class="form-control" [disabled]="true" [value]="estado"/>
+            </div>
+            <div class="col">
+                <label for="Municipio"> Municipio</label>
+                <input type="text" class="form-control" [disabled]="true" [value]="municipio"/> 
+            </div>
+            <div class="col">
+                <label for="NumExt">Número exterior</label>
+                <input maxlength="5" 
+                    type="text" 
+                    class="form-control" 
+                    id="telefono" 
+                    style="margin-top: 5px;" 
+                    autocomplete="off" 
+                    [(ngModel)]="NomExterior" 
+                    (change)="onNumExtChange()" 
+                    onkeypress="return(
+                        !!( 
+                            ( 97 <= event.charCode  && event.charCode < 123 ) ||
+                            ( 65 <= event.charCode  && event.charCode < 91 )||
+                            ( 48 <= event.charCode  && event.charCode < 58 )
+                        ))"
+                    [ngClass]="{
+                    Existe: !valClienteNumExtVacio && !valClienteNumExtNoValido,
+                    NoExiste:valClienteNumExtVacio || valClienteNumExtNoValido
+                    }"
+                />
+                <ngb-alert
+                [dismissible]="false"
+                type="danger"
+                *ngIf="valClienteNumExtVacio"
+                >
+                Dato Obligatorio
+                </ngb-alert>
+                <ngb-alert
+                [dismissible]="false"
+                type="danger"
+                *ngIf="valClienteNumExtNoValido && !valClienteNumExtVacio"
+                >
+                Faltan dígitos
+                </ngb-alert>
+            </div>
+            <div class="col">
+                <label for="NumInt">Número interior</label>
+                <input maxlength="5" 
+                    type="text" 
+                    class="form-control" 
+                    id="telefono" 
+                    style="margin-top: 5px;" 
+                    autocomplete="off" 
+                    [(ngModel)]="NomInterior" 
+                    onkeypress="return(
+                        !!( 
+                            ( 97 <= event.charCode  && event.charCode < 123 ) ||
+                            ( 65 <= event.charCode  && event.charCode < 91 )||
+                            ( 48 <= event.charCode  && event.charCode < 58 )
+                        ))"
+                    />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="Colonia">Colonia</label>
+                    <ng-select 
+                   [items]="cols"        
+                   bindLabel="sUbicacion"
+                   placeholder="Colonia"
+                   appendTo="body"
+                   [searchable]="false" 
+                   [clearable]="false"
+                   [closeOnSelect]="true"
+                   [(ngModel)]="coloniasel">
+                   <ng-option  ng-options="item as cols.iIdUbicacion for cols.sUbicacion in cols">
+                       {{item}}
+                   </ng-option>
+                   <ng-template ng-notfound-tmp >
+                     <div class="ng-option disabled">
+                         No hay colonias que mostrar
+                     </div>
+                   </ng-template>
+                    </ng-select>
+                </div>
+            </div>
+            <div class="col">
+                <label for="Calle">Calle</label>
+                <input type="text" class="form-control"/>
+            </div>
+            <div class="col">
+                <label for="RFC">RFC</label>
+                <input type="text" class="form-control" (change)="onRFCChange()" [(ngModel)]="RFC" maxlength="13"
+                [ngClass]="{
+                    Existe: !valClienteRFCNoValido && !valClienteRFCVacio,
+                    NoExiste: valClienteRFCNoValido || valClienteRFCVacio 
+                    }"/>
+                <ngb-alert
+                [dismissible]="false"
+                type="danger"
+                *ngIf="valClienteRFCVacio"
+                >
+               Dato obligatorio
+                </ngb-alert>
+                <ngb-alert
+                [dismissible]="false"
+                type="danger"
+                *ngIf="valClienteRFCNoValido && !valClienteRFCVacio "
+                >
+                RFC no válido, no ha ingresado homoclave
+                </ngb-alert>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="BenefPrefFis">Beneficiario Preferente (Persona Física)</label>
+                <input
+                    id="BenefPrefFis"
+                    type="text"
+                    class="form-control"
+                    autocomplete="off"
+                    [(ngModel)]="BenefPrefFis"
+                    [ngbTooltip]="ttClienteNombre"
+                    tooltipClass="my-custom-class"
+                /> 
+                <ng-template #ttClienteNombre>
+                    <b *ngIf="!BenefPrefFis"
+                      >Llene este campo de la siguiente manera: <br />
+                        Nombre completo, iniciando por apelllidos</b
+                    >
+                </ng-template>
+            </div>
+            <div class="col">
+                <label for="BenefPrefMor">Beneficiario Preferente (Persona Moral)</label>
+                <input
+                    id="BenefPrefMor"
+                    type="text"
+                    class="form-control"
+                    autocomplete="off"
+                    [(ngModel)]="BenefPrefMor"
+                />
+            </div>
+        </div>
+    </div>
+    
+    <div class="container mw-100 px-0" id="DatosVehiculo" style="margin: 40px;" >
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <div class="container">
+                <div class="row mb-4 align-items-center justify-content-center " >
+                  <img src="../../../../assets/iconos/icono-datos-cliente.svg">
+                  <h5 class="ml-lg-3 m-0 text-center">
+                    <b>Datos del vehículo </b>
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="row">
+            <div class="col">
+                <label for="NumSerie">Número de Serie</label>
+                <input
+                    id="NumdeSerie"
+                    [(ngModel)]="numdeserie"
+                    (change)="onNumSeChange()" 
+                    maxlength="17"
+                    type="text"
+                    class="form-control"
+                    autocomplete="off"
+                    onkeypress="return(!!(( 97 <= event.charCode  && event.charCode < 105 ) ||
+                    ( 106 <= event.charCode  && event.charCode < 113 ) ||
+                    ( 114 <= event.charCode  && event.charCode < 123 )||
+                        ( 65 <= event.charCode  && event.charCode < 73 )||
+                        ( 74 <= event.charCode  && event.charCode < 81 )||
+                        ( 82 <= event.charCode  && event.charCode < 91 )||
+                        ( 48 <= event.charCode  && event.charCode < 58 ) )  || (event.charCode==32))"
+                        [ngClass]="{
+                            Existe: !valClienteNumSerieVacio && !valClienteNumSerieNoValido,
+                            NoExiste: valClienteNumSerieVacio || valClienteNumSerieNoValido
+                            }"
+                />
+        <!-- para que admita "q" ( 106 <= event.charCode  && event.charCode < 123 ) -->     
+        <!-- para que admita "i" ( 97 <= event.charCode  && event.charCode < 112 ) -->       
+                <ngb-alert
+                [dismissible]="false"
+                type="danger"
+                *ngIf="valClienteNumSerieVacio "
+                >
+                Dato Obligatorio
+                </ngb-alert> 
+            </div> 
+            <div class="col">
+            <label for="NumPla">Número de Placas</label>
+                <input
+                    [ngClass]="{ }"
+                    id="NumdeSerie"
+                    [(ngModel)]="numdeplacas"
+                    (change)="onNumPlaChange()" 
+                    maxlength="17"
+                    maxlength="17"
+                    type="text"
+                    class="form-control"
+                    autocomplete="off"
+                    onkeypress="return( !!(
+                    ( 97 <= event.charCode  && event.charCode < 123 )||
+                    ( 65 <= event.charCode  && event.charCode < 91 )||
+                    ( 48 <= event.charCode  && event.charCode < 58 ) ))"
+                    [ngClass]="{
+                        Existe: !valClienteNumPlacasVacio && !valClienteNumPlacasNoValido,
+                        NoExiste: valClienteNumPlacasVacio || valClienteNumPlacasNoValido
+                        }"
+                />
+        <!-- para que admita "q" ( 106 <= event.charCode  && event.charCode < 123 ) -->     
+        <!-- para que admita "i" ( 97 <= event.charCode  && event.charCode < 112 ) -->       
+                <ngb-alert
+                [dismissible]="false"
+                type="danger"
+                *ngIf="valClienteNumPlacasVacio "
+                >
+                Dato Obligatorio
+                </ngb-alert> 
+            </div>
+            <div class="col">
+                <label for="ForPag">Forma de pago</label>
+                <input
+                    [disabled]="true"
+                    id="FormaDePago"
+                    type="text"
+                    class="form-control"
+                    autocomplete="off"
+                    [value]="Pago"
+                />
+            </div>
+            <div class="col"> 
+                <div class="form-group">
+                    <label for="medio">Medio de pago</label>
+                    <ng-select [items]="MediosDePago" [(ngModel)]="mediopag" bindLabel="name" bindValue="name">
+                        <ng-template ng-label-tmp let-item="item">
+                            <img height="15" width="15" [src]="item.avatar"/>
+                            {{item.name}}
+                        </ng-template>
+                     </ng-select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="NumMot">Número de Motor *</label>
+                <input
+                    [ngClass]="{ }"
+                    id="NumdeSerie"
+                    [(ngModel)]="numdeMotor"
+                    (change)="onNumMotorChange()" 
+                    maxlength="17"
+                    maxlength="17"
+                    type="text"
+                    class="form-control"
+                    autocomplete="off"
+                    onkeypress="return( !!(
+                    ( 97 <= event.charCode  && event.charCode < 123 )||
+                    ( 65 <= event.charCode  && event.charCode < 91 )||
+                    ( 48 <= event.charCode  && event.charCode < 58 ) ))"
+                    [ngClass]="{
+                        Existe: !valClienteNumMotorVacio && !valClienteNumMotorNoValido,
+                        NoExiste: valClienteNumMotorVacio || valClienteNumMotorNoValido
+                        }"
+                />
+            </div>
+            <div class="col">
+                <label for="ValFac">Valor factura *</label>
+                <input
+                    id="ValorFactura"
+                    type="text"
+                    class="form-control"
+                    autocomplete="off"
+                />
+            </div>
+        </div>
     </div>
 </div>

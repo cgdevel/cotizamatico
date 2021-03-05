@@ -237,6 +237,7 @@ export class Pagina2Component implements OnInit {
     // this.emitFormaPago( 'Anual');
     this.pago='Anual'
   }
+
   RT(event){
     this.roto = event.target.valueAsNumber;
     // console.log( 'Robo total:'+' '+this.roto)

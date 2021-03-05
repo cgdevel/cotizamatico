@@ -20,6 +20,14 @@ export class AseAXXAComponent implements OnInit {
   @Input()  Dia: number;
   @Input() generarfcaccu: boolean;
   @Input() Pago = '';
+  mediopag='';
+  BenefPrefFis='';
+  BenefPrefMor='';
+  MediosDePago= [
+    { id: 1, name: 'Efectivo',avatar:'../../../assets/iconos/iconmonstr-banknote-15.svg' },
+    { id: 2, name: 'Tarjeta de crédito',avatar:'../../../assets/iconos/iconmonstr-credit-card-6.svg' },
+    { id: 3, name: 'Tarjeta de débito' ,avatar:'../../../assets/iconos/iconmonstr-credit-card-6.svg'}
+];
   Nacion = new Array<RequestNacionalidad>();
   year;
   month;
@@ -53,6 +61,11 @@ export class AseAXXAComponent implements OnInit {
   numdeMotor: string;
   valClienteNumMotorNoValido: boolean;
   valClienteNumMotorVacio: boolean;
+  valClienteRFCNoValido: boolean;
+  valClienteRFCVacio: boolean;
+  valClienteNumExtNoValido: boolean;
+  valClienteNumExtVacio: boolean;
+  rfcbool: boolean;
   constructor(private InfovehiculoService: InfovehiculoService) { }
     getUbicacion(){
       this.InfovehiculoService.getApiCPs({
@@ -68,6 +81,8 @@ export class AseAXXAComponent implements OnInit {
         }); // suscribecierra
     }
     getrfc(si?: boolean, apep ?: string, apem ?: string, nom?: string){
+      this.valClienteRFCNoValido= false;
+      this.valClienteRFCVacio= false;
     // console.log(si);
     if (si === true) {
       this.RFC = '';
@@ -189,9 +204,41 @@ export class AseAXXAComponent implements OnInit {
         }
       }
     }
+    onRFCChange(){
+      if (!this.RFC && this.nacionalidadsel.NacString=='MEXICANA') {
+        this.valClienteRFCNoValido= true;
+        this.valClienteRFCVacio= true;
+      }else{
+        if (!!this.RFC && this.nacionalidadsel.NacString=='MEXICANA') {
+          this.valClienteRFCVacio=false;
+          const reg =/([A-Z]{4})([0-9]{9})/;
+          this.rfcbool = reg.test(this.RFC);
+          console.log(this.rfcbool)
+          this.rfcbool ? this.valClienteRFCNoValido=false : this.valClienteRFCNoValido=true;
+        }
+      }
+    }
+    onNumExtChange(){
+      if (!this.NomExterior) {
+        this.valClienteNumExtVacio=true;
+      } else {
+        if(this.NomExterior.length<5){
+          this.valClienteNumExtVacio=false;
+          this.valClienteNumExtNoValido=true;
+        }else{
+          this.valClienteNumExtNoValido=false;
+          this.valClienteNumExtVacio=false;
+        }
+      }
+    }
     ngOnInit(): void {
+      this.mediopag=this.MediosDePago[0].name;
       this.valClienteNumSerieVacio = false;
       this.valClienteNumSerieNoValido = false;
+      this.valClienteRFCNoValido= false;
+      this.valClienteRFCVacio= false;
+      this.valClienteNumExtNoValido= false;
+      this.valClienteNumExtVacio= false;
       this.meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
       const today = new Date();
       this.year = today.getFullYear();
