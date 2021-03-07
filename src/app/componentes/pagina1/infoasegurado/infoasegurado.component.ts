@@ -4,97 +4,137 @@ import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
 import { FechasModel } from '../../../interphaces/models/Fechas.model';
 import { RequestCatalogoCotizamatico } from '../../../interphaces/request/RequestCatalogoCotizamatico.model';
 import {MesesConDiasService } from '../../../servicios/meses-con-dias.service';
-
+import {CookieService} from 'ngx-cookie';
 @Component({
   selector: 'app-infoasegurado',
   templateUrl: './infoasegurado.component.html',
   styleUrls: ['./infoasegurado.component.css'],
 })
 export class InfoaseguradoComponent implements OnInit {
-  @Output() emitClienteNombre = new EventEmitter<string>();
-  @Input() clienteNombre: string;
-  @Input() clienteNombreCompleto: boolean;
-  @Input() valClienteNombre: boolean;
-  @Output() emitClienteApellidoPaterno = new EventEmitter<string>();
-  @Input() clienteApellidoPaterno: string;
-  @Input() valClienteApellidoPaterno: boolean;
-  @Output() emitClienteApellidoMaterno = new EventEmitter<string>();
-  @Input() clienteApellidoMaterno: string;
-  @Input() valClienteApellidoMaterno: boolean;
+  constructor(
+    private infovehiculoService: InfovehiculoService,
+    private MesesConDias: MesesConDiasService,
+    private cookieService: CookieService
+    ){}
+    @Output() emitClienteNombre = new EventEmitter<string>();
+    @Input() clienteNombre: string;
+    @Input() clienteNombreCompleto: boolean;
+    @Input() valClienteNombre: boolean;
+    @Output() emitClienteApellidoPaterno = new EventEmitter<string>();
+    @Input() clienteApellidoPaterno: string;
+    @Input() valClienteApellidoPaterno: boolean;
+    @Output() emitClienteApellidoMaterno = new EventEmitter<string>();
+    @Input() clienteApellidoMaterno: string;
+    @Input() valClienteApellidoMaterno: boolean;
 
-  @Output() emitClienteMail = new EventEmitter<string>();
-  @Input() clienteMail: string;
-  @Input() valClienteMailVacio: boolean;
-  @Input() valClienteMailNoValido: boolean;
+    @Output() emitClienteMail = new EventEmitter<string>();
+    @Input() clienteMail: string;
+    @Input() valClienteMailVacio: boolean;
+    @Input() valClienteMailNoValido: boolean;
 
-  @Output() emitClienteTelefono = new EventEmitter<string>();
-  @Input() clienteTelefono: string;
-  valClienteTelefonoVacio: boolean;
-  valClienteTelefonoNoValido: boolean;
+    @Output() emitClienteTelefono = new EventEmitter<string>();
+    @Input() clienteTelefono: string;
+    valClienteTelefonoVacio: boolean;
+    valClienteTelefonoNoValido: boolean;
 
-  @Output() emitClienteTipoPersona = new EventEmitter<string>();
-  clienteEsFemenino: boolean;
-  clienteEsMasculino: boolean;
-  clienteEsMoral: boolean;
-  @Input() clienteEsFemeninop3: boolean;
-  @Input() clienteEsMasculinop3: boolean;
-  @Input() clienteEsMoralp3: boolean;
-  @Output() emitClienteCodigoPostal = new EventEmitter<string>();
-  @Input() clienteCodigoPostal: string;
-  @Input() clienteCodigoPostalp3: string;
-  valCodigoPostalVacio: boolean;
-  valCodigoPostalLongitud: boolean;
-  valCodigoPostalValidando: boolean;
-  valCodigoPostalValido: boolean;
+    @Output() emitClienteTipoPersona = new EventEmitter<string>();
+    clienteEsFemenino: boolean;
+    clienteEsMasculino: boolean;
+    clienteEsMoral: boolean;
+    @Input() clienteEsFemeninop3: boolean;
+    @Input() clienteEsMasculinop3: boolean;
+    @Input() clienteEsMoralp3: boolean;
+    @Output() emitClienteCodigoPostal = new EventEmitter<string>();
+    @Input() clienteCodigoPostal: string;
+    @Input() clienteCodigoPostalp3: string;
+    valCodigoPostalVacio: boolean;
+    valCodigoPostalLongitud: boolean;
+    valCodigoPostalValidando: boolean;
+    valCodigoPostalValido: boolean;
 
-  @Output() emitClienteNacimiento = new EventEmitter<FechasModel>();
-  @Input() itemNacimientoDiap3: CatalogoModel;
-  @Input() itemNacimientoMesp3: CatalogoModel;
-  @Input() itemNacimeintoAniop3: CatalogoModel;
+    @Output() emitClienteNacimiento = new EventEmitter<FechasModel>();
+    @Input() itemNacimientoDiap3: CatalogoModel;
+    @Input() itemNacimientoMesp3: CatalogoModel;
+    @Input() itemNacimeintoAniop3: CatalogoModel;
 
-  catNacimientoDias: CatalogoModel[];
-  catNacimientoMeses: CatalogoModel[];
-  catNacimientoAnios: CatalogoModel[];
-  @Input() itemNacimientoDia: CatalogoModel;
-  @Input() itemNacimientoMes: CatalogoModel;
-  @Input() itemNacimeintoAnio: CatalogoModel;
-  itemVacio: CatalogoModel;
-  item: string;
-  year: any;
-  // ESTAS VARIABLES SON PARA LA VALIDACION (NO VACIO)
-  @Input() existe: boolean;
-  existeT: boolean;
-  vacemial: boolean;
-  vacnom: boolean;
-  @Input() codigoPostal: string;
-  @Input() validot: boolean;
-  @Input() valido: boolean;
-  @Input() validonom: boolean;
-  // Valores botones soy
-  @Input() disabledase;
-  @Input() disable;
-  bisiesto: boolean;
-  constructor(private infovehiculoService: InfovehiculoService, private MesesConDias: MesesConDiasService) {}
-
-  ngOnInit(): void {
-    this.valClienteNombre = true;
-    this.valClienteMailVacio = true;
-    this.valClienteMailNoValido = true;
-    this.valClienteTelefonoNoValido = true;
-    this.valClienteTelefonoVacio = true;
-    this.clienteEsFemenino = false;
-    this.clienteEsMasculino = false;
-    this.clienteEsMoral = false;
-    this.valCodigoPostalLongitud = true;
-    this.valCodigoPostalVacio = true;
-    this.valCodigoPostalValidando = true;
-    this.valCodigoPostalValido = true;
-    this.valClienteApellidoMaterno = true;
-    this.valClienteApellidoPaterno = true;
-    this.catNacimientoAnios = this.MesesConDias.getAnnioSinMesesniDia();
-    this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion();
-    // console.log(this.MesesConDias.getdiassinnada());
-    this.catNacimientoDias = this.MesesConDias.getdiassinnada();
+    catNacimientoDias: CatalogoModel[];
+    catNacimientoMeses: CatalogoModel[];
+    catNacimientoAnios: CatalogoModel[];
+    @Input() itemNacimientoDia: CatalogoModel;
+    @Input() itemNacimientoMes: CatalogoModel;
+    @Input() itemNacimeintoAnio: CatalogoModel;
+    itemVacio: CatalogoModel;
+    itemd: string;
+    itemm: string;
+    itemy: string;
+    year: any;
+    // ESTAS VARIABLES SON PARA LA VALIDACION (NO VACIO)
+    @Input() existe: boolean;
+    existeT: boolean;
+    vacemial: boolean;
+    vacnom: boolean;
+    @Input() codigoPostal: string;
+    @Input() validot: boolean;
+    @Input() valido: boolean;
+    @Input() validonom: boolean;
+    // Valores botones soy
+    @Input() disabledase;
+    @Input() disable;
+    bisiesto: boolean;
+    cookieNombre: string;
+    cookieEmail: string;
+    cookieTelefono: string;
+    cookieTipoDePersona: string;
+    cookieCP: string;
+    cookieDiaNaci: any ;
+    cookieMesNaci: any ;
+    cookieAnioNaci: any ;
+    ngOnInit(): void {
+      this.valClienteNombre = true;
+      this.valClienteMailVacio = true;
+      this.valClienteMailNoValido = true;
+      this.valClienteTelefonoNoValido = true;
+      this.valClienteTelefonoVacio = true;
+      this.clienteEsFemenino = false;
+      this.clienteEsMasculino = false;
+      this.clienteEsMoral = false;
+      this.valCodigoPostalLongitud = true;
+      this.valCodigoPostalVacio = true;
+      this.valCodigoPostalValidando = true;
+      this.valCodigoPostalValido = true;
+      this.valClienteApellidoMaterno = true;
+      this.valClienteApellidoPaterno = true;
+      this.catNacimientoAnios = this.MesesConDias.getAnnioSinMesesniDia();
+      this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion();
+      // console.log(this.MesesConDias.getdiassinnada());
+      this.catNacimientoDias = this.MesesConDias.getdiassinnada();
+      this.cookieNombre = this.cookieService.get('Nombre');
+      this.cookieNombre !== null ? this.clienteNombre = this.cookieNombre : this.clienteNombre = this.clienteNombre;
+      this.cookieEmail = this.cookieService.get('Email');
+      this.cookieEmail !== null ? this.clienteMail = this.cookieEmail : this.clienteMail = this.clienteMail;
+      this.cookieTelefono = this.cookieService.get('Telefono');
+      this.cookieTelefono !== null ? this.clienteTelefono = this.cookieTelefono : this.clienteTelefono = this.clienteTelefono;
+      this.cookieTipoDePersona = this.cookieService.get('TipoDePersona');
+      this.cookieTipoDePersona !== null ? this.cookieTipoDePersona === 'Femenino' ? this.clienteEsFemenino = true :
+      this.cookieTipoDePersona === 'Masculino' ? this.clienteEsMasculino = true :
+      this.clienteEsMoral = true
+      : this.clienteEsFemenino = this.clienteEsFemenino;
+      this.clienteEsMasculino = this.clienteEsMasculino;
+      this.clienteEsMoral = this.clienteEsMoral;
+      this.cookieCP = this.cookieService.get('Codigo Postal');
+      this.cookieCP !== null ? this.clienteCodigoPostal = this.cookieCP : this.clienteCodigoPostal = this.clienteCodigoPostal;
+      this.cookieDiaNaci = this.cookieService.getObject('DiaDeNacimiento');
+      console.log(this.cookieDiaNaci);
+      this.cookieDiaNaci !== null ? this.itemNacimientoDia = this.cookieDiaNaci :
+      this.itemNacimientoDia = this.itemNacimientoDia;
+      this.cookieMesNaci = this.cookieService.getObject('MesDeNacimiento');
+      console.log(this.cookieMesNaci);
+      this.cookieMesNaci !== null ?  this.itemNacimientoMes = this.cookieMesNaci :
+      this.itemNacimientoMes =  this.itemNacimientoMes;
+      this.cookieAnioNaci = this.cookieService.getObject('AnioDeNacimiento');
+      console.log(this.cookieAnioNaci);
+      this.cookieAnioNaci !== null ?  this.itemNacimeintoAnio = this.cookieAnioNaci :
+      this.itemNacimeintoAnio =  this.itemNacimeintoAnio;
   }
   onNombreChanged() {
     if (this.clienteNombre === '') {
@@ -103,6 +143,8 @@ export class InfoaseguradoComponent implements OnInit {
     } else {
       this.valClienteNombre = true;
       this.emitClienteNombre.emit(this.clienteNombre);
+      let guardacookieNombre = this.clienteNombre ;
+      this.cookieService.put('Nombre', guardacookieNombre);
     }
   }
   onApPatChanged() {
@@ -130,13 +172,14 @@ export class InfoaseguradoComponent implements OnInit {
       this.valClienteMailVacio = false;
       return;
     }
-
     this.valClienteMailVacio = true;
     const reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     this.valClienteMailNoValido = reg.test(this.clienteMail);
 
     if (this.valClienteMailNoValido) {
       this.emitClienteMail.emit(this.clienteMail);
+      let guardacookieEmail = this.clienteMail ;
+      this.cookieService.put('Email', guardacookieEmail);
     } else {
       this.emitClienteMail.emit('');
     }
@@ -207,6 +250,8 @@ export class InfoaseguradoComponent implements OnInit {
                           this.valClienteTelefonoNoValido = true;
                           this.valClienteTelefonoVacio = true;
                           this.emitClienteTelefono.emit(this.clienteTelefono);
+                          let guardacookieTelefono = this.clienteTelefono ;
+                          this.cookieService.put('Telefono', guardacookieTelefono);
                         }
                       }
                     }
@@ -240,6 +285,8 @@ export class InfoaseguradoComponent implements OnInit {
     this.clienteEsMasculinop3 = false;
     this.clienteEsMoralp3 = false;
     this.emitClienteTipoPersona.emit('Femenino');
+    let guardacookieTipoDePersona = 'Femenino' ;
+    this.cookieService.put('TipoDePersona', guardacookieTipoDePersona);
   }
 
   onTipoPersonaMasculinoChange() {
@@ -250,6 +297,8 @@ export class InfoaseguradoComponent implements OnInit {
     this.clienteEsMasculinop3 = true;
     this.clienteEsMoralp3 = false;
     this.emitClienteTipoPersona.emit('Masculino');
+    let guardacookieTipoDePersona = 'Masculino' ;
+    this.cookieService.put('TipoDePersona', guardacookieTipoDePersona);
   }
 
   onTipoPersonaMoralChange() {
@@ -260,6 +309,8 @@ export class InfoaseguradoComponent implements OnInit {
     this.clienteEsMasculinop3 = false;
     this.clienteEsMoralp3 = true;
     this.emitClienteTipoPersona.emit('Moral');
+    let guardacookieTipoDePersona = 'Moral' ;
+    this.cookieService.put('TipoDePersona', guardacookieTipoDePersona);
   }
 
   onCodigoPostalChanged() {
@@ -297,17 +348,21 @@ export class InfoaseguradoComponent implements OnInit {
       }
 
       this.emitClienteCodigoPostal.emit(this.clienteCodigoPostal);
+      let guardacookieCodigoPostal = this.clienteCodigoPostal ;
+      this.cookieService.put('Codigo Postal', guardacookieCodigoPostal);
     });
   }
 
   selectNacimientoDia() {
-  if ( this.itemNacimientoDia.sDato !== '' && this.itemNacimientoMes.sDato !== '' && this.itemNacimeintoAnio.sDato !== '' ) {
-    this.emitClienteNacimiento.emit({
-      dia: this.itemNacimientoDia.sDato,
-      mes: this.itemNacimientoMes.sDato,
-      anio: this.itemNacimeintoAnio.sDato
-    });
-  }
+    if ( this.itemNacimientoDia.sDato !== '' && this.itemNacimientoMes.sDato !== '' && this.itemNacimeintoAnio.sDato !== '' ) {
+      this.emitClienteNacimiento.emit({
+        dia: this.itemNacimientoDia.sDato,
+        mes: this.itemNacimientoMes.sDato,
+        anio: this.itemNacimeintoAnio.sDato
+      });
+    }
+    let guardacookieDiaNacimiento = this.itemNacimientoDia;
+    this.cookieService.putObject('DiaDeNacimiento', guardacookieDiaNacimiento);
   }
 
   selectNacimientoMes() {
@@ -332,6 +387,8 @@ export class InfoaseguradoComponent implements OnInit {
         anio: this.itemNacimeintoAnio.sDato
       });
     }
+    let guardacookieMesNacimiento = this.itemNacimientoMes;
+    this.cookieService.putObject('MesDeNacimiento', guardacookieMesNacimiento);
   }
 
   selectNacimientoAnio() {
@@ -347,6 +404,8 @@ export class InfoaseguradoComponent implements OnInit {
         anio: this.itemNacimeintoAnio.sDato
       });
     }
+    let guardacookieAnioNacimiento = this.itemNacimeintoAnio ;
+    this.cookieService.putObject('AnioDeNacimiento', guardacookieAnioNacimiento);
   }
 
   dameduracion( mes: string){

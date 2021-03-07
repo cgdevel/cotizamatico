@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { CatalogoModel } from 'src/app/interphaces/models/Catalogos.model';
 import { InfovehiculoService } from '../../../servicios/infovehiculo.service';
-
+import {CookieService} from 'ngx-cookie';
 //  para añadir script import * as $ from 'jquery';
 
 @Component({
@@ -10,7 +10,15 @@ import { InfovehiculoService } from '../../../servicios/infovehiculo.service';
   styleUrls: ['./infovehiculo.component.css'],
 })
 export class InfovehiculoComponent implements OnInit {
-  constructor(private infovehiculoService: InfovehiculoService) {}
+  cookieModelo: any ;
+  cookieAnio: any ;
+  cookieMarca: any ;
+  cookieDescrip: any ;
+
+  constructor(
+    private infovehiculoService: InfovehiculoService ,
+    private cookieService: CookieService
+    ) {}
   @Output() emitTipoVehiculo = new EventEmitter<CatalogoModel>();
   @Output() emitAnioVehiculo = new EventEmitter<CatalogoModel>();
   @Output() emitMarcaVehiculo = new EventEmitter<CatalogoModel>();
@@ -68,6 +76,16 @@ export class InfovehiculoComponent implements OnInit {
     this.catMarcaVehiculo = [];
     this.catTipoVehiculo = [];
     this.getTiposVehiculos();
+    this.cookieModelo = this.cookieService.getObject('modelo');
+    this.cookieModelo != null ? this.itemTipoVehiculo = this.cookieModelo : this.itemTipoVehiculo = this.itemTipoVehiculo;
+    this.cookieAnio = this.cookieService.getObject('anio');
+    this.cookieAnio != null ? this.itemAnioVehiculo = this.cookieAnio : this.itemAnioVehiculo = this.itemAnioVehiculo;
+    this.cookieMarca = this.cookieService.getObject('marca');
+    this.cookieMarca != null ? this.itemMarcaVehiculo = this.cookieMarca : this.itemMarcaVehiculo = this.itemMarcaVehiculo;
+    this.cookieDescrip = this.cookieService.getObject('descripcion');
+    this.cookieDescrip != null ? this.itemDescripcionVehiculo = this.cookieDescrip :
+    this.itemDescripcionVehiculo = this.itemDescripcionVehiculo;
+    // console.log(this.cookieService.getObject('modelo'));
   }
 
   getTiposVehiculos() {
@@ -79,7 +97,6 @@ export class InfovehiculoComponent implements OnInit {
     this.itemMarcaVehiculo = this.itemVacio;
     this.catDescripcionVehiculo = [];
     this.itemDescripcionVehiculo = this.itemVacio;
-
     this.infovehiculoService
       .getCatalogos({
         iMarca: 0,
@@ -117,7 +134,10 @@ export class InfovehiculoComponent implements OnInit {
     this.descripselpagina2 = this.itemVacio;
     this.emitTipoVehiculo.emit(!!this.itemTipoVehiculo ? this.itemTipoVehiculo :
        !!this.modeloselpagina2 ? this.modeloselpagina2 : this.modeloselpagina3);
-
+    //  COOKIE CONTIENE MARCA
+    let guardacookiemodelo = !!this.itemTipoVehiculo ? this.itemTipoVehiculo :
+    !!this.modeloselpagina2 ? this.modeloselpagina2 : this.modeloselpagina3 ;
+    this.cookieService.putObject('modelo', guardacookiemodelo );
     this.infovehiculoService
       .getCatalogos({
         iMarca: 0,
@@ -152,7 +172,9 @@ export class InfovehiculoComponent implements OnInit {
     this.descripselpagina2 = this.itemVacio;
     this.emitAnioVehiculo.emit(!!this.itemAnioVehiculo ? this.itemAnioVehiculo :
        !!this.annoselpagina2 ? this.annoselpagina2 : this.annoselpagina3);
-
+    let guardacookieanio = !!this.itemAnioVehiculo ? this.itemAnioVehiculo :
+    !!this.annoselpagina2 ? this.annoselpagina2 : this.annoselpagina3;
+    this.cookieService.putObject('anio', guardacookieanio );
     this.infovehiculoService
       .getCatalogos({
         iMarca: 0,
@@ -185,7 +207,9 @@ export class InfovehiculoComponent implements OnInit {
     this.descripselpagina2 = this.itemVacio;
     this.emitMarcaVehiculo.emit(!!this.itemMarcaVehiculo ? this.itemMarcaVehiculo :
        !! this.marcaselpagina2 ? this.marcaselpagina2 : this.marcaselpagina3);
-
+    let guardacookiemarca = !!this.itemMarcaVehiculo ? this.itemMarcaVehiculo :
+    !! this.marcaselpagina2 ? this.marcaselpagina2 : this.marcaselpagina3;
+    this.cookieService.putObject('marca', guardacookiemarca );
     this.infovehiculoService
       .getCatalogos({
         iMarca: Number(!!this.itemMarcaVehiculo ? this.itemMarcaVehiculo.sLlave :
@@ -216,5 +240,8 @@ export class InfovehiculoComponent implements OnInit {
   selectDescripcion() {
     this.emitDescripcion.emit(!!this.itemDescripcionVehiculo ? this.itemDescripcionVehiculo :
       !! this.descripselpagina2 ? this.descripselpagina2 : this.descripselpagina3);
+    let guardacookiedescrip = !!this.itemDescripcionVehiculo ? this.itemDescripcionVehiculo :
+    !! this.descripselpagina2 ? this.descripselpagina2 : this.descripselpagina3;
+    this.cookieService.putObject('descripcion', guardacookiedescrip );
   }
 }

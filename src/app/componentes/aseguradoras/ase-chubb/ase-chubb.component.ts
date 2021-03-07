@@ -192,18 +192,6 @@ export class AseCHUBBComponent implements OnInit {
         }
       }
     }
-    onNumPlaChange(){
-      if (this.numdeplacas === '') {
-        this.valClienteNumPlacasVacio = true;
-      }else{
-        if ( this.numdeplacas.length < 17 ) {
-          this.valClienteNumPlacasNoValido = true;
-        } else {
-          this.valClienteNumPlacasVacio = false;
-          this.valClienteNumPlacasNoValido = false;
-        }
-      }
-    }
     onNumMotorChange(){
       if (this.numdeMotor === '') {
         this.valClienteNumMotorVacio = true;

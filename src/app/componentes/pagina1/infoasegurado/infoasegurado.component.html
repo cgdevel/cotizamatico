@@ -336,8 +336,8 @@
                 <ng-select [disabled]="disable == false" id="cmbNacimietoDia" [items]="catNacimientoDias"
                   bindLabel="sDato" placeholder="DÍA" [searchable]="false" [clearable]="false" [closeOnSelect]="true"
                   (change)="selectNacimientoDia()" [(ngModel)]="itemNacimientoDia">
-                  <ng-option [value]="item" *ngFor="let item of catNacimientoDias">
-                    {{ item.sDato }}
+                  <ng-option [value]="itemd" *ngFor="let itemd of catNacimientoDias">
+                    {{ itemd.sDato }}
                   </ng-option>
                   <ng-template ng-notfound-tmp>
                     <div class="ng-option disabled">
@@ -351,8 +351,8 @@
                 <ng-select [disabled]="disable == false" id="cmbNacimietoMes" bindLabel="sDato" placeholder="MES"
                   [searchable]="false" [clearable]="false" [closeOnSelect]="true" (change)="selectNacimientoMes()"
                   [(ngModel)]="itemNacimientoMes">
-                  <ng-option [value]="item" *ngFor="let item of catNacimientoMeses">
-                    {{ item.sDato }}
+                  <ng-option [value]="itemm" *ngFor="let itemm of catNacimientoMeses">
+                    {{ itemm.sDato }}
                   </ng-option>
                   <ng-template ng-notfound-tmp>
                     <div class="ng-option disabled">
@@ -366,8 +366,8 @@
                 <ng-select id="cmbNacimietoAnio" [disabled]="disable == false" bindLabel="sDato" placeholder="AÑO"
                   [searchable]="false" [clearable]="false" [closeOnSelect]="true" (change)="selectNacimientoAnio()"
                   [(ngModel)]="itemNacimeintoAnio">
-                  <ng-option [value]="item" *ngFor="let item of catNacimientoAnios">
-                    {{ item.sDato }}
+                  <ng-option [value]="itemNacimeintoAnio" *ngFor="let itemNacimeintoAnio of catNacimientoAnios">
+                    {{ itemNacimeintoAnio.sDato }}
                   </ng-option>
                   <ng-template ng-notfound-tmp>
                     <div class="ng-option disabled">

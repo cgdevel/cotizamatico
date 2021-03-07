@@ -373,8 +373,6 @@
                     [ngClass]="{ }"
                     id="NumdeSerie"
                     [(ngModel)]="numdeplacas"
-                    (change)="onNumPlaChange()" 
-                    maxlength="17"
                     maxlength="17"
                     type="text"
                     class="form-control"
@@ -383,20 +381,10 @@
                     ( 97 <= event.charCode  && event.charCode < 123 )||
                     ( 65 <= event.charCode  && event.charCode < 91 )||
                     ( 48 <= event.charCode  && event.charCode < 58 ) ))"
-                    [ngClass]="{
-                        Existe: !valClienteNumPlacasVacio && !valClienteNumPlacasNoValido,
-                        NoExiste: valClienteNumPlacasVacio || valClienteNumPlacasNoValido
-                        }"
                 />
         <!-- para que admita "q" ( 106 <= event.charCode  && event.charCode < 123 ) -->     
         <!-- para que admita "i" ( 97 <= event.charCode  && event.charCode < 112 ) -->       
-                <ngb-alert
-                [dismissible]="false"
-                type="danger"
-                *ngIf="valClienteNumPlacasVacio "
-                >
-                Dato Obligatorio
-                </ngb-alert> 
+
             </div>
             <div class="col">
                 <label for="ForPag">Forma de pago</label>

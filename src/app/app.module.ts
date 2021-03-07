@@ -31,7 +31,7 @@ import { AseHDIComponent } from './componentes/aseguradoras/ase-hdi/ase-hdi.comp
 import { AseAFIRMEComponent } from './componentes/aseguradoras/ase-afirme/ase-afirme.component';
 import { AseANNAComponent } from './componentes/aseguradoras/ase-anna/ase-anna.component';
 import { AseAIGComponent } from './componentes/aseguradoras/ase-aig/ase-aig.component';
-
+import {CookieModule} from 'ngx-cookie';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +65,7 @@ import { AseAIGComponent } from './componentes/aseguradoras/ase-aig/ase-aig.comp
     NgbModule,
     NgbPaginationModule,
     NgbAlertModule,
+    CookieModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
