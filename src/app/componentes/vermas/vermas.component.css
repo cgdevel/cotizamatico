@@ -119,3 +119,23 @@ tr#padou > td > svg {
 .svg__movil {
   width: 140px;
 }
+
+.btd tr {
+  display: flex;
+  justify-content: center;
+}
+
+.coberturas__card {
+  margin-top: 230px;
+}
+
+.coberturas__card p {
+  font-size: 12px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.coberturas__card h5 {
+  color: #ff6666;
+  font-weight: 500;
+}
