@@ -77,14 +77,25 @@ export class InfovehiculoComponent implements OnInit {
     this.catTipoVehiculo = [];
     this.getTiposVehiculos();
     this.cookieModelo = this.cookieService.getObject('modelo');
-    this.cookieModelo != null ? this.itemTipoVehiculo = this.cookieModelo : this.itemTipoVehiculo = this.itemTipoVehiculo;
+    if (this.cookieModelo != null) {
+      this.itemTipoVehiculo = this.cookieModelo;
+      this.emitTipoVehiculo.emit(this.itemTipoVehiculo);
+    } else { this.emitTipoVehiculo.emit(this.itemVacio); }
     this.cookieAnio = this.cookieService.getObject('anio');
-    this.cookieAnio != null ? this.itemAnioVehiculo = this.cookieAnio : this.itemAnioVehiculo = this.itemAnioVehiculo;
+    if (this.cookieAnio != null ) {
+      this.itemAnioVehiculo = this.cookieAnio;
+      this.emitAnioVehiculo.emit(this.itemAnioVehiculo);
+    }  else { this.emitAnioVehiculo.emit(this.itemVacio); }
     this.cookieMarca = this.cookieService.getObject('marca');
-    this.cookieMarca != null ? this.itemMarcaVehiculo = this.cookieMarca : this.itemMarcaVehiculo = this.itemMarcaVehiculo;
+    if (this.cookieMarca != null) {
+      this.itemMarcaVehiculo = this.cookieMarca;
+      this.emitMarcaVehiculo.emit(this.itemMarcaVehiculo);
+    } else { this.emitMarcaVehiculo.emit(this.itemVacio); }
     this.cookieDescrip = this.cookieService.getObject('descripcion');
-    this.cookieDescrip != null ? this.itemDescripcionVehiculo = this.cookieDescrip :
-    this.itemDescripcionVehiculo = this.itemDescripcionVehiculo;
+    if (this.cookieDescrip != null) {
+      this.itemDescripcionVehiculo = this.cookieDescrip;
+      this.emitDescripcion.emit(this.itemDescripcionVehiculo);
+    } else { this.emitDescripcion.emit(this.itemVacio); }
     // console.log(this.cookieService.getObject('modelo'));
   }
 
