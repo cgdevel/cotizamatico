@@ -324,7 +324,7 @@
             class="form-group col-md-4 col-sm-12"
             *ngIf="
               !!clienteEsMasculino
-                ? clienteEsMasculinop3 == true
+                ? clienteEsMasculino == true
                 : clienteEsMasculinop3 == true || !!clienteEsFemenino
                 ? clienteEsFemenino == true
                 : clienteEsFemeninop3 == true
@@ -333,7 +333,8 @@
             <p class="m-0 mb-2">Fecha de nacimiento</p>
             <div class="row">
               <div class="col-md-4 col-sm-12 mb-3">
-                <ng-select [disabled]="disable == false" id="cmbNacimietoDia" [items]="catNacimientoDias"
+                <ng-select [disabled]="disable == false" id="cmbNacimietoDia" 
+                  [items]="catNacimientoDias"
                   bindLabel="sDato" placeholder="DÍA" [searchable]="false" [clearable]="false" [closeOnSelect]="true"
                   (change)="selectNacimientoDia()" [(ngModel)]="itemNacimientoDia">
                   <ng-option [value]="itemd" *ngFor="let itemd of catNacimientoDias">
@@ -348,11 +349,12 @@
               </div>
 
               <div class="col-md-4 col-sm-12 mb-3">
-                <ng-select [disabled]="disable == false" id="cmbNacimietoMes" bindLabel="sDato" placeholder="MES"
+                <ng-select [disabled]="disable == false" id="cmbNacimietoMes" 
+                  [items]="catNacimientoMeses" bindLabel="sDato" placeholder="MES"
                   [searchable]="false" [clearable]="false" [closeOnSelect]="true" (change)="selectNacimientoMes()"
                   [(ngModel)]="itemNacimientoMes">
-                  <ng-option [value]="itemm" *ngFor="let itemm of catNacimientoMeses">
-                    {{ itemm.sDato }}
+                  <ng-option [value]="item" *ngFor="let item of catNacimientoMeses">
+                    {{ item.sDato }}
                   </ng-option>
                   <ng-template ng-notfound-tmp>
                     <div class="ng-option disabled">
@@ -363,11 +365,12 @@
               </div>
 
               <div class="col-md-4 col-sm-12 mb-3">
-                <ng-select id="cmbNacimietoAnio" [disabled]="disable == false" bindLabel="sDato" placeholder="AÑO"
+                <ng-select id="cmbNacimietoAnio" [disabled]="disable == false" 
+                  [items]="catNacimientoAnios" bindLabel="sDato" placeholder="AÑO"
                   [searchable]="false" [clearable]="false" [closeOnSelect]="true" (change)="selectNacimientoAnio()"
                   [(ngModel)]="itemNacimeintoAnio">
-                  <ng-option [value]="itemNacimeintoAnio" *ngFor="let itemNacimeintoAnio of catNacimientoAnios">
-                    {{ itemNacimeintoAnio.sDato }}
+                  <ng-option [value]="item" *ngFor="let item of catNacimientoAnios">
+                    {{ item.sDato }}
                   </ng-option>
                   <ng-template ng-notfound-tmp>
                     <div class="ng-option disabled">

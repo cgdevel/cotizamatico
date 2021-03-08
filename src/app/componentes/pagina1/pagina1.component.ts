@@ -88,8 +88,8 @@ export class Pagina1Component implements OnInit {
 
   handlerClienteCodigoPostal(e: string) {
     this.clienteCodigoPostal = e;
-    console.log(e)
-    console.log(this.clienteCodigoPostal)
+    console.log(e);
+    // console.log(this.clienteCodigoPostal)
     this.ValidarDatosObligatorios();
   }
 
