@@ -58,6 +58,7 @@ export class Pagina2Component implements OnInit {
   statusS = 'NoSelected';
   statusAn = 'NoSelected';
   roto = 0;
+  danmat = 0;
   recica = 0;
   recibipe = 0;
   gemeoc = 0;
@@ -200,7 +201,7 @@ export class Pagina2Component implements OnInit {
     // console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
     // console.log("Anual :"+' '+this.anual+' '+this.statusAn)
     // this.emitFormaPago( 'Trimestral' );
-    this.pago = 'Trimestral'
+    this.pago = 'Trimestral';
     console.log(this.emitFormaPago);
   }
   Semestral( ) {
@@ -218,7 +219,7 @@ export class Pagina2Component implements OnInit {
     // console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
     // console.log("Anual :"+' '+this.anual+' '+this.statusAn)
     // this.emitFormaPago( 'Semestral' );
-    this.pago= 'Semestral'
+    this.pago = 'Semestral';
   }
   Anual( ) {
     // tiene selected this.statusAn
@@ -235,7 +236,7 @@ export class Pagina2Component implements OnInit {
     // console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
     // console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
     // this.emitFormaPago( 'Anual');
-    this.pago='Anual'
+    this.pago = 'Anual';
   }
   sliders( ase: string){
     console.log(ase);
@@ -283,6 +284,10 @@ export class Pagina2Component implements OnInit {
  toggle(){
   this. show = !this. show;
 
+ }
+
+ DaMate(event){
+  this.danmat = event.target.valueAsNumber;
  }
  guarda(){
    this.show = false;
