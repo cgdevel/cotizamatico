@@ -1,40 +1,296 @@
-<div class="container mw-100">
+<div class="container mw-100" *ngIf="mujercontrata==true  ||  hombrecontrata==true" style="font-family: Exo 2, sans-serif;font-size: 20px;">
+  <div class="row" style="justify-content: center;">
+    <svg style =" width:174px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300"><defs><style>.cls-1{isolation:isolate;}.cls-2{fill:#fff;stroke:#716d6d;stroke-miterlimit:10;stroke-width:0.79px;}.cls-3{opacity:0.2;}.cls-3,.cls-5{mix-blend-mode:multiply;}.cls-4{fill:#ededed;}.cls-5{opacity:0.18;}.cls-6{fill:url(#Degradado_sin_nombre_15);}.cls-7{fill:#2e55a5;}.cls-7,.cls-8{fill-rule:evenodd;}.cls-8{fill:#00a9c5;}</style><linearGradient id="Degradado_sin_nombre_15" x1="37.84" y1="248.51" x2="339.35" y2="-18.47" gradientTransform="translate(0.04 0.02)" gradientUnits="userSpaceOnUse"><stop offset="0.15" stop-color="#9d9d9c"/><stop offset="0.43" stop-color="#babab9"/><stop offset="1" stop-color="#fff"/></linearGradient></defs><title>CÍAS</title><g class="cls-1"><g id="Capa_1" data-name="Capa 1"><path class="cls-2" d="M290,262a28,28,0,0,1-28,28H38a28,28,0,0,1-28-28V38A28,28,0,0,1,38,10H262a28,28,0,0,1,28,28Z"/><g class="cls-3"><path class="cls-4" d="M286.31,259.05a27.25,27.25,0,0,1-27.26,27.26H41a27.26,27.26,0,0,1-27.26-27.27V41A27.25,27.25,0,0,1,41,13.69h218.1a27.25,27.25,0,0,1,27.26,27.26Z"/></g><g class="cls-5"><path class="cls-6" d="M285.67,259.23V40.77a27.3,27.3,0,0,0-27.3-27.3H39.9A27.28,27.28,0,0,0,14.34,31.25C50.75,69.46,204.28,230.68,243.41,276.71c3,3.39,6,6.64,9.15,9.83h5.81A27.3,27.3,0,0,0,285.67,259.23Z"/></g><path class="cls-7" d="M116.68,141.71l0,25.36c0,8.78-8.75,13.07-17.66,13.07-9.21,0-17-4.29-17-13.07v-34.6c3.82,0,8.15,1.23,8.15,8.19l.11,24.44c0,4.75,3.58,7.13,9,7.13,5.21,0,9.15-2.38,9.15-7.13V132.47c5.63,0,8.21,2.4,8.21,9.24m28.3-9.24c-10.21,0-17.2,5.89-17.2,18v29.11H136V150.18c0-6.23,3.35-10,9.7-10h2.43c7.19,0,8.36-3.72,8.36-7.74Zm35.15,0H198.3v47.08c-5.15,0-7.74-1.48-8.31-6.29,0,0-3.62,7.19-14,7.19-12.59,0-20-10-19.61-24.26.43-15.68,10.75-23.72,21.66-23.72Zm9.34,7.55H180c-.5,0-1,0-1.57,0-7.21,0-12.65,5-12.94,16.23-.34,11.74,4.85,16.59,12.14,16.59,8.1,0,11.84-6.17,11.84-12.69Zm-127,13.52-10-2.76c-2.77-.76-5.31-2-5.31-5.37s2.12-5.2,6.62-5.2h8.92c4,0,8.65-1.31,8.65-7.74H54.58c-10.35,0-16.3,5.24-16.3,12.76,0,7,4.46,10.9,12.36,13l8.73,2.33c3.63,1,4.88,3.24,4.88,5.56,0,3.51-2.2,5.65-7.62,5.68l-16.78.14v7.63h17c10.39,0,16.32-5.57,16.32-12.9s-2.9-11-10.69-13.11"/><path class="cls-8" d="M231.17,189a94.83,94.83,0,0,1-15.67,4c-.1,0-.21.11-.21.21a.2.2,0,0,0,.09.19,6.67,6.67,0,0,0,3.6,1.34,17.5,17.5,0,0,0,6.54-.67,38.48,38.48,0,0,0,6.82-2.73,44.41,44.41,0,0,0,6.41-3.74,17.63,17.63,0,0,0,4.21-3.86c.07-.17,0-.21-.08-.25A49.18,49.18,0,0,1,231.17,189m11.27-8.24c0-.18,0-.29-.1-.3-4.63,1.83-14.75,3.61-21.08,4.53-5.42.79-10.11.92-12.73,1.09l-1.16.06c-.14.07-.25.14-.25.23a.18.18,0,0,0,.13.21A7.78,7.78,0,0,0,212.3,189c3.54.52,8.75-.35,15.33-2.24a72.27,72.27,0,0,0,14.81-6m-.71,8.08c-4,3.86-9.76,6-11.71,6.61-.13,0-.17.11-.17.2a.43.43,0,0,0,.08.24c.34.14,2.71,1.42,7.13-.8,2.51-1.26,3.81-3.32,4.94-6a.24.24,0,0,0-.11-.27.3.3,0,0,0-.16.06m-22.38-57.21a10.26,10.26,0,0,0,4.53,2.74l.11.07c.58.12,31.35,8.35,39.46,10.61,3.53,1,6.38,1.75,7.69,2.13.16,0,.25,0,.25-.14a.13.13,0,0,0-.11-.14c-5.15-2.09-36.84-14.4-48.8-19l-5-2a.31.31,0,0,0-.31,0,.25.25,0,0,0-.06.18,10.72,10.72,0,0,0,1.31,4.33,13,13,0,0,0,.94,1.19m1.39-12.15a8,8,0,0,0,2.3,2c.42.21.76.5,1.2.69l2.82,1.47c1.62.79,25.37,12,28.85,13.71,4.08,2.06,8.19,4,10,4.93.15,0,.21,0,.19-.21-4.42-2.81-21.41-13.62-33.49-21.18l-8.76-5.29-1.55-1-3-1.78a.5.5,0,0,0-.29,0,.2.2,0,0,0-.1.19,11,11,0,0,0,.58,4.33,10.05,10.05,0,0,0,1.2,2.19m54.14,30.7-53.78-9.81a.4.4,0,0,0-.3.15c-.06.06,0,.18,0,.28a9.24,9.24,0,0,0,6.08,6.21,4.5,4.5,0,0,0,1.08.17s42.15,3,46.86,3.29c.1,0,.19,0,.19-.13s-.06-.16-.13-.16M264.45,153c-4.37,0-9.8,0-14.85,0-6.76,0-17.53,0-17.53,0a.18.18,0,0,0-.18.09.13.13,0,0,0,0,.21,7.64,7.64,0,0,0,1.46,2.33,6.9,6.9,0,0,0,4.31,2.33h.55a2.4,2.4,0,0,0,.57-.06c.18,0,32.25-4.38,34-4.65.06,0,.13-.1.13-.13s-.07-.18-.13-.18c-1.53.05-4.55.05-8.36.05m5.91,3.21c-2,.57-9.53,2.5-16.21,4.13-5.81,1.49-12.26,3.24-12.26,3.24-.69.17-.41.45-.37.53.15.27.58.84,1,1.61,1.05,1.72,2.45,1.49,3.73,1.07.23-.06,23.25-9.57,24.34-10.31.14-.06,0-.14,0-.21s-.11-.06-.19-.06m-10.28,16c-3.06,2.54-7.72,6.53-12.53,10.59a3.16,3.16,0,0,0-.88,1.89,26.91,26.91,0,0,1-1,3.14c-.15.38,0,.56.42.17,3.72-4,11.95-13,14.17-15.57.07-.16,0-.27-.1-.27Zm-5.18-3.74c-2.78,1.66-6.26,3.59-8.06,4.69-.19.13-.4.13-.28.68a9.84,9.84,0,0,1,.11,1.15c.21,2.66,1.32,2.39,2.91,1.17l.19-.17c5.57-4.53,15.85-13.12,18.1-15,0-.17,0-.25-.09-.25-2.22,1.3-8,4.81-12.88,7.75"/></g></g></svg> 
+  </div>
+  <div class="container mw-100 px-0" id="DatosContratante" style="margin: 40px;">
+      <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="container">
+              <div class="row mb-4 align-items-center justify-content-center">
+                <img src="../../../../assets/iconos/icono-datos-vehiculo.svg">
+                <h5 class="ml-lg-3 m-0 text-center">
+                  <b>Datos del contratante </b>
+                </h5>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col">
+              <label for="Edad">Edad</label>
+              <input type="text" class="form-control" [value]="edad" [disabled]="true" />
+          </div>
+          <div class="col">
+               <div class="form-group">
+                  <label for="medio">Nacionalidad</label>
+                  <ng-select 
+                      [items]="Nacion"       
+                      bindLabel="NacString"
+                      appendTo="body"
+                      [searchable]="true" 
+                      [clearable]="false"
+                      [closeOnSelect]="true"
+                      placeholder="Nacionalidad"
+                      [(ngModel)]="nacionalidadsel" [ngbTooltip]="nacsel" tooltipClass="my-custom-class">
+                      <ng-template #nacsel>
+                          <b  *ngIf="!!nacionalidadsel">{{nacionalidadsel.NacString}}</b>
+                      </ng-template>
+                      <ng-option  ng-options="item as item.NacClave for item.NacString in Nacion">
+                          {{item}}
+                      </ng-option>
+                      <ng-template ng-notfound-tmp let-searchTerm="searchTerm" >
+                      <div class="ng-option disabled" style="font-size: 11px !important;">
+                          No hay descripción que coincida con "{{searchTerm}}"
+                      </div>
+                      </ng-template>
+                  </ng-select>
+              </div>
+          </div>
+          <div class="col">
+              <label for="Sexo">Sexo</label>
+              <input type="text" class="form-control" [value]=" mujercontrata==true ? 'Femenino' : hombrecontrata==true ? 'Masculino' : 'Persona moral'" [disabled]="true">
+          </div>
+          <div class="col">
+              <label for="TipPers">Tipo de persona</label>
+              <input type="text" class="form-control" [value]=" empresacontrata==false ? 'Física' :'Moral' " [disabled]="true">      
+          </div>
+      </div>
+      <div class="row">
+          <div class="col">
+              <label for="Estado"> Estado</label>
+              <input type="text" class="form-control" [disabled]="true" [value]="estado"/>
+          </div>
+          <div class="col">
+              <label for="Municipio"> Municipio</label>
+              <input type="text" class="form-control" [disabled]="true" [value]="municipio"/> 
+          </div>
+          <div class="col">
+              <label for="NumExt">Número exterior</label>
+              <input maxlength="5" 
+                  type="text" 
+                  class="form-control" 
+                  id="NumExt" 
+                  style="margin-top: 5px;" 
+                  autocomplete="off" 
+                  (change)="onNumExtChange()" 
+                  [(ngModel)]="NomExterior" 
+                  onkeypress="return(
+                      !!( 
+                          ( 97 <= event.charCode  && event.charCode < 123 ) ||
+                          ( 65 <= event.charCode  && event.charCode < 91 )||
+                          ( 48 <= event.charCode  && event.charCode < 58 )
+                      ))"
+                  [ngClass]="{
+                  Existe: !valClienteNumExtVacio && !valClienteNumExtNoValido,
+                  NoExiste:valClienteNumExtVacio || valClienteNumExtNoValido
+                  }"
+              />
+              <ngb-alert
+              [dismissible]="false"
+              type="danger"
+              *ngIf="valClienteNumExtVacio"
+              >
+              Dato Obligatorio
+              </ngb-alert>
+              <ngb-alert
+              [dismissible]="false"
+              type="danger"
+              *ngIf="valClienteNumExtNoValido && !valClienteNumExtVacio"
+              >
+              Faltan dígitos
+              </ngb-alert>
+          </div>
+          <div class="col">
+              <label for="NumInt">Número interior</label>
+              <input maxlength="5" 
+                  type="text" 
+                  class="form-control" 
+                  id="telefono" 
+                  style="margin-top: 5px;" 
+                  autocomplete="off" 
+                  [(ngModel)]="NomInterior" 
+                  onkeypress="return(
+                      !!( 
+                          ( 97 <= event.charCode  && event.charCode < 123 ) ||
+                          ( 65 <= event.charCode  && event.charCode < 91 )||
+                          ( 48 <= event.charCode  && event.charCode < 58 )
+                      ))"
+                  />
+          </div>
+      </div>
+      <div class="row">
+          <div class="col">
+              <div class="form-group">
+                  <label for="Colonia">Colonia</label>
+                  <ng-select 
+                 [items]="cols"        
+                 bindLabel="sUbicacion"
+                 placeholder="Colonia"
+                 appendTo="body"
+                 [searchable]="false" 
+                 [clearable]="false"
+                 [closeOnSelect]="true"
+                 [(ngModel)]="coloniasel">
+                 <ng-option  ng-options="item as cols.iIdUbicacion for cols.sUbicacion in cols">
+                     {{item}}
+                 </ng-option>
+                 <ng-template ng-notfound-tmp >
+                   <div class="ng-option disabled">
+                       No hay colonias que mostrar
+                   </div>
+                 </ng-template>
+                  </ng-select>
+              </div>
+          </div>
+          <div class="col">
+              <label for="Calle">Calle</label>
+              <input type="text" class="form-control"/>
+          </div>
+      </div>
+      
+  </div>
+  
+  <div class="container mw-100 px-0" id="DatosVehiculo" style="margin: 40px;" >
+      <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="container">
+              <div class="row mb-4 align-items-center justify-content-center " >
+                <img src="../../../../assets/iconos/icono-datos-cliente.svg">
+                <h5 class="ml-lg-3 m-0 text-center">
+                  <b>Datos del vehículo </b>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      <div class="row">
+          <div class="col">
+              <label for="NumSerie">Número de Serie</label>
+              <input
+                  id="NumdeSerie"
+                  [(ngModel)]="numdeserie"
+                  (change)="onNumSeChange()" 
+                  maxlength="17"
+                  type="text"
+                  class="form-control"
+                  autocomplete="off"
+                  onkeypress="return(!!(( 97 <= event.charCode  && event.charCode < 105 ) ||
+                  ( 106 <= event.charCode  && event.charCode < 113 ) ||
+                  ( 114 <= event.charCode  && event.charCode < 123 )||
+                      ( 65 <= event.charCode  && event.charCode < 73 )||
+                      ( 74 <= event.charCode  && event.charCode < 81 )||
+                      ( 82 <= event.charCode  && event.charCode < 91 )||
+                      ( 48 <= event.charCode  && event.charCode < 58 ) )  || (event.charCode==32))"
+                      [ngClass]="{
+                          Existe: !valClienteNumSerieVacio && !valClienteNumSerieNoValido,
+                          NoExiste: valClienteNumSerieVacio || valClienteNumSerieNoValido
+                          }"
+              />
+      <!-- para que admita "q" ( 106 <= event.charCode  && event.charCode < 123 ) -->     
+      <!-- para que admita "i" ( 97 <= event.charCode  && event.charCode < 112 ) -->       
+              <ngb-alert
+              [dismissible]="false"
+              type="danger"
+              *ngIf="valClienteNumSerieVacio "
+              >
+              Dato Obligatorio
+              </ngb-alert> 
+          </div> 
+          <div class="col">
+          <label for="NumPla">Número de Placas</label>
+              <input
+                  [ngClass]="{ }"
+                  id="NumdeSerie"
+                  [(ngModel)]="numdeplacas"
+                  (change)="onNumPlaChange()" 
+                  maxlength="17"
+                  maxlength="17"
+                  type="text"
+                  class="form-control"
+                  autocomplete="off"
+                  onkeypress="return( !!(
+                  ( 97 <= event.charCode  && event.charCode < 123 )||
+                  ( 65 <= event.charCode  && event.charCode < 91 )||
+                  ( 48 <= event.charCode  && event.charCode < 58 ) ))"
+                  [ngClass]="{
+                      Existe: !valClienteNumPlacasVacio && !valClienteNumPlacasNoValido,
+                      NoExiste: valClienteNumPlacasVacio || valClienteNumPlacasNoValido
+                      }"
+              />
+      <!-- para que admita "q" ( 106 <= event.charCode  && event.charCode < 123 ) -->     
+      <!-- para que admita "i" ( 97 <= event.charCode  && event.charCode < 112 ) -->       
+              <ngb-alert
+              [dismissible]="false"
+              type="danger"
+              *ngIf="valClienteNumPlacasVacio "
+              >
+              Dato Obligatorio
+              </ngb-alert> 
+          </div>
+          <div class="col">
+              <label for="ForPag">Forma de pago</label>
+              <input
+                  [disabled]="true"
+                  id="FormaDePago"
+                  type="text"
+                  class="form-control"
+                  autocomplete="off"
+                  [value]="Pago"
+              />
+          </div>
+          <div class="col"> 
+              <div class="form-group">
+                  <label for="medio">Medio de pago</label>
+                  <ng-select [items]="MediosDePago" [(ngModel)]="mediopag" bindLabel="name" bindValue="name">
+                      <ng-template ng-label-tmp let-item="item">
+                          <img height="15" width="15" [src]="item.avatar"/>
+                          {{item.name}}
+                      </ng-template>
+                   </ng-select>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col">
+              <label for="NumMot">Número de Motor *</label>
+              <input
+                  [ngClass]="{ }"
+                  id="NumdeSerie"
+                  [(ngModel)]="numdeMotor"
+                  (change)="onNumMotorChange()" 
+                  maxlength="17"
+                  maxlength="17"
+                  type="text"
+                  class="form-control"
+                  autocomplete="off"
+                  onkeypress="return( !!(
+                  ( 97 <= event.charCode  && event.charCode < 123 )||
+                  ( 65 <= event.charCode  && event.charCode < 91 )||
+                  ( 48 <= event.charCode  && event.charCode < 58 ) ))"
+                  [ngClass]="{
+                      Existe: !valClienteNumMotorVacio && !valClienteNumMotorNoValido,
+                      NoExiste: valClienteNumMotorVacio || valClienteNumMotorNoValido
+                      }"
+              />
+          </div>
+          <div class="col">
+              <label for="ValFac">Valor factura *</label>
+              <input
+                  id="ValorFactura"
+                  type="text"
+                  class="form-control"
+                  autocomplete="off"
+              />
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="container mw-100" *ngIf="empresacontrata==true" >
+  <div class="row" style="justify-content: center;">
     <div class="row" style="justify-content: center;">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300" style="width: 174px;">
-            <defs>
-              <style>
-                .cls-1Sura{isolation:isolate;}
-                .cls-2Sura{fill:#fff;stroke:#716d6d;stroke-miterlimit:10;stroke-width:0.79px;}
-                .cls-3Sura{opacity:0.2;}
-                .cls-3Sura,
-                .cls-5Sura{mix-blend-mode:multiply;}
-                .cls-4Sura{fill:#ededed;}
-                .cls-5Sura{opacity:0.18;}
-                .cls-6Sura{fill:url(#DegradadoSura);}
-                .cls-7Sura{fill:#2e55a5;}
-                .cls-7Sura,.cls-8{fill-rule:evenodd;}
-                .cls-8Sura{fill:#00a9c5;}
-              </style>
-              <linearGradient id="DegradadoSura" x1="37.84" y1="248.51" x2="339.35" y2="-18.47" gradientTransform="translate(0.04 0.02)" gradientUnits="userSpaceOnUse">
-                <stop offset="0.15" stop-color="#9d9d9c"/>
-                <stop offset="0.43" stop-color="#babab9"/>
-                <stop offset="1" stop-color="#fff"/>
-              </linearGradient>
-            </defs>
-            <title>Sura</title>
-            <g class="cls-1Sura">
-              <g id="CapaSura" data-name="Capa Sura">
-                <path class="cls-2Sura" d="M290,262a28,28,0,0,1-28,28H38a28,28,0,0,1-28-28V38A28,28,0,0,1,38,10H262a28,28,0,0,1,28,28Z"/>
-                <g class="cls-3Sura">
-                  <path class="cls-4Sura" d="M286.31,259.05a27.25,27.25,0,0,1-27.26,27.26H41a27.26,27.26,0,0,1-27.26-27.27V41A27.25,27.25,0,0,1,41,13.69h218.1a27.25,27.25,0,0,1,27.26,27.26Z"/>
-                </g>
-                <g class="cls-5Sura">
-                  <path class="cls-6Sura" d="M285.67,259.23V40.77a27.3,27.3,0,0,0-27.3-27.3H39.9A27.28,27.28,0,0,0,14.34,31.25C50.75,69.46,204.28,230.68,243.41,276.71c3,3.39,6,6.64,9.15,9.83h5.81A27.3,27.3,0,0,0,285.67,259.23Z"/>
-                </g>
-                <path class="cls-7Sura" d="M116.68,141.71l0,25.36c0,8.78-8.75,13.07-17.66,13.07-9.21,0-17-4.29-17-13.07v-34.6c3.82,0,8.15,1.23,8.15,8.19l.11,24.44c0,4.75,3.58,7.13,9,7.13,5.21,0,9.15-2.38,9.15-7.13V132.47c5.63,0,8.21,2.4,8.21,9.24m28.3-9.24c-10.21,0-17.2,5.89-17.2,18v29.11H136V150.18c0-6.23,3.35-10,9.7-10h2.43c7.19,0,8.36-3.72,8.36-7.74Zm35.15,0H198.3v47.08c-5.15,0-7.74-1.48-8.31-6.29,0,0-3.62,7.19-14,7.19-12.59,0-20-10-19.61-24.26.43-15.68,10.75-23.72,21.66-23.72Zm9.34,7.55H180c-.5,0-1,0-1.57,0-7.21,0-12.65,5-12.94,16.23-.34,11.74,4.85,16.59,12.14,16.59,8.1,0,11.84-6.17,11.84-12.69Zm-127,13.52-10-2.76c-2.77-.76-5.31-2-5.31-5.37s2.12-5.2,6.62-5.2h8.92c4,0,8.65-1.31,8.65-7.74H54.58c-10.35,0-16.3,5.24-16.3,12.76,0,7,4.46,10.9,12.36,13l8.73,2.33c3.63,1,4.88,3.24,4.88,5.56,0,3.51-2.2,5.65-7.62,5.68l-16.78.14v7.63h17c10.39,0,16.32-5.57,16.32-12.9s-2.9-11-10.69-13.11"/>
-                <path class="cls-8Sura" d="M231.17,189a94.83,94.83,0,0,1-15.67,4c-.1,0-.21.11-.21.21a.2.2,0,0,0,.09.19,6.67,6.67,0,0,0,3.6,1.34,17.5,17.5,0,0,0,6.54-.67,38.48,38.48,0,0,0,6.82-2.73,44.41,44.41,0,0,0,6.41-3.74,17.63,17.63,0,0,0,4.21-3.86c.07-.17,0-.21-.08-.25A49.18,49.18,0,0,1,231.17,189m11.27-8.24c0-.18,0-.29-.1-.3-4.63,1.83-14.75,3.61-21.08,4.53-5.42.79-10.11.92-12.73,1.09l-1.16.06c-.14.07-.25.14-.25.23a.18.18,0,0,0,.13.21A7.78,7.78,0,0,0,212.3,189c3.54.52,8.75-.35,15.33-2.24a72.27,72.27,0,0,0,14.81-6m-.71,8.08c-4,3.86-9.76,6-11.71,6.61-.13,0-.17.11-.17.2a.43.43,0,0,0,.08.24c.34.14,2.71,1.42,7.13-.8,2.51-1.26,3.81-3.32,4.94-6a.24.24,0,0,0-.11-.27.3.3,0,0,0-.16.06m-22.38-57.21a10.26,10.26,0,0,0,4.53,2.74l.11.07c.58.12,31.35,8.35,39.46,10.61,3.53,1,6.38,1.75,7.69,2.13.16,0,.25,0,.25-.14a.13.13,0,0,0-.11-.14c-5.15-2.09-36.84-14.4-48.8-19l-5-2a.31.31,0,0,0-.31,0,.25.25,0,0,0-.06.18,10.72,10.72,0,0,0,1.31,4.33,13,13,0,0,0,.94,1.19m1.39-12.15a8,8,0,0,0,2.3,2c.42.21.76.5,1.2.69l2.82,1.47c1.62.79,25.37,12,28.85,13.71,4.08,2.06,8.19,4,10,4.93.15,0,.21,0,.19-.21-4.42-2.81-21.41-13.62-33.49-21.18l-8.76-5.29-1.55-1-3-1.78a.5.5,0,0,0-.29,0,.2.2,0,0,0-.1.19,11,11,0,0,0,.58,4.33,10.05,10.05,0,0,0,1.2,2.19m54.14,30.7-53.78-9.81a.4.4,0,0,0-.3.15c-.06.06,0,.18,0,.28a9.24,9.24,0,0,0,6.08,6.21,4.5,4.5,0,0,0,1.08.17s42.15,3,46.86,3.29c.1,0,.19,0,.19-.13s-.06-.16-.13-.16M264.45,153c-4.37,0-9.8,0-14.85,0-6.76,0-17.53,0-17.53,0a.18.18,0,0,0-.18.09.13.13,0,0,0,0,.21,7.64,7.64,0,0,0,1.46,2.33,6.9,6.9,0,0,0,4.31,2.33h.55a2.4,2.4,0,0,0,.57-.06c.18,0,32.25-4.38,34-4.65.06,0,.13-.1.13-.13s-.07-.18-.13-.18c-1.53.05-4.55.05-8.36.05m5.91,3.21c-2,.57-9.53,2.5-16.21,4.13-5.81,1.49-12.26,3.24-12.26,3.24-.69.17-.41.45-.37.53.15.27.58.84,1,1.61,1.05,1.72,2.45,1.49,3.73,1.07.23-.06,23.25-9.57,24.34-10.31.14-.06,0-.14,0-.21s-.11-.06-.19-.06m-10.28,16c-3.06,2.54-7.72,6.53-12.53,10.59a3.16,3.16,0,0,0-.88,1.89,26.91,26.91,0,0,1-1,3.14c-.15.38,0,.56.42.17,3.72-4,11.95-13,14.17-15.57.07-.16,0-.27-.1-.27Zm-5.18-3.74c-2.78,1.66-6.26,3.59-8.06,4.69-.19.13-.4.13-.28.68a9.84,9.84,0,0,1,.11,1.15c.21,2.66,1.32,2.39,2.91,1.17l.19-.17c5.57-4.53,15.85-13.12,18.1-15,0-.17,0-.25-.09-.25-2.22,1.3-8,4.81-12.88,7.75"/>
-              </g>
-            </g>
-          </svg>
+      <svg style =" width:174px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300"><defs><style>.cls-1{isolation:isolate;}.cls-2{fill:#fff;stroke:#716d6d;stroke-miterlimit:10;stroke-width:0.79px;}.cls-3{opacity:0.2;}.cls-3,.cls-5{mix-blend-mode:multiply;}.cls-4{fill:#ededed;}.cls-5{opacity:0.18;}.cls-6{fill:url(#Degradado_sin_nombre_15);}.cls-7{fill:#2e55a5;}.cls-7,.cls-8{fill-rule:evenodd;}.cls-8{fill:#00a9c5;}</style><linearGradient id="Degradado_sin_nombre_15" x1="37.84" y1="248.51" x2="339.35" y2="-18.47" gradientTransform="translate(0.04 0.02)" gradientUnits="userSpaceOnUse"><stop offset="0.15" stop-color="#9d9d9c"/><stop offset="0.43" stop-color="#babab9"/><stop offset="1" stop-color="#fff"/></linearGradient></defs><title>CÍAS</title><g class="cls-1"><g id="Capa_1" data-name="Capa 1"><path class="cls-2" d="M290,262a28,28,0,0,1-28,28H38a28,28,0,0,1-28-28V38A28,28,0,0,1,38,10H262a28,28,0,0,1,28,28Z"/><g class="cls-3"><path class="cls-4" d="M286.31,259.05a27.25,27.25,0,0,1-27.26,27.26H41a27.26,27.26,0,0,1-27.26-27.27V41A27.25,27.25,0,0,1,41,13.69h218.1a27.25,27.25,0,0,1,27.26,27.26Z"/></g><g class="cls-5"><path class="cls-6" d="M285.67,259.23V40.77a27.3,27.3,0,0,0-27.3-27.3H39.9A27.28,27.28,0,0,0,14.34,31.25C50.75,69.46,204.28,230.68,243.41,276.71c3,3.39,6,6.64,9.15,9.83h5.81A27.3,27.3,0,0,0,285.67,259.23Z"/></g><path class="cls-7" d="M116.68,141.71l0,25.36c0,8.78-8.75,13.07-17.66,13.07-9.21,0-17-4.29-17-13.07v-34.6c3.82,0,8.15,1.23,8.15,8.19l.11,24.44c0,4.75,3.58,7.13,9,7.13,5.21,0,9.15-2.38,9.15-7.13V132.47c5.63,0,8.21,2.4,8.21,9.24m28.3-9.24c-10.21,0-17.2,5.89-17.2,18v29.11H136V150.18c0-6.23,3.35-10,9.7-10h2.43c7.19,0,8.36-3.72,8.36-7.74Zm35.15,0H198.3v47.08c-5.15,0-7.74-1.48-8.31-6.29,0,0-3.62,7.19-14,7.19-12.59,0-20-10-19.61-24.26.43-15.68,10.75-23.72,21.66-23.72Zm9.34,7.55H180c-.5,0-1,0-1.57,0-7.21,0-12.65,5-12.94,16.23-.34,11.74,4.85,16.59,12.14,16.59,8.1,0,11.84-6.17,11.84-12.69Zm-127,13.52-10-2.76c-2.77-.76-5.31-2-5.31-5.37s2.12-5.2,6.62-5.2h8.92c4,0,8.65-1.31,8.65-7.74H54.58c-10.35,0-16.3,5.24-16.3,12.76,0,7,4.46,10.9,12.36,13l8.73,2.33c3.63,1,4.88,3.24,4.88,5.56,0,3.51-2.2,5.65-7.62,5.68l-16.78.14v7.63h17c10.39,0,16.32-5.57,16.32-12.9s-2.9-11-10.69-13.11"/><path class="cls-8" d="M231.17,189a94.83,94.83,0,0,1-15.67,4c-.1,0-.21.11-.21.21a.2.2,0,0,0,.09.19,6.67,6.67,0,0,0,3.6,1.34,17.5,17.5,0,0,0,6.54-.67,38.48,38.48,0,0,0,6.82-2.73,44.41,44.41,0,0,0,6.41-3.74,17.63,17.63,0,0,0,4.21-3.86c.07-.17,0-.21-.08-.25A49.18,49.18,0,0,1,231.17,189m11.27-8.24c0-.18,0-.29-.1-.3-4.63,1.83-14.75,3.61-21.08,4.53-5.42.79-10.11.92-12.73,1.09l-1.16.06c-.14.07-.25.14-.25.23a.18.18,0,0,0,.13.21A7.78,7.78,0,0,0,212.3,189c3.54.52,8.75-.35,15.33-2.24a72.27,72.27,0,0,0,14.81-6m-.71,8.08c-4,3.86-9.76,6-11.71,6.61-.13,0-.17.11-.17.2a.43.43,0,0,0,.08.24c.34.14,2.71,1.42,7.13-.8,2.51-1.26,3.81-3.32,4.94-6a.24.24,0,0,0-.11-.27.3.3,0,0,0-.16.06m-22.38-57.21a10.26,10.26,0,0,0,4.53,2.74l.11.07c.58.12,31.35,8.35,39.46,10.61,3.53,1,6.38,1.75,7.69,2.13.16,0,.25,0,.25-.14a.13.13,0,0,0-.11-.14c-5.15-2.09-36.84-14.4-48.8-19l-5-2a.31.31,0,0,0-.31,0,.25.25,0,0,0-.06.18,10.72,10.72,0,0,0,1.31,4.33,13,13,0,0,0,.94,1.19m1.39-12.15a8,8,0,0,0,2.3,2c.42.21.76.5,1.2.69l2.82,1.47c1.62.79,25.37,12,28.85,13.71,4.08,2.06,8.19,4,10,4.93.15,0,.21,0,.19-.21-4.42-2.81-21.41-13.62-33.49-21.18l-8.76-5.29-1.55-1-3-1.78a.5.5,0,0,0-.29,0,.2.2,0,0,0-.1.19,11,11,0,0,0,.58,4.33,10.05,10.05,0,0,0,1.2,2.19m54.14,30.7-53.78-9.81a.4.4,0,0,0-.3.15c-.06.06,0,.18,0,.28a9.24,9.24,0,0,0,6.08,6.21,4.5,4.5,0,0,0,1.08.17s42.15,3,46.86,3.29c.1,0,.19,0,.19-.13s-.06-.16-.13-.16M264.45,153c-4.37,0-9.8,0-14.85,0-6.76,0-17.53,0-17.53,0a.18.18,0,0,0-.18.09.13.13,0,0,0,0,.21,7.64,7.64,0,0,0,1.46,2.33,6.9,6.9,0,0,0,4.31,2.33h.55a2.4,2.4,0,0,0,.57-.06c.18,0,32.25-4.38,34-4.65.06,0,.13-.1.13-.13s-.07-.18-.13-.18c-1.53.05-4.55.05-8.36.05m5.91,3.21c-2,.57-9.53,2.5-16.21,4.13-5.81,1.49-12.26,3.24-12.26,3.24-.69.17-.41.45-.37.53.15.27.58.84,1,1.61,1.05,1.72,2.45,1.49,3.73,1.07.23-.06,23.25-9.57,24.34-10.31.14-.06,0-.14,0-.21s-.11-.06-.19-.06m-10.28,16c-3.06,2.54-7.72,6.53-12.53,10.59a3.16,3.16,0,0,0-.88,1.89,26.91,26.91,0,0,1-1,3.14c-.15.38,0,.56.42.17,3.72-4,11.95-13,14.17-15.57.07-.16,0-.27-.1-.27Zm-5.18-3.74c-2.78,1.66-6.26,3.59-8.06,4.69-.19.13-.4.13-.28.68a9.84,9.84,0,0,1,.11,1.15c.21,2.66,1.32,2.39,2.91,1.17l.19-.17c5.57-4.53,15.85-13.12,18.1-15,0-.17,0-.25-.09-.25-2.22,1.3-8,4.81-12.88,7.75"/></g></g></svg> 
     </div>
+  </div>
+  
 </div>

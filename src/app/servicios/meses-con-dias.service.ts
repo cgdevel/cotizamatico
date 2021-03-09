@@ -85,7 +85,7 @@ getMesesconDuracion(annio?: string){
       return this.Months;
       }
   } else {
-    // console.log(annio);
+    console.log(annio);
     this.year = Number(annio);
     // console.log(this.year);
     this.year % 4 === 0  ? (this.year % 100 === 0 ? (this.year % 400 === 0 ? (this.bisiesto = true) :

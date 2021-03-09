@@ -11,9 +11,9 @@
 
     <app-ase-axxa *ngIf="nombraseguradora=='AXA SEG'"  [Dia]="fechanacimiento.dia" [Mes]="fechanacimiento.mes" [ApellidoP]="ApePateCliente" [ApellidoM]="ApeMateCliente" [Nombre]="ClienteNomb" [edad]="fechanacimiento.anio" [CP]="codigopostal" [mujercontrata]="mujer" [hombrecontrata]="hombre" [empresacontrata]="empresa" [Nombre]="nombre" [generarfcaccu]="sisirve" [Pago]="FormadePago"></app-ase-axxa>
     <app-ase-chubb *ngIf="nombraseguradora=='CHUBB'" [Dia]="fechanacimiento.dia" [Mes]="fechanacimiento.mes" [ApellidoP]="ApePateCliente" [ApellidoM]="ApeMateCliente" [Nombre]="ClienteNomb" [edad]="fechanacimiento.anio" [CP]="codigopostal" [mujercontrata]="mujer" [hombrecontrata]="hombre" [empresacontrata]="empresa" [Nombre]="nombre" [generarfcaccu]="sisirve" [Pago]="FormadePago"></app-ase-chubb>
-    <app-ase-sura *ngIf="nombraseguradora=='SURA'" ></app-ase-sura>
-    <app-ase-zurcih *ngIf="nombraseguradora=='ZURICH'" ></app-ase-zurcih>
-    <app-ase-mapfre *ngIf="nombraseguradora=='MAPFRE T'" ></app-ase-mapfre>
+    <app-ase-sura *ngIf="nombraseguradora=='SURA'" [Dia]="fechanacimiento.dia" [Mes]="fechanacimiento.mes" [ApellidoP]="ApePateCliente" [ApellidoM]="ApeMateCliente" [Nombre]="ClienteNomb" [edad]="fechanacimiento.anio" [CP]="codigopostal" [mujercontrata]="mujer" [hombrecontrata]="hombre" [empresacontrata]="empresa" [Nombre]="nombre" [Pago]="FormadePago"></app-ase-sura>
+    <app-ase-zurcih *ngIf="nombraseguradora=='ZURICH'" [Dia]="fechanacimiento.dia" [Mes]="fechanacimiento.mes" [ApellidoP]="ApePateCliente" [ApellidoM]="ApeMateCliente" [Nombre]="ClienteNomb" [edad]="fechanacimiento.anio" [CP]="codigopostal" [mujercontrata]="mujer" [hombrecontrata]="hombre" [empresacontrata]="empresa" [Nombre]="nombre" [generarfcaccu]="sisirve" [Pago]="FormadePago"></app-ase-zurcih>
+    <app-ase-mapfre *ngIf="nombraseguradora=='MAPFRE T'" [Dia]="fechanacimiento.dia" [Mes]="fechanacimiento.mes" [ApellidoP]="ApePateCliente" [ApellidoM]="ApeMateCliente" [Nombre]="ClienteNomb" [edad]="fechanacimiento.anio" [CP]="codigopostal" [mujercontrata]="mujer" [hombrecontrata]="hombre" [empresacontrata]="empresa" [Nombre]="nombre" [generarfcaccu]="sisirve" [Pago]="FormadePago" ></app-ase-mapfre>
     <app-ase-qualitas *ngIf="nombraseguradora=='QUALITAS'" ></app-ase-qualitas>
     <app-ase-banorte *ngIf="nombraseguradora=='BANORTE'" ></app-ase-banorte>
     <app-ase-hdi *ngIf="nombraseguradora=='HDI'" ></app-ase-hdi>

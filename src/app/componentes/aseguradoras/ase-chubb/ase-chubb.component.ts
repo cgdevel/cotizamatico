@@ -8,7 +8,7 @@ import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
   templateUrl: './ase-chubb.component.html',
   styleUrls: ['./ase-chubb.component.css']
 })
-export class AseCHUBBComponent implements OnInit { 
+export class AseCHUBBComponent implements OnInit {
   @Input() mujercontrata: boolean;
   @Input() hombrecontrata: boolean;
   @Input() empresacontrata: boolean;
@@ -21,19 +21,19 @@ export class AseCHUBBComponent implements OnInit {
   @Input()  Dia: number;
   @Input() generarfcaccu: boolean;
   @Input() Pago = '';
-  mediopag='';
-  NombreBenefPrefFis='';
-  CorreoBenefPrefFis='';
-  RFCBenefPrefFis='';  
-  BenefPrefMor='';
-  RFCBenefPrefMor='';
-  RaSocBenefPrefMor='';
+  mediopag = '';
+  NombreBenefPrefFis = '';
+  CorreoBenefPrefFis = '';
+  RFCBenefPrefFis = '';
+  BenefPrefMor = '';
+  RFCBenefPrefMor = '';
+  RaSocBenefPrefMor = '';
   ocupacionsel: CatalogoModel;
   estadocivilsel: CatalogoModel;
-  MediosDePago= [
-    { id: 1, name: 'Efectivo',avatar:'../../../assets/iconos/iconmonstr-banknote-15.svg' },
-    { id: 2, name: 'Tarjeta de crédito',avatar:'../../../assets/iconos/iconmonstr-credit-card-6.svg' },
-    { id: 3, name: 'Tarjeta de débito' ,avatar:'../../../assets/iconos/iconmonstr-credit-card-6.svg'}
+  MediosDePago = [
+    { id: 1, name: 'Efectivo', avatar: '../../../assets/iconos/iconmonstr-banknote-15.svg' },
+    { id: 2, name: 'Tarjeta de crédito', avatar: '../../../assets/iconos/iconmonstr-credit-card-6.svg' },
+    { id: 3, name: 'Tarjeta de débito' , avatar: '../../../assets/iconos/iconmonstr-credit-card-6.svg'}
 ];
   Nacion = new Array<RequestNacionalidad>();
   Ocup = new Array<CatalogoModel>();
@@ -93,93 +93,93 @@ export class AseCHUBBComponent implements OnInit {
         }); // suscribecierra
     }
     getrfc(si?: boolean, apep ?: string, apem ?: string, nom?: string){
-      this.valClienteRFCNoValido= false;
-      this.valClienteRFCVacio= false;
+      this.valClienteRFCNoValido = false;
+      this.valClienteRFCVacio = false;
     // console.log(si);
-    if (si === true) {
-      this.RFC = '';
-      this.Nombre = this.Nombre.toUpperCase();
-      console.log(this.nacionalidadsel.NacString + ' ' + this.Nombre);
-      if (this.nacionalidadsel.NacString !== 'MEXICANA'){
-          const str = String(this.naciye);
-          if (this.nummonth < 10 && this.Dia < 10) {
-            this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + '0' + this.Dia + 'XXX';
-          }else {  if (this.nummonth >= 10 &&  this.Dia >= 10) {
-              this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + this.nummonth + this.Dia + 'XXX';
-            }else {if (this.nummonth < 10 &&  this.Dia >= 10) {
-                this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + this.Dia + 'XXX';
-              }else { if (this.nummonth >= 10 &&  this.Dia < 10) {
-                  this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + this.nummonth + '0' + this.Dia + 'XXX';
-                }
-              }
-            }
-          }
-        }else {
-          const str = String(this.naciye);
-          const n = this.Nombre.indexOf(' ');
-          const strnmate = this.Nombre.charAt(n + 1);
-          const t = this.Nombre.lastIndexOf(' ') + 1;
-          const strnom = this.Nombre.charAt(t);
-          const strnpate = this.Nombre.charAt(0) + this.Nombre.charAt(1);
-          if (this.nummonth < 10 && this.Dia < 10){
-            this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + '0' + this.Dia + 'XXX';
-          }else {
-            if (this.nummonth < 10 && this.Dia >= 10) {
-              this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + this.Dia + 'XXX';
-            } else {
-              if (this.nummonth >= 10 && this.Dia < 10) {
-                this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + this.nummonth + '0' + this.Dia + 'XXX';
-              }else {
-                if (this.nummonth >= 10 && this.Dia >= 10) {
-                  this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + this.nummonth + this.Dia + 'XXX';
-                }
-              }
-            }
-          }
-        }
-    } else {
-      if (this.ApellidoM !== '' && this.ApellidoP !== '' && this.Nombre !== '' &&  this.nacionalidadsel.NacString !== ''){
+      if (si === true) {
+        this.RFC = '';
+        this.Nombre = this.Nombre.toUpperCase();
+        console.log(this.nacionalidadsel.NacString + ' ' + this.Nombre);
         if (this.nacionalidadsel.NacString !== 'MEXICANA'){
-          const str = String(this.naciye);
-          if (this.nummonth < 10 && this.Dia < 10) {
-            this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + '0' + this.Dia + 'XXX';
-          }else {  if (this.nummonth >= 10 &&  this.Dia >= 10) {
-              this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + this.nummonth + this.Dia + 'XXX';
-            }else {if (this.nummonth < 10 &&  this.Dia >= 10) {
-                this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + this.Dia + 'XXX';
-              }else { if (this.nummonth >= 10 &&  this.Dia < 10) {
-                  this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + this.nummonth + '0' + this.Dia + 'XXX';
+            const str = String(this.naciye);
+            if (this.nummonth < 10 && this.Dia < 10) {
+              this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + '0' + this.Dia + 'XXX';
+            }else {  if (this.nummonth >= 10 &&  this.Dia >= 10) {
+                this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + this.nummonth + this.Dia + 'XXX';
+              }else {if (this.nummonth < 10 &&  this.Dia >= 10) {
+                  this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + this.Dia + 'XXX';
+                }else { if (this.nummonth >= 10 &&  this.Dia < 10) {
+                    this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + this.nummonth + '0' + this.Dia + 'XXX';
+                  }
+                }
+              }
+            }
+          }else {
+            const str = String(this.naciye);
+            const n = this.Nombre.indexOf(' ');
+            const strnmate = this.Nombre.charAt(n + 1);
+            const t = this.Nombre.lastIndexOf(' ') + 1;
+            const strnom = this.Nombre.charAt(t);
+            const strnpate = this.Nombre.charAt(0) + this.Nombre.charAt(1);
+            if (this.nummonth < 10 && this.Dia < 10){
+              this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + '0' + this.Dia + 'XXX';
+            }else {
+              if (this.nummonth < 10 && this.Dia >= 10) {
+                this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + this.Dia + 'XXX';
+              } else {
+                if (this.nummonth >= 10 && this.Dia < 10) {
+                  this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + this.nummonth + '0' + this.Dia + 'XXX';
+                }else {
+                  if (this.nummonth >= 10 && this.Dia >= 10) {
+                    this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + this.nummonth + this.Dia + 'XXX';
+                  }
                 }
               }
             }
           }
-        }else{
-          nom = nom.toUpperCase();
-          apep = apep.toUpperCase();
-          apem = apem.toUpperCase();
-          const str = String(this.naciye);
-          const strnpate = apep.charAt(0) + apep.charAt(1);
-          const strnmate = apem.charAt(0);
-          const strnom = nom.charAt(0);
-          if (this.nummonth < 10 && this.Dia < 10){
-            this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + '0' + this.Dia + 'XXX';
-          }else {
-            if (this.nummonth < 10 && this.Dia >= 10) {
-              this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + this.Dia + 'XXX';
-            } else {
-              if (this.nummonth >= 10 && this.Dia < 10) {
-                this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + this.nummonth + '0' + this.Dia + 'XXX';
-              }else {
-                if (this.nummonth >= 10 && this.Dia >= 10) {
-                  this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + this.nummonth + this.Dia + 'XXX';
+      } else {
+        if (this.ApellidoM !== '' && this.ApellidoP !== '' && this.Nombre !== '' &&  this.nacionalidadsel.NacString !== ''){
+          if (this.nacionalidadsel.NacString !== 'MEXICANA'){
+            const str = String(this.naciye);
+            if (this.nummonth < 10 && this.Dia < 10) {
+              this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + '0' + this.Dia + 'XXX';
+            }else {  if (this.nummonth >= 10 &&  this.Dia >= 10) {
+                this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + this.nummonth + this.Dia + 'XXX';
+              }else {if (this.nummonth < 10 &&  this.Dia >= 10) {
+                  this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + this.Dia + 'XXX';
+                }else { if (this.nummonth >= 10 &&  this.Dia < 10) {
+                    this.RFC = 'XXXX' + str.charAt(2) + str.charAt(3) + this.nummonth + '0' + this.Dia + 'XXX';
+                  }
+                }
+              }
+            }
+          }else{
+            nom = nom.toUpperCase();
+            apep = apep.toUpperCase();
+            apem = apem.toUpperCase();
+            const str = String(this.naciye);
+            const strnpate = apep.charAt(0) + apep.charAt(1);
+            const strnmate = apem.charAt(0);
+            const strnom = nom.charAt(0);
+            if (this.nummonth < 10 && this.Dia < 10){
+              this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + '0' + this.Dia + 'XXX';
+            }else {
+              if (this.nummonth < 10 && this.Dia >= 10) {
+                this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + '0' + this.nummonth + this.Dia + 'XXX';
+              } else {
+                if (this.nummonth >= 10 && this.Dia < 10) {
+                  this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + this.nummonth + '0' + this.Dia + 'XXX';
+                }else {
+                  if (this.nummonth >= 10 && this.Dia >= 10) {
+                    this.RFC = strnpate + strnmate + strnom + str.charAt(2) + str.charAt(3) + this.nummonth + this.Dia + 'XXX';
+                  }
                 }
               }
             }
           }
         }
       }
-    }
-    }// rfc
+      }// rfc
     onNumSeChange(){
       if (this.numdeserie === '') {
         this.valClienteNumSerieVacio = true;
@@ -205,29 +205,29 @@ export class AseCHUBBComponent implements OnInit {
       }
     }
     onRFCChange(){
-      if (this.RFC=='' && this.nacionalidadsel.NacString!='') {
-        this.valClienteRFCNoValido= true;
-        this.valClienteRFCVacio= true;
+      if (this.RFC === '' && this.nacionalidadsel.NacString !== '') {
+        this.valClienteRFCNoValido = true;
+        this.valClienteRFCVacio = true;
       }else{
-        if (this.RFC!='' && this.nacionalidadsel.NacString=='MEXICANA') {
-          this.valClienteRFCVacio=false;
-          const reg =/([A-Z]{4})([0-9]{9})/;
+        if (this.RFC !== '' && this.nacionalidadsel.NacString === 'MEXICANA') {
+          this.valClienteRFCVacio = false;
+          const reg = /([A-Z]{4})([0-9]{9})/;
           this.rfcbool = reg.test(this.RFC);
-          console.log(this.rfcbool)
-          this.rfcbool ? this.valClienteRFCNoValido=false : this.valClienteRFCNoValido=true;
+          console.log(this.rfcbool);
+          this.rfcbool ? this.valClienteRFCNoValido = false : this.valClienteRFCNoValido = true;
         }
       }
     }
     onNumExtChange(){
-      if (this.NomExterior=='') {
-        this.valClienteNumExtVacio=true;
+      if (this.NomExterior === '') {
+        this.valClienteNumExtVacio = true;
       } else {
-        if(this.NomExterior.length<5){
-          this.valClienteNumExtVacio=false;
-          this.valClienteNumExtNoValido=true;
+        if (this.NomExterior.length < 5){
+          this.valClienteNumExtVacio = false;
+          this.valClienteNumExtNoValido = true;
         }else{
-          this.valClienteNumExtNoValido=false;
-          this.valClienteNumExtVacio=false;
+          this.valClienteNumExtNoValido = false;
+          this.valClienteNumExtVacio = false;
         }
       }
     }
@@ -238,13 +238,13 @@ export class AseCHUBBComponent implements OnInit {
       this. showMor = !this. showMor;
     }
     ngOnInit(): void {
-      this.mediopag=this.MediosDePago[0].name;
+      this.mediopag = this.MediosDePago[0].name;
       this.valClienteNumSerieVacio = false;
       this.valClienteNumSerieNoValido = false;
-      this.valClienteRFCNoValido= false;
-      this.valClienteRFCVacio= false;
-      this.valClienteNumExtNoValido= false;
-      this.valClienteNumExtVacio= false;
+      this.valClienteRFCNoValido = false;
+      this.valClienteRFCVacio = false;
+      this.valClienteNumExtNoValido = false;
+      this.valClienteNumExtVacio = false;
       this.meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
       const today = new Date();
       this.year = today.getFullYear();
@@ -270,12 +270,12 @@ export class AseCHUBBComponent implements OnInit {
       }
       this.getUbicacion();
       this.Nacion = this.InfovehiculoService.getNacionalidades();
-      this.Ocup=this.InfovehiculoService.getOcupaciones();
-      this.EsCivs=this.InfovehiculoService.getEstadoCivil();
+      this.Ocup = this.InfovehiculoService.getOcupaciones();
+      this.EsCivs = this.InfovehiculoService.getEstadoCivil();
       this.getrfc(this.generarfcaccu);
       console.log(this.Ocup);
       console.log(this.mujer);
-      
+
       // console.log(this.InfovehiculoService.Nacionalidades)
       // console.log(this.NacionalitiesService.getNacionalidades());
     }// Init

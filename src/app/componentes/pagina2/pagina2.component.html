@@ -1059,60 +1059,61 @@
             <div class="col">
               <!-- {{ item.Compania }} -->
               <img
-                src="../../../assets/iconosase/AXA.svg"
-                style="width: 140px"
-                *ngIf="item.Compania === 'AXA SEG'"
+              src="../../../assets/iconosase/AXA.svg"
+              style="width: 140px"
+              *ngIf="item.Compania === 'AXA SEG'"
               />
               <img
-                src="../../../assets/iconosase/SURA.svg"
-                style="width: 140px"
-                *ngIf="item.Compania === 'CHUBB'"
+              src="../../../assets/iconosase/SURA.svg"
+              style="width: 140px"
+              *ngIf="item.Compania === 'CHUBB'"
               />
               <img
-                src="../../../assets/iconosase/ZURICH.svg"
-                style="width: 140px"
-                *ngIf="item.Compania === 'SURA'"
+              src="../../../assets/iconosase/ZURICH.svg"
+              style="width: 140px"
+              *ngIf="item.Compania === 'SURA'"
               />
               <img
-                src="../../../assets/iconosase/CHUBB.svg"
-                style="width: 140px"
-                *ngIf="item.Compania === 'ZURICH'"
+              src="../../../assets/iconosase/CHUBB.svg"
+              style="width: 140px"
+              *ngIf="item.Compania === 'ZURICH'"
               />
               <img
-                src="../../../assets/iconosase/MAPFRE.svg"
-                style="width: 140px"
-                *ngIf="item.Compania === 'MAPFRE T'"
+              src="../../../assets/iconosase/MAPFRE.svg"
+              style="width: 140px"
+              *ngIf="item.Compania === 'MAPFRE T'"
               />
               <img
-                src="../../../assets/iconosase/QUALITAS.svg"
-                style="width: 140px"
-                *ngIf="item.Compania === 'QUALITAS'"
+              src="../../../assets/iconosase/QUALITAS.svg"
+              style="width: 140px"
+              *ngIf="item.Compania === 'QUALITAS'"
               />
               <img
-                src="../../../assets/iconosase/BANORTE.svg"
-                style="width: 140px"
-                *ngIf="item.Compania === 'BANORTE'"
+              src="../../../assets/iconosase/BANORTE.svg"
+              style="width: 140px"
+              *ngIf="item.Compania === 'BANORTE'"
               />
               <img
-                src="../../../assets/iconosase/HDI.svg"
-                style="width: 140px"
-                *ngIf="item.Compania === 'HDI'"
+              src="../../../assets/iconosase/HDI.svg"
+              style="width: 140px"
+              *ngIf="item.Compania === 'HDI'"
               />
               <img
-                src="../../../assets/iconosase/AFIRME.svg"
-                style="width: 140px"
-                *ngIf="item.Compania === 'AFIRME'"
+              src="../../../assets/iconosase/AFIRME.svg"
+              style="width: 140px"
+              *ngIf="item.Compania === 'AFIRME'"
               />
               <img
-                src="../../../assets/iconosase/ANA.svg"
-                style="width: 140px"
-                *ngIf="item.Compania === 'ANA SEG'"
+              src="../../../assets/iconosase/ANA.svg"
+              style="width: 140px"
+              *ngIf="item.Compania === 'ANA SEG'"
               />
               <img
-                src="../../../assets/iconosase/AIG.svg"
-                style="width: 140px"
-                *ngIf="item.Compania === 'AIG MEX'"
+              src="../../../assets/iconosase/AIG.svg"
+              style="width: 140px"
+              *ngIf="item.Compania === 'AIG MEX'"
               />
+              <input (click)="sliders(item.Compania)" type="checkbox" class="form-check-input" id="BeneficiarioPreferenteFis">
             </div>
             <div class="col pt-3">
               <button
@@ -1267,7 +1268,7 @@
             <div class="col-12">
               <p class="mb-0 d-flex justify-content-between">
                 R.C Catastrófica
-                <label> {{ this.recica }} %</label>
+               
               </p>
               <input
                 type="range"
@@ -1317,7 +1318,6 @@
               />
             </div>
           </div>
-
           <div class="row mb-4">
             <div class="col-12">
               <p class="mb-0 d-flex justify-content-between">
@@ -1336,7 +1336,6 @@
               />
             </div>
           </div>
-
           <div class="row mb-4">
             <div class="col-12">
               <span class="my-1">Auto sustituto</span>
@@ -1447,6 +1446,50 @@
               </div>
             </div>
           </div>
+
+          <div class="row mb-4">
+            <div class="col-12">
+              Daños Materiales
+            </div>
+            <p class="mb-0 d-flex justify-content-between">
+              <label> {{ this.recica }} %</label>
+            </p>
+              <input
+                              type="range"
+                              min="0"
+                              max="100"
+                              value="0"
+                              step="10"
+                              class="slider"
+                              id="RangeRCC"
+                             
+                            />
+          </div>
+          Rotura de Cristales
+          Robo Total
+          Responsabilidad Civil por Daños a Terceros
+          Responsabilidad Civil para Personas en Exceso
+          Gastos Médicos a Ocupantes
+          Servicios de Asistencia
+          Defensa Legal
+          Responsabilidad Civil en el Extranjero
+          Responsabilidad Civil por Daños a Ocupantes
+          Responsabilidad Civil Adaptaciones
+          Equipo Especial
+          Adaptaciones y Conversiones
+          Accidentes Automovilísticos al Conductor
+          Extensión de Responsabilidad Civil
+          Auto Consentido
+          Eliminación de Deducible y Devolución de Primas
+          Responsabilidad Civil Remolque
+          Multas y Corralones
+          Gastos de Transporte
+          Deducible 0% con Tercero Responsable
+          Robo Parcial Autopartes
+          
+
+
+
         </div>
       </div>
     </div>
