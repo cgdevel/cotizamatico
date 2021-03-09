@@ -1269,22 +1269,7 @@
         <div class="card-body range__container">
           <div class="row mb-4">
             <div class="col-12">
-              <div class="slidecontainer">
-                <p class="mb-0"[ngbTooltip]="materialDamage">Daños Materiales</p>
-                <p class="mb-0 d-flex justify-content-between">
-                  <label> {{ this.danmat }} %</label>
-                </p>
-                  <input
-                    type="range"
-                    min="0"
-                    max="100"
-                    value="this.danmat"
-                    step="10"
-                    class="slider"
-                    id="RangeDanMat"
-                    (change)="DaMate($event)"
-                  />
-            </div>
+              
               
             </div>
               <ng-template #materialDamage>
