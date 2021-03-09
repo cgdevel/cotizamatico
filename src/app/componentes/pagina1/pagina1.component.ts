@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { fromEvent, Observable, Subscription } from 'rxjs';
+import { CookieService } from 'ngx-cookie';
+import { Observable, Subscription } from 'rxjs';
 import { FechasModel } from 'src/app/interphaces/models/Fechas.model';
 import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
 
@@ -27,10 +28,11 @@ export class Pagina1Component implements OnInit {
   clienteTipoPersona: string;
   clienteCodigoPostal: string;
   clienteFechaNacimiento: FechasModel;
+  clienteAviso: boolean;
 
   datosValidos: boolean;
 
-  constructor() {}
+  constructor(private cookieService: CookieService) {}
 
   ngOnInit(): void {
     this.itemVacio = { sDato: '', sLlave: '' };
@@ -45,6 +47,9 @@ export class Pagina1Component implements OnInit {
     this.clienteFechaNacimiento = { anio: '', dia: '', mes: '' };
     this.clienteCodigoPostal = '';
     this.datosValidos = false;
+    this.clienteAviso = false;
+    localStorage.clear();
+    this.cookieService.removeAll();
   }
 
   handlerVehiculoTipo(e: CatalogoModel) {
@@ -141,5 +146,4 @@ export class Pagina1Component implements OnInit {
 
     this.datosValidos = true;
   }
-
 }
