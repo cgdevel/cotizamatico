@@ -14,6 +14,12 @@ export class Pagina1Component implements OnInit {
   verCarousle: boolean;
   resizeObservable$: Observable<Event>;
   resizeSubscription$: Subscription;
+
+  /* Asociados */
+  catAsociados: CatalogoModel[];
+  asociado: CatalogoModel;
+  mostraComboAsociados: boolean;
+
   /* Valores vehículo */
   vehiculoTipo: CatalogoModel;
   vehiculoAnio: CatalogoModel;
@@ -48,6 +54,10 @@ export class Pagina1Component implements OnInit {
     this.clienteCodigoPostal = '';
     this.datosValidos = false;
     this.clienteAviso = false;
+
+    this.mostraComboAsociados = false;
+    this.asociado = this.itemVacio;
+
     localStorage.clear();
     this.cookieService.removeAll();
   }
@@ -142,6 +152,13 @@ export class Pagina1Component implements OnInit {
     }
     if (this.clienteCodigoPostal === '') {
       return;
+    }
+    console.log('validando datos - asociado');
+    if (this.mostraComboAsociados) {
+      console.log('validando datos - asociado - si');
+      if (this.asociado === this.itemVacio) {
+        return;
+      }
     }
 
     this.datosValidos = true;

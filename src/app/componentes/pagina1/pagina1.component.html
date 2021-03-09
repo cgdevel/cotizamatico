@@ -8,6 +8,27 @@
     </div>
   </div>
 
+  <div class="container mb-4 mx-0 mw-100" id="inave" *ngIf="mostraComboAsociados">
+    <div class="col-12 col-md-4">
+      <div class="form-group">
+        <p class="m-0 mb-2">Asociados</p>
+        <ng-select id="cmbAgente" [items]="catAsociados" bindLabel="sDato" placeholder="ASOCIADO" appendTo="body"
+          [searchable]="false" [clearable]="false" [closeOnSelect]="true" [(ngModel)]="asociado"
+          [ngbTooltip]="ttTipoVehiculo" tooltipClass="my-custom-class">
+          <ng-option ng-options="item in catAsociados">
+            <!-- {{ item.sDato }} -->
+          </ng-option>
+          <ng-template #ttTipoVehiculo>
+            <b>{{asociado === undefined ? '' : asociado.sDato}}</b>
+          </ng-template>
+          <ng-template ng-notfound-tmp>
+            <div class="ng-option disabled">No hay agentes encontrados</div>
+          </ng-template>
+        </ng-select>
+      </div>
+    </div>
+  </div>
+
   <app-infovehiculo (emitTipoVehiculo)="handlerVehiculoTipo($event)" (emitAnioVehiculo)="handlerVehiculoAnio($event)"
     (emitMarcaVehiculo)="handlerVehiculoMarca($event)" (emitDescripcion)="handlerVehiculoDescripcion($event)">
   </app-infovehiculo>
@@ -34,7 +55,8 @@
             Para mayor información y detalle del aviso de privacidad acude a la siguiente liga:
           </p>
           <p>
-            <a href="https://www.aarco.com.mx/aviso-de-privacidad/" target="_blank">https://www.aarco.com.mx/aviso-de-privacidad/</a>
+            <a href="https://www.aarco.com.mx/aviso-de-privacidad/"
+              target="_blank">https://www.aarco.com.mx/aviso-de-privacidad/</a>
           </p>
         </label>
       </div>
