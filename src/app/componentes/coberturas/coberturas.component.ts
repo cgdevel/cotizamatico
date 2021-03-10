@@ -1,29 +1,19 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-coberturas',
   templateUrl: './coberturas.component.html',
-  styleUrls: ['./coberturas.component.css']
+  styleUrls: ['./coberturas.component.css'],
 })
 export class CoberturasComponent implements OnInit {
-  @Output() MaterialDamage = new EventEmitter<  number >();
-  constructor() { }
-  materialDamage = 0;
-  @Input() totalTheft = 0;
-  @Input () cobertura: number;
-  ngOnInit(): void {
+  @Input() cobertura: number;
+  materialDamage: number = 0;
+
+  constructor() {}
+  ngOnInit(): void {}
+
+  setMaterialDamage(event) {
+    console.log(this.materialDamage);
+    this.materialDamage = event.target.valueAsNumber;
   }
-
-//  (event){
-//     this.rcocu = event.target.checked;
-//     // console.log('R.C de ocupantes:'+' '+this.rcocu)
-//    }
-
-materialDamageEvent(event){
-  this. materialDamage = event.target.valueAsNumber;
-  this.MaterialDamage.emit(this.materialDamage);
- }
- totalTheftEvent(event){
-   this.totalTheft= event.target.valueAsNumber;
- }
 }

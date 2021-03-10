@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
 import { FechasModel } from 'src/app/interphaces/models/Fechas.model';
@@ -11,40 +18,43 @@ import AseguradoraCobJ from '../../interphaces/aseguradoracob';
 @Component({
   selector: 'app-pagina2',
   templateUrl: './pagina2.component.html',
-  styleUrls: ['./pagina2.component.css']
+  styleUrls: ['./pagina2.component.css'],
 })
 export class Pagina2Component implements OnInit {
-  @Output() emitFormaPago = new EventEmitter<  string >();
-  constructor( private route: ActivatedRoute , private infovehiculoService: InfovehiculoService) {}
+  @Output() emitFormaPago = new EventEmitter<string>();
+  constructor(
+    private route: ActivatedRoute,
+    private infovehiculoService: InfovehiculoService
+  ) {}
   AseguradorasPoDesc: Aseguradoras[] = [];
   Aseguradoras: Aseguradoras[] = [];
   aseguradora: string;
   pago = 'Anual';
   robototal = 0;
-  cobertura: number;
+  cobertura: number = 2;
   array: AseguradoraCobJ[] = [];
   // VARIABLE DE LA QUE DEPENDE EDITAR DATOS
   show = false;
   // Variables a las que asigno datos de pagina1
-  vermodelo: CatalogoModel ;
-  vermarca: CatalogoModel ;
-  verdescripcion: CatalogoModel ;
-  veranno: CatalogoModel ;
+  vermodelo: CatalogoModel;
+  vermarca: CatalogoModel;
+  verdescripcion: CatalogoModel;
+  veranno: CatalogoModel;
   nombre: any;
   email: any;
   telefono: any;
   genero: any;
   codigopostal: any;
-  fechanac: FechasModel ;
-   // Valores botón tipo de cobertura
-   ampliaplus = false;
-   amplia = false;
-   limitada = false;
-   basica = false;
-   statusAP = 'NoSelected';
-   statusA = 'NoSelected';
-   statusL = 'NoSelected';
-   statusB = 'NoSelected';
+  fechanac: FechasModel;
+  // Valores botón tipo de cobertura
+  ampliaplus = false;
+  amplia = false;
+  limitada = false;
+  basica = false;
+  statusAP = 'NoSelected';
+  statusA = 'NoSelected';
+  statusL = 'NoSelected';
+  statusB = 'NoSelected';
   width: any;
   una: any;
   // Valores botón descuento
@@ -63,123 +73,123 @@ export class Pagina2Component implements OnInit {
   statusT = 'NoSelected';
   statusS = 'NoSelected';
   statusAn = 'NoSelected';
- // Valores del switch
- as: boolean;
- des: boolean;
- erc: boolean;
- rcext: boolean;
- rcocu: boolean;
- // VARIABLES PARA EVENT EMITTER
- modelo: CatalogoModel;
- marca: CatalogoModel;
- descripcion: CatalogoModel;
- anno: CatalogoModel;
+  // Valores del switch
+  as: boolean;
+  des: boolean;
+  erc: boolean;
+  rcext: boolean;
+  rcocu: boolean;
+  // VARIABLES PARA EVENT EMITTER
+  modelo: CatalogoModel;
+  marca: CatalogoModel;
+  descripcion: CatalogoModel;
+  anno: CatalogoModel;
   // Funciones cobertura
-  Ampliaplus( ) {
+  Ampliaplus() {
     // tiene selected this.statusAP
-    this. ampliaplus = !this. ampliaplus;
+    this.ampliaplus = !this.ampliaplus;
     this.amplia = false;
     this.limitada = false;
     this.basica = false;
     this.statusA = 'NoSelected';
     this.statusL = 'NoSelected';
     this.statusB = 'NoSelected';
-    this.statusAP = this. ampliaplus ? 'Selected'  : 'NoSelected';
+    this.statusAP = this.ampliaplus ? 'Selected' : 'NoSelected';
     this.cobertura = 0;
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
     // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
     // console.log("Básica :"+' '+this.basica+' '+this.statusB)
   }
-  Amplia( ) {
+  Amplia() {
     // tiene selected this.statusA
-    this. amplia = !this. amplia;
+    this.amplia = !this.amplia;
     this.ampliaplus = false;
     this.limitada = false;
     this.basica = false;
     this.statusAP = 'NoSelected';
     this.statusL = 'NoSelected';
     this.statusB = 'NoSelected';
-    this.statusA = this. amplia ? 'Selected' : 'NoSelected';
+    this.statusA = this.amplia ? 'Selected' : 'NoSelected';
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
     // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
     // console.log("Básica :"+' '+this.basica+' '+this.statusB)
   }
-  Limitada( ) {
+  Limitada() {
     // tiene selected this.statusL
-    this. limitada = !this. limitada;
+    this.limitada = !this.limitada;
     this.ampliaplus = false;
     this.amplia = false;
     this.basica = false;
     this.statusAP = 'NoSelected';
     this.statusA = 'NoSelected';
     this.statusB = 'NoSelected';
-    this.statusL = this. limitada ? 'Selected' : 'NoSelected' ;
+    this.statusL = this.limitada ? 'Selected' : 'NoSelected';
     // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
     // console.log("Básica :"+' '+this.basica+' '+this.statusB)
   }
-  Basica( ) {
+  Basica() {
     // tiene selected this.statusB
-    this. basica = !this. basica;
+    this.basica = !this.basica;
     this.ampliaplus = false;
     this.amplia = false;
     this.limitada = false;
     this.statusAP = 'NoSelected';
     this.statusA = 'NoSelected';
     this.statusL = 'NoSelected';
-    this.statusB = this. basica  ? 'Selected' : 'NoSelected' ;
+    this.statusB = this.basica ? 'Selected' : 'NoSelected';
     // console.log("Básica :"+' '+this.basica+' '+this.statusB)
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
     // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
   }
   // Funciones descuento
-  Descuentoalto( ) {
+  Descuentoalto() {
     // tiene selected this.statusDA
-    this. descALTO = !this. descALTO;
-    this. descMEDIO = false;
+    this.descALTO = !this.descALTO;
+    this.descMEDIO = false;
     this.statusDM = 'NoSelected';
-    this. descBAJO = false;
+    this.descBAJO = false;
     this.statusDB = 'NoSelected';
-    this.statusDA = this. descALTO ? 'Selected'  : 'NoSelected';
+    this.statusDA = this.descALTO ? 'Selected' : 'NoSelected';
     // console.log("Descuento Alto:"+' '+this.descALTO+' '+this.statusDA)
     // console.log("Descuento Medio :"+' '+this.descMEDIO+' '+this.statusDM)
     // console.log("Descuento Bajo :"+' '+this.descBAJO+' '+this.statusDB)
   }
- Descuentomedio( ) {
+  Descuentomedio() {
     // tiene selected this.statusDM
-    this. descMEDIO = !this. descMEDIO;
+    this.descMEDIO = !this.descMEDIO;
     this.descALTO = false;
     this.statusDA = 'NoSelected';
-    this. descBAJO = false;
+    this.descBAJO = false;
     this.statusDB = 'NoSelected';
-    this.statusDM = this. descMEDIO ? 'Selected' : 'NoSelected';
+    this.statusDM = this.descMEDIO ? 'Selected' : 'NoSelected';
     // console.log("Descuento Medio :"+' '+this.descMEDIO+' '+this.statusDM)
   }
-  Descuentobajo( ) {
+  Descuentobajo() {
     // tiene selected this.statusDB
-    this. descBAJO = !this. descBAJO;
+    this.descBAJO = !this.descBAJO;
     this.descALTO = false;
     this.statusDA = 'NoSelected';
-    this. descMEDIO = false;
+    this.descMEDIO = false;
     this.statusDM = 'NoSelected';
-    this.statusDB = this. descBAJO ? 'Selected' : 'NoSelected' ;
+    this.statusDB = this.descBAJO ? 'Selected' : 'NoSelected';
     // console.log("Descuento Bajo :"+' '+this.descBAJO+' '+this.statusDB)
   }
   // Funciones pago
-  Mensual( ) {
+  Mensual() {
     // tiene selected this.statusM
-    this. mensual = !this. mensual;
+    this.mensual = !this.mensual;
     this.trimestral = false;
     this.semestral = false;
     this.anual = false;
     this.statusT = 'NoSelected';
     this.statusS = 'NoSelected';
     this.statusAn = 'NoSelected';
-    this.statusM = this. mensual ? 'Selected'  : 'NoSelected';
+    this.statusM = this.mensual ? 'Selected' : 'NoSelected';
     // console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
     // console.log("Trimestral :"+' '+this.trimestral+' '+this.statusT)
     // console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
@@ -187,16 +197,16 @@ export class Pagina2Component implements OnInit {
     // this.emitFormaPago(  'Mensual' );
     this.pago = 'Mensual';
   }
-  Trimestral( ) {
+  Trimestral() {
     // tiene selected this.statusT
-    this. trimestral = !this. trimestral;
-    this. mensual = false;
+    this.trimestral = !this.trimestral;
+    this.mensual = false;
     this.semestral = false;
     this.anual = false;
     this.statusM = 'NoSelected';
     this.statusS = 'NoSelected';
     this.statusAn = 'NoSelected';
-    this.statusT = this. trimestral ? 'Selected' : 'NoSelected';
+    this.statusT = this.trimestral ? 'Selected' : 'NoSelected';
     // console.log("Trimestral :"+' '+this.trimestral+' '+this.statusT)
     // console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
     // console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
@@ -205,16 +215,16 @@ export class Pagina2Component implements OnInit {
     this.pago = 'Trimestral';
     console.log(this.emitFormaPago);
   }
-  Semestral( ) {
+  Semestral() {
     // tiene selected this.statusS
-    this. semestral = !this. semestral;
+    this.semestral = !this.semestral;
     this.mensual = false;
     this.trimestral = false;
     this.anual = false;
     this.statusM = 'NoSelected';
     this.statusT = 'NoSelected';
     this.statusAn = 'NoSelected';
-    this.statusS = this. semestral ? 'Selected' : 'NoSelected' ;
+    this.statusS = this.semestral ? 'Selected' : 'NoSelected';
     // console.log("Semestral :"+' '+this.semestral+' '+this.statusS)
     // console.log("Trimestral :"+' '+this.trimestral+' '+this.statusT)
     // console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
@@ -222,16 +232,16 @@ export class Pagina2Component implements OnInit {
     // this.emitFormaPago( 'Semestral' );
     this.pago = 'Semestral';
   }
-  Anual( ) {
+  Anual() {
     // tiene selected this.statusAn
-    this. anual = !this. anual;
+    this.anual = !this.anual;
     this.mensual = false;
     this.trimestral = false;
     this.semestral = false;
     this.statusM = 'NoSelected';
     this.statusT = 'NoSelected';
     this.statusS = 'NoSelected';
-    this.statusAn = this. anual  ? 'Selected' : 'NoSelected' ;
+    this.statusAn = this.anual ? 'Selected' : 'NoSelected';
     // console.log("Anual :"+' '+this.anual+' '+this.statusAn)
     // console.log("Trimestral :"+' '+this.trimestral+' '+this.statusT)
     // console.log("Mensual:"+' '+this.mensual+' '+this.statusM)
@@ -239,111 +249,111 @@ export class Pagina2Component implements OnInit {
     // this.emitFormaPago( 'Anual');
     this.pago = 'Anual';
   }
-  sliders( ase: string){
+  sliders(ase: string) {
     console.log(ase);
   }
 
- toggle(){
-  this. show = !this. show;
+  toggle() {
+    this.show = !this.show;
+  }
+  DanMaterial(e) {
+    this.robototal = e;
+    console.log(this.robototal);
+  }
+  guarda() {
+    this.show = false;
+    // console.log("Informacion asegurado")
+    // console.log(this.nombre)
+    // console.log(this.email)
+    // console.log(this.telefono)
+    // console.log(this.codigopostal)
+    // console.log(this.mesnaci)
+    // console.log(this.yearnaci)
+    // console.log(this.dianaci)
+    // console.log(this.strstatemu)
+    // console.log(this.boostatemu)
+    // console.log(this.strstatehom)
+    // console.log(this.boostatehom)
+    // console.log(this.strstateemp)
+    // console.log(this.boostateemp)
+    // console.log("Informacion vehículo página 1")
+    // console.log(this.vermodelo+' '+this.vermarca+' '+this.verdescripcion+' '+this.veranno)
+    // console.log("Informacion vehículo editada en página dos")
+    // console.log(this.modelo+' '+this.anno+' '+this.marca+' '+this.descripcion)
+    // console.log("Informacion vehículo actualizada")
+    this.vermodelo.sDato = this.modelo.sDato;
+    this.vermarca.sDato = this.marca.sDato;
+    this.veranno.sDato = this.anno.sDato;
+    this.verdescripcion.sDato = this.descripcion.sDato;
+    this.Aseguradoras = [];
+    this.Aseguradoras = this.getAsePorDescrip(this.descripcion.sLlave);
+    // console.log(this.vermodelo+' '+this.vermarca+' '+this.verdescripcion+' '+this.veranno)
+  }
+  // FUNCIONES EVENT EMITTER DE INFOVEHICULO
+  emitTipoVehiculo(e) {
+    // console.log(e);
+    this.modelo = e;
+  }
+  emitAnioVehiculo(e) {
+    // console.log(e);
+    this.anno = e;
+  }
+  emitMarcaVehiculo(e) {
+    // console.log(e);
+    this.marca = e;
+  }
+  emitDescripcion(e) {
+    // console.log(e);
+    this.descripcion = e;
+  }
+  afirme() {
+    this.aseguradora = 'AFIRME';
+    // console.log(this.aseguradora);
+    return this.aseguradora;
+  }
+  axxa() {
+    this.aseguradora = 'AXXA';
+    // console.log(this.aseguradora);
+    return this.aseguradora;
+  }
+  qualitas() {
+    this.aseguradora = 'QUALITAS';
+    // console.log(this.aseguradora);
+    return this.aseguradora;
+  }
 
- }
- DanMaterial(e){
-  this.robototal = e;
-  console.log(this.robototal)
- }
- guarda(){
-   this.show = false;
-  // console.log("Informacion asegurado")
-  // console.log(this.nombre)
-  // console.log(this.email)
-  // console.log(this.telefono)
-  // console.log(this.codigopostal)
-  // console.log(this.mesnaci)
-  // console.log(this.yearnaci)
-  // console.log(this.dianaci)
-  // console.log(this.strstatemu)
-  // console.log(this.boostatemu)
-  // console.log(this.strstatehom)
-  // console.log(this.boostatehom)
-  // console.log(this.strstateemp)
-  // console.log(this.boostateemp)
-  // console.log("Informacion vehículo página 1")
-  // console.log(this.vermodelo+' '+this.vermarca+' '+this.verdescripcion+' '+this.veranno)
-  // console.log("Informacion vehículo editada en página dos")
-  // console.log(this.modelo+' '+this.anno+' '+this.marca+' '+this.descripcion)
-  // console.log("Informacion vehículo actualizada")
-   this.vermodelo.sDato = this.modelo.sDato;
-   this.vermarca.sDato = this.marca.sDato;
-   this.veranno.sDato = this.anno.sDato;
-   this.verdescripcion.sDato = this.descripcion.sDato;
-   this.Aseguradoras = [];
-   this.Aseguradoras = this.getAsePorDescrip(this.descripcion.sLlave);
-   // console.log(this.vermodelo+' '+this.vermarca+' '+this.verdescripcion+' '+this.veranno)
- }
- // FUNCIONES EVENT EMITTER DE INFOVEHICULO
- emitTipoVehiculo(e) {
-  // console.log(e);
-  this.modelo = e;
-}
-emitAnioVehiculo(e) {
-  // console.log(e);
-  this.anno = e;
-}
-emitMarcaVehiculo(e) {
-  // console.log(e);
-  this.marca = e;
-}
-emitDescripcion(e) {
-  // console.log(e);
-  this.descripcion = e;
-}
-afirme(){
-  this.aseguradora = 'AFIRME';
-  // console.log(this.aseguradora);
-  return this.aseguradora;
-}
-axxa(){
-  this.aseguradora = 'AXXA';
-  // console.log(this.aseguradora);
-  return this.aseguradora;
-}
-qualitas(){
-  this.aseguradora = 'QUALITAS';
-  // console.log(this.aseguradora);
-  return this.aseguradora;
-
-}
-
- getAsePorDescrip(Desc: string ){
-  this.AseguradorasPoDesc = [];
-  this.infovehiculoService.getApiAseguradoras
-  ({
-     IdCotizamatico: Desc
-  })
-  .subscribe(
-    (cat) => {
-      if (cat === undefined) {
-        console.log('Error');
-      }
-      // console.log(cat);
-      for (let index = 0; index < cat.length; index++) {
-        const element = cat[index];
-        this.AseguradorasPoDesc.push( {IdModeloCotizamatico: element.IdModeloCotizamatico,
-          IdAseguradora: element.IdAseguradora,
-          Compania: element.Compania,
-          IdModeloAseguradora: element.IdModeloAseguradora,
-          Marca: element.Marca,
-          Submarca: element.Submarca,
-          Modelo: element.Modelo,
-          Descripcion: element.Descripcion} );
-      }
-    },
-    (err) => {
-      console.log('Error');
-    }
-  );
-  return this.AseguradorasPoDesc;
- }
+  getAsePorDescrip(Desc: string) {
+    this.AseguradorasPoDesc = [];
+    this.infovehiculoService
+      .getApiAseguradoras({
+        IdCotizamatico: Desc,
+      })
+      .subscribe(
+        (cat) => {
+          if (cat === undefined) {
+            console.log('Error');
+          }
+          // console.log(cat);
+          for (let index = 0; index < cat.length; index++) {
+            const element = cat[index];
+            this.AseguradorasPoDesc.push({
+              IdModeloCotizamatico: element.IdModeloCotizamatico,
+              IdAseguradora: element.IdAseguradora,
+              Compania: element.Compania,
+              IdModeloAseguradora: element.IdModeloAseguradora,
+              Marca: element.Marca,
+              Submarca: element.Submarca,
+              Modelo: element.Modelo,
+              Descripcion: element.Descripcion,
+            });
+          }
+        },
+        (err) => {
+          console.log('Error');
+        }
+      );
+    return this.AseguradorasPoDesc;
+  }
 
   ngOnInit(): void {
     // console.log(history.state)
@@ -365,15 +375,14 @@ qualitas(){
     this.descMEDIO = true;
     this.anual = true;
     this.una = history.state.sizeta;
-    for (let index = 0; AseguradoraCobJson.length<index ; index++) {
+    for (let index = 0; AseguradoraCobJson.length < index; index++) {
       const element = AseguradoraCobJson[index];
-        }
-    for (const nombre of  AseguradoraCobJson) {
-        console.log(nombre);
-        for (const cobertura of nombre.coberturas) {
-          console.log(cobertura.default);
-        }
+    }
+    for (const nombre of AseguradoraCobJson) {
+      console.log(nombre);
+      for (const cobertura of nombre.coberturas) {
+        console.log(cobertura.default);
       }
-      } // init
+    }
+  } // init
 }
-

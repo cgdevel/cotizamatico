@@ -1115,25 +1115,13 @@
               />
             </div>
             <div class="col">
-              <p>
-                 Responsabilidad Civil Catastrófica: $0,000
-              </p>
-              <p>
-                Responsabilidad Civil Bienes y Personas: $0,000
-              </p> 
-              <p>
-                Gastos Médicos Ocupantes: $0,000     
-              </p>
-              <p>
-                Asistencia Vial y Viajes: Amaparada
-              </p>
-              <p>
-                Defensa Jurídica: Amparada
-              </p> 
-              <p>
-                Robo Total: 10% Deducible
-              </p>
-             </div>
+              <p>Responsabilidad Civil Catastrófica: $0,000</p>
+              <p>Responsabilidad Civil Bienes y Personas: $0,000</p>
+              <p>Gastos Médicos Ocupantes: $0,000</p>
+              <p>Asistencia Vial y Viajes: Amaparada</p>
+              <p>Defensa Jurídica: Amparada</p>
+              <p>Robo Total: 10% Deducible</p>
+            </div>
             <div class="col pt-3">
               <button
                 class="btn btn-primary"
@@ -1157,7 +1145,6 @@
                 Contrata
               </button>
             </div>
-             
           </div>
         </div>
       </div>
@@ -1265,45 +1252,26 @@
           </div>
         </div>
         <div class="row">
-          <app-coberturas>
-           [cobertura]="this.cobertura"
-          </app-coberturas>
+          <app-coberturas [cobertura]="cobertura"> </app-coberturas>
         </div>
       </div>
-      
     </div>
   </div>
-
-
 
   <div class="row">
     <div class="col-md-8 col-sm-12">
       <div class="card mb-4" id="estesi" *ngFor="let item of Aseguradoras">
         <div class="container">
           <div class="row">
+            <div class="col"></div>
             <div class="col">
-     
+              <p>Responsabilidad Civil Catastrófica: $0,000</p>
+              <p>Responsabilidad Civil Bienes y Personas: $0,000</p>
+              <p>Gastos Médicos Ocupantes: $0,000</p>
+              <p>Asistencia Vial y Viajes: Amaparada</p>
+              <p>Defensa Jurídica: Amparada</p>
+              <p>Robo Total: 10% Deducible</p>
             </div>
-            <div class="col">
-              <p>
-                 Responsabilidad Civil Catastrófica: $0,000
-              </p>
-              <p>
-                Responsabilidad Civil Bienes y Personas: $0,000
-              </p> 
-              <p>
-                Gastos Médicos Ocupantes: $0,000     
-              </p>
-              <p>
-                Asistencia Vial y Viajes: Amaparada
-              </p>
-              <p>
-                Defensa Jurídica: Amparada
-              </p> 
-              <p>
-                Robo Total: 10% Deducible
-              </p>
-             </div>
             <div class="col pt-3">
               <button
                 class="btn btn-primary"
@@ -1327,9 +1295,9 @@
                 Contrata
               </button>
             </div>
-             
           </div>
         </div>
       </div>
-  
+    </div>
+  </div>
 </div>
