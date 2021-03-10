@@ -4,6 +4,9 @@ import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
 import { FechasModel } from 'src/app/interphaces/models/Fechas.model';
 import { Aseguradoras } from 'src/app/interphaces/models/Aseguradoras.model';
 import { InfovehiculoService } from '../../servicios/infovehiculo.service';
+import AseguradoraCobJson from '../../seeds/asegcob.json';
+import AseguradoraJson from '../../interphaces/aseguradoras';
+import AseguradoraCobJ from '../../interphaces/aseguradoracob';
 
 @Component({
   selector: 'app-pagina2',
@@ -16,7 +19,8 @@ export class Pagina2Component implements OnInit {
   AseguradorasPoDesc: Aseguradoras[] = [];
   Aseguradoras: Aseguradoras[] = [];
   aseguradora: string;
-  pago: string = 'Anual';
+  pago = 'Anual';
+  array: AseguradoraCobJ[] = [];
   // VARIABLE DE LA QUE DEPENDE EDITAR DATOS
   show = false;
   // Variables a las que asigno datos de pagina1
@@ -59,6 +63,8 @@ export class Pagina2Component implements OnInit {
   statusAn = 'NoSelected';
   roto = 0;
   danmat = 0;
+  rotucris = 0;
+  robtot = 0;
   recica = 0;
   recibipe = 0;
   gemeoc = 0;
@@ -285,10 +291,15 @@ export class Pagina2Component implements OnInit {
   this. show = !this. show;
 
  }
-
+ RotuCris(event){
+  this.rotucris = event.target.valueAsNumber;
+ }
  DaMate(event){
   this.danmat = event.target.valueAsNumber;
  }
+ RobTot(event){
+   this.robtot = event.target.valueAsNumber;
+  }
  guarda(){
    this.show = false;
   // console.log("Informacion asegurado")
@@ -403,8 +414,15 @@ qualitas(){
     this.descMEDIO = true;
     this.anual = true;
     this.una = history.state.sizeta;
-  }
-
-
-
+    for (let index = 0; AseguradoraCobJson.length<index ; index++) {
+      const element = AseguradoraCobJson[index];
+        }
+    for (const nombre of  AseguradoraCobJson) {
+        console.log(nombre);
+        for (const cobertura of nombre.coberturas) {
+          console.log(cobertura.default);
+        }
+      }
+      } // init
 }
+

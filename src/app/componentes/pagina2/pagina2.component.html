@@ -1113,13 +1113,27 @@
                 style="width: 140px"
                 *ngIf="item.Compania === 'AIG MEX'"
               />
-              <input
-                (click)="sliders(item.Compania)"
-                type="checkbox"
-                class="form-check-input"
-                id="BeneficiarioPreferenteFis"
-              />
             </div>
+            <div class="col">
+              <p>
+                 Responsabilidad Civil Catastrófica: $0,000
+              </p>
+              <p>
+                Responsabilidad Civil Bienes y Personas: $0,000
+              </p> 
+              <p>
+                Gastos Médicos Ocupantes: $0,000     
+              </p>
+              <p>
+                Asistencia Vial y Viajes: Amaparada
+              </p>
+              <p>
+                Defensa Jurídica: Amparada
+              </p> 
+              <p>
+                Robo Total: 10% Deducible
+              </p>
+             </div>
             <div class="col pt-3">
               <button
                 class="btn btn-primary"
@@ -1143,26 +1157,7 @@
                 Contrata
               </button>
             </div>
-             <div class="col">
-              <p>
-                 Responsabilidad Civil Catastrófica: $0,000
-              </p>
-              <p>
-                Responsabilidad Civil Bienes y Personas: $0,000
-              </p> 
-              <p>
-                Gastos Médicos Ocupantes: $0,000     
-              </p>
-              <p>
-                Asistencia Vial y Viajes: Amaparada
-              </p>
-              <p>
-                Defensa Jurídica: Amparada
-              </p> 
-              <p>
-                Robo Total: 10% Deducible
-              </p>
-             </div>
+             
           </div>
         </div>
       </div>
@@ -1282,6 +1277,19 @@
               >
                 Daños Materiales
               </p>
+              <p class="mb-0 d-flex justify-content-between">
+                <label> {{ this.danmat }} %</label>
+              </p>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="0"
+                  step="10"
+                  class="slider"
+                  id="RangeDanMat"
+                  (change)="DaMate($event)"
+                />
               <ng-template #materialDamage>
                 <b
                   >Ampara los daños o pérdidas materiales que sufra el
@@ -1296,6 +1304,19 @@
               >
                 Robo Total
               </p>
+              <p class="mb-0 d-flex justify-content-between">
+                <label> {{ this.robtot }} %</label>
+              </p>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="0"
+                  step="10"
+                  class="slider"
+                  id="RangeDanMat"
+                  (change)="RobTot($event)"
+                />
               <ng-template #totalTheft>
                 <b
                   >Ampara las pérdidas o daños materiales que sufra a
@@ -1494,6 +1515,19 @@
               >
                 Rotura de Cristales
               </span>
+              <p class="mb-0 d-flex justify-content-between">
+                <label> {{ this.rotucris }} %</label>
+              </p>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="0"
+                  step="10"
+                  class="slider"
+                  id="RangeDanMat"
+                  (change)="RotuCris($event)"
+                />
               <ng-template #glassBreakage>
                 <b
                   >Cubre los daños por rotura de cristales, robo o
@@ -1624,4 +1658,63 @@
       </div>
     </div>
   </div>
+
+
+
+  <div class="row">
+    <div class="col-md-8 col-sm-12">
+      <div class="card mb-4" id="estesi" *ngFor="let item of Aseguradoras">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+     
+            </div>
+            <div class="col">
+              <p>
+                 Responsabilidad Civil Catastrófica: $0,000
+              </p>
+              <p>
+                Responsabilidad Civil Bienes y Personas: $0,000
+              </p> 
+              <p>
+                Gastos Médicos Ocupantes: $0,000     
+              </p>
+              <p>
+                Asistencia Vial y Viajes: Amaparada
+              </p>
+              <p>
+                Defensa Jurídica: Amparada
+              </p> 
+              <p>
+                Robo Total: 10% Deducible
+              </p>
+             </div>
+            <div class="col pt-3">
+              <button
+                class="btn btn-primary"
+                [routerLink]="['/contrata']"
+                routerLinkActive="router-link-active"
+                [state]="{
+                  modsel: vermodelo,
+                  marsel: vermarca,
+                  descsel: verdescripcion,
+                  annosel: veranno,
+                  nomsel: nombre,
+                  emsel: email,
+                  telsel: telefono,
+                  generosel: genero,
+                  codigosel: codigopostal,
+                  fechasel: fechanac,
+                  asesel: item.Compania,
+                  pag: pago
+                }"
+              >
+                Contrata
+              </button>
+            </div>
+             
+          </div>
+        </div>
+      </div>
+  
 </div>

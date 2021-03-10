@@ -1,0 +1,193 @@
+[
+    {
+        "nombre": "AXA SEG",
+        "primerPago": 1340,
+        "pagos": 430,
+        "total": 5779,
+        "logo": "../../../assets/iconosase/AXA.svg",
+        "coberturasAdicionales": [
+            {
+                "nombre": "Defensa legal",
+                "default": true,
+                "obligatorio":false
+            },
+            {
+                "nombre": "Responsabilidad Civil Adaptaciones",
+                "default": true,
+                "obligatorio":false
+            },
+            {
+                "nombre": "Equipo Especial",
+                "default": true,
+                "obligatorio":false
+            },{
+                "nombre": "Adaptaciones y Conversiones",
+                "default": true,
+                "obligatorio":false
+            },
+            { "nombre" : "Extensión de Responsabilidad Civil",
+                "default": true,
+                "obligatorio":false
+            },
+            { "nombre" :" Auto Consentido",
+                "default": true,
+                "obligatorio":false
+            },
+            { "nombre" : "Eliminación de Deducible y Devolución de Primas",
+                "default": true,
+                "obligatorio":false
+            },
+            { "nombre" : "Responsabilidad Civil Remolque",
+                "default": true,
+                "obligatorio":false
+            },
+            { "nombre" : "Multas y Corralones",
+                "default": true,
+                "obligatorio":false
+            },
+            { "nombre" : "Gastos de Transporte",
+                "default": true,
+                "obligatorio":false
+            },
+            { "nombre" : "Deducible 0% con Tercero Responsable",
+                "default": true,
+                "obligatorio":false
+            },
+            { "nombre" : "Robo Parcial Autopartes",
+                "default": true,
+                "obligatorio":false
+            }
+        ],
+        "coberturas": [
+            {
+                "nombre": "Daños Materiales",
+                "maximo": 25,
+                "minimo": 0,
+                "default": 5
+            },
+            {
+                "nombre": "Robo Total",
+                "maximo": 20,
+                "minimo": 20,
+                "default": 20
+            },
+            {
+                "nombre": "Responsabilidad Civil por Daños a Terceros",
+                "maximo": 4000000,
+                "minimo": 100000,
+                "default": 1500000
+            },{
+                "nombre": "Responsabilidad Civil para Personas en Exceso",
+                "maximo": 5000000,
+                "minimo": 1500000,
+                "default": 3000000
+            },
+            {
+                "nombre": "Gastos Médicos Ocupantes",
+                "maximo": 4000000,
+                "minimo": 100000,
+                "default": 1500000
+            },
+            {
+                "nombre": "Servicios de asistencia",
+                "default": true,
+                "obligatorio":true
+            },
+            {
+                "nombre": "Responsabilidad Civil en el Extranjero",
+                "default": true,
+                "obligatorio":true
+            },
+            {
+                "nombre": "Responsabilidad Civil por Daños a Ocupantes",
+                "maximo": 2000000,
+                "minimo": 400000,
+                "default": 1000000
+            },
+            {
+                "nombre": "Accidentes Automovilísticos al Conductor",
+                "maximo": 250000,
+                "minimo": 20000,
+                "default": 100000
+            }
+        ]
+    },
+    {
+        "nombre": "SURA",
+        "primerPago": 1340,
+        "pagos": 430,
+        "total": 5779,
+        "logo": "../../../assets/iconosase/ZURICH.svg",
+        "coberturas": [
+            {
+                "nombre": "Daños Materiales",
+                "maximo": 25,
+                "minimo": 0,
+                "default": 5
+            },
+            {
+                "nombre": "Robo Total",
+                "maximo": 20,
+                "minimo": 20,
+                "default": 20
+            },
+            {
+                "nombre": "Responsabilidad Civil",
+                "maximo": 4000000,
+                "minimo": 100000,
+                "default": 1500000
+            },{
+                "nombre": "Estensión de RC 360",
+                "maximo": 5000000,
+                "minimo": 1500000,
+                "default": 3000000
+            },
+            {
+                "nombre": "Gastos Médicos Ocupantes",
+                "maximo": 4000000,
+                "minimo": 100000,
+                "default": 1500000
+            },
+            {
+                "nombre": "Defensa Juridica ",
+                "default": true,
+                "obligatorio":true
+            },
+            {
+                "nombre": "Asistencia Automovilistica",
+                "default": true,
+                "obligatorio":false
+            },
+            {
+                "nombre": "Accidentes automivilisticos al conductor",
+                "maximo": 250000,
+                "minimo": 100000,
+                "default": 150000
+            },
+            {
+                "nombre": "Deducible Nulo en  Pérdida Total Daños Materiales",
+                "default": true,
+                "obligatorio":true
+            },
+            {
+                "nombre": "Deducible Nulo por Robo Total",
+               "default": true,
+                "obligatorio":true
+            },
+            {
+                "nombre": "Devolución de primas en caso de pérdida total",
+               "default": true,
+                "obligatorio":true
+            },{
+                "nombre": "Automovil Sustituto en caso de pérdida Total",
+                "default": true,
+                "obligatorio":true
+            },
+            {
+                "nombre": "Desplazamiento Garantizado",
+                "default": true,
+                "obligatorio":true
+            }
+        ]
+    }
+]
