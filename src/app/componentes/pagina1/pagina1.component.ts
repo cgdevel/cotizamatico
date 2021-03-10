@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { fromEvent, Observable, Subscription } from 'rxjs';
+import { CookieService } from 'ngx-cookie';
+import { Observable, Subscription } from 'rxjs';
 import { FechasModel } from 'src/app/interphaces/models/Fechas.model';
 import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
 
@@ -13,6 +14,12 @@ export class Pagina1Component implements OnInit {
   verCarousle: boolean;
   resizeObservable$: Observable<Event>;
   resizeSubscription$: Subscription;
+
+  /* Asociados */
+  catAsociados: CatalogoModel[];
+  asociado: CatalogoModel;
+  mostraComboAsociados: boolean;
+
   /* Valores vehículo */
   vehiculoTipo: CatalogoModel;
   vehiculoAnio: CatalogoModel;
@@ -27,10 +34,11 @@ export class Pagina1Component implements OnInit {
   clienteTipoPersona: string;
   clienteCodigoPostal: string;
   clienteFechaNacimiento: FechasModel;
+  clienteAviso: boolean;
 
   datosValidos: boolean;
 
-  constructor() {}
+  constructor(private cookieService: CookieService) {}
 
   ngOnInit(): void {
     this.itemVacio = { sDato: '', sLlave: '' };
@@ -45,6 +53,13 @@ export class Pagina1Component implements OnInit {
     this.clienteFechaNacimiento = { anio: '', dia: '', mes: '' };
     this.clienteCodigoPostal = '';
     this.datosValidos = false;
+    this.clienteAviso = false;
+
+    this.mostraComboAsociados = false;
+    this.asociado = this.itemVacio;
+
+    localStorage.clear();
+    this.cookieService.removeAll();
   }
 
   handlerVehiculoTipo(e: CatalogoModel) {
@@ -138,8 +153,14 @@ export class Pagina1Component implements OnInit {
     if (this.clienteCodigoPostal === '') {
       return;
     }
+    console.log('validando datos - asociado');
+    if (this.mostraComboAsociados) {
+      console.log('validando datos - asociado - si');
+      if (this.asociado === this.itemVacio) {
+        return;
+      }
+    }
 
     this.datosValidos = true;
   }
-
 }

@@ -8,6 +8,41 @@
     </div>
   </div>
 
+  <div
+    class="container mb-4 mx-0 mw-100"
+    id="inave"
+    *ngIf="mostraComboAsociados"
+  >
+    <div class="col-12 col-md-4">
+      <div class="form-group">
+        <p class="m-0 mb-2">Asociados</p>
+        <ng-select
+          id="cmbAgente"
+          [items]="catAsociados"
+          bindLabel="sDato"
+          placeholder="ASOCIADO"
+          appendTo="body"
+          [searchable]="false"
+          [clearable]="false"
+          [closeOnSelect]="true"
+          [(ngModel)]="asociado"
+          [ngbTooltip]="ttTipoVehiculo"
+          tooltipClass="my-custom-class"
+        >
+          <ng-option ng-options="item in catAsociados">
+            <!-- {{ item.sDato }} -->
+          </ng-option>
+          <ng-template #ttTipoVehiculo>
+            <b>{{ asociado === undefined ? "" : asociado.sDato }}</b>
+          </ng-template>
+          <ng-template ng-notfound-tmp>
+            <div class="ng-option disabled">No hay agentes encontrados</div>
+          </ng-template>
+        </ng-select>
+      </div>
+    </div>
+  </div>
+
   <app-infovehiculo
     (emitTipoVehiculo)="handlerVehiculoTipo($event)"
     (emitAnioVehiculo)="handlerVehiculoAnio($event)"
@@ -25,6 +60,26 @@
     (emitClienteNacimiento)="handlerClienteFechaNacimiento($event)"
   >
   </app-infoasegurado>
+
+  <div class="container">
+    <div class="row px-2">
+      <div class="col-12 d-flex justify-content-center">
+        <label class="check-container"
+          ><p>
+            He leído y acepto el
+            <a
+              class="aviso-link"
+              href="https://www.aarco.com.mx/aviso-de-privacidad/"
+              target="_blank"
+              >aviso de privacidad.</a
+            >
+          </p>
+          <input type="checkbox" id="chkAviso" [(ngModel)]="clienteAviso" />
+          <span class="checkmark"></span>
+        </label>
+      </div>
+    </div>
+  </div>
 
   <div class="row justify-content-center">
     <button
@@ -44,7 +99,7 @@
         cpase: this.clienteCodigoPostal,
         fechanacase: this.clienteFechaNacimiento
       }"
-      [disabled]="!datosValidos"
+      [disabled]="!datosValidos || !clienteAviso"
     >
       ¡Cotizar mi auto <label id="ahora">ahora</label>!
     </button>
