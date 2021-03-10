@@ -33,6 +33,7 @@ import { AseANNAComponent } from './componentes/aseguradoras/ase-anna/ase-anna.c
 import { AseAIGComponent } from './componentes/aseguradoras/ase-aig/ase-aig.component';
 import { CookieModule } from 'ngx-cookie';
 import { AsegDatosEmisionComponent } from './componentes/aseguradoras/aseg-datos-emision/aseg-datos-emision.component';
+import { CoberturasComponent } from './componentes/coberturas/coberturas.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +58,7 @@ import { AsegDatosEmisionComponent } from './componentes/aseguradoras/aseg-datos
     AseANNAComponent,
     AseAIGComponent,
     AsegDatosEmisionComponent,
+    CoberturasComponent,
   ],
   imports: [
     FormsModule,

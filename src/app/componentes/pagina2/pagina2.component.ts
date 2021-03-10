@@ -20,6 +20,8 @@ export class Pagina2Component implements OnInit {
   Aseguradoras: Aseguradoras[] = [];
   aseguradora: string;
   pago = 'Anual';
+  robototal = 0;
+  cobertura: number;
   array: AseguradoraCobJ[] = [];
   // VARIABLE DE LA QUE DEPENDE EDITAR DATOS
   show = false;
@@ -61,14 +63,6 @@ export class Pagina2Component implements OnInit {
   statusT = 'NoSelected';
   statusS = 'NoSelected';
   statusAn = 'NoSelected';
-  roto = 0;
-  danmat = 0;
-  rotucris = 0;
-  robtot = 0;
-  recica = 0;
-  recibipe = 0;
-  gemeoc = 0;
-  muacco = 0;
  // Valores del switch
  as: boolean;
  des: boolean;
@@ -91,6 +85,7 @@ export class Pagina2Component implements OnInit {
     this.statusL = 'NoSelected';
     this.statusB = 'NoSelected';
     this.statusAP = this. ampliaplus ? 'Selected'  : 'NoSelected';
+    this.cobertura = 0;
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
     // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
@@ -247,59 +242,15 @@ export class Pagina2Component implements OnInit {
   sliders( ase: string){
     console.log(ase);
   }
-  RT(event){
-    this.roto = event.target.valueAsNumber;
-    // console.log( 'Robo total:'+' '+this.roto)
-  }
-  RCC(event){
-    this.recica = event.target.valueAsNumber;
-    // console.log('Responsabilidad civil catastrófica:'+' '+this.recica)
-  }
- RCBP(event){
-  this.recibipe = event.target.valueAsNumber;
-  // console.log( 'Responsabilidad civil bienes y personas:' +' '+this.recibipe)
- }
- GMO(event){
-  this.gemeoc = event.target.valueAsNumber;
-  // console.log( 'Gastos médicos ocupantes:' +' '+this.gemeoc)
- }
- MAC(event){
-  this.muacco = event.target.valueAsNumber;
-  // console.log( 'Muerte accidental conductor:' +' '+this.muacco)
- }
- AuSus(event){
-  this.as = event.target.checked;
-  // console.log('Auto Sustituto:'+' '+this.as)
- }
- Desb(event){
-  this.des = event.target.checked;
-  // console.log('Desbielamiento:'+' '+this.des)
- }
- ExRC(event){
-  this.erc = event.target.checked;
-  // console.log('Extensión del R.C:'+' '+this.erc)
- }
- RCExt(event){
-  this.rcext = event.target.checked;
-  // console.log('R.C de extranjeros:'+' '+this.rcext)
- }
- RCOcu(event){
-  this.rcocu = event.target.checked;
-  // console.log('R.C de ocupantes:'+' '+this.rcocu)
- }
+
  toggle(){
   this. show = !this. show;
 
  }
- RotuCris(event){
-  this.rotucris = event.target.valueAsNumber;
+ DanMaterial(e){
+  this.robototal = e;
+  console.log(this.robototal)
  }
- DaMate(event){
-  this.danmat = event.target.valueAsNumber;
- }
- RobTot(event){
-   this.robtot = event.target.valueAsNumber;
-  }
  guarda(){
    this.show = false;
   // console.log("Informacion asegurado")
