@@ -1053,7 +1053,116 @@
   </div>
   <div class="row">
     <div class="col-md-8 col-sm-12">
-      <div class="card mb-4" id="estesi" *ngFor="let item of Aseguradoras">
+      <div id="mejop" class="card-header text-center" *ngIf="Aseguradoras[0]" >
+        ¡ESTA ES TU MEJOR OPCIÓN!
+        <div class="row">
+          <div class="col">
+            <!-- {{ item.Compania }} -->
+            <img
+              src="../../../assets/iconosase/AXA.svg"
+              style="width: 140px"
+              *ngIf="Aseguradoras[0].Compania === 'AXA SEG'"
+            />
+            <img
+              src="../../../assets/iconosase/SURA.svg"
+              style="width: 140px"
+              *ngIf="Aseguradoras[0].Compania === 'CHUBB'"
+            />
+            <img
+              src="../../../assets/iconosase/ZURICH.svg"
+              style="width: 140px"
+              *ngIf="Aseguradoras[0].Compania === 'SURA'"
+            />
+            <img
+              src="../../../assets/iconosase/CHUBB.svg"
+              style="width: 140px"
+              *ngIf="Aseguradoras[0].Compania === 'ZURICH'"
+            />
+            <img
+              src="../../../assets/iconosase/MAPFRE.svg"
+              style="width: 140px"
+             *ngIf="Aseguradoras[0].Compania === 'MAPFRE T'"
+            />
+            <img
+              src="../../../assets/iconosase/QUALITAS.svg"
+              style="width: 140px"
+             *ngIf="Aseguradoras[0].Compania === 'QUALITAS'"
+            />
+            <img
+              src="../../../assets/iconosase/BANORTE.svg"
+              style="width: 140px"
+             *ngIf="Aseguradoras[0].Compania === 'BANORTE'"
+            />
+            <img
+              src="../../../assets/iconosase/HDI.svg"
+              style="width: 140px"
+             *ngIf="Aseguradoras[0].Compania === 'HDI'"
+            />
+            <img
+              src="../../../assets/iconosase/AFIRME.svg"
+              style="width: 140px"
+             *ngIf="Aseguradoras[0].Compania === 'AFIRME'"
+            />
+            <img
+              src="../../../assets/iconosase/ANA.svg"
+              style="width: 140px"
+             *ngIf="Aseguradoras[0].Compania === 'ANA SEG'"
+            />
+            <img
+              src="../../../assets/iconosase/AIG.svg"
+              style="width: 140px"
+             *ngIf="Aseguradoras[0].Compania === 'AIG MEX'"
+            />
+          </div>
+          <div class="col-md-3 col-sm-3">
+            <div class="container mw-100 px-0">
+                <div class="row" id="oferta">Oferta</div>
+                <div class="row" id="letrasgrad">Cotizamático</div>
+                <div class="row" id="fivth">$5000</div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3">
+            <div class="container mw-100 px-0" >
+                <div class="row">
+                    Precio regular $6,000
+                </div>
+                <div class="row">
+                    Primer pago: $1,000
+                </div>
+                <div class="row">
+                    3 pagos de $1,000.000 
+                </div>
+                <div class="row" id="tan">
+                    TOTAL ANUAL: $1,000.000 
+                </div>
+            </div>
+        </div>
+          <div class="col pt-3">
+            <button
+              class="btn btn-primary"
+              [routerLink]="['/contrata']"
+              routerLinkActive="router-link-active"
+              [state]="{
+                modsel: vermodelo,
+                marsel: vermarca,
+                descsel: verdescripcion,
+                annosel: veranno,
+                nomsel: nombre,
+                emsel: email,
+                telsel: telefono,
+                generosel: genero,
+                codigosel: codigopostal,
+                fechasel: fechanac,
+                asesel: Aseguradoras[0].Compania,
+                pag: pago
+              }"
+            >
+              Contrata
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-4" id="estesi" *ngFor="let item of Aseguradoras | slice: 1 ">
         <div class="container">
           <div class="row">
             <div class="col">
@@ -1114,14 +1223,29 @@
                 *ngIf="item.Compania === 'AIG MEX'"
               />
             </div>
-            <div class="col">
-              <p>Responsabilidad Civil Catastrófica: $0,000</p>
-              <p>Responsabilidad Civil Bienes y Personas: $0,000</p>
-              <p>Gastos Médicos Ocupantes: $0,000</p>
-              <p>Asistencia Vial y Viajes: Amaparada</p>
-              <p>Defensa Jurídica: Amparada</p>
-              <p>Robo Total: 10% Deducible</p>
-            </div>
+            <div class="col-md-3 col-sm-3">
+              <div class="container mw-100 px-0">
+                  <div class="row" id="oferta">Oferta</div>
+                  <div class="row" id="letrasgrad">Cotizamático</div>
+                  <div class="row" id="fivth">$5000</div>
+              </div>
+          </div>
+          <div class="col-md-3 col-sm-3">
+              <div class="container mw-100 px-0" >
+                  <div class="row">
+                      Precio regular $6,000
+                  </div>
+                  <div class="row">
+                      Primer pago: $1,000
+                  </div>
+                  <div class="row">
+                      3 pagos de $1,000.000 
+                  </div>
+                  <div class="row" id="tan">
+                      TOTAL ANUAL: $1,000.000 
+                  </div>
+              </div>
+          </div>
             <div class="col pt-3">
               <button
                 class="btn btn-primary"
@@ -1253,49 +1377,6 @@
         </div>
         <div class="row">
           <app-coberturas [cobertura]="cobertura"> </app-coberturas>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-8 col-sm-12">
-      <div class="card mb-4" id="estesi" *ngFor="let item of Aseguradoras">
-        <div class="container">
-          <div class="row">
-            <div class="col"></div>
-            <div class="col">
-              <p>Responsabilidad Civil Catastrófica: $0,000</p>
-              <p>Responsabilidad Civil Bienes y Personas: $0,000</p>
-              <p>Gastos Médicos Ocupantes: $0,000</p>
-              <p>Asistencia Vial y Viajes: Amaparada</p>
-              <p>Defensa Jurídica: Amparada</p>
-              <p>Robo Total: 10% Deducible</p>
-            </div>
-            <div class="col pt-3">
-              <button
-                class="btn btn-primary"
-                [routerLink]="['/contrata']"
-                routerLinkActive="router-link-active"
-                [state]="{
-                  modsel: vermodelo,
-                  marsel: vermarca,
-                  descsel: verdescripcion,
-                  annosel: veranno,
-                  nomsel: nombre,
-                  emsel: email,
-                  telsel: telefono,
-                  generosel: genero,
-                  codigosel: codigopostal,
-                  fechasel: fechanac,
-                  asesel: item.Compania,
-                  pag: pago
-                }"
-              >
-                Contrata
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </div>
