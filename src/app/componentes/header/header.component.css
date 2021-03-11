@@ -54,6 +54,11 @@ hr {
   #asesor {
     font-size: 16px;
   }
+
+  #logoempresa {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 p {

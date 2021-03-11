@@ -1,4 +1,5 @@
 <div class="container pt-3">
+  <!-- Select en version responsiva -->
   <div class="row d-md-none">
     <div class="col-4">
       <div class="form-group">
@@ -1032,6 +1033,25 @@
   </div>
 </div>
 
+<!-- Menu responsivo de coberturas (solo se muestra en dispositivos móviles) -->
+<nav class="navbar navbar-expand-lg d-md-none navbar-light">
+  <p>Coberturas</p>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <app-coberturas [cobertura]="cobertura"> </app-coberturas>
+  </div>
+</nav>
+
 <div class="container">
   <div class="row">
     <div class="col-md-4 col-sm-12">
@@ -1053,10 +1073,10 @@
   </div>
   <div class="row">
     <div class="col-md-8 col-sm-12">
-      <div class="card mb-4" id="estesi" *ngIf="Aseguradoras[0]" >
+      <div class="card mb-4" id="estesi" *ngIf="Aseguradoras[0]">
         <div class="container px-0">
           <div class="col-12 px-0">
-            <div id="mejop" class="card-header text-center" >
+            <div id="mejop" class="card-header text-center">
               ¡ESTA ES TU MEJOR OPCIÓN!
             </div>
           </div>
@@ -1088,62 +1108,54 @@
               <img
                 src="../../../assets/iconosase/MAPFRE.svg"
                 style="width: 140px"
-               *ngIf="Aseguradoras[0].Compania === 'MAPFRE T'"
+                *ngIf="Aseguradoras[0].Compania === 'MAPFRE T'"
               />
               <img
                 src="../../../assets/iconosase/QUALITAS.svg"
                 style="width: 140px"
-               *ngIf="Aseguradoras[0].Compania === 'QUALITAS'"
+                *ngIf="Aseguradoras[0].Compania === 'QUALITAS'"
               />
               <img
                 src="../../../assets/iconosase/BANORTE.svg"
                 style="width: 140px"
-               *ngIf="Aseguradoras[0].Compania === 'BANORTE'"
+                *ngIf="Aseguradoras[0].Compania === 'BANORTE'"
               />
               <img
                 src="../../../assets/iconosase/HDI.svg"
                 style="width: 140px"
-               *ngIf="Aseguradoras[0].Compania === 'HDI'"
+                *ngIf="Aseguradoras[0].Compania === 'HDI'"
               />
               <img
                 src="../../../assets/iconosase/AFIRME.svg"
                 style="width: 140px"
-               *ngIf="Aseguradoras[0].Compania === 'AFIRME'"
+                *ngIf="Aseguradoras[0].Compania === 'AFIRME'"
               />
               <img
                 src="../../../assets/iconosase/ANA.svg"
                 style="width: 140px"
-               *ngIf="Aseguradoras[0].Compania === 'ANA SEG'"
+                *ngIf="Aseguradoras[0].Compania === 'ANA SEG'"
               />
               <img
                 src="../../../assets/iconosase/AIG.svg"
                 style="width: 140px"
-               *ngIf="Aseguradoras[0].Compania === 'AIG MEX'"
+                *ngIf="Aseguradoras[0].Compania === 'AIG MEX'"
               />
             </div>
             <div class="col-md-3 col-sm-3">
               <div class="container mw-100 px-0">
-                  <div class="row" id="oferta">Oferta</div>
-                  <div class="row" id="letrasgrad">Cotizamático</div>
-                  <div class="row" id="fivth">$5000</div>
+                <div class="row" id="oferta">Oferta</div>
+                <div class="row" id="letrasgrad">Cotizamático</div>
+                <div class="row" id="fivth">$5000</div>
               </div>
-          </div>
-          <div class="col-md-3 col-sm-3">
-              <div class="container mw-100 px-0" >
-                  <div class="row">
-                      Precio regular $6,000
-                  </div>
-                  <div class="row">
-                      Primer pago: $1,000
-                  </div>
-                  <div class="row">
-                      3 pagos de $1,000.000 
-                  </div>
-                  <div class="row" id="tan">
-                      TOTAL ANUAL: $1,000.000 
-                  </div>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <div class="container mw-100 px-0">
+                <div class="row">Precio regular $6,000</div>
+                <div class="row">Primer pago: $1,000</div>
+                <div class="row">3 pagos de $1,000.000</div>
+                <div class="row" id="tan">TOTAL ANUAL: $1,000.000</div>
               </div>
-          </div>
+            </div>
             <div class="col pt-3">
               <button
                 class="btn btn-primary"
@@ -1169,9 +1181,13 @@
             </div>
           </div>
         </div>
-    </div>
-  
-      <div class="card mb-4" id="estesi" *ngFor="let item of Aseguradoras | slice: 1 ">
+      </div>
+
+      <div
+        class="card mb-4"
+        id="estesi"
+        *ngFor="let item of Aseguradoras | slice: 1"
+      >
         <div class="container">
           <div class="row">
             <div class="col">
@@ -1234,27 +1250,19 @@
             </div>
             <div class="col-md-3 col-sm-3">
               <div class="container mw-100 px-0">
-                  <div class="row" id="oferta">Oferta</div>
-                  <div class="row" id="letrasgrad">Cotizamático</div>
-                  <div class="row" id="fivth">$5000</div>
+                <div class="row" id="oferta">Oferta</div>
+                <div class="row" id="letrasgrad">Cotizamático</div>
+                <div class="row" id="fivth">$5000</div>
               </div>
-          </div>
-          <div class="col-md-3 col-sm-3">
-              <div class="container mw-100 px-0" >
-                  <div class="row">
-                      Precio regular $6,000
-                  </div>
-                  <div class="row">
-                      Primer pago: $1,000
-                  </div>
-                  <div class="row">
-                      3 pagos de $1,000.000 
-                  </div>
-                  <div class="row" id="tan">
-                      TOTAL ANUAL: $1,000.000 
-                  </div>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <div class="container mw-100 px-0">
+                <div class="row">Precio regular $6,000</div>
+                <div class="row">Primer pago: $1,000</div>
+                <div class="row">3 pagos de $1,000.000</div>
+                <div class="row" id="tan">TOTAL ANUAL: $1,000.000</div>
               </div>
-          </div>
+            </div>
             <div class="col pt-3">
               <button
                 class="btn btn-primary"
@@ -1305,88 +1313,86 @@
           </button>
         </div>
       </div>
-  </div>
-  <div class="col-md-4 col-sm-12">
-    <div class="card mb-4" id="estesi">
-      <div class="card-body car__container">
-        <div class="row mb-3">
-          <div class="col-12">
-            <h6>
-              <b>Información del vehículo </b>
-            </h6>
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <div class="card mb-4" id="estesi">
+        <div class="card-body car__container">
+          <div class="row mb-3">
+            <div class="col-12">
+              <h6>
+                <b>Información del vehículo </b>
+              </h6>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <h6>Mi auto es:</h6>
+          <div class="row">
+            <div class="col-12">
+              <h6>Mi auto es:</h6>
+            </div>
           </div>
-        </div>
-        <div class="row" style="margin-left: 2px">{{ vermodelo.sDato }}</div>
-        <div class="row">
-          <div class="col-12">
-            <h6>Año:</h6>
+          <div class="row" style="margin-left: 2px">{{ vermodelo.sDato }}</div>
+          <div class="row">
+            <div class="col-12">
+              <h6>Año:</h6>
+            </div>
           </div>
-        </div>
-        <div class="row" style="margin-left: 2px">{{ veranno.sDato }}</div>
-        <div class="row">
-          <div class="col-12">
-            <h6>Marca:</h6>
+          <div class="row" style="margin-left: 2px">{{ veranno.sDato }}</div>
+          <div class="row">
+            <div class="col-12">
+              <h6>Marca:</h6>
+            </div>
           </div>
-        </div>
-        <div class="row" style="margin-left: 2px">{{ vermarca.sDato }}</div>
-        <div class="row">
-          <div class="col-12">
-            <h6>Descripción:</h6>
+          <div class="row" style="margin-left: 2px">{{ vermarca.sDato }}</div>
+          <div class="row">
+            <div class="col-12">
+              <h6>Descripción:</h6>
+            </div>
           </div>
-        </div>
-        <div class="row" style="margin-left: 2px">
-          {{ verdescripcion.sDato }}
-        </div>
-        <div class="row">
-          <div class="col-12 mb-4">
+          <div class="row" style="margin-left: 2px">
+            {{ verdescripcion.sDato }}
+          </div>
+          <div class="row">
+            <div class="col-12 mb-4">
+              <button
+                (click)="toggle()"
+                class="btn btn-primary"
+                style="
+                  background-color: #21c7ed;
+                  border-color: #21c7ed;
+                  margin-top: 14px;
+                  border-radius: 10px;
+                "
+              >
+                Modificar Información
+              </button>
+            </div>
+          </div>
+          <app-infovehiculo
+            *ngIf="show"
+            (emitTipoVehiculo)="emitTipoVehiculo($event)"
+            (emitAnioVehiculo)="emitAnioVehiculo($event)"
+            (emitMarcaVehiculo)="emitMarcaVehiculo($event)"
+            (emitDescripcion)="emitDescripcion($event)"
+            [showchiquito]="show"
+            [modeloselpagina2]="vermodelo"
+            [annoselpagina2]="veranno"
+            [marcaselpagina2]="vermarca"
+            [descripselpagina2]="verdescripcion"
+          >
+          </app-infovehiculo>
+          <div class="col-12">
             <button
-              (click)="toggle()"
-              class="btn btn-primary"
-              style="
-                background-color: #21c7ed;
-                border-color: #21c7ed;
-                margin-top: 14px;
-                border-radius: 10px;
-              "
+              (click)="guarda()"
+              *ngIf="show"
+              class="btn save"
+              id="btnconaho"
+              style="margin-top: 24px"
             >
-              Modificar Información
+              Guardar
             </button>
           </div>
         </div>
-        <app-infovehiculo
-          *ngIf="show"
-          (emitTipoVehiculo)="emitTipoVehiculo($event)"
-          (emitAnioVehiculo)="emitAnioVehiculo($event)"
-          (emitMarcaVehiculo)="emitMarcaVehiculo($event)"
-          (emitDescripcion)="emitDescripcion($event)"
-          [showchiquito]="show"
-          [modeloselpagina2]="vermodelo"
-          [annoselpagina2]="veranno"
-          [marcaselpagina2]="vermarca"
-          [descripselpagina2]="verdescripcion"
-        >
-        </app-infovehiculo>
-        <div class="col-12">
-          <button
-            (click)="guarda()"
-            *ngIf="show"
-            class="btn save"
-            id="btnconaho"
-            style="margin-top: 24px"
-          >
-            Guardar
-          </button>
-        </div>
       </div>
+      <app-coberturas [cobertura]="cobertura"> </app-coberturas>
     </div>
-    <app-coberturas [cobertura]="cobertura"> </app-coberturas>
   </div>
 </div>
-
-   
-  </div>
