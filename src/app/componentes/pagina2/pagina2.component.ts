@@ -31,7 +31,7 @@ export class Pagina2Component implements OnInit {
   aseguradora: string;
   pago = 'Anual';
   robototal = 0;
-  cobertura: number = 2;
+  cobertura: number = 1;
   array: AseguradoraCobJ[] = [];
   // VARIABLE DE LA QUE DEPENDE EDITAR DATOS
   show = false;
@@ -111,6 +111,8 @@ export class Pagina2Component implements OnInit {
     this.statusL = 'NoSelected';
     this.statusB = 'NoSelected';
     this.statusA = this.amplia ? 'Selected' : 'NoSelected';
+    this.cobertura = 1;
+
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
     // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
@@ -126,6 +128,8 @@ export class Pagina2Component implements OnInit {
     this.statusA = 'NoSelected';
     this.statusB = 'NoSelected';
     this.statusL = this.limitada ? 'Selected' : 'NoSelected';
+    this.cobertura = 2;
+
     // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
@@ -141,6 +145,8 @@ export class Pagina2Component implements OnInit {
     this.statusA = 'NoSelected';
     this.statusL = 'NoSelected';
     this.statusB = this.basica ? 'Selected' : 'NoSelected';
+    this.cobertura = 3;
+
     // console.log("Básica :"+' '+this.basica+' '+this.statusB)
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)

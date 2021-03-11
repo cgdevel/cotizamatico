@@ -1251,53 +1251,8 @@
             </button>
           </div>
         </div>
-        <div class="row">
-          <app-coberturas [cobertura]="cobertura"> </app-coberturas>
-        </div>
       </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-8 col-sm-12">
-      <div class="card mb-4" id="estesi" *ngFor="let item of Aseguradoras">
-        <div class="container">
-          <div class="row">
-            <div class="col"></div>
-            <div class="col">
-              <p>Responsabilidad Civil Catastrófica: $0,000</p>
-              <p>Responsabilidad Civil Bienes y Personas: $0,000</p>
-              <p>Gastos Médicos Ocupantes: $0,000</p>
-              <p>Asistencia Vial y Viajes: Amaparada</p>
-              <p>Defensa Jurídica: Amparada</p>
-              <p>Robo Total: 10% Deducible</p>
-            </div>
-            <div class="col pt-3">
-              <button
-                class="btn btn-primary"
-                [routerLink]="['/contrata']"
-                routerLinkActive="router-link-active"
-                [state]="{
-                  modsel: vermodelo,
-                  marsel: vermarca,
-                  descsel: verdescripcion,
-                  annosel: veranno,
-                  nomsel: nombre,
-                  emsel: email,
-                  telsel: telefono,
-                  generosel: genero,
-                  codigosel: codigopostal,
-                  fechasel: fechanac,
-                  asesel: item.Compania,
-                  pag: pago
-                }"
-              >
-                Contrata
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <app-coberturas [cobertura]="cobertura"> </app-coberturas>
     </div>
   </div>
 </div>
