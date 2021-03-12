@@ -200,7 +200,7 @@
           <div class="custom-control custom-switch " id="switchgrande">
             <input type="checkbox" class="custom-control-input " id="customSwitchEliminacionDeducible" (change)="setEliminacionDeducible($event)">
             <label class="custom-control-label" for="customSwitchEliminacionDeducible"></label>
-        </div>
+          </div>
           <ng-template #ElimDeduTooltip>
             <b
               >En caso de pérdida total la compañía exenterá el deducible
@@ -210,12 +210,16 @@
 
           <span
             class="my-1"
-            [ngbTooltip]="premiumReturn"
+            [ngbTooltip]="premiumReturnTooltip"
             tooltipClass="my-custom-class"
           >
             Dev. Primas
           </span>
-          <ng-template #premiumReturn>
+          <div class="custom-control custom-switch " id="switchgrande">
+            <input type="checkbox" class="custom-control-input " id="customSwitchpremiumReturn" (change)="setpremiumReturn($event)">
+            <label class="custom-control-label" for="customSwitchEliminacionDeducible"></label>
+          </div>
+          <ng-template #premiumReturnTooltip>
             <b
               >La compañía devolverá el monto pagado de Daños Materiales, Robo
               Total, RC Daños Terceros, Gastos Médicos Ocupantes</b
@@ -224,12 +228,16 @@
 
           <span
             class="my-1"
-            [ngbTooltip]="foreignLiability"
+            [ngbTooltip]="foreignLiabilityTooltip"
             tooltipClass="my-custom-class"
           >
             RC en el extranjero
           </span>
-          <ng-template #foreignLiability>
+          <div class="custom-control custom-switch " id="switchgrande">
+            <input type="checkbox" class="custom-control-input " id="customSwitchforeignLiability" (change)="setforeignLiability($event)">
+            <label class="custom-control-label" for="customSwitchforeignLiability"></label>
+          </div>
+          <ng-template #foreignLiabilityTooltip>
             <b
               >cubre los daños que el asegurado cause a terceros en sus bienes
               siempre y cuando se encuentre en el territorio de Estados
@@ -239,12 +247,16 @@
 
           <span
             class="my-1"
-            [ngbTooltip]="liabilityExtension"
+            [ngbTooltip]="liabilityExtensionTooltip"
             tooltipClass="my-custom-class"
           >
             Extension de RC
           </span>
-          <ng-template #liabilityExtension>
+          <div class="custom-control custom-switch " id="switchgrande">
+            <input type="checkbox" class="custom-control-input " id="customSwitchliabilityExtension" (change)="setliabilityExtension($event)">
+            <label class="custom-control-label" for="customSwitchliabilityExtension"></label>
+          </div>
+          <ng-template #liabilityExtensionTooltip>
             <b
               >Ampara al asegurado por daños a terceros en caso de conducir un
               vehículo diferente</b
@@ -253,12 +265,16 @@
 
           <span
             class="my-1"
-            [ngbTooltip]="deductible"
+            [ngbTooltip]="deductibleTooltip"
             tooltipClass="my-custom-class"
           >
             Deducible 0 %
           </span>
-          <ng-template #deductible>
+          <div class="custom-control custom-switch " id="switchgrande">
+            <input type="checkbox" class="custom-control-input " id="customSwitchdeductible" (change)="setdeductible($event)">
+            <label class="custom-control-label" for="customSwitchdeductible"></label>
+          </div>
+          <ng-template #deductibleTooltip>
             <b
               >La aseguradora exentará el pago de deducible siempre y cuando el
               tercero responsable no cuente con póliza,

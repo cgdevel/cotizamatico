@@ -16,6 +16,10 @@ export class CoberturasComponent implements OnInit {
   assitanceServicio: boolean;
   carSubstitute: boolean;
   EliminacionDeducible: boolean;
+  premiumReturn: boolean;
+  foreignLiability: boolean;
+  liabilityExtension: boolean;
+  deductible: boolean;
   constructor() {}
   ngOnInit(): void {
     this.materialDamage=5;
@@ -53,15 +57,31 @@ export class CoberturasComponent implements OnInit {
     console.log(this.driverAccident)
   }
   setassitanceServicio(event){
-    this.assitanceServicio = event.target.checked
+    this.assitanceServicio = event.target.checked;
     console.log(this.assitanceServicio);
   }
   setcarSubstitute(event){
-    this.carSubstitute = event.target.checked
+    this.carSubstitute = event.target.checked;
     console.log(this.carSubstitute);
   }
   setEliminacionDeducible(event){
-    this.EliminacionDeducible = event.target.checked
+    this.EliminacionDeducible = event.target.checked;
     console.log(this.EliminacionDeducible);
+  }
+  setpremiumReturn(event){
+    this.premiumReturn= event.target.checked;
+    console.log(this.premiumReturn);
+  }
+  setforeignLiability(event){
+    this.foreignLiability = event.target.checked;
+    console.log(this.foreignLiability);
+  }
+setliabilityExtension(event){
+    this.liabilityExtension = event.target.checked;
+    console.log(this.liabilityExtension);
+  }
+  setdeductible(event){
+    this.deductible = event.target.checked;
+    console.log(this.deductible);
   }
 }
