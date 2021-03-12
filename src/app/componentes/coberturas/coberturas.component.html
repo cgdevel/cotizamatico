@@ -2,7 +2,7 @@
   <div class="card-body range__container">
     <div class="row mb-4">
       <div class="col-12">
-        <div *ngIf="this.cobertura == 0">
+        <div *ngIf="this.cobertura == 0 || this.polizaSelect=='Amplia Plus' ">
           <!-- COBERTURAS AMPLIA PLUS -->
           <p
             class="mb-0"
@@ -253,7 +253,7 @@
             Extension de RC
           </span>
           <div class="custom-control custom-switch " id="switchgrande">
-            <input type="checkbox" class="custom-control-input " id="customSwitchliabilityExtension" (change)="setliabilityExtension($event)">
+            <input type="checkbox" class="custom-control-input " id="customSwitchlia.bilityExtension" (change)="setliabilityExtension($event)">
             <label class="custom-control-label" for="customSwitchliabilityExtension"></label>
           </div>
           <ng-template #liabilityExtensionTooltip>
@@ -392,7 +392,7 @@
             >
           </ng-template>
         </div>
-        <div *ngIf="this.cobertura == 1">
+        <div *ngIf="this.cobertura == 1 || this.polizaSelect=='Amplia' ">
           <!-- COBERTURAS AMPLIA -->
           <p
             class="mb-0"

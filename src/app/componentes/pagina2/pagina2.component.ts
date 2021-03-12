@@ -30,6 +30,7 @@ export class Pagina2Component implements OnInit {
   Aseguradoras: Aseguradoras[] = [];
   aseguradora: string;
   pago = 'Anual';
+  poliza = 'Amplia';
   robototal = 0;
   cobertura: number = 1;
   array: AseguradoraCobJ[] = [];

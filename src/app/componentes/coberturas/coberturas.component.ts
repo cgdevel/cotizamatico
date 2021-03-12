@@ -6,7 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./coberturas.component.css'],
 })
 export class CoberturasComponent implements OnInit {
-  @Input() cobertura: number;
+  @Input() cobertura: number ;
+  @Input() polizaSelect: string ;
+
   materialDamage: number = 0;
   totalTheft: number = 0;
   medicalExpenses : number = 0;

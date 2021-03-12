@@ -3,8 +3,8 @@
   <div class="row d-md-none">
     <div class="col-4">
       <div class="form-group">
-        <label for="poliza">Tipo de poliza</label>
-        <select class="form-control" id="poliza">
+        <label  for="poliza">Tipo de poliza</label>
+        <select [(ngModel)]="poliza" class="form-control" id="poliza">
           <option>Amplia Plus</option>
           <option selected>Amplia</option>
           <option>Limitada</option>
@@ -1048,7 +1048,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <app-coberturas [cobertura]="cobertura"> </app-coberturas>
+    <app-coberturas [cobertura]="cobertura" [polizaSelect]="poliza"></app-coberturas> 
   </div>
 </nav>
 
@@ -1392,7 +1392,7 @@
           </div>
         </div>
       </div>
-      <app-coberturas [cobertura]="cobertura"> </app-coberturas>
+      <app-coberturas [cobertura]="cobertura" [polizaSelect]="poliza"></app-coberturas> 
     </div>
   </div>
 </div>
