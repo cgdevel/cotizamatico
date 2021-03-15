@@ -8,7 +8,7 @@
           <option>Amplia Plus</option>
           <option selected>Amplia</option>
           <option>Limitada</option>
-          <option>Basica</option>
+          <option>Básica</option>
         </select>
       </div>
     </div>
@@ -1048,29 +1048,11 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <app-coberturas [polizaSelect]="poliza"></app-coberturas> 
+    <app-coberturas [polizaSelect]="poliza" [valueDamage]="this.cobDamage" [valuetotalTheft]="this.cobtothe"></app-coberturas> 
   </div>
 </nav>
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-4 col-sm-12">
-      <!-- [disabled]="this.amplia || this.limitada || this.basica" -->
-      <!-- [disabled]="this.ampliaplus || this.limitada || this.basica" -->
-      <!-- [disabled]="this.amplia || this.ampliaplus || this.basica" -->
-      <!-- [disabled]="this.amplia || this.limitada || this.ampliaplus" -->
-      <div class="container mw-100">
-        <div class="row" style="justify-content: center"></div>
-      </div>
-    </div>
-
-    <div class="col-md-4 col-sm-12">
-      <!-- [disabled]="this.trimestral || this.semestral  || this.anual" -->
-      <!-- [disabled]="this.mensual || this.semestral  || this.anual" -->
-      <!-- [disabled]="this.mensual || this.trimestral  || this.anual" -->
-      <!-- [disabled]="this.mensual || this.trimestral  || this.semestral" -->
-    </div>
-  </div>
   <div class="row">
     <div class="col-md-8 col-sm-12">
       <div class="card mb-4" id="estesi" *ngIf="Aseguradoras[0]">
@@ -1392,7 +1374,7 @@
           </div>
         </div>
       </div>
-      <app-coberturas [cobertura]="cobertura" [polizaSelect]="poliza"></app-coberturas> 
+      <app-coberturas [cobertura]="cobertura" [polizaSelect]="poliza" [valueDamage]="this.cobDamage" [valuetotalTheft]="this.cobtothe"></app-coberturas> 
     </div>
   </div>
 </div>

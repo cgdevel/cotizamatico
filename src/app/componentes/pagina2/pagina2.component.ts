@@ -22,6 +22,8 @@ import AseguradoraCobJ from '../../interphaces/aseguradoracob';
 })
 export class Pagina2Component implements OnInit {
   @Output() emitFormaPago = new EventEmitter<string>();
+  cobDamage: number;
+  cobtothe : number;
   constructor(
     private route: ActivatedRoute,
     private infovehiculoService: InfovehiculoService
@@ -97,6 +99,9 @@ export class Pagina2Component implements OnInit {
     this.statusB = 'NoSelected';
     this.statusAP = this.ampliaplus ? 'Selected' : 'NoSelected';
     this.cobertura = 0;
+    this.cobDamage = 5;
+    this.cobtothe = 5 ;
+    this.poliza ="Amplia Plus";
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
     // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
@@ -113,7 +118,9 @@ export class Pagina2Component implements OnInit {
     this.statusB = 'NoSelected';
     this.statusA = this.amplia ? 'Selected' : 'NoSelected';
     this.cobertura = 1;
-
+    this.cobDamage = 3;
+    this.cobtothe = 10 ;
+    this.poliza ="Amplia";
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
     // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
@@ -130,6 +137,7 @@ export class Pagina2Component implements OnInit {
     this.statusB = 'NoSelected';
     this.statusL = this.limitada ? 'Selected' : 'NoSelected';
     this.cobertura = 2;
+    this.poliza ="Limitada";
 
     // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
@@ -147,6 +155,7 @@ export class Pagina2Component implements OnInit {
     this.statusL = 'NoSelected';
     this.statusB = this.basica ? 'Selected' : 'NoSelected';
     this.cobertura = 3;
+    this.poliza ="Básica";
 
     // console.log("Básica :"+' '+this.basica+' '+this.statusB)
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
@@ -381,6 +390,7 @@ export class Pagina2Component implements OnInit {
     this.amplia = true;
     this.descMEDIO = true;
     this.anual = true;
+    this.cobtothe= 10;
     this.una = history.state.sizeta;
     for (let index = 0; AseguradoraCobJson.length < index; index++) {
       const element = AseguradoraCobJson[index];

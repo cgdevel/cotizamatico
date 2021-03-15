@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-slider/ngx-slider": "^2.0.3",
     "@angular/animations": "^11.1.2",
     "@angular/cdk": "^10.2.7",
     "@angular/common": "^11.1.2",
@@ -27,7 +28,9 @@
     "@popperjs/core": "^2.6.0",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
+    "ng2-nouislider": "^1.8.3",
     "ngx-cookie": "^5.0.2",
+    "nouislider": "^14.6.3",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

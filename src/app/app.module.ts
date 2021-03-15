@@ -12,6 +12,7 @@ import { InfoaseguradoComponent } from './componentes/pagina1/infoasegurado/info
 import { InfovehiculoComponent } from './componentes/pagina1/infovehiculo/infovehiculo.component';
 import { Pagina2Component } from './componentes/pagina2/pagina2.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { from } from 'rxjs';
 import {
   NgbModule,
@@ -70,6 +71,7 @@ import { CoberturasComponent } from './componentes/coberturas/coberturas.compone
     NgbPaginationModule,
     NgbAlertModule,
     CookieModule.forRoot(),
+    NgxSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent],

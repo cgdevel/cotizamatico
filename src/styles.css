@@ -57,3 +57,19 @@
   border-color: transparent transparent #fff;
   border-width: 0 5px 5px;
 }
+.ngx-slider .ngx-slider-bar {
+  width: 100% !important;
+  height: 15px !important;
+  border-radius: 5px !important;
+  background-image: linear-gradient(#ff8f48, #ff6963) !important;
+}
+ngx-slider .ngx-slider-pointer::after {
+  background-image: linear-gradient(#ff8f48, #ff6963) !important;
+}
+
+.ngx-slider .ngx-slider-pointer {
+  background-color: #ffffff !important;
+}
+.ngx-slider.animate .ngx-slider-bubble.ngx-slider-limit {
+  visibility: hidden !important;
+}
