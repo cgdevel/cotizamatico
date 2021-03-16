@@ -2,7 +2,7 @@
   <div class="card-body range__container">
     <div class="row mb-4">
       <div class="col-12">
-        <div *ngIf="this.cobertura == 0 || this.polizaSelect=='Amplia Plus' ">
+        <div *ngIf="this.cobertura == 0 || this.polizaSelect == 'Amplia Plus'">
           <!-- COBERTURAS AMPLIA PLUS -->
           <p
             class="mb-0"
@@ -11,7 +11,10 @@
           >
             Daños Materiales
           </p>
-          <ngx-slider [(value)]="valueDamage" [options]="optionsDamage" ></ngx-slider>
+          <ngx-slider
+            [(value)]="valueDamage"
+            [options]="optionsDamage"
+          ></ngx-slider>
           <ng-template #materialDamageTooltip>
             <b>Ampara los daños o pérdidas materiales que sufra el vehículo</b>
           </ng-template>
@@ -22,7 +25,10 @@
           >
             Robo Total
           </p>
-          <ngx-slider [(value)]="valuetotalTheft" [options]="optionstotalTheft" ></ngx-slider>
+          <ngx-slider
+            [(value)]="valuetotalTheft"
+            [options]="optionstotalTheft"
+          ></ngx-slider>
           <ng-template #totalTheftTooltip>
             <b
               >Ampara las pérdidas o daños materiales que sufra a consecuencia
@@ -37,7 +43,10 @@
           >
             Responsabilidad Civil
           </p>
-          <ngx-slider [(value)]="valuecivilLiability" [options]="optionscivilLiability" ></ngx-slider>
+          <ngx-slider
+            [(value)]="valuecivilLiability"
+            [options]="optionscivilLiability"
+          ></ngx-slider>
           <ng-template #civilLiabilityTooltip>
             <b
               >Cubre los daños que el contratante cause a terceros en sus
@@ -52,7 +61,10 @@
           >
             Gtos. Médicos Ocup.
           </p>
-          <ngx-slider [(value)]="valuemedicalExpenses" [options]="optionsmedicalExpenses" ></ngx-slider>
+          <ngx-slider
+            [(value)]="valuemedicalExpenses"
+            [options]="optionsmedicalExpenses"
+          ></ngx-slider>
           <ng-template #medicalExpensesTooltip>
             <b
               >Esta cobertura ampara el pago de gastos médicos básicos
@@ -69,25 +81,44 @@
           >
             Acc. Conductor
           </p>
-          <ngx-slider [(value)]="valuedriverAccident" [options]="optionsdriverAccident" ></ngx-slider>
+          <ngx-slider
+            [(value)]="valuedriverAccident"
+            [options]="optionsdriverAccident"
+          ></ngx-slider>
           <ng-template #driverAccidentTooltip>
             <b
               >Cubre las lesiones y/o muerte ocasionados al conductor del
               vehículo.</b
             >
           </ng-template>
-
-          <span
-            class="my-1"
-            [ngbTooltip]="carSubstituteTooltip"
-            tooltipClass="my-custom-class"
-          >
-            Auto Sustituto
-          </span>
-          <div class="custom-control custom-switch " id="switchgrande">
-            <input type="checkbox" class="custom-control-input " id="customSwitchcarSubstitute" (change)="setcarSubstitute($event)">
-            <label class="custom-control-label" for="customSwitchcarSubstitute"></label>
-        </div>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1 d-inline"
+                [ngbTooltip]="carSubstituteTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Auto Sustituto
+              </span>
+            </div>
+            <div class="col-6">
+              <div
+                class="custom-control custom-switch d-inline"
+                id="switchgrande"
+              >
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchcarSubstitute"
+                  (change)="setcarSubstitute($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchcarSubstitute"
+                ></label>
+              </div>
+            </div>
+          </div>
           <ng-template #carSubstituteTooltip>
             <b
               >En caso de robo total de la unidad, la aseguradora brinda un auto
@@ -95,16 +126,30 @@
             >
           </ng-template>
 
-          <span
-            class="my-1"
-            [ngbTooltip]="ElimDeduTooltip"
-            tooltipClass="my-custom-class"
-          >
-            Elim. Deducible
-          </span>
-          <div class="custom-control custom-switch " id="switchgrande">
-            <input type="checkbox" class="custom-control-input " id="customSwitchEliminacionDeducible" (change)="setEliminacionDeducible($event)">
-            <label class="custom-control-label" for="customSwitchEliminacionDeducible"></label>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="ElimDeduTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Elim. Deducible
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchEliminacionDeducible"
+                  (change)="setEliminacionDeducible($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchEliminacionDeducible"
+                ></label>
+              </div>
+            </div>
           </div>
           <ng-template #ElimDeduTooltip>
             <b
@@ -113,16 +158,30 @@
             >
           </ng-template>
 
-          <span
-            class="my-1"
-            [ngbTooltip]="premiumReturnTooltip"
-            tooltipClass="my-custom-class"
-          >
-            Dev. Primas
-          </span>
-          <div class="custom-control custom-switch " id="switchgrande">
-            <input type="checkbox" class="custom-control-input " id="customSwitchpremiumReturn" (change)="setpremiumReturn($event)">
-            <label class="custom-control-label" for="customSwitchpremiumReturn"></label>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="premiumReturnTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Dev. Primas
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchpremiumReturn"
+                  (change)="setpremiumReturn($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchpremiumReturn"
+                ></label>
+              </div>
+            </div>
           </div>
           <ng-template #premiumReturnTooltip>
             <b
@@ -131,16 +190,30 @@
             >
           </ng-template>
 
-          <span
-            class="my-1"
-            [ngbTooltip]="foreignLiabilityTooltip"
-            tooltipClass="my-custom-class"
-          >
-            RC en el extranjero
-          </span>
-          <div class="custom-control custom-switch " id="switchgrande">
-            <input type="checkbox" class="custom-control-input " id="customSwitchforeignLiability" (change)="setforeignLiability($event)">
-            <label class="custom-control-label" for="customSwitchforeignLiability"></label>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="foreignLiabilityTooltip"
+                tooltipClass="my-custom-class"
+              >
+                RC en el extranjero
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchforeignLiability"
+                  (change)="setforeignLiability($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchforeignLiability"
+                ></label>
+              </div>
+            </div>
           </div>
           <ng-template #foreignLiabilityTooltip>
             <b
@@ -150,16 +223,30 @@
             >
           </ng-template>
 
-          <span
-            class="my-1"
-            [ngbTooltip]="liabilityExtensionTooltip"
-            tooltipClass="my-custom-class"
-          >
-            Extensión de RC
-          </span>
-          <div class="custom-control custom-switch " id="switchgrande">
-            <input type="checkbox" class="custom-control-input " id="customSwitchliabilityExtension" (change)="setliabilityExtension($event)">
-            <label class="custom-control-label" for="customSwitchliabilityExtension"></label>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="liabilityExtensionTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Extensión de RC
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchliabilityExtension"
+                  (change)="setliabilityExtension($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchliabilityExtension"
+                ></label>
+              </div>
+            </div>
           </div>
           <ng-template #liabilityExtensionTooltip>
             <b
@@ -168,16 +255,30 @@
             >
           </ng-template>
 
-          <span
-            class="my-1"
-            [ngbTooltip]="deductibleTooltip"
-            tooltipClass="my-custom-class"
-          >
-            Deducible 0 %
-          </span>
-          <div class="custom-control custom-switch " id="switchgrande">
-            <input type="checkbox" class="custom-control-input " id="customSwitchdeductible" (change)="setdeductible($event)">
-            <label class="custom-control-label" for="customSwitchdeductible"></label>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="deductibleTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Deducible 0 %
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchdeductible"
+                  (change)="setdeductible($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchdeductible"
+                ></label>
+              </div>
+            </div>
           </div>
           <ng-template #deductibleTooltip>
             <b
@@ -186,16 +287,30 @@
             </b>
           </ng-template>
 
-          <span
-            class="my-1"
-            [ngbTooltip]="partialTheftTooltip"
-            tooltipClass="my-custom-class"
-          >
-            Robo Parcial
-          </span>
-          <div class="custom-control custom-switch " id="switchgrande">
-            <input type="checkbox" class="custom-control-input " id="customSwitchpartialTheft" (change)="setpartialTheft($event)">
-            <label class="custom-control-label" for="customSwitchpartialTheft"></label>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="partialTheftTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Robo Parcial
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchpartialTheft"
+                  (change)="setpartialTheft($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchpartialTheft"
+                ></label>
+              </div>
+            </div>
           </div>
           <ng-template #partialTheftTooltip>
             <b
@@ -204,16 +319,30 @@
             </b>
           </ng-template>
 
-          <span
-            class="my-1"
-            [ngbTooltip]="tireInsuranceTooltip"
-            tooltipClass="my-custom-class"
-          >
-            Seguro de llantas
-          </span>
-          <div class="custom-control custom-switch " id="switchgrande">
-            <input type="checkbox" class="custom-control-input " id="customSwitchtireInsurance" (change)="settireInsurance($event)">
-            <label class="custom-control-label" for="customSwitchtireInsurance"></label>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="tireInsuranceTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Seguro de llantas
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchtireInsurance"
+                  (change)="settireInsurance($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchtireInsurance"
+                ></label>
+              </div>
+            </div>
           </div>
           <ng-template #tireInsuranceTooltip>
             <b
@@ -229,7 +358,10 @@
           >
             RC Daños a Ocupantes
           </p>
-          <ngx-slider [(value)]="valueocuppantsLiability" [options]="optionsocuppantsLiability" ></ngx-slider>
+          <ngx-slider
+            [(value)]="valueocuppantsLiability"
+            [options]="optionsocuppantsLiability"
+          ></ngx-slider>
           <ng-template #ocuppantsLiabilityTooltip>
             <b
               >Ampara los daños materiales a terceros en sus bienes, lesiones
@@ -237,17 +369,32 @@
             >
           </ng-template>
 
-          <span
-            class="my-1"
-            [ngbTooltip]="transportationExpensesTooltip"
-            tooltipClass="my-custom-class"
-          >
-            Gtos. Transporte
-          </span>
-          <div class="custom-control custom-switch " id="switchgrande">
-            <input type="checkbox" class="custom-control-input " id="customSwitchtransportationExpenses" (change)="settransportationExpenses($event)">
-            <label class="custom-control-label" for="customSwitchtransportationExpenses"></label>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="transportationExpensesTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Gtos. Transporte
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchtransportationExpenses"
+                  (change)="settransportationExpenses($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchtransportationExpenses"
+                ></label>
+              </div>
+            </div>
           </div>
+
           <ng-template #transportationExpensesTooltip>
             <b
               >En caso de robo total, y que la cobertura esté contratada, la
@@ -255,16 +402,30 @@
             >
           </ng-template>
 
-          <span
-            class="my-1"
-            [ngbTooltip]="agencyRepairTooltip"
-            tooltipClass="my-custom-class"
-          >
-            Reparación en Agencia
-          </span>
-          <div class="custom-control custom-switch " id="switchgrande">
-            <input type="checkbox" class="custom-control-input " id="customSwitchagencyRepair" (change)="setagencyRepair($event)">
-            <label class="custom-control-label" for="customSwitchagencyRepair"></label>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="agencyRepairTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Reparación en Agencia
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchagencyRepair"
+                  (change)="setagencyRepair($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchagencyRepair"
+                ></label>
+              </div>
+            </div>
           </div>
           <ng-template #agencyRepairTooltip>
             <b
@@ -274,7 +435,7 @@
             >
           </ng-template>
         </div>
-        <div *ngIf="this.cobertura == 1 || this.polizaSelect=='Amplia' ">
+        <div *ngIf="this.cobertura == 1 || this.polizaSelect == 'Amplia'">
           <!-- COBERTURAS AMPLIA -->
           <p
             class="mb-0"
@@ -283,7 +444,10 @@
           >
             Daños Materiales
           </p>
-          <ngx-slider [(value)]="valueDamage" [options]="optionsDamage"></ngx-slider>
+          <ngx-slider
+            [(value)]="valueDamage"
+            [options]="optionsDamage"
+          ></ngx-slider>
           <ng-template #materialDamageTooltip>
             <b>Ampara los daños o pérdidas materiales que sufra el vehículo</b>
           </ng-template>
@@ -295,7 +459,10 @@
           >
             Robo Total
           </p>
-          <ngx-slider [(value)]="valuetotalTheft" [options]="optionstotalTheft" ></ngx-slider>
+          <ngx-slider
+            [(value)]="valuetotalTheft"
+            [options]="optionstotalTheft"
+          ></ngx-slider>
           <ng-template #totalTheft>
             <b
               >Ampara las pérdidas o daños materiales que sufra a consecuencia
@@ -310,7 +477,10 @@
           >
             Responsabilidad Civil
           </p>
-          <ngx-slider [(value)]="valuecivilLiability" [options]="optionscivilLiability" ></ngx-slider>
+          <ngx-slider
+            [(value)]="valuecivilLiability"
+            [options]="optionscivilLiability"
+          ></ngx-slider>
           <ng-template #civilLiability>
             <b
               >Cubre los daños que el contratante cause a terceros en sus
@@ -325,7 +495,10 @@
           >
             Gtos. Médicos Ocup.
           </p>
-          <ngx-slider [(value)]="valuemedicalExpenses" [options]="optionsmedicalExpenses" ></ngx-slider>
+          <ngx-slider
+            [(value)]="valuemedicalExpenses"
+            [options]="optionsmedicalExpenses"
+          ></ngx-slider>
           <ng-template #medicalExpenses>
             <b
               >Esta cobertura ampara el pago de gastos médicos básicos
@@ -342,7 +515,10 @@
           >
             Acc. Conductor
           </p>
-          <ngx-slider [(value)]="valuedriverAccident" [options]="optionsdriverAccident" ></ngx-slider>
+          <ngx-slider
+            [(value)]="valuedriverAccident"
+            [options]="optionsdriverAccident"
+          ></ngx-slider>
           <ng-template #driverAccident>
             <b
               >Cubre las lesiones y/o muerte ocasionados al conductor del
@@ -350,17 +526,31 @@
             >
           </ng-template>
 
-          <span
-            class="my-1"
-            [ngbTooltip]="carSubstituteTooltip"
-            tooltipClass="my-custom-class"
-          >
-            Auto Sustituto
-          </span>
-          <div class="custom-control custom-switch " id="switchgrande">
-            <input type="checkbox" class="custom-control-input " id="customSwitchcarSubstitute" (change)="setcarSubstitute($event)">
-            <label class="custom-control-label" for="customSwitchcarSubstitute"></label>
-        </div>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="carSubstituteTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Auto Sustituto
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchcarSubstitute"
+                  (change)="setcarSubstitute($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchcarSubstitute"
+                ></label>
+              </div>
+            </div>
+          </div>
           <ng-template #carSubstituteTooltip>
             <b
               >En caso de robo total de la unidad, la aseguradora brinda un auto
@@ -368,16 +558,30 @@
             >
           </ng-template>
 
-          <span
-            class="my-1"
-            [ngbTooltip]="ElimDeduTooltip"
-            tooltipClass="my-custom-class"
-          >
-            Elim. Deducible
-          </span>
-          <div class="custom-control custom-switch " id="switchgrande">
-            <input type="checkbox" class="custom-control-input " id="customSwitchEliminacionDeducible" (change)="setEliminacionDeducible($event)">
-            <label class="custom-control-label" for="customSwitchEliminacionDeducible"></label>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="ElimDeduTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Elim. Deducible
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchEliminacionDeducible"
+                  (change)="setEliminacionDeducible($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchEliminacionDeducible"
+                ></label>
+              </div>
+            </div>
           </div>
           <ng-template #ElimDeduTooltip>
             <b
@@ -386,16 +590,30 @@
             >
           </ng-template>
 
-          <span
-            class="my-1"
-            [ngbTooltip]="premiumReturnTooltip"
-            tooltipClass="my-custom-class"
-          >
-            Dev. Primas
-          </span>
-          <div class="custom-control custom-switch " id="switchgrande">
-            <input type="checkbox" class="custom-control-input " id="customSwitchpremiumReturn" (change)="setpremiumReturn($event)">
-            <label class="custom-control-label" for="customSwitchpremiumReturn"></label>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="premiumReturnTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Dev. Primas
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchpremiumReturn"
+                  (change)="setpremiumReturn($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchpremiumReturn"
+                ></label>
+              </div>
+            </div>
           </div>
           <ng-template #premiumReturnTooltip>
             <b
@@ -404,152 +622,251 @@
             >
           </ng-template>
 
-          <span
-          class="my-1"
-          [ngbTooltip]="foreignLiabilityTooltip"
-          tooltipClass="my-custom-class"
-        >
-          RC en el extranjero
-        </span>
-        <div class="custom-control custom-switch " id="switchgrande">
-          <input type="checkbox" class="custom-control-input " id="customSwitchforeignLiability" (change)="setforeignLiability($event)">
-          <label class="custom-control-label" for="customSwitchforeignLiability"></label>
-        </div>
-        <ng-template #foreignLiabilityTooltip>
-          <b
-            >cubre los daños que el asegurado cause a terceros en sus bienes
-            siempre y cuando se encuentre en el territorio de Estados
-            Unidos</b
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="foreignLiabilityTooltip"
+                tooltipClass="my-custom-class"
+              >
+                RC en el extranjero
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchforeignLiability"
+                  (change)="setforeignLiability($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchforeignLiability"
+                ></label>
+              </div>
+            </div>
+          </div>
+          <ng-template #foreignLiabilityTooltip>
+            <b
+              >cubre los daños que el asegurado cause a terceros en sus bienes
+              siempre y cuando se encuentre en el territorio de Estados
+              Unidos</b
+            >
+          </ng-template>
+
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="liabilityExtensionTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Extensión de RC
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchliabilityExtension"
+                  (change)="setliabilityExtension($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchliabilityExtension"
+                ></label>
+              </div>
+            </div>
+          </div>
+          <ng-template #liabilityExtensionTooltip>
+            <b
+              >Ampara al asegurado por daños a terceros en caso de conducir un
+              vehículo diferente</b
+            >
+          </ng-template>
+
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="deductibleTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Deducible 0 %
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchdeductible"
+                  (change)="setdeductible($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchdeductible"
+                ></label>
+              </div>
+            </div>
+          </div>
+          <ng-template #deductibleTooltip>
+            <b
+              >La aseguradora exentará el pago de deducible siempre y cuando el
+              tercero responsable no cuente con póliza,
+            </b>
+          </ng-template>
+
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="partialTheftTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Robo Parcial
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchpartialTheft"
+                  (change)="setpartialTheft($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchpartialTheft"
+                ></label>
+              </div>
+            </div>
+          </div>
+          <ng-template #partialTheftTooltip>
+            <b
+              >Se ampara la indemnización por robo de autopartes, accesorios o
+              equipo especial a consecuencia de robo total
+            </b>
+          </ng-template>
+
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="tireInsuranceTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Seguro de llantas
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchtireInsurance"
+                  (change)="settireInsurance($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchtireInsurance"
+                ></label>
+              </div>
+            </div>
+          </div>
+          <ng-template #tireInsuranceTooltip>
+            <b
+              >La aseguradora cubrirá los daños que puedan sufrir las llantas
+              y/o rines a consecuencia de un accidente</b
+            >
+          </ng-template>
+
+          <p
+            class="mb-0"
+            [ngbTooltip]="ocuppantsLiabilityTooltip"
+            tooltipClass="my-custom-class"
           >
-        </ng-template>
+            RC Daños a Ocupantes
+          </p>
+          <ngx-slider
+            [(value)]="valueocuppantsLiability"
+            [options]="optionsocuppantsLiability"
+          ></ngx-slider>
+          <ng-template #ocuppantsLiabilityTooltip>
+            <b
+              >Ampara los daños materiales a terceros en sus bienes, lesiones
+              corporales o la muerte de los ocupantes del vehículo</b
+            >
+          </ng-template>
 
-        <span
-        class="my-1"
-        [ngbTooltip]="liabilityExtensionTooltip"
-        tooltipClass="my-custom-class"
-      >
-        Extensión de RC
-      </span>
-      <div class="custom-control custom-switch " id="switchgrande">
-        <input type="checkbox" class="custom-control-input " id="customSwitchliabilityExtension" (change)="setliabilityExtension($event)">
-        <label class="custom-control-label" for="customSwitchliabilityExtension"></label>
-      </div>
-      <ng-template #liabilityExtensionTooltip>
-        <b
-          >Ampara al asegurado por daños a terceros en caso de conducir un
-          vehículo diferente</b
-        >
-      </ng-template>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="transportationExpensesTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Gtos. Transporte
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchtransportationExpenses"
+                  (change)="settransportationExpenses($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchtransportationExpenses"
+                ></label>
+              </div>
+            </div>
+          </div>
+          <ng-template #transportationExpensesTooltip>
+            <b
+              >En caso de robo total, y que la cobertura esté contratada, la
+              compañía gestionará la renta de un automovil</b
+            >
+          </ng-template>
 
-      <span
-      class="my-1"
-      [ngbTooltip]="deductibleTooltip"
-      tooltipClass="my-custom-class"
-    >
-      Deducible 0 %
-    </span>
-    <div class="custom-control custom-switch " id="switchgrande">
-      <input type="checkbox" class="custom-control-input " id="customSwitchdeductible" (change)="setdeductible($event)">
-      <label class="custom-control-label" for="customSwitchdeductible"></label>
-    </div>
-    <ng-template #deductibleTooltip>
-      <b
-        >La aseguradora exentará el pago de deducible siempre y cuando el
-        tercero responsable no cuente con póliza,
-      </b>
-    </ng-template>
-
-    <span
-    class="my-1"
-    [ngbTooltip]="partialTheftTooltip"
-    tooltipClass="my-custom-class"
-  >
-    Robo Parcial
-  </span>
-  <div class="custom-control custom-switch " id="switchgrande">
-    <input type="checkbox" class="custom-control-input " id="customSwitchpartialTheft" (change)="setpartialTheft($event)">
-    <label class="custom-control-label" for="customSwitchpartialTheft"></label>
-  </div>
-  <ng-template #partialTheftTooltip>
-    <b
-      >Se ampara la indemnización por robo de autopartes, accesorios o
-      equipo especial a consecuencia de robo total
-    </b>
-  </ng-template>
-
-
-  <span
-  class="my-1"
-  [ngbTooltip]="tireInsuranceTooltip"
-  tooltipClass="my-custom-class"
->
-  Seguro de llantas
-</span>
-<div class="custom-control custom-switch " id="switchgrande">
-  <input type="checkbox" class="custom-control-input " id="customSwitchtireInsurance" (change)="settireInsurance($event)">
-  <label class="custom-control-label" for="customSwitchtireInsurance"></label>
-</div>
-<ng-template #tireInsuranceTooltip>
-  <b
-    >La aseguradora cubrirá los daños que puedan sufrir las llantas
-    y/o rines a consecuencia de un accidente</b
-  >
-</ng-template>
-
-<p
-class="mb-0"
-[ngbTooltip]="ocuppantsLiabilityTooltip"
-tooltipClass="my-custom-class"
->
-RC Daños a Ocupantes
-</p>
-<ngx-slider [(value)]="valueocuppantsLiability" [options]="optionsocuppantsLiability" ></ngx-slider>
-<ng-template #ocuppantsLiabilityTooltip>
-<b
-  >Ampara los daños materiales a terceros en sus bienes, lesiones
-  corporales o la muerte de los ocupantes del vehículo</b
->
-</ng-template>
-
-<span
-class="my-1"
-[ngbTooltip]="transportationExpensesTooltip"
-tooltipClass="my-custom-class"
->
-Gtos. Transporte
-</span>
-<div class="custom-control custom-switch " id="switchgrande">
-<input type="checkbox" class="custom-control-input " id="customSwitchtransportationExpenses" (change)="settransportationExpenses($event)">
-<label class="custom-control-label" for="customSwitchtransportationExpenses"></label>
-</div>
-<ng-template #transportationExpensesTooltip>
-<b
-  >En caso de robo total, y que la cobertura esté contratada, la
-  compañía gestionará la renta de un automovil</b
->
-</ng-template>
-
-        
-<span
-class="my-1"
-[ngbTooltip]="agencyRepairTooltip"
-tooltipClass="my-custom-class"
->
-Reparación en Agencia
-</span>
-<div class="custom-control custom-switch " id="switchgrande">
-<input type="checkbox" class="custom-control-input " id="customSwitchagencyRepair" (change)="setagencyRepair($event)">
-<label class="custom-control-label" for="customSwitchagencyRepair"></label>
-</div>
-<ng-template #agencyRepairTooltip>
-<b
-  >En caso de siniestro la compañía se obliga a enviar el vehículo a
-  la agencia de la marca para realizar la reparación
-  correspondiente</b
->
-</ng-template>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="agencyRepairTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Reparación en Agencia
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchagencyRepair"
+                  (change)="setagencyRepair($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchagencyRepair"
+                ></label>
+              </div>
+            </div>
+          </div>
+          <ng-template #agencyRepairTooltip>
+            <b
+              >En caso de siniestro la compañía se obliga a enviar el vehículo a
+              la agencia de la marca para realizar la reparación
+              correspondiente</b
+            >
+          </ng-template>
         </div>
-        <div *ngIf="this.cobertura == 2 || this.polizaSelect=='Limitada' ">
+        <div *ngIf="this.cobertura == 2 || this.polizaSelect == 'Limitada'">
           <!-- COBERTURAS lIMITADA -->
           <p
             class="mb-0"
@@ -558,7 +875,10 @@ Reparación en Agencia
           >
             Robo Total
           </p>
-          <ngx-slider [(value)]="valuetotalTheft" [options]="optionstotalTheft" ></ngx-slider>
+          <ngx-slider
+            [(value)]="valuetotalTheft"
+            [options]="optionstotalTheft"
+          ></ngx-slider>
           <ng-template #totalTheft>
             <b
               >Ampara las pérdidas o daños materiales que sufra a consecuencia
@@ -572,7 +892,10 @@ Reparación en Agencia
           >
             Responsabilidad Civil
           </p>
-          <ngx-slider [(value)]="valuecivilLiability" [options]="optionscivilLiability" ></ngx-slider>
+          <ngx-slider
+            [(value)]="valuecivilLiability"
+            [options]="optionscivilLiability"
+          ></ngx-slider>
           <ng-template #civilLiability>
             <b
               >Cubre los daños que el contratante cause a terceros en sus
@@ -586,7 +909,10 @@ Reparación en Agencia
           >
             Gtos. Médicos Ocup.
           </p>
-          <ngx-slider [(value)]="valuemedicalExpenses" [options]="optionsmedicalExpenses" ></ngx-slider>
+          <ngx-slider
+            [(value)]="valuemedicalExpenses"
+            [options]="optionsmedicalExpenses"
+          ></ngx-slider>
           <ng-template #medicalExpenses>
             <b
               >Esta cobertura ampara el pago de gastos médicos básicos
@@ -602,154 +928,71 @@ Reparación en Agencia
           >
             Acc. Conductor
           </p>
-          <ngx-slider [(value)]="valuedriverAccident" [options]="optionsdriverAccident" ></ngx-slider>
+          <ngx-slider
+            [(value)]="valuedriverAccident"
+            [options]="optionsdriverAccident"
+          ></ngx-slider>
           <ng-template #driverAccident>
             <b
               >Cubre las lesiones y/o muerte ocasionados al conductor del
               vehículo.</b
             >
           </ng-template>
-          <span
-          class="my-1"
-          [ngbTooltip]="carSubstituteTooltip"
-          tooltipClass="my-custom-class"
-        >
-          Auto Sustituto
-        </span>
-        <div class="custom-control custom-switch " id="switchgrande">
-          <input type="checkbox" class="custom-control-input " id="customSwitchcarSubstitute" (change)="setcarSubstitute($event)">
-          <label class="custom-control-label" for="customSwitchcarSubstitute"></label>
-      </div>
-        <ng-template #carSubstituteTooltip>
-          <b
-            >En caso de robo total de la unidad, la aseguradora brinda un auto
-            con caracteristicas similares</b
-          >
-        </ng-template>
-        <span
-        class="my-1"
-        [ngbTooltip]="foreignLiabilityTooltip"
-        tooltipClass="my-custom-class"
-      >
-        RC en el extranjero
-      </span>
-      <div class="custom-control custom-switch " id="switchgrande">
-        <input type="checkbox" class="custom-control-input " id="customSwitchforeignLiability" (change)="setforeignLiability($event)">
-        <label class="custom-control-label" for="customSwitchforeignLiability"></label>
-      </div>
-      <ng-template #foreignLiabilityTooltip>
-        <b
-          >cubre los daños que el asegurado cause a terceros en sus bienes
-          siempre y cuando se encuentre en el territorio de Estados
-          Unidos</b
-        >
-      </ng-template>
-      <span
-      class="my-1"
-      [ngbTooltip]="liabilityExtensionTooltip"
-      tooltipClass="my-custom-class"
-    >
-      Extensión de RC
-    </span>
-    <div class="custom-control custom-switch " id="switchgrande">
-      <input type="checkbox" class="custom-control-input " id="customSwitchliabilityExtension" (change)="setliabilityExtension($event)">
-      <label class="custom-control-label" for="customSwitchliabilityExtension"></label>
-    </div>
-    <ng-template #liabilityExtensionTooltip>
-      <b
-        >Ampara al asegurado por daños a terceros en caso de conducir un
-        vehículo diferente</b
-      >
-    </ng-template>
-    <span
-    class="my-1"
-    [ngbTooltip]="partialTheftTooltip"
-    tooltipClass="my-custom-class"
-  >
-    Robo Parcial
-  </span>
-  <div class="custom-control custom-switch " id="switchgrande">
-    <input type="checkbox" class="custom-control-input " id="customSwitchpartialTheft" (change)="setpartialTheft($event)">
-    <label class="custom-control-label" for="customSwitchpartialTheft"></label>
-  </div>
-  <ng-template #partialTheftTooltip>
-    <b
-      >Se ampara la indemnización por robo de autopartes, accesorios o
-      equipo especial a consecuencia de robo total
-    </b>
-  </ng-template>
-
-  <p
-  class="mb-0"
-  [ngbTooltip]="ocuppantsLiabilityTooltip"
-  tooltipClass="my-custom-class"
->
-  RC Daños a Ocupantes
-</p>
-<ngx-slider [(value)]="valueocuppantsLiability" [options]="optionsocuppantsLiability" ></ngx-slider>
-<ng-template #ocuppantsLiabilityTooltip>
-  <b
-    >Ampara los daños materiales a terceros en sus bienes, lesiones
-    corporales o la muerte de los ocupantes del vehículo</b
-  >
-</ng-template>
-        </div>
-        <div *ngIf="this.cobertura == 3 || this.polizaSelect=='Básica' ">
-          <!-- COBERTURAS BASICA -->
-          <p
-          class="mb-0"
-          [ngbTooltip]="civilLiability"
-          tooltipClass="my-custom-class"
-        >
-          Responsabilidad Civil
-        </p>
-        <ngx-slider [(value)]="valuecivilLiability" [options]="optionscivilLiability" ></ngx-slider>
-        <ng-template #civilLiability>
-          <b
-            >Cubre los daños que el contratante cause a terceros en sus
-            bienes</b
-          >
-        </ng-template>
-          <p
-            class="mb-0"
-            [ngbTooltip]="medicalExpenses"
-            tooltipClass="my-custom-class"
-          >
-            Gtos. Médicos Ocup.
-          </p>
-          <ngx-slider [(value)]="valuemedicalExpenses" [options]="optionsmedicalExpenses" ></ngx-slider>
-          <ng-template #medicalExpenses>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="carSubstituteTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Auto Sustituto
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchcarSubstitute"
+                  (change)="setcarSubstitute($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchcarSubstitute"
+                ></label>
+              </div>
+            </div>
+          </div>
+          <ng-template #carSubstituteTooltip>
             <b
-              >Esta cobertura ampara el pago de gastos médicos básicos
-              originados por lesiones corporales que sufra el Asegurado o
-              cualqueir persona Ocupante del Vehículo en accidente de transito o
-              a consecuencia del robo total del Vehículo asegurado</b
+              >En caso de robo total de la unidad, la aseguradora brinda un auto
+              con caracteristicas similares</b
             >
           </ng-template>
-          <p
-            class="mb-0"
-            [ngbTooltip]="driverAccident"
-            tooltipClass="my-custom-class"
-          >
-            Acc. Conductor
-          </p>
-          <ngx-slider [(value)]="valuedriverAccident" [options]="optionsdriverAccident" ></ngx-slider>
-          <ng-template #driverAccident>
-            <b
-              >Cubre las lesiones y/o muerte ocasionados al conductor del
-              vehículo.</b
-            >
-          </ng-template>
-          <span
-            class="my-1"
-            [ngbTooltip]="foreignLiabilityTooltip"
-            tooltipClass="my-custom-class"
-          >
-            RC en el extranjero
-          </span>
-          <div class="custom-control custom-switch " id="switchgrande">
-            <input type="checkbox" class="custom-control-input " id="customSwitchforeignLiability" (change)="setforeignLiability($event)">
-            <label class="custom-control-label" for="customSwitchforeignLiability"></label>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="foreignLiabilityTooltip"
+                tooltipClass="my-custom-class"
+              >
+                RC en el extranjero
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchforeignLiability"
+                  (change)="setforeignLiability($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchforeignLiability"
+                ></label>
+              </div>
+            </div>
           </div>
           <ng-template #foreignLiabilityTooltip>
             <b
@@ -758,16 +1001,198 @@ Reparación en Agencia
               Unidos</b
             >
           </ng-template>
-          <span
-            class="my-1"
-            [ngbTooltip]="liabilityExtensionTooltip"
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="liabilityExtensionTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Extensión de RC
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchliabilityExtension"
+                  (change)="setliabilityExtension($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchliabilityExtension"
+                ></label>
+              </div>
+            </div>
+          </div>
+          <ng-template #liabilityExtensionTooltip>
+            <b
+              >Ampara al asegurado por daños a terceros en caso de conducir un
+              vehículo diferente</b
+            >
+          </ng-template>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="partialTheftTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Robo Parcial
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchpartialTheft"
+                  (change)="setpartialTheft($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchpartialTheft"
+                ></label>
+              </div>
+            </div>
+          </div>
+          <ng-template #partialTheftTooltip>
+            <b
+              >Se ampara la indemnización por robo de autopartes, accesorios o
+              equipo especial a consecuencia de robo total
+            </b>
+          </ng-template>
+
+          <p
+            class="mb-0"
+            [ngbTooltip]="ocuppantsLiabilityTooltip"
             tooltipClass="my-custom-class"
           >
-            Extensión de RC
-          </span>
-          <div class="custom-control custom-switch " id="switchgrande">
-            <input type="checkbox" class="custom-control-input " id="customSwitchliabilityExtension" (change)="setliabilityExtension($event)">
-            <label class="custom-control-label" for="customSwitchliabilityExtension"></label>
+            RC Daños a Ocupantes
+          </p>
+          <ngx-slider
+            [(value)]="valueocuppantsLiability"
+            [options]="optionsocuppantsLiability"
+          ></ngx-slider>
+          <ng-template #ocuppantsLiabilityTooltip>
+            <b
+              >Ampara los daños materiales a terceros en sus bienes, lesiones
+              corporales o la muerte de los ocupantes del vehículo</b
+            >
+          </ng-template>
+        </div>
+        <div *ngIf="this.cobertura == 3 || this.polizaSelect == 'Básica'">
+          <!-- COBERTURAS BASICA -->
+          <p
+            class="mb-0"
+            [ngbTooltip]="civilLiability"
+            tooltipClass="my-custom-class"
+          >
+            Responsabilidad Civil
+          </p>
+          <ngx-slider
+            [(value)]="valuecivilLiability"
+            [options]="optionscivilLiability"
+          ></ngx-slider>
+          <ng-template #civilLiability>
+            <b
+              >Cubre los daños que el contratante cause a terceros en sus
+              bienes</b
+            >
+          </ng-template>
+          <p
+            class="mb-0"
+            [ngbTooltip]="medicalExpenses"
+            tooltipClass="my-custom-class"
+          >
+            Gtos. Médicos Ocup.
+          </p>
+          <ngx-slider
+            [(value)]="valuemedicalExpenses"
+            [options]="optionsmedicalExpenses"
+          ></ngx-slider>
+          <ng-template #medicalExpenses>
+            <b
+              >Esta cobertura ampara el pago de gastos médicos básicos
+              originados por lesiones corporales que sufra el Asegurado o
+              cualqueir persona Ocupante del Vehículo en accidente de transito o
+              a consecuencia del robo total del Vehículo asegurado</b
+            >
+          </ng-template>
+          <p
+            class="mb-0"
+            [ngbTooltip]="driverAccident"
+            tooltipClass="my-custom-class"
+          >
+            Acc. Conductor
+          </p>
+          <ngx-slider
+            [(value)]="valuedriverAccident"
+            [options]="optionsdriverAccident"
+          ></ngx-slider>
+          <ng-template #driverAccident>
+            <b
+              >Cubre las lesiones y/o muerte ocasionados al conductor del
+              vehículo.</b
+            >
+          </ng-template>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="foreignLiabilityTooltip"
+                tooltipClass="my-custom-class"
+              >
+                RC en el extranjero
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchforeignLiability"
+                  (change)="setforeignLiability($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchforeignLiability"
+                ></label>
+              </div>
+            </div>
+          </div>
+          <ng-template #foreignLiabilityTooltip>
+            <b
+              >cubre los daños que el asegurado cause a terceros en sus bienes
+              siempre y cuando se encuentre en el territorio de Estados
+              Unidos</b
+            >
+          </ng-template>
+          <div class="row">
+            <div class="col-6">
+              <span
+                class="my-1"
+                [ngbTooltip]="liabilityExtensionTooltip"
+                tooltipClass="my-custom-class"
+              >
+                Extensión de RC
+              </span>
+            </div>
+            <div class="col-6">
+              <div class="custom-control custom-switch" id="switchgrande">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="customSwitchliabilityExtension"
+                  (change)="setliabilityExtension($event)"
+                />
+                <label
+                  class="custom-control-label"
+                  for="customSwitchliabilityExtension"
+                ></label>
+              </div>
+            </div>
           </div>
           <ng-template #liabilityExtensionTooltip>
             <b
@@ -776,21 +1201,23 @@ Reparación en Agencia
             >
           </ng-template>
           <p
-          class="mb-0"
-          [ngbTooltip]="ocuppantsLiabilityTooltip"
-          tooltipClass="my-custom-class"
-        >
-          RC Daños a Ocupantes
-        </p>
-        <ngx-slider [(value)]="valueocuppantsLiability" [options]="optionsocuppantsLiability" ></ngx-slider>
-        <ng-template #ocuppantsLiabilityTooltip>
-          <b
-            >Ampara los daños materiales a terceros en sus bienes, lesiones
-            corporales o la muerte de los ocupantes del vehículo</b
+            class="mb-0"
+            [ngbTooltip]="ocuppantsLiabilityTooltip"
+            tooltipClass="my-custom-class"
           >
-        </ng-template>
+            RC Daños a Ocupantes
+          </p>
+          <ngx-slider
+            [(value)]="valueocuppantsLiability"
+            [options]="optionsocuppantsLiability"
+          ></ngx-slider>
+          <ng-template #ocuppantsLiabilityTooltip>
+            <b
+              >Ampara los daños materiales a terceros en sus bienes, lesiones
+              corporales o la muerte de los ocupantes del vehículo</b
+            >
+          </ng-template>
         </div>
-
       </div>
     </div>
   </div>
