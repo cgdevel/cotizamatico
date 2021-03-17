@@ -2,7 +2,7 @@
   <div class="column">
     <div class="row">Datos de la póliza</div>
     <div class="row">
-      <div class="form-group col-4">
+      <div class="form-group col-12 col-md-4">
         <label class="form-label">Cobertura:</label>
         <ng-select
           id="cmbCoberturas"
@@ -23,7 +23,7 @@
           </ng-option>
         </ng-select>
       </div>
-      <div class="form-group col-4">
+      <div class="form-group col-12 col-md-4">
         <label class="form-label">Forma de Pago:</label>
         <ng-select
           id="cmbFormaPago"
@@ -44,7 +44,7 @@
           </ng-option>
         </ng-select>
       </div>
-      <div class="form-group col-4">
+      <div class="form-group col-12 col-md-4">
         <label class="form-label">Inicio de Vigencia:</label>
         <input
           type="date"
@@ -58,7 +58,7 @@
   </div>
   <div class="column">
     <div class="row">
-      <div class="form-group col-4">
+      <div class="form-group col-12 col-md-4">
         <label class="form-label">Costo Total:</label>
         <input
           type="text"
@@ -69,7 +69,7 @@
           [ngModel]="recibosTotal | currency"
         />
       </div>
-      <div class="form-group col-4" *ngIf="mostrarSubsecuentes">
+      <div class="form-group col-12 col-md-4" *ngIf="mostrarSubsecuentes">
         <label class="form-label">Primer Pago:</label>
         <input
           type="text"
@@ -80,7 +80,7 @@
           [ngModel]="recibosPrimero | currency"
         />
       </div>
-      <div class="form-group col-4" *ngIf="mostrarSubsecuentes">
+      <div class="form-group col-12 col-md-4" *ngIf="mostrarSubsecuentes">
         <label class="form-label">Subsecuentes:</label>
         <input
           type="text"
@@ -99,7 +99,7 @@
   <div class="column">
     <div class="row">Pagos</div>
     <div class="row">
-      <div class="form-group col-4">
+      <div class="form-group col-12 col-md-4">
         <label class="form-label">Medio de Pago:</label>
         <ng-select
           id="catMedioPago"
@@ -123,11 +123,9 @@
     </div>
   </div>
   <div class="column" *ngIf="mostrarDatosTarjetas">
-      <div class="row">
-          Datos de la Tarjeta
-      </div>
+    <div class="row">Datos de la Tarjeta</div>
     <div class="row">
-      <div class="form-group col-4">
+      <div class="form-group col-12 col-md-4">
         <label class="form-label">Nombre:</label>
         <input
           type="text"
@@ -136,7 +134,7 @@
           value=""
         />
       </div>
-      <div class="form-group col-4">
+      <div class="form-group col-12 col-md-4">
         <label class="form-label">Apellido Paterno:</label>
         <input
           type="text"
@@ -145,7 +143,7 @@
           value=""
         />
       </div>
-      <div class="form-group col-4">
+      <div class="form-group col-12 col-md-4">
         <label class="form-label">Apellido Materno:</label>
         <input
           type="text"
@@ -154,11 +152,11 @@
           value=""
         />
       </div>
-      <div class="form-group col-4">
+      <div class="form-group col-12 col-md-4">
         <label class="form-label">Banco:</label>
         <input type="text" class="form-control" id="txtTarjetaBanco" value="" />
       </div>
-      <div class="form-group col-4">
+      <div class="form-group col-12 col-md-4">
         <label class="form-label">Número de Tarjeta:</label>
         <input
           type="text"
@@ -168,7 +166,7 @@
           maxlength="16"
         />
       </div>
-      <div class="form-group col-4">
+      <div class="form-group col-12 col-md-4">
         <label class="form-label">Código de Seguridad:</label>
         <input
           type="text"
@@ -178,7 +176,7 @@
           maxlength="3"
         />
       </div>
-      <div class="form-group col-4">
+      <div class="form-group col-12 col-md-4">
         <label class="form-label">Vigencia:</label>
         <div style="display: flex; align-items: center">
           <input
