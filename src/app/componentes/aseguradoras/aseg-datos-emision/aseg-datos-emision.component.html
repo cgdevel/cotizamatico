@@ -1,1 +1,35 @@
-<p>aseg-datos-emision works!</p>
+<!-- Cobertura/Pago -->
+<div class="container mw-100">
+  <div
+    class="card mb-4 rounded"
+    style="justify-content: center; justify-items: center"
+  >
+    <div class="card-body">
+      <div class="row" id="datosSeguro">
+        <div class="column col-3">
+          <div>
+            <img [src]="logoAseguradora" height="150px" />
+          </div>
+        </div>
+        <div class="column col-9">
+          <app-datos-pago></app-datos-pago>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contratante -->
+<div class="container mw-100">
+  <app-datos-emision-cliente></app-datos-emision-cliente>
+</div>
+
+<!-- Vehículo -->
+<div class="container mw-100">
+  <app-datos-emision-vehiculo></app-datos-emision-vehiculo>
+</div>
+
+<!-- Adicionales -->
+<div class="container mw-100">
+  <app-adicionales></app-adicionales>
+</div>

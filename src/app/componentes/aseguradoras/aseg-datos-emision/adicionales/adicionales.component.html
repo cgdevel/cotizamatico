@@ -1,0 +1,118 @@
+<div
+  class="card mb-4 rounded"
+  style="justify-content: center"
+>
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">Adicionales</div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="form-group">
+            <label for="chkBeneficiario">Beneficiario Preferente</label>
+            <input
+              type="checkbox"
+              id="chkBeneficiario"
+              checked="false"
+              [(ngModel)]="mostrarAdicional"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="form-group" *ngIf="mostrarAdicional">
+            <label for="catAdicionalTipoPersona">Tipo de Persona</label>
+            <ng-select
+              id="catAdicionalTipoPersona"
+              [items]="catAdicionalTipoPersona"
+              bindLabel="sDato"
+              placeholder="TIPO FISCAL"
+              appendTo="body"
+              [closeOnSelect]="true"
+              [clearable]="false"
+              [(ngModel)]="itemAdicionalTipoPersona"
+              tooltipClass="my-custom-class"
+              (change)="onSelectAdicionalTipoPersona()"
+            >
+              <ng-option
+                ng-options="item as item.sLlave for item.sDato in catAdicionalTipoPersona"
+              >
+                {{ item }}
+              </ng-option>
+            </ng-select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="row" *ngIf="mostrarAdicional && mostrarAdicionalPf">
+            <div class="form-group col-3 mr-3">
+              <label for="chkBeneficiario">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="txtAdiFisicaNombre"
+                value=""
+                [(ngModel)]="datAdiPfNombre"
+              />
+            </div>
+            <div class="form-group col-3 mr-3">
+              <label for="chkBeneficiario">Apellido Paterno</label>
+              <input
+                type="text"
+                class="form-control"
+                id="txtAdiFisicaPaterno"
+                value=""
+                [(ngModel)]="datAdiPfPaterno"
+              />
+            </div>
+            <div class="form-group col-3 mr-3">
+              <label for="chkBeneficiario">Apellido Materno</label>
+              <input
+                type="text"
+                class="form-control"
+                id="txtAdiFisicaMaterno"
+                value=""
+                [(ngModel)]="datAdiPfMaterno"
+              />
+            </div>
+            <div class="form-group col-3 mr-3">
+              <label for="chkBeneficiario">RFC</label>
+              <input
+                type="text"
+                class="form-control"
+                id="txtAdiFisicaRfc"
+                value=""
+                [(ngModel)]="datAdiPfRfc"
+              />
+            </div>
+          </div>
+          <div class="row" *ngIf="mostrarAdicional && mostrarAdicionalPm">
+            <div class="form-group col-3 mr-3">
+              <label for="chkBeneficiario">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="txtAdiMoralNombre"
+                value=""
+                [(ngModel)]="datAdiPmNombre"
+              />
+            </div>
+            <div class="form-group col-3 mr-3">
+              <label for="chkBeneficiario">RFC</label>
+              <input
+                type="text"
+                class="form-control"
+                id="txtAdiMoralRfc"
+                value=""
+                [(ngModel)]="datAdiPmRfc"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
