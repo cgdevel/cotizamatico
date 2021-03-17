@@ -80,5 +80,20 @@ ngx-slider .ngx-slider-pointer::after {
 }
 
 .ngx-slider .ngx-slider-bubble {
-  font-size: 14px !important;
+  font-size: 12px !important;
+}
+
+.ngx-slider .ngx-slider-bar-wrapper {
+  padding-top: 5px !important;
+}
+
+.ngx-slider .ngx-slider-pointer:after {
+  top: 3px !important;
+  left: -3px !important;
+}
+
+.card {
+  border: none !important;
+  box-shadow: 0 1px 10px 1px rgb(0 0 0 / 8%), 0 1px 6px 0 rgb(0 29 124 / 5%);
+  overflow: hidden;
 }
