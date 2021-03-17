@@ -16,6 +16,8 @@ export class AsegDatosEmisionComponent implements OnInit {
   itemFormaPago: CatalogoModel;
   catMedioPago: CatalogoModel[];
   itemMedioPago: CatalogoModel;
+  catAdicionalTipoPersona: CatalogoModel[];
+  itemAdicionalTipoPersona: CatalogoModel;
 
   itemVacio: CatalogoModel;
 
@@ -25,6 +27,17 @@ export class AsegDatosEmisionComponent implements OnInit {
   recibosSubsecuentes: number;
   mostrarSubsecuentes: boolean;
   fechaInicioVigencia: Date;
+  mostrarDatosTarjetas: boolean;
+  mostrarAdicional: boolean;
+  mostrarAdicionalPf: boolean;
+  mostrarAdicionalPm: boolean;
+
+  datAdiPfNombre: string;
+  datAdiPfPaterno: string;
+  datAdiPfMaterno: string;
+  datAdiPfRfc: string;
+  datAdiPmNombre: string;
+  datAdiPmRfc: string;
 
   constructor() {}
 
@@ -32,14 +45,18 @@ export class AsegDatosEmisionComponent implements OnInit {
     this.itemCoberturas = this.itemVacio;
     this.itemFormaPago = this.itemVacio;
     this.itemMedioPago = this.itemVacio;
+    this.itemAdicionalTipoPersona = this.itemVacio;
     this.recibosPrimero = 0;
     this.recibosSubsecuentes = 0;
     this.recibosTotal = 0;
     this.fechaInicioVigencia = new Date();
+    this.mostrarDatosTarjetas = false;
+    this.mostrarAdicional = false;
     this.CargarCoberturas();
     this.CargarFormasPago();
     this.CargarMediosPago();
     this.SeleccionarLogo();
+    this.CargarTipoFiscalAdicional();
   }
 
   SeleccionarLogo(): void {
@@ -85,7 +102,7 @@ export class AsegDatosEmisionComponent implements OnInit {
         break;
 
       case 'AIG':
-        this.logoAseguradora = '/AIG.svg';
+        this.logoAseguradora = '../../../assets/iconosase/AIG.svg';
         break;
     }
   }
@@ -108,11 +125,18 @@ export class AsegDatosEmisionComponent implements OnInit {
     this.catFormaPago = cobs;
   }
 
-  CargarMediosPago(): void{
+  CargarMediosPago(): void {
     const medios: CatalogoModel[] = [];
     medios.push({ sDato: 'TARJETA DE CREDITO', sLlave: '0' });
     medios.push({ sDato: 'PAGO EN BANCO', sLlave: '1' });
     this.catMedioPago = medios;
+  }
+
+  CargarTipoFiscalAdicional(): void {
+    const tipos: CatalogoModel[] = [];
+    tipos.push({ sDato: 'FÍSICA', sLlave: 'F' });
+    tipos.push({ sDato: 'MORAL', sLlave: 'M' });
+    this.catAdicionalTipoPersona = tipos;
   }
 
   onSelectCoberturaChange(): void {
@@ -121,6 +145,18 @@ export class AsegDatosEmisionComponent implements OnInit {
 
   onSelectFormaPagoChange(): void {
     this.SeleccionaPagos();
+  }
+
+  onSelectMedioPagoChange(): void {
+    if (this.itemMedioPago.sLlave === '0') {
+      this.mostrarDatosTarjetas = true;
+    } else {
+      this.mostrarDatosTarjetas = false;
+    }
+  }
+
+  onSelectAdicionalTipoPersona(): void {
+    this.MostrarAdicionalPersona();
   }
 
   SeleccionaPagos(): void {
@@ -185,6 +221,17 @@ export class AsegDatosEmisionComponent implements OnInit {
       this.recibosTotal = costoTotal + 300;
       this.recibosPrimero = costoRecibos + 300;
       this.recibosSubsecuentes = costoRecibos;
+    }
+  }
+
+  MostrarAdicionalPersona(): void {
+    this.mostrarAdicionalPf = false;
+    this.mostrarAdicionalPm = false;
+
+    if (this.itemAdicionalTipoPersona.sLlave === 'F') {
+      this.mostrarAdicionalPf = true;
+    } else if (this.itemAdicionalTipoPersona.sLlave === 'M') {
+      this.mostrarAdicionalPm = true;
     }
   }
 }
