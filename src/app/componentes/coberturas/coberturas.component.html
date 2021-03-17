@@ -91,10 +91,27 @@
               vehículo.</b
             >
           </ng-template>
+          <p
+            class="mb-0"
+            [ngbTooltip]="ocuppantsLiabilityTooltip"
+            tooltipClass="my-custom-class"
+          >
+            RC Daños a Ocupantes
+          </p>
+          <ngx-slider
+            [(value)]="valueocuppantsLiability"
+            [options]="optionsocuppantsLiability"
+          ></ngx-slider>
+          <ng-template #ocuppantsLiabilityTooltip>
+            <b
+              >Ampara los daños materiales a terceros en sus bienes, lesiones
+              corporales o la muerte de los ocupantes del vehículo</b
+            >
+          </ng-template>
           <div class="row">
             <div class="col-6">
               <span
-                class="my-1 d-inline"
+                class="my-1"
                 [ngbTooltip]="carSubstituteTooltip"
                 tooltipClass="my-custom-class"
               >
@@ -351,24 +368,6 @@
             >
           </ng-template>
 
-          <p
-            class="mb-0"
-            [ngbTooltip]="ocuppantsLiabilityTooltip"
-            tooltipClass="my-custom-class"
-          >
-            RC Daños a Ocupantes
-          </p>
-          <ngx-slider
-            [(value)]="valueocuppantsLiability"
-            [options]="optionsocuppantsLiability"
-          ></ngx-slider>
-          <ng-template #ocuppantsLiabilityTooltip>
-            <b
-              >Ampara los daños materiales a terceros en sus bienes, lesiones
-              corporales o la muerte de los ocupantes del vehículo</b
-            >
-          </ng-template>
-
           <div class="row">
             <div class="col-6">
               <span
@@ -394,7 +393,6 @@
               </div>
             </div>
           </div>
-
           <ng-template #transportationExpensesTooltip>
             <b
               >En caso de robo total, y que la cobertura esté contratada, la
@@ -523,6 +521,24 @@
             <b
               >Cubre las lesiones y/o muerte ocasionados al conductor del
               vehículo.</b
+            >
+          </ng-template>
+
+          <p
+            class="mb-0"
+            [ngbTooltip]="ocuppantsLiabilityTooltip"
+            tooltipClass="my-custom-class"
+          >
+            RC Daños a Ocupantes
+          </p>
+          <ngx-slider
+            [(value)]="valueocuppantsLiability"
+            [options]="optionsocuppantsLiability"
+          ></ngx-slider>
+          <ng-template #ocuppantsLiabilityTooltip>
+            <b
+              >Ampara los daños materiales a terceros en sus bienes, lesiones
+              corporales o la muerte de los ocupantes del vehículo</b
             >
           </ng-template>
 
@@ -783,24 +799,6 @@
             >
           </ng-template>
 
-          <p
-            class="mb-0"
-            [ngbTooltip]="ocuppantsLiabilityTooltip"
-            tooltipClass="my-custom-class"
-          >
-            RC Daños a Ocupantes
-          </p>
-          <ngx-slider
-            [(value)]="valueocuppantsLiability"
-            [options]="optionsocuppantsLiability"
-          ></ngx-slider>
-          <ng-template #ocuppantsLiabilityTooltip>
-            <b
-              >Ampara los daños materiales a terceros en sus bienes, lesiones
-              corporales o la muerte de los ocupantes del vehículo</b
-            >
-          </ng-template>
-
           <div class="row">
             <div class="col-6">
               <span
@@ -938,6 +936,23 @@
               vehículo.</b
             >
           </ng-template>
+          <p
+            class="mb-0"
+            [ngbTooltip]="ocuppantsLiabilityTooltip"
+            tooltipClass="my-custom-class"
+          >
+            RC Daños a Ocupantes
+          </p>
+          <ngx-slider
+            [(value)]="valueocuppantsLiability"
+            [options]="optionsocuppantsLiability"
+          ></ngx-slider>
+          <ng-template #ocuppantsLiabilityTooltip>
+            <b
+              >Ampara los daños materiales a terceros en sus bienes, lesiones
+              corporales o la muerte de los ocupantes del vehículo</b
+            >
+          </ng-template>
           <div class="row">
             <div class="col-6">
               <span
@@ -1063,24 +1078,6 @@
               equipo especial a consecuencia de robo total
             </b>
           </ng-template>
-
-          <p
-            class="mb-0"
-            [ngbTooltip]="ocuppantsLiabilityTooltip"
-            tooltipClass="my-custom-class"
-          >
-            RC Daños a Ocupantes
-          </p>
-          <ngx-slider
-            [(value)]="valueocuppantsLiability"
-            [options]="optionsocuppantsLiability"
-          ></ngx-slider>
-          <ng-template #ocuppantsLiabilityTooltip>
-            <b
-              >Ampara los daños materiales a terceros en sus bienes, lesiones
-              corporales o la muerte de los ocupantes del vehículo</b
-            >
-          </ng-template>
         </div>
         <div *ngIf="this.cobertura == 3 || this.polizaSelect == 'Básica'">
           <!-- COBERTURAS BASICA -->
@@ -1135,6 +1132,23 @@
             <b
               >Cubre las lesiones y/o muerte ocasionados al conductor del
               vehículo.</b
+            >
+          </ng-template>
+          <p
+            class="mb-0"
+            [ngbTooltip]="ocuppantsLiabilityTooltip"
+            tooltipClass="my-custom-class"
+          >
+            RC Daños a Ocupantes
+          </p>
+          <ngx-slider
+            [(value)]="valueocuppantsLiability"
+            [options]="optionsocuppantsLiability"
+          ></ngx-slider>
+          <ng-template #ocuppantsLiabilityTooltip>
+            <b
+              >Ampara los daños materiales a terceros en sus bienes, lesiones
+              corporales o la muerte de los ocupantes del vehículo</b
             >
           </ng-template>
           <div class="row">
@@ -1198,23 +1212,6 @@
             <b
               >Ampara al asegurado por daños a terceros en caso de conducir un
               vehículo diferente</b
-            >
-          </ng-template>
-          <p
-            class="mb-0"
-            [ngbTooltip]="ocuppantsLiabilityTooltip"
-            tooltipClass="my-custom-class"
-          >
-            RC Daños a Ocupantes
-          </p>
-          <ngx-slider
-            [(value)]="valueocuppantsLiability"
-            [options]="optionsocuppantsLiability"
-          ></ngx-slider>
-          <ng-template #ocuppantsLiabilityTooltip>
-            <b
-              >Ampara los daños materiales a terceros en sus bienes, lesiones
-              corporales o la muerte de los ocupantes del vehículo</b
             >
           </ng-template>
         </div>

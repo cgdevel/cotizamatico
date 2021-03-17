@@ -59,9 +59,9 @@
 }
 .ngx-slider .ngx-slider-bar {
   width: 100% !important;
-  height: 15px !important;
+  height: 8px !important;
   border-radius: 5px !important;
-  background-image: linear-gradient(#ff8f48, #ff6963) !important;
+  /* background-image: linear-gradient(#ff8f48, #ff6963) !important; */
 }
 ngx-slider .ngx-slider-pointer::after {
   background-image: linear-gradient(#ff8f48, #ff6963) !important;
@@ -72,4 +72,13 @@ ngx-slider .ngx-slider-pointer::after {
 }
 .ngx-slider.animate .ngx-slider-bubble.ngx-slider-limit {
   visibility: hidden !important;
+}
+
+.ngx-slider .ngx-slider-pointer {
+  width: 0px !important;
+  height: 0px !important;
+}
+
+.ngx-slider .ngx-slider-bubble {
+  font-size: 14px !important;
 }
