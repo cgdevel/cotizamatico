@@ -34,6 +34,10 @@ import { AseAIGComponent } from './componentes/aseguradoras/ase-aig/ase-aig.comp
 import { CookieModule } from 'ngx-cookie';
 import { AsegDatosEmisionComponent } from './componentes/aseguradoras/aseg-datos-emision/aseg-datos-emision.component';
 import { CoberturasComponent } from './componentes/coberturas/coberturas.component';
+import { AdicionalesComponent } from './componentes/aseguradoras/aseg-datos-emision/adicionales/adicionales.component';
+import { DatosPagoComponent } from './componentes/aseguradoras/aseg-datos-emision/datos-pago/datos-pago.component';
+import { DatosEmisionVehiculoComponent } from './componentes/aseguradoras/aseg-datos-emision/datos-emision-vehiculo/datos-emision-vehiculo.component';
+import { DatosEmisionClienteComponent } from './componentes/aseguradoras/aseg-datos-emision/datos-emision-cliente/datos-emision-cliente.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +63,10 @@ import { CoberturasComponent } from './componentes/coberturas/coberturas.compone
     AseAIGComponent,
     AsegDatosEmisionComponent,
     CoberturasComponent,
+    AdicionalesComponent,
+    DatosPagoComponent,
+    DatosEmisionVehiculoComponent,
+    DatosEmisionClienteComponent,
   ],
   imports: [
     FormsModule,
