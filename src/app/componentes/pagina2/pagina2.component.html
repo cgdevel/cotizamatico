@@ -1063,11 +1063,11 @@
         <div class="container px-0">
           <div class="col-12 px-0">
             <div id="mejop" class="card-header text-center">
-              ¡ESTA ES TU MEJOR OPCIÓN!
+              ¡Esta es tu mejor opción!
             </div>
           </div>
         </div>
-        <div class="container">
+        <div class="container py-4 text-center text-md-left">
           <div class="row">
             <div class="col">
               <!-- {{ item.Compania }} -->
@@ -1127,18 +1127,18 @@
                 *ngIf="Aseguradoras[0].Compania === 'AIG MEX'"
               />
             </div>
-            <div class="col-md-3 col-sm-3">
+            <div class="col-md-3 col-sm-3 mb-2">
               <div id="oferta">Oferta</div>
               <div id="letrasgrad">Cotizamático</div>
               <div id="fivth">$5000</div>
             </div>
-            <div class="col-md-3 col-sm-3">
-              <div>Precio regular $6,000</div>
+            <div class="col-md-3 col-sm-3 mb-2">
+              <div class="d-none d-md-block">Precio regular $6,000</div>
               <div>Primer pago: $1,000</div>
-              <div>3 pagos de $1,000.000</div>
+              <div class="d-none d-md-block">3 pagos de $1,000.000</div>
               <div id="tan">TOTAL ANUAL: $1,000.000</div>
             </div>
-            <div class="col pt-3">
+            <div class="col">
               <button
                 class="btn btn-primary"
                 [routerLink]="['/contrata']"
@@ -1170,7 +1170,7 @@
         id="estesi"
         *ngFor="let item of Aseguradoras | slice: 1"
       >
-        <div class="container">
+        <div class="container py-4 text-center text-md-left">
           <div class="row">
             <div class="col">
               <!-- {{ item.Compania }} -->
@@ -1230,22 +1230,18 @@
                 *ngIf="item.Compania === 'AIG MEX'"
               />
             </div>
-            <div class="col-md-3 col-sm-3">
-              <div class="container mw-100 px-0">
-                <div class="row" id="oferta">Oferta</div>
-                <div class="row" id="letrasgrad">Cotizamático</div>
-                <div class="row" id="fivth">$5000</div>
-              </div>
+            <div class="col-md-3 col-sm-3 mb-2">
+              <div id="oferta">Oferta</div>
+              <div id="letrasgrad">Cotizamático</div>
+              <div id="fivth">$5000</div>
             </div>
-            <div class="col-md-3 col-sm-3">
-              <div class="container mw-100 px-0">
-                <div class="row">Precio regular $6,000</div>
-                <div class="row">Primer pago: $1,000</div>
-                <div class="row">3 pagos de $1,000.000</div>
-                <div class="row" id="tan">TOTAL ANUAL: $1,000.000</div>
-              </div>
+            <div class="col-md-3 col-sm-3 mb-2">
+              <div class="d-none d-md-block">Precio regular $6,000</div>
+              <div>Primer pago: $1,000</div>
+              <div class="d-none d-md-block">3 pagos de $1,000.000</div>
+              <div id="tan">TOTAL ANUAL: $1,000.000</div>
             </div>
-            <div class="col pt-3">
+            <div class="col">
               <button
                 class="btn btn-primary"
                 [routerLink]="['/contrata']"

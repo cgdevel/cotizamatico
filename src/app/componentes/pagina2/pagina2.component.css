@@ -101,7 +101,7 @@
   font-family: "Exo 2", sans-serif;
   font: 800;
   font-weight: bolder;
-  font-size: 30px;
+  font-size: 18px;
   color: white;
   background-color: #21c7ed;
 }
@@ -123,7 +123,6 @@
   font: 500;
   font-weight: bold;
   font-size: 16px;
-  margin-left: 16px;
 }
 
 #fivth {
@@ -392,4 +391,3 @@ span {
 span {
   display: block;
 }
- 
