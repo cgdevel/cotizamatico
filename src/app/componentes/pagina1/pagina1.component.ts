@@ -58,8 +58,8 @@ export class Pagina1Component implements OnInit {
     this.mostraComboAsociados = false;
     this.asociado = this.itemVacio;
 
-    localStorage.clear();
-    this.cookieService.removeAll();
+    // localStorage.clear();
+    // this.cookieService.removeAll();
   }
 
   handlerVehiculoTipo(e: CatalogoModel) {

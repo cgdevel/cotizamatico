@@ -99,7 +99,7 @@ export class Pagina2Component implements OnInit {
     this.statusB = 'NoSelected';
     this.statusAP = this.ampliaplus ? 'Selected' : 'NoSelected';
     this.cobertura = 0;
-    this.cobDamage = 5;
+    this.cobDamage = 3;
     this.cobtothe = 5 ;
     this.poliza ="Amplia Plus";
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
@@ -118,7 +118,7 @@ export class Pagina2Component implements OnInit {
     this.statusB = 'NoSelected';
     this.statusA = this.amplia ? 'Selected' : 'NoSelected';
     this.cobertura = 1;
-    this.cobDamage = 3;
+    this.cobDamage = 5;
     this.cobtothe = 10 ;
     this.poliza ="Amplia";
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
@@ -391,6 +391,7 @@ export class Pagina2Component implements OnInit {
     this.descMEDIO = true;
     this.anual = true;
     this.cobtothe= 10;
+    this.cobDamage = 5 ;
     this.una = history.state.sizeta;
     for (let index = 0; AseguradoraCobJson.length < index; index++) {
       const element = AseguradoraCobJson[index];

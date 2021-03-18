@@ -23,6 +23,7 @@ export class CoberturasComponent implements OnInit {
   agencyRepair : boolean;
   constructor() {}
   ngOnInit(): void {
+    this.carSubstitute=true;
   }
  
   optionsDamage: Options = {
@@ -47,7 +48,10 @@ export class CoberturasComponent implements OnInit {
   optionscivilLiability: Options = {
     floor: 1000000,
     ceil: 5000000,
-    step: 500000
+    step: 500000,
+    translate: (value: number): string => {
+      return (value/1000000) + 'Millones';
+    }
   };
   valuemedicalExpenses: number =  50000;
   optionsmedicalExpenses: Options = {
@@ -55,14 +59,19 @@ export class CoberturasComponent implements OnInit {
       { value: 50000 },
       { value: 80000 },
       { value: 100000}
-    ]
+    ],translate: (value: number): string => {
+      return (value/1000) + 'Mil';
+    }
   };
   
 valuedriverAccident: number =  100000;
 optionsdriverAccident: Options = {
   floor: 100000,
   ceil: 250000,
-  step: 50000
+  step: 50000,
+    translate: (value: number): string => {
+      return (value/1000) + 'Mil';
+    }
 };
   setcarSubstitute(event){
     this.carSubstitute = event.target.checked;
@@ -103,7 +112,10 @@ optionsocuppantsLiability: Options = {
     { value: 1000000 },
     { value: 1500000 },
     { value: 2000000}
-  ]
+  ],
+  translate: (value: number): string => {
+    return value>1000000 ? (value/1000000) + 'Millones' : (value/1000000) + 'Millón';
+  }
 };
 settransportationExpenses(event){
   this.transportationExpenses = event.target.checked;
