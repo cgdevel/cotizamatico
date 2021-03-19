@@ -1,7 +1,7 @@
 /* MODIFIQUE CSS DE SWITCH */
 /* PARA COMPORTAMIENTO EN ENCENDIDO */
 #switchgrande > .custom-control-input {
-  z-index: -1 !important;
+  z-index: 10 !important;
 }
 #switchgrande > .custom-control-input:checked ~ .custom-control-label::before {
   /* background-image: linear-gradient(to right, rgba(255,105,99,1), rgba(255,143,72,1)); */
@@ -90,4 +90,9 @@ span {
 
 .ngx-slider .ngx-slider-bubble {
   font-size: 14px !important;
+}
+
+.custom-control-input {
+  width: 100% !important;
+  height: 100% !important;
 }
