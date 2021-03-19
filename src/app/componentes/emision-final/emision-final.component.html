@@ -18,3 +18,17 @@
   <button class="btn btn-block btn-cotizamatico">Ver Condiciones</button>
   <button class="btn btn-block">Continuar</button>
 </div>
+
+<!-- Respuesta en caso de emisión fallida -->
+<div class="modal-body text-center" *ngIf="!success">
+  <img class="svg-modal4" src="../../../../assets/iconos/icono-fail.svg" />
+  <h5>La operación no pudo realizarse debido a que "descripcion del error"</h5>
+  <p>Se registró tu solicitud de emisión con folio en XXXX con "aseguradora"</p>
+  <p>
+    No se generó folio de 3030, por favor capturarlo y complementar la
+    información del art. 492.
+  </p>
+  <!-- En el caso de asociados el botón debe llamar al contact center, en el caso de clientes: llamar al asociado -->
+  <button class="btn btn-block btn-cotizamatico">Contactarme</button>
+  <button class="btn btn-block">Continuar</button>
+</div>

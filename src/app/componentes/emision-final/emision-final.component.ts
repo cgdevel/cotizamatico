@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./emision-final.component.css'],
 })
 export class EmisionFinalComponent implements OnInit {
-  success = true;
+  success = false;
   constructor() {}
 
   ngOnInit(): void {}
