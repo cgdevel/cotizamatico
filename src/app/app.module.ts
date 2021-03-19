@@ -39,6 +39,7 @@ import { AdicionalesComponent } from './componentes/aseguradoras/aseg-datos-emis
 import { DatosPagoComponent } from './componentes/aseguradoras/aseg-datos-emision/datos-pago/datos-pago.component';
 import { DatosEmisionVehiculoComponent } from './componentes/aseguradoras/aseg-datos-emision/datos-emision-vehiculo/datos-emision-vehiculo.component';
 import { DatosEmisionClienteComponent } from './componentes/aseguradoras/aseg-datos-emision/datos-emision-cliente/datos-emision-cliente.component';
+import { EmisionFinalComponent } from './componentes/emision-final/emision-final.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +69,7 @@ import { DatosEmisionClienteComponent } from './componentes/aseguradoras/aseg-da
     DatosPagoComponent,
     DatosEmisionVehiculoComponent,
     DatosEmisionClienteComponent,
+    EmisionFinalComponent,
   ],
   imports: [
     FormsModule,
@@ -79,7 +81,7 @@ import { DatosEmisionClienteComponent } from './componentes/aseguradoras/aseg-da
     NgbPaginationModule,
     NgbAlertModule,
     CookieModule.forRoot(),
-    NgxSliderModule
+    NgxSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

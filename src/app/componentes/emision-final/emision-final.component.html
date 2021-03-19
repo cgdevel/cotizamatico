@@ -1,0 +1,34 @@
+<!-- Respuesta en caso de emisión exitosa -->
+<div class="modal-body text-center" *ngIf="success">
+  <img class="svg-modal4" src="../../../../assets/iconos/icono-check.svg" />
+  <h5>
+    La operación se realizo con éxito, recuerda revisar los datos de la póliza
+  </h5>
+  <p>
+    Se registró la emisión con el número <b>XXXXX</b> para la compañía
+    <b>MAPFRE TEPEYAC S,A. </b>con Folio <b>2522876</b> en 3030.NET
+  </p>
+  <p>
+    Para complementar la información del Art. 492 y el Expediente Digital del
+    cliente, puedes enviar la siguiente liga al cliente o complementarlo tú
+    accediendo a la misma.
+  </p>
+  <button class="btn btn-block btn-cotizamatico">Expediente Digital</button>
+  <button class="btn btn-block btn-cotizamatico">Ver Póliza</button>
+  <button class="btn btn-block btn-cotizamatico">Ver Condiciones</button>
+  <button class="btn btn-block">Continuar</button>
+</div>
+
+<!-- Respuesta en caso de emisión fallida -->
+<div class="modal-body text-center" *ngIf="!success">
+  <img class="svg-modal4" src="../../../../assets/iconos/icono-fail.svg" />
+  <h5>La operación no pudo realizarse debido a que "descripcion del error"</h5>
+  <p>Se registró tu solicitud de emisión con folio en XXXX con "aseguradora"</p>
+  <p>
+    No se generó folio de 3030, por favor capturarlo y complementar la
+    información del art. 492.
+  </p>
+  <!-- En el caso de asociados el botón debe llamar al contact center, en el caso de clientes: llamar al asociado -->
+  <button class="btn btn-block btn-cotizamatico">Contactarme</button>
+  <button class="btn btn-block">Continuar</button>
+</div>
