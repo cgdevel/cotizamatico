@@ -4,55 +4,27 @@
     <div class="row">
       <div class="form-group col-12 col-md-4">
         <label class="form-label">Cobertura:</label>
-        <ng-select
-          id="cmbCoberturas"
-          [items]="catCoberturas"
-          bindLabel="sDato"
-          placeholder="COBERTURAS"
-          appendTo="body"
-          [closeOnSelect]="true"
-          [clearable]="false"
-          (change)="onSelectCoberturaChange()"
-          [(ngModel)]="itemCoberturas"
-          tooltipClass="my-custom-class"
-        >
-          <ng-option
-            ng-options="item as item.sLlave for item.sDato in catTipoVehiculo"
-          >
+        <ng-select id="cmbCoberturas" [items]="catCoberturas" bindLabel="sDato" placeholder="COBERTURAS" appendTo="body"
+          [closeOnSelect]="true" [clearable]="false" (change)="onSelectCoberturaChange()" [(ngModel)]="itemCoberturas"
+          tooltipClass="my-custom-class">
+          <ng-option ng-options="item as item.sLlave for item.sDato in catTipoVehiculo">
             {{ item }}
           </ng-option>
         </ng-select>
       </div>
       <div class="form-group col-12 col-md-4">
         <label class="form-label">Forma de Pago:</label>
-        <ng-select
-          id="cmbFormaPago"
-          [items]="catFormaPago"
-          bindLabel="sDato"
-          placeholder="FORMAS DE PAGO"
-          appendTo="body"
-          [closeOnSelect]="true"
-          [clearable]="false"
-          (change)="onSelectFormaPagoChange()"
-          [(ngModel)]="itemFormaPago"
-          tooltipClass="my-custom-class"
-        >
-          <ng-option
-            ng-options="item as item.sLlave for item.sDato in catFormaPago"
-          >
+        <ng-select id="cmbFormaPago" [items]="catFormaPago" bindLabel="sDato" placeholder="FORMAS DE PAGO"
+          appendTo="body" [closeOnSelect]="true" [clearable]="false" (change)="onSelectFormaPagoChange()"
+          [(ngModel)]="itemFormaPago" tooltipClass="my-custom-class">
+          <ng-option ng-options="item as item.sLlave for item.sDato in catFormaPago">
             {{ item }}
           </ng-option>
         </ng-select>
       </div>
       <div class="form-group col-12 col-md-4">
         <label class="form-label">Inicio de Vigencia:</label>
-        <input
-          type="date"
-          class="form-control"
-          id="txtInicioVigencia"
-          value=""
-          [ngModel]="fechaInicioVigencia"
-        />
+        <input type="date" class="form-control" id="txtInicioVigencia" value="" [ngModel]="fechaInicioVigencia" />
       </div>
     </div>
   </div>
@@ -60,36 +32,18 @@
     <div class="row">
       <div class="form-group col-12 col-md-4">
         <label class="form-label">Costo Total:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="txtRecibosTotal"
-          value=""
-          readonly="true"
-          [ngModel]="recibosTotal | currency"
-        />
+        <input type="text" class="form-control" id="txtRecibosTotal" value="" readonly="true"
+          [ngModel]="recibosTotal | currency" />
       </div>
       <div class="form-group col-12 col-md-4" *ngIf="mostrarSubsecuentes">
         <label class="form-label">Primer Pago:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="txtRecibosPrimero"
-          value=""
-          readonly="true"
-          [ngModel]="recibosPrimero | currency"
-        />
+        <input type="text" class="form-control" id="txtRecibosPrimero" value="" readonly="true"
+          [ngModel]="recibosPrimero | currency" />
       </div>
       <div class="form-group col-12 col-md-4" *ngIf="mostrarSubsecuentes">
         <label class="form-label">Subsecuentes:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="txtRecibosSubsecuentes"
-          value=""
-          readonly="true"
-          [ngModel]="recibosSubsecuentes | currency"
-        />
+        <input type="text" class="form-control" id="txtRecibosSubsecuentes" value="" readonly="true"
+          [ngModel]="recibosSubsecuentes | currency" />
       </div>
     </div>
   </div>
@@ -101,21 +55,10 @@
     <div class="row">
       <div class="form-group col-12 col-md-4">
         <label class="form-label">Medio de Pago:</label>
-        <ng-select
-          id="catMedioPago"
-          [items]="catMedioPago"
-          bindLabel="sDato"
-          placeholder="MEDIOS DE PAGO"
-          appendTo="body"
-          [closeOnSelect]="true"
-          [clearable]="false"
-          [(ngModel)]="itemMedioPago"
-          tooltipClass="my-custom-class"
-          (change)="onSelectMedioPagoChange()"
-        >
-          <ng-option
-            ng-options="item as item.sLlave for item.sDato in catMedioPago"
-          >
+        <ng-select id="catMedioPago" [items]="catMedioPago" bindLabel="sDato" placeholder="MEDIOS DE PAGO"
+          appendTo="body" [closeOnSelect]="true" [clearable]="false" [(ngModel)]="itemMedioPago"
+          tooltipClass="my-custom-class" (change)="onSelectMedioPagoChange()">
+          <ng-option ng-options="item as item.sLlave for item.sDato in catMedioPago">
             {{ item }}
           </ng-option>
         </ng-select>
@@ -127,73 +70,40 @@
     <div class="row">
       <div class="form-group col-12 col-md-4">
         <label class="form-label">Nombre:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="txtTarjetaNombre"
-          value=""
-        />
+        <input type="text" class="form-control" id="txtTarjetaNombre" value="" />
       </div>
       <div class="form-group col-12 col-md-4">
         <label class="form-label">Apellido Paterno:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="txtTarjetaPaterno"
-          value=""
-        />
+        <input type="text" class="form-control" id="txtTarjetaPaterno" value="" />
       </div>
       <div class="form-group col-12 col-md-4">
         <label class="form-label">Apellido Materno:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="txtTarjetaMaterno"
-          value=""
-        />
+        <input type="text" class="form-control" id="txtTarjetaMaterno" value="" />
       </div>
       <div class="form-group col-12 col-md-4">
         <label class="form-label">Banco:</label>
-        <input type="text" class="form-control" id="txtTarjetaBanco" value="" />
+        <ng-select id="cmbCoberturas" [items]="catCoberturas" bindLabel="sDato" placeholder="BANCO" appendTo="body"
+          [closeOnSelect]="true" [clearable]="false" (change)="onSelectCoberturaChange()" [(ngModel)]="itemCoberturas"
+          tooltipClass="my-custom-class">
+          <ng-option ng-options="item as item.sLlave for item.sDato in catTipoVehiculo">
+            {{ item }}
+          </ng-option>
+        </ng-select>
       </div>
       <div class="form-group col-12 col-md-4">
         <label class="form-label">Número de Tarjeta:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="txtTarjetaNumero"
-          value=""
-          maxlength="16"
-        />
+        <input type="text" class="form-control" id="txtTarjetaNumero" value="" maxlength="16" />
       </div>
       <div class="form-group col-12 col-md-4">
         <label class="form-label">Código de Seguridad:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="txtTarjetaCodigo"
-          value=""
-          maxlength="3"
-        />
+        <input type="text" class="form-control" id="txtTarjetaCodigo" value="" maxlength="3" />
       </div>
       <div class="form-group col-12 col-md-4">
         <label class="form-label">Vigencia:</label>
         <div style="display: flex; align-items: center">
-          <input
-            type="text"
-            class="form-control col-2"
-            id="txtTarjetaVigenciaMes"
-            value=""
-            maxlength="2"
-          />
+          <input type="text" class="form-control col-2" id="txtTarjetaVigenciaMes" value="" maxlength="2" />
           /
-          <input
-            type="text"
-            class="form-control col-2"
-            id="txtTarjetaVigentesAnio"
-            value=""
-            maxlength="2"
-          />
+          <input type="text" class="form-control col-2" id="txtTarjetaVigentesAnio" value="" maxlength="2" />
         </div>
       </div>
     </div>

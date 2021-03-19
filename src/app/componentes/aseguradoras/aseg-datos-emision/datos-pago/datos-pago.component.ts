@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { InfovehiculoService } from '../../../../servicios/infovehiculo.service';
 import { CatalogoModel } from '../../../../interphaces/models/Catalogos.model';
 
 @Component({
@@ -7,6 +8,8 @@ import { CatalogoModel } from '../../../../interphaces/models/Catalogos.model';
   styleUrls: ['./datos-pago.component.css'],
 })
 export class DatosPagoComponent implements OnInit {
+  @Input() IdAseguradora: number;
+
   catCoberturas: CatalogoModel[];
   itemCoberturas: CatalogoModel;
   catFormaPago: CatalogoModel[];
@@ -23,7 +26,7 @@ export class DatosPagoComponent implements OnInit {
   fechaInicioVigencia: Date;
   mostrarDatosTarjetas: boolean;
 
-  constructor() {}
+  constructor(private infovehiculoService: InfovehiculoService) {}
 
   ngOnInit(): void {
     this.itemCoberturas = this.itemVacio;
@@ -39,6 +42,7 @@ export class DatosPagoComponent implements OnInit {
     this.CargarCoberturas();
     this.CargarFormasPago();
     this.CargarMediosPago();
+    this.CargarBancos();
   }
 
   onSelectCoberturaChange(): void {
@@ -145,5 +149,23 @@ export class DatosPagoComponent implements OnInit {
       this.recibosPrimero = costoRecibos + 300;
       this.recibosSubsecuentes = costoRecibos;
     }
+  }
+
+  CargarBancos(): void {
+    this.infovehiculoService
+      .getApiCatalogoBancos({
+        Filtro: this.IdAseguradora,
+        IdAplication: 2,
+        NombreCatalogo: 'Banco',
+      })
+      .subscribe(
+        (cat: any) => {
+          console.log(cat);
+        },
+        (err) => {
+          console.log('Error: Bancos');
+          console.log(err.message);
+        }
+      );
   }
 }
