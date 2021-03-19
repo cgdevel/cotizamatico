@@ -1,0 +1,10 @@
+.svg-modal4 {
+  height: 78px !important;
+}
+
+.btn-cotizamatico {
+  color: white;
+  background: linear-gradient(90deg, #ff6963 0%, #ff8f48 100%);
+  border: none;
+  box-shadow: 0 1px 8px 1px rgb(0 0 0 / 8%), 0 1px 6px 0 rgb(0 29 124 / 5%);
+}
