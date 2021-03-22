@@ -10,18 +10,12 @@ export class AsegDatosEmisionComponent implements OnInit {
   @Input() aseguradora: string;
   codigopostal: any;
   correo: any;
-  telefono : any;
+  telefono: any;
   genero: any;
-  fechanac : FechasModel;
+  fechanac: FechasModel;
   logoAseguradora: string;
- 
-  
   itemVacio: CatalogoModel;
-
   item: string;
- 
-  
-
   datAdiPfNombre: string;
   datAdiPfPaterno: string;
   datAdiPfMaterno: string;
@@ -36,7 +30,7 @@ export class AsegDatosEmisionComponent implements OnInit {
     this.correo = history.state.emsel;
     this.telefono = history.state.telsel;
     this.genero = history.state.generosel;
-    this.fechanac=history.state.fechasel;
+    this.fechanac = history.state.fechasel;
     this.SeleccionarLogo();
   }
 
@@ -82,10 +76,9 @@ export class AsegDatosEmisionComponent implements OnInit {
         this.logoAseguradora = '../../../assets/iconosase/ANA.svg';
         break;
 
-      case 'AIG':
+      case 'AIG MEX':
         this.logoAseguradora = '../../../assets/iconosase/AIG.svg';
         break;
     }
   }
- 
 }

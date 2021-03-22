@@ -50,7 +50,7 @@ export class CoberturasComponent implements OnInit {
     ceil: 5000000,
     step: 500000,
     translate: (value: number): string => {
-      return (value/1000000) + 'Millones';
+      return value>1000000 ? (value/1000000) + 'Millones' : (value/1000000) + 'Millón';
     }
   };
   valuemedicalExpenses: number =  50000;

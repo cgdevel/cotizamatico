@@ -39,7 +39,6 @@ export class DatosPagoComponent implements OnInit {
     this.recibosPrimero = 0;
     this.recibosSubsecuentes = 0;
     this.recibosTotal = 0;
-    // this.fechaInicioVigencia = new Date();
     this.mostrarDatosTarjetas = false;
 
     this.CargarCoberturas();

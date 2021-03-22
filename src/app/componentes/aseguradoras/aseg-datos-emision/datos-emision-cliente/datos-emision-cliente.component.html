@@ -45,7 +45,10 @@
             </ng-option>
           </ng-select>
         </div>
-        <div class="form-group col-12 col-md-4">
+        <div class="form-group col-12 col-md-4" *ngIf="this.aseguradoraSelect =='QUALITAS'
+        ||this.aseguradoraSelect =='AFIRME'
+        ||this.aseguradoraSelect =='CHUBB'
+        ||this.aseguradoraSelect =='HDI'">
           <label class="form-label">Ocupación:</label>
           <ng-select 
             [items]="Ocup"       

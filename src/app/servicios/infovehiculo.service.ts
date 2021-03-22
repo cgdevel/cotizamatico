@@ -62,6 +62,7 @@ export class InfovehiculoService {
   }
 
   getOcupaciones() {
+    this.Ocupaciones = [];
     this.Ocupaciones.push(
       { sLlave: '1', sDato: 'ABOGADO' },
       { sLlave: '2', sDato: 'ACRÓBATA' },
@@ -199,6 +200,7 @@ export class InfovehiculoService {
   }
 
   getEstadoCivil() {
+    this.EstadoCivs = [];
     this.EstadoCivs.push(
       { sLlave: '1', sDato: 'VIUDO' },
       { sLlave: '2', sDato: 'SOLTERO' },
