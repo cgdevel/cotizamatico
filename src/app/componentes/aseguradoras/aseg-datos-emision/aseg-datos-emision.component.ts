@@ -12,7 +12,12 @@ export class AsegDatosEmisionComponent implements OnInit {
   correo: any;
   telefono: any;
   genero: any;
+  nombreaseg: any;
   fechanac: FechasModel;
+  modeloautoaseg: CatalogoModel;
+  marcaautoaseg: CatalogoModel;
+  descautoaseg: CatalogoModel;
+  annoautoaseg: CatalogoModel;
   logoAseguradora: string;
   itemVacio: CatalogoModel;
   item: string;
@@ -31,6 +36,11 @@ export class AsegDatosEmisionComponent implements OnInit {
     this.telefono = history.state.telsel;
     this.genero = history.state.generosel;
     this.fechanac = history.state.fechasel;
+    this.modeloautoaseg = history.state.modsel;
+    this.marcaautoaseg = history.state.marsel;
+    this.descautoaseg = history.state.descsel;
+    this.annoautoaseg = history.state.annosel;
+    this.nombreaseg = history.state.nomsel;
     this.SeleccionarLogo();
   }
 

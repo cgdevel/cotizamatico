@@ -7,19 +7,19 @@
       <div class="row">
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Nombre:</label>
-          <input type="text" class="form-control" />
+          <input type="text" (change)="nombreMayu( this.nombre )" [value]="this.nombre" [(ngModel)]="nombre" class="form-control"  [ngClass]="{ Existe: this.nombre!='' ,NoExiste: this.nombre=='' || this.nombre.length<3}" />
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Apellido Paterno:</label>
-          <input type="text" class="form-control" />
+          <input type="text" (change)="apepatMayu( this.apellidopaterno )" [(ngModel)]="apellidopaterno" [ngClass]="{ Existe: apellidopaterno!='' , NoExiste: apellidopaterno=='' || apellidopaterno.length<3}" class="form-control" />
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Apellido Materno:</label>
-          <input type="text" class="form-control" />
+          <input type="text" (change)="apematMayu( this.apellidomaterno )" [(ngModel)]="apellidomaterno" [ngClass]="{ Existe: apellidomaterno!='' , NoExiste: apellidomaterno==''|| apellidomaterno.length<3}" class="form-control" />
         </div>
         <div class="form-group col-12 col-md-4" *ngIf="this.aseguradoraSelect!='SURA'">
           <label class="form-label">RFC:</label>
-          <input type="text" class="form-control" />
+          <input type="text" [value]="RFC" [(ngModel)]="RFC" class="form-control" />
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Correo:</label>
@@ -75,7 +75,7 @@
         <div id="datepicker" class="form-group col-12 col-md-4"*ngIf="this.aseguradoraSelect !='ZURICH'">
           <label class="form-label">Fecha de Nacimiento:</label>
           <!-- <input class="form-control" type="date" data-date-format="mm/dd/yyyy" value="" (change)="changefecha()" id="fechanaci"> -->
-          <input (click)="d.toggle()"  class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+          <input (dateSelect)="cambiafecha($event)" (click)="d.toggle()"  class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="fechanaciaseg" ngbDatepicker #d="ngbDatepicker">
         </div>
         <div class="form-group col-12 col-md-4" *ngIf="this.genero != 'Moral'">
           <label class="form-label">Género:</label>
@@ -117,11 +117,11 @@
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Estado:</label>
-          <input type="text" [value]="this.estado" class="form-control" />
+          <input type="text" [value]="this.estado" disabled="true" class="form-control" />
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Municipio:</label>
-          <input type="text" [value]="this.municipio" class="form-control" />
+          <input type="text" [value]="this.municipio" disabled="true" class="form-control" />
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Colonia:</label>

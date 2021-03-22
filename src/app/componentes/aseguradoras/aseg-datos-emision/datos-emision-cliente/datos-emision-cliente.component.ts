@@ -11,22 +11,28 @@ import * as $ from 'jquery';
   styleUrls: ['./datos-emision-cliente.component.css']
 })
 export class DatosEmisionClienteComponent implements OnInit {
-  model: NgbDateStruct;
+  fechanaciaseg: NgbDateStruct;
   date: { year: number, month: number };
   @ViewChild('dp') dp: NgbDatepicker;
   @Input() aseguradoraSelect: string ;
+  @Input() nombre = '';
   @Input() codigopostal = '';
   @Input() correo = '';
   @Input() telefono = '';
   @Input() genero = '';
   @Input() fecha: FechasModel;
+  nombreNOCom : boolean;
   Nacion = new Array<RequestNacionalidad>();
   nacionalidadsel: RequestNacionalidad;
   item = '';
+  apellidomaterno='';
+  apellidopaterno='';
+  RFC: string;
   Ocup = new Array<CatalogoModel>();
   EsCivs = new Array<CatalogoModel>();
   ocupacionsel: CatalogoModel;
   estadocivilsel: CatalogoModel;
+  nombresepa= new Array<string>();
   estado: string;
   municipio: string;
   ubicacion: any;
@@ -52,6 +58,105 @@ export class DatosEmisionClienteComponent implements OnInit {
       this.cols = this.ubicacion[0].Ubicacion;
     }); // suscribecierra
   }
+  dividirCadena(cadenaADividir,separador) {
+    var arrayDeCadenas = cadenaADividir.split(separador);
+    for (var i=0; i < arrayDeCadenas.length; i++) {
+      this.nombresepa.push(arrayDeCadenas[i]);
+    }
+   this.nombre=this.nombresepa[0].toLocaleUpperCase();
+   this.apellidopaterno=this.nombresepa[1].toLocaleUpperCase();
+   this.apellidomaterno=this.nombresepa[2].toLocaleUpperCase();
+   this.generarfc(this.apellidopaterno,this.apellidomaterno,this.nombre,this.fechanaciaseg);
+ }
+  verificaCompletoNom(cnam: string){
+    if (cnam == '') {
+      return this.nombreNOCom = false ;
+    } else {
+      let ArrayEmparejamientos = {};
+      const reg = /^(([A-Z a-z])\w+(\s))(([A-Z a-z]+\w\s))(([A-Z a-z]+\w)\s?)$/;
+      ArrayEmparejamientos = cnam.match(reg);
+      this.nombreNOCom = reg.test(cnam);
+      if (this.nombreNOCom) {
+        this.dividirCadena(this.nombre," ");
+      }else{
+        this.nombre=cnam.toLocaleUpperCase();
+      }
+    }
+    
+  }
+  apepatMayu( appatstr:string ){
+    this.generarfc(this.apellidopaterno,this.apellidomaterno,this.nombre,this.fechanaciaseg);
+    if (appatstr =='') {
+      this.nombreNOCom=false;
+    }else{
+      if(appatstr.length<3){
+        this.nombreNOCom=false;
+      }
+      console.log(appatstr.toLocaleUpperCase());
+      this.apellidopaterno = appatstr.toLocaleUpperCase();
+    }
+  }
+  nombreMayu( nomstr:string ){
+    this.generarfc(this.apellidopaterno,this.apellidomaterno,this.nombre,this.fechanaciaseg);
+    if (nomstr =='') {
+      this.nombreNOCom=false;
+    }else{
+      if(nomstr.length<3){
+        this.nombreNOCom=false;
+      }
+      console.log(nomstr.toLocaleUpperCase());
+      this.nombre = nomstr.toLocaleUpperCase();
+    }
+  }
+  apematMayu( apmatstr:string ){
+    this.generarfc(this.apellidopaterno,this.apellidomaterno,this.nombre,this.fechanaciaseg);
+    if (apmatstr =='') {
+      this.nombreNOCom=false;
+    }else{
+      if(apmatstr.length<3){
+        this.nombreNOCom=false;
+      }
+      console.log(apmatstr.toLocaleUpperCase());
+      this.apellidomaterno = apmatstr.toLocaleUpperCase();
+    }
+  }
+  generarfc(appaterno:string, apmaterno: string,nom:string, fechnaciaseg: NgbDateStruct ){
+    if (!!appaterno&& !!apmaterno&& !!nom&& !!fechnaciaseg && appaterno.length>2 && apmaterno.length>2 && nom.length>2 ) {
+      const strnmate = apmaterno.charAt(0);
+      const strnpate = appaterno.charAt(0) + appaterno.charAt(1);
+      const strnom = nom.charAt(0);
+      const year=fechnaciaseg.year.toString(); 
+      const yearu= year.charAt(2)+ year.charAt(3);
+      const month=fechnaciaseg.month.toString(); 
+      const monthu= month.charAt(0)+ month.charAt(1);
+      const day=fechnaciaseg.day.toString();
+      const dayhu= day.charAt(0)+ day.charAt(1);
+      if (fechnaciaseg.month < 10 && fechnaciaseg.day < 10){
+        return this.RFC=strnpate+strnmate+strnom+yearu+'0'+monthu+'0'+dayhu+'XXX';
+      }else {
+        if (fechnaciaseg.month < 10 && fechnaciaseg.day >= 10) {
+          return this.RFC=strnpate+strnmate+strnom+yearu+'0'+monthu+dayhu+'XXX';
+        } else {
+          if (fechnaciaseg.month >= 10 && fechnaciaseg.day < 10) {
+            return this.RFC=strnpate+strnmate+strnom+yearu+monthu+'0'+dayhu+'XXX';
+          }else {
+            if (fechnaciaseg.month >= 10 && fechnaciaseg.day >= 10) {
+              return this.RFC=strnpate+strnmate+strnom+yearu+monthu+dayhu+'XXX';
+            }
+          }
+        }
+      }
+      
+    } else if (appaterno || !apmaterno || !nom || !fechnaciaseg) {
+      return this.RFC='';
+    }
+    
+  }
+  cambiafecha(e){
+    console.log(e.year);
+    this.generarfc(this.apellidopaterno,this.apellidomaterno,this.nombre,e);
+  }
+ 
   ngOnInit(): void {
     this.Nacion = this.InfovehiculoService.getNacionalidades();
     this.nacionalidadsel = { NacString: 'MEXICANA', NacClave: 'MEX' };
@@ -69,12 +174,12 @@ export class DatosEmisionClienteComponent implements OnInit {
     });
     this.anionac = Number(this.fecha.anio);
     this.dianac = Number(this.fecha.dia);
-    this.model = {
+    this.fechanaciaseg = {
       year: this.anionac,
       month: this.mesnac,
       day: this.dianac
     };
-
+    this.verificaCompletoNom(this.nombre);
   }
 
 }

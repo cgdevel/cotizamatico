@@ -21,18 +21,24 @@
 
 <!-- Contratante -->
 <div class="container mw-100">
-  <app-datos-emision-cliente [aseguradoraSelect]="this.aseguradora"
-  [codigopostal]="this.codigopostal"
-  [correo]="this.correo"
-  [telefono]="this.telefono"
-  [genero]="this.genero"
-  [fecha]="this.fechanac"
+  <app-datos-emision-cliente 
+    [aseguradoraSelect]="this.aseguradora"
+    [codigopostal]="this.codigopostal"
+    [nombre]="this.nombreaseg"
+    [telefono]="this.telefono"
+    [fecha]="this.fechanac"
+    [correo]="this.correo"
+    [genero]="this.genero"
   ></app-datos-emision-cliente>
 </div>
 
 <!-- Vehículo -->
 <div class="container mw-100">
-  <app-datos-emision-vehiculo></app-datos-emision-vehiculo>
+  <app-datos-emision-vehiculo
+  [modeloSelect]="modeloautoaseg"
+  [anioSelect]="marcaautoaseg"
+  [descripSelect]="descautoaseg"
+  [marcaSelect]="annoautoaseg"></app-datos-emision-vehiculo>
 </div>
 
 <!-- Adicionales -->

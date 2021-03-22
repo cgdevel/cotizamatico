@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CatalogoModel } from '../../../../interphaces/models/Catalogos.model';
 
 @Component({
   selector: 'app-datos-emision-vehiculo',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./datos-emision-vehiculo.component.css']
 })
 export class DatosEmisionVehiculoComponent implements OnInit {
+  @Input() modeloSelect: CatalogoModel={ sLlave:'', sDato:''} ;
+  @Input() anioSelect: CatalogoModel ;
+  @Input() marcaSelect: CatalogoModel ;
+  @Input() descripSelect: CatalogoModel ;
 
   constructor() { }
 

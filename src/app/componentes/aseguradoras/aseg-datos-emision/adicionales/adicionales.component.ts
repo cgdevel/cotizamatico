@@ -10,7 +10,13 @@ export class AdicionalesComponent implements OnInit {
   itemVacio: CatalogoModel;
   catAdicionalTipoPersona: CatalogoModel[];
   itemAdicionalTipoPersona: CatalogoModel;
-
+  item ='';
+  datAdiPfMaterno='';
+  datAdiPfNombre='';
+  datAdiPfPaterno='';
+  datAdiPfRfc='';
+  datAdiPmNombre='';
+  datAdiPmRfc='';
   mostrarAdicional: boolean;
   mostrarAdicionalPf: boolean;
   mostrarAdicionalPm: boolean;
