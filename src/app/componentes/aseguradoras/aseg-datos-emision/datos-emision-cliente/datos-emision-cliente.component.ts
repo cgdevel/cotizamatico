@@ -85,39 +85,43 @@ export class DatosEmisionClienteComponent implements OnInit {
     
   }
   apepatMayu( appatstr:string ){
-    this.generarfc(this.apellidopaterno,this.apellidomaterno,this.nombre,this.fechanaciaseg);
     if (appatstr =='') {
       this.nombreNOCom=false;
+      this.generarfc(this.apellidopaterno,this.apellidomaterno,this.nombre,this.fechanaciaseg);
     }else{
       if(appatstr.length<3){
         this.nombreNOCom=false;
       }
       console.log(appatstr.toLocaleUpperCase());
       this.apellidopaterno = appatstr.toLocaleUpperCase();
+      this.generarfc(this.apellidopaterno,this.apellidomaterno,this.nombre,this.fechanaciaseg);
     }
   }
   nombreMayu( nomstr:string ){
-    this.generarfc(this.apellidopaterno,this.apellidomaterno,this.nombre,this.fechanaciaseg);
     if (nomstr =='') {
       this.nombreNOCom=false;
+      this.generarfc(this.apellidopaterno,this.apellidomaterno,this.nombre,this.fechanaciaseg);
     }else{
       if(nomstr.length<3){
         this.nombreNOCom=false;
+      }else{
+        console.log(nomstr.toLocaleUpperCase());
+        this.nombre = nomstr.toLocaleUpperCase();
+        this.generarfc(this.apellidopaterno,this.apellidomaterno,this.nombre,this.fechanaciaseg);
       }
-      console.log(nomstr.toLocaleUpperCase());
-      this.nombre = nomstr.toLocaleUpperCase();
     }
   }
   apematMayu( apmatstr:string ){
-    this.generarfc(this.apellidopaterno,this.apellidomaterno,this.nombre,this.fechanaciaseg);
     if (apmatstr =='') {
       this.nombreNOCom=false;
+      this.generarfc(this.apellidopaterno,this.apellidomaterno,this.nombre,this.fechanaciaseg);
     }else{
       if(apmatstr.length<3){
         this.nombreNOCom=false;
       }
       console.log(apmatstr.toLocaleUpperCase());
       this.apellidomaterno = apmatstr.toLocaleUpperCase();
+      this.generarfc(this.apellidopaterno,this.apellidomaterno,this.nombre,this.fechanaciaseg);
     }
   }
   generarfc(appaterno:string, apmaterno: string,nom:string, fechnaciaseg: NgbDateStruct ){
