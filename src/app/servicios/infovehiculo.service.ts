@@ -211,6 +211,7 @@ export class InfovehiculoService {
   }
 
   getNacionalidades() {
+    this.Nacionalidades = [];
     this.Nacionalidades.push(
       { NacString: 'NAMIBIANA', NacClave: 'NAM' },
       { NacString: 'ANGOLESA', NacClave: 'AGO' },
