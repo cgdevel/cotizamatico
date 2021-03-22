@@ -160,6 +160,36 @@ export class DatosEmisionClienteComponent implements OnInit {
     console.log(e.year);
     this.generarfc(this.apellidopaterno,this.apellidomaterno,this.nombre,e);
   }
+  rfcpornacio(){
+    if (!!this.nacionalidadsel) {
+      if (this.nacionalidadsel.NacString=='MEXICANA') {
+        this.generarfc(this.apellidopaterno,this.apellidomaterno,this.nombre,this.fechanaciaseg);
+      } else {
+        const year=this.fechanaciaseg.year.toString(); 
+        const yearu= year.charAt(2)+ year.charAt(3);
+        const month=this.fechanaciaseg.month.toString(); 
+        const monthu= month.charAt(0)+ month.charAt(1);
+        const day=this.fechanaciaseg.day.toString();
+        const dayhu= day.charAt(0)+ day.charAt(1);
+      if (this.fechanaciaseg.month < 10 && this.fechanaciaseg.day < 10){
+        return this.RFC='XXXX'+yearu+'0'+monthu+'0'+dayhu+'XXX';
+      }else {
+        if (this.fechanaciaseg.month < 10 && this.fechanaciaseg.day >= 10) {
+          return this.RFC='XXXX'+yearu+'0'+monthu+dayhu+'XXX';
+        } else {
+          if (this.fechanaciaseg.month >= 10 && this.fechanaciaseg.day < 10) {
+            return this.RFC='XXXX'+yearu+monthu+'0'+dayhu+'XXX';
+          }else {
+            if (this.fechanaciaseg.month >= 10 && this.fechanaciaseg.day >= 10) {
+              return this.RFC='XXXX'+yearu+monthu+dayhu+'XXX';
+            }
+          }
+        }
+      }
+        
+      }
+    }
+  }
  
   ngOnInit(): void {
     this.Nacion = this.InfovehiculoService.getNacionalidades();

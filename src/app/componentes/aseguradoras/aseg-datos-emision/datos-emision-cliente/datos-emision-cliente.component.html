@@ -97,6 +97,7 @@
               [clearable]="false"
               [closeOnSelect]="true"
               placeholder="Nacionalidad"
+              (change)="rfcpornacio()"
               [(ngModel)]="nacionalidadsel" [ngbTooltip]="nacsel" tooltipClass="my-custom-class">
               <ng-template #nacsel>
                   <b  *ngIf="!!nacionalidadsel">{{nacionalidadsel.NacString}}</b>
