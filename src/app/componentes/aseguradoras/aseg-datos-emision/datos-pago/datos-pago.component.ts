@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { InfovehiculoService } from '../../../../servicios/infovehiculo.service';
 import { CatalogoModel } from '../../../../interphaces/models/Catalogos.model';
+import { NgbDateStruct, NgbCalendar, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-datos-pago',
@@ -8,6 +9,9 @@ import { CatalogoModel } from '../../../../interphaces/models/Catalogos.model';
   styleUrls: ['./datos-pago.component.css'],
 })
 export class DatosPagoComponent implements OnInit {
+  fechaInicioVigencia: NgbDateStruct;
+  date: { year: number, month: number };
+  @ViewChild('dp') dp: NgbDatepicker;
   @Input() IdAseguradora: number;
 
   catCoberturas: CatalogoModel[];
@@ -23,7 +27,6 @@ export class DatosPagoComponent implements OnInit {
   recibosPrimero: number;
   recibosSubsecuentes: number;
   mostrarSubsecuentes: boolean;
-  fechaInicioVigencia: Date;
   mostrarDatosTarjetas: boolean;
 
   constructor(private infovehiculoService: InfovehiculoService) {}
@@ -36,7 +39,7 @@ export class DatosPagoComponent implements OnInit {
     this.recibosPrimero = 0;
     this.recibosSubsecuentes = 0;
     this.recibosTotal = 0;
-    this.fechaInicioVigencia = new Date();
+    // this.fechaInicioVigencia = new Date();
     this.mostrarDatosTarjetas = false;
 
     this.CargarCoberturas();

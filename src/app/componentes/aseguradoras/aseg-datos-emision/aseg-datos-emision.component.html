@@ -21,7 +21,13 @@
 
 <!-- Contratante -->
 <div class="container mw-100">
-  <app-datos-emision-cliente></app-datos-emision-cliente>
+  <app-datos-emision-cliente [aseguradoraSelect]="this.aseguradora"
+  [codigopostal]="this.codigopostal"
+  [correo]="this.correo"
+  [telefono]="this.telefono"
+  [genero]="this.genero"
+  [fecha]="this.fechanac"
+  ></app-datos-emision-cliente>
 </div>
 
 <!-- Vehículo -->

@@ -17,49 +17,129 @@
           <label class="form-label">Apellido Materno:</label>
           <input type="text" class="form-control" />
         </div>
-        <div class="form-group col-12 col-md-4">
+        <div class="form-group col-12 col-md-4" *ngIf="this.aseguradoraSelect!='SURA'">
           <label class="form-label">RFC:</label>
           <input type="text" class="form-control" />
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Correo:</label>
-          <input type="text" class="form-control" />
+          <input [value]="this.correo" [(ngModel)]="correo" type="text" class="form-control" />
+        </div>
+        <div class="form-group col-12 col-md-4" *ngIf=" this.aseguradoraSelect=='CHUBB' ||
+        this.aseguradoraSelect=='BANORTE'   ||
+        this.aseguradoraSelect=='HDI'       || 
+        this.aseguradoraSelect=='AFIRME'">
+          <label class="form-label">Estado Civil:</label>
+          <ng-select 
+            [items]="EsCivs"
+            id="EC"        
+            bindLabel="sDato"
+            placeholder="Estado Civil"
+            appendTo="body"
+            [searchable]="false" 
+            [clearable]="false"
+            [closeOnSelect]="true"
+            [(ngModel)]="estadocivilsel">
+            <ng-option  ng-options="item as item.sLlave for item.sDato in EsCivs">
+                {{item}}
+            </ng-option>
+          </ng-select>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Ocupación:</label>
-          <input type="text" class="form-control" />
+          <ng-select 
+            [items]="Ocup"       
+            bindLabel="sDato"
+            appendTo="body"
+            [searchable]="true" 
+            [clearable]="false"
+            [closeOnSelect]="true"
+            placeholder="Ocupación"
+            [(ngModel)]="ocupacionsel" [ngbTooltip]="ocusel" tooltipClass="my-custom-class">
+            <ng-template #ocusel>
+                <b  *ngIf="!!ocupacionsel">{{ocupacionsel.sDato}}</b>
+            </ng-template>
+            <ng-option  ng-options="item as item.sLlave for item.sDato in Ocup">
+                {{item}}
+            </ng-option>
+            <ng-template ng-notfound-tmp let-searchTerm="searchTerm" >
+            <div class="ng-option disabled" style="font-size: 11px !important;">
+                No hay descripción que coincida con "{{searchTerm}}"
+            </div>
+            </ng-template>
+          </ng-select>
         </div>
-        <div class="form-group col-12 col-md-4">
+        <div id="datepicker" class="form-group col-12 col-md-4"*ngIf="this.aseguradoraSelect !='ZURICH'">
           <label class="form-label">Fecha de Nacimiento:</label>
-          <input type="text" class="form-control" />
+          <!-- <input class="form-control" type="date" data-date-format="mm/dd/yyyy" value="" (change)="changefecha()" id="fechanaci"> -->
+          <input (click)="d.toggle()"  class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
         </div>
-        <div class="form-group col-12 col-md-4">
-          <label class="form-label">Genero:</label>
-          <input type="text" class="form-control" />
+        <div class="form-group col-12 col-md-4" *ngIf="this.genero != 'Moral'">
+          <label class="form-label">Género:</label>
+          <input type="text" [value]="this.genero" [(ngModel)]="genero"  class="form-control" />
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Teléfono:</label>
-          <input type="text" class="form-control" />
+          <input  [value]="this.telefono" [(ngModel)]="telefono" type="text" class="form-control" />
         </div>
-        <div class="form-group col-12 col-md-4">
+        <div class="form-group col-12 col-md-4"*ngIf=" this.aseguradoraSelect!='ZURICH' &&
+        this.aseguradoraSelect!='BANORTE' &&
+        this.aseguradoraSelect!='MAPFRE T' ">
           <label class="form-label">Nacionalidad:</label>
-          <input type="text" class="form-control" />
+          <ng-select 
+              [items]="Nacion"       
+              bindLabel="NacString"
+              appendTo="body"
+              [searchable]="true" 
+              [clearable]="false"
+              [closeOnSelect]="true"
+              placeholder="Nacionalidad"
+              [(ngModel)]="nacionalidadsel" [ngbTooltip]="nacsel" tooltipClass="my-custom-class">
+              <ng-template #nacsel>
+                  <b  *ngIf="!!nacionalidadsel">{{nacionalidadsel.NacString}}</b>
+              </ng-template>
+              <ng-option  ng-options="item as item.NacClave for item.NacString in Nacion">
+                  {{item}}
+              </ng-option>
+              <ng-template ng-notfound-tmp let-searchTerm="searchTerm" >
+              <div class="ng-option disabled" style="font-size: 11px !important;">
+                  No hay descripción que coincida con "{{searchTerm}}"
+              </div>
+              </ng-template>
+          </ng-select>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Código Postal:</label>
-          <input type="text" class="form-control" />
+          <input type="text" [value]="this.codigopostal" [(ngModel)]="codigopostal" (change)="getUbicacion(codigopostal)" class="form-control" />
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Estado:</label>
-          <input type="text" class="form-control" />
+          <input type="text" [value]="this.estado" class="form-control" />
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Municipio:</label>
-          <input type="text" class="form-control" />
+          <input type="text" [value]="this.municipio" class="form-control" />
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Colonia:</label>
-          <input type="text" class="form-control" />
+          <ng-select 
+            [items]="cols"        
+            bindLabel="sUbicacion"
+            placeholder="Colonia"
+            appendTo="body"
+            [searchable]="false" 
+            [clearable]="false"
+            [closeOnSelect]="true"
+            [(ngModel)]="coloniasel">
+            <ng-option  ng-options="item as cols.iIdUbicacion for cols.sUbicacion in cols">
+                {{item}}
+            </ng-option>
+            <ng-template ng-notfound-tmp >
+              <div class="ng-option disabled">
+                  No hay colonias que mostrar
+              </div>
+            </ng-template>
+          </ng-select>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Calle:</label>

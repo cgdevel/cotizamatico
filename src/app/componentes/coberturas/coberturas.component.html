@@ -2,7 +2,7 @@
   <div class="card-body range__container">
     <div class="row mb-4">
       <div class="col-12">
-        <div *ngIf="this.cobertura == 0 || this.polizaSelect == 'Amplia Plus'">
+        <div *ngIf="!!this.cobertura ? this.cobertura == 0 : this.polizaSelect == 'Amplia Plus'">
           <!-- COBERTURAS AMPLIA PLUS -->
           <p
             class="mb-0"
@@ -436,7 +436,7 @@
             >
           </ng-template>
         </div>
-        <div *ngIf="this.cobertura == 1 || this.polizaSelect == 'Amplia'">
+        <div *ngIf="!!this.cobertura ? this.cobertura == 1 : this.polizaSelect == 'Amplia'">
           <!-- COBERTURAS AMPLIA -->
           <p
             class="mb-0"
@@ -870,7 +870,7 @@
             >
           </ng-template>
         </div>
-        <div *ngIf="this.cobertura == 2 || this.polizaSelect == 'Limitada'">
+        <div *ngIf="!!this.cobertura ? this.cobertura == 2 : this.polizaSelect == 'Limitada'">
           <!-- COBERTURAS lIMITADA -->
           <p
             class="mb-0"
@@ -1087,7 +1087,7 @@
             </b>
           </ng-template>
         </div>
-        <div *ngIf="this.cobertura == 3 || this.polizaSelect == 'Básica'">
+        <div *ngIf="!!this.cobertura ? this.cobertura == 3 : this.polizaSelect == 'Básica'">
           <!-- COBERTURAS BASICA -->
           <p
             class="mb-0"

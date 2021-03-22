@@ -4,7 +4,7 @@
     <div class="col-4">
       <div class="form-group">
         <label for="poliza">Tipo de poliza</label>
-        <select [(ngModel)]="poliza" class="form-control" id="poliza">
+        <select (change)="ChangePoliza()" [(ngModel)]="poliza" class="form-control" id="poliza">
           <option>Amplia Plus</option>
           <option selected>Amplia</option>
           <option>Limitada</option>
@@ -1077,17 +1077,17 @@
                 *ngIf="Aseguradoras[0].Compania === 'AXA SEG'"
               />
               <img
-                src="../../../assets/iconosase/SURA.svg"
+                src="../../../assets/iconosase/CHUBB.svg"
                 style="width: 140px"
                 *ngIf="Aseguradoras[0].Compania === 'CHUBB'"
               />
               <img
-                src="../../../assets/iconosase/ZURICH.svg"
+                src="../../../assets/iconosase/SURA.svg"
                 style="width: 140px"
                 *ngIf="Aseguradoras[0].Compania === 'SURA'"
               />
               <img
-                src="../../../assets/iconosase/CHUBB.svg"
+                src="../../../assets/iconosase/ZURICH.svg"
                 style="width: 140px"
                 *ngIf="Aseguradoras[0].Compania === 'ZURICH'"
               />
@@ -1175,59 +1175,59 @@
             <div class="col">
               <!-- {{ item.Compania }} -->
               <img
+                *ngIf="item.Compania === 'AXA SEG'"
                 src="../../../assets/iconosase/AXA.svg"
                 style="width: 140px"
-                *ngIf="item.Compania === 'AXA SEG'"
               />
               <img
-                src="../../../assets/iconosase/SURA.svg"
-                style="width: 140px"
                 *ngIf="item.Compania === 'CHUBB'"
-              />
-              <img
-                src="../../../assets/iconosase/ZURICH.svg"
-                style="width: 140px"
-                *ngIf="item.Compania === 'SURA'"
-              />
-              <img
                 src="../../../assets/iconosase/CHUBB.svg"
                 style="width: 140px"
-                *ngIf="item.Compania === 'ZURICH'"
               />
               <img
+                *ngIf="item.Compania === 'SURA'"
+                src="../../../assets/iconosase/SURA.svg"
+                style="width: 140px"
+              />
+              <img
+                *ngIf="item.Compania === 'ZURICH'"
+                src="../../../assets/iconosase/ZURICH.svg"
+                style="width: 140px"
+              />
+              <img
+                *ngIf="item.Compania === 'MAPFRE T'"
                 src="../../../assets/iconosase/MAPFRE.svg"
                 style="width: 140px"
-                *ngIf="item.Compania === 'MAPFRE T'"
               />
               <img
+                *ngIf="item.Compania === 'QUALITAS'"
                 src="../../../assets/iconosase/QUALITAS.svg"
                 style="width: 140px"
-                *ngIf="item.Compania === 'QUALITAS'"
               />
               <img
+                *ngIf="item.Compania === 'BANORTE'"
                 src="../../../assets/iconosase/BANORTE.svg"
                 style="width: 140px"
-                *ngIf="item.Compania === 'BANORTE'"
               />
               <img
+                *ngIf="item.Compania === 'HDI'"
                 src="../../../assets/iconosase/HDI.svg"
                 style="width: 140px"
-                *ngIf="item.Compania === 'HDI'"
               />
               <img
+                *ngIf="item.Compania === 'AFIRME'"
                 src="../../../assets/iconosase/AFIRME.svg"
                 style="width: 140px"
-                *ngIf="item.Compania === 'AFIRME'"
               />
               <img
+                *ngIf="item.Compania === 'ANA SEG'"
                 src="../../../assets/iconosase/ANA.svg"
                 style="width: 140px"
-                *ngIf="item.Compania === 'ANA SEG'"
               />
               <img
+                *ngIf="item.Compania === 'AIG MEX'"
                 src="../../../assets/iconosase/AIG.svg"
                 style="width: 140px"
-                *ngIf="item.Compania === 'AIG MEX'"
               />
             </div>
             <div class="col-md-3 col-sm-3 mb-2">

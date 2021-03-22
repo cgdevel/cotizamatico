@@ -162,6 +162,17 @@ export class Pagina2Component implements OnInit {
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
     // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
   }
+  // Función para select versión repsonsiva
+  ChangePoliza(){
+    this.cobertura=undefined;
+    if (this.poliza=='Amplia Plus') {
+      this.cobDamage = 3;
+      this.cobtothe = 5 ;
+    } else if(this.poliza=='Amplia'){
+      this.cobDamage = 5;
+      this.cobtothe = 10 ;
+    }
+  }
   // Funciones descuento
   Descuentoalto() {
     // tiene selected this.statusDA
@@ -378,14 +389,14 @@ export class Pagina2Component implements OnInit {
     this.vermarca = history.state.marcave;
     this.verdescripcion = history.state.descve;
     this.Aseguradoras = this.getAsePorDescrip(this.verdescripcion.sLlave);
-    console.log(this.Aseguradoras);
+    // console.log(this.Aseguradoras);
     this.nombre = history.state.namease;
-    console.log(this.nombre);
+    // console.log(this.nombre);
     this.email = history.state.emailase;
     this.telefono = history.state.phonease;
     this.genero = history.state.tipoperase;
     this.codigopostal = history.state.cpase;
-    console.log(this.codigopostal);
+    // console.log(this.codigopostal);
     this.fechanac = history.state.fechanacase;
     this.amplia = true;
     this.descMEDIO = true;
@@ -397,9 +408,9 @@ export class Pagina2Component implements OnInit {
       const element = AseguradoraCobJson[index];
     }
     for (const nombre of AseguradoraCobJson) {
-      console.log(nombre);
+      // console.log(nombre);
       for (const cobertura of nombre.coberturas) {
-        console.log(cobertura.default);
+        // console.log(cobertura.default);
       }
     }
   } // init

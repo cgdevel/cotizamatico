@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
-
+import { FechasModel } from '../../../interphaces/models/Fechas.model';
 @Component({
   selector: 'app-aseg-datos-emision',
   templateUrl: './aseg-datos-emision.component.html',
@@ -8,7 +8,11 @@ import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
 })
 export class AsegDatosEmisionComponent implements OnInit {
   @Input() aseguradora: string;
-
+  codigopostal: any;
+  correo: any;
+  telefono : any;
+  genero: any;
+  fechanac : FechasModel;
   logoAseguradora: string;
  
   
@@ -28,11 +32,11 @@ export class AsegDatosEmisionComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-   
-    
-   
-
-   
+    this.codigopostal = history.state.codigosel;
+    this.correo = history.state.emsel;
+    this.telefono = history.state.telsel;
+    this.genero = history.state.generosel;
+    this.fechanac=history.state.fechasel;
     this.SeleccionarLogo();
   }
 
