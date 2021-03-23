@@ -27,7 +27,8 @@ export class AsegDatosEmisionComponent implements OnInit {
   datAdiPfRfc: string;
   datAdiPmNombre: string;
   datAdiPmRfc: string;
-
+  polizaselase: any;
+  pagoselase: any;
   constructor() {}
 
   ngOnInit(): void {
@@ -41,6 +42,8 @@ export class AsegDatosEmisionComponent implements OnInit {
     this.descautoaseg = history.state.descsel;
     this.annoautoaseg = history.state.annosel;
     this.nombreaseg = history.state.nomsel;
+    this.polizaselase = history.state.polizasel;
+    this.pagoselase = history.state.pag;
     this.SeleccionarLogo();
   }
 

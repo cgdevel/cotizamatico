@@ -12,7 +12,11 @@
           </div>
         </div>
         <div class="column col-md-9 col-12">
-          <app-datos-pago [IdAseguradora]="5"></app-datos-pago>
+          <app-datos-pago 
+          [IdAseguradora]="5"
+          [cobertura]="this.polizaselase"
+          [pagoseleccionado]="this.pagoselase"
+          ></app-datos-pago>
         </div>
       </div>
     </div>
@@ -38,10 +42,13 @@
   [modeloSelect]="modeloautoaseg"
   [anioSelect]="marcaautoaseg"
   [descripSelect]="descautoaseg"
-  [marcaSelect]="annoautoaseg"></app-datos-emision-vehiculo>
+  [marcaSelect]="annoautoaseg"
+  ></app-datos-emision-vehiculo>
 </div>
 
 <!-- Adicionales -->
 <div class="container mw-100">
-  <app-adicionales></app-adicionales>
+  <app-adicionales
+  [asesel]="aseguradora"
+  ></app-adicionales>
 </div>

@@ -13,7 +13,8 @@ export class DatosPagoComponent implements OnInit {
   date: { year: number, month: number };
   @ViewChild('dp') dp: NgbDatepicker;
   @Input() IdAseguradora: number;
-
+  @Input () cobertura: any;
+  @Input () pagoseleccionado: any;
   catCoberturas: CatalogoModel[];
   itemCoberturas: CatalogoModel;
   catFormaPago: CatalogoModel[];
@@ -45,6 +46,20 @@ export class DatosPagoComponent implements OnInit {
     this.CargarFormasPago();
     this.CargarMediosPago();
     this.CargarBancos();
+    this.catCoberturas.forEach(element => {
+      if (this.cobertura === element.sDato) {
+        this.itemCoberturas = element;
+      }
+    });
+    this.catFormaPago.forEach(element1 => {
+      if (this.pagoseleccionado === 'Anual' ) {
+        this.itemFormaPago = { sDato: 'Contado', sLlave: '0' } ;
+        this.SeleccionaPagos();
+      }else if( this.pagoseleccionado === element1.sDato){
+        this.itemFormaPago = element1;
+        this.SeleccionaPagos();
+      }
+    });
   }
 
   onSelectCoberturaChange(): void {
@@ -65,19 +80,19 @@ export class DatosPagoComponent implements OnInit {
 
   CargarCoberturas(): void {
     const cobs: CatalogoModel[] = [];
-    cobs.push({ sDato: 'BÁSICA', sLlave: '0' });
-    cobs.push({ sDato: 'LIMITADA', sLlave: '1' });
-    cobs.push({ sDato: 'AMPLIA', sLlave: '2' });
-    cobs.push({ sDato: 'AMPLIA PLUS', sLlave: '3' });
+    cobs.push({ sDato: 'Básica', sLlave: '0' });
+    cobs.push({ sDato: 'Limitada', sLlave: '1' });
+    cobs.push({ sDato: 'Amplia', sLlave: '2' });
+    cobs.push({ sDato: 'Amplia Plus', sLlave: '3' });
     this.catCoberturas = cobs;
   }
 
   CargarFormasPago(): void {
     const cobs: CatalogoModel[] = [];
-    cobs.push({ sDato: 'CONTADO', sLlave: '0' });
-    cobs.push({ sDato: 'SEMESTRAL', sLlave: '1' });
-    cobs.push({ sDato: 'TRIMESTRAL', sLlave: '2' });
-    cobs.push({ sDato: 'MENSUAL', sLlave: '3' });
+    cobs.push({ sDato: 'Contado', sLlave: '0' });
+    cobs.push({ sDato: 'Semestral', sLlave: '1' });
+    cobs.push({ sDato: 'Trimestral', sLlave: '2' });
+    cobs.push({ sDato: 'Mensual', sLlave: '3' });
     this.catFormaPago = cobs;
   }
 

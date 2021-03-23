@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CatalogoModel } from '../../../../interphaces/models/Catalogos.model';
 
 @Component({
@@ -7,16 +7,17 @@ import { CatalogoModel } from '../../../../interphaces/models/Catalogos.model';
   styleUrls: ['./adicionales.component.css'],
 })
 export class AdicionalesComponent implements OnInit {
+  @ Input() asesel = '';
   itemVacio: CatalogoModel;
   catAdicionalTipoPersona: CatalogoModel[];
   itemAdicionalTipoPersona: CatalogoModel;
-  item ='';
-  datAdiPfMaterno='';
-  datAdiPfNombre='';
-  datAdiPfPaterno='';
-  datAdiPfRfc='';
-  datAdiPmNombre='';
-  datAdiPmRfc='';
+  item = '';
+  datAdiPfMaterno = '';
+  datAdiPfNombre = '';
+  datAdiPfPaterno = '';
+  datAdiPfRfc = '';
+  datAdiPmNombre = '';
+  datAdiPmRfc = '';
   mostrarAdicional: boolean;
   mostrarAdicionalPf: boolean;
   mostrarAdicionalPm: boolean;
@@ -38,7 +39,7 @@ export class AdicionalesComponent implements OnInit {
   CargarTipoFiscalAdicional(): void {
     const tipos: CatalogoModel[] = [];
     tipos.push({ sDato: 'FÍSICA', sLlave: 'F' });
-    tipos.push({ sDato: 'MORAL', sLlave: 'M' });
+    this.asesel !== 'BANORTE' ? tipos.push({ sDato: 'MORAL', sLlave: 'M' }) :  tipos.push({ sDato: '', sLlave: '' }) ;
     this.catAdicionalTipoPersona = tipos;
   }
 
