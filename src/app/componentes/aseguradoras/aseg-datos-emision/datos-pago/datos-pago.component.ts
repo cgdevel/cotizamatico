@@ -55,7 +55,7 @@ export class DatosPagoComponent implements OnInit {
       if (this.pagoseleccionado === 'Anual' ) {
         this.itemFormaPago = { sDato: 'Contado', sLlave: '0' } ;
         this.SeleccionaPagos();
-      }else if( this.pagoseleccionado === element1.sDato){
+      }else if ( this.pagoseleccionado === element1.sDato){
         this.itemFormaPago = element1;
         this.SeleccionaPagos();
       }

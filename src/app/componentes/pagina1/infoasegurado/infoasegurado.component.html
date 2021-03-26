@@ -27,6 +27,7 @@
                 value=""
                 autocomplete="off"
                 [(ngModel)]="clienteNombre"
+                [value]="clienteNombre"
                 (change)="onNombreChanged()"
                 onkeypress="return(!(event.charCode > 32 && ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))"
                 min="1"

@@ -195,7 +195,7 @@ export class InfovehiculoService {
       { sLlave: '129', sDato: 'VETERINARIO' },
       { sLlave: '130', sDato: 'VIGILANTE' }
     );
-    console.log(this.Ocupaciones);
+    // console.log(this.Ocupaciones);
     return this.Ocupaciones;
   }
 

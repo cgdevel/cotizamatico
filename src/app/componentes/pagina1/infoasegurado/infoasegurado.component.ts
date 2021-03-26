@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { InfovehiculoService } from '../../../servicios/infovehiculo.service';
 import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
 import { FechasModel } from '../../../interphaces/models/Fechas.model';
+import { AcentosEspacio } from '../../../interphaces/models/posiAcentosEspacios.model';
 import { RequestCatalogoCotizamatico } from '../../../interphaces/request/RequestCatalogoCotizamatico.model';
 import { MesesConDiasService } from '../../../servicios/meses-con-dias.service';
 import { CookieService } from 'ngx-cookie';
@@ -64,10 +65,8 @@ export class InfoaseguradoComponent implements OnInit {
     @Input() itemNacimientoMes: CatalogoModel;
     @Input() itemNacimeintoAnio: CatalogoModel;
     itemVacio: CatalogoModel;
-    itemd: string;
-    itemm: string;
-    itemy: string;
-    year: any;
+    nombresepa = new Array<string>();
+
     // ESTAS VARIABLES SON PARA LA VALIDACION (NO VACIO)
     @Input() existe: boolean;
     existeT: boolean;
@@ -107,7 +106,7 @@ export class InfoaseguradoComponent implements OnInit {
       this.catNacimientoAnios = this.MesesConDias.getAnnioSinMesesniDia();
       this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion();
       this.catNacimientoDias = this.MesesConDias.getdiassinnada();
-      /**Tipo Persona */
+      // Tipo Persona
       this.cookieTipoDePersona = this.cookieService.get('TipoDePersona');
       if (this.cookieTipoDePersona !== null) {
         if (this.cookieTipoDePersona === 'Femenino'){
@@ -126,11 +125,11 @@ export class InfoaseguradoComponent implements OnInit {
           this.emitClienteTipoPersona.emit('');
         }
       }
-      /**CodigoPostal */
+      // CodigoPostal
       this.cookieCP = this.cookieService.get('Codigo Postal');
       this.cookieCP !== null ? this.clienteCodigoPostal = this.cookieCP : this.clienteCodigoPostal = this.clienteCodigoPostal;
       this.cookieCP !== null ? this.emitClienteCodigoPostal.emit(this.cookieCP) : this.emitClienteCodigoPostal.emit('');
-      /**Fecha de nacimiento */
+      // Fecha de nacimiento
       this.cookieDiaNaci = this.cookieService.getObject('DiaDeNacimiento');
       this.cookieMesNaci = this.cookieService.getObject('MesDeNacimiento');
       this.cookieAnioNaci = this.cookieService.getObject('AnioDeNacimiento');
@@ -173,8 +172,49 @@ export class InfoaseguradoComponent implements OnInit {
       this.emitClienteNombre.emit('');
     } else {
       this.valClienteNombre = true;
+      const reg = /([áéíóúÁÉÍÓÚ])$/;
+      const posicionesacentos: AcentosEspacio[] = [];
+      const posicionesespacios: AcentosEspacio[] = [];
+      let ArrayEmparejamientos = {};
+      for (let index = 0; index < this.clienteNombre.length; index++) {
+        const element = this.clienteNombre[index];
+        // console.log(element);
+        ArrayEmparejamientos = element.match(reg);
+        if (element !== ' ' && ArrayEmparejamientos ){
+        posicionesacentos.push({
+          caract: element,
+          pos: index
+        }) ;
+        }else if (element === ' ') {
+          posicionesespacios.push({
+            caract: element,
+            pos: index
+          }) ;
+        }
+      }
+      console.log(posicionesacentos);
+      console.log(posicionesespacios);
+      for (let index = posicionesespacios[0].pos ; index < posicionesespacios[1].pos ; index++) {
+        console.log(this.clienteNombre.charAt(index));
+        this.clienteNombre.charAt(index) === 'á' ? this.clienteNombre += this.clienteNombre.charAt(index)
+                                                  .replace(/á/i, 'a').toLocaleUpperCase() :
+        this.clienteNombre.charAt(index) === 'e' ? this.clienteNombre +=  this.clienteNombre.charAt(index)
+                                                  .replace(/é/i, 'e').toLocaleUpperCase()  :
+        this.clienteNombre.charAt(index) === 'í' ? this.clienteNombre +=  this.clienteNombre.charAt(index)
+                                                  .replace(/í/i, 'i').toLocaleUpperCase()  :
+        this.clienteNombre.charAt(index) === 'ó' ? this.clienteNombre += this.clienteNombre.charAt(index)
+                                                  .replace(/ó/i, 'o').toLocaleUpperCase()  :
+         this.clienteNombre.charAt(index) === 'ú' ? this.clienteNombre += this.clienteNombre.charAt(index)
+                                                  .replace(/ú/i, 'u').toLocaleUpperCase() :
+                                                  this.clienteNombre += this.clienteNombre.charAt(index).toLocaleUpperCase();
+      }
+      const rg = /([áéíóúÁÉÍÓÚ]{1})\w/;
+      const rev = 'éríka';
+      const dime = rg.test(rev);
+      console.log(dime);
+
       this.emitClienteNombre.emit(this.clienteNombre);
-      let guardacookieNombre = this.clienteNombre ;
+      const guardacookieNombre = this.clienteNombre ;
       this.cookieService.put('Nombre', guardacookieNombre);
     }
   }
@@ -209,7 +249,7 @@ export class InfoaseguradoComponent implements OnInit {
 
     if (this.valClienteMailNoValido) {
       this.emitClienteMail.emit(this.clienteMail);
-      let guardacookieEmail = this.clienteMail ;
+      const guardacookieEmail = this.clienteMail ;
       this.cookieService.put('Email', guardacookieEmail);
     } else {
       this.emitClienteMail.emit('');
@@ -281,7 +321,7 @@ export class InfoaseguradoComponent implements OnInit {
                           this.valClienteTelefonoNoValido = true;
                           this.valClienteTelefonoVacio = true;
                           this.emitClienteTelefono.emit(this.clienteTelefono);
-                          let guardacookieTelefono = this.clienteTelefono ;
+                          const guardacookieTelefono = this.clienteTelefono ;
                           this.cookieService.put('Telefono', guardacookieTelefono);
                         }
                       }
@@ -316,7 +356,7 @@ export class InfoaseguradoComponent implements OnInit {
     this.clienteEsMasculinop3 = false;
     this.clienteEsMoralp3 = false;
     this.emitClienteTipoPersona.emit('Femenino');
-    let guardacookieTipoDePersona = 'Femenino' ;
+    const guardacookieTipoDePersona = 'Femenino' ;
     this.cookieService.put('TipoDePersona', guardacookieTipoDePersona);
   }
 
@@ -328,7 +368,7 @@ export class InfoaseguradoComponent implements OnInit {
     this.clienteEsMasculinop3 = true;
     this.clienteEsMoralp3 = false;
     this.emitClienteTipoPersona.emit('Masculino');
-    let guardacookieTipoDePersona = 'Masculino' ;
+    const guardacookieTipoDePersona = 'Masculino' ;
     this.cookieService.put('TipoDePersona', guardacookieTipoDePersona);
   }
 
@@ -340,7 +380,7 @@ export class InfoaseguradoComponent implements OnInit {
     this.clienteEsMasculinop3 = false;
     this.clienteEsMoralp3 = true;
     this.emitClienteTipoPersona.emit('Moral');
-    let guardacookieTipoDePersona = 'Moral' ;
+    const guardacookieTipoDePersona = 'Moral' ;
     this.cookieService.put('TipoDePersona', guardacookieTipoDePersona);
   }
 
@@ -379,7 +419,7 @@ export class InfoaseguradoComponent implements OnInit {
       }
 
       this.emitClienteCodigoPostal.emit(this.clienteCodigoPostal);
-      let guardacookieCodigoPostal = this.clienteCodigoPostal ;
+      const guardacookieCodigoPostal = this.clienteCodigoPostal ;
       this.cookieService.put('Codigo Postal', guardacookieCodigoPostal);
     });
   }
@@ -412,7 +452,7 @@ export class InfoaseguradoComponent implements OnInit {
         });
       }
     }
-    let guardacookieDiaNacimiento = this.itemNacimientoDia;
+    const guardacookieDiaNacimiento = this.itemNacimientoDia;
     this.cookieService.putObject('DiaDeNacimiento', guardacookieDiaNacimiento);
   }
 
@@ -455,7 +495,7 @@ export class InfoaseguradoComponent implements OnInit {
         });
       }
     }
-    let guardacookieMesNacimiento = {
+    const guardacookieMesNacimiento = {
       sDato: this.itemNacimientoMes.sDato,
       sLlave: this.itemNacimientoMes.sLlave
     } ;
@@ -480,7 +520,7 @@ export class InfoaseguradoComponent implements OnInit {
           mes: this.itemNacimientoMes.sDato,
           anio: this.itemNacimeintoAnio.sDato
         });
-      } else if (this.itemNacimientoMes == undefined && this.itemNacimientoDia !== undefined){
+      } else if (this.itemNacimientoMes === undefined && this.itemNacimientoDia !== undefined){
         this.emitClienteNacimiento.emit({
           dia: this.itemNacimientoDia.sDato,
           mes: '',
@@ -494,7 +534,7 @@ export class InfoaseguradoComponent implements OnInit {
         });
       }
     }
-    let guardacookieAnioNacimiento = {
+    const guardacookieAnioNacimiento = {
       sDato: this.itemNacimeintoAnio.sDato,
       sLlave: this.itemNacimeintoAnio.sLlave
     } ;

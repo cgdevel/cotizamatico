@@ -38,12 +38,11 @@ export class VermasComponent implements OnInit {
     })
     .subscribe(
       (cat) => {
-        if (cat == undefined) {
+        if (cat === undefined) {
           console.log('Error');
         }
         // console.log(cat);
-        for (let index = 0; index < cat.length; index++) {
-          const element = cat[index];
+        cat.forEach(element => {
           this.AseguradorasPoDesc.push( {IdModeloCotizamatico: element.IdModeloCotizamatico,
             IdAseguradora: element.IdAseguradora,
             Compania: element.Compania,
@@ -52,15 +51,15 @@ export class VermasComponent implements OnInit {
             Submarca: element.Submarca,
             Modelo: element.Modelo,
             Descripcion: element.Descripcion} );
-        }
-        for (let ase = 0; ase < this.AseguradorasPoDesc.length; ase++) {
-          for (let asejson = 0; asejson < aseguradorasSeed.length; asejson++){
-            if (this.AseguradorasPoDesc[ase].Compania == aseguradorasSeed[asejson].nombre){
-              console.log(this.AseguradorasPoDesc[ase].Compania, aseguradorasSeed[asejson].nombre);
-              this.aseguradorasFromSer.push(aseguradorasSeed[asejson]);
+        });
+        this.AseguradorasPoDesc.forEach(ase => {
+          aseguradorasSeed.forEach(asejson => {
+            if (ase.Compania === asejson.nombre){
+              console.log(ase.Compania, asejson.nombre);
+              this.aseguradorasFromSer.push(asejson);
             }
-          }
-        }
+          });
+        });
       },
       (err) => {
         console.log('Error');

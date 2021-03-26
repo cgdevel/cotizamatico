@@ -1260,7 +1260,7 @@
                   fechasel: fechanac,
                   asesel: item.Compania,
                   pag: pago,
-                  cobertura: cobertura
+                  polizasel: !!poliza ? poliza : cobertura
                 }"
               >
                 Contrata
@@ -1273,18 +1273,20 @@
         <div class="col">
           <button
             class="btn btn-primary"
-            [state]="{
-              modsel: vermodelo,
-              marsel: vermarca,
-              descsel: !!descripcion ? descripcion : verdescripcion,
-              annosel: veranno,
-              nomsel: nombre,
-              emsel: email,
-              telsel: telefono,
-              generosel: genero,
-              codigosel: codigopostal,
-              fechasel: fechanac
-            }"
+           [state]="{
+                  modsel: vermodelo,
+                  marsel: vermarca,
+                  descsel: verdescripcion,
+                  annosel: veranno,
+                  nomsel: nombre,
+                  emsel: email,
+                  telsel: telefono,
+                  generosel: genero,
+                  codigosel: codigopostal,
+                  fechasel: fechanac,
+                  pag: pago,
+                  polizasel: !!poliza ? poliza : cobertura
+                }"
             style="margin-bottom: 27px"
             [routerLink]="['/vermas']"
             routerLinkActive="router-link-active"

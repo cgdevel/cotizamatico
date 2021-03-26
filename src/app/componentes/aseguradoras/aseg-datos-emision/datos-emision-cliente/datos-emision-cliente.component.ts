@@ -5,7 +5,6 @@ import { CatalogoModel } from '../../../../interphaces/models/Catalogos.model';
 import { FechasModel } from '../../../../interphaces/models/Fechas.model';
 import { NgbDateStruct, NgbCalendar, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import * as $ from 'jquery';
-import { Console } from 'console';
 @Component({
   selector: 'app-datos-emision-cliente',
   templateUrl: './datos-emision-cliente.component.html',
@@ -61,11 +60,10 @@ export class DatosEmisionClienteComponent implements OnInit {
   }
   dividirCadena(cadenaADividir, separador) {
     const arrayDeCadenas = cadenaADividir.split(separador);
-    // console.log(arrayDeCadenas);
-    arrayDeCadenas.forEach(element => {
-      this.nombresepa.push(element);
-    });
-
+    for (const object of arrayDeCadenas) {
+      // console.log(object);
+      this.nombresepa.push(object);
+    }
     this.nombre = this.nombresepa[0].toLocaleUpperCase();
     this.apellidopaterno = this.nombresepa[1].toLocaleUpperCase();
     this.apellidomaterno = this.nombresepa[2].toLocaleUpperCase();
@@ -76,7 +74,7 @@ export class DatosEmisionClienteComponent implements OnInit {
       return this.nombreNOCom = false ;
     } else {
       let ArrayEmparejamientos = {};
-      const reg = /^(([A-Z a-z])\w+(\s))(([A-Z a-z]+\w\s))(([A-Z a-z]+\w)\s?)$/;
+      const reg = /^(([A-Za-záéíóúÁÉÍÓÚ])\w+(\s))(([A-Za-záéíóúÁÉÍÓÚ]+\w\s))(([A-Za-záéíóúÁÉÍÓÚ]+\w)\s?)$/;
       ArrayEmparejamientos = cnam.match(reg);
       this.nombreNOCom = reg.test(cnam);
       if (this.nombreNOCom) {
@@ -94,7 +92,7 @@ export class DatosEmisionClienteComponent implements OnInit {
       if (appatstr.length < 3){
         this.nombreNOCom = false;
       }
-      console.log(appatstr.toLocaleUpperCase());
+      // console.log(appatstr.toLocaleUpperCase());
       this.apellidopaterno = appatstr.toLocaleUpperCase();
       this.generarfc(this.apellidopaterno, this.apellidomaterno, this.nombre, this.fechanaciaseg);
     }
@@ -107,7 +105,7 @@ export class DatosEmisionClienteComponent implements OnInit {
       if (nomstr.length < 3){
         this.nombreNOCom = false;
       }else{
-        console.log(nomstr.toLocaleUpperCase());
+        // console.log(nomstr.toLocaleUpperCase());
         this.nombre = nomstr.toLocaleUpperCase();
         this.generarfc(this.apellidopaterno, this.apellidomaterno, this.nombre, this.fechanaciaseg);
       }
@@ -121,7 +119,7 @@ export class DatosEmisionClienteComponent implements OnInit {
       if (apmatstr.length < 3){
         this.nombreNOCom = false;
       }
-      console.log(apmatstr.toLocaleUpperCase());
+      // console.log(apmatstr.toLocaleUpperCase());
       this.apellidomaterno = apmatstr.toLocaleUpperCase();
       this.generarfc(this.apellidopaterno, this.apellidomaterno, this.nombre, this.fechanaciaseg);
     }
@@ -157,7 +155,7 @@ export class DatosEmisionClienteComponent implements OnInit {
     }
   }
   cambiafecha(e){
-    console.log(e.year);
+    // console.log(e.year);
     this.generarfc(this.apellidopaterno, this.apellidomaterno, this.nombre, e);
   }
   rfcpornacio(){
@@ -172,23 +170,23 @@ export class DatosEmisionClienteComponent implements OnInit {
         const day = this.fechanaciaseg.day.toString();
         const dayhu = day.charAt(0) + day.charAt(1);
         if (this.fechanaciaseg.month < 10 && this.fechanaciaseg.day < 10){
-          return this.RFC = 'XXXX' + yearu + '0' + monthu + '0' + dayhu + 'XXX';
-        }else {
-          if (this.fechanaciaseg.month < 10 && this.fechanaciaseg.day >= 10) {
-            return this.RFC = 'XXXX' + yearu + '0' + monthu + dayhu + 'XXX';
-          } else {
-            if (this.fechanaciaseg.month >= 10 && this.fechanaciaseg.day < 10) {
-              return this.RFC = 'XXXX' + yearu + monthu + '0' + dayhu + 'XXX';
-            }else {
-              if (this.fechanaciaseg.month >= 10 && this.fechanaciaseg.day >= 10) {
-                return this.RFC = 'XXXX' + yearu + monthu + dayhu + 'XXX';
-              }
+        return this.RFC = 'XXXX' + yearu + '0' + monthu + '0' + dayhu + 'XXX';
+      }else {
+        if (this.fechanaciaseg.month < 10 && this.fechanaciaseg.day >= 10) {
+          return this.RFC = 'XXXX' + yearu + '0' + monthu + dayhu + 'XXX';
+        } else {
+          if (this.fechanaciaseg.month >= 10 && this.fechanaciaseg.day < 10) {
+            return this.RFC = 'XXXX' + yearu + monthu + '0' + dayhu + 'XXX';
+          }else {
+            if (this.fechanaciaseg.month >= 10 && this.fechanaciaseg.day >= 10) {
+              return this.RFC = 'XXXX' + yearu + monthu + dayhu + 'XXX';
             }
           }
         }
-        }// else NO mexicano
+      }
+      }
     }
-  } // RFC por nación
+  }
   ngOnInit(): void {
     this.Nacion = this.InfovehiculoService.getNacionalidades();
     this.nacionalidadsel = { NacString: 'MEXICANA', NacClave: 'MEX' };
