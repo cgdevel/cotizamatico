@@ -173,51 +173,31 @@ export class InfoaseguradoComponent implements OnInit {
     } else {
       this.valClienteNombre = true;
       const reg = /([áéíóúÁÉÍÓÚ])$/;
-      const posicionesacentos: AcentosEspacio[] = [];
-      const posicionesespacios: AcentosEspacio[] = [];
-      let ArrayEmparejamientos = {};
-      for (let index = 0; index < this.clienteNombre.length; index++) {
-        const element = this.clienteNombre[index];
-        // console.log(element);
-        ArrayEmparejamientos = element.match(reg);
-        if (element !== ' ' && ArrayEmparejamientos ){
-        posicionesacentos.push({
-          caract: element,
-          pos: index
-        }) ;
-        }else if (element === ' ') {
-          posicionesespacios.push({
-            caract: element,
-            pos: index
-          }) ;
-        }
+      this.dividirCadena(this.clienteNombre, ' ');
+      for(let i = 0; i < this.nombresepa.length; i++){
+        this.nombresepa[i] = this.nombresepa[i].replace(/á/g, 'a');
+        this.nombresepa[i] = this.nombresepa[i].replace(/é/g, 'e');
+        this.nombresepa[i] = this.nombresepa[i].replace(/í/g, 'i');
+        this.nombresepa[i] = this.nombresepa[i].replace(/ó/g, 'o');
+        this.nombresepa[i] = this.nombresepa[i].replace(/ú/g, 'u');
       }
-      console.log(posicionesacentos);
-      console.log(posicionesespacios);
-      for (let index = posicionesespacios[0].pos ; index < posicionesespacios[1].pos ; index++) {
-        console.log(this.clienteNombre.charAt(index));
-        this.clienteNombre.charAt(index) === 'á' ? this.clienteNombre += this.clienteNombre.charAt(index)
-                                                  .replace(/á/i, 'a').toLocaleUpperCase() :
-        this.clienteNombre.charAt(index) === 'e' ? this.clienteNombre +=  this.clienteNombre.charAt(index)
-                                                  .replace(/é/i, 'e').toLocaleUpperCase()  :
-        this.clienteNombre.charAt(index) === 'í' ? this.clienteNombre +=  this.clienteNombre.charAt(index)
-                                                  .replace(/í/i, 'i').toLocaleUpperCase()  :
-        this.clienteNombre.charAt(index) === 'ó' ? this.clienteNombre += this.clienteNombre.charAt(index)
-                                                  .replace(/ó/i, 'o').toLocaleUpperCase()  :
-         this.clienteNombre.charAt(index) === 'ú' ? this.clienteNombre += this.clienteNombre.charAt(index)
-                                                  .replace(/ú/i, 'u').toLocaleUpperCase() :
-                                                  this.clienteNombre += this.clienteNombre.charAt(index).toLocaleUpperCase();
+      this.clienteNombre = ""
+      for(let c = 0; c < this.nombresepa.length; c++){
+        this.clienteNombre += this.nombresepa[c] + ' '
       }
-      const rg = /([áéíóúÁÉÍÓÚ]{1})\w/;
-      const rev = 'éríka';
-      const dime = rg.test(rev);
-      console.log(dime);
-
       this.emitClienteNombre.emit(this.clienteNombre);
       const guardacookieNombre = this.clienteNombre ;
       this.cookieService.put('Nombre', guardacookieNombre);
     }
   }
+
+  dividirCadena(cadenaADividir, separador) {
+    const arrayDeCadenas = cadenaADividir.split(separador);
+    for (const object of arrayDeCadenas) {
+      // console.log(object);
+      this.nombresepa.push(object);
+    }
+ }
   onApPatChanged() {
     if (this.clienteApellidoPaterno === '') {
       this.valClienteApellidoPaterno = false;
