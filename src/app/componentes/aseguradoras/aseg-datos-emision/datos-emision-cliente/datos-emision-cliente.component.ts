@@ -106,6 +106,16 @@ export class DatosEmisionClienteComponent implements OnInit {
         this.nombreNOCom = false;
       }else{
         // console.log(nomstr.toLocaleUpperCase());
+        let sinac=nomstr
+        for (let index = 0; index < sinac.length; index++) {
+          console.log(sinac[index]);
+          sinac = sinac[index].replace(/á/g, 'a');
+          sinac = sinac[index].replace(/é/g, 'e');
+          sinac = sinac[index].replace(/í/g, 'i');
+          sinac = sinac[index].replace(/ó/g, 'o');
+          sinac = sinac[index].replace(/ú/g, 'u');
+        }
+        console.log(sinac.length)
         this.nombre = nomstr.toLocaleUpperCase();
         this.generarfc(this.apellidopaterno, this.apellidomaterno, this.nombre, this.fechanaciaseg);
       }
