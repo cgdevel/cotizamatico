@@ -5,6 +5,7 @@ import { CatalogoModel } from '../../../../interphaces/models/Catalogos.model';
 import { FechasModel } from '../../../../interphaces/models/Fechas.model';
 import { NgbDateStruct, NgbCalendar, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import * as $ from 'jquery';
+import { constants } from 'os';
 @Component({
   selector: 'app-datos-emision-cliente',
   templateUrl: './datos-emision-cliente.component.html',
@@ -93,7 +94,12 @@ export class DatosEmisionClienteComponent implements OnInit {
         this.nombreNOCom = false;
       }
       // console.log(appatstr.toLocaleUpperCase());
-      this.apellidopaterno = appatstr.toLocaleUpperCase();
+      this.apellidopaterno  = this.apellidopaterno.replace(/á/g, 'a')
+      .replace(/é/g, 'e')
+      .replace(/í/g, 'i')
+      .replace(/ó/g, 'o')
+      .replace(/ú/g, 'u');
+      this.apellidopaterno  = this.apellidopaterno.toLocaleUpperCase();
       this.generarfc(this.apellidopaterno, this.apellidomaterno, this.nombre, this.fechanaciaseg);
     }
   }
@@ -105,18 +111,12 @@ export class DatosEmisionClienteComponent implements OnInit {
       if (nomstr.length < 3){
         this.nombreNOCom = false;
       }else{
-        // console.log(nomstr.toLocaleUpperCase());
-        let sinac=nomstr
-        for (let index = 0; index < sinac.length; index++) {
-          console.log(sinac[index]);
-          sinac = sinac[index].replace(/á/g, 'a');
-          sinac = sinac[index].replace(/é/g, 'e');
-          sinac = sinac[index].replace(/í/g, 'i');
-          sinac = sinac[index].replace(/ó/g, 'o');
-          sinac = sinac[index].replace(/ú/g, 'u');
-        }
-        console.log(sinac.length)
-        this.nombre = nomstr.toLocaleUpperCase();
+        this.nombre = this.nombre.replace(/á/g, 'a')
+        .replace(/é/g, 'e')
+        .replace(/í/g, 'i')
+        .replace(/ó/g, 'o')
+        .replace(/ú/g, 'u')
+        this.nombre = this.nombre.toLocaleUpperCase();
         this.generarfc(this.apellidopaterno, this.apellidomaterno, this.nombre, this.fechanaciaseg);
       }
     }
@@ -130,7 +130,12 @@ export class DatosEmisionClienteComponent implements OnInit {
         this.nombreNOCom = false;
       }
       // console.log(apmatstr.toLocaleUpperCase());
-      this.apellidomaterno = apmatstr.toLocaleUpperCase();
+      this.apellidomaterno  = this.apellidomaterno.replace(/á/g, 'a')
+        .replace(/é/g, 'e')
+        .replace(/í/g, 'i')
+        .replace(/ó/g, 'o')
+        .replace(/ú/g, 'u');
+      this.apellidomaterno  = this.apellidomaterno.toLocaleUpperCase();
       this.generarfc(this.apellidopaterno, this.apellidomaterno, this.nombre, this.fechanaciaseg);
     }
   }

@@ -174,16 +174,16 @@ export class InfoaseguradoComponent implements OnInit {
       this.valClienteNombre = true;
       const reg = /([áéíóúÁÉÍÓÚ])$/;
       this.dividirCadena(this.clienteNombre, ' ');
-      for(let i = 0; i < this.nombresepa.length; i++){
+      for (let i = 0; i < this.nombresepa.length; i++){
         this.nombresepa[i] = this.nombresepa[i].replace(/á/g, 'a');
         this.nombresepa[i] = this.nombresepa[i].replace(/é/g, 'e');
         this.nombresepa[i] = this.nombresepa[i].replace(/í/g, 'i');
         this.nombresepa[i] = this.nombresepa[i].replace(/ó/g, 'o');
         this.nombresepa[i] = this.nombresepa[i].replace(/ú/g, 'u');
       }
-      this.clienteNombre = ""
-      for(let c = 0; c < this.nombresepa.length; c++){
-        this.clienteNombre += this.nombresepa[c] + ' '
+      this.clienteNombre = '';
+      for (let c = 0; c < this.nombresepa.length; c++){
+        this.clienteNombre += this.nombresepa[c] + ' ';
       }
       this.emitClienteNombre.emit(this.clienteNombre);
       const guardacookieNombre = this.clienteNombre ;
