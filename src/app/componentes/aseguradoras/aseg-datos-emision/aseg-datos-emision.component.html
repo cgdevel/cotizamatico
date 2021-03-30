@@ -34,11 +34,13 @@
     [fecha]="this.fechanac"
     [correo]="this.correo"
     [genero]="this.genero"
-    ></app-datos-emision-cliente-fisica>
-    <app-datos-emision-cliente-moral
-    *ngIf="this.genero=='Moral'"
-    >
-    </app-datos-emision-cliente-moral>
+  ></app-datos-emision-cliente-fisica>
+  <app-datos-emision-cliente-moral
+    *ngIf="this.genero=='Moral' && this.aseguradora !='SURA'"
+    [aseguradoraSelect]="this.aseguradora"
+    [codigopostal]="this.codigopostal"
+    [nombre]="this.nombreaseg"
+  ></app-datos-emision-cliente-moral>
 </div>
 
 <!-- Vehículo -->
@@ -54,6 +56,7 @@
 <!-- Adicionales -->
 <div class="container mw-100">
   <app-adicionales
+  *ngIf="this.genero!='Moral'"
   [asesel]="aseguradora"
   ></app-adicionales>
 </div>

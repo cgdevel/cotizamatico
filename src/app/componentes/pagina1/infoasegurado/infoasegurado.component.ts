@@ -172,18 +172,45 @@ export class InfoaseguradoComponent implements OnInit {
       this.emitClienteNombre.emit('');
     } else {
       this.valClienteNombre = true;
-      const reg = /([áéíóúÁÉÍÓÚ])$/;
-      this.dividirCadena(this.clienteNombre, ' ');
-      for (let i = 0; i < this.nombresepa.length; i++){
-        this.nombresepa[i] = this.nombresepa[i].replace(/á/g, 'a');
-        this.nombresepa[i] = this.nombresepa[i].replace(/é/g, 'e');
-        this.nombresepa[i] = this.nombresepa[i].replace(/í/g, 'i');
-        this.nombresepa[i] = this.nombresepa[i].replace(/ó/g, 'o');
-        this.nombresepa[i] = this.nombresepa[i].replace(/ú/g, 'u');
-      }
-      this.clienteNombre = '';
-      for (let c = 0; c < this.nombresepa.length; c++){
-        this.clienteNombre += this.nombresepa[c] + ' ';
+      if (this.clienteEsMoral === false) {
+        this.dividirCadena(this.clienteNombre, ' ');
+        for (let i = 0; i < this.nombresepa.length; i++){
+          this.nombresepa[i] = this.nombresepa[i].replace(/á/g, 'a');
+          this.nombresepa[i] = this.nombresepa[i].replace(/é/g, 'e');
+          this.nombresepa[i] = this.nombresepa[i].replace(/í/g, 'i');
+          this.nombresepa[i] = this.nombresepa[i].replace(/ó/g, 'o');
+          this.nombresepa[i] = this.nombresepa[i].replace(/ú/g, 'u');
+        }
+        this.clienteNombre = '';
+        for (let c = 0; c < this.nombresepa.length; c++){
+          this.clienteNombre += this.nombresepa[c] + ' ';
+        }
+        const terminaciones: CatalogoModel[] = [];
+        terminaciones.push(
+          {sDato: 'S. A. de C. V.', sLlave: 'Sociedad Anónima de Capital Variable'},
+          {sDato: 'S. C.', sLlave: 'Sociedad Civil'},
+          {sDato:  'S. A. de R. L.', sLlave: 'Sociedad Anónima de Responsabilidad Limitada'},
+          {sDato: 'S. A.', sLlave: 'Sociedad Anónima'},
+          {sDato: 'S. en C. S.', sLlave: 'Sociedad en Comandita Simple'},
+          {sDato:  'S. en C. por A', sLlave: ' Sociedad en Comandita por Acciones'},
+          {sDato:  'S. de R. L.', sLlave: 'Sociedad de Responsabilidad Limitada'},
+          {sDato:  'S.A.C.', sLlave: 'Sociedad Anónima cerrada'},
+          {sDato:  'E.I.R.L.', sLlave: 'Empresario Individual de Responsabilidad Limitada'},
+          {sDato:  ' S.A.A.', sLlave: 'Sociedad Anónima Abierta'}
+        );
+        const cadeemp = 'Pollitos Sabrosos S. A. de C. V.';
+        let sitiene: boolean;
+        terminaciones.forEach(element => {
+          const term = element.sDato;
+          const si = cadeemp.match(term);
+          if ( si !== null) {
+            console.log( term + '  ' + cadeemp.match(term));
+            return sitiene = true;
+          }else{
+            return sitiene = false;
+          }
+        }); // foreach
+        console.log(sitiene);
       }
       this.emitClienteNombre.emit(this.clienteNombre);
       const guardacookieNombre = this.clienteNombre ;
@@ -198,24 +225,6 @@ export class InfoaseguradoComponent implements OnInit {
       this.nombresepa.push(object);
     }
  }
-  onApPatChanged() {
-    if (this.clienteApellidoPaterno === '') {
-      this.valClienteApellidoPaterno = false;
-      this.emitClienteApellidoPaterno.emit('');
-    } else {
-      this.valClienteApellidoPaterno = true;
-      this.emitClienteApellidoPaterno.emit(this.clienteApellidoPaterno);
-    }
-  }
-  onApMatChanged() {
-    if (this.clienteApellidoMaterno === '') {
-      this.valClienteApellidoMaterno = false;
-      this.emitClienteApellidoMaterno.emit('');
-    } else {
-      this.valClienteApellidoMaterno = true;
-      this.emitClienteApellidoMaterno.emit(this.clienteApellidoMaterno);
-    }
-  }
   onMailChanged() {
     if (this.clienteMail === '') {
       this.emitClienteMail.emit('');
@@ -335,6 +344,7 @@ export class InfoaseguradoComponent implements OnInit {
     this.clienteEsFemeninop3 = true;
     this.clienteEsMasculinop3 = false;
     this.clienteEsMoralp3 = false;
+    
     this.emitClienteTipoPersona.emit('Femenino');
     const guardacookieTipoDePersona = 'Femenino' ;
     this.cookieService.put('TipoDePersona', guardacookieTipoDePersona);
