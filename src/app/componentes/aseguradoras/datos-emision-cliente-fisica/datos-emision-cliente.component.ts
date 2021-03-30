@@ -1,17 +1,17 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import {InfovehiculoService} from '../../../../servicios/infovehiculo.service';
-import {RequestNacionalidad } from '../../../../interphaces/nacionali';
-import { CatalogoModel } from '../../../../interphaces/models/Catalogos.model';
-import { FechasModel } from '../../../../interphaces/models/Fechas.model';
+import {InfovehiculoService} from '../../../servicios/infovehiculo.service';
+import {RequestNacionalidad } from '../../../interphaces/nacionali';
+import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
+import { FechasModel } from '../../../interphaces/models/Fechas.model';
 import { NgbDateStruct, NgbCalendar, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import * as $ from 'jquery';
 import { constants } from 'os';
 @Component({
-  selector: 'app-datos-emision-cliente',
-  templateUrl: './datos-emision-cliente.component.html',
-  styleUrls: ['./datos-emision-cliente.component.css']
+  selector: 'app-datos-emision-cliente-fisica',
+  templateUrl: './datos-emision-cliente-fisica.component.html',
+  styleUrls: ['./datos-emision-cliente-fisica.component.css']
 })
-export class DatosEmisionClienteComponent implements OnInit {
+export class DatosEmisionClienteFisicaComponent implements OnInit {
   fechanaciaseg: NgbDateStruct;
   date: { year: number, month: number };
   @ViewChild('dp') dp: NgbDatepicker;
@@ -65,6 +65,8 @@ export class DatosEmisionClienteComponent implements OnInit {
       // console.log(object);
       this.nombresepa.push(object);
     }
+    console.log(this.nombresepa);
+    this.nombre = '';
     this.nombre = this.nombresepa[0].toLocaleUpperCase();
     this.apellidopaterno = this.nombresepa[1].toLocaleUpperCase();
     this.apellidomaterno = this.nombresepa[2].toLocaleUpperCase();
@@ -79,9 +81,10 @@ export class DatosEmisionClienteComponent implements OnInit {
       ArrayEmparejamientos = cnam.match(reg);
       this.nombreNOCom = reg.test(cnam);
       if (this.nombreNOCom) {
-        this.dividirCadena(this.nombre, ' ');
+        this.dividirCadena(cnam, ' ');
       }else{
-        this.nombre = cnam.toLocaleUpperCase();
+        this.dividirCadena(cnam, ' ');
+        // this.nombre = cnam.toLocaleUpperCase();
       }
     }
   }
@@ -103,24 +106,6 @@ export class DatosEmisionClienteComponent implements OnInit {
       this.generarfc(this.apellidopaterno, this.apellidomaterno, this.nombre, this.fechanaciaseg);
     }
   }
-  nombreMayu( nomstr: string ){
-    if (nomstr === '') {
-      this.nombreNOCom = false;
-      this.generarfc(this.apellidopaterno, this.apellidomaterno, this.nombre, this.fechanaciaseg);
-    }else{
-      if (nomstr.length < 3){
-        this.nombreNOCom = false;
-      }else{
-        this.nombre = this.nombre.replace(/á/g, 'a')
-        .replace(/é/g, 'e')
-        .replace(/í/g, 'i')
-        .replace(/ó/g, 'o')
-        .replace(/ú/g, 'u')
-        this.nombre = this.nombre.toLocaleUpperCase();
-        this.generarfc(this.apellidopaterno, this.apellidomaterno, this.nombre, this.fechanaciaseg);
-      }
-    }
-  }
   apematMayu( apmatstr: string ){
     if (apmatstr === '') {
       this.nombreNOCom = false;
@@ -137,6 +122,24 @@ export class DatosEmisionClienteComponent implements OnInit {
         .replace(/ú/g, 'u');
       this.apellidomaterno  = this.apellidomaterno.toLocaleUpperCase();
       this.generarfc(this.apellidopaterno, this.apellidomaterno, this.nombre, this.fechanaciaseg);
+    }
+  }
+  nombreMayu( nomstr: string ){
+    if (nomstr === '') {
+      this.nombreNOCom = false;
+      this.generarfc(this.apellidopaterno, this.apellidomaterno, this.nombre, this.fechanaciaseg);
+    }else{
+      if (nomstr.length < 3){
+        this.nombreNOCom = false;
+      }else{
+        this.nombre = this.nombre.replace(/á/g, 'a')
+        .replace(/é/g, 'e')
+        .replace(/í/g, 'i')
+        .replace(/ó/g, 'o')
+        .replace(/ú/g, 'u');
+        this.nombre = this.nombre.toLocaleUpperCase();
+        this.generarfc(this.apellidopaterno, this.apellidomaterno, this.nombre, this.fechanaciaseg);
+      }
     }
   }
   generarfc(appaterno: string, apmaterno: string, nom: string, fechnaciaseg: NgbDateStruct ){

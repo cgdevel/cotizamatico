@@ -25,7 +25,8 @@
 
 <!-- Contratante -->
 <div class="container mw-100">
-  <app-datos-emision-cliente 
+  <app-datos-emision-cliente-fisica
+    *ngIf="this.genero!='Moral'"
     [aseguradoraSelect]="this.aseguradora"
     [codigopostal]="this.codigopostal"
     [nombre]="this.nombreaseg"
@@ -33,7 +34,11 @@
     [fecha]="this.fechanac"
     [correo]="this.correo"
     [genero]="this.genero"
-  ></app-datos-emision-cliente>
+    ></app-datos-emision-cliente-fisica>
+    <app-datos-emision-cliente-moral
+    *ngIf="this.genero=='Moral'"
+    >
+    </app-datos-emision-cliente-moral>
 </div>
 
 <!-- Vehículo -->

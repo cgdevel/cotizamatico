@@ -21,25 +21,15 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { VermasComponent } from './componentes/vermas/vermas.component';
 import { Pagina3Component } from './componentes/pagina3/pagina3.component';
-import { AseAXXAComponent } from './componentes/aseguradoras/ase-axxa/ase-axxa.component';
-import { AseCHUBBComponent } from './componentes/aseguradoras/ase-chubb/ase-chubb.component';
-import { AseSURAComponent } from './componentes/aseguradoras/ase-sura/ase-sura.component';
-import { AseZURCIHComponent } from './componentes/aseguradoras/ase-zurcih/ase-zurcih.component';
-import { AseMAPFREComponent } from './componentes/aseguradoras/ase-mapfre/ase-mapfre.component';
-import { AseQUALITASComponent } from './componentes/aseguradoras/ase-qualitas/ase-qualitas.component';
-import { AseBANORTEComponent } from './componentes/aseguradoras/ase-banorte/ase-banorte.component';
-import { AseHDIComponent } from './componentes/aseguradoras/ase-hdi/ase-hdi.component';
-import { AseAFIRMEComponent } from './componentes/aseguradoras/ase-afirme/ase-afirme.component';
-import { AseANNAComponent } from './componentes/aseguradoras/ase-anna/ase-anna.component';
-import { AseAIGComponent } from './componentes/aseguradoras/ase-aig/ase-aig.component';
 import { CookieModule } from 'ngx-cookie';
 import { AsegDatosEmisionComponent } from './componentes/aseguradoras/aseg-datos-emision/aseg-datos-emision.component';
 import { CoberturasComponent } from './componentes/coberturas/coberturas.component';
-import { AdicionalesComponent } from './componentes/aseguradoras/aseg-datos-emision/adicionales/adicionales.component';
-import { DatosPagoComponent } from './componentes/aseguradoras/aseg-datos-emision/datos-pago/datos-pago.component';
-import { DatosEmisionVehiculoComponent } from './componentes/aseguradoras/aseg-datos-emision/datos-emision-vehiculo/datos-emision-vehiculo.component';
-import { DatosEmisionClienteComponent } from './componentes/aseguradoras/aseg-datos-emision/datos-emision-cliente/datos-emision-cliente.component';
+import { AdicionalesComponent } from './componentes/aseguradoras/adicionales/adicionales.component';
+import { DatosPagoComponent } from './componentes/aseguradoras/datos-pago/datos-pago.component';
+import { DatosEmisionVehiculoComponent } from './componentes/aseguradoras/datos-emision-vehiculo/datos-emision-vehiculo.component';
+import { DatosEmisionClienteFisicaComponent } from '../app/componentes/aseguradoras/datos-emision-cliente-fisica/datos-emision-cliente.component';
 import { EmisionFinalComponent } from './componentes/emision-final/emision-final.component';
+import { DatosEmisionClienteMoralComponent } from './componentes/aseguradoras/datos-emision-cliente-moral/datos-emision-cliente-moral.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,24 +42,14 @@ import { EmisionFinalComponent } from './componentes/emision-final/emision-final
     Pagina3Component,
     LayoutComponent,
     VermasComponent,
-    AseAXXAComponent,
-    AseCHUBBComponent,
-    AseSURAComponent,
-    AseZURCIHComponent,
-    AseMAPFREComponent,
-    AseQUALITASComponent,
-    AseBANORTEComponent,
-    AseHDIComponent,
-    AseAFIRMEComponent,
-    AseANNAComponent,
-    AseAIGComponent,
     AsegDatosEmisionComponent,
     CoberturasComponent,
     AdicionalesComponent,
     DatosPagoComponent,
     DatosEmisionVehiculoComponent,
-    DatosEmisionClienteComponent,
+    DatosEmisionClienteFisicaComponent,
     EmisionFinalComponent,
+    DatosEmisionClienteMoralComponent
   ],
   imports: [
     FormsModule,

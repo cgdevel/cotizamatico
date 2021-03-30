@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CatalogoModel } from '../../../../interphaces/models/Catalogos.model';
+import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
 
 @Component({
   selector: 'app-adicionales',

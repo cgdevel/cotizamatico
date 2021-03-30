@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { InfovehiculoService } from '../../../../servicios/infovehiculo.service';
-import { CatalogoModel } from '../../../../interphaces/models/Catalogos.model';
+import { InfovehiculoService } from '../../../servicios/infovehiculo.service';
+import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
 import { NgbDateStruct, NgbCalendar, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
