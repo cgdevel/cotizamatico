@@ -101,9 +101,7 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
       .replace(/é/g, 'e')
       .replace(/í/g, 'i')
       .replace(/ó/g, 'o')
-      .replace(/ú/g, 'u')
-      .replace(/./g, '')
-      .replace(/,/g, '');
+      .replace(/ú/g, 'u');
       this.apellidopaterno  = this.apellidopaterno.toLocaleUpperCase();
       this.generarfc(this.apellidopaterno, this.apellidomaterno, this.nombre, this.fechanaciaseg);
     }
@@ -121,9 +119,7 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
         .replace(/é/g, 'e')
         .replace(/í/g, 'i')
         .replace(/ó/g, 'o')
-        .replace(/ú/g, 'u')
-        .replace(/./g, '')
-        .replace(/,/g, '');
+        .replace(/ú/g, 'u');
       this.apellidomaterno  = this.apellidomaterno.toLocaleUpperCase();
       this.generarfc(this.apellidopaterno, this.apellidomaterno, this.nombre, this.fechanaciaseg);
     }
@@ -140,9 +136,7 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
         .replace(/é/g, 'e')
         .replace(/í/g, 'i')
         .replace(/ó/g, 'o')
-        .replace(/ú/g, 'u')
-        .replace(/./g, '')
-        .replace(/,/g, '');
+        .replace(/ú/g, 'u');
         this.nombre = this.nombre.toLocaleUpperCase();
         this.generarfc(this.apellidopaterno, this.apellidomaterno, this.nombre, this.fechanaciaseg);
       }

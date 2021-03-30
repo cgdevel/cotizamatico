@@ -15,374 +15,371 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-12 col-md-4">
-            <div class="form-group  col-md-4">
-              <label for="nombre">Nombre</label>
-              <input
-                [disabled]="clienteNombreCompleto == true"
-                type="text"
-                class="form-control"
-                id="nombre"
-                value=""
-                autocomplete="off"
-                [(ngModel)]="clienteNombre"
-                [value]="clienteNombre"
-                (change)="onNombreChanged()"
-                onkeypress="return(
-                !(
-                  event.charCode > 32  
-                  && event.charCode > 44
-                  && event.charCode > 46
-                  && ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255))
-                )"
-                min="1"
-                [ngClass]="{
-                  Existe: valClienteNombre,
-                  NoExiste: !valClienteNombre
-                }"
-                [ngbTooltip]="ttClienteNombre"
-                tooltipClass="my-custom-class"
-              />
-              <ng-template #ttClienteNombre>
-                <b *ngIf="!clienteNombre"
-                  >Tiene dos opciones para llenar este campo: <br />
-                  1)Sólo con su nombre <br />
-                  2)Con su nombre completo, iniciando por su nombre
-                  3)Si es empresa, ingrese el nombre completo </b
-                >
-              </ng-template>
-              <ngb-alert
-                [dismissible]="false"
-                type="danger"
-                *ngIf="!valClienteNombre && clienteNombre == ''"
-                class="alert-danger"
+          <div class="form-group  col-md-4">
+            <label for="nombre">Nombre</label>
+            <input
+              [disabled]="clienteNombreCompleto == true"
+              type="text"
+              class="form-control"
+              id="nombre"
+              value=""
+              autocomplete="off"
+              [(ngModel)]="clienteNombre"
+              [value]="clienteNombre"
+              (change)="onNombreChanged()"
+              onkeypress="return(
+              !(
+                event.charCode > 32  
+                && event.charCode > 44
+                && event.charCode > 46
+                && ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255))
+              )"
+              min="1"
+              [ngClass]="{
+                Existe: valClienteNombre,
+                NoExiste: !valClienteNombre
+              }"
+              [ngbTooltip]="ttClienteNombre"
+              tooltipClass="my-custom-class"
+            />
+            <ng-template #ttClienteNombre>
+              <b *ngIf="!clienteNombre"
+                >Tiene dos opciones para llenar este campo: <br />
+                1)Sólo con su nombre <br />
+                2)Con su nombre completo, iniciando por su nombre
+                3)Si es empresa, ingrese el nombre completo </b
               >
-                Dato Obligatorio
-              </ngb-alert>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="email"> Email </label>
-              <input [disabled]="disable == false" type="text" class="form-control" id="email" value="" autocomplete="off"
-                [(ngModel)]="clienteMail" (change)="onMailChanged()" min="1" [ngClass]="{
-                  Existe: valClienteMailNoValido && valClienteMailVacio,
-                  NoExiste: !(valClienteMailNoValido && valClienteMailVacio)
-                }" />
-              <ngb-alert [dismissible]="false" type="danger" *ngIf="!valClienteMailVacio" class="alert-danger">
-                Dato Obligatorio
-              </ngb-alert>
-              <ngb-alert [dismissible]="false" type="danger" *ngIf="!valClienteMailNoValido" class="alert-danger">
-                Email no valido
-              </ngb-alert>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="telefono"> Teléfono </label>
-              <input
-                [disabled]="disable == false"
-                maxlength="10"
-                type="text"
-                class="form-control"
-                id="telefono"
-                value=""
-                autocomplete="off"
-                [(ngModel)]="clienteTelefono"
-                (change)="onTelefonoChange()"
-                onkeypress="return(event.charCode >= 48 && event.charCode <= 57)"
-                min="1"
-                [ngClass]="{
-                  Existe: valClienteTelefonoVacio && valClienteTelefonoNoValido,
-                  NoExiste: !(
-                    valClienteTelefonoVacio && valClienteTelefonoNoValido
-                  )
-                }" />
-              <ngb-alert [dismissible]="false" type="danger"
-                *ngIf="!valClienteTelefonoVacio && !valClienteTelefonoNoValido">
-                Dato Obligatorio
-              </ngb-alert>
-              <ngb-alert [dismissible]="false" type="danger"
-                *ngIf="!valClienteTelefonoNoValido && valClienteTelefonoVacio">
-                Teléfono no válido
-              </ngb-alert>
+            </ng-template>
+            <ngb-alert
+              [dismissible]="false"
+              type="danger"
+              *ngIf="!valClienteNombre && clienteNombre == ''"
+              class="alert-danger"
+            >
+              Dato Obligatorio
+            </ngb-alert>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="email"> Email </label>
+            <input [disabled]="disable == false" type="text" class="form-control" id="email" value="" autocomplete="off"
+              [(ngModel)]="clienteMail" (change)="onMailChanged()" min="1" [ngClass]="{
+                Existe: valClienteMailNoValido && valClienteMailVacio,
+                NoExiste: !(valClienteMailNoValido && valClienteMailVacio)
+              }" />
+            <ngb-alert [dismissible]="false" type="danger" *ngIf="!valClienteMailVacio" class="alert-danger">
+              Dato Obligatorio
+            </ngb-alert>
+            <ngb-alert [dismissible]="false" type="danger" *ngIf="!valClienteMailNoValido" class="alert-danger">
+              Email no valido
+            </ngb-alert>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="telefono"> Teléfono </label>
+            <input
+              [disabled]="disable == false"
+              maxlength="10"
+              type="text"
+              class="form-control"
+              id="telefono"
+              value=""
+              autocomplete="off"
+              [(ngModel)]="clienteTelefono"
+              (change)="onTelefonoChange()"
+              onkeypress="return(event.charCode >= 48 && event.charCode <= 57)"
+              min="1"
+              [ngClass]="{
+                Existe: valClienteTelefonoVacio && valClienteTelefonoNoValido,
+                NoExiste: !(
+                  valClienteTelefonoVacio && valClienteTelefonoNoValido
+                )
+              }" />
+            <ngb-alert [dismissible]="false" type="danger"
+              *ngIf="!valClienteTelefonoVacio && !valClienteTelefonoNoValido">
+              Dato Obligatorio
+            </ngb-alert>
+            <ngb-alert [dismissible]="false" type="danger"
+              *ngIf="!valClienteTelefonoNoValido && valClienteTelefonoVacio">
+              Teléfono no válido
+            </ngb-alert>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-12 mb-4">
+            <p class="m-0 mb-2">Soy:</p>
+
+            <div class="row d-flex justify-content-between">
+              <div
+                class="col-4 d-flex justify-content-center"
+                [ngbTooltip]="ttPersonaFemenino"
+                tooltipClass="my-custom-class"
+              >
+                <button
+                  [disabled]="disable == false"
+                  class="m-0 btn"
+                  style="display: block"
+                  (click)="onTipoPersonaFemeninoChange()"
+                >
+                  <svg
+                    id="logc"
+                    [ngClass]="{
+                      Noselectap: !!clienteEsFemenino
+                        ? !clienteEsFemenino
+                        : !clienteEsFemeninop3,
+                      Selectap: !!clienteEsFemenino
+                        ? clienteEsFemenino
+                        : clienteEsFemeninop3
+                    }"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 0 66.72 66.72"
+                    width="34px"
+                    height="34px"
+                  >
+                    <defs>
+                      <linearGradient id="Degradadosinnombre6" x1="33.36" y1="66.72" x2="33.36"
+                        gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#f66" />
+                        <stop offset="0.34" stop-color="#ff7a52" />
+                        <stop offset="0.68" stop-color="#f84" />
+                        <stop offset="1" stop-color="#ff8c40" />
+                      </linearGradient>
+                    </defs>
+                    <title>Insumos</title>
+                    <g id="Capa_6" data-name="Capa 6">
+                      <path class="clslogomu-1"
+                        d="M33.36,0A33.36,33.36,0,1,0,66.72,33.36,33.37,33.37,0,0,0,33.36,0ZM52,55.84c-1.91-.75-4.08-1.56-6.64-2.46a5.38,5.38,0,0,1-3.65-4.77V45.87a25.36,25.36,0,0,0,11-3.16,1.41,1.41,0,0,0,.3-2.18C50.34,37.8,48.65,34.8,48.65,25c0-10-7.3-16.68-15.29-16.68S18.07,15,18.07,25c0,9.78-1.68,12.78-4.36,15.51A1.41,1.41,0,0,0,14,42.71a25.33,25.33,0,0,0,11,3.16v2.74a5.36,5.36,0,0,1-3.65,4.77c-2.55.9-4.72,1.71-6.63,2.46a29.19,29.19,0,1,1,37.25,0Z" />
+                    </g>
+                  </svg>
+                </button>
+              </div>
+              <ng-template #ttPersonaFemenino>
+                <b>Femenino</b>
+              </ng-template>
+
+
+              <div
+                class="col-4 d-flex justify-content-center"
+                [ngbTooltip]="ttPersonaMasculino"
+                tooltipClass="my-custom-class"
+              >
+                <button
+                  [disabled]="disable == false"
+                  class="m-0 btn"
+                  style="display: block"
+                  (click)="onTipoPersonaMasculinoChange()"
+                >
+                  <svg
+                    id="logc"
+                    width="34px"
+                    heigth="34px"
+                    [ngClass]="{
+                      Noselectap: !!clienteEsMasculino
+                        ? !clienteEsMasculino
+                        : !clienteEsMasculinop3,
+                      Selectap: !!clienteEsMasculino
+                        ? clienteEsMasculino
+                        : clienteEsMasculinop3
+                    }"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 0 66.72 66.72"
+                  >
+                    <defs>
+                      <linearGradient id="Degradado_sin_nombre_6" x1="33.36" y1="66.72" x2="33.36"
+                        gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#f66" />
+                        <stop offset="0.34" stop-color="#ff7a52" />
+                        <stop offset="0.68" stop-color="#f84" />
+                        <stop offset="1" stop-color="#ff8c40" />
+                      </linearGradient>
+                    </defs>
+                    <title>Insumos</title>
+                    <g id="Capa_6" data-name="Capa 6">
+                      <path class="clslogohombre-1"
+                        d="M33.36,0A33.36,33.36,0,1,0,66.72,33.36,33.37,33.37,0,0,0,33.36,0ZM52,55.84c-1.91-.75-4.08-1.56-6.64-2.46-3.6-1.28-3.65-2.06-3.65-4.77V45.1a23.47,23.47,0,0,0,2.78-7.35s3.3-.42,4.26-6.15a4.47,4.47,0,0,0-1.48-4.36V18.07c0-4.17-1.82-7-5.69-7-1-1.69-4-2.78-7.38-2.78-4.89,0-7.11,2.78-11.71,2.78-2,0-3,3.31-3,6.89v9.17A4.49,4.49,0,0,0,18,31.54c1,5.73,4.26,6.15,4.26,6.15A23.47,23.47,0,0,0,25,45v3.57c0,2.71,0,3.49-3.65,4.77-2.55.9-4.72,1.71-6.63,2.46a29.19,29.19,0,1,1,37.25,0Z" />
+                    </g>
+                  </svg>
+                </button>
+              </div>
+              <ng-template #ttPersonaMasculino>
+                <b>Masculino</b>
+              </ng-template>
+              <div
+                class="col-4 d-flex justify-content-center"
+                [ngbTooltip]="ttPersonaMoral"
+                tooltipClass="my-custom-class"
+              >
+                <button
+                  class="m-0 btn"
+                  style="display: block"
+                  (click)="onTipoPersonaMoralChange()"
+                  [disabled]="disable == false"
+                >
+                  <svg
+                    id="logc"
+                    [ngClass]="{
+                      Noselectap: !!clienteEsMoral
+                        ? !clienteEsMoral
+                        : !clienteEsMoralp3,
+                      Selectap: !!clienteEsMoral
+                        ? clienteEsMoral
+                        : clienteEsMoralp3
+                    }"
+                    width="34px"
+                    height="34px"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 0 60.44 78.55"
+                  >
+                    <defs>
+                      <linearGradient id="Degradado_sin_nombre_6" x1="30.22" y1="78.55" x2="30.22"
+                        gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#f66" />
+                        <stop offset="0.34" stop-color="#ff7a52" />
+                        <stop offset="0.68" stop-color="#f84" />
+                        <stop offset="1" stop-color="#ff8c40" />
+                      </linearGradient>
+                    </defs>
+                    <title>Insumos</title>
+                    <g id="Capa_6" data-name="Capa 6">
+                      <path class="clslogoem-1"
+                        d="M57.83,74.24V17.86a.56.56,0,0,0-.73-.57l-21.6,5.4V0H3.09V74.24H0v4.31H60.44V74.24ZM17.43,5.52h3.74v5.3H17.43Zm0,10h3.74v5.3H17.43Zm0,10h3.74v5.3H17.43Zm0,10h3.74v5.3H17.43Zm0,10h3.74V51H17.43Zm0,10h3.74V61H17.43Zm-4,15.34H9.72v-5.3h3.74Zm0-10H9.72v-5.3h3.74Zm0-10H9.72v-5.3h3.74Zm0-10H9.72v-5.3h3.74Zm0-10H9.72V25.6h3.74Zm0-10H9.72v-5.3h3.74Zm0-10H9.72V5.52h3.74Zm8.76,65.45H16.38V65.37h5.84Zm6.67-5.21H25.15v-5.3h3.74Zm0-10H25.15v-5.3h3.74Zm0-10H25.15v-5.3h3.74Zm0-10H25.15v-5.3h3.74Zm0-10H25.15V25.6h3.74Zm0-10H25.15v-5.3h3.74Zm0-10H25.15V5.52h3.74ZM39.23,71.06H36.07v-5.3h3.16Zm0-9.07H36.07v-5.3h3.16Zm0-9.08H36.07V47.62h3.16Zm0-9.07H36.07v-5.3h3.16Zm0-9.07H36.07v-5.3h3.16Zm6.5,36.29H42.58v-5.3h3.15Zm0-9.07H42.58v-5.3h3.15Zm0-9.08H42.58V47.62h3.15Zm0-9.07H42.58v-5.3h3.15Zm0-9.07H42.58v-5.3h3.15Zm6.52,36.29H49.09v-5.3h3.16Zm0-9.07H49.09v-5.3h3.16Zm0-9.08H49.09V47.62h3.16Zm0-9.07H49.09v-5.3h3.16Zm0-9.07H49.09v-5.3h3.16Z" />
+                    </g>
+                  </svg>
+                </button>
+              </div>
+              <ng-template #ttPersonaMoral>
+                <b>Moral</b>
+              </ng-template>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-4 col-12 mb-4">
-              <p class="m-0 mb-2">Soy:</p>
 
-              <div class="row d-flex justify-content-between">
-                <div
-                  class="col-4 d-flex justify-content-center"
-                  [ngbTooltip]="ttPersonaFemenino"
-                  tooltipClass="my-custom-class"
-                >
-                  <button
-                    [disabled]="disable == false"
-                    class="m-0 btn"
-                    style="display: block"
-                    (click)="onTipoPersonaFemeninoChange()"
-                  >
-                    <svg
-                      id="logc"
-                      [ngClass]="{
-                        Noselectap: !!clienteEsFemenino
-                          ? !clienteEsFemenino
-                          : !clienteEsFemeninop3,
-                        Selectap: !!clienteEsFemenino
-                          ? clienteEsFemenino
-                          : clienteEsFemeninop3
-                      }"
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      viewBox="0 0 66.72 66.72"
-                      width="34px"
-                      height="34px"
-                    >
-                      <defs>
-                        <linearGradient id="Degradadosinnombre6" x1="33.36" y1="66.72" x2="33.36"
-                          gradientUnits="userSpaceOnUse">
-                          <stop offset="0" stop-color="#f66" />
-                          <stop offset="0.34" stop-color="#ff7a52" />
-                          <stop offset="0.68" stop-color="#f84" />
-                          <stop offset="1" stop-color="#ff8c40" />
-                        </linearGradient>
-                      </defs>
-                      <title>Insumos</title>
-                      <g id="Capa_6" data-name="Capa 6">
-                        <path class="clslogomu-1"
-                          d="M33.36,0A33.36,33.36,0,1,0,66.72,33.36,33.37,33.37,0,0,0,33.36,0ZM52,55.84c-1.91-.75-4.08-1.56-6.64-2.46a5.38,5.38,0,0,1-3.65-4.77V45.87a25.36,25.36,0,0,0,11-3.16,1.41,1.41,0,0,0,.3-2.18C50.34,37.8,48.65,34.8,48.65,25c0-10-7.3-16.68-15.29-16.68S18.07,15,18.07,25c0,9.78-1.68,12.78-4.36,15.51A1.41,1.41,0,0,0,14,42.71a25.33,25.33,0,0,0,11,3.16v2.74a5.36,5.36,0,0,1-3.65,4.77c-2.55.9-4.72,1.71-6.63,2.46a29.19,29.19,0,1,1,37.25,0Z" />
-                      </g>
-                    </svg>
-                  </button>
-                </div>
-                <ng-template #ttPersonaFemenino>
-                  <b>Femenino</b>
-                </ng-template>
+          <div
+            class="form-group col-md-4 col-sm-12"
+            *ngIf="
+              !!clienteEsMasculino
+                ? clienteEsMasculino == true
+                : clienteEsMasculinop3 == true || !!clienteEsFemenino
+                ? clienteEsFemenino == true
+                : clienteEsFemeninop3 == true
+            "
+          >
+            <p class="m-0 mb-2">Fecha de nacimiento</p>
+            <div class="row">
+              <div class="col-md-4 col-sm-12 mb-3">
+                <ng-select [disabled]="disable == false" id="cmbNacimietoDia" 
+                  [items]="catNacimientoDias"
+                  bindLabel="sDato" placeholder="DÍA" [searchable]="false" [clearable]="false" [closeOnSelect]="true"
+                  (change)="selectNacimientoDia()" [(ngModel)]="itemNacimientoDia">
+                  <ng-option [value]="itemd" *ngFor="let itemd of catNacimientoDias">
+                    {{ itemd.sDato }}
+                  </ng-option>
+                  <ng-template ng-notfound-tmp>
+                    <div class="ng-option disabled">
+                      No hay días que mostrar
+                    </div>
+                  </ng-template>
+                </ng-select>
+              </div>
 
+              <div class="col-md-4 col-sm-12 mb-3">
+                <ng-select [disabled]="disable == false" id="cmbNacimietoMes" 
+                  [items]="catNacimientoMeses" bindLabel="sDato" placeholder="MES"
+                  [searchable]="false" [clearable]="false" [closeOnSelect]="true" (change)="selectNacimientoMes()"
+                  [(ngModel)]="itemNacimientoMes">
+                  <ng-option [value]="item" *ngFor="let item of catNacimientoMeses">
+                    {{ item.sDato }}
+                  </ng-option>
+                  <ng-template ng-notfound-tmp>
+                    <div class="ng-option disabled">
+                      No hay meses que mostrar
+                    </div>
+                  </ng-template>
+                </ng-select>
+              </div>
 
-                <div
-                  class="col-4 d-flex justify-content-center"
-                  [ngbTooltip]="ttPersonaMasculino"
-                  tooltipClass="my-custom-class"
-                >
-                  <button
-                    [disabled]="disable == false"
-                    class="m-0 btn"
-                    style="display: block"
-                    (click)="onTipoPersonaMasculinoChange()"
-                  >
-                    <svg
-                      id="logc"
-                      width="34px"
-                      heigth="34px"
-                      [ngClass]="{
-                        Noselectap: !!clienteEsMasculino
-                          ? !clienteEsMasculino
-                          : !clienteEsMasculinop3,
-                        Selectap: !!clienteEsMasculino
-                          ? clienteEsMasculino
-                          : clienteEsMasculinop3
-                      }"
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      viewBox="0 0 66.72 66.72"
-                    >
-                      <defs>
-                        <linearGradient id="Degradado_sin_nombre_6" x1="33.36" y1="66.72" x2="33.36"
-                          gradientUnits="userSpaceOnUse">
-                          <stop offset="0" stop-color="#f66" />
-                          <stop offset="0.34" stop-color="#ff7a52" />
-                          <stop offset="0.68" stop-color="#f84" />
-                          <stop offset="1" stop-color="#ff8c40" />
-                        </linearGradient>
-                      </defs>
-                      <title>Insumos</title>
-                      <g id="Capa_6" data-name="Capa 6">
-                        <path class="clslogohombre-1"
-                          d="M33.36,0A33.36,33.36,0,1,0,66.72,33.36,33.37,33.37,0,0,0,33.36,0ZM52,55.84c-1.91-.75-4.08-1.56-6.64-2.46-3.6-1.28-3.65-2.06-3.65-4.77V45.1a23.47,23.47,0,0,0,2.78-7.35s3.3-.42,4.26-6.15a4.47,4.47,0,0,0-1.48-4.36V18.07c0-4.17-1.82-7-5.69-7-1-1.69-4-2.78-7.38-2.78-4.89,0-7.11,2.78-11.71,2.78-2,0-3,3.31-3,6.89v9.17A4.49,4.49,0,0,0,18,31.54c1,5.73,4.26,6.15,4.26,6.15A23.47,23.47,0,0,0,25,45v3.57c0,2.71,0,3.49-3.65,4.77-2.55.9-4.72,1.71-6.63,2.46a29.19,29.19,0,1,1,37.25,0Z" />
-                      </g>
-                    </svg>
-                  </button>
-                </div>
-                <ng-template #ttPersonaMasculino>
-                  <b>Masculino</b>
-                </ng-template>
-                <div
-                  class="col-4 d-flex justify-content-center"
-                  [ngbTooltip]="ttPersonaMoral"
-                  tooltipClass="my-custom-class"
-                >
-                  <button
-                    class="m-0 btn"
-                    style="display: block"
-                    (click)="onTipoPersonaMoralChange()"
-                    [disabled]="disable == false"
-                  >
-                    <svg
-                      id="logc"
-                      [ngClass]="{
-                        Noselectap: !!clienteEsMoral
-                          ? !clienteEsMoral
-                          : !clienteEsMoralp3,
-                        Selectap: !!clienteEsMoral
-                          ? clienteEsMoral
-                          : clienteEsMoralp3
-                      }"
-                      width="34px"
-                      height="34px"
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      viewBox="0 0 60.44 78.55"
-                    >
-                      <defs>
-                        <linearGradient id="Degradado_sin_nombre_6" x1="30.22" y1="78.55" x2="30.22"
-                          gradientUnits="userSpaceOnUse">
-                          <stop offset="0" stop-color="#f66" />
-                          <stop offset="0.34" stop-color="#ff7a52" />
-                          <stop offset="0.68" stop-color="#f84" />
-                          <stop offset="1" stop-color="#ff8c40" />
-                        </linearGradient>
-                      </defs>
-                      <title>Insumos</title>
-                      <g id="Capa_6" data-name="Capa 6">
-                        <path class="clslogoem-1"
-                          d="M57.83,74.24V17.86a.56.56,0,0,0-.73-.57l-21.6,5.4V0H3.09V74.24H0v4.31H60.44V74.24ZM17.43,5.52h3.74v5.3H17.43Zm0,10h3.74v5.3H17.43Zm0,10h3.74v5.3H17.43Zm0,10h3.74v5.3H17.43Zm0,10h3.74V51H17.43Zm0,10h3.74V61H17.43Zm-4,15.34H9.72v-5.3h3.74Zm0-10H9.72v-5.3h3.74Zm0-10H9.72v-5.3h3.74Zm0-10H9.72v-5.3h3.74Zm0-10H9.72V25.6h3.74Zm0-10H9.72v-5.3h3.74Zm0-10H9.72V5.52h3.74Zm8.76,65.45H16.38V65.37h5.84Zm6.67-5.21H25.15v-5.3h3.74Zm0-10H25.15v-5.3h3.74Zm0-10H25.15v-5.3h3.74Zm0-10H25.15v-5.3h3.74Zm0-10H25.15V25.6h3.74Zm0-10H25.15v-5.3h3.74Zm0-10H25.15V5.52h3.74ZM39.23,71.06H36.07v-5.3h3.16Zm0-9.07H36.07v-5.3h3.16Zm0-9.08H36.07V47.62h3.16Zm0-9.07H36.07v-5.3h3.16Zm0-9.07H36.07v-5.3h3.16Zm6.5,36.29H42.58v-5.3h3.15Zm0-9.07H42.58v-5.3h3.15Zm0-9.08H42.58V47.62h3.15Zm0-9.07H42.58v-5.3h3.15Zm0-9.07H42.58v-5.3h3.15Zm6.52,36.29H49.09v-5.3h3.16Zm0-9.07H49.09v-5.3h3.16Zm0-9.08H49.09V47.62h3.16Zm0-9.07H49.09v-5.3h3.16Zm0-9.07H49.09v-5.3h3.16Z" />
-                      </g>
-                    </svg>
-                  </button>
-                </div>
-                <ng-template #ttPersonaMoral>
-                  <b>Moral</b>
-                </ng-template>
+              <div class="col-md-4 col-sm-12 mb-3">
+                <ng-select id="cmbNacimietoAnio" [disabled]="disable == false" 
+                  [items]="catNacimientoAnios" bindLabel="sDato" placeholder="AÑO"
+                  [searchable]="false" [clearable]="false" [closeOnSelect]="true" (change)="selectNacimientoAnio()"
+                  [(ngModel)]="itemNacimeintoAnio">
+                  <ng-option [value]="item" *ngFor="let item of catNacimientoAnios">
+                    {{ item.sDato }}
+                  </ng-option>
+                  <ng-template ng-notfound-tmp>
+                    <div class="ng-option disabled">
+                      No hay años que mostrar
+                    </div>
+                  </ng-template>
+                </ng-select>
               </div>
             </div>
+          </div>
 
-            <div
-              class="form-group col-md-4 col-sm-12"
-              *ngIf="
-                !!clienteEsMasculino
-                  ? clienteEsMasculino == true
-                  : clienteEsMasculinop3 == true || !!clienteEsFemenino
-                  ? clienteEsFemenino == true
-                  : clienteEsFemeninop3 == true
-              "
-            >
-              <p class="m-0 mb-2">Fecha de nacimiento</p>
+          <div class="form-group col-md-4">
+            <div class="container mw-100">
               <div class="row">
-                <div class="col-md-4 col-sm-12 mb-3">
-                  <ng-select [disabled]="disable == false" id="cmbNacimietoDia" 
-                    [items]="catNacimientoDias"
-                    bindLabel="sDato" placeholder="DÍA" [searchable]="false" [clearable]="false" [closeOnSelect]="true"
-                    (change)="selectNacimientoDia()" [(ngModel)]="itemNacimientoDia">
-                    <ng-option [value]="itemd" *ngFor="let itemd of catNacimientoDias">
-                      {{ itemd.sDato }}
-                    </ng-option>
-                    <ng-template ng-notfound-tmp>
-                      <div class="ng-option disabled">
-                        No hay días que mostrar
-                      </div>
-                    </ng-template>
-                  </ng-select>
+                <div class="col px-1">
+                  <p class="m-0 mb-2">Código postal:</p>
+                  <input [disabled]="disable == false" type="text" class="form-control"
+                    (change)="onCodigoPostalChanged()" onkeypress="return(event.charCode >= 48 && event.charCode <= 57)"
+                    maxlength="5" [(ngModel)]="clienteCodigoPostal" [ngClass]="{
+                      Existe:
+                        valCodigoPostalLongitud &&
+                        valCodigoPostalVacio &&
+                        valCodigoPostalValidando &&
+                        this.valCodigoPostalValido,
+                      NoExiste: !(
+                        valCodigoPostalLongitud &&
+                        valCodigoPostalVacio &&
+                        valCodigoPostalValidando &&
+                        this.valCodigoPostalValido
+                      )
+                    }" />
+                  <ngb-alert [dismissible]="false" type="danger" *ngIf="!valCodigoPostalVacio">
+                    Dato Obligatorio
+                  </ngb-alert>
+                  <ngb-alert [dismissible]="false" type="danger" *ngIf="!valCodigoPostalLongitud">
+                    El CP debe tener 5 dígitos
+                  </ngb-alert>
+                  <ngb-alert [dismissible]="false" type="danger" *ngIf="!valCodigoPostalValidando">
+                    Validando el CP
+                  </ngb-alert>
+                  <ngb-alert [dismissible]="false" type="danger" *ngIf="!valCodigoPostalValido">
+                    El CP no es valido
+                  </ngb-alert>
                 </div>
-
-                <div class="col-md-4 col-sm-12 mb-3">
-                  <ng-select [disabled]="disable == false" id="cmbNacimietoMes" 
-                    [items]="catNacimientoMeses" bindLabel="sDato" placeholder="MES"
-                    [searchable]="false" [clearable]="false" [closeOnSelect]="true" (change)="selectNacimientoMes()"
-                    [(ngModel)]="itemNacimientoMes">
-                    <ng-option [value]="item" *ngFor="let item of catNacimientoMeses">
-                      {{ item.sDato }}
-                    </ng-option>
-                    <ng-template ng-notfound-tmp>
-                      <div class="ng-option disabled">
-                        No hay meses que mostrar
-                      </div>
-                    </ng-template>
-                  </ng-select>
-                </div>
-
-                <div class="col-md-4 col-sm-12 mb-3">
-                  <ng-select id="cmbNacimietoAnio" [disabled]="disable == false" 
-                    [items]="catNacimientoAnios" bindLabel="sDato" placeholder="AÑO"
-                    [searchable]="false" [clearable]="false" [closeOnSelect]="true" (change)="selectNacimientoAnio()"
-                    [(ngModel)]="itemNacimeintoAnio">
-                    <ng-option [value]="item" *ngFor="let item of catNacimientoAnios">
-                      {{ item.sDato }}
-                    </ng-option>
-                    <ng-template ng-notfound-tmp>
-                      <div class="ng-option disabled">
-                        No hay años que mostrar
-                      </div>
-                    </ng-template>
-                  </ng-select>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group col-md-4">
-              <div class="container mw-100">
-                <div class="row">
-                  <div class="col px-1">
-                    <p class="m-0 mb-2">Código postal:</p>
-                    <input [disabled]="disable == false" type="text" class="form-control"
-                      (change)="onCodigoPostalChanged()" onkeypress="return(event.charCode >= 48 && event.charCode <= 57)"
-                      maxlength="5" [(ngModel)]="clienteCodigoPostal" [ngClass]="{
-                        Existe:
-                          valCodigoPostalLongitud &&
-                          valCodigoPostalVacio &&
-                          valCodigoPostalValidando &&
-                          this.valCodigoPostalValido,
-                        NoExiste: !(
-                          valCodigoPostalLongitud &&
-                          valCodigoPostalVacio &&
-                          valCodigoPostalValidando &&
-                          this.valCodigoPostalValido
-                        )
-                      }" />
-                    <ngb-alert [dismissible]="false" type="danger" *ngIf="!valCodigoPostalVacio">
-                      Dato Obligatorio
-                    </ngb-alert>
-                    <ngb-alert [dismissible]="false" type="danger" *ngIf="!valCodigoPostalLongitud">
-                      El CP debe tener 5 dígitos
-                    </ngb-alert>
-                    <ngb-alert [dismissible]="false" type="danger" *ngIf="!valCodigoPostalValidando">
-                      Validando el CP
-                    </ngb-alert>
-                    <ngb-alert [dismissible]="false" type="danger" *ngIf="!valCodigoPostalValido">
-                      El CP no es valido
-                    </ngb-alert>
-                  </div>
-                  <!-- <div class="col px-1">
-                    <p class="m-0 mb-2">RFC:</p>
-                    <input
-                      type="text"
-                      class="form-control"
-                      maxlength="13"
-                      [(ngModel)]="clienteRFC"
-                      (change)="onRFCChanged()"
-                      [ngClass]="{
-                        Existe: valClienteRFC,
-                        NoExiste: !valClienteRFC
-                      }"
-                    />
-                    <ngb-alert
-                      [dismissible]="false"
-                      type="danger"
-                      *ngIf="clienteRFC==''"
-                    >
-                      Dato Obligatorio
-                    </ngb-alert>
-                    <ngb-alert
-                      [dismissible]="false"
-                      type="danger"
-                      *ngIf="!valClienteRFC && clienteRFC!=''"
-                    >
-                      RFC no válido
-                    </ngb-alert>
-                  </div> -->
-                </div>
+                <!-- <div class="col px-1">
+                  <p class="m-0 mb-2">RFC:</p>
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="13"
+                    [(ngModel)]="clienteRFC"
+                    (change)="onRFCChanged()"
+                    [ngClass]="{
+                      Existe: valClienteRFC,
+                      NoExiste: !valClienteRFC
+                    }"
+                  />
+                  <ngb-alert
+                    [dismissible]="false"
+                    type="danger"
+                    *ngIf="clienteRFC==''"
+                  >
+                    Dato Obligatorio
+                  </ngb-alert>
+                  <ngb-alert
+                    [dismissible]="false"
+                    type="danger"
+                    *ngIf="!valClienteRFC && clienteRFC!=''"
+                  >
+                    RFC no válido
+                  </ngb-alert>
+                </div> -->
               </div>
             </div>
           </div>
         </div>
-    </div>
   </div>
 </div>
