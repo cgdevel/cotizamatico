@@ -6,16 +6,18 @@
   >
     <div class="card-body">
       <div class="row" id="datosSeguro">
-        <div class="column col-md-3 col-12">
+        <div
+          class="column col-md-3 col-12 d-flex justify-content-center justify-content-md-start mb-4"
+        >
           <div>
             <img [src]="logoAseguradora" height="150px" />
           </div>
         </div>
         <div class="column col-md-9 col-12">
-          <app-datos-pago 
-          [IdAseguradora]="5"
-          [cobertura]="this.polizaselase"
-          [pagoseleccionado]="this.pagoselase"
+          <app-datos-pago
+            [IdAseguradora]="5"
+            [cobertura]="this.polizaselase"
+            [pagoseleccionado]="this.pagoselase"
           ></app-datos-pago>
         </div>
       </div>
@@ -26,7 +28,7 @@
 <!-- Contratante -->
 <div class="container mw-100">
   <app-datos-emision-cliente-fisica
-    *ngIf="this.genero!='Moral'"
+    *ngIf="this.genero != 'Moral'"
     [aseguradoraSelect]="this.aseguradora"
     [codigopostal]="this.codigopostal"
     [nombre]="this.nombreaseg"
@@ -36,7 +38,7 @@
     [genero]="this.genero"
   ></app-datos-emision-cliente-fisica>
   <app-datos-emision-cliente-moral
-    *ngIf="this.genero=='Moral' && this.aseguradora !='SURA'"
+    *ngIf="this.genero == 'Moral' && this.aseguradora != 'SURA'"
     [aseguradoraSelect]="this.aseguradora"
     [codigopostal]="this.codigopostal"
     [nombre]="this.nombreaseg"
@@ -46,17 +48,17 @@
 <!-- Vehículo -->
 <div class="container mw-100">
   <app-datos-emision-vehiculo
-  [modeloSelect]="modeloautoaseg"
-  [anioSelect]="marcaautoaseg"
-  [descripSelect]="descautoaseg"
-  [marcaSelect]="annoautoaseg"
+    [modeloSelect]="modeloautoaseg"
+    [anioSelect]="marcaautoaseg"
+    [descripSelect]="descautoaseg"
+    [marcaSelect]="annoautoaseg"
   ></app-datos-emision-vehiculo>
 </div>
 
 <!-- Adicionales -->
 <div class="container mw-100">
   <app-adicionales
-  *ngIf="this.genero!='Moral'"
-  [asesel]="aseguradora"
+    *ngIf="this.genero != 'Moral'"
+    [asesel]="aseguradora"
   ></app-adicionales>
 </div>

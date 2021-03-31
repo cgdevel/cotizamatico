@@ -1,4 +1,8 @@
-<div class="card mb-4 rounded" style="justify-content: center" *ngIf="this.asesel!='SURA' && this.asesel!='QUALITAS' " >
+<div
+  class="card mb-4 rounded"
+  style="justify-content: center"
+  *ngIf="this.asesel != 'SURA' && this.asesel != 'QUALITAS'"
+>
   <div class="card-body">
     <div class="container">
       <div class="row">
@@ -21,7 +25,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 col-md-4">
           <div class="form-group" *ngIf="mostrarAdicional">
             <label for="catAdicionalTipoPersona">Tipo de Persona</label>
             <ng-select
@@ -89,7 +93,12 @@
               />
             </div>
           </div>
-          <div class="row" *ngIf="mostrarAdicional && mostrarAdicionalPm && this.asesel !='BANORTE' ">
+          <div
+            class="row"
+            *ngIf="
+              mostrarAdicional && mostrarAdicionalPm && this.asesel != 'BANORTE'
+            "
+          >
             <div class="form-group col-md-3 col-12">
               <label for="chkBeneficiario">Nombre</label>
               <input
