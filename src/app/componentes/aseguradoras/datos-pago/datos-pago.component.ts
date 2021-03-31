@@ -1,12 +1,6 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { InfovehiculoService } from '../../../servicios/infovehiculo.service';
 import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
-import {
-  NgbDateStruct,
-  NgbCalendar,
-  NgbDatepicker,
-} from '@ng-bootstrap/ng-bootstrap';
-import { BancoModel } from '../../../interphaces/models/Banco.model';
 
 @Component({
   selector: 'app-datos-pago',
@@ -14,12 +8,10 @@ import { BancoModel } from '../../../interphaces/models/Banco.model';
   styleUrls: ['./datos-pago.component.css'],
 })
 export class DatosPagoComponent implements OnInit {
-  fechaInicioVigencia: NgbDateStruct;
-  date: { year: number; month: number };
-  @ViewChild('dp') dp: NgbDatepicker;
   @Input() IdAseguradora: number;
   @Input() cobertura: any;
   @Input() pagoseleccionado: any;
+
   catCoberturas: CatalogoModel[];
   itemCoberturas: CatalogoModel;
   catFormaPago: CatalogoModel[];
@@ -36,6 +28,19 @@ export class DatosPagoComponent implements OnInit {
   recibosSubsecuentes: number;
   mostrarSubsecuentes: boolean;
   mostrarDatosTarjetas: boolean;
+  polizaInicioVigencia: string;
+
+  tarjetaMaximoTarjeta: number;
+  tarjetaMaximoCvv: number;
+  tarjetaNombre: string;
+  tarjetaPaterno: string;
+  tarjetaMaterno: string;
+  tarjetaNumero: string;
+  tarjetaNumeroValido: boolean;
+  tarjetaCodigo: string;
+  tarjetaCodigoValido: boolean;
+  tarjetaVigenciaMes: string;
+  tarjetaVigenciaAnio: string;
 
   constructor(private infovehiculoService: InfovehiculoService) {}
 
@@ -48,7 +53,21 @@ export class DatosPagoComponent implements OnInit {
     this.recibosPrimero = 0;
     this.recibosSubsecuentes = 0;
     this.recibosTotal = 0;
+
     this.mostrarDatosTarjetas = false;
+    this.tarjetaMaximoCvv = 3;
+    this.tarjetaMaximoTarjeta = 16;
+
+    this.tarjetaNombre = '';
+    this.tarjetaPaterno = '';
+    this.tarjetaMaterno = '';
+    this.tarjetaNumero = '';
+    this.tarjetaCodigo = '';
+    this.tarjetaVigenciaAnio = '';
+    this.tarjetaVigenciaMes = '';
+    this.tarjetaNumeroValido = true;
+    this.tarjetaCodigoValido = true;
+    this.polizaInicioVigencia = (new Date()).toISOString().split('T')[0];
 
     this.CargarCoberturas();
     this.CargarFormasPago();
@@ -86,8 +105,38 @@ export class DatosPagoComponent implements OnInit {
     }
   }
 
-  onSelectBancoChange(): void{
-    console.log(this.itemBancos);
+  onSelectBancoChange(): void {
+    if (this.itemBancos.sLlave === '103') {
+      this.tarjetaMaximoTarjeta = 15;
+      this.tarjetaMaximoCvv = 4;
+      return;
+    }
+
+    this.tarjetaMaximoTarjeta = 16;
+    this.tarjetaMaximoCvv = 3;
+
+    this.onNumeroTarjetaChange();
+    this.onNumeroCvvChange();
+  }
+
+  onNumeroTarjetaChange(): void {
+    if (this.tarjetaNumero === '') {
+      this.tarjetaNumeroValido = true;
+      return;
+    }
+
+    this.tarjetaNumeroValido =
+      this.tarjetaNumero.length === this.tarjetaMaximoTarjeta;
+  }
+
+  onNumeroCvvChange(): void {
+    if (this.tarjetaCodigo === '') {
+      this.tarjetaCodigoValido = true;
+      return;
+    }
+
+    this.tarjetaCodigoValido =
+      this.tarjetaCodigo.length === this.tarjetaMaximoCvv;
   }
 
   CargarCoberturas(): void {

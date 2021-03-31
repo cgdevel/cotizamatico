@@ -1,0 +1,7 @@
+.datoError {
+  border: 1px solid #ff0707 !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25) !important;
+}
+.datoOk {
+  border: 1px solid #ced4da;
+}
