@@ -12,7 +12,6 @@ import { PeticionAutoAse } from '../interphaces/PeticionAutoAse';
 import { RequestNacionalidad } from '../../app/interphaces/nacionali';
 import { RequestCatalogoCommon } from '../interphaces/request/RequestCatalogoCommon.Model';
 import { ResponseCatalogoCommon } from '../interphaces/response/ResponseCatalogoCommon.Model';
-import { TimeoutError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -56,7 +55,7 @@ export class InfovehiculoService {
 
   getApiCatalogoBancos(query: RequestCatalogoCommon) {
     return this.http.post<ResponseCatalogoCommon>(
-      `${environment.url_api_common}catalogo`,
+      `${environment.url_api_autos}/catalogos`,
       query
     );
   }

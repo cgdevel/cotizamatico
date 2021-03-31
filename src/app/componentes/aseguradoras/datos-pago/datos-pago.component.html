@@ -165,19 +165,19 @@
       <div class="form-group col-12 col-md-4">
         <label class="form-label">Banco:</label>
         <ng-select
-          id="cmbCoberturas"
-          [items]="catCoberturas"
+          id="cmbBancos"
+          [items]="catBancos"
           bindLabel="sDato"
           placeholder="BANCO"
           appendTo="body"
           [closeOnSelect]="true"
           [clearable]="false"
           (change)="onSelectCoberturaChange()"
-          [(ngModel)]="itemCoberturas"
+          [(ngModel)]="itemBancos"
           tooltipClass="my-custom-class"
         >
           <ng-option
-            ng-options="item as item.sLlave for item.sDato in catTipoVehiculo"
+            ng-options="item as item.sLlave for item.sDato in catBancos"
           >
             {{ item }}
           </ng-option>
@@ -208,7 +208,8 @@
         <div style="display: flex; align-items: center">
           <input
             type="text"
-            class="form-control col-2"
+            class="form-control col-3"
+            style="text-align: center;"
             id="txtTarjetaVigenciaMes"
             value=""
             maxlength="2"
@@ -216,7 +217,8 @@
           /
           <input
             type="text"
-            class="form-control col-2"
+            class="form-control col-3"
+            style="text-align: center;"
             id="txtTarjetaVigentesAnio"
             value=""
             maxlength="2"

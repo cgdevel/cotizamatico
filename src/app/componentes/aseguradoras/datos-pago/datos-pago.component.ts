@@ -1,7 +1,12 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { InfovehiculoService } from '../../../servicios/infovehiculo.service';
 import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
-import { NgbDateStruct, NgbCalendar, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbDateStruct,
+  NgbCalendar,
+  NgbDatepicker,
+} from '@ng-bootstrap/ng-bootstrap';
+import { BancoModel } from '../../../interphaces/models/Banco.model';
 
 @Component({
   selector: 'app-datos-pago',
@@ -10,17 +15,19 @@ import { NgbDateStruct, NgbCalendar, NgbDatepicker } from '@ng-bootstrap/ng-boot
 })
 export class DatosPagoComponent implements OnInit {
   fechaInicioVigencia: NgbDateStruct;
-  date: { year: number, month: number };
+  date: { year: number; month: number };
   @ViewChild('dp') dp: NgbDatepicker;
   @Input() IdAseguradora: number;
-  @Input () cobertura: any;
-  @Input () pagoseleccionado: any;
+  @Input() cobertura: any;
+  @Input() pagoseleccionado: any;
   catCoberturas: CatalogoModel[];
   itemCoberturas: CatalogoModel;
   catFormaPago: CatalogoModel[];
   itemFormaPago: CatalogoModel;
   catMedioPago: CatalogoModel[];
   itemMedioPago: CatalogoModel;
+  catBancos: CatalogoModel[];
+  itemBancos: CatalogoModel;
   itemVacio: CatalogoModel;
   item: string;
 
@@ -36,6 +43,7 @@ export class DatosPagoComponent implements OnInit {
     this.itemCoberturas = this.itemVacio;
     this.itemFormaPago = this.itemVacio;
     this.itemMedioPago = this.itemVacio;
+    this.itemBancos = this.itemVacio;
 
     this.recibosPrimero = 0;
     this.recibosSubsecuentes = 0;
@@ -46,16 +54,16 @@ export class DatosPagoComponent implements OnInit {
     this.CargarFormasPago();
     this.CargarMediosPago();
     this.CargarBancos();
-    this.catCoberturas.forEach(element => {
+    this.catCoberturas.forEach((element) => {
       if (this.cobertura === element.sDato) {
         this.itemCoberturas = element;
       }
     });
-    this.catFormaPago.forEach(element1 => {
-      if (this.pagoseleccionado === 'Anual' ) {
-        this.itemFormaPago = { sDato: 'Contado', sLlave: '0' } ;
+    this.catFormaPago.forEach((element1) => {
+      if (this.pagoseleccionado === 'Anual') {
+        this.itemFormaPago = { sDato: 'Contado', sLlave: '0' };
         this.SeleccionaPagos();
-      }else if ( this.pagoseleccionado === element1.sDato){
+      } else if (this.pagoseleccionado === element1.sDato) {
         this.itemFormaPago = element1;
         this.SeleccionaPagos();
       }
@@ -76,6 +84,10 @@ export class DatosPagoComponent implements OnInit {
     } else {
       this.mostrarDatosTarjetas = false;
     }
+  }
+
+  onSelectBancoChange(): void{
+    console.log(this.itemBancos);
   }
 
   CargarCoberturas(): void {
@@ -178,6 +190,15 @@ export class DatosPagoComponent implements OnInit {
       .subscribe(
         (cat: any) => {
           console.log(cat);
+          const bancos = JSON.parse(cat.CatalogoJsonString) as BancoModel[];
+          const arrBanco: CatalogoModel[] = [];
+          bancos.forEach((banco) =>
+            arrBanco.push({
+              sLlave: banco.iIdBanco.toString(),
+              sDato: banco.sBanco,
+            })
+          );
+          this.catBancos = arrBanco;
         },
         (err) => {
           console.log('Error: Bancos');
