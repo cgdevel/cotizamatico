@@ -39,7 +39,10 @@ export class AdicionalesComponent implements OnInit {
   CargarTipoFiscalAdicional(): void {
     const tipos: CatalogoModel[] = [];
     tipos.push({ sDato: 'FÍSICA', sLlave: 'F' });
-    this.asesel !== 'BANORTE' ? tipos.push({ sDato: 'MORAL', sLlave: 'M' }) :  tipos.push({ sDato: '', sLlave: '' }) ;
+    if (this.asesel !== 'BANORTE') {
+      tipos.push({ sDato: 'MORAL', sLlave: 'M' });
+    }
+    // this.asesel !== 'BANORTE' ? tipos.push({ sDato: 'MORAL', sLlave: 'M' }) :  tipos.push({ sDato: '', sLlave: '' }) ;
     this.catAdicionalTipoPersona = tipos;
   }
 

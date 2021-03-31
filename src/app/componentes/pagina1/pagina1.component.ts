@@ -14,7 +14,7 @@ export class Pagina1Component implements OnInit {
   verCarousle: boolean;
   resizeObservable$: Observable<Event>;
   resizeSubscription$: Subscription;
-
+  tipoSoc: any;
   /* Asociados */
   catAsociados: CatalogoModel[];
   asociado: CatalogoModel;
@@ -25,7 +25,7 @@ export class Pagina1Component implements OnInit {
   vehiculoAnio: CatalogoModel;
   vehiculoMarca: CatalogoModel;
   vehiculoDescripcion: CatalogoModel;
-  itemVacio: CatalogoModel;
+  itemVacio = { sDato: '', sLlave: '' };
 
   /* Valores cliente */
   clienteNombre: string;
@@ -80,6 +80,10 @@ export class Pagina1Component implements OnInit {
     this.vehiculoDescripcion = e;
     this.ValidarDatosObligatorios();
   }
+  getTipoSoc(e){
+    this.tipoSoc = e;
+    this.ValidarDatosObligatorios();
+  }
 
   handlerClienteNombre(e: string) {
     this.clienteNombre = e;
@@ -114,31 +118,24 @@ export class Pagina1Component implements OnInit {
   }
 
   ValidarDatosObligatorios() {
-    this.datosValidos = false;
-
-    if (this.vehiculoTipo === this.itemVacio) {
-      return;
-    }
-    if (this.vehiculoAnio === this.itemVacio) {
-      return;
-    }
-    if (this.vehiculoMarca === this.itemVacio) {
-      return;
-    }
-    if (this.vehiculoDescripcion === this.itemVacio) {
-      return;
-    }
-    if (this.clienteNombre === '') {
-      return;
-    }
-    if (this.clienteMail === '') {
-      return;
-    }
-    if (this.clienteTelefono === '') {
-      return;
-    }
-    if (this.clienteTipoPersona === '') {
-      return;
+    if(this.tipoSoc === this.itemVacio){
+      return this.datosValidos = false;
+    }else if (this.vehiculoTipo === this.itemVacio) {
+      return this.datosValidos = false;
+    }else if (this.vehiculoAnio === this.itemVacio) {
+      return this.datosValidos = false;
+    }else if (this.vehiculoMarca === this.itemVacio) {
+      return this.datosValidos = false;
+    }else if (this.vehiculoDescripcion === this.itemVacio) {
+      return this.datosValidos = false;
+    }else if (this.clienteNombre === '') {
+      return this.datosValidos = false;
+    }else if (this.clienteMail === '') {
+      return this.datosValidos = false;
+    }else if (this.clienteTelefono === '') {
+      return this.datosValidos = false;
+    }else if (this.clienteTipoPersona === '') {
+      return this.datosValidos = false;
     } else {
       if (this.clienteTipoPersona !== 'Moral') {
         if (
@@ -146,21 +143,20 @@ export class Pagina1Component implements OnInit {
           this.clienteFechaNacimiento.dia === '' ||
           this.clienteFechaNacimiento.mes === ''
         ) {
-          return;
+          return this.datosValidos = false;
         }
       }
     }
     if (this.clienteCodigoPostal === '') {
-      return;
+      return this.datosValidos = false;
     }
-    console.log('validando datos - asociado');
-    if (this.mostraComboAsociados) {
-      console.log('validando datos - asociado - si');
-      if (this.asociado === this.itemVacio) {
-        return;
-      }
-    }
-
-    this.datosValidos = true;
+    // console.log('validando datos - asociado');
+    // if (this.mostraComboAsociados) {
+    //   console.log('validando datos - asociado - si');
+    //   if (this.asociado === this.itemVacio) {
+    //     return;
+    //   }
+    // }
+    return this.datosValidos = true;
   }
 }

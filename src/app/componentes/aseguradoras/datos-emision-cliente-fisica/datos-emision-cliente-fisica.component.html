@@ -91,10 +91,17 @@
             </ng-template>
           </ng-select>
         </div>
-        <div id="datepicker" class="form-group col-12 col-md-4"*ngIf="this.aseguradoraSelect !='ZURICH'">
+        <div id="datepicker" class="form-group col-12 col-md-4"*ngIf="this.aseguradoraSelect !='ZURICH' && this.aseguradoraSelect !='ANA SEG'">
           <label class="form-label">Fecha de Nacimiento:</label>
           <!-- <input class="form-control" type="date" data-date-format="mm/dd/yyyy" value="" (change)="changefecha()" id="fechanaci"> -->
           <input (dateSelect)="cambiafecha($event)" (click)="d.toggle()"  class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="fechanaciaseg" ngbDatepicker #d="ngbDatepicker">
+        </div>
+        <div class="form-group col-12 col-md-4" *ngIf="this.aseguradoraSelect!='ZURICH'
+          && this.aseguradoraSelect!= 'QUALITAS'
+          && this.aseguradoraSelect!='AFIRME'"
+        >
+          <label class="form-label">Edad:</label>
+          <input type="text" [value]="this.edad" [(ngModel)]="this.edad" class="form-control" disabled />
         </div>
         <div class="form-group col-12 col-md-4" *ngIf="this.genero != 'Moral'">
           <label class="form-label">Género:</label>
