@@ -12,6 +12,7 @@ import { CookieService } from 'ngx-cookie';
   styleUrls: ['./infoasegurado.component.css'],
 })
 export class InfoaseguradoComponent implements OnInit {
+  sitiene: boolean;
   constructor(
     private infovehiculoService: InfovehiculoService,
     private MesesConDias: MesesConDiasService,
@@ -19,7 +20,6 @@ export class InfoaseguradoComponent implements OnInit {
     ){}
     @Output() emitClienteNombre = new EventEmitter<string>();
     @Input() clienteNombre: string;
-    @Input() clienteNombreCompleto: boolean;
     @Input() valClienteNombre: boolean;
     @Output() emitClienteApellidoPaterno = new EventEmitter<string>();
     @Input() clienteApellidoPaterno: string;
@@ -61,6 +61,9 @@ export class InfoaseguradoComponent implements OnInit {
     catNacimientoDias: CatalogoModel[];
     catNacimientoMeses: CatalogoModel[];
     catNacimientoAnios: CatalogoModel[];
+    terminaciones: CatalogoModel[] = [];
+    @Output() terminacionsoc  = new EventEmitter<CatalogoModel>();
+    terminacionsel: CatalogoModel;
     @Input() itemNacimientoDia: CatalogoModel;
     @Input() itemNacimientoMes: CatalogoModel;
     @Input() itemNacimeintoAnio: CatalogoModel;
@@ -78,17 +81,18 @@ export class InfoaseguradoComponent implements OnInit {
     @Input() validonom: boolean;
     // Valores botones soy
     @Input() disabledase;
-    @Input() disable;
     bisiesto: boolean;
     cookieNombre: string;
     cookieEmail: string;
     cookieTelefono: string;
     cookieTipoDePersona: string;
     cookieCP: string;
+    cookieTipoSoc: any;
     cookieDiaNaci: any ;
     cookieMesNaci: any ;
     cookieAnioNaci: any ;
     ngOnInit(): void {
+      this.terminaciones = this.infovehiculoService.getTeminacionesMoral();
       this.valClienteNombre = true;
       this.valClienteMailVacio = true;
       this.valClienteMailNoValido = true;
@@ -106,6 +110,10 @@ export class InfoaseguradoComponent implements OnInit {
       this.catNacimientoAnios = this.MesesConDias.getAnnioSinMesesniDia();
       this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion();
       this.catNacimientoDias = this.MesesConDias.getdiassinnada();
+      // Tipo Sociedad
+      this.cookieTipoSoc = this.cookieService.getObject('TipoSociedad');
+      this.cookieTipoSoc !== null ? this.terminacionsel= this.cookieTipoSoc : this.terminacionsel = this.terminacionsel;
+      this.cookieTipoSoc !== null ? this.terminacionsoc.emit(this.cookieTipoSoc) : this.terminacionsoc.emit(this.itemVacio);
       // Tipo Persona
       this.cookieTipoDePersona = this.cookieService.get('TipoDePersona');
       if (this.cookieTipoDePersona !== null) {
@@ -165,52 +173,35 @@ export class InfoaseguradoComponent implements OnInit {
         this.clienteTelefono = this.cookieTelefono;
         this.emitClienteTelefono.emit(this.clienteTelefono);
       } else { this.emitClienteTelefono.emit(''); }
+
+  }
+  setTipoSoc(){
+    this.terminacionsoc.emit(this.terminacionsel);
+    const guardacookieTipoSoc = this.terminacionsel;
+    this.cookieService.putObject('TipoSociedad', guardacookieTipoSoc);
   }
   onNombreChanged() {
     if (this.clienteNombre === '') {
       this.valClienteNombre = false;
       this.emitClienteNombre.emit('');
     } else {
+      this.nombresepa = [];
       this.valClienteNombre = true;
-      if (this.clienteEsMoral === false) {
-        this.dividirCadena(this.clienteNombre, ' ');
-        for (let i = 0; i < this.nombresepa.length; i++){
-          this.nombresepa[i] = this.nombresepa[i].replace(/á/g, 'a');
-          this.nombresepa[i] = this.nombresepa[i].replace(/é/g, 'e');
-          this.nombresepa[i] = this.nombresepa[i].replace(/í/g, 'i');
-          this.nombresepa[i] = this.nombresepa[i].replace(/ó/g, 'o');
-          this.nombresepa[i] = this.nombresepa[i].replace(/ú/g, 'u');
+      this.dividirCadena(this.clienteNombre, ' ');
+      for (let i = 0; i < this.nombresepa.length; i++){
+        this.nombresepa[i] = this.nombresepa[i].replace(/á/g, 'a');
+        this.nombresepa[i] = this.nombresepa[i].replace(/é/g, 'e');
+        this.nombresepa[i] = this.nombresepa[i].replace(/í/g, 'i');
+        this.nombresepa[i] = this.nombresepa[i].replace(/ó/g, 'o');
+        this.nombresepa[i] = this.nombresepa[i].replace(/ú/g, 'u');
+        if (this.clienteEsMoral === false || undefined) {
+          this.nombresepa[i] = this.nombresepa[i].replace(/\./g, ' ');
+          this.nombresepa[i] = this.nombresepa[i].replace(/\,/g, ' ');
         }
-        this.clienteNombre = '';
-        for (let c = 0; c < this.nombresepa.length; c++){
-          this.clienteNombre += this.nombresepa[c] + ' ';
-        }
-        const terminaciones: CatalogoModel[] = [];
-        terminaciones.push(
-          {sDato: 'S. A. de C. V.', sLlave: 'Sociedad Anónima de Capital Variable'},
-          {sDato: 'S. C.', sLlave: 'Sociedad Civil'},
-          {sDato:  'S. A. de R. L.', sLlave: 'Sociedad Anónima de Responsabilidad Limitada'},
-          {sDato: 'S. A.', sLlave: 'Sociedad Anónima'},
-          {sDato: 'S. en C. S.', sLlave: 'Sociedad en Comandita Simple'},
-          {sDato:  'S. en C. por A', sLlave: ' Sociedad en Comandita por Acciones'},
-          {sDato:  'S. de R. L.', sLlave: 'Sociedad de Responsabilidad Limitada'},
-          {sDato:  'S.A.C.', sLlave: 'Sociedad Anónima cerrada'},
-          {sDato:  'E.I.R.L.', sLlave: 'Empresario Individual de Responsabilidad Limitada'},
-          {sDato:  ' S.A.A.', sLlave: 'Sociedad Anónima Abierta'}
-        );
-        const cadeemp = 'Pollitos Sabrosos S. A. de C. V.';
-        let sitiene: boolean;
-        terminaciones.forEach(element => {
-          const term = element.sDato;
-          const si = cadeemp.match(term);
-          if ( si !== null) {
-            console.log( term + '  ' + cadeemp.match(term));
-            return sitiene = true;
-          }else{
-            return sitiene = false;
-          }
-        }); // foreach
-        console.log(sitiene);
+      }
+      this.clienteNombre = '';
+      for (let c = 0; c < this.nombresepa.length; c++){
+        this.clienteNombre += this.nombresepa[c] + ' ';
       }
       this.emitClienteNombre.emit(this.clienteNombre);
       const guardacookieNombre = this.clienteNombre ;

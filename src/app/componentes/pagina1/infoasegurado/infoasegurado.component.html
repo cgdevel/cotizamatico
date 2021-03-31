@@ -16,52 +16,85 @@
         </div>
         <div class="row">
           <div class="form-group  col-md-4">
-            <label for="nombre">Nombre</label>
-            <input
-              [disabled]="clienteNombreCompleto == true"
-              type="text"
-              class="form-control"
-              id="nombre"
-              value=""
-              autocomplete="off"
-              [(ngModel)]="clienteNombre"
-              [value]="clienteNombre"
-              (change)="onNombreChanged()"
-              onkeypress="return(
-              !(
-                event.charCode > 32  
-                && event.charCode > 44
-                && event.charCode > 46
-                && ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255))
-              )"
-              min="1"
-              [ngClass]="{
-                Existe: valClienteNombre,
-                NoExiste: !valClienteNombre
-              }"
-              [ngbTooltip]="ttClienteNombre"
-              tooltipClass="my-custom-class"
-            />
-            <ng-template #ttClienteNombre>
-              <b *ngIf="!clienteNombre"
-                >Tiene dos opciones para llenar este campo: <br />
-                1)Sólo con su nombre <br />
-                2)Con su nombre completo, iniciando por su nombre
-                3)Si es empresa, ingrese el nombre completo </b
-              >
-            </ng-template>
-            <ngb-alert
-              [dismissible]="false"
-              type="danger"
-              *ngIf="!valClienteNombre && clienteNombre == ''"
-              class="alert-danger"
-            >
-              Dato Obligatorio
-            </ngb-alert>
+            <div class="container mw-100">
+              <div class="row">
+                <div class="col px-1 ">
+                  <label for="nombre">Nombre</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nombre"
+                    value=""
+                    autocomplete="off"
+                    [(ngModel)]="clienteNombre"
+                    [value]="clienteNombre"
+                    (change)="onNombreChanged()"
+                    onkeypress="return(
+                    !(
+                      event.charCode > 32  
+                      && event.charCode > 44
+                      && event.charCode > 46
+                      && ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255))
+                    )"
+                    min="1"
+                    [ngClass]="{
+                      Existe: valClienteNombre,
+                      NoExiste: !valClienteNombre
+                    }"
+                    [ngbTooltip]="ttClienteNombre"
+                    tooltipClass="my-custom-class"
+                  />
+                  <ng-template #ttClienteNombre>
+                    <b *ngIf="!clienteNombre && ( this.clienteEsMoral === false || this.clienteEsMoral === undefined) "
+                      >Tiene dos opciones para llenar este campo: <br />
+                      1)Sólo con su nombre <br />
+                      2)Con su nombre completo, iniciando por su nombre
+                    </b>
+                    <b *ngIf="!clienteNombre && this.clienteEsMoral === true ">
+                      A la izquierda de este campo se encuentran los tipos de sociedad,
+                      Ingrese el nombre y seleccione un tipo de sociedad. 
+                    </b>
+                  </ng-template>
+                  <ngb-alert
+                    [dismissible]="false"
+                    type="danger"
+                    *ngIf="!valClienteNombre && clienteNombre == ''"
+                    class="alert-danger"
+                  >
+                    Dato Obligatorio
+                  </ngb-alert>
+                </div>
+                <div class="col px-1 " *ngIf="this.clienteEsMoral==true">
+                  <label for="cmbTerminacionesMoral">Tipo de Soc.</label>
+                  <ng-select id="cmbTerminacionesMoral" 
+                    [items]="terminaciones"
+                    bindLabel="sDato" 
+                    placeholder="Tipo de sociedad" 
+                    [searchable]="false" 
+                    [clearable]="false" 
+                    [closeOnSelect]="true"
+                    [(ngModel)]="terminacionsel"
+                    (change)="setTipoSoc()"
+                    [ngbTooltip]="ttTipoSocPeMo">
+                    <ng-option [value]="itemd" *ngFor="let itemd of terminaciones">
+                      {{ itemd.sDato }}
+                    </ng-option>
+                    <ng-template #ttTipoSocPeMo>
+                      <b *ngIf="!!terminacionsel">{{terminacionsel.sLlave}}</b>
+                    </ng-template>
+                    <ng-template ng-notfound-tmp>
+                      <div class="ng-option disabled">
+                        No hay tipos de sociedades que mostrar
+                      </div>
+                    </ng-template>
+                  </ng-select>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="form-group col-md-4">
             <label for="email"> Email </label>
-            <input [disabled]="disable == false" type="text" class="form-control" id="email" value="" autocomplete="off"
+            <input type="text" class="form-control" id="email" value="" autocomplete="off"
               [(ngModel)]="clienteMail" (change)="onMailChanged()" min="1" [ngClass]="{
                 Existe: valClienteMailNoValido && valClienteMailVacio,
                 NoExiste: !(valClienteMailNoValido && valClienteMailVacio)
@@ -76,7 +109,7 @@
           <div class="form-group col-md-4">
             <label for="telefono"> Teléfono </label>
             <input
-              [disabled]="disable == false"
+             
               maxlength="10"
               type="text"
               class="form-control"
@@ -114,7 +147,7 @@
                 tooltipClass="my-custom-class"
               >
                 <button
-                  [disabled]="disable == false"
+                 
                   class="m-0 btn"
                   style="display: block"
                   (click)="onTipoPersonaFemeninoChange()"
@@ -163,7 +196,7 @@
                 tooltipClass="my-custom-class"
               >
                 <button
-                  [disabled]="disable == false"
+                 
                   class="m-0 btn"
                   style="display: block"
                   (click)="onTipoPersonaMasculinoChange()"
@@ -213,7 +246,7 @@
                   class="m-0 btn"
                   style="display: block"
                   (click)="onTipoPersonaMoralChange()"
-                  [disabled]="disable == false"
+                 
                 >
                   <svg
                     id="logc"
@@ -267,7 +300,7 @@
             <p class="m-0 mb-2">Fecha de nacimiento</p>
             <div class="row">
               <div class="col-md-4 col-sm-12 mb-3">
-                <ng-select [disabled]="disable == false" id="cmbNacimietoDia" 
+                <ng-select id="cmbNacimietoDia" 
                   [items]="catNacimientoDias"
                   bindLabel="sDato" placeholder="DÍA" [searchable]="false" [clearable]="false" [closeOnSelect]="true"
                   (change)="selectNacimientoDia()" [(ngModel)]="itemNacimientoDia">
@@ -283,7 +316,7 @@
               </div>
 
               <div class="col-md-4 col-sm-12 mb-3">
-                <ng-select [disabled]="disable == false" id="cmbNacimietoMes" 
+                <ng-select id="cmbNacimietoMes" 
                   [items]="catNacimientoMeses" bindLabel="sDato" placeholder="MES"
                   [searchable]="false" [clearable]="false" [closeOnSelect]="true" (change)="selectNacimientoMes()"
                   [(ngModel)]="itemNacimientoMes">
@@ -299,7 +332,7 @@
               </div>
 
               <div class="col-md-4 col-sm-12 mb-3">
-                <ng-select id="cmbNacimietoAnio" [disabled]="disable == false" 
+                <ng-select id="cmbNacimietoAnio" 
                   [items]="catNacimientoAnios" bindLabel="sDato" placeholder="AÑO"
                   [searchable]="false" [clearable]="false" [closeOnSelect]="true" (change)="selectNacimientoAnio()"
                   [(ngModel)]="itemNacimeintoAnio">
@@ -321,7 +354,7 @@
               <div class="row">
                 <div class="col px-1">
                   <p class="m-0 mb-2">Código postal:</p>
-                  <input [disabled]="disable == false" type="text" class="form-control"
+                  <input type="text" class="form-control"
                     (change)="onCodigoPostalChanged()" onkeypress="return(event.charCode >= 48 && event.charCode <= 57)"
                     maxlength="5" [(ngModel)]="clienteCodigoPostal" [ngClass]="{
                       Existe:
@@ -349,35 +382,7 @@
                     El CP no es valido
                   </ngb-alert>
                 </div>
-                <!-- <div class="col px-1">
-                  <p class="m-0 mb-2">RFC:</p>
-                  <input
-                    type="text"
-                    class="form-control"
-                    maxlength="13"
-                    [(ngModel)]="clienteRFC"
-                    (change)="onRFCChanged()"
-                    [ngClass]="{
-                      Existe: valClienteRFC,
-                      NoExiste: !valClienteRFC
-                    }"
-                  />
-                  <ngb-alert
-                    [dismissible]="false"
-                    type="danger"
-                    *ngIf="clienteRFC==''"
-                  >
-                    Dato Obligatorio
-                  </ngb-alert>
-                  <ngb-alert
-                    [dismissible]="false"
-                    type="danger"
-                    *ngIf="!valClienteRFC && clienteRFC!=''"
-                  >
-                    RFC no válido
-                  </ngb-alert>
-                </div> -->
-              </div>
+                             </div>
             </div>
           </div>
         </div>

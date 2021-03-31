@@ -29,6 +29,9 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
   apellidomaterno = '';
   apellidopaterno = '';
   RFC: string;
+  edad: number;
+  year;
+  mon;
   Ocup = new Array<CatalogoModel>();
   EsCivs = new Array<CatalogoModel>();
   ocupacionsel: CatalogoModel;
@@ -175,6 +178,7 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
   cambiafecha(e){
     // console.log(e.year);
     this.generarfc(this.apellidopaterno, this.apellidomaterno, this.nombre, e);
+    this.edad = this.calculaedad(e);
   }
   rfcpornacio(){
     if (!!this.nacionalidadsel) {
@@ -205,6 +209,19 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
       }
     }
   }
+  calculaedad( num: NgbDateStruct){
+      let age = 0;
+      const today = new Date();
+      this.year = today.getFullYear();
+      this.mon = today.getMonth() + 1;
+      // console.log(this.year + '  ' + this.mon + '  ' + num.year + '  ' + num.month);
+      if (num.month >= this.mon) {
+        return age = this.year - num.year - 1;
+      }else{
+        return age = this.year - num.year;
+      }
+  }
+  
   ngOnInit(): void {
     this.Nacion = this.InfovehiculoService.getNacionalidades();
     this.nacionalidadsel = { NacString: 'MEXICANA', NacClave: 'MEX' };
@@ -227,6 +244,7 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
       month: this.mesnac,
       day: this.dianac
     };
+    this.edad = this.calculaedad(this.fechanaciaseg);
     this.verificaCompletoNom(this.nombre);
   }
 

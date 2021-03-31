@@ -58,6 +58,7 @@
     (emitClienteTipoPersona)="handlerClienteTipoPersona($event)"
     (emitClienteCodigoPostal)="handlerClienteCodigoPostal($event)"
     (emitClienteNacimiento)="handlerClienteFechaNacimiento($event)"
+    (setTipoSoc)="getTipoSoc($event)"
   >
   </app-infoasegurado>
 
@@ -99,7 +100,9 @@
         cpase: this.clienteCodigoPostal,
         fechanacase: this.clienteFechaNacimiento
       }"
-      [disabled]="!datosValidos || !clienteAviso"
+      [disabled]="(datosValidos==false && clienteAviso== false)  
+      || (datosValidos==true && clienteAviso== false)
+      || (datosValidos==false && clienteAviso== true)"
     >
       ¡Cotizar mi auto <label id="ahora">ahora</label>!
     </button>
