@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { InfovehiculoService } from '../../../servicios/infovehiculo.service';
 import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
+import { BancoModel } from '../../../interphaces/models/Banco.model';
 
 @Component({
   selector: 'app-datos-pago',
