@@ -118,9 +118,7 @@ export class Pagina1Component implements OnInit {
   }
 
   ValidarDatosObligatorios() {
-    if(this.tipoSoc === this.itemVacio){
-      return this.datosValidos = false;
-    }else if (this.vehiculoTipo === this.itemVacio) {
+    if (this.vehiculoTipo === this.itemVacio) {
       return this.datosValidos = false;
     }else if (this.vehiculoAnio === this.itemVacio) {
       return this.datosValidos = false;

@@ -36,7 +36,7 @@
             onkeypress="return( !(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))
           "/>
         </div>
-        <div class="form-group col-12 col-md-4" *ngIf="this.aseguradoraSelect!='SURA'">
+        <div class="form-group col-12 col-md-4">
           <label class="form-label">RFC:</label>
           <input type="text" [value]="RFC" [(ngModel)]="RFC" class="form-control" />
         </div>
@@ -44,10 +44,7 @@
           <label class="form-label">Correo:</label>
           <input [value]="this.correo" [(ngModel)]="correo" type="text" class="form-control" />
         </div>
-        <div class="form-group col-12 col-md-4" *ngIf=" this.aseguradoraSelect=='CHUBB' ||
-        this.aseguradoraSelect=='BANORTE'   ||
-        this.aseguradoraSelect=='HDI'       || 
-        this.aseguradoraSelect=='AFIRME'">
+        <div class="form-group col-12 col-md-4">
           <label class="form-label">Estado Civil:</label>
           <ng-select 
             [items]="EsCivs"
@@ -64,10 +61,7 @@
             </ng-option>
           </ng-select>
         </div>
-        <div class="form-group col-12 col-md-4" *ngIf="this.aseguradoraSelect =='QUALITAS'
-        ||this.aseguradoraSelect =='AFIRME'
-        ||this.aseguradoraSelect =='CHUBB'
-        ||this.aseguradoraSelect =='HDI'">
+        <div class="form-group col-12 col-md-4">
           <label class="form-label">Ocupación:</label>
           <ng-select 
             [items]="Ocup"       
@@ -91,29 +85,24 @@
             </ng-template>
           </ng-select>
         </div>
-        <div id="datepicker" class="form-group col-12 col-md-4"*ngIf="this.aseguradoraSelect !='ZURICH' && this.aseguradoraSelect !='ANA SEG'">
+        <div id="datepicker" class="form-group col-12 col-md-4">
           <label class="form-label">Fecha de Nacimiento:</label>
           <!-- <input class="form-control" type="date" data-date-format="mm/dd/yyyy" value="" (change)="changefecha()" id="fechanaci"> -->
-          <input (dateSelect)="cambiafecha($event)" (click)="d.toggle()"  class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="fechanaciaseg" ngbDatepicker #d="ngbDatepicker">
+          <input (dateSelect)="cambiafecha($event)" (click)="d.toggle()"  class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="fechanaciaseg" ngbDatepicker #d="ngbDatepicker" disabled>
         </div>
-        <div class="form-group col-12 col-md-4" *ngIf="this.aseguradoraSelect!='ZURICH'
-          && this.aseguradoraSelect!= 'QUALITAS'
-          && this.aseguradoraSelect!='AFIRME'"
-        >
+        <div class="form-group col-12 col-md-4">
           <label class="form-label">Edad:</label>
           <input type="text" [value]="this.edad" [(ngModel)]="this.edad" class="form-control" disabled />
         </div>
         <div class="form-group col-12 col-md-4" *ngIf="this.genero != 'Moral'">
           <label class="form-label">Género:</label>
-          <input type="text" [value]="this.genero" [(ngModel)]="genero"  class="form-control" />
+          <input type="text" [value]="this.genero" [(ngModel)]="genero"  class="form-control" disabled />
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Teléfono:</label>
           <input  [value]="this.telefono" [(ngModel)]="telefono" type="text" class="form-control" />
         </div>
-        <div class="form-group col-12 col-md-4"*ngIf=" this.aseguradoraSelect!='ZURICH' &&
-        this.aseguradoraSelect!='BANORTE' &&
-        this.aseguradoraSelect!='MAPFRE T' ">
+        <div class="form-group col-12 col-md-4">
           <label class="form-label">Nacionalidad:</label>
           <ng-select 
               [items]="Nacion"       
@@ -140,7 +129,7 @@
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Código Postal:</label>
-          <input type="text" [value]="this.codigopostal" [(ngModel)]="codigopostal" (change)="getUbicacion(codigopostal)" class="form-control" />
+          <input type="text" [value]="this.codigopostal" [(ngModel)]="codigopostal" (change)="getUbicacion(codigopostal)" class="form-control" disabled />
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Estado:</label>

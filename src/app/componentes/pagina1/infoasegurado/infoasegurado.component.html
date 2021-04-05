@@ -64,31 +64,6 @@
                     Dato Obligatorio
                   </ngb-alert>
                 </div>
-                <div class="col px-1 " *ngIf="this.clienteEsMoral==true">
-                  <label for="cmbTerminacionesMoral">Tipo de Soc.</label>
-                  <ng-select id="cmbTerminacionesMoral" 
-                    [items]="terminaciones"
-                    bindLabel="sDato" 
-                    placeholder="Tipo de sociedad" 
-                    [searchable]="false" 
-                    [clearable]="false" 
-                    [closeOnSelect]="true"
-                    [(ngModel)]="terminacionsel"
-                    (change)="setTipoSoc()"
-                    [ngbTooltip]="ttTipoSocPeMo">
-                    <ng-option [value]="itemd" *ngFor="let itemd of terminaciones">
-                      {{ itemd.sDato }}
-                    </ng-option>
-                    <ng-template #ttTipoSocPeMo>
-                      <b *ngIf="!!terminacionsel">{{terminacionsel.sLlave}}</b>
-                    </ng-template>
-                    <ng-template ng-notfound-tmp>
-                      <div class="ng-option disabled">
-                        No hay tipos de sociedades que mostrar
-                      </div>
-                    </ng-template>
-                  </ng-select>
-                </div>
               </div>
             </div>
           </div>
