@@ -45,14 +45,10 @@
                     tooltipClass="my-custom-class"
                   />
                   <ng-template #ttClienteNombre>
-                    <b *ngIf="!clienteNombre && ( this.clienteEsMoral === false || this.clienteEsMoral === undefined) "
+                    <b *ngIf="!clienteNombre"
                       >Tiene dos opciones para llenar este campo: <br />
                       1)Sólo con su nombre <br />
                       2)Con su nombre completo, iniciando por su nombre
-                    </b>
-                    <b *ngIf="!clienteNombre && this.clienteEsMoral === true ">
-                      A la izquierda de este campo se encuentran los tipos de sociedad,
-                      Ingrese el nombre y seleccione un tipo de sociedad. 
                     </b>
                   </ng-template>
                   <ngb-alert

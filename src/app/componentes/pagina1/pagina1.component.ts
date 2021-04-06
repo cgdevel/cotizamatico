@@ -15,7 +15,6 @@ export class Pagina1Component implements OnInit {
   verCarousle: boolean;
   resizeObservable$: Observable<Event>;
   resizeSubscription$: Subscription;
-  tipoSoc: any;
   /* Asociados */
   catAsociados: CatalogoModel[];
   asociado: CatalogoModel;
@@ -83,10 +82,7 @@ export class Pagina1Component implements OnInit {
     this.vehiculoDescripcion = e;
     this.ValidarDatosObligatorios();
   }
-  getTipoSoc(e) {
-    this.tipoSoc = e;
-    this.ValidarDatosObligatorios();
-  }
+  
 
   handlerClienteNombre(e: string) {
     this.clienteNombre = e;
