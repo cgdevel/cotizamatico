@@ -15,7 +15,6 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
   fechanaciaseg: NgbDateStruct;
   date: { year: number, month: number };
   @ViewChild('dp') dp: NgbDatepicker;
-  @Input() aseguradoraSelect: string ;
   @Input() nombre = '';
   @Input() codigopostal = '';
   @Input() correo = '';

@@ -61,9 +61,6 @@ export class InfoaseguradoComponent implements OnInit {
     catNacimientoDias: CatalogoModel[];
     catNacimientoMeses: CatalogoModel[];
     catNacimientoAnios: CatalogoModel[];
-    terminaciones: CatalogoModel[] = [];
-    @Output() terminacionsoc  = new EventEmitter<CatalogoModel>();
-    terminacionsel: CatalogoModel;
     @Input() itemNacimientoDia: CatalogoModel;
     @Input() itemNacimientoMes: CatalogoModel;
     @Input() itemNacimeintoAnio: CatalogoModel;
@@ -92,7 +89,6 @@ export class InfoaseguradoComponent implements OnInit {
     cookieMesNaci: any ;
     cookieAnioNaci: any ;
     ngOnInit(): void {
-      this.terminaciones = this.infovehiculoService.getTeminacionesMoral();
       this.valClienteNombre = true;
       this.valClienteMailVacio = true;
       this.valClienteMailNoValido = true;
@@ -110,10 +106,6 @@ export class InfoaseguradoComponent implements OnInit {
       this.catNacimientoAnios = this.MesesConDias.getAnnioSinMesesniDia();
       this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion();
       this.catNacimientoDias = this.MesesConDias.getdiassinnada();
-      // Tipo Sociedad
-      this.cookieTipoSoc = this.cookieService.getObject('TipoSociedad');
-      this.cookieTipoSoc !== null ? this.terminacionsel= this.cookieTipoSoc : this.terminacionsel = this.terminacionsel;
-      this.cookieTipoSoc !== null ? this.terminacionsoc.emit(this.cookieTipoSoc) : this.terminacionsoc.emit(this.itemVacio);
       // Tipo Persona
       this.cookieTipoDePersona = this.cookieService.get('TipoDePersona');
       if (this.cookieTipoDePersona !== null) {
@@ -174,11 +166,6 @@ export class InfoaseguradoComponent implements OnInit {
         this.emitClienteTelefono.emit(this.clienteTelefono);
       } else { this.emitClienteTelefono.emit(''); }
 
-  }
-  setTipoSoc(){
-    this.terminacionsoc.emit(this.terminacionsel);
-    const guardacookieTipoSoc = this.terminacionsel;
-    this.cookieService.putObject('TipoSociedad', guardacookieTipoSoc);
   }
   onNombreChanged() {
     if (this.clienteNombre === '') {

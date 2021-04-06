@@ -121,24 +121,22 @@ export class Pagina1Component implements OnInit {
   }
 
   ValidarDatosObligatorios() {
-    if (this.tipoSoc === this.itemVacio) {
-      return (this.datosValidos = false);
-    } else if (this.vehiculoTipo === this.itemVacio) {
-      return (this.datosValidos = false);
-    } else if (this.vehiculoAnio === this.itemVacio) {
-      return (this.datosValidos = false);
-    } else if (this.vehiculoMarca === this.itemVacio) {
-      return (this.datosValidos = false);
-    } else if (this.vehiculoDescripcion === this.itemVacio) {
-      return (this.datosValidos = false);
-    } else if (this.clienteNombre === '') {
-      return (this.datosValidos = false);
-    } else if (this.clienteMail === '') {
-      return (this.datosValidos = false);
-    } else if (this.clienteTelefono === '') {
-      return (this.datosValidos = false);
-    } else if (this.clienteTipoPersona === '') {
-      return (this.datosValidos = false);
+    if (this.vehiculoTipo === this.itemVacio) {
+      return this.datosValidos = false;
+    }else if (this.vehiculoAnio === this.itemVacio) {
+      return this.datosValidos = false;
+    }else if (this.vehiculoMarca === this.itemVacio) {
+      return this.datosValidos = false;
+    }else if (this.vehiculoDescripcion === this.itemVacio) {
+      return this.datosValidos = false;
+    }else if (this.clienteNombre === '') {
+      return this.datosValidos = false;
+    }else if (this.clienteMail === '') {
+      return this.datosValidos = false;
+    }else if (this.clienteTelefono === '') {
+      return this.datosValidos = false;
+    }else if (this.clienteTipoPersona === '') {
+      return this.datosValidos = false;
     } else {
       if (this.clienteTipoPersona !== 'Moral') {
         if (
