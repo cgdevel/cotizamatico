@@ -5,6 +5,7 @@ import { Pagina1Component } from './componentes/pagina1/pagina1.component';
 import { Pagina2Component } from './componentes/pagina2/pagina2.component';
 import { VermasComponent } from './componentes/vermas/vermas.component';
 import { Pagina3Component } from './componentes/pagina3/pagina3.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -34,13 +35,17 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'autos/:UserId',
+    component: LoginComponent,
+  },
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules,
-      scrollPositionRestoration: 'enabled'
+      scrollPositionRestoration: 'enabled',
     }),
   ],
   exports: [RouterModule],
