@@ -28,9 +28,6 @@
   font-size: 14px;
   white-space: nowrap !important;
 }
-.ng-dropdown-panel {
-  position: inherit !important;
-}
 .ng-select .ng-arrow-wrapper {
   width: 25px;
   background-image: linear-gradient(#ff8f48, #ff6963);

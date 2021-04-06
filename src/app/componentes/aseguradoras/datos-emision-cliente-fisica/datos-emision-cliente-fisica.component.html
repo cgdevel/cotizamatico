@@ -46,12 +46,12 @@
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Estado Civil:</label>
-          <ng-select 
+         <ng-select 
+ 	          appendTo="body"
             [items]="EsCivs"
             id="EC"        
             bindLabel="sDato"
             placeholder="Estado Civil"
-            appendTo="body"
             [searchable]="false" 
             [clearable]="false"
             [closeOnSelect]="true"
@@ -63,10 +63,10 @@
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Ocupación:</label>
-          <ng-select 
+         <ng-select 
+ 	          appendTo="body"
             [items]="Ocup"       
             bindLabel="sDato"
-            appendTo="body"
             [searchable]="true" 
             [clearable]="false"
             [closeOnSelect]="true"
@@ -104,10 +104,10 @@
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Nacionalidad:</label>
-          <ng-select 
+         <ng-select 
+ 	            appendTo="body"
               [items]="Nacion"       
               bindLabel="NacString"
-              appendTo="body"
               [searchable]="true" 
               [clearable]="false"
               [closeOnSelect]="true"
@@ -141,11 +141,11 @@
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Colonia:</label>
-          <ng-select 
+         <ng-select 
+ 	          appendTo="body"
             [items]="cols"        
             bindLabel="sUbicacion"
             placeholder="Colonia"
-            appendTo="body"
             [searchable]="false" 
             [clearable]="false"
             [closeOnSelect]="true"
