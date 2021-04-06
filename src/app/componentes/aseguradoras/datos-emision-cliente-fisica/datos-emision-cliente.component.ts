@@ -3,6 +3,7 @@ import {InfovehiculoService} from '../../../servicios/infovehiculo.service';
 import {RequestNacionalidad } from '../../../interphaces/nacionali';
 import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
 import { FechasModel } from '../../../interphaces/models/Fechas.model';
+import {Location} from '@angular/common';
 import { NgbDateStruct, NgbCalendar, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import * as $ from 'jquery';
 import { constants } from 'os';
@@ -46,7 +47,7 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
     iIdUbicacion: number,
     sUbicacion: string }[];
   coloniasel;
-  constructor( private InfovehiculoService: InfovehiculoService) { }
+  constructor( private locate: Location, private InfovehiculoService: InfovehiculoService) { }
   getUbicacion( cp ?: string ) {
     this.coloniasel = '';
     this.InfovehiculoService.getApiCPs({
@@ -220,7 +221,9 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
         return age = this.year - num.year;
       }
   }
-  
+  onback(){
+    this.locate.back();
+  }
   ngOnInit(): void {
     this.Nacion = this.InfovehiculoService.getNacionalidades();
     this.nacionalidadsel = { NacString: 'MEXICANA', NacClave: 'MEX' };
