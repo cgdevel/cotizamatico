@@ -30,6 +30,7 @@ import { DatosEmisionVehiculoComponent } from './componentes/aseguradoras/datos-
 import { DatosEmisionClienteFisicaComponent } from '../app/componentes/aseguradoras/datos-emision-cliente-fisica/datos-emision-cliente.component';
 import { EmisionFinalComponent } from './componentes/emision-final/emision-final.component';
 import { DatosEmisionClienteMoralComponent } from './componentes/aseguradoras/datos-emision-cliente-moral/datos-emision-cliente-moral.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { DatosEmisionClienteMoralComponent } from './componentes/aseguradoras/da
     DatosEmisionVehiculoComponent,
     DatosEmisionClienteFisicaComponent,
     EmisionFinalComponent,
-    DatosEmisionClienteMoralComponent
+    DatosEmisionClienteMoralComponent,
+    LoginComponent
   ],
   imports: [
     FormsModule,
