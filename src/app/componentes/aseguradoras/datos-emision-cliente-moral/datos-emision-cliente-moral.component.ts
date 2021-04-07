@@ -1,6 +1,7 @@
 import { Component, OnInit,Input, ViewChild  } from '@angular/core';
 import {InfovehiculoService} from '../../../servicios/infovehiculo.service';
 import { NgbDateStruct, NgbCalendar, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-datos-emision-cliente-moral',
@@ -23,7 +24,7 @@ export class DatosEmisionClienteMoralComponent implements OnInit {
   municipio: string;
   ubicacion: any;
   item = '';
-  constructor( private InfovehiculoService: InfovehiculoService) { }
+  constructor(  private locate: Location, private InfovehiculoService: InfovehiculoService) { }
   getUbicacion( cp ?: string ) {
     this.coloniasel = '';
     this.InfovehiculoService.getApiCPs({
@@ -39,6 +40,9 @@ export class DatosEmisionClienteMoralComponent implements OnInit {
     }); // suscribecierra
   }
   verificater( nomemp ?: string ){
+  }
+  onback(){
+    this.locate.back();
   }
   ngOnInit(): void {
     this.getUbicacion();

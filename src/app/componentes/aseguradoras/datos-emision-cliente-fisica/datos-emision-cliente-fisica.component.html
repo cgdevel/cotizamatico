@@ -46,12 +46,12 @@
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Estado Civil:</label>
-          <ng-select 
+         <ng-select 
+ 	          appendTo="body"
             [items]="EsCivs"
             id="EC"        
             bindLabel="sDato"
             placeholder="Estado Civil"
-            appendTo="body"
             [searchable]="false" 
             [clearable]="false"
             [closeOnSelect]="true"
@@ -63,10 +63,10 @@
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Ocupación:</label>
-          <ng-select 
+         <ng-select 
+ 	          appendTo="body"
             [items]="Ocup"       
             bindLabel="sDato"
-            appendTo="body"
             [searchable]="true" 
             [clearable]="false"
             [closeOnSelect]="true"
@@ -104,10 +104,10 @@
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Nacionalidad:</label>
-          <ng-select 
+         <ng-select 
+ 	            appendTo="body"
               [items]="Nacion"       
               bindLabel="NacString"
-              appendTo="body"
               [searchable]="true" 
               [clearable]="false"
               [closeOnSelect]="true"
@@ -141,11 +141,11 @@
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Colonia:</label>
-          <ng-select 
+         <ng-select 
+ 	          appendTo="body"
             [items]="cols"        
             bindLabel="sUbicacion"
             placeholder="Colonia"
-            appendTo="body"
             [searchable]="false" 
             [clearable]="false"
             [closeOnSelect]="true"
@@ -171,6 +171,48 @@
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Numero Interior:</label>
           <input type="text" class="form-control" />
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <button
+            class="btn btn-primary pull-right"
+            style="
+              background: linear-gradient(90deg, #ff6963 0%, #ff8f48 100%);
+              border: none;
+              box-shadow: 0 1px 8px 1px rgb(0 0 0 / 8%), 0 1px 6px 0 rgb(0 29 124 / 5%);
+            "
+            [routerLink]="['/selecciona']"
+            routerLinkActive="router-link-active"
+            [ngbTooltip]="ttClienteNombre"
+            tooltipClass="my-custom-class"
+          >
+            Click aquí para editar
+          </button>
+          <ng-template #ttClienteNombre>
+            <b>Si desea editar: <br />
+              1)Edad <br/>
+              2)Sexo <br/>
+              3)Fecha de nacimiento <br/>
+              4)Código Postal
+            </b>
+          </ng-template>
+        </div>
+        <div class="col-6">
+          <button
+          class="btn btn-primary pull-right"
+          style="
+            background: linear-gradient(90deg, #21c7ed 0%, #00d0ff 100%);
+            border: none;
+            box-shadow: 0 1px 8px 1px rgb(0 0 0 / 8%), 0 1px 6px 0 rgb(0 29 124 / 5%);
+          "
+          (click)="onback()"
+          routerLinkActive="router-link-active"
+        >
+          Regresar a comparativo
+        </button>
         </div>
       </div>
     </div>

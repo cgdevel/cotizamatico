@@ -45,14 +45,10 @@
                     tooltipClass="my-custom-class"
                   />
                   <ng-template #ttClienteNombre>
-                    <b *ngIf="!clienteNombre && ( this.clienteEsMoral === false || this.clienteEsMoral === undefined) "
+                    <b *ngIf="!clienteNombre"
                       >Tiene dos opciones para llenar este campo: <br />
                       1)Sólo con su nombre <br />
                       2)Con su nombre completo, iniciando por su nombre
-                    </b>
-                    <b *ngIf="!clienteNombre && this.clienteEsMoral === true ">
-                      A la izquierda de este campo se encuentran los tipos de sociedad,
-                      Ingrese el nombre y seleccione un tipo de sociedad. 
                     </b>
                   </ng-template>
                   <ngb-alert
@@ -275,7 +271,8 @@
             <p class="m-0 mb-2">Fecha de nacimiento</p>
             <div class="row">
               <div class="col-md-4 col-sm-12 mb-3">
-                <ng-select id="cmbNacimietoDia" 
+                <ng-select 
+ 	                appendTo="body" id="cmbNacimietoDia" 
                   [items]="catNacimientoDias"
                   bindLabel="sDato" placeholder="DÍA" [searchable]="false" [clearable]="false" [closeOnSelect]="true"
                   (change)="selectNacimientoDia()" [(ngModel)]="itemNacimientoDia">
@@ -291,7 +288,8 @@
               </div>
 
               <div class="col-md-4 col-sm-12 mb-3">
-                <ng-select id="cmbNacimietoMes" 
+                <ng-select 
+ 	                appendTo="body" id="cmbNacimietoMes" 
                   [items]="catNacimientoMeses" bindLabel="sDato" placeholder="MES"
                   [searchable]="false" [clearable]="false" [closeOnSelect]="true" (change)="selectNacimientoMes()"
                   [(ngModel)]="itemNacimientoMes">
@@ -307,7 +305,8 @@
               </div>
 
               <div class="col-md-4 col-sm-12 mb-3">
-                <ng-select id="cmbNacimietoAnio" 
+                <ng-select 
+ 	                appendTo="body" id="cmbNacimietoAnio" 
                   [items]="catNacimientoAnios" bindLabel="sDato" placeholder="AÑO"
                   [searchable]="false" [clearable]="false" [closeOnSelect]="true" (change)="selectNacimientoAnio()"
                   [(ngModel)]="itemNacimeintoAnio">
