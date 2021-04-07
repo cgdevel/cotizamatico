@@ -74,6 +74,30 @@ export class InfovehiculoService {
     );
   }
 
+  getOneCotizacion() {
+    const req: any = {
+      idAseguradora: 155392,
+      datosVehiculo: {
+        claveVehiculo: '9159',
+        tipoVehiculo: 1,
+      },
+      datosPersona: {
+        fechaNacimientoConductor: '1995-01-01',
+        sexo: 11,
+        cp: '03330',
+        colonia: 'XOCO',
+        poblacion: 'BENITO JUAREZ',
+      },
+      formaPago: 0,
+      coberturas: [],
+    };
+
+    return this.http.post<any>(
+      `${environment.url_api_one}/mapfre/cotizar`,
+      req
+    );
+  }
+
   getOcupaciones() {
     this.Ocupaciones = [];
     this.Ocupaciones.push(

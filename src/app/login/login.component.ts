@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
     });
 
     this.getAplicacionesId();
+    this.getCotizacionEjemploMapfre();
   }
 
   IniciarSesionMinisitio() {
@@ -55,5 +56,16 @@ export class LoginComponent implements OnInit {
         }
       );
     }
+  }
+
+  getCotizacionEjemploMapfre() {
+    this.service.getOneCotizacion().subscribe(
+      (cat) => {
+        console.log(cat);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }
