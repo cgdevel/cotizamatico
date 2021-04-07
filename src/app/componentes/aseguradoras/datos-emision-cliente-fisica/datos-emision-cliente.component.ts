@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {InfovehiculoService} from '../../../servicios/infovehiculo.service';
 import {RequestNacionalidad } from '../../../interphaces/nacionali';
 import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
@@ -7,6 +8,8 @@ import {Location} from '@angular/common';
 import { NgbDateStruct, NgbCalendar, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import * as $ from 'jquery';
 import { constants } from 'os';
+import { Console } from 'console';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-datos-emision-cliente-fisica',
   templateUrl: './datos-emision-cliente-fisica.component.html',
@@ -47,7 +50,35 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
     iIdUbicacion: number,
     sUbicacion: string }[];
   coloniasel;
-  constructor( private locate: Location, private InfovehiculoService: InfovehiculoService) { }
+  form: FormGroup;
+  formRFC: FormGroup;
+  constructor(private locate: Location, private InfovehiculoService: InfovehiculoService){
+    this.form = new FormGroup({
+      'emailIn': new FormControl('', [
+        Validators.required,
+       Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+      ])
+    });
+    this.formRFC = new FormGroup({
+      'RFCIn': new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^(([A-Z]{4})([0-9]{9}))$/)
+      ])
+    });
+  
+  } 
+  setValue() {
+    this.form.setValue({emailIn: this.correo});
+  }
+  setvalueRFC() {
+    this.formRFC.setValue({RFCIn: this.RFC});
+    if (this.nacionalidadsel.NacString !== 'MEXICANA') {
+      this.formRFC.controls.RFCIn.setErrors({
+        pattern: false
+      });
+    }
+  }
+
   getUbicacion( cp ?: string ) {
     this.coloniasel = '';
     this.InfovehiculoService.getApiCPs({
@@ -157,22 +188,32 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
       const day = fechnaciaseg.day.toString();
       const dayhu = day.charAt(0) + day.charAt(1);
       if (fechnaciaseg.month < 10 && fechnaciaseg.day < 10){
-        return this.RFC = strnpate + strnmate + strnom + yearu + '0' + monthu + '0' + dayhu + 'XXX';
+        this.RFC = strnpate + strnmate + strnom + yearu + '0' + monthu + '0' + dayhu + 'XXX';
+        this.setvalueRFC();
+        return this.RFC;
       }else {
         if (fechnaciaseg.month < 10 && fechnaciaseg.day >= 10) {
-          return this.RFC = strnpate + strnmate + strnom + yearu + '0' + monthu + dayhu + 'XXX';
+          this.RFC = strnpate + strnmate + strnom + yearu + '0' + monthu + dayhu + 'XXX';
+          this.setvalueRFC();
+          return this.RFC;
         } else {
           if (fechnaciaseg.month >= 10 && fechnaciaseg.day < 10) {
-            return this.RFC = strnpate + strnmate + strnom + yearu + monthu + '0' + dayhu + 'XXX';
+            this.RFC = strnpate + strnmate + strnom + yearu + monthu + '0' + dayhu + 'XXX';
+            this.setvalueRFC();
+            return this.RFC;
           }else {
             if (fechnaciaseg.month >= 10 && fechnaciaseg.day >= 10) {
-              return this.RFC = strnpate + strnmate + strnom + yearu + monthu + dayhu + 'XXX';
+              this.RFC = strnpate + strnmate + strnom + yearu + monthu + dayhu + 'XXX';
+              this.setvalueRFC();
+              return this.RFC;
             }
           }
         }
       }
     } else if (appaterno || !apmaterno || !nom || !fechnaciaseg) {
-      return this.RFC = '';
+      this.RFC = '';
+      this.setvalueRFC();
+      return this.RFC;
     }
   }
   cambiafecha(e){
@@ -192,16 +233,24 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
         const day = this.fechanaciaseg.day.toString();
         const dayhu = day.charAt(0) + day.charAt(1);
         if (this.fechanaciaseg.month < 10 && this.fechanaciaseg.day < 10){
-        return this.RFC = 'XXXX' + yearu + '0' + monthu + '0' + dayhu + 'XXX';
+        this.RFC = 'XXXX' + yearu + '0' + monthu + '0' + dayhu + 'XXX';
+        this.setvalueRFC();
+        return this.RFC;
       }else {
         if (this.fechanaciaseg.month < 10 && this.fechanaciaseg.day >= 10) {
-          return this.RFC = 'XXXX' + yearu + '0' + monthu + dayhu + 'XXX';
+          this.RFC = 'XXXX' + yearu + '0' + monthu + dayhu + 'XXX';
+          this.setvalueRFC();
+          return this.RFC;
         } else {
           if (this.fechanaciaseg.month >= 10 && this.fechanaciaseg.day < 10) {
-            return this.RFC = 'XXXX' + yearu + monthu + '0' + dayhu + 'XXX';
+            this.RFC = 'XXXX' + yearu + monthu + '0' + dayhu + 'XXX';
+            this.setvalueRFC();
+            return this.RFC;
           }else {
             if (this.fechanaciaseg.month >= 10 && this.fechanaciaseg.day >= 10) {
-              return this.RFC = 'XXXX' + yearu + monthu + dayhu + 'XXX';
+              this.RFC = 'XXXX' + yearu + monthu + dayhu + 'XXX';
+              this.setvalueRFC();
+              return this.RFC;
             }
           }
         }
@@ -224,7 +273,9 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
   onback(){
     this.locate.back();
   }
+
   ngOnInit(): void {
+    this.setValue();
     this.Nacion = this.InfovehiculoService.getNacionalidades();
     this.nacionalidadsel = { NacString: 'MEXICANA', NacClave: 'MEX' };
     this.Ocup = this.InfovehiculoService.getOcupaciones();
