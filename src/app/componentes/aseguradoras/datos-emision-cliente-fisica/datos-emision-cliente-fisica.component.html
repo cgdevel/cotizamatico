@@ -48,17 +48,23 @@
         <div class="form-group col-12 col-md-4">
           <label class="form-label">RFC:</label>
           <form [formGroup]="formRFC" >
-            <input 
+            <input
+              id="RFCIn"
+              [(ngModel)]="RFC"
+              type="text" 
               formControlName="RFCIn" 
               class="classform" 
               [ngClass]="{ NoExiste: formRFC.controls.RFCIn.errors?.pattern ||formRFC.controls.RFCIn.value == '' }"
               maxlength="13"
             >
-            <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFC.controls.RFCIn.errors?.pattern" class="alert-danger">
+            <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFC.controls.RFCIn.errors?.pattern &&  RFC.length == 13 " class="alert-danger">
               RFC no válido, verifique HOMOCLAVE
             </ngb-alert>
             <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFC.controls.RFCIn.value == '' " class="alert-danger">
               Dato obligatorio
+            </ngb-alert>
+            <ngb-alert [dismissible]="false" type="danger" *ngIf="RFC.length < 13 && RFC !='' " class="alert-danger">
+              Faltan caracteres
             </ngb-alert>
           </form>
         </div>

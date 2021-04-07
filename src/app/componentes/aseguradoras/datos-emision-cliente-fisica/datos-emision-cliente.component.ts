@@ -31,7 +31,7 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
   item = '';
   apellidomaterno = '';
   apellidopaterno = '';
-  RFC: string;
+  RFC: string= '';
   edad: number;
   year;
   mon;
