@@ -15,6 +15,7 @@ import { ResponseCatalogoCommon } from '../interphaces/response/ResponseCatalogo
 import { ResponseAplicacionesId } from '../interphaces/response/ResponseAplicacionesId.mode';
 import { RequestInicioSesion } from '../interphaces/request/RequestInicioSesion.model';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -460,5 +461,10 @@ export class InfovehiculoService {
       { sDato: ' S.A.A.', sLlave: 'Sociedad Anónima Abierta' }
     );
     return this.terminaciones;
+  }
+
+  downloadPdf() {
+    const responsepdf = this.http.post(`${environment.url_api_pdf}`,{});
+    return responsepdf;
   }
 }
