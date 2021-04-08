@@ -98,13 +98,14 @@ export class VermasComponent implements OnInit {
   }
   descargapdf(){
     let anypdf: any;
-   this.infovehiculoService.downloadPdf().subscribe(res=>{
-     console.log(res);
-     anypdf=res
-     var data = new Blob([anypdf.byArchivoBytes],{ type: 'text/plain;charset=utf-8' })
-     FileSaver.saveAs( data, `${anypdf.sArchivoNombre}`);
+    this.infovehiculoService.downloadPdf().subscribe(res=>{
+    anypdf=res
+    var b64toBlob = require('b64-to-blob');
+    var contentType = 'application/pdf';
+    var b64Data = anypdf.byArchivoBytes;
+    var blob = b64toBlob(b64Data, contentType);
+    FileSaver.saveAs( blob, `${anypdf.sArchivoNombre}`);
    });
-    
   }
   
 }
