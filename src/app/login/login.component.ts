@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { InfovehiculoService } from '../servicios/infovehiculo.service';
-import { Constantes } from '../interphaces/Constantes';
+import { Constantes } from '../core/Constantes';
 import { SecureStorageServiceService } from '../core/secure-storage-service.service';
 
 @Component({
@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private service: InfovehiculoService,
     private storageService: SecureStorageServiceService
   ) {}
@@ -21,17 +22,47 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.usuario = '';
 
+    this.getAplicacionesId();
+
     this.route.params.subscribe((p) => {
       this.usuario = p.UserId;
       this.IniciarSesionMinisitio();
     });
 
-    this.getAplicacionesId();
-    this.getCotizacionEjemploMapfre();
+    // this.getCotizacionEjemploMapfre();
   }
 
   IniciarSesionMinisitio() {
-    console.log(this.usuario);
+    const apps = this.storageService.getJsonValue(Constantes.sesiones.appsId);
+    console.log(apps);
+
+    this.service
+      .getInicioSesion({
+        iIdSistema: apps.find((x) => x.sAplicacion === 'Cotizamaticos')
+          .iIdAplicacion,
+        sNombreCredencial: this.usuario,
+      })
+      .subscribe(
+        (result) => {
+          if (result.Success !== undefined) {
+            console.log('Error: Inicio Sesión');
+            console.log(result.Message);
+            alert('Error de inicio de sesión');
+          }
+
+          this.storageService.setJsonValue(
+            Constantes.sesiones.datosSesion,
+            result
+          );
+
+          this.router.navigate(['/']);
+        },
+        (err) => {
+          console.log('Error: Inicio Sesión 2');
+          console.log(err.message);
+          alert('Error de inicio de sesión');
+        }
+      );
   }
 
   getAplicacionesId() {

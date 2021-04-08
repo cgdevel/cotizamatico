@@ -1,9 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CookieService } from 'ngx-cookie';
 import { Observable, Subscription } from 'rxjs';
-import { FechasModel } from 'src/app/interphaces/models/Fechas.model';
+import { Constantes } from '../../core/Constantes';
+import { SecureStorageServiceService } from '../../core/secure-storage-service.service';
+import { FechasModel } from '../../interphaces/models/Fechas.model';
 import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
-
 
 @Component({
   selector: 'app-pagina1',
@@ -11,6 +12,8 @@ import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
   styleUrls: ['./pagina1.component.css'],
 })
 export class Pagina1Component implements OnInit {
+  sesion: any;
+
   size: number;
   verCarousle: boolean;
   resizeObservable$: Observable<Event>;
@@ -40,9 +43,18 @@ export class Pagina1Component implements OnInit {
 
   constructor(
     private cookieService: CookieService,
+    private storageService: SecureStorageServiceService
   ) {}
 
   ngOnInit(): void {
+    const sesion = this.storageService.getJsonValue(
+      Constantes.sesiones.datosSesion
+    );
+
+    if (sesion !== null && sesion !== undefined) {
+      this.sesion = sesion;
+    }
+
     this.itemVacio = { sDato: '', sLlave: '' };
     this.vehiculoTipo = this.itemVacio;
     this.vehiculoAnio = this.itemVacio;
@@ -82,7 +94,6 @@ export class Pagina1Component implements OnInit {
     this.vehiculoDescripcion = e;
     this.ValidarDatosObligatorios();
   }
-  
 
   handlerClienteNombre(e: string) {
     this.clienteNombre = e;
@@ -118,21 +129,21 @@ export class Pagina1Component implements OnInit {
 
   ValidarDatosObligatorios() {
     if (this.vehiculoTipo === this.itemVacio) {
-      return this.datosValidos = false;
-    }else if (this.vehiculoAnio === this.itemVacio) {
-      return this.datosValidos = false;
-    }else if (this.vehiculoMarca === this.itemVacio) {
-      return this.datosValidos = false;
-    }else if (this.vehiculoDescripcion === this.itemVacio) {
-      return this.datosValidos = false;
-    }else if (this.clienteNombre === '') {
-      return this.datosValidos = false;
-    }else if (this.clienteMail === '') {
-      return this.datosValidos = false;
-    }else if (this.clienteTelefono === '') {
-      return this.datosValidos = false;
-    }else if (this.clienteTipoPersona === '') {
-      return this.datosValidos = false;
+      return (this.datosValidos = false);
+    } else if (this.vehiculoAnio === this.itemVacio) {
+      return (this.datosValidos = false);
+    } else if (this.vehiculoMarca === this.itemVacio) {
+      return (this.datosValidos = false);
+    } else if (this.vehiculoDescripcion === this.itemVacio) {
+      return (this.datosValidos = false);
+    } else if (this.clienteNombre === '') {
+      return (this.datosValidos = false);
+    } else if (this.clienteMail === '') {
+      return (this.datosValidos = false);
+    } else if (this.clienteTelefono === '') {
+      return (this.datosValidos = false);
+    } else if (this.clienteTipoPersona === '') {
+      return (this.datosValidos = false);
     } else {
       if (this.clienteTipoPersona !== 'Moral') {
         if (

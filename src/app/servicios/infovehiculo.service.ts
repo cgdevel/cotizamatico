@@ -13,6 +13,7 @@ import { RequestNacionalidad } from '../../app/interphaces/nacionali';
 import { RequestCatalogoCommon } from '../interphaces/request/RequestCatalogoCommon.Model';
 import { ResponseCatalogoCommon } from '../interphaces/response/ResponseCatalogoCommon.Model';
 import { ResponseAplicacionesId } from '../interphaces/response/ResponseAplicacionesId.mode';
+import { RequestInicioSesion } from '../interphaces/request/RequestInicioSesion.model';
 
 @Injectable({
   providedIn: 'root',
@@ -94,6 +95,13 @@ export class InfovehiculoService {
 
     return this.http.post<any>(
       `${environment.url_api_one}/mapfre/cotizar`,
+      req
+    );
+  }
+
+  getInicioSesion(req: RequestInicioSesion) {
+    return this.http.post<ResponseAplicacionesId>(
+      `${environment.url_api_autos}cotizamatico/inicioMinisitioBr`,
       req
     );
   }
