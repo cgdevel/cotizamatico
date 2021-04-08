@@ -211,7 +211,7 @@ export class InfoaseguradoComponent implements OnInit {
       return;
     }
     this.valClienteMailVacio = true;
-    const reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    const reg =/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.valClienteMailNoValido = reg.test(this.clienteMail);
 
     if (this.valClienteMailNoValido) {
@@ -357,40 +357,33 @@ export class InfoaseguradoComponent implements OnInit {
     this.valCodigoPostalVacio = true;
     this.valCodigoPostalValidando = true;
     this.valCodigoPostalValido = true;
-    if (this.clienteCodigoPostal === '') {
+    if (this.clienteCodigoPostal === '' || this.clienteCodigoPostal.length < 5) {
       this.valCodigoPostalVacio = false;
       this.emitClienteCodigoPostal.emit('');
       return;
-    }
+    }else{
+      this.valCodigoPostalValidando = false;
 
-    if (this.clienteCodigoPostal.length < 5) {
-      this.valCodigoPostalLongitud = false;
-      this.emitClienteCodigoPostal.emit('');
-      return;
-    }
+      const req: RequestCatalogoCotizamatico = {
+        Filtro: this.clienteCodigoPostal,
+        IdAplication: 2,
+        NombreCatalogo: 'Sepomex',
+      };
 
-    this.valCodigoPostalValidando = false;
+      this.infovehiculoService.getCatalogosCotizamatico(req).subscribe((data) => {
+        this.valCodigoPostalValidando = true;
+        if (data.Error !== null) {
+          this.valCodigoPostalValido = false;
+          this.emitClienteCodigoPostal.emit('');
+          return;
+        }
 
-    const req: RequestCatalogoCotizamatico = {
-      Filtro: this.clienteCodigoPostal,
-      IdAplication: 2,
-      NombreCatalogo: 'Sepomex',
-    };
-
-    this.infovehiculoService.getCatalogosCotizamatico(req).subscribe((data) => {
-      this.valCodigoPostalValidando = true;
-
-      if (data.Error !== null) {
-        this.valCodigoPostalValido = false;
-        this.emitClienteCodigoPostal.emit('');
-        return;
+        this.emitClienteCodigoPostal.emit(this.clienteCodigoPostal);
+        const guardacookieCodigoPostal = this.clienteCodigoPostal ;
+        this.cookieService.put('Codigo Postal', guardacookieCodigoPostal);
+      });
       }
-
-      this.emitClienteCodigoPostal.emit(this.clienteCodigoPostal);
-      const guardacookieCodigoPostal = this.clienteCodigoPostal ;
-      this.cookieService.put('Codigo Postal', guardacookieCodigoPostal);
-    });
-  }
+  } // oncodigochanged
 
   selectNacimientoDia() {
     if ( this.itemNacimientoDia.sDato !== '') {

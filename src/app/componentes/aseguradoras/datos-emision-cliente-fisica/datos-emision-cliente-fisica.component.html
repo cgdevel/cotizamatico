@@ -15,6 +15,9 @@
             [ngClass]="{ Existe: this.nombre!='' ,NoExiste: this.nombre=='' || this.nombre.length<3}" 
             onkeypress="return( !(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))
           "/>
+          <ngb-alert [dismissible]="false" type="danger" *ngIf="this.nombre=='' " class="alert-danger">
+            Dato obligatorio
+          </ngb-alert>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Apellido Paterno:</label>
@@ -25,6 +28,9 @@
             class="form-control"  
             onkeypress="return( !(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))
           "/>
+          <ngb-alert [dismissible]="false" type="danger" *ngIf="this.apellidopaterno=='' " class="alert-danger">
+            Dato obligatorio
+          </ngb-alert>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Apellido Materno:</label>
@@ -35,15 +41,50 @@
             class="form-control"  
             onkeypress="return( !(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))
           "/>
+          <ngb-alert [dismissible]="false" type="danger" *ngIf="this.apellidomaterno=='' " class="alert-danger">
+            Dato obligatorio
+          </ngb-alert>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">RFC:</label>
-          <input type="text" [value]="RFC" [(ngModel)]="RFC" class="form-control" />
+          <form [formGroup]="formRFC" >
+            <input
+              id="RFCIn"
+              [(ngModel)]="RFC"
+              type="text" 
+              formControlName="RFCIn" 
+              class="classform" 
+              [ngClass]="{ NoExiste: formRFC.controls.RFCIn.errors?.pattern ||formRFC.controls.RFCIn.value == '' }"
+              maxlength="13"
+            >
+            <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFC.controls.RFCIn.errors?.pattern &&  RFC.length == 13 " class="alert-danger">
+              RFC no válido, verifique HOMOCLAVE
+            </ngb-alert>
+            <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFC.controls.RFCIn.value == '' " class="alert-danger">
+              Dato obligatorio
+            </ngb-alert>
+            <ngb-alert [dismissible]="false" type="danger" *ngIf="RFC.length < 13 && RFC !='' " class="alert-danger">
+              Faltan caracteres
+            </ngb-alert>
+          </form>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Correo:</label>
-          <input [value]="this.correo" [(ngModel)]="correo" type="text" class="form-control" />
+          <form [formGroup]="form" >
+            <input 
+              formControlName="emailIn" 
+              class="classform" 
+              [ngClass]="{ NoExiste: form.controls.emailIn.errors?.pattern ||form.controls.emailIn.value == '' }"   
+            >
+            <ngb-alert [dismissible]="false" type="danger" *ngIf="form.controls.emailIn.errors?.pattern" class="alert-danger">
+              Correo no válido
+            </ngb-alert>
+            <ngb-alert [dismissible]="false" type="danger" *ngIf="form.controls.emailIn.value == '' " class="alert-danger">
+              Dato obligatorio
+            </ngb-alert>
+          </form>
         </div>
+        
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Estado Civil:</label>
          <ng-select 
