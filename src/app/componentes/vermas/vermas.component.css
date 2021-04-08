@@ -117,7 +117,7 @@ tr#padou > td > svg {
 }
 
 .svg__movil {
-  width: 100px;
+  width: 120px;
 }
 
 .btd tr {
@@ -138,4 +138,13 @@ tr#padou > td > svg {
 .coberturas__card h5 {
   color: #ff6666;
   font-weight: 500;
+}
+
+.btd p {
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.form-group label {
+  font-weight: bold;
 }
