@@ -7,24 +7,48 @@
       <div class="row">
         <div class="form-group col-md-4 col-12">
           <label class="form-label">Tipo:</label>
-          <input type="text"  [(ngModel)]="modeloSelect.sDato" [value]="modeloSelect.sDato"  disabled="true" class="form-control" />
+          <input
+            type="text"
+            [(ngModel)]="modeloSelect.sDato"
+            [value]="modeloSelect.sDato"
+            disabled="true"
+            class="form-control"
+          />
         </div>
         <div class="form-group col-md-4 col-12">
           <label class="form-label">Año:</label>
-          <input type="text" [value]="this.anioSelect.sDato"  [(ngModel)]="anioSelect.sDato" disabled="true" class="form-control" />
+          <input
+            type="text"
+            [value]="this.anioSelect.sDato"
+            [(ngModel)]="anioSelect.sDato"
+            disabled="true"
+            class="form-control"
+          />
         </div>
         <div class="form-group col-md-4 col-12">
           <label class="form-label">Marca :</label>
-          <input type="text" [value]="this.marcaSelect.sDato"  [(ngModel)]="marcaSelect.sDato"  disabled="true" class="form-control" />
+          <input
+            type="text"
+            [value]="this.marcaSelect.sDato"
+            [(ngModel)]="marcaSelect.sDato"
+            disabled="true"
+            class="form-control"
+          />
         </div>
         <div class="form-group col-md-4 col-12">
           <label class="form-label">Descripción:</label>
-          <input type="text" [value]="this.descripSelect.sDato"  [(ngModel)]="descripSelect.sDato"  disabled="true" class="form-control" />
+          <input
+            type="text"
+            [value]="this.descripSelect.sDato"
+            [(ngModel)]="descripSelect.sDato"
+            disabled="true"
+            class="form-control"
+          />
         </div>
         <div class="form-group col-md-4 col-12">
           <label class="form-label">Número de Serie:</label>
           <input
-            id="NumdeSerie" 
+            id="NumdeSerie"
             maxlength="17"
             type="text"
             class="form-control"
@@ -40,12 +64,15 @@
                                 || (event.charCode==80)
                                 || (event.charCode==112))"
           />
-<!-- para que admita "q" ( 106 <= event.charCode  && event.charCode < 123 ) -->     
-<!-- para que admita "i" ( 97 <= event.charCode  && event.charCode < 112 ) -->       
+          <!-- para que admita "q" ( 106 <= event.charCode  && event.charCode < 123 ) -->
+          <!-- para que admita "i" ( 97 <= event.charCode  && event.charCode < 112 ) -->
         </div>
         <div class="form-group col-md-4 col-12">
           <label class="form-label">Número de Placa:</label>
-          <input type="text" class="form-control" 
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="numeroPlaca"
             onkeypress="return( !!(
               ( 97 <= event.charCode  && event.charCode < 123 )||
               ( 65 <= event.charCode  && event.charCode < 91 )||
@@ -54,7 +81,10 @@
         </div>
         <div class="form-group col-md-4 col-12">
           <label class="form-label">Número de Motor:</label>
-          <input type="text" class="form-control" 
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="numeroMotor"
             onkeypress="return( !!(
                       ( 97 <= event.charCode  && event.charCode < 123 )||
                       ( 65 <= event.charCode  && event.charCode < 91 )||

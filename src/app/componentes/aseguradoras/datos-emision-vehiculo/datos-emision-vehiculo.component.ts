@@ -4,17 +4,21 @@ import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
 @Component({
   selector: 'app-datos-emision-vehiculo',
   templateUrl: './datos-emision-vehiculo.component.html',
-  styleUrls: ['./datos-emision-vehiculo.component.css']
+  styleUrls: ['./datos-emision-vehiculo.component.css'],
 })
 export class DatosEmisionVehiculoComponent implements OnInit {
-  @Input() modeloSelect: CatalogoModel = { sLlave: '', sDato: ''} ;
-  @Input() anioSelect: CatalogoModel ;
-  @Input() marcaSelect: CatalogoModel ;
-  @Input() descripSelect: CatalogoModel ;
+  @Input() modeloSelect: CatalogoModel = { sLlave: '', sDato: '' };
+  @Input() anioSelect: CatalogoModel;
+  @Input() marcaSelect: CatalogoModel;
+  @Input() descripSelect: CatalogoModel;
 
-  constructor() { }
+  numeroPlaca: string;
+  numeroMotor: string;
+
+  constructor() {}
 
   ngOnInit(): void {
+    this.numeroMotor = 'EXTRANJERO';
+    this.numeroPlaca = 'PERMISO';
   }
-
 }
