@@ -23,7 +23,11 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
   @Input() codigopostal = '';
   @Input() correo = '';
   @Input() telefono = '';
+  valClienteTelefonoVacio: boolean;
+  valClienteTelefonoNoValido: boolean;
+  validotelefono: boolean;
   @Input() genero = '';
+  TipoPersona = '';
   @Input() fecha: FechasModel;
   nombreNOCom: boolean;
   Nacion = new Array<RequestNacionalidad>();
@@ -273,9 +277,92 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
   onback(){
     this.locate.back();
   }
-
+  onTelefonoChange() {
+    if (this.telefono !== '' && this.telefono.length === 10) {
+      this.valClienteTelefonoVacio = true;
+      const regt1 = /[1]{4}/;
+      const regt2 = /[2]{4}/;
+      const regt3 = /[3]{4}/;
+      const regt4 = /[4]{4}/;
+      const regt5 = /[5]{4}/;
+      const regt6 = /[6]{4}/;
+      const  regt7 = /[7]{4}/;
+      const regt8 = /[8]{4}/;
+      const  regt9 = /[9]{4}/;
+      const regt0 = /[0]{4}/;
+      this.validotelefono = regt1.test(this.telefono);
+      if (this.validotelefono) {
+        this.valClienteTelefonoNoValido = true;
+        this.telefono = '  ';
+      } else {
+        this.validotelefono = regt2.test(this.telefono);
+        if (this.validotelefono) {
+          this.valClienteTelefonoNoValido = true;
+          this.telefono = '  ';
+        } else {
+          this.validotelefono = regt3.test(this.telefono);
+          if (this.validotelefono) {
+            this.valClienteTelefonoNoValido = true;
+            this.telefono = '  ';
+          } else {
+            this.validotelefono = regt4.test(this.telefono);
+            if (this.validotelefono) {
+              this.valClienteTelefonoNoValido = true;
+              this.telefono = '  ';
+            } else {
+              this.validotelefono = regt5.test(this.telefono);
+              if (this.validotelefono) {
+                this.valClienteTelefonoNoValido = true;
+                this.telefono = '  ';
+              } else {
+                this.validotelefono = regt6.test(this.telefono);
+                if (this.validotelefono) {
+                  this.valClienteTelefonoNoValido = true;
+                  this.telefono = '  ';
+                } else {
+                  this.validotelefono = regt7.test(this.telefono);
+                  if (this.validotelefono) {
+                    this.valClienteTelefonoNoValido = true;
+                    this.telefono = '  ';
+                  } else {
+                    this.validotelefono = regt8.test(this.telefono);
+                    if (this.validotelefono) {
+                      this.valClienteTelefonoNoValido = true;
+                      this.telefono = '  ';
+                    } else {
+                      this.validotelefono = regt9.test(this.telefono);
+                      if (this.validotelefono) {
+                        this.valClienteTelefonoNoValido = true;
+                        this.telefono = '  ';
+                      } else {
+                        this.validotelefono = regt0.test(this.telefono);
+                        if (this.validotelefono) {
+                          this.valClienteTelefonoNoValido = true;
+                          this.telefono = '  ';
+                        } else {
+                          this.valClienteTelefonoNoValido = false;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    } else {
+      if (this.telefono === '' || this.telefono.length !== 10 ) {
+        this.telefono === '' ? this.valClienteTelefonoVacio = false : this.valClienteTelefonoVacio = true ;
+        this.telefono.length !== 10 ? this.valClienteTelefonoNoValido = true :  this.valClienteTelefonoNoValido = false;
+        return;
+      }
+    }
+  }
   ngOnInit(): void {
+    this.onTelefonoChange();
     this.setValue();
+    this.genero == 'Masculino' || this.genero=='Femenino' ? this.TipoPersona='Física' : this.TipoPersona='Moral';
     this.Nacion = this.InfovehiculoService.getNacionalidades();
     this.nacionalidadsel = { NacString: 'MEXICANA', NacClave: 'MEX' };
     this.Ocup = this.InfovehiculoService.getOcupaciones();

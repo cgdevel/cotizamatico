@@ -29,7 +29,6 @@
 <div class="container mw-100">
   <app-datos-emision-cliente-fisica
     *ngIf="this.genero != 'Moral'"
-    [aseguradoraSelect]="this.aseguradora"
     [codigopostal]="this.codigopostal"
     [nombre]="this.nombreaseg"
     [telefono]="this.telefono"
@@ -41,7 +40,7 @@
     *ngIf="this.genero == 'Moral' && this.aseguradora != 'SURA'"
     [aseguradoraSelect]="this.aseguradora"
     [codigopostal]="this.codigopostal"
-    [nombre]="this.nombreaseg"
+    [razonsocial]="this.nombreaseg"
   ></app-datos-emision-cliente-moral>
 </div>
 

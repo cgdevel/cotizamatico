@@ -1,4 +1,5 @@
 import { Component, OnInit,Input, ViewChild  } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {InfovehiculoService} from '../../../servicios/infovehiculo.service';
 import { NgbDateStruct, NgbCalendar, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import {Location} from '@angular/common';
@@ -9,13 +10,26 @@ import {Location} from '@angular/common';
   styleUrls: ['./datos-emision-cliente-moral.component.css']
 })
 export class DatosEmisionClienteMoralComponent implements OnInit {
+  constructor(  private locate: Location, private InfovehiculoService: InfovehiculoService) {
+    this.formRFCMo = new FormGroup({
+      'RFMoCIn': new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^(([A-Za-z]{3})([0-9]{6})([0-9A-Za-z]{3}))$/)
+      ])
+    });
+  } 
   @Input() codigopostal = '';
   @Input() aseguradoraSelect: string ;
-  @Input() nombre = '';
-  RFC: string;
+  @Input() razonsocial = '';
+  @ViewChild('dp') dp: NgbDatepicker;
+  RFCMoral: string;
+  year;
+  mon;
+  day;
+  yearulti:number;
+  yearpri:number;
   fechacontiaseg: NgbDateStruct;
   date: { year: number, month: number };
-  @ViewChild('dp') dp: NgbDatepicker;
   cols: {
     iIdUbicacion: number,
     sUbicacion: string }[];
@@ -24,7 +38,11 @@ export class DatosEmisionClienteMoralComponent implements OnInit {
   municipio: string;
   ubicacion: any;
   item = '';
-  constructor(  private locate: Location, private InfovehiculoService: InfovehiculoService) { }
+  formRFCMo: FormGroup;
+  ngOnInit(): void {
+    this.getUbicacion();
+    this.calculaminymax();
+  }
   getUbicacion( cp ?: string ) {
     this.coloniasel = '';
     this.InfovehiculoService.getApiCPs({
@@ -44,8 +62,17 @@ export class DatosEmisionClienteMoralComponent implements OnInit {
   onback(){
     this.locate.back();
   }
-  ngOnInit(): void {
-    this.getUbicacion();
+  calculaminymax(){
+    const today = new Date();
+      this.year = today.getFullYear();
+      this.mon = today.getMonth() + 1;
+      this.day = today.getDay();
+  
+  this.yearulti=Number( today.getFullYear()-75);
+  this.yearpri=Number( today.getFullYear()-18);
+  console.log(this.yearulti+'   '+this.yearpri)
+
   }
+  
 
 }

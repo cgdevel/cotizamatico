@@ -49,7 +49,6 @@
           <label class="form-label">RFC:</label>
           <form [formGroup]="formRFC" >
             <input
-              id="RFCIn"
               [(ngModel)]="RFC"
               type="text" 
               formControlName="RFCIn" 
@@ -139,9 +138,35 @@
           <label class="form-label">Género:</label>
           <input type="text" [value]="this.genero" [(ngModel)]="genero"  class="form-control" disabled />
         </div>
+        <div class="form-group col-12 col-md-4" *ngIf="this.genero != 'Moral'">
+          <label class="form-label">Tipo de persona:</label>
+          <input type="text" [value]="this.TipoPersona" class="form-control" disabled />
+        </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Teléfono:</label>
-          <input  [value]="this.telefono" [(ngModel)]="telefono" type="text" class="form-control" />
+          <input  
+            maxlength="10" 
+            [value]="telefono" 
+            [(ngModel)]="telefono" 
+            type="text" 
+            class="form-control" 
+            onkeypress="return(event.charCode >= 48 && event.charCode <= 57)"
+            (change)="onTelefonoChange()"
+            [ngClass]="{
+              Existe: valClienteTelefonoVacio && !valClienteTelefonoNoValido,
+              NoExiste: !(
+                valClienteTelefonoVacio && !valClienteTelefonoNoValido
+              )
+            }" 
+          />
+          <ngb-alert [dismissible]="false" type="danger"
+              *ngIf="!valClienteTelefonoVacio && valClienteTelefonoNoValido">
+              Dato Obligatorio
+            </ngb-alert>
+            <ngb-alert [dismissible]="false" type="danger"
+              *ngIf="valClienteTelefonoVacio && valClienteTelefonoNoValido">
+              Teléfono no válido
+            </ngb-alert>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Nacionalidad:</label>
