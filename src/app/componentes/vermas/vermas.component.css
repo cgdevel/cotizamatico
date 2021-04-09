@@ -126,7 +126,7 @@ tr#padou > td > svg {
 }
 
 .coberturas__card {
-  margin-top: 230px;
+  margin-top: 160px;
 }
 
 .coberturas__card p {
@@ -147,4 +147,10 @@ tr#padou > td > svg {
 
 .form-group label {
   font-weight: bold;
+}
+
+@media (max-width: 576px) {
+  .form-group label {
+    font-size: 12px !important;
+  }
 }
