@@ -18,7 +18,7 @@ export class DatosEmisionVehiculoComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.numeroMotor = 'EXTRANJERO';
+    this.numeroMotor = 'SIN NUMERO';
     this.numeroPlaca = 'PERMISO';
   }
 }

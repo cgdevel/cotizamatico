@@ -7,15 +7,8 @@ import { FechasModel } from '../../../interphaces/models/Fechas.model';
 import { Location } from '@angular/common';
 import {
   NgbDateStruct,
-  NgbCalendar,
   NgbDatepicker,
 } from '@ng-bootstrap/ng-bootstrap';
-import * as $ from 'jquery';
-import { constants } from 'os';
-import { Console } from 'console';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { ConsoleService } from '@ng-select/ng-select/lib/console.service';
-import { ConstantPool } from '@angular/compiler';
 @Component({
   selector: 'app-datos-emision-cliente-fisica',
   templateUrl: './datos-emision-cliente-fisica.component.html',
@@ -41,7 +34,7 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
   item = '';
   apellidomaterno = '';
   apellidopaterno = '';
-  RFC: string = '';
+  RFC = '';
   edad: number;
   year;
   mon;
@@ -508,8 +501,6 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
       })
       .subscribe(
         (data) => {
-          debugger;
-
           if (data.Error !== null) {
             console.log('Error de catálogo Ocupaciones');
             return;

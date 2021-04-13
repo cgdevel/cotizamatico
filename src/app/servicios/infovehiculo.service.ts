@@ -51,7 +51,7 @@ export class InfovehiculoService {
 
   getApiAseguradoras(query: PeticionAutoAse) {
     return this.http.post<any>(
-      `${environment.url_api_autos}homologacionbr`,
+      `${environment.url_api_autos}/homologacionbr`,
       query
     );
   }
@@ -334,7 +334,7 @@ export class InfovehiculoService {
   }
 
   downloadPdf() {
-    const responsepdf = this.http.post(`${environment.url_api_autos}cotizamatico/recuperarPdfComparativoBr`,{});
+    const responsepdf = this.http.post(`${environment.url_api_autos}/cotizamatico/recuperarPdfComparativoBr`,{});
     return responsepdf;
   }
 }
