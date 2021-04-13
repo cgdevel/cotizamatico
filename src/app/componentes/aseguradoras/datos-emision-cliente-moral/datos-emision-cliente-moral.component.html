@@ -32,13 +32,13 @@
                 formControlName="RFMoCIn" 
                 class="classform" 
                 maxlength="12"
-                [ngClass]="{ NoExiste: this.formRFCMo.controls.RFMoCIn.errors?.pattern || this.formRFCMo.controls.RFMoCIn.value == '' }"
+                [ngClass]="{ NoExiste: formRFCMo.controls.RFMoCIn.errors?.pattern || formRFCMo.controls.RFMoCIn.value == '' }"
               >
               {{this.RFCMoral}}
-              <ngb-alert [dismissible]="false" type="danger" *ngIf="this.formRFCMo.controls.RFMoCIn.errors?.pattern &&  this.RFCMoral.length == 12 " class="alert-danger">
+              <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFCMo.controls.RFMoCIn.errors?.pattern &&  RFCMoral.length == 12 " class="alert-danger">
                 RFC no válido, verifique HOMOCLAVE
               </ngb-alert>
-              <ngb-alert [dismissible]="false" type="danger" *ngIf="this.formRFCMo.controls.RFMoCIn.value == '' " class="alert-danger">
+              <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFCMo.controls.RFMoCIn.value == '' " class="alert-danger">
                 Dato obligatorio
               </ngb-alert>
               <!-- <ngb-alert [dismissible]="false" type="danger" *ngIf="this.formRFCMo.controls.RFMoCIn.value != ''  &&  this.RFCMoral.length < 12  " class="alert-danger">

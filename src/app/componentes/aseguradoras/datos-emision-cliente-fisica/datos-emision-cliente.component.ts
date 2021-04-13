@@ -71,7 +71,7 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
     this.formRFC = new FormGroup({
       RFCIn: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^(([A-Z]{4})([0-9]{9}))$/),
+        Validators.pattern(/^((([A-Z]{4})([0-9]{6})(([A-Z0-9]{3})|([0]{3}))))$/),
       ]),
     });
   }
@@ -258,13 +258,13 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
           monthu +
           '0' +
           dayhu +
-          'XXX';
+          '000';
         this.setvalueRFC();
         return this.RFC;
       } else {
         if (fechnaciaseg.month < 10 && fechnaciaseg.day >= 10) {
           this.RFC =
-            strnpate + strnmate + strnom + yearu + '0' + monthu + dayhu + 'XXX';
+            strnpate + strnmate + strnom + yearu + '0' + monthu + dayhu + '000';
           this.setvalueRFC();
           return this.RFC;
         } else {
@@ -277,13 +277,13 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
               monthu +
               '0' +
               dayhu +
-              'XXX';
+              '000';
             this.setvalueRFC();
             return this.RFC;
           } else {
             if (fechnaciaseg.month >= 10 && fechnaciaseg.day >= 10) {
               this.RFC =
-                strnpate + strnmate + strnom + yearu + monthu + dayhu + 'XXX';
+                strnpate + strnmate + strnom + yearu + monthu + dayhu + '000';
               this.setvalueRFC();
               return this.RFC;
             }
@@ -318,17 +318,17 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
         const day = this.fechanaciaseg.day.toString();
         const dayhu = day.charAt(0) + day.charAt(1);
         if (this.fechanaciaseg.month < 10 && this.fechanaciaseg.day < 10) {
-          this.RFC = 'XXXX' + yearu + '0' + monthu + '0' + dayhu + 'XXX';
+          this.RFC = 'XXXX' + yearu + '0' + monthu + '0' + dayhu + '000';
           this.setvalueRFC();
           return this.RFC;
         } else {
           if (this.fechanaciaseg.month < 10 && this.fechanaciaseg.day >= 10) {
-            this.RFC = 'XXXX' + yearu + '0' + monthu + dayhu + 'XXX';
+            this.RFC = 'XXXX' + yearu + '0' + monthu + dayhu + '000';
             this.setvalueRFC();
             return this.RFC;
           } else {
             if (this.fechanaciaseg.month >= 10 && this.fechanaciaseg.day < 10) {
-              this.RFC = 'XXXX' + yearu + monthu + '0' + dayhu + 'XXX';
+              this.RFC = 'XXXX' + yearu + monthu + '0' + dayhu + '000';
               this.setvalueRFC();
               return this.RFC;
             } else {
@@ -336,7 +336,7 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
                 this.fechanaciaseg.month >= 10 &&
                 this.fechanaciaseg.day >= 10
               ) {
-                this.RFC = 'XXXX' + yearu + monthu + dayhu + 'XXX';
+                this.RFC = 'XXXX' + yearu + monthu + dayhu + '000';
                 this.setvalueRFC();
                 return this.RFC;
               }
