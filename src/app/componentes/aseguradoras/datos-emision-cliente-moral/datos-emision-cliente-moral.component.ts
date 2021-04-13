@@ -22,7 +22,7 @@ export class DatosEmisionClienteMoralComponent implements OnInit {
   @Input() aseguradoraSelect: string ;
   @Input() razonsocial = '';
   @ViewChild('dp') dp: NgbDatepicker;
-  RFCMoral: string;
+  RFCMoral: string = '';
   year;
   mon;
   day;
