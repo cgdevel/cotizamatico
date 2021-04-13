@@ -492,10 +492,11 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
     this.edad = this.calculaedad(this.fechanaciaseg);
     this.verificaCompletoNom(this.nombre);
   }
+  mayusRFC(rfc: string){
+    this.RFC = rfc.toLocaleUpperCase()
+  }
 
   getOcupaciones() {
-    console.log('ocupaciones');
-
     this.infovehiculoService
       .getOcupaciones({
         Filtro: 0,

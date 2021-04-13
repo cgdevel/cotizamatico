@@ -76,6 +76,9 @@ export class DatosEmisionClienteMoralComponent implements OnInit {
   console.log(this.yearulti+'   '+this.yearpri)
 
   }
+  mayusRFC(rfcmor: string){
+    this.RFCMoral=rfcmor.toLocaleUpperCase()
+  }
   
 
 }

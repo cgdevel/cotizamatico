@@ -13,8 +13,11 @@
             [(ngModel)]="nombre" 
             class="form-control"  
             [ngClass]="{ Existe: this.nombre!='' ,NoExiste: this.nombre=='' || this.nombre.length<3}" 
-            onkeypress="return( !(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))
-          "/>
+            onkeypress="return(
+                          !(
+                          ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 48 > event.charCode || event.charCode >  57 ))
+                        )"
+          />
           <ngb-alert [dismissible]="false" type="danger" *ngIf="this.nombre=='' " class="alert-danger">
             Dato obligatorio
           </ngb-alert>
@@ -55,6 +58,11 @@
               class="classform" 
               [ngClass]="{ NoExiste: formRFC.controls.RFCIn.errors?.pattern ||formRFC.controls.RFCIn.value == '' }"
               maxlength="13"
+              (change)="mayusRFC(this.RFC)"
+              onkeypress="return(
+                !(
+                  ( 65 > event.charCode || event.charCode > 90) && ( 48 > event.charCode || event.charCode > 57) && ( 97 > event.charCode || event.charCode > 104) )
+                )"
             >
             <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFC.controls.RFCIn.errors?.pattern &&  RFC.length == 13 " class="alert-danger">
               RFC no válido, verifique HOMOCLAVE
