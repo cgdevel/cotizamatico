@@ -59,8 +59,9 @@
           </div>
           <div class="form-group col-12 col-md-4">
             <label class="form-label">Colonia:</label>
-            <ng-select 
+            <ng-select
               [items]="cols"        
+              *ngIf="cols.length > 1" 
               bindLabel="sUbicacion"
               placeholder="Colonia"
               appendTo="body"
@@ -77,6 +78,7 @@
                 </div>
               </ng-template>
             </ng-select>
+            <input disabled="true"  [(ngModel)]="this.coloniasel"  *ngIf="cols.length==1" type="text" class="form-control" />
           </div>
           <div class="form-group col-12 col-md-4">
             <label class="form-label">Calle:</label>

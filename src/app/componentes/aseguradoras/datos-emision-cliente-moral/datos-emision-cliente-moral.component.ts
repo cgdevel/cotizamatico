@@ -55,6 +55,9 @@ export class DatosEmisionClienteMoralComponent implements OnInit {
       this.estado = this.ubicacion[0].Municipio.Estado.sEstado;
       this.municipio = this.ubicacion[0].Municipio.sMunicipio;
       this.cols = this.ubicacion[0].Ubicacion;
+      if (this.cols.length == 1) {
+        this.coloniasel=this.cols[0].sUbicacion;
+      } 
     }); // suscribecierra
   }
   verificater( nomemp ?: string ){
