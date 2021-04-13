@@ -15,7 +15,6 @@ import { ResponseCatalogoCommon } from '../interphaces/response/ResponseCatalogo
 import { ResponseAplicacionesId } from '../interphaces/response/ResponseAplicacionesId.mode';
 import { RequestInicioSesion } from '../interphaces/request/RequestInicioSesion.model';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -71,7 +70,7 @@ export class InfovehiculoService {
       Filtro: 0,
     };
     return this.http.post<ResponseAplicacionesId>(
-      `${environment.url_api_autos}cotizamatico/recuperarAplicacionIdBr`,
+      `${environment.url_api_autos}/cotizamatico/recuperarAplicacionIdBr`,
       req
     );
   }
@@ -102,156 +101,27 @@ export class InfovehiculoService {
 
   getInicioSesion(req: RequestInicioSesion) {
     return this.http.post<ResponseAplicacionesId>(
-      `${environment.url_api_autos}cotizamatico/inicioMinisitioBr`,
+      `${environment.url_api_autos}/cotizamatico/inicioMinisitioBr`,
       req
     );
   }
 
-  getOcupaciones() {
-    this.Ocupaciones = [];
-    this.Ocupaciones.push(
-      { sLlave: '1', sDato: 'ABOGADO' },
-      { sLlave: '2', sDato: 'ACRÓBATA' },
-      { sLlave: '3', sDato: 'ACTOR' },
-      { sLlave: '4', sDato: 'ACTUARIO' },
-      { sLlave: '5', sDato: 'ADMINISTRADOR' },
-      { sLlave: '6', sDato: 'AGENTE DE SEGUROS' },
-      { sLlave: '7', sDato: 'AGENTE DE VENTAS' },
-      { sLlave: '8', sDato: 'AGENTE DE VIAJES' },
-      { sLlave: '9', sDato: 'AGRICULTOR' },
-      { sLlave: '10', sDato: 'AMA DE CASA' },
-      { sLlave: '11', sDato: 'AMA DE LLAVES' },
-      { sLlave: '12', sDato: 'ANALISTA' },
-      { sLlave: '13', sDato: 'ANESTESISTA' },
-      { sLlave: '14', sDato: 'ANIMADOR' },
-      { sLlave: '15', sDato: 'ANTROPÓLOGO' },
-      { sLlave: '16', sDato: 'ÁRBITRO DEPORTIVO' },
-      { sLlave: '17', sDato: 'ARQUEOLOGO' },
-      { sLlave: '18', sDato: 'ARQUITECTO' },
-      { sLlave: '19', sDato: 'ARTESANO' },
-      { sLlave: '20', sDato: 'ASESOR' },
-      { sLlave: '21', sDato: 'ASISTENTE' },
-      { sLlave: '22', sDato: 'ASTRÓNOMO' },
-      { sLlave: '23', sDato: 'AUDITOR' },
-      { sLlave: '24', sDato: 'AUXILIAR GENERAL' },
-      { sLlave: '25', sDato: 'BAILARÍN' },
-      { sLlave: '26', sDato: 'BIBLIOTECARIO' },
-      { sLlave: '27', sDato: 'BIÓLOGO' },
-      { sLlave: '28', sDato: 'BOTÁNICO' },
-      { sLlave: '29', sDato: 'CAJERO' },
-      { sLlave: '30', sDato: 'CHEF' },
-      { sLlave: '31', sDato: 'CHOFER' },
-      { sLlave: '32', sDato: 'CONDUCTOR' },
-      { sLlave: '33', sDato: 'CONSULTOR' },
-      { sLlave: '34', sDato: 'CONTADOR' },
-      { sLlave: '35', sDato: 'CRONISTA' },
-      { sLlave: '36', sDato: 'CUSTODIO' },
-      { sLlave: '37', sDato: 'DECORADOR' },
-      { sLlave: '38', sDato: 'DEMÓGRAFO' },
-      { sLlave: '39', sDato: 'DEMOSTRADOR' },
-      { sLlave: '40', sDato: 'DESEMPLEADO' },
-      { sLlave: '41', sDato: 'DIBUJANTE' },
-      { sLlave: '42', sDato: 'DIRECTOR' },
-      { sLlave: '43', sDato: 'DISEÑADOR' },
-      { sLlave: '44', sDato: 'ECONOMISTA' },
-      { sLlave: '45', sDato: 'EDECÁN' },
-      { sLlave: '46', sDato: 'EDITOR' },
-      { sLlave: '47', sDato: 'EDUCADORA' },
-      { sLlave: '48', sDato: 'EJECUTIVO' },
-      { sLlave: '49', sDato: 'ELECTRICISTA' },
-      { sLlave: '50', sDato: 'ENFERMERA' },
-      { sLlave: '51', sDato: 'ESCRITOR' },
-      { sLlave: '52', sDato: 'ESCULTOR' },
-      { sLlave: '53', sDato: 'ESTUDIANTE' },
-      { sLlave: '54', sDato: 'FILÓSOFO' },
-      { sLlave: '55', sDato: 'FÍSICO' },
-      { sLlave: '56', sDato: 'FOTÓGRAFO' },
-      { sLlave: '57', sDato: 'GENETISTA' },
-      { sLlave: '58', sDato: 'GEÓGRAFO' },
-      { sLlave: '59', sDato: 'GERENTE' },
-      { sLlave: '60', sDato: 'GESTOR ' },
-      { sLlave: '61', sDato: 'GINECÓLOGO' },
-      { sLlave: '62', sDato: 'GUARDIA DE SEGURIDAD' },
-      { sLlave: '63', sDato: 'GUIONISTA' },
-      { sLlave: '64', sDato: 'HISTORIADOR' },
-      { sLlave: '65', sDato: 'INGENIERO' },
-      { sLlave: '66', sDato: 'INSPECTOR ' },
-      { sLlave: '67', sDato: 'INSTRUCTOR' },
-      { sLlave: '68', sDato: 'INTÉRPRETE' },
-      { sLlave: '69', sDato: 'JARDINERO' },
-      { sLlave: '70', sDato: 'LABORATORISTA' },
-      { sLlave: '71', sDato: 'LIC. EN CIENCIAS POLÍTICAS' },
-      { sLlave: '72', sDato: 'LIC. EN COMUNICACIÓN' },
-      { sLlave: '73', sDato: 'LIC. EN MERCADOTÉCNIA' },
-      { sLlave: '74', sDato: 'LIC. EN RELACIONES INTERNACIONALES' },
-      { sLlave: '75', sDato: 'LOCUTOR' },
-      { sLlave: '76', sDato: 'MAQUILLISTA' },
-      { sLlave: '77', sDato: 'MARINO' },
-      { sLlave: '78', sDato: 'MATEMÁTICO(A)' },
-      { sLlave: '79', sDato: 'MECÁNICO' },
-      { sLlave: '80', sDato: 'MÉDICO CIRUJANO' },
-      { sLlave: '81', sDato: 'MENSAJERO' },
-      { sLlave: '82', sDato: 'MESERO' },
-      { sLlave: '83', sDato: 'MILITAR' },
-      { sLlave: '84', sDato: 'MILITAR EN SITUACIÓN DE RETIRO' },
-      { sLlave: '85', sDato: 'MODELO' },
-      { sLlave: '86', sDato: 'MÚSICO' },
-      { sLlave: '87', sDato: 'NOTARIO PÚBLICO' },
-      { sLlave: '88', sDato: 'NUTRIOLOGO' },
-      { sLlave: '89', sDato: 'OBRERO' },
-      { sLlave: '90', sDato: 'ODONTÓLOGO' },
-      { sLlave: '91', sDato: 'OFTALMÓLOGO' },
-      { sLlave: '92', sDato: 'PANADERO' },
-      { sLlave: '93', sDato: 'PARAMÉDICO' },
-      { sLlave: '94', sDato: 'PEDAGOGO' },
-      { sLlave: '95', sDato: 'PEDIATRA' },
-      { sLlave: '96', sDato: 'PENSIONISTA' },
-      { sLlave: '97', sDato: 'PERIODISTA' },
-      { sLlave: '98', sDato: 'PESCADOR' },
-      { sLlave: '99', sDato: 'PILOTO' },
-      { sLlave: '100', sDato: 'PINTOR' },
-      { sLlave: '101', sDato: 'PLOMERO' },
-      { sLlave: '102', sDato: 'POLICÍA' },
-      { sLlave: '103', sDato: 'PRODUCTOR' },
-      { sLlave: '104', sDato: 'PROFESOR' },
-      { sLlave: '105', sDato: 'PROGRAMADOR' },
-      { sLlave: '106', sDato: 'PROMOTOR' },
-      { sLlave: '107', sDato: 'PSICÓLOGO' },
-      { sLlave: '108', sDato: 'PSIQUIATRA' },
-      { sLlave: '109', sDato: 'PUBLICISTA' },
-      { sLlave: '110', sDato: 'QUÍMICO' },
-      { sLlave: '111', sDato: 'QUÍMICO FARMACOBIÓLOGO' },
-      { sLlave: '112', sDato: 'RECEPCIONISTA' },
-      { sLlave: '113', sDato: 'REPORTERO' },
-      { sLlave: '114', sDato: 'SASTRE' },
-      { sLlave: '115', sDato: 'SECRETARIA' },
-      { sLlave: '116', sDato: 'SOBRECARGO' },
-      { sLlave: '117', sDato: 'SOCIÓLOGO' },
-      { sLlave: '118', sDato: 'SUPERVISOR' },
-      { sLlave: '119', sDato: 'TAXISTA' },
-      { sLlave: '120', sDato: 'TÉCNICO' },
-      { sLlave: '121', sDato: 'TELEFONISTA' },
-      { sLlave: '122', sDato: 'TERAPEUTA' },
-      { sLlave: '123', sDato: 'TOPÓGRAFO' },
-      { sLlave: '124', sDato: 'TRABAJADOR SOCIAL' },
-      { sLlave: '125', sDato: 'TRADUCTOR' },
-      { sLlave: '126', sDato: 'VALET' },
-      { sLlave: '127', sDato: 'VALUADOR' },
-      { sLlave: '128', sDato: 'VENDEDOR' },
-      { sLlave: '129', sDato: 'VETERINARIO' },
-      { sLlave: '130', sDato: 'VIGILANTE' }
+  getOcupaciones(req: RequestCatalogoCommon) {
+    return this.http.post<ResponseCatalogoCommon>(
+      `${environment.url_api_autos}/catalogos`,
+      req
     );
-    // console.log(this.Ocupaciones);
-    return this.Ocupaciones;
   }
 
   getEstadoCivil() {
     this.EstadoCivs = [];
     this.EstadoCivs.push(
-      { sLlave: '1', sDato: 'VIUDO' },
-      { sLlave: '2', sDato: 'SOLTERO' },
-      { sLlave: '3', sDato: 'CASADO' },
-      { sLlave: '4', sDato: 'DIVORCIADO' }
+      { sLlave: '1', sDato: 'CASADO(A)' },
+      { sLlave: '2', sDato: 'DIVORCIADO(A)' },
+      { sLlave: '3', sDato: 'NO ESPECIFICADO' },
+      { sLlave: '4', sDato: 'SOLTERO(A)' },
+      { sLlave: '5', sDato: 'UNION LIBRE' },
+      { sLlave: '6', sDato: 'VIUDO(A)' }
     );
     return this.EstadoCivs;
   }
