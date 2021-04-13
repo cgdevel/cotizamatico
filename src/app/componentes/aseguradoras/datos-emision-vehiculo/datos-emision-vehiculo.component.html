@@ -72,6 +72,7 @@
           <input
             type="text"
             class="form-control"
+            maxlength="7"
             [(ngModel)]="numeroPlaca"
             onkeypress="return( !!(
               ( 97 <= event.charCode  && event.charCode < 123 )||
@@ -84,6 +85,7 @@
           <input
             type="text"
             class="form-control"
+            maxlength="17"
             [(ngModel)]="numeroMotor"
             onkeypress="return( !!(
                       ( 97 <= event.charCode  && event.charCode < 123 )||
