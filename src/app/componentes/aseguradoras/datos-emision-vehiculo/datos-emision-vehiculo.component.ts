@@ -12,9 +12,9 @@ export class DatosEmisionVehiculoComponent implements OnInit {
   @Input() marcaSelect: CatalogoModel;
   @Input() descripSelect: CatalogoModel;
 
-  numeroPlaca: string;
-  numeroMotor: string;
-
+  numeroPlaca: string ='';
+  numeroMotor: string ='';
+  numeroSerie: string ='';
   constructor() {}
 
   ngOnInit(): void {

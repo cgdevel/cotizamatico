@@ -23,6 +23,9 @@ export class DatosEmisionClienteMoralComponent implements OnInit {
   @Input() razonsocial = '';
   @ViewChild('dp') dp: NgbDatepicker;
   RFCMoral: string = '';
+  Calle: string = '';
+  NumeExterior: string = '';
+  NumInterior: string = '';
   year;
   mon;
   day;

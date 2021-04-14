@@ -56,6 +56,9 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
   coloniasel;
   form: FormGroup;
   formRFC: FormGroup;
+  Calle: string = '';
+  NumeExterior: string = '';
+  NumInterior: string = '';
   constructor(
     private locate: Location,
     private infovehiculoService: InfovehiculoService

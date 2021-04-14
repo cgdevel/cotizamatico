@@ -51,6 +51,7 @@
             id="NumdeSerie"
             maxlength="17"
             type="text"
+            [(ngModel)]="numeroSerie"
             class="form-control"
             autocomplete="off"
             onkeypress="return(!!(( 97 <= event.charCode  && event.charCode < 105 )   ||
@@ -63,7 +64,11 @@
                                 || (event.charCode==32) 
                                 || (event.charCode==80)
                                 || (event.charCode==112))"
+            [ngClass]="{ NoExiste: numeroSerie == '' }"
           />
+          <ngb-alert [dismissible]="false" type="danger" *ngIf="numeroSerie =='' " class="alert-danger">
+            Dato obligatorio
+          </ngb-alert>
           <!-- para que admita "q" ( 106 <= event.charCode  && event.charCode < 123 ) -->
           <!-- para que admita "i" ( 97 <= event.charCode  && event.charCode < 112 ) -->
         </div>
@@ -78,7 +83,11 @@
               ( 97 <= event.charCode  && event.charCode < 123 )||
               ( 65 <= event.charCode  && event.charCode < 91 )||
               ( 48 <= event.charCode  && event.charCode < 58 ) ))"
+              [ngClass]="{ NoExiste: numeroPlaca == '' }"
           />
+          <ngb-alert [dismissible]="false" type="danger" *ngIf="numeroPlaca=='' " class="alert-danger">
+            Dato obligatorio
+          </ngb-alert>
         </div>
         <div class="form-group col-md-4 col-12">
           <label class="form-label">Número de Motor:</label>
@@ -91,7 +100,11 @@
                       ( 97 <= event.charCode  && event.charCode < 123 )||
                       ( 65 <= event.charCode  && event.charCode < 91 )||
                       ( 48 <= event.charCode  && event.charCode < 58 ) ))"
+            [ngClass]="{ NoExiste: numeroMotor == '' }"
           />
+          <ngb-alert [dismissible]="false" type="danger" *ngIf="numeroMotor =='' " class="alert-danger">
+            Dato obligatorio
+          </ngb-alert>
         </div>
       </div>
     </div>
