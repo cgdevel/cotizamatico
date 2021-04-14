@@ -74,7 +74,7 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
     this.formRFC = new FormGroup({
       RFCIn: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^((([A-Z]{4})([0-9]{6})(([A-Z0-9]{3})|([0]{3}))))$/),
+        Validators.pattern(/^((([A-Z]{4})([0-9]{6})(([A-Za-z0-9]{3})|([0]{3}))))$/),
       ]),
     });
   }

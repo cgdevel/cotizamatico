@@ -34,10 +34,10 @@
                 maxlength="12"
                 [ngClass]="{ NoExiste: formRFCMo.controls.RFMoCIn.errors?.pattern || formRFCMo.controls.RFMoCIn.value == '' }"
                 (change)="mayusRFC(this.RFCMoral)"
-                onkeypress="return(
-                            !(
-                            ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 48 > event.charCode || event.charCode >  57 ))
-                          )"
+                onkeypress="return( !!(
+                  ( 97 <= event.charCode  && event.charCode < 123 )||
+                  ( 65 <= event.charCode  && event.charCode < 91 )||
+                  ( 48 <= event.charCode  && event.charCode < 58 ) ))"
               >
               <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFCMo.controls.RFMoCIn.errors?.pattern &&  RFCMoral.length == 12 " class="alert-danger">
                 RFC no válido, verifique HOMOCLAVE

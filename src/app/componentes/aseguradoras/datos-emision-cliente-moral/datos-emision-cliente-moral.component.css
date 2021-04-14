@@ -3,7 +3,7 @@
     box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25) !important;
   }
   .Existe {
-    border: 1px solid #ced4da;
+    border: 1px solid #ced4da !important;
   }
   .classform{
     display: block! important ;
@@ -16,7 +16,7 @@
     color: #495057! important ;
     background-color: #fff! important ;
     background-clip: padding-box! important ;
-    border: 1px solid #ced4da! important ;
+    border: 1px solid #ced4da;
     border-radius: .25rem! important ;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out! important ;
   }
