@@ -311,6 +311,7 @@ export class InfovehiculoComponent implements OnInit {
   }
 
   selectDescripcion() {
+
     this.emitDescripcion.emit(
       !!this.itemDescripcionVehiculo
         ? this.itemDescripcionVehiculo

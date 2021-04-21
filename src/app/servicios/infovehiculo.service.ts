@@ -303,36 +303,6 @@ export class InfovehiculoService {
     return this.Nacionalidades;
   }
 
-  getTeminacionesMoral() {
-    this.terminaciones = [];
-    this.terminaciones.push(
-      { sDato: 'y Compañía', sLlave: 'Sociedad en Nombre Colectivo' },
-      {
-        sDato: 'S. A. de C. V.',
-        sLlave: 'Sociedad Anónima de Capital Variable',
-      },
-      { sDato: 'S. C.', sLlave: 'Sociedad Civil' },
-      {
-        sDato: 'S. A. de R. L.',
-        sLlave: 'Sociedad Anónima de Responsabilidad Limitada',
-      },
-      { sDato: 'S. A.', sLlave: 'Sociedad Anónima' },
-      { sDato: 'S. en C. S.', sLlave: 'Sociedad en Comandita Simple' },
-      {
-        sDato: 'S. en C. por A',
-        sLlave: ' Sociedad en Comandita por Acciones',
-      },
-      { sDato: 'S. de R. L.', sLlave: 'Sociedad de Responsabilidad Limitada' },
-      { sDato: 'S.A.C.', sLlave: 'Sociedad Anónima cerrada' },
-      {
-        sDato: 'E.I.R.L.',
-        sLlave: 'Empresario Individual de Responsabilidad Limitada',
-      },
-      { sDato: ' S.A.A.', sLlave: 'Sociedad Anónima Abierta' }
-    );
-    return this.terminaciones;
-  }
-
   downloadPdf() {
     const responsepdf = this.http.post(`${environment.url_api_autos}/cotizamatico/recuperarPdfComparativoBr`,{});
     return responsepdf;
