@@ -60,8 +60,17 @@
                 id="txtAdiFisicaNombre"
                 value=""
                 [(ngModel)]="datAdiPfNombre"
+                [ngClass]="{ Existe: datAdiPfNombre!='' ,NoExiste: datAdiPfNombre=='' ||  datAdiPfNombre.length<3}" 
+                onkeypress="return(
+                              !(
+                              ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 48 > event.charCode || event.charCode >  57 ))
+                            )"
               />
+              <ngb-alert [dismissible]="false" type="danger" *ngIf="datAdiPfNombre=='' " class="alert-danger">
+                Dato obligatorio
+              </ngb-alert>
             </div>
+           
             <div class="form-group col-md-3 col-12">
               <label for="chkBeneficiario">Apellido Paterno</label>
               <input
@@ -70,7 +79,14 @@
                 id="txtAdiFisicaPaterno"
                 value=""
                 [(ngModel)]="datAdiPfPaterno"
-              />
+                [ngClass]="{ Existe: datAdiPfPaterno!='' , NoExiste: datAdiPfPaterno=='' || datAdiPfPaterno.length<3}" 
+                class="form-control"  
+                onkeypress="return( !(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))
+              "/>
+              <ngb-alert [dismissible]="false" type="danger" *ngIf="datAdiPfPaterno=='' " class="alert-danger">
+                Dato obligatorio
+              </ngb-alert>
+    
             </div>
             <div class="form-group col-md-3 col-12">
               <label for="chkBeneficiario">Apellido Materno</label>
@@ -80,7 +96,14 @@
                 id="txtAdiFisicaMaterno"
                 value=""
                 [(ngModel)]="datAdiPfMaterno"
-              />
+                [ngClass]="{ Existe: datAdiPfMaterno!='' , NoExiste: datAdiPfMaterno=='' || datAdiPfMaterno.length<3}" 
+                class="form-control"  
+                onkeypress="return( !(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))
+              "/>
+              <ngb-alert [dismissible]="false" type="danger" *ngIf="datAdiPfMaterno=='' " class="alert-danger">
+                Dato obligatorio
+              </ngb-alert>
+    
             </div>
             <div class="form-group col-md-3 col-12">
               <label for="chkBeneficiario">RFC</label>
@@ -107,7 +130,14 @@
                 id="txtAdiMoralNombre"
                 value=""
                 [(ngModel)]="datAdiPmNombre"
-              />
+                [ngClass]="{ Existe: datAdiPmNombre!='' , NoExiste: datAdiPmNombre=='' || datAdiPmNombre.length<3}" 
+                class="form-control"  
+                onkeypress="return( !(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))
+              "/>
+              <ngb-alert [dismissible]="false" type="danger" *ngIf="datAdiPmNombre=='' " class="alert-danger">
+                Dato obligatorio
+              </ngb-alert>
+    
             </div>
             <div class="form-group col-md-3 col-12">
               <label for="chkBeneficiario">RFC</label>
