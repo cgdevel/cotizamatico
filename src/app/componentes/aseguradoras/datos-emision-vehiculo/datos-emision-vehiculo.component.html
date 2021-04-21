@@ -2,106 +2,75 @@
   <div class="card-body">
     <div class="container">
       <div class="row">
-        <div class="col-12"><h5>Vehículo</h5></div>
+        <div class="col-12">
+          <h5>Vehículo</h5>
+        </div>
       </div>
       <div class="row">
         <div class="form-group col-md-4 col-12">
           <label class="form-label">Tipo:</label>
-          <input
-            type="text"
-            [(ngModel)]="modeloSelect.sDato"
-            [value]="modeloSelect.sDato"
-            disabled="true"
-            class="form-control"
-          />
+          <input type="text" [(ngModel)]="modeloSelect.sDato" [value]="modeloSelect.sDato" disabled="true"
+            class="form-control" />
         </div>
         <div class="form-group col-md-4 col-12">
           <label class="form-label">Año:</label>
-          <input
-            type="text"
-            [value]="this.anioSelect.sDato"
-            [(ngModel)]="anioSelect.sDato"
-            disabled="true"
-            class="form-control"
-          />
+          <input type="text" [value]="this.anioSelect.sDato" [(ngModel)]="anioSelect.sDato" disabled="true"
+            class="form-control" />
         </div>
         <div class="form-group col-md-4 col-12">
           <label class="form-label">Marca :</label>
-          <input
-            type="text"
-            [value]="this.marcaSelect.sDato"
-            [(ngModel)]="marcaSelect.sDato"
-            disabled="true"
-            class="form-control"
-          />
+          <input type="text" [value]="this.marcaSelect.sDato" [(ngModel)]="marcaSelect.sDato" disabled="true"
+            class="form-control" />
         </div>
         <div class="form-group col-md-4 col-12">
           <label class="form-label">Descripción:</label>
-          <input
-            type="text"
-            [value]="this.descripSelect.sDato"
-            [(ngModel)]="descripSelect.sDato"
-            disabled="true"
-            class="form-control"
-          />
+          <input type="text" [value]="this.descripSelect.sDato" [(ngModel)]="descripSelect.sDato" disabled="true"
+            class="form-control" />
         </div>
         <div class="form-group col-md-4 col-12">
           <label class="form-label">Número de Serie:</label>
-          <input
-            id="NumdeSerie"
-            maxlength="17"
-            type="text"
-            [(ngModel)]="numeroSerie"
-            class="form-control"
-            autocomplete="off"
-            onkeypress="return(!!(( 97 <= event.charCode  && event.charCode < 105 )   ||
+          <input id="NumdeSerie" maxlength="17" type="text" [(ngModel)]="numeroSerie" (change)="onValidarNumdeSerie()"
+            class="form-control" autocomplete="off" onkeypress="return(!!(( 97 <= event.charCode  && event.charCode < 105 )   ||
                                   ( 106 <= event.charCode  && event.charCode < 111 )  ||
                                   ( 114 <= event.charCode  && event.charCode < 123 )  ||
                                       ( 65 <= event.charCode  && event.charCode < 73 )||
                                       ( 74 <= event.charCode  && event.charCode < 79 )||
                                       ( 82 <= event.charCode  && event.charCode < 91 )||
-                                      ( 48 <= event.charCode  && event.charCode < 58 ) )  
-                                || (event.charCode==32) 
+                                      ( 48 <= event.charCode  && event.charCode < 58 ) )
+                                || (event.charCode==32)
                                 || (event.charCode==80)
-                                || (event.charCode==112))"
-            [ngClass]="{ NoExiste: numeroSerie == '' }"
-          />
-          <ngb-alert [dismissible]="false" type="danger" *ngIf="numeroSerie =='' " class="alert-danger">
+                                || (event.charCode==112))" [ngClass]="{ NoExiste: numeroSerie === '' }" />
+          <ngb-alert [dismissible]="false" type="danger" *ngIf="numeroSerie === '' " class="alert-danger">
             Dato obligatorio
+          </ngb-alert>
+          <ngb-alert [dismissible]="false" type="danger" *ngIf="numeroSerieValidando"
+          class="alert-danger">
+          Validando
+        </ngb-alert>
+          <ngb-alert [dismissible]="false" type="danger" *ngIf="numeroSerie !== '' && numeroSerieValido"
+            class="alert-danger">
+            Trámite encontrado: <br> {{ numeroSerieTramite }}
           </ngb-alert>
           <!-- para que admita "q" ( 106 <= event.charCode  && event.charCode < 123 ) -->
           <!-- para que admita "i" ( 97 <= event.charCode  && event.charCode < 112 ) -->
         </div>
         <div class="form-group col-md-4 col-12">
           <label class="form-label">Número de Placa:</label>
-          <input
-            type="text"
-            class="form-control"
-            maxlength="7"
-            [(ngModel)]="numeroPlaca"
-            onkeypress="return( !!(
+          <input type="text" class="form-control" maxlength="7" [(ngModel)]="numeroPlaca" onkeypress="return( !!(
               ( 97 <= event.charCode  && event.charCode < 123 )||
               ( 65 <= event.charCode  && event.charCode < 91 )||
-              ( 48 <= event.charCode  && event.charCode < 58 ) ))"
-              [ngClass]="{ NoExiste: numeroPlaca == '' }"
-          />
+              ( 48 <= event.charCode  && event.charCode < 58 ) ))" [ngClass]="{ NoExiste: numeroPlaca == '' }" />
           <ngb-alert [dismissible]="false" type="danger" *ngIf="numeroPlaca=='' " class="alert-danger">
             Dato obligatorio
           </ngb-alert>
         </div>
         <div class="form-group col-md-4 col-12">
           <label class="form-label">Número de Motor:</label>
-          <input
-            type="text"
-            class="form-control"
-            maxlength="17"
-            [(ngModel)]="numeroMotor"
-            onkeypress="return( !!(
+          <input type="text" class="form-control" maxlength="17" [(ngModel)]="numeroMotor" onkeypress="return( !!(
                       ( 97 <= event.charCode  && event.charCode < 123 )||
                       ( 65 <= event.charCode  && event.charCode < 91 )||
                       ( 48 <= event.charCode  && event.charCode < 58 ) ))"
-            [ngClass]="{ NoExiste: numeroMotor == '' }"
-          />
+            [ngClass]="{ NoExiste: numeroMotor == '' }" />
           <ngb-alert [dismissible]="false" type="danger" *ngIf="numeroMotor =='' " class="alert-danger">
             Dato obligatorio
           </ngb-alert>

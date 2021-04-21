@@ -333,8 +333,22 @@ export class InfovehiculoService {
     return this.terminaciones;
   }
 
+  getValidarSerie(request: string) {
+    const req = {
+      sNumeroSerie: request,
+    };
+
+    return this.http.post<any>(
+      `${environment.url_api_autos}/cotizamatico/validarSerieBr`,
+      req
+    );
+  }
+
   downloadPdf() {
-    const responsepdf = this.http.post(`${environment.url_api_autos}/cotizamatico/recuperarPdfComparativoBr`,{});
+    const responsepdf = this.http.post(
+      `${environment.url_api_autos}/cotizamatico/recuperarPdfComparativoBr`,
+      ''
+    );
     return responsepdf;
   }
 }
