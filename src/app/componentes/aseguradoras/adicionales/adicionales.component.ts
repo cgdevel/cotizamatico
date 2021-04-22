@@ -71,4 +71,90 @@ export class AdicionalesComponent implements OnInit {
       this.mostrarAdicionalPm = true;
     }
   }
+  nombrePFisMayu(nomb : string){
+    this.datAdiPfNombre = this.datAdiPfNombre
+    .replace(/á/g, 'a')
+    .replace(/é/g, 'e')
+    .replace(/í/g, 'i')
+    .replace(/ó/g, 'o')
+    .replace(/ú/g, 'u')
+    .replace(/Á/g, 'a')
+    .replace(/É/g, 'e')
+    .replace(/Í/g, 'i')
+    .replace(/Ó/g, 'o')
+    .replace(/Ú/g, 'u');
+  this.datAdiPfNombre = this.datAdiPfNombre.toLocaleUpperCase();
+  }
+  apepatPFisMayu(appatstr: string) {
+    // console.log(appatstr)
+      this.datAdiPfPaterno = this.datAdiPfPaterno
+      .replace(/á/g, 'a')
+      .replace(/é/g, 'e')
+      .replace(/í/g, 'i')
+      .replace(/ó/g, 'o')
+      .replace(/ú/g, 'u')
+      .replace(/Á/g, 'a')
+      .replace(/É/g, 'e')
+      .replace(/Í/g, 'i')
+      .replace(/Ó/g, 'o')
+      .replace(/Ú/g, 'u');
+      this.datAdiPfPaterno = this.datAdiPfPaterno.toLocaleUpperCase();
+  }
+  apematPFisMayu(apmatstr: string) {
+    // console.log(apmatstr)
+      this.datAdiPfMaterno = this.datAdiPfMaterno
+      .replace(/á/g, 'a')
+      .replace(/é/g, 'e')
+      .replace(/í/g, 'i')
+      .replace(/ó/g, 'o')
+      .replace(/ú/g, 'u')
+      .replace(/Á/g, 'a')
+      .replace(/É/g, 'e')
+      .replace(/Í/g, 'i')
+      .replace(/Ó/g, 'o')
+      .replace(/Ú/g, 'u');
+      this.datAdiPfMaterno = this.datAdiPfMaterno.toLocaleUpperCase();
+  }
+  PfRfc(RFCFis : string){
+    this.datAdiPfRfc = this.datAdiPfRfc
+    .replace(/á/g, 'a')
+    .replace(/é/g, 'e')
+    .replace(/í/g, 'i')
+    .replace(/ó/g, 'o')
+    .replace(/ú/g, 'u')
+    .replace(/Á/g, 'a')
+    .replace(/É/g, 'e')
+    .replace(/Í/g, 'i')
+    .replace(/Ó/g, 'o')
+    .replace(/Ú/g, 'u');
+    this.datAdiPfRfc = this.datAdiPfRfc.toLocaleUpperCase();
+  }
+  nombrePMorMayu(nomb : string){
+    this.datAdiPmNombre = this.datAdiPmNombre
+    .replace(/á/g, 'a')
+    .replace(/é/g, 'e')
+    .replace(/í/g, 'i')
+    .replace(/ó/g, 'o')
+    .replace(/ú/g, 'u')
+    .replace(/Á/g, 'a')
+    .replace(/É/g, 'e')
+    .replace(/Í/g, 'i')
+    .replace(/Ó/g, 'o')
+    .replace(/Ú/g, 'u');
+  this.datAdiPmNombre = this.datAdiPmNombre.toLocaleUpperCase();
+  }
+  PmRfc(RFCMor : string){
+    this.datAdiPmRfc = this.datAdiPmRfc
+    .replace(/á/g, 'a')
+    .replace(/é/g, 'e')
+    .replace(/í/g, 'i')
+    .replace(/ó/g, 'o')
+    .replace(/ú/g, 'u')
+    .replace(/Á/g, 'a')
+    .replace(/É/g, 'e')
+    .replace(/Í/g, 'i')
+    .replace(/Ó/g, 'o')
+    .replace(/Ú/g, 'u');
+    this.datAdiPmRfc = this.datAdiPmRfc.toLocaleUpperCase();
+  }
 }

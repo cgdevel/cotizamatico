@@ -60,12 +60,10 @@
                 id="txtAdiFisicaNombre"
                 value=""
                 [(ngModel)]="datAdiPfNombre"
+                (change)="nombrePFisMayu(datAdiPfNombre)"
                 [ngClass]="{ Existe: datAdiPfNombre!='' ,NoExiste: datAdiPfNombre=='' ||  datAdiPfNombre.length<3}" 
-                onkeypress="return(
-                              !(
-                              ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 48 > event.charCode || event.charCode >  57 ))
-                            )"
-              />
+                onkeypress="return( !(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))
+              "/>
               <ngb-alert [dismissible]="false" type="danger" *ngIf="datAdiPfNombre=='' " class="alert-danger">
                 Dato obligatorio
               </ngb-alert>
@@ -78,6 +76,7 @@
                 id="txtAdiFisicaPaterno"
                 value=""
                 [(ngModel)]="datAdiPfPaterno"
+                (change)="apepatPFisMayu( datAdiPfPaterno )"
                 [ngClass]="{ Existe: datAdiPfPaterno!='' , NoExiste: datAdiPfPaterno=='' || datAdiPfPaterno.length<3}" 
                 class="form-control"  
                 onkeypress="return( !(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))
@@ -95,6 +94,7 @@
                 id="txtAdiFisicaMaterno"
                 value=""
                 [(ngModel)]="datAdiPfMaterno"
+                (change)="apematPFisMayu( datAdiPfMaterno )"
                 [ngClass]="{ Existe: datAdiPfMaterno!='' , NoExiste: datAdiPfMaterno=='' || datAdiPfMaterno.length<3}" 
                 class="form-control"  
                 onkeypress="return( !(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))
@@ -114,7 +114,7 @@
                   class="classform" 
                   [ngClass]="{ NoExiste:formRFCFIS.controls.RFCInFIS.errors?.pattern == false ||formRFCFIS.controls.RFCInFIS.value == '' }"
                   maxlength="13"
-                  
+                  (change)="PfRfc(datAdiPfRfc)"
                   onkeypress="return( !!(
                           ( 97 <= event.charCode  && event.charCode < 123 )||
                           ( 65 <= event.charCode  && event.charCode < 91 )||
@@ -135,9 +135,7 @@
           </div>
           <div
             class="row"
-            *ngIf="
-              mostrarAdicional && mostrarAdicionalPm && this.asesel != 'BANORTE'
-            "
+            *ngIf="mostrarAdicional && mostrarAdicionalPm && this.asesel != 'BANORTE'"
           >
             <div class="form-group col-md-3 col-12">
               <label for="chkBeneficiario">Nombre</label>
@@ -147,10 +145,19 @@
                 id="txtAdiMoralNombre"
                 value=""
                 [(ngModel)]="datAdiPmNombre"
+                (change)="nombrePMorMayu(datAdiPmNombre)"
                 [ngClass]="{ Existe: datAdiPmNombre!='' , NoExiste: datAdiPmNombre=='' || datAdiPmNombre.length<3}" 
                 class="form-control"  
-                onkeypress="return( !(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))
-              "/>
+                onkeypress="return(
+                    !(
+                      event.charCode > 32  
+                      && event.charCode > 44
+                      && event.charCode > 46
+                      && ( 64>event.charCode || event.charCode > 90) 
+                      && (97>event.charCode || event.charCode > 122 ) 
+                      && ( 192>=event.charCode || event.charCode >= 255)
+                      ))"
+                />
               <ngb-alert [dismissible]="false" type="danger" *ngIf="datAdiPmNombre=='' " class="alert-danger">
                 Dato obligatorio
               </ngb-alert>
@@ -166,7 +173,7 @@
                   class="classform" 
                   [ngClass]="{ NoExiste:formRFCMOR.controls.RFCInMOR.errors?.pattern == false || formRFCMOR.controls.RFCInMOR.value == ''|| datAdiPmRfc.length < 12 }"
                   maxlength="12"
-                  
+                  (change)="PmRfc(datAdiPmRfc)"
                   onkeypress="return( !!(
                           ( 97 <= event.charCode  && event.charCode < 123 )||
                           ( 65 <= event.charCode  && event.charCode < 91 )||
