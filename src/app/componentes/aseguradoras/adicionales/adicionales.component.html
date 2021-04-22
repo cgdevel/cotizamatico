@@ -112,7 +112,7 @@
                   type="text" 
                   formControlName="RFCInFIS" 
                   class="classform" 
-                  [ngClass]="{ NoExiste:formRFCFIS.controls.RFCInFIS.errors?.pattern == false ||formRFCFIS.controls.RFCInFIS.value == '' }"
+                  [ngClass]="{ NoExiste:formRFCFIS.controls.RFCInFIS.errors?.pattern == false|| datAdiPfRfc.length < 13 ||formRFCFIS.controls.RFCInFIS.value == '' }"
                   maxlength="13"
                   (change)="PfRfc(datAdiPfRfc)"
                   onkeypress="return( !!(
@@ -133,8 +133,7 @@
               </form>
             </div>
           </div>
-          <div
-            class="row"
+          <div class="row"
             *ngIf="mostrarAdicional && mostrarAdicionalPm && this.asesel != 'BANORTE'"
           >
             <div class="form-group col-md-3 col-12">

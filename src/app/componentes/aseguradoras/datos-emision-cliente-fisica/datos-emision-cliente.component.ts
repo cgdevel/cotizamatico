@@ -59,6 +59,7 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
   Calle: string = '';
   NumeExterior: string = '';
   NumInterior: string = '';
+  habilitarcampos: boolean;
   constructor(
     private locate: Location,
     private infovehiculoService: InfovehiculoService
@@ -96,7 +97,7 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
       .getApiCPs({
         IdAplication: 2,
         NombreCatalogo: 'Sepomex',
-        Filtro: !!this.codigopostal ? this.codigopostal : cp,
+        Filtro: this.codigopostal ,
       })
       .subscribe((data: any) => {
         this.ubicacion = JSON.parse(data.CatalogoJsonString);
@@ -359,9 +360,11 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
     this.mon = today.getMonth() + 1;
     // console.log(this.year + '  ' + this.mon + '  ' + num.year + '  ' + num.month);
     if (num.month >= this.mon) {
-      return (age = this.year - num.year - 1);
+      age = this.year - num.year - 1
+      return ( this.edad = age);
     } else {
-      return (age = this.year - num.year);
+      age = this.year - num.year;
+      return ( this.edad = age);
     }
   }
   onback() {
