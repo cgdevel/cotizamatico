@@ -94,4 +94,8 @@ export class AsegDatosEmisionComponent implements OnInit {
         break;
     }
   }
+  Persona(e: CatalogoModel){
+    console.log(e.sDato)
+    return this.genero = e.sDato;
+  }
 }

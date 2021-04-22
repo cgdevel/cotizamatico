@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { InfovehiculoService } from '../../../servicios/infovehiculo.service';
 import { RequestNacionalidad } from '../../../interphaces/nacionali';
@@ -22,6 +22,7 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
   @Input() codigopostal = '';
   @Input() correo = '';
   @Input() telefono = '';
+  @Output() emitTipoPersona = new EventEmitter<CatalogoModel>();
   valClienteTelefonoVacio: boolean;
   valClienteTelefonoNoValido: boolean;
   validotelefono: boolean;
@@ -60,6 +61,8 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
   NumeExterior: string = '';
   NumInterior: string = '';
   habilitarcampos: boolean;
+  catTipoPersona: CatalogoModel[];
+  itemTipoPersona: CatalogoModel;
   constructor(
     private locate: Location,
     private infovehiculoService: InfovehiculoService
@@ -79,6 +82,12 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
       ]),
     });
   }
+  CargarTipoFiscalAdicional(): void {
+    const tipos: CatalogoModel[] = [];
+    tipos.push({ sDato: 'FÍSICA', sLlave: 'F' });
+      tipos.push({ sDato: 'MORAL', sLlave: 'M' });
+    this.catTipoPersona = tipos;
+  }
   setValue() {
     this.form.setValue({ emailIn: this.correo });
   }
@@ -90,7 +99,11 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
       });
     }
   }
-
+  onSelectTipoPersona(){
+    if(this.itemTipoPersona.sDato=='MORAL'){
+      this.emitTipoPersona.emit(this.itemTipoPersona);
+    }
+  }
   getUbicacion(cp?: string) {
     this.coloniasel = '';
     this.infovehiculoService
@@ -457,6 +470,7 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+    this.CargarTipoFiscalAdicional();
     this.onTelefonoChange();
     this.setValue();
     this.genero === 'Masculino' || this.genero === 'Femenino'

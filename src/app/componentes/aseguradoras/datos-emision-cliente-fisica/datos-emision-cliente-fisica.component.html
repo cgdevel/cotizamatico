@@ -149,7 +149,25 @@
         </div>
         <div class="form-group col-12 col-md-4" *ngIf="this.genero != 'Moral'">
           <label class="form-label">Tipo de persona:</label>
-          <input type="text" [value]="this.TipoPersona" class="form-control" disabled />
+          <input type="text" [value]="this.TipoPersona" class="form-control" *ngIf="!habilitarcampos" disabled />
+          <ng-select *ngIf="habilitarcampos"
+          id="catAdicionalTipoPersona"
+          [items]="catTipoPersona"
+          bindLabel="sDato"
+          placeholder="TIPO FISCAL"
+          appendTo="body"
+          [closeOnSelect]="true"
+          [clearable]="false"
+          [(ngModel)]="itemTipoPersona"
+          tooltipClass="my-custom-class"
+          (change)="onSelectTipoPersona()"
+        >
+          <ng-option
+            ng-options="item as item.sLlave for item.sDato in catAdicionalTipoPersona"
+          >
+            {{ item }}
+          </ng-option>
+        </ng-select>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Teléfono:</label>
