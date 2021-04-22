@@ -69,8 +69,7 @@
               <ngb-alert [dismissible]="false" type="danger" *ngIf="datAdiPfNombre=='' " class="alert-danger">
                 Dato obligatorio
               </ngb-alert>
-            </div>
-           
+            </div>       
             <div class="form-group col-md-3 col-12">
               <label for="chkBeneficiario">Apellido Paterno</label>
               <input
@@ -106,14 +105,32 @@
     
             </div>
             <div class="form-group col-md-3 col-12">
-              <label for="chkBeneficiario">RFC</label>
-              <input
-                type="text"
-                class="form-control"
-                id="txtAdiFisicaRfc"
-                value=""
-                [(ngModel)]="datAdiPfRfc"
-              />
+              <label class="form-label">RFC:</label>
+              <form [formGroup]="formRFCFIS" >
+                <input
+                  [(ngModel)]="datAdiPfRfc"
+                  type="text" 
+                  formControlName="RFCInFIS" 
+                  class="classform" 
+                  [ngClass]="{ NoExiste:formRFCFIS.controls.RFCInFIS.errors?.pattern == false ||formRFCFIS.controls.RFCInFIS.value == '' }"
+                  maxlength="13"
+                  
+                  onkeypress="return( !!(
+                          ( 97 <= event.charCode  && event.charCode < 123 )||
+                          ( 65 <= event.charCode  && event.charCode < 91 )||
+                          ( 48 <= event.charCode  && event.charCode < 58 ) ))"
+                >
+                <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFCFIS.controls.RFCInFIS.errors?.pattern &&  datAdiPfRfc.length == 13 " class="alert-danger">
+                  RFC no válido, verifique HOMOCLAVE
+                </ngb-alert>
+                
+                <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFCFIS.controls.RFCInFIS.value == '' " class="alert-danger">
+                  Dato obligatorio
+                </ngb-alert>
+                <ngb-alert [dismissible]="false" type="danger" *ngIf="datAdiPfRfc.length < 13 && datAdiPfRfc !='' " class="alert-danger">
+                  Faltan caracteres
+                </ngb-alert>
+              </form>
             </div>
           </div>
           <div
@@ -140,14 +157,32 @@
     
             </div>
             <div class="form-group col-md-3 col-12">
-              <label for="chkBeneficiario">RFC</label>
-              <input
-                type="text"
-                class="form-control"
-                id="txtAdiMoralRfc"
-                value=""
-                [(ngModel)]="datAdiPmRfc"
-              />
+              <label class="form-label">RFC:</label>
+              <form [formGroup]="formRFCMOR" >
+                <input
+                  [(ngModel)]="datAdiPmRfc"
+                  type="text" 
+                  formControlName="RFCInMOR" 
+                  class="classform" 
+                  [ngClass]="{ NoExiste:formRFCMOR.controls.RFCInMOR.errors?.pattern == false || formRFCMOR.controls.RFCInMOR.value == ''|| datAdiPmRfc.length < 12 }"
+                  maxlength="12"
+                  
+                  onkeypress="return( !!(
+                          ( 97 <= event.charCode  && event.charCode < 123 )||
+                          ( 65 <= event.charCode  && event.charCode < 91 )||
+                          ( 48 <= event.charCode  && event.charCode < 58 ) ))"
+                >
+                <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFCMOR.controls.RFCInMOR.errors?.pattern &&  datAdiPmRfc.length == 12 " class="alert-danger">
+                  RFC no válido, verifique HOMOCLAVE
+                </ngb-alert>
+                
+                <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFCMOR.controls.RFCInMOR.value == '' " class="alert-danger">
+                  Dato obligatorio
+                </ngb-alert>
+                <ngb-alert [dismissible]="false" type="danger" *ngIf="datAdiPmRfc.length < 12 && datAdiPmRfc !='' " class="alert-danger">
+                  Faltan caracteres
+                </ngb-alert>
+              </form>
             </div>
           </div>
         </div>
