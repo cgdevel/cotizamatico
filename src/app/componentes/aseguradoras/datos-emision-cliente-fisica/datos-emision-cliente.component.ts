@@ -9,6 +9,7 @@ import {
   NgbDateStruct,
   NgbDatepicker,
 } from '@ng-bootstrap/ng-bootstrap';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-datos-emision-cliente-fisica',
   templateUrl: './datos-emision-cliente-fisica.component.html',
@@ -63,6 +64,8 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
   habilitarcampos: boolean;
   catTipoPersona: CatalogoModel[];
   itemTipoPersona: CatalogoModel;
+  catGeneroPersona: CatalogoModel[];
+  itemGeneroPersona: CatalogoModel;
   constructor(
     private locate: Location,
     private infovehiculoService: InfovehiculoService
@@ -82,11 +85,17 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
       ]),
     });
   }
-  CargarTipoFiscalAdicional(): void {
+  CargarTipoFiscal(): void {
     const tipos: CatalogoModel[] = [];
     tipos.push({ sDato: 'FÍSICA', sLlave: 'F' });
       tipos.push({ sDato: 'MORAL', sLlave: 'M' });
     this.catTipoPersona = tipos;
+  }
+  CargarGeneros(): void {
+    const tipos: CatalogoModel[] = [];
+    tipos.push({ sDato: 'FEMENINO', sLlave: 'F' });
+      tipos.push({ sDato: 'MASCULINO', sLlave: 'M' });
+    this.catGeneroPersona = tipos;
   }
   setValue() {
     this.form.setValue({ emailIn: this.correo });
@@ -103,6 +112,9 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
     if(this.itemTipoPersona.sDato=='MORAL'){
       this.emitTipoPersona.emit(this.itemTipoPersona);
     }
+  }
+  onSelectGeneroPersona(){
+    this.itemGeneroPersona.sDato=='MASCULINO' ?  this.genero="Masculino" :  this.genero='Femenino';
   }
   getUbicacion(cp?: string) {
     this.coloniasel = '';
@@ -470,12 +482,18 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    this.CargarTipoFiscalAdicional();
+    this.CargarTipoFiscal();
+    this.CargarGeneros();
     this.onTelefonoChange();
     this.setValue();
-    this.genero === 'Masculino' || this.genero === 'Femenino'
-      ? (this.TipoPersona = 'Física')
-      : (this.TipoPersona = 'Moral');
+      if (this.genero === 'Masculino' || this.genero === 'Femenino') {
+        this.genero === 'Femenino' ? this.itemGeneroPersona ={ sDato:'FEMENINO',sLlave:'F' }
+                                   : this.itemGeneroPersona ={ sDato:'MASCULINO',sLlave:'M' };
+        this.TipoPersona = 'Física'
+        this.itemTipoPersona={ sDato:'FISICA',sLlave:'F' }
+      }else{
+        this.TipoPersona = 'Moral'
+      }
     this.Nacion = this.infovehiculoService.getNacionalidades();
     this.setValue();
     this.nacionalidadsel = { NacString: 'MEXICANA', NacClave: 'MEX' };

@@ -145,13 +145,29 @@
         </div>
         <div class="form-group col-12 col-md-4" *ngIf="this.genero != 'Moral'">
           <label class="form-label">Género:</label>
-          <input type="text" [value]="this.genero" [(ngModel)]="genero"  class="form-control" disabled />
+          <input type="text" [value]="this.genero" [(ngModel)]="genero"  class="form-control" disabled *ngIf="!habilitarcampos" />
+          <ng-select *ngIf="habilitarcampos"
+            [items]="catGeneroPersona"
+            bindLabel="sDato"
+            placeholder="GENERO"
+            appendTo="body"
+            [closeOnSelect]="true"
+            [clearable]="false"
+            [(ngModel)]="itemGeneroPersona"
+            tooltipClass="my-custom-class"
+            (change)="onSelectGeneroPersona()"
+          >
+            <ng-option
+              ng-options="item as item.sLlave for item.sDato in catGeneroPersona"
+            >
+              {{ item }}
+            </ng-option>
+          </ng-select>
         </div>
         <div class="form-group col-12 col-md-4" *ngIf="this.genero != 'Moral'">
           <label class="form-label">Tipo de persona:</label>
           <input type="text" [value]="this.TipoPersona" class="form-control" *ngIf="!habilitarcampos" disabled />
           <ng-select *ngIf="habilitarcampos"
-          id="catAdicionalTipoPersona"
           [items]="catTipoPersona"
           bindLabel="sDato"
           placeholder="TIPO FISCAL"
@@ -163,11 +179,11 @@
           (change)="onSelectTipoPersona()"
         >
           <ng-option
-            ng-options="item as item.sLlave for item.sDato in catAdicionalTipoPersona"
+            ng-options="item as item.sLlave for item.sDato in catTipoPersona"
           >
             {{ item }}
           </ng-option>
-        </ng-select>
+          </ng-select>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Teléfono:</label>
