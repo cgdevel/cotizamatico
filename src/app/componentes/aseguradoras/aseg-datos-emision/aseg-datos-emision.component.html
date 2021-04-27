@@ -16,32 +16,31 @@
         <div class="column col-md-9 col-12">
           <app-datos-pago
             [IdAseguradora]="5"
-            [cobertura]="this.polizaselase"
-            [pagoseleccionado]="this.pagoselase"
+            [cobertura]="polizaselase"
+            [pagoseleccionado]="pagoselase"
           ></app-datos-pago>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <!-- Contratante -->
 <div class="container mw-100">
   <app-datos-emision-cliente-fisica
-    *ngIf="this.genero != 'Moral'"
-    [codigopostal]="this.codigopostal"
-    [nombre]="this.nombreaseg"
-    [telefono]="this.telefono"
-    [fecha]="this.fechanac"
-    [correo]="this.correo"
-    [genero]="this.genero"
+    *ngIf="genero != 'Moral'"
+    [codigopostal]="codigopostal"
+    [nombre]="nombreaseg"
+    [telefono]="telefono"
+    [fecha]="fechanac"
+    [correo]="correo"
+    [genero]="genero"
     (emitTipoPersona)="Persona($event)"
   ></app-datos-emision-cliente-fisica>
   <app-datos-emision-cliente-moral
-    *ngIf="this.genero == 'Moral' && this.aseguradora != 'SURA'"
-    [aseguradoraSelect]="this.aseguradora"
-    [codigopostal]="this.codigopostal"
-    [razonsocial]="this.nombreaseg"
+    *ngIf="genero == 'Moral' && this.aseguradora != 'SURA'"
+    [aseguradoraSelect]="aseguradora"
+    [codigopostal]="codigopostal"
+    [razonsocial]="nombreaseg"
     (emitTipoPersona)="Persona($event)"
   ></app-datos-emision-cliente-moral>
 </div>
@@ -59,7 +58,7 @@
 <!-- Adicionales -->
 <div class="container mw-100">
   <app-adicionales
-    *ngIf="this.genero != 'Moral'"
+    *ngIf="genero != 'Moral'"
     [asesel]="aseguradora"
   ></app-adicionales>
 </div>

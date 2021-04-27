@@ -86,17 +86,20 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
   catGeneroPersona: CatalogoModel[];
   itemGeneroPersona: CatalogoModel;
   ngOnInit(): void {
+    
     this.CargarTipoFiscal();
     this.CargarGeneros();
     this.onTelefonoChange();
     this.setValue();
-      if (this.genero === 'Masculino' || this.genero === 'Femenino') {
+      if (this.genero === 'Masculino' || this.genero === 'Femenino' || this.genero=='Física') {
         this.genero === 'Femenino' ? this.itemGeneroPersona ={ sDato:'Femenino',sLlave:'F' }
-                                   : this.itemGeneroPersona ={ sDato:'Masculino',sLlave:'M' };
-        this.TipoPersona = 'Física'
-        this.itemTipoPersona={ sDato:'Física',sLlave:'F' }
-      }else{
-        this.TipoPersona = 'Moral'
+                                   : this.itemGeneroPersona ={ sDato:'Masculino',sLlave:'M' }                                          
+        if (this.genero=='Física') {
+          this.itemGeneroPersona ={ sDato:'',sLlave:'' };
+          this.genero='';
+        }
+        this.TipoPersona = 'Física';
+        this.itemTipoPersona={ sDato:'Física',sLlave:'F' };
       }
     this.Nacion = this.infovehiculoService.getNacionalidades();
     this.setValue();
@@ -165,7 +168,7 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
     }
   }
   onSelectGeneroPersona(){
-    this.itemGeneroPersona.sDato=='MASCULINO' ?  this.genero="Masculino" :  this.genero='Femenino';
+    this.itemGeneroPersona.sDato=='Masculino' ?  this.genero="Masculino" :  this.genero='Femenino';
   }
   getUbicacion(cp?: string) {
     this.coloniasel = '';

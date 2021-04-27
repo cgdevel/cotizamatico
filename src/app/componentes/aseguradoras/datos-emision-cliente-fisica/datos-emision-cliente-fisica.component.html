@@ -145,7 +145,27 @@
         </div>
         <div class="form-group col-12 col-md-4" *ngIf="this.genero != 'Moral'">
           <label class="form-label">Género:</label>
-          <input type="text" [value]="this.genero" [(ngModel)]="genero"  class="form-control" disabled *ngIf="!habilitarcampos" />
+          <input type="text" [value]="this.genero" [(ngModel)]="genero"  class="form-control" disabled *ngIf="!habilitarcampos" 
+            [ngClass]="{
+              Existe: genero !='',
+              NoExiste: genero==''
+            }"
+            [ngbTooltip]="ttClienteGenero"
+            tooltipClass="my-custom-class"
+        />
+        <ng-template #ttClienteGenero>
+          <b>Presione Editar <br/>
+              para ingresar género <br/>
+          </b>
+        </ng-template>
+        <ngb-alert
+          [dismissible]="false"
+          type="danger"
+          *ngIf=" genero=='' "
+          class="alert-danger"
+        >
+          Dato Obligatorio
+        </ngb-alert>
           <ng-select *ngIf="habilitarcampos"
             [items]="catGeneroPersona"
             bindLabel="sDato"
