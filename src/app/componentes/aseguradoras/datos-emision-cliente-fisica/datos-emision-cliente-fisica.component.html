@@ -154,14 +154,15 @@
             tooltipClass="my-custom-class"
         />
         <ng-template #ttClienteGenero>
-          <b>Presione Editar <br/>
+          <b *ngIf="!habilitarcampos">
+              Presione Editar <br/>
               para ingresar género <br/>
           </b>
         </ng-template>
         <ngb-alert
           [dismissible]="false"
           type="danger"
-          *ngIf=" genero=='' "
+          *ngIf=" genero=='' && !habilitarcampos "
           class="alert-danger"
         >
           Dato Obligatorio
