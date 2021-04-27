@@ -52,7 +52,7 @@
                 formControlName="RFMoCIn" 
                 class="classform" 
                 maxlength="12"
-                [ngClass]="{ NoExiste: formRFCMo.controls.RFMoCIn.errors?.pattern || formRFCMo.controls.RFMoCIn.value == '' }"
+                [ngClass]="{ NoExiste: formRFCMo.controls.RFMoCIn.errors?.pattern == true || formRFCMo.controls.RFMoCIn.value == '' }"
                 (change)="mayusRFC(this.RFCMoral)"
                 onkeypress="return( !!(
                   ( 97 <= event.charCode  && event.charCode < 123 )||
