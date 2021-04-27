@@ -342,33 +342,27 @@
           </ng-template>
         </div> -->
         <div class="col-6">
-          <div class="row">
-            <div class="col-12">
-              <div class="form-group">
-                <label 
-                  for="chkBeneficiario" class="mr-2"
-                  [ngbTooltip]="ttInfoaEdit"
-                  tooltipClass="my-custom-class"
-                >
-                  Para editar datos
-                </label>
-                <input
-                  type="checkbox"
-                  id="chkBeneficiario"
-                  checked="false"
-                  [(ngModel)]="habilitarcampos"
-                />
-                <ng-template #ttInfoaEdit>
-                  <b>Si desea editar: <br />
-                    1)Edad <br/>
-                    2)Sexo <br/>
-                    3)Fecha de nacimiento <br/>
-                    4)Código Postal
-                  </b>
-                </ng-template>
-              </div>
-            </div>
-          </div>
+          <button
+            class="btn btn-primary pull-right"
+            style="
+              background: linear-gradient(90deg, #ff6963 0%, #ff8f48 100%);
+              border: none;
+              box-shadow: 0 1px 8px 1px rgb(0 0 0 / 8%), 0 1px 6px 0 rgb(0 29 124 / 5%);
+            "
+            (click)="habilitarcam()"
+            [ngbTooltip]="ttInfoaEdit"
+            tooltipClass="my-custom-class"
+          >
+            Click aquí para editar
+          </button>
+          <ng-template #ttInfoaEdit>
+            <b>Si desea editar: <br />
+              1)Edad <br/>
+              2)Sexo <br/>
+              3)Fecha de nacimiento <br/>
+              4)Código Postal
+            </b>
+          </ng-template>
         </div>
         <div class="col-6">
           <button

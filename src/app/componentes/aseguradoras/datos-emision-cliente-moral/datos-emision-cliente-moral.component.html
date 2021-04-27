@@ -5,7 +5,27 @@
           <div class="col-12"><h5>Cliente</h5></div>
         </div>
         <div class="row">
-          <div class="form-group col-12 col-md-4" *ngIf="this.aseguradoraSelect !='AXA SEG' " >
+          <div class="form-group col-12 col-md-4" *ngIf="habilitarcampos">
+            <label class="form-label">Tipo de persona:</label>
+            <ng-select *ngIf="habilitarcampos"
+            [items]="catTipoPersona"
+            bindLabel="sDato"
+            placeholder="TIPO FISCAL"
+            appendTo="body"
+            [closeOnSelect]="true"
+            [clearable]="false"
+            [(ngModel)]="itemTipoPersona"
+            tooltipClass="my-custom-class"
+            (change)="onSelectTipoPersona()"
+          >
+            <ng-option
+              ng-options="item as item.sLlave for item.sDato in catTipoPersona"
+            >
+              {{ item }}
+            </ng-option>
+            </ng-select>
+          </div>
+          <div class="form-group col-12 col-md-4">
             <label class="form-label">Razón social:</label>
             <input type="text" (change)="verificater( this.razonsocial )" [value]="this.razonsocial" [(ngModel)]="razonsocial" class="form-control" />
           </div>
@@ -52,7 +72,7 @@
           </div>
           <div class="form-group col-12 col-md-4">
             <label class="form-label">Código Postal:</label>
-            <input type="text" [value]="this.codigopostal" [(ngModel)]="codigopostal" (change)="getUbicacion(codigopostal)" class="form-control" disabled />
+            <input type="text" [value]="this.codigopostal" [(ngModel)]="codigopostal" (change)="getUbicacion(codigopostal)" class="form-control"  [disabled]="!habilitarcampos ? true : false"  />
           </div>
           <div class="form-group col-12 col-md-4">
             <label class="form-label">Estado:</label>
@@ -131,7 +151,7 @@
       </div>
       <div class="container">
         <div class="row">
-          <div class="col-6">
+          <!-- <div class="col-6">
             <button
               class="btn btn-primary pull-right"
               style="
@@ -147,6 +167,26 @@
               Click aquí para editar
             </button>
             <ng-template #ttClienteNombre>
+              <b>Si desea editar: <br />
+                1)Código Postal  <br/>
+              </b>
+            </ng-template>
+          </div> -->
+          <div class="col-6">
+            <button
+              class="btn btn-primary pull-right"
+              style="
+                background: linear-gradient(90deg, #ff6963 0%, #ff8f48 100%);
+                border: none;
+                box-shadow: 0 1px 8px 1px rgb(0 0 0 / 8%), 0 1px 6px 0 rgb(0 29 124 / 5%);
+              "
+              (click)="habilitarcam()"
+              [ngbTooltip]="ttInfoaEdit"
+              tooltipClass="my-custom-class"
+            >
+              Click aquí para editar
+            </button>
+            <ng-template #ttInfoaEdit>
               <b>Si desea editar: <br />
                 1)Código Postal  <br/>
               </b>

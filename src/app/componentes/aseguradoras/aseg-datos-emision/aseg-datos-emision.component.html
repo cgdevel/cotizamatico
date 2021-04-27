@@ -28,7 +28,7 @@
 <!-- Contratante -->
 <div class="container mw-100">
   <app-datos-emision-cliente-fisica
-    *ngIf="this.genero != 'Moral' && this.genero !='MORAL' "
+    *ngIf="this.genero != 'Moral'"
     [codigopostal]="this.codigopostal"
     [nombre]="this.nombreaseg"
     [telefono]="this.telefono"
@@ -38,10 +38,11 @@
     (emitTipoPersona)="Persona($event)"
   ></app-datos-emision-cliente-fisica>
   <app-datos-emision-cliente-moral
-    *ngIf="this.genero == 'Moral' || this.genero=='MORAL'  && this.aseguradora != 'SURA'"
+    *ngIf="this.genero == 'Moral' && this.aseguradora != 'SURA'"
     [aseguradoraSelect]="this.aseguradora"
     [codigopostal]="this.codigopostal"
     [razonsocial]="this.nombreaseg"
+    (emitTipoPersona)="Persona($event)"
   ></app-datos-emision-cliente-moral>
 </div>
 

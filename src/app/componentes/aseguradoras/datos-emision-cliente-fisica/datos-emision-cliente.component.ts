@@ -16,6 +16,25 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./datos-emision-cliente-fisica.component.css'],
 })
 export class DatosEmisionClienteFisicaComponent implements OnInit {
+  constructor(
+    private locate: Location,
+    private infovehiculoService: InfovehiculoService
+  ) {
+    this.form = new FormGroup({
+      emailIn: new FormControl('', [
+        Validators.required,
+        Validators.pattern(
+          /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        ),
+      ]),
+    });
+    this.formRFC = new FormGroup({
+      RFCIn: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^((([A-Z]{4})([0-9]{6})(([A-Za-z0-9]{3})|([0]{3}))))$/),
+      ]),
+    });
+  }
   fechanaciaseg: NgbDateStruct;
   date: { year: number; month: number };
   @ViewChild('dp') dp: NgbDatepicker;
@@ -61,40 +80,70 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
   Calle: string = '';
   NumeExterior: string = '';
   NumInterior: string = '';
-  habilitarcampos: boolean;
+  habilitarcampos = false;
   catTipoPersona: CatalogoModel[];
   itemTipoPersona: CatalogoModel;
   catGeneroPersona: CatalogoModel[];
   itemGeneroPersona: CatalogoModel;
-  constructor(
-    private locate: Location,
-    private infovehiculoService: InfovehiculoService
-  ) {
-    this.form = new FormGroup({
-      emailIn: new FormControl('', [
-        Validators.required,
-        Validators.pattern(
-          /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        ),
-      ]),
+  ngOnInit(): void {
+    this.CargarTipoFiscal();
+    this.CargarGeneros();
+    this.onTelefonoChange();
+    this.setValue();
+      if (this.genero === 'Masculino' || this.genero === 'Femenino') {
+        this.genero === 'Femenino' ? this.itemGeneroPersona ={ sDato:'Femenino',sLlave:'F' }
+                                   : this.itemGeneroPersona ={ sDato:'Masculino',sLlave:'M' };
+        this.TipoPersona = 'Física'
+        this.itemTipoPersona={ sDato:'Física',sLlave:'F' }
+      }else{
+        this.TipoPersona = 'Moral'
+      }
+    this.Nacion = this.infovehiculoService.getNacionalidades();
+    this.setValue();
+    this.nacionalidadsel = { NacString: 'MEXICANA', NacClave: 'MEX' };
+    this.EsCivs = this.infovehiculoService.getEstadoCivil();
+    this.getUbicacion();
+    this.getOcupaciones();
+
+    const meses = [
+      { nom: 'Enero', id: 1 },
+      { nom: 'Febrero', id: 2 },
+      { nom: 'Marzo', id: 3 },
+      { nom: 'Abril', id: 4 },
+      { nom: 'Mayo', id: 5 },
+      { nom: 'Junio', id: 6 },
+      { nom: 'Julio', id: 7 },
+      { nom: 'Agosto', id: 8 },
+      { nom: 'Septiembre', id: 9 },
+      { nom: 'Octubre', id: 10 },
+      { nom: 'Noviembre', id: 11 },
+      { nom: 'Diciembre', id: 12 },
+    ];
+    meses.forEach((element) => {
+      if (this.fecha.mes === element.nom) {
+        this.mesnac = element.id;
+      }
     });
-    this.formRFC = new FormGroup({
-      RFCIn: new FormControl('', [
-        Validators.required,
-        Validators.pattern(/^((([A-Z]{4})([0-9]{6})(([A-Za-z0-9]{3})|([0]{3}))))$/),
-      ]),
-    });
+    this.anionac = Number(this.fecha.anio);
+    this.dianac = Number(this.fecha.dia);
+    this.fechanaciaseg = {
+      year: this.anionac,
+      month: this.mesnac,
+      day: this.dianac,
+    };
+    this.edad = this.calculaedad(this.fechanaciaseg);
+    this.verificaCompletoNom(this.nombre);
   }
   CargarTipoFiscal(): void {
     const tipos: CatalogoModel[] = [];
-    tipos.push({ sDato: 'FÍSICA', sLlave: 'F' });
-      tipos.push({ sDato: 'MORAL', sLlave: 'M' });
+    tipos.push({ sDato: 'Física', sLlave: 'F' });
+      tipos.push({ sDato: 'Moral', sLlave: 'M' });
     this.catTipoPersona = tipos;
   }
   CargarGeneros(): void {
     const tipos: CatalogoModel[] = [];
-    tipos.push({ sDato: 'FEMENINO', sLlave: 'F' });
-      tipos.push({ sDato: 'MASCULINO', sLlave: 'M' });
+    tipos.push({ sDato: 'Femenino', sLlave: 'F' });
+      tipos.push({ sDato: 'Masculino', sLlave: 'M' });
     this.catGeneroPersona = tipos;
   }
   setValue() {
@@ -109,7 +158,7 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
     }
   }
   onSelectTipoPersona(){
-    if(this.itemTipoPersona.sDato=='MORAL'){
+    if(this.itemTipoPersona.sDato=='Moral'){
       this.emitTipoPersona.emit(this.itemTipoPersona);
     }
   }
@@ -481,59 +530,12 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
       }
     }
   }
-  ngOnInit(): void {
-    this.CargarTipoFiscal();
-    this.CargarGeneros();
-    this.onTelefonoChange();
-    this.setValue();
-      if (this.genero === 'Masculino' || this.genero === 'Femenino') {
-        this.genero === 'Femenino' ? this.itemGeneroPersona ={ sDato:'FEMENINO',sLlave:'F' }
-                                   : this.itemGeneroPersona ={ sDato:'MASCULINO',sLlave:'M' };
-        this.TipoPersona = 'Física'
-        this.itemTipoPersona={ sDato:'FISICA',sLlave:'F' }
-      }else{
-        this.TipoPersona = 'Moral'
-      }
-    this.Nacion = this.infovehiculoService.getNacionalidades();
-    this.setValue();
-    this.nacionalidadsel = { NacString: 'MEXICANA', NacClave: 'MEX' };
-    this.EsCivs = this.infovehiculoService.getEstadoCivil();
-    this.getUbicacion();
-    this.getOcupaciones();
-
-    const meses = [
-      { nom: 'Enero', id: 1 },
-      { nom: 'Febrero', id: 2 },
-      { nom: 'Marzo', id: 3 },
-      { nom: 'Abril', id: 4 },
-      { nom: 'Mayo', id: 5 },
-      { nom: 'Junio', id: 6 },
-      { nom: 'Julio', id: 7 },
-      { nom: 'Agosto', id: 8 },
-      { nom: 'Septiembre', id: 9 },
-      { nom: 'Octubre', id: 10 },
-      { nom: 'Noviembre', id: 11 },
-      { nom: 'Diciembre', id: 12 },
-    ];
-    meses.forEach((element) => {
-      if (this.fecha.mes === element.nom) {
-        this.mesnac = element.id;
-      }
-    });
-    this.anionac = Number(this.fecha.anio);
-    this.dianac = Number(this.fecha.dia);
-    this.fechanaciaseg = {
-      year: this.anionac,
-      month: this.mesnac,
-      day: this.dianac,
-    };
-    this.edad = this.calculaedad(this.fechanaciaseg);
-    this.verificaCompletoNom(this.nombre);
+  habilitarcam(){
+    this.habilitarcampos= !this.habilitarcampos
   }
   mayusRFC(rfc: string){
     this.RFC = rfc.toLocaleUpperCase()
   }
-
   getOcupaciones() {
     this.infovehiculoService
       .getOcupaciones({

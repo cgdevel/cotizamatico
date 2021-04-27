@@ -1,5 +1,6 @@
-import { Component, OnInit,Input, ViewChild  } from '@angular/core';
+import { Component, OnInit,Input, ViewChild, EventEmitter, Output  } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
 import {InfovehiculoService} from '../../../servicios/infovehiculo.service';
 import { NgbDateStruct, NgbCalendar, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import {Location} from '@angular/common';
@@ -17,11 +18,14 @@ export class DatosEmisionClienteMoralComponent implements OnInit {
         Validators.pattern(/^(([A-Za-z]{3})([0-9]{6})([0-9A-Za-z]{3}))$/)
       ])
     });
-  } 
+  }
+  @Output() emitTipoPersona = new EventEmitter<CatalogoModel>(); 
   @Input() codigopostal = '';
   @Input() aseguradoraSelect: string ;
   @Input() razonsocial = '';
   @ViewChild('dp') dp: NgbDatepicker;
+  catTipoPersona: CatalogoModel[];
+  itemTipoPersona: CatalogoModel;
   RFCMoral: string = '';
   Calle: string = '';
   NumeExterior: string = '';
@@ -42,9 +46,12 @@ export class DatosEmisionClienteMoralComponent implements OnInit {
   ubicacion: any;
   item = '';
   formRFCMo: FormGroup;
+  habilitarcampos = false;
   ngOnInit(): void {
+    this.itemTipoPersona={ sDato:'Moral',sLlave:'M' }
     this.getUbicacion();
     this.calculaminymax();
+    this.CargarTipoFiscal();
   }
   getUbicacion( cp ?: string ) {
     this.coloniasel = '';
@@ -83,5 +90,18 @@ export class DatosEmisionClienteMoralComponent implements OnInit {
     this.RFCMoral=rfcmor.toLocaleUpperCase()
   }
   
-
+ habilitarcam(){
+    this.habilitarcampos= !this.habilitarcampos
+  }
+  onSelectTipoPersona(){
+    if(this.itemTipoPersona.sDato=='Física'){
+      this.emitTipoPersona.emit(this.itemTipoPersona);
+    }
+  }
+  CargarTipoFiscal(): void {
+    const tipos: CatalogoModel[] = [];
+    tipos.push({ sDato: 'Física', sLlave: 'F' });
+      tipos.push({ sDato: 'Moral', sLlave: 'M' });
+    this.catTipoPersona = tipos;
+  }
 }
