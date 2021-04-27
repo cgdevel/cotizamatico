@@ -160,6 +160,8 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
   onSelectTipoPersona(){
     if(this.itemTipoPersona.sDato=='Moral'){
       this.emitTipoPersona.emit(this.itemTipoPersona);
+    }else{
+      this.TipoPersona = this.itemTipoPersona.sDato
     }
   }
   onSelectGeneroPersona(){
