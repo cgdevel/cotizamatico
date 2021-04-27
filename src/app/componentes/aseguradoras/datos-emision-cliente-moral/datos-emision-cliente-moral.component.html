@@ -1,13 +1,14 @@
 <div class="card mb-4 rounded" style="justify-content: center">
-    <div class="card-body">
-      <div class="container">
-        <div class="row">
-          <div class="col-12"><h5>Cliente</h5></div>
-        </div>
-        <div class="row">
-          <div class="form-group col-12 col-md-4" *ngIf="habilitarcampos">
-            <label class="form-label">Tipo de persona:</label>
-            <ng-select *ngIf="habilitarcampos"
+  <div class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-12"><h5>Cliente</h5></div>
+      </div>
+      <div class="row">
+        <div class="form-group col-12 col-md-4" *ngIf="habilitarcampos">
+          <label class="form-label">Tipo de persona:</label>
+          <ng-select
+            *ngIf="habilitarcampos"
             [items]="catTipoPersona"
             bindLabel="sDato"
             placeholder="TIPO FISCAL"
@@ -23,135 +24,201 @@
             >
               {{ item }}
             </ng-option>
-            </ng-select>
-          </div>
-          <div class="form-group col-12 col-md-4">
-            <label class="form-label">Razón social:</label>
-            <input type="text" (change)="verificater( this.razonsocial )" [value]="this.razonsocial" [(ngModel)]="razonsocial" class="form-control" />
-          </div>
-          <div id="datepicker" class="form-group col-12 col-md-4">
-            <label class="form-label">Fecha de Constitución:</label>
-            <!-- <input class="form-control" type="date" data-date-format="mm/dd/yyyy" value="" (change)="changefecha()" id="fechanaci"> -->
-            <input 
-              (click)="d.toggle()"  
-              class="form-control" 
-              placeholder="yyyy-mm-dd" 
-              name="dp" 
-              [(ngModel)]="fechacontiaseg" 
-              ngbDatepicker #d="ngbDatepicker"
-            >
-            <!-- [minDate]="{year: this.yearpri, month: this.mon, day: this.day}"
+          </ng-select>
+        </div>
+        <div class="form-group col-12 col-md-4">
+          <label class="form-label">Razón social:</label>
+          <input
+            type="text"
+            (change)="verificater(this.razonsocial)"
+            [value]="this.razonsocial"
+            [(ngModel)]="razonsocial"
+            class="form-control"
+          />
+        </div>
+        <div id="datepicker" class="form-group col-12 col-md-4">
+          <label class="form-label">Fecha de Constitución:</label>
+          <!-- <input class="form-control" type="date" data-date-format="mm/dd/yyyy" value="" (change)="changefecha()" id="fechanaci"> -->
+          <input
+            (click)="d.toggle()"
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp"
+            [(ngModel)]="fechacontiaseg"
+            ngbDatepicker
+            #d="ngbDatepicker"
+          />
+          <!-- [minDate]="{year: this.yearpri, month: this.mon, day: this.day}"
                  [maxDate]="{year: this.yearulti, month: this.mon, day: this.day}" -->
-          </div>
-          <div class="form-group col-12 col-md-4">
-            <label class="form-label">RFC:</label>
-            <form [formGroup]="formRFCMo" >
-              <input
-                [(ngModel)]="RFCMoral"
-                type="text" 
-                formControlName="RFMoCIn" 
-                class="classform" 
-                maxlength="12"
-                [ngClass]="{ NoExiste: formRFCMo.controls.RFMoCIn.errors?.pattern == true || formRFCMo.controls.RFMoCIn.value == '' }"
-                (change)="mayusRFC(this.RFCMoral)"
-                onkeypress="return( !!(
+        </div>
+        <div class="form-group col-12 col-md-4">
+          <label class="form-label">RFC:</label>
+          <form [formGroup]="formRFCMo">
+            <input
+              [(ngModel)]="RFCMoral"
+              type="text"
+              formControlName="RFMoCIn"
+              class="classform"
+              maxlength="12"
+              [ngClass]="{
+                NoExiste:
+                  formRFCMo.controls.RFMoCIn.errors?.pattern == true ||
+                  formRFCMo.controls.RFMoCIn.value == ''
+              }"
+              (change)="mayusRFC(this.RFCMoral)"
+              onkeypress="return( !!(
                   ( 97 <= event.charCode  && event.charCode < 123 )||
                   ( 65 <= event.charCode  && event.charCode < 91 )||
                   ( 48 <= event.charCode  && event.charCode < 58 ) ))"
-              >
-              <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFCMo.controls.RFMoCIn.errors?.pattern &&  RFCMoral.length == 12 " class="alert-danger">
-                RFC no válido, verifique HOMOCLAVE
-              </ngb-alert>
-              <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFCMo.controls.RFMoCIn.value == '' " class="alert-danger">
-                Dato obligatorio
-              </ngb-alert>
-              <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFCMo.controls.RFMoCIn.value != ''  &&  this.RFCMoral.length < 12  " class="alert-danger">
-                Faltan caracteres
-              </ngb-alert>
-            </form>
-          </div>
-          <div class="form-group col-12 col-md-4">
-            <label class="form-label">Código Postal:</label>
-            <input type="text" [value]="this.codigopostal" [(ngModel)]="codigopostal" (change)="getUbicacion(codigopostal)" class="form-control"  [disabled]="!habilitarcampos ? true : false"  />
-          </div>
-          <div class="form-group col-12 col-md-4">
-            <label class="form-label">Estado:</label>
-            <input type="text" [value]="this.estado" disabled="true" class="form-control" />
-          </div>
-          <div class="form-group col-12 col-md-4">
-            <label class="form-label">Municipio:</label>
-            <input type="text" [value]="this.municipio" disabled="true" class="form-control" />
-          </div>
-          <div class="form-group col-12 col-md-4">
-            <label class="form-label">Colonia:</label>
-            <ng-select
-              [items]="cols"        
-              *ngIf="cols.length > 1" 
-              bindLabel="sUbicacion"
-              placeholder="Colonia"
-              appendTo="body"
-              [searchable]="false" 
-              [clearable]="false"
-              [closeOnSelect]="true"
-              [(ngModel)]="coloniasel">
-              <ng-option  ng-options="item as cols.iIdUbicacion for cols.sUbicacion in cols">
-                  {{item}}
-              </ng-option>
-              <ng-template ng-notfound-tmp >
-                <div class="ng-option disabled">
-                    No hay colonias que mostrar
-                </div>
-              </ng-template>
-            </ng-select>
-            <input disabled="true"  [(ngModel)]="this.coloniasel"  *ngIf="cols.length==1" type="text" class="form-control" />
-          </div>
-          <div class="form-group col-12 col-md-4">
-            <label class="form-label">Calle:</label>
-            <input 
-              type="text" 
-              class="form-control"
-              [(ngModel)]="Calle"
-              [ngClass]="{ NoExiste: Calle == '' }"
-              />
-              <ngb-alert [dismissible]="false" type="danger" *ngIf="Calle=='' " class="alert-danger">
-                Dato obligatorio
-              </ngb-alert>
-          </div>
-          <div class="form-group col-12 col-md-4">
-            <label class="form-label">Numero Exterior:</label>
-            <input 
-              type="text" 
-              class="form-control"
-              [(ngModel)]="NumeExterior"
-              [ngClass]="{ NoExiste: NumeExterior == '' }"  
-              maxlength="5" 
-              onkeypress="return(
+            />
+            <ngb-alert
+              [dismissible]="false"
+              type="danger"
+              *ngIf="
+                formRFCMo.controls.RFMoCIn.errors?.pattern &&
+                RFCMoral.length == 12
+              "
+              class="alert-danger"
+            >
+              RFC no válido, verifique HOMOCLAVE
+            </ngb-alert>
+            <ngb-alert
+              [dismissible]="false"
+              type="danger"
+              *ngIf="formRFCMo.controls.RFMoCIn.value == ''"
+              class="alert-danger"
+            >
+              Dato obligatorio
+            </ngb-alert>
+            <ngb-alert
+              [dismissible]="false"
+              type="danger"
+              *ngIf="
+                formRFCMo.controls.RFMoCIn.value != '' &&
+                this.RFCMoral.length < 12
+              "
+              class="alert-danger"
+            >
+              Faltan caracteres
+            </ngb-alert>
+          </form>
+        </div>
+        <div class="form-group col-12 col-md-4">
+          <label class="form-label">Código Postal:</label>
+          <input
+            type="text"
+            [value]="this.codigopostal"
+            [(ngModel)]="codigopostal"
+            (change)="getUbicacion(codigopostal)"
+            class="form-control"
+            [disabled]="!habilitarcampos ? true : false"
+          />
+        </div>
+        <div class="form-group col-12 col-md-4">
+          <label class="form-label">Estado:</label>
+          <input
+            type="text"
+            [value]="this.estado"
+            disabled="true"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group col-12 col-md-4">
+          <label class="form-label">Municipio:</label>
+          <input
+            type="text"
+            [value]="this.municipio"
+            disabled="true"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group col-12 col-md-4">
+          <label class="form-label">Colonia:</label>
+          <ng-select
+            [items]="cols"
+            *ngIf="cols.length > 1"
+            bindLabel="sUbicacion"
+            placeholder="Colonia"
+            appendTo="body"
+            [searchable]="false"
+            [clearable]="false"
+            [closeOnSelect]="true"
+            [(ngModel)]="coloniasel"
+          >
+            <ng-option
+              ng-options="item as cols.iIdUbicacion for cols.sUbicacion in cols"
+            >
+              {{ item }}
+            </ng-option>
+            <ng-template ng-notfound-tmp>
+              <div class="ng-option disabled">No hay colonias que mostrar</div>
+            </ng-template>
+          </ng-select>
+          <input
+            disabled="true"
+            [(ngModel)]="this.coloniasel"
+            *ngIf="cols.length == 1"
+            type="text"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group col-12 col-md-4">
+          <label class="form-label">Calle:</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="Calle"
+            [ngClass]="{ NoExiste: Calle == '' }"
+          />
+          <ngb-alert
+            [dismissible]="false"
+            type="danger"
+            *ngIf="Calle == ''"
+            class="alert-danger"
+          >
+            Dato obligatorio
+          </ngb-alert>
+        </div>
+        <div class="form-group col-12 col-md-4">
+          <label class="form-label">Numero Exterior:</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="NumeExterior"
+            [ngClass]="{ NoExiste: NumeExterior == '' }"
+            maxlength="5"
+            onkeypress="return(
                         !(
                         ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 48 > event.charCode || event.charCode >  57 ))
                         )"
-              />
-              <ngb-alert [dismissible]="false" type="danger" *ngIf="NumeExterior=='' " class="alert-danger">
-                Dato obligatorio
-              </ngb-alert>
-          </div>
-          <div class="form-group col-12 col-md-4">
-            <label class="form-label">Numero Interior:</label>
-            <input 
-              type="text" 
-              class="form-control"
-              [(ngModel)]="NumInterior"  
-              maxlength="5" 
-              onkeypress="return(
+          />
+          <ngb-alert
+            [dismissible]="false"
+            type="danger"
+            *ngIf="NumeExterior == ''"
+            class="alert-danger"
+          >
+            Dato obligatorio
+          </ngb-alert>
+        </div>
+        <div class="form-group col-12 col-md-4">
+          <label class="form-label">Numero Interior:</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="NumInterior"
+            maxlength="5"
+            onkeypress="return(
                         !(
                         ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 48 > event.charCode || event.charCode >  57 ))
                         )"
-              />
-          </div>
+          />
         </div>
       </div>
-      <div class="container">
-        <div class="row">
-          <!-- <div class="col-6">
+    </div>
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-6">
             <button
               class="btn btn-primary pull-right"
               style="
@@ -172,41 +239,29 @@
               </b>
             </ng-template>
           </div> -->
-          <div class="col-6">
-            <button
-              class="btn btn-primary pull-right"
-              style="
-                background: linear-gradient(90deg, #ff6963 0%, #ff8f48 100%);
-                border: none;
-                box-shadow: 0 1px 8px 1px rgb(0 0 0 / 8%), 0 1px 6px 0 rgb(0 29 124 / 5%);
-              "
-              (click)="habilitarcam()"
-              [ngbTooltip]="ttInfoaEdit"
-              tooltipClass="my-custom-class"
-            >
-              Click aquí para editar
-            </button>
-            <ng-template #ttInfoaEdit>
-              <b>Si desea editar: <br />
-                1)Código Postal  <br/>
-              </b>
-            </ng-template>
-          </div>
-          <div class="col-6">
-            <button
+        <div class="col-12">
+          <button
             class="btn btn-primary pull-right"
             style="
-              background: linear-gradient(90deg, #21c7ed 0%, #00d0ff 100%);
+              background: linear-gradient(90deg, #ff6963 0%, #ff8f48 100%);
               border: none;
-              box-shadow: 0 1px 8px 1px rgb(0 0 0 / 8%), 0 1px 6px 0 rgb(0 29 124 / 5%);
+              box-shadow: 0 1px 8px 1px rgb(0 0 0 / 8%),
+                0 1px 6px 0 rgb(0 29 124 / 5%);
             "
-            (click)="onback()"
-            routerLinkActive="router-link-active"
+            (click)="habilitarcam()"
+            [ngbTooltip]="ttInfoaEdit"
+            tooltipClass="my-custom-class"
           >
-            Regresar a comparativo
+            Click aquí para editar
           </button>
-          </div>
+          <ng-template #ttInfoaEdit>
+            <b
+              >Si desea editar: <br />
+              1)Código Postal <br />
+            </b>
+          </ng-template>
         </div>
       </div>
     </div>
   </div>
+</div>
