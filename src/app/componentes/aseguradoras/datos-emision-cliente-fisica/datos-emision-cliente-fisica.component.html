@@ -56,7 +56,7 @@
               type="text" 
               formControlName="RFCIn" 
               class="classform" 
-              [ngClass]="{ NoExiste: formRFC.controls.RFCIn.errors?.pattern == false ||formRFC.controls.RFCIn.value == '' }"
+              [ngClass]="{ NoExiste: formRFC.controls.RFCIn.errors?.pattern == true ||formRFC.controls.RFCIn.value == '' }"
               maxlength="13"
               (change)="mayusRFC(this.RFC)"
               onkeypress="return( !!(
@@ -154,7 +154,7 @@
             tooltipClass="my-custom-class"
         />
         <ng-template #ttClienteGenero>
-          <b *ngIf="!habilitarcampos">
+          <b>
               Presione Editar <br/>
               para ingresar género <br/>
           </b>
