@@ -4,6 +4,8 @@ import { InfovehiculoService } from '../../../app/servicios/infovehiculo.service
 import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
 import { FechasModel } from 'src/app/interphaces/models/Fechas.model';
 import { CookieService } from 'ngx-cookie';
+import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-pagina3',
   templateUrl: './pagina3.component.html',
@@ -24,6 +26,7 @@ export class Pagina3Component implements OnInit {
   // aseguradora: string;
 
   constructor(
+    private locate: Location,
     private Infovehiculo: InfovehiculoService,
     private cookieService: CookieService
   ) {}
@@ -80,11 +83,15 @@ export class Pagina3Component implements OnInit {
       Filtro: this.codigopostal,
     }).subscribe((data: any) => {
       this.ubicacion = JSON.parse(data.CatalogoJsonString);
-       // console.log(this.ubicacion);
+      // console.log(this.ubicacion);
       this.estado = this.ubicacion[0].Municipio.Estado.sEstado;
       this.municipio = this.ubicacion[0].Municipio.sMunicipio;
       this.cols = this.ubicacion[0].Ubicacion;
     }); // suscribecierra
+  }
+
+  onback() {
+    this.locate.back();
   }
 
   verificanombre(cnam: string) {
@@ -93,7 +100,7 @@ export class Pagina3Component implements OnInit {
     ArrayEmparejamientos = cnam.match(reg);
     this.validonompag3 = reg.test(cnam);
     // console.log(event);
-     // console.log(cnam);
+    // console.log(cnam);
     if (this.validonompag3) {
       return (this.sisirve = true);
     } else {
@@ -101,9 +108,10 @@ export class Pagina3Component implements OnInit {
     }
   }
   dameformadepago(e) {}
+
   ngOnInit(): void {
     if (history.state.modsel !== undefined) {
-       // console.log('primera vez');
+      // console.log('primera vez');
       localStorage.datosSeleccion = JSON.stringify(history.state);
       this.noedites = false;
       this.vermodelo = history.state.modsel;
@@ -115,7 +123,7 @@ export class Pagina3Component implements OnInit {
       this.email = history.state.emsel;
       this.telefono = history.state.telsel;
       this.codigopostal = history.state.codigosel;
-       // console.log(this.codigopostal);
+      // console.log(this.codigopostal);
       this.nombraseguradora = history.state.asesel;
       this.genero = history.state.generosel;
       this.genero === 'Femenino' ? (this.mujer = true) : (this.mujer = false);
@@ -125,13 +133,13 @@ export class Pagina3Component implements OnInit {
       this.genero === 'Moral' ? (this.empresa = true) : (this.empresa = false);
       this.fechanacimiento = history.state.fechasel;
       this.FormadePago = history.state.pag;
-       // console.log(this.FormadePago);
+      // console.log(this.FormadePago);
       this.cobertura = history.state.cobertura;
       this.getUbicacion();
     } else {
-       // console.log('refresh');
+      // console.log('refresh');
       const seleccion = JSON.parse(localStorage.datosSeleccion);
-       // console.log(seleccion);
+      // console.log(seleccion);
       this.noedites = false;
       this.vermodelo = seleccion.modsel;
       this.vermarca = seleccion.marsel;
@@ -142,7 +150,7 @@ export class Pagina3Component implements OnInit {
       this.email = seleccion.emsel;
       this.telefono = seleccion.telsel;
       this.codigopostal = seleccion.codigosel;
-       // console.log(this.codigopostal);
+      // console.log(this.codigopostal);
       this.nombraseguradora = seleccion.asesel;
       this.genero = seleccion.generosel;
       this.genero === 'Femenino' ? (this.mujer = true) : (this.mujer = false);
@@ -152,7 +160,7 @@ export class Pagina3Component implements OnInit {
       this.genero === 'Moral' ? (this.empresa = true) : (this.empresa = false);
       this.fechanacimiento = seleccion.fechasel;
       this.FormadePago = seleccion.pag;
-       // console.log(this.FormadePago);
+      // console.log(this.FormadePago);
       this.cobertura = seleccion.cobertura;
       this.getUbicacion();
     }

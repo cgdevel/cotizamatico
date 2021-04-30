@@ -1,27 +1,37 @@
-import { Component, OnInit,Input, ViewChild, EventEmitter, Output  } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ViewChild,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
-import {InfovehiculoService} from '../../../servicios/infovehiculo.service';
-import { NgbDateStruct, NgbCalendar, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
-import {Location} from '@angular/common';
+import { InfovehiculoService } from '../../../servicios/infovehiculo.service';
+import {
+  NgbDateStruct,
+  NgbCalendar,
+  NgbDatepicker,
+} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-datos-emision-cliente-moral',
   templateUrl: './datos-emision-cliente-moral.component.html',
-  styleUrls: ['./datos-emision-cliente-moral.component.css']
+  styleUrls: ['./datos-emision-cliente-moral.component.css'],
 })
 export class DatosEmisionClienteMoralComponent implements OnInit {
-  constructor(  private locate: Location, private InfovehiculoService: InfovehiculoService) {
+  constructor(private InfovehiculoService: InfovehiculoService) {
     this.formRFCMo = new FormGroup({
-      'RFMoCIn': new FormControl('', [
+      RFMoCIn: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^(([A-Za-z]{3})([0-9]{6})([0-9A-Za-z]{3}))$/)
-      ])
+        Validators.pattern(/^(([A-Za-z]{3})([0-9]{6})([0-9A-Za-z]{3}))$/),
+      ]),
     });
   }
-  @Output() emitTipoPersona = new EventEmitter<CatalogoModel>(); 
+  @Output() emitTipoPersona = new EventEmitter<CatalogoModel>();
   @Input() codigopostal = '';
-  @Input() aseguradoraSelect: string ;
+  @Input() aseguradoraSelect: string;
   @Input() razonsocial = '';
   @ViewChild('dp') dp: NgbDatepicker;
   catTipoPersona: CatalogoModel[];
@@ -33,13 +43,14 @@ export class DatosEmisionClienteMoralComponent implements OnInit {
   year;
   mon;
   day;
-  yearulti:number;
-  yearpri:number;
+  yearulti: number;
+  yearpri: number;
   fechacontiaseg: NgbDateStruct;
-  date: { year: number, month: number };
+  date: { year: number; month: number };
   cols: {
-    iIdUbicacion: number,
-    sUbicacion: string }[];
+    iIdUbicacion: number;
+    sUbicacion: string;
+  }[];
   coloniasel;
   estado: string;
   municipio: string;
@@ -48,12 +59,12 @@ export class DatosEmisionClienteMoralComponent implements OnInit {
   formRFCMo: FormGroup;
   habilitarcampos = false;
   ngOnInit(): void {
-    this.itemTipoPersona={ sDato:'Moral',sLlave:'M' }
+    this.itemTipoPersona = { sDato: 'Moral', sLlave: 'M' };
     this.getUbicacion();
     this.calculaminymax();
     this.CargarTipoFiscal();
   }
-  getUbicacion( cp ?: string ) {
+  getUbicacion(cp?: string) {
     this.coloniasel = '';
     this.InfovehiculoService.getApiCPs({
       IdAplication: 2,
@@ -66,42 +77,38 @@ export class DatosEmisionClienteMoralComponent implements OnInit {
       this.municipio = this.ubicacion[0].Municipio.sMunicipio;
       this.cols = this.ubicacion[0].Ubicacion;
       if (this.cols.length == 1) {
-        this.coloniasel=this.cols[0].sUbicacion;
-      } 
+        this.coloniasel = this.cols[0].sUbicacion;
+      }
     }); // suscribecierra
   }
-  verificater( nomemp ?: string ){
-  }
-  onback(){
-    this.locate.back();
-  }
-  calculaminymax(){
-    const today = new Date();
-      this.year = today.getFullYear();
-      this.mon = today.getMonth() + 1;
-      this.day = today.getDay();
-  
-  this.yearulti=Number( today.getFullYear()-75);
-  this.yearpri=Number( today.getFullYear()-18);
-  console.log(this.yearulti+'   '+this.yearpri)
+  verificater(nomemp?: string) {}
 
+  calculaminymax() {
+    const today = new Date();
+    this.year = today.getFullYear();
+    this.mon = today.getMonth() + 1;
+    this.day = today.getDay();
+
+    this.yearulti = Number(today.getFullYear() - 75);
+    this.yearpri = Number(today.getFullYear() - 18);
+    console.log(this.yearulti + '   ' + this.yearpri);
   }
-  mayusRFC(rfcmor: string){
-    this.RFCMoral=rfcmor.toLocaleUpperCase()
+  mayusRFC(rfcmor: string) {
+    this.RFCMoral = rfcmor.toLocaleUpperCase();
   }
-  
- habilitarcam(){
-    this.habilitarcampos= !this.habilitarcampos
+
+  habilitarcam() {
+    this.habilitarcampos = !this.habilitarcampos;
   }
-  onSelectTipoPersona(){
-    if(this.itemTipoPersona.sDato=='Física'){
+  onSelectTipoPersona() {
+    if (this.itemTipoPersona.sDato == 'Física') {
       this.emitTipoPersona.emit(this.itemTipoPersona);
     }
   }
   CargarTipoFiscal(): void {
     const tipos: CatalogoModel[] = [];
     tipos.push({ sDato: 'Física', sLlave: 'F' });
-      tipos.push({ sDato: 'Moral', sLlave: 'M' });
+    tipos.push({ sDato: 'Moral', sLlave: 'M' });
     this.catTipoPersona = tipos;
   }
 }

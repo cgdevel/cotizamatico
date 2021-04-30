@@ -1,4 +1,13 @@
 <div class="container mw-90 py-4">
+  <div class="col-12 mb-3">
+    <button
+      class="btn btn-ligth"
+      (click)="onback()"
+      routerLinkActive="router-link-active"
+    >
+      &#8592; Regresar a comparativo
+    </button>
+  </div>
   <app-aseg-datos-emision
     [aseguradora]="nombraseguradora"
   ></app-aseg-datos-emision>

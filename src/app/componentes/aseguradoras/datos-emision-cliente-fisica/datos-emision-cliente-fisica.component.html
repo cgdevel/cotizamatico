@@ -7,173 +7,266 @@
       <div class="row">
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Nombre:</label>
-          <input type="text" 
-            (change)="nombreMayu( this.nombre )" 
-            [value]="this.nombre" 
-            [(ngModel)]="nombre" 
-            class="form-control"  
-            [ngClass]="{ Existe: this.nombre!='' ,NoExiste: this.nombre=='' || this.nombre.length<3}" 
+          <input
+            type="text"
+            (change)="nombreMayu(this.nombre)"
+            [value]="this.nombre"
+            [(ngModel)]="nombre"
+            class="form-control"
+            [ngClass]="{
+              Existe: this.nombre != '',
+              NoExiste: this.nombre == '' || this.nombre.length < 3
+            }"
             onkeypress="return(
                           !(
-                            event.charCode > 32 && 
+                            event.charCode > 32 &&
                             ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 48 > event.charCode || event.charCode >  57 ))
                         )"
           />
-          <ngb-alert [dismissible]="false" type="danger" *ngIf="this.nombre=='' " class="alert-danger">
+          <ngb-alert
+            [dismissible]="false"
+            type="danger"
+            *ngIf="this.nombre == ''"
+            class="alert-danger"
+          >
             Dato obligatorio
           </ngb-alert>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Apellido Paterno:</label>
-          <input type="text" 
-            (change)="apepatMayu( this.apellidopaterno )" 
-            [(ngModel)]="apellidopaterno" 
-            [ngClass]="{ Existe: apellidopaterno!='' , NoExiste: apellidopaterno=='' || apellidopaterno.length<3}" 
-            class="form-control"  
+          <input
+            type="text"
+            (change)="apepatMayu(this.apellidopaterno)"
+            [(ngModel)]="apellidopaterno"
+            [ngClass]="{
+              Existe: apellidopaterno != '',
+              NoExiste: apellidopaterno == '' || apellidopaterno.length < 3
+            }"
+            class="form-control"
             onkeypress="return( !(
-              event.charCode > 32 && 
+              event.charCode > 32 &&
               ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))
-          "/>
-          <ngb-alert [dismissible]="false" type="danger" *ngIf="this.apellidopaterno=='' " class="alert-danger">
+          "
+          />
+          <ngb-alert
+            [dismissible]="false"
+            type="danger"
+            *ngIf="this.apellidopaterno == ''"
+            class="alert-danger"
+          >
             Dato obligatorio
           </ngb-alert>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Apellido Materno:</label>
-          <input type="text" 
-            (change)="apematMayu( this.apellidomaterno )" 
-            [(ngModel)]="apellidomaterno" 
-            [ngClass]="{ Existe: apellidomaterno!='' , NoExiste: apellidomaterno==''|| apellidomaterno.length<3}" 
-            class="form-control"  
+          <input
+            type="text"
+            (change)="apematMayu(this.apellidomaterno)"
+            [(ngModel)]="apellidomaterno"
+            [ngClass]="{
+              Existe: apellidomaterno != '',
+              NoExiste: apellidomaterno == '' || apellidomaterno.length < 3
+            }"
+            class="form-control"
             onkeypress="return( !(
-              event.charCode > 32 && 
+              event.charCode > 32 &&
               ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))
-          "/>
-          <ngb-alert [dismissible]="false" type="danger" *ngIf="this.apellidomaterno=='' " class="alert-danger">
+          "
+          />
+          <ngb-alert
+            [dismissible]="false"
+            type="danger"
+            *ngIf="this.apellidomaterno == ''"
+            class="alert-danger"
+          >
             Dato obligatorio
           </ngb-alert>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">RFC:</label>
-          <form [formGroup]="formRFC" >
+          <form [formGroup]="formRFC">
             <input
               [(ngModel)]="RFC"
-              type="text" 
-              formControlName="RFCIn" 
-              class="classform" 
-              [ngClass]="{ NoExiste: formRFC.controls.RFCIn.errors?.pattern == true ||formRFC.controls.RFCIn.value == '' }"
+              type="text"
+              formControlName="RFCIn"
+              class="classform"
+              [ngClass]="{
+                NoExiste:
+                  formRFC.controls.RFCIn.errors?.pattern == true ||
+                  formRFC.controls.RFCIn.value == ''
+              }"
               maxlength="13"
               (change)="mayusRFC(this.RFC)"
               onkeypress="return( !!(
                       ( 97 <= event.charCode  && event.charCode < 123 )||
                       ( 65 <= event.charCode  && event.charCode < 91 )||
-                      ( 48 <= event.charCode  && event.charCode < 58 ) 
-                      ))"
+                      ( 48 <= event.charCode  && event.charCode < 58 ) ))"
+            />
+            <ngb-alert
+              [dismissible]="false"
+              type="danger"
+              *ngIf="formRFC.controls.RFCIn.errors?.pattern && RFC.length == 13"
+              class="alert-danger"
             >
-            <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFC.controls.RFCIn.errors?.pattern &&  RFC.length == 13 " class="alert-danger">
               RFC no válido, verifique HOMOCLAVE
             </ngb-alert>
-            
-            <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFC.controls.RFCIn.value == '' " class="alert-danger">
+
+            <ngb-alert
+              [dismissible]="false"
+              type="danger"
+              *ngIf="formRFC.controls.RFCIn.value == ''"
+              class="alert-danger"
+            >
               Dato obligatorio
             </ngb-alert>
-            <ngb-alert [dismissible]="false" type="danger" *ngIf="RFC.length < 13 && RFC !='' " class="alert-danger">
+            <ngb-alert
+              [dismissible]="false"
+              type="danger"
+              *ngIf="RFC.length < 13 && RFC != ''"
+              class="alert-danger"
+            >
               Faltan caracteres
             </ngb-alert>
           </form>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Correo:</label>
-          <form [formGroup]="form" >
-            <input 
-              formControlName="emailIn" 
-              class="classform" 
-              [ngClass]="{ NoExiste: form.controls.emailIn.errors?.pattern ||form.controls.emailIn.value == '' }"   
+          <form [formGroup]="form">
+            <input
+              formControlName="emailIn"
+              class="classform"
+              [ngClass]="{
+                NoExiste:
+                  form.controls.emailIn.errors?.pattern ||
+                  form.controls.emailIn.value == ''
+              }"
+            />
+            <ngb-alert
+              [dismissible]="false"
+              type="danger"
+              *ngIf="form.controls.emailIn.errors?.pattern"
+              class="alert-danger"
             >
-            <ngb-alert [dismissible]="false" type="danger" *ngIf="form.controls.emailIn.errors?.pattern" class="alert-danger">
               Correo no válido
             </ngb-alert>
-            <ngb-alert [dismissible]="false" type="danger" *ngIf="form.controls.emailIn.value == '' " class="alert-danger">
+            <ngb-alert
+              [dismissible]="false"
+              type="danger"
+              *ngIf="form.controls.emailIn.value == ''"
+              class="alert-danger"
+            >
               Dato obligatorio
             </ngb-alert>
           </form>
         </div>
-        
+
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Estado Civil:</label>
-         <ng-select 
- 	          appendTo="body"
+          <ng-select
+            appendTo="body"
             [items]="EsCivs"
-            id="EC"        
+            id="EC"
             bindLabel="sDato"
             placeholder="Estado Civil"
-            [searchable]="false" 
+            [searchable]="false"
             [clearable]="false"
             [closeOnSelect]="true"
-            [(ngModel)]="estadocivilsel">
-            <ng-option  ng-options="item as item.sLlave for item.sDato in EsCivs">
-                {{item}}
+            [(ngModel)]="estadocivilsel"
+          >
+            <ng-option
+              ng-options="item as item.sLlave for item.sDato in EsCivs"
+            >
+              {{ item }}
             </ng-option>
           </ng-select>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Ocupación:</label>
-         <ng-select 
- 	          appendTo="body"
-            [items]="Ocup"       
+          <ng-select
+            appendTo="body"
+            [items]="Ocup"
             bindLabel="sDato"
-            [searchable]="true" 
+            [searchable]="true"
             [clearable]="false"
             [closeOnSelect]="true"
             placeholder="Ocupación"
-            [(ngModel)]="ocupacionsel" [ngbTooltip]="ocusel" tooltipClass="my-custom-class">
+            [(ngModel)]="ocupacionsel"
+            [ngbTooltip]="ocusel"
+            tooltipClass="my-custom-class"
+          >
             <ng-template #ocusel>
-                <b  *ngIf="!!ocupacionsel">{{ocupacionsel.sDato}}</b>
+              <b *ngIf="!!ocupacionsel">{{ ocupacionsel.sDato }}</b>
             </ng-template>
-            <ng-option  ng-options="item as item.sLlave for item.sDato in Ocup">
-                {{item}}
+            <ng-option ng-options="item as item.sLlave for item.sDato in Ocup">
+              {{ item }}
             </ng-option>
-            <ng-template ng-notfound-tmp let-searchTerm="searchTerm" >
-            <div class="ng-option disabled" style="font-size: 11px !important;">
-                No hay descripción que coincida con "{{searchTerm}}"
-            </div>
+            <ng-template ng-notfound-tmp let-searchTerm="searchTerm">
+              <div
+                class="ng-option disabled"
+                style="font-size: 11px !important"
+              >
+                No hay descripción que coincida con "{{ searchTerm }}"
+              </div>
             </ng-template>
           </ng-select>
         </div>
         <div id="datepicker" class="form-group col-12 col-md-4">
           <label class="form-label">Fecha de Nacimiento:</label>
           <!-- <input class="form-control" type="date" data-date-format="mm/dd/yyyy" value="" (change)="changefecha()" id="fechanaci"> -->
-          <input (dateSelect)="cambiafecha($event)" (click)="d.toggle()"  class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="fechanaciaseg" ngbDatepicker #d="ngbDatepicker" [disabled]="!habilitarcampos ? true : false">
+          <input
+            (dateSelect)="cambiafecha($event)"
+            (click)="d.toggle()"
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp"
+            [(ngModel)]="fechanaciaseg"
+            ngbDatepicker
+            #d="ngbDatepicker"
+            [disabled]="!habilitarcampos ? true : false"
+          />
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Edad:</label>
-          <input type="text" [value]="this.edad" [(ngModel)]="this.edad" class="form-control" disabled />
+          <input
+            type="text"
+            [value]="this.edad"
+            [(ngModel)]="this.edad"
+            class="form-control"
+            disabled
+          />
         </div>
         <div class="form-group col-12 col-md-4" *ngIf="this.genero != 'Moral'">
           <label class="form-label">Género:</label>
-          <input type="text" [value]="this.genero" [(ngModel)]="genero"  class="form-control" disabled *ngIf="!habilitarcampos" 
+          <input
+            type="text"
+            [value]="this.genero"
+            [(ngModel)]="genero"
+            class="form-control"
+            disabled
+            *ngIf="!habilitarcampos"
             [ngClass]="{
-              Existe: genero !='',
-              NoExiste: genero==''
+              Existe: genero != '',
+              NoExiste: genero == ''
             }"
             [ngbTooltip]="ttClienteGenero"
             tooltipClass="my-custom-class"
-        />
-        <ng-template #ttClienteGenero>
-          <b>
-              Presione Editar <br/>
-              para ingresar género <br/>
-          </b>
-        </ng-template>
-        <ngb-alert
-          [dismissible]="false"
-          type="danger"
-          *ngIf=" genero=='' && !habilitarcampos "
-          class="alert-danger"
-        >
-          Dato Obligatorio
-        </ngb-alert>
-          <ng-select *ngIf="habilitarcampos"
+          />
+          <ng-template #ttClienteGenero>
+            <b>
+              Presione Editar <br />
+              para ingresar género <br />
+            </b>
+          </ng-template>
+          <ngb-alert
+            [dismissible]="false"
+            type="danger"
+            *ngIf="genero == '' && !habilitarcampos"
+            class="alert-danger"
+          >
+            Dato Obligatorio
+          </ngb-alert>
+          <ng-select
+            *ngIf="habilitarcampos"
             [items]="catGeneroPersona"
             bindLabel="sDato"
             placeholder="GENERO"
@@ -193,33 +286,40 @@
         </div>
         <div class="form-group col-12 col-md-4" *ngIf="this.genero != 'Moral'">
           <label class="form-label">Tipo de persona:</label>
-          <input type="text" [value]="this.TipoPersona" class="form-control" *ngIf="!habilitarcampos" disabled />
-          <ng-select *ngIf="habilitarcampos"
-          [items]="catTipoPersona"
-          bindLabel="sDato"
-          placeholder="TIPO FISCAL"
-          appendTo="body"
-          [closeOnSelect]="true"
-          [clearable]="false"
-          [(ngModel)]="itemTipoPersona"
-          tooltipClass="my-custom-class"
-          (change)="onSelectTipoPersona()"
-        >
-          <ng-option
-            ng-options="item as item.sLlave for item.sDato in catTipoPersona"
+          <input
+            type="text"
+            [value]="this.TipoPersona"
+            class="form-control"
+            *ngIf="!habilitarcampos"
+            disabled
+          />
+          <ng-select
+            *ngIf="habilitarcampos"
+            [items]="catTipoPersona"
+            bindLabel="sDato"
+            placeholder="TIPO FISCAL"
+            appendTo="body"
+            [closeOnSelect]="true"
+            [clearable]="false"
+            [(ngModel)]="itemTipoPersona"
+            tooltipClass="my-custom-class"
+            (change)="onSelectTipoPersona()"
           >
-            {{ item }}
-          </ng-option>
+            <ng-option
+              ng-options="item as item.sLlave for item.sDato in catTipoPersona"
+            >
+              {{ item }}
+            </ng-option>
           </ng-select>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Teléfono:</label>
-          <input  
-            maxlength="10" 
-            [value]="telefono" 
-            [(ngModel)]="telefono" 
-            type="text" 
-            class="form-control" 
+          <input
+            maxlength="10"
+            [value]="telefono"
+            [(ngModel)]="telefono"
+            type="text"
+            class="form-control"
             onkeypress="return(event.charCode >= 48 && event.charCode <= 57)"
             (change)="onTelefonoChange()"
             [ngClass]="{
@@ -227,118 +327,165 @@
               NoExiste: !(
                 valClienteTelefonoVacio && !valClienteTelefonoNoValido
               )
-            }" 
+            }"
           />
-          <ngb-alert [dismissible]="false" type="danger"
-              *ngIf="!valClienteTelefonoVacio && valClienteTelefonoNoValido">
-              Dato Obligatorio
-            </ngb-alert>
-            <ngb-alert [dismissible]="false" type="danger"
-              *ngIf="valClienteTelefonoVacio && valClienteTelefonoNoValido">
-              Teléfono no válido
-            </ngb-alert>
+          <ngb-alert
+            [dismissible]="false"
+            type="danger"
+            *ngIf="!valClienteTelefonoVacio && valClienteTelefonoNoValido"
+          >
+            Dato Obligatorio
+          </ngb-alert>
+          <ngb-alert
+            [dismissible]="false"
+            type="danger"
+            *ngIf="valClienteTelefonoVacio && valClienteTelefonoNoValido"
+          >
+            Teléfono no válido
+          </ngb-alert>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Nacionalidad:</label>
-         <ng-select 
- 	            appendTo="body"
-              [items]="Nacion"       
-              bindLabel="NacString"
-              [searchable]="true" 
-              [clearable]="false"
-              [closeOnSelect]="true"
-              placeholder="Nacionalidad"
-              (change)="rfcpornacio()"
-              [(ngModel)]="nacionalidadsel" [ngbTooltip]="nacsel" tooltipClass="my-custom-class">
-              <ng-template #nacsel>
-                  <b  *ngIf="!!nacionalidadsel">{{nacionalidadsel.NacString}}</b>
-              </ng-template>
-              <ng-option  ng-options="item as item.NacClave for item.NacString in Nacion">
-                  {{item}}
-              </ng-option>
-              <ng-template ng-notfound-tmp let-searchTerm="searchTerm" >
-              <div class="ng-option disabled" style="font-size: 11px !important;">
-                  No hay descripción que coincida con "{{searchTerm}}"
+          <ng-select
+            appendTo="body"
+            [items]="Nacion"
+            bindLabel="NacString"
+            [searchable]="true"
+            [clearable]="false"
+            [closeOnSelect]="true"
+            placeholder="Nacionalidad"
+            (change)="rfcpornacio()"
+            [(ngModel)]="nacionalidadsel"
+            [ngbTooltip]="nacsel"
+            tooltipClass="my-custom-class"
+          >
+            <ng-template #nacsel>
+              <b *ngIf="!!nacionalidadsel">{{ nacionalidadsel.NacString }}</b>
+            </ng-template>
+            <ng-option
+              ng-options="item as item.NacClave for item.NacString in Nacion"
+            >
+              {{ item }}
+            </ng-option>
+            <ng-template ng-notfound-tmp let-searchTerm="searchTerm">
+              <div
+                class="ng-option disabled"
+                style="font-size: 11px !important"
+              >
+                No hay descripción que coincida con "{{ searchTerm }}"
               </div>
-              </ng-template>
+            </ng-template>
           </ng-select>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Código Postal:</label>
-          <input type="text" [(ngModel)]="codigopostal" (change)="getUbicacion(codigopostal)" class="form-control" [disabled]="!habilitarcampos ? true : false" />
+          <input
+            type="text"
+            [(ngModel)]="codigopostal"
+            (change)="getUbicacion(codigopostal)"
+            class="form-control"
+            [disabled]="!habilitarcampos ? true : false"
+          />
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Estado:</label>
-          <input type="text" [value]="this.estado" disabled="true" class="form-control" />
+          <input
+            type="text"
+            [value]="this.estado"
+            disabled="true"
+            class="form-control"
+          />
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Municipio:</label>
-          <input type="text" [value]="this.municipio" disabled="true" class="form-control" />
+          <input
+            type="text"
+            [value]="this.municipio"
+            disabled="true"
+            class="form-control"
+          />
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Colonia:</label>
-          <ng-select 
-              *ngIf="cols.length > 1"
-              appendTo="body"
-              [items]="cols"        
-              bindLabel="sUbicacion"
-              placeholder="Colonia"
-              [searchable]="false" 
-              [clearable]="false"
-              [closeOnSelect]="true"
-              [(ngModel)]="coloniasel">
-              <ng-option  ng-options="item as cols.iIdUbicacion for cols.sUbicacion in cols">
-                  {{item}}
-              </ng-option>
-              <ng-template ng-notfound-tmp >
-                <div class="ng-option disabled">
-                    No hay colonias que mostrar
-                </div>
-              </ng-template>
+          <ng-select
+            *ngIf="cols.length > 1"
+            appendTo="body"
+            [items]="cols"
+            bindLabel="sUbicacion"
+            placeholder="Colonia"
+            [searchable]="false"
+            [clearable]="false"
+            [closeOnSelect]="true"
+            [(ngModel)]="coloniasel"
+          >
+            <ng-option
+              ng-options="item as cols.iIdUbicacion for cols.sUbicacion in cols"
+            >
+              {{ item }}
+            </ng-option>
+            <ng-template ng-notfound-tmp>
+              <div class="ng-option disabled">No hay colonias que mostrar</div>
+            </ng-template>
           </ng-select>
-          <input disabled="true"  [(ngModel)]="this.coloniasel"  *ngIf="cols.length==1" type="text" class="form-control" />
+          <input
+            disabled="true"
+            [(ngModel)]="this.coloniasel"
+            *ngIf="cols.length == 1"
+            type="text"
+            class="form-control"
+          />
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Calle:</label>
-          <input 
-            type="text" 
-            class="form-control" 
+          <input
+            type="text"
+            class="form-control"
             [(ngModel)]="Calle"
             [ngClass]="{ NoExiste: Calle == '' }"
           />
-          <ngb-alert [dismissible]="false" type="danger" *ngIf="Calle=='' " class="alert-danger">
+          <ngb-alert
+            [dismissible]="false"
+            type="danger"
+            *ngIf="Calle == ''"
+            class="alert-danger"
+          >
             Dato obligatorio
           </ngb-alert>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Numero Exterior:</label>
-          <input 
-            type="text" 
+          <input
+            type="text"
             class="form-control"
             [(ngModel)]="NumeExterior"
-            [ngClass]="{ NoExiste: NumeExterior == '' }"  
-            maxlength="5" 
+            [ngClass]="{ NoExiste: NumeExterior == '' }"
+            maxlength="5"
             onkeypress="return(
                       !(
                       ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 48 > event.charCode || event.charCode >  57 ))
                       )"
-            />
-            <ngb-alert [dismissible]="false" type="danger" *ngIf="NumeExterior=='' " class="alert-danger">
-                Dato obligatorio
-            </ngb-alert>
+          />
+          <ngb-alert
+            [dismissible]="false"
+            type="danger"
+            *ngIf="NumeExterior == ''"
+            class="alert-danger"
+          >
+            Dato obligatorio
+          </ngb-alert>
         </div>
         <div class="form-group col-12 col-md-4">
           <label class="form-label">Numero Interior:</label>
-          <input 
-            type="text" 
+          <input
+            type="text"
             class="form-control"
-            [(ngModel)]="NumInterior" 
-            maxlength="5" 
+            [(ngModel)]="NumInterior"
+            maxlength="5"
             onkeypress="return(
                       !(
                       ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 48 > event.charCode || event.charCode >  57 ))
                       )"
-            />
+          />
         </div>
       </div>
     </div>
@@ -368,13 +515,14 @@
             </b>
           </ng-template>
         </div> -->
-        <div class="col-6">
+        <div class="col-12">
           <button
             class="btn btn-primary pull-right"
             style="
               background: linear-gradient(90deg, #ff6963 0%, #ff8f48 100%);
               border: none;
-              box-shadow: 0 1px 8px 1px rgb(0 0 0 / 8%), 0 1px 6px 0 rgb(0 29 124 / 5%);
+              box-shadow: 0 1px 8px 1px rgb(0 0 0 / 8%),
+                0 1px 6px 0 rgb(0 29 124 / 5%);
             "
             (click)="habilitarcam()"
             [ngbTooltip]="ttInfoaEdit"
@@ -383,29 +531,17 @@
             Click aquí para editar
           </button>
           <ng-template #ttInfoaEdit>
-            <b>Si desea editar: <br />
-              1)Edad <br/>
-              2)Sexo <br/>
-              3)Fecha de nacimiento <br/>
+            <b
+              >Si desea editar: <br />
+              1)Edad <br />
+              2)Sexo <br />
+              3)Fecha de nacimiento <br />
               4)Código Postal
             </b>
           </ng-template>
-        </div>
-        <div class="col-6">
-          <button
-          class="btn btn-primary pull-right"
-          style="
-            background: linear-gradient(90deg, #21c7ed 0%, #00d0ff 100%);
-            border: none;
-            box-shadow: 0 1px 8px 1px rgb(0 0 0 / 8%), 0 1px 6px 0 rgb(0 29 124 / 5%);
-          "
-          (click)="onback()"
-          routerLinkActive="router-link-active"
-        >
-          Regresar a comparativo
-        </button>
         </div>
       </div>
     </div>
   </div>
 </div>
+

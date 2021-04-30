@@ -1,14 +1,17 @@
-import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ViewChild,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { InfovehiculoService } from '../../../servicios/infovehiculo.service';
 import { RequestNacionalidad } from '../../../interphaces/nacionali';
 import { CatalogoModel } from '../../../interphaces/models/Catalogos.model';
 import { FechasModel } from '../../../interphaces/models/Fechas.model';
-import { Location } from '@angular/common';
-import {
-  NgbDateStruct,
-  NgbDatepicker,
-} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-datos-emision-cliente-fisica',
@@ -16,10 +19,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./datos-emision-cliente-fisica.component.css'],
 })
 export class DatosEmisionClienteFisicaComponent implements OnInit {
-  constructor(
-    private locate: Location,
-    private infovehiculoService: InfovehiculoService
-  ) {
+  constructor(private infovehiculoService: InfovehiculoService) {
     this.form = new FormGroup({
       emailIn: new FormControl('', [
         Validators.required,
@@ -31,7 +31,9 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
     this.formRFC = new FormGroup({
       RFCIn: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^((([A-Z]{4})([0-9]{6})(([A-Za-z0-9]{3})|([0]{3}))))$/),
+        Validators.pattern(
+          /^((([A-Z]{4})([0-9]{6})(([A-Za-z0-9]{3})|([0]{3}))))$/
+        ),
       ]),
     });
   }
@@ -86,21 +88,25 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
   catGeneroPersona: CatalogoModel[];
   itemGeneroPersona: CatalogoModel;
   ngOnInit(): void {
-    
     this.CargarTipoFiscal();
     this.CargarGeneros();
     this.onTelefonoChange();
     this.setValue();
-      if (this.genero === 'Masculino' || this.genero === 'Femenino' || this.genero=='Física') {
-        this.genero === 'Femenino' ? this.itemGeneroPersona ={ sDato:'Femenino',sLlave:'F' }
-                                   : this.itemGeneroPersona ={ sDato:'Masculino',sLlave:'M' }                                          
-        if (this.genero=='Física') {
-          this.itemGeneroPersona ={ sDato:'',sLlave:'' };
-          this.genero='';
-        }
-        this.TipoPersona = 'Física';
-        this.itemTipoPersona={ sDato:'Física',sLlave:'F' };
+    if (
+      this.genero === 'Masculino' ||
+      this.genero === 'Femenino' ||
+      this.genero == 'Física'
+    ) {
+      this.genero === 'Femenino'
+        ? (this.itemGeneroPersona = { sDato: 'Femenino', sLlave: 'F' })
+        : (this.itemGeneroPersona = { sDato: 'Masculino', sLlave: 'M' });
+      if (this.genero == 'Física') {
+        this.itemGeneroPersona = { sDato: '', sLlave: '' };
+        this.genero = '';
       }
+      this.TipoPersona = 'Física';
+      this.itemTipoPersona = { sDato: 'Física', sLlave: 'F' };
+    }
     this.Nacion = this.infovehiculoService.getNacionalidades();
     this.setValue();
     this.nacionalidadsel = { NacString: 'MEXICANA', NacClave: 'MEX' };
@@ -140,13 +146,13 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
   CargarTipoFiscal(): void {
     const tipos: CatalogoModel[] = [];
     tipos.push({ sDato: 'Física', sLlave: 'F' });
-      tipos.push({ sDato: 'Moral', sLlave: 'M' });
+    tipos.push({ sDato: 'Moral', sLlave: 'M' });
     this.catTipoPersona = tipos;
   }
   CargarGeneros(): void {
     const tipos: CatalogoModel[] = [];
     tipos.push({ sDato: 'Femenino', sLlave: 'F' });
-      tipos.push({ sDato: 'Masculino', sLlave: 'M' });
+    tipos.push({ sDato: 'Masculino', sLlave: 'M' });
     this.catGeneroPersona = tipos;
   }
   setValue() {
@@ -160,15 +166,17 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
       });
     }
   }
-  onSelectTipoPersona(){
-    if(this.itemTipoPersona.sDato=='Moral'){
+  onSelectTipoPersona() {
+    if (this.itemTipoPersona.sDato == 'Moral') {
       this.emitTipoPersona.emit(this.itemTipoPersona);
-    }else{
-      this.TipoPersona = this.itemTipoPersona.sDato
+    } else {
+      this.TipoPersona = this.itemTipoPersona.sDato;
     }
   }
-  onSelectGeneroPersona(){
-    this.itemGeneroPersona.sDato=='Masculino' ?  this.genero="Masculino" :  this.genero='Femenino';
+  onSelectGeneroPersona() {
+    this.itemGeneroPersona.sDato == 'Masculino'
+      ? (this.genero = 'Masculino')
+      : (this.genero = 'Femenino');
   }
   getUbicacion(cp?: string) {
     this.coloniasel = '';
@@ -176,7 +184,7 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
       .getApiCPs({
         IdAplication: 2,
         NombreCatalogo: 'Sepomex',
-        Filtro: this.codigopostal ,
+        Filtro: this.codigopostal,
       })
       .subscribe((data: any) => {
         this.ubicacion = JSON.parse(data.CatalogoJsonString);
@@ -185,8 +193,8 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
         this.municipio = this.ubicacion[0].Municipio.sMunicipio;
         this.cols = this.ubicacion[0].Ubicacion;
         if (this.cols.length == 1) {
-          this.coloniasel=this.cols[0].sUbicacion;
-        } 
+          this.coloniasel = this.cols[0].sUbicacion;
+        }
       }); // suscribecierra
   }
   dividirCadena(cadenaADividir, separador) {
@@ -439,16 +447,14 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
     this.mon = today.getMonth() + 1;
     // console.log(this.year + '  ' + this.mon + '  ' + num.year + '  ' + num.month);
     if (num.month >= this.mon) {
-      age = this.year - num.year - 1
-      return ( this.edad = age);
+      age = this.year - num.year - 1;
+      return (this.edad = age);
     } else {
       age = this.year - num.year;
-      return ( this.edad = age);
+      return (this.edad = age);
     }
   }
-  onback() {
-    this.locate.back();
-  }
+
   onTelefonoChange() {
     if (this.telefono !== '' && this.telefono.length === 10) {
       this.valClienteTelefonoVacio = true;
@@ -535,11 +541,11 @@ export class DatosEmisionClienteFisicaComponent implements OnInit {
       }
     }
   }
-  habilitarcam(){
-    this.habilitarcampos= !this.habilitarcampos
+  habilitarcam() {
+    this.habilitarcampos = !this.habilitarcampos;
   }
-  mayusRFC(rfc: string){
-    this.RFC = rfc.toLocaleUpperCase()
+  mayusRFC(rfc: string) {
+    this.RFC = rfc.toLocaleUpperCase();
   }
   getOcupaciones() {
     this.infovehiculoService
