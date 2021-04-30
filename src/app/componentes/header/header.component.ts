@@ -19,6 +19,8 @@ export class HeaderComponent implements OnInit {
     console.log(sesion);
     if (sesion === null || sesion === undefined) {
       alert('La sesión no se ha iniciado');
+      // Se lo agregue para corregir error en tooltips
+      this.sesion={FriendlyName:'Invitado'};
     } else {
       this.sesion = sesion;
     }

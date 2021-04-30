@@ -18,39 +18,26 @@
         <div class="row">
           <div [ngClass]="{ nodoce: showchiquito}" class="col-12 col-md-3 mb-4">
             <p class="m-0 mb-2">Mi auto es</p>
-            <ng-select id="cmbTipoVehiculo" [disabled]="disabled === false" [hidden]="disabled==false"
+            <ng-select id="cmbTipoVehiculo" 
               [items]="catTipoVehiculo" bindLabel="sDato" placeholder="TIPO DE VEHÍCULO" appendTo="body"
               [searchable]="false" [clearable]="false" [closeOnSelect]="true" (change)="selectTipoVehiculo()"
-              [(ngModel)]="!!modeloselpagina3 ?
-              modeloselpagina3:
-              !! modeloselpagina2 ?
-              modeloselpagina2
-              : itemTipoVehiculo" [ngbTooltip]="ttTipoVehiculo" tooltipClass="my-custom-class">
+              [(ngModel)]="itemTipoVehiculo" [ngbTooltip]="ttTipoVehiculo" tooltipClass="my-custom-class">
               <ng-option ng-options="item as item.sLlave for item.sDato in catTipoVehiculo">
                 {{ item }}
               </ng-option>
               <ng-template #ttTipoVehiculo>
                 <b *ngIf="!!itemTipoVehiculo">{{itemTipoVehiculo.sDato}}</b>
-                <b *ngIf="!!modeloselpagina3">{{modeloselpagina3.sDato}}</b>
-                <b *ngIf="!!modeloselpagina2">{{modeloselpagina2.sDato}}</b>
               </ng-template>
               <ng-template ng-notfound-tmp>
                 <div class="ng-option disabled">No hay modelos que mostrar</div>
               </ng-template>
             </ng-select>
-            <p *ngIf='disabled == false'>
-              {{ modeloselpagina3.sDato}}
-            </p>
           </div>
           <div [ngClass]="{ nodoce: showchiquito}" class="col-12 col-md-3 mb-4">
             <p class="m-0 mb-2">Año:</p>
-            <ng-select id="cmbAnioVehiculo" [disabled]="disabled == false" [hidden]="disabled==false"
+            <ng-select id="cmbAnioVehiculo"
               [items]="catAnioVehiculo" bindLabel="sDato" placeholder="AÑO" appendTo="body" [searchable]="false"
-              [clearable]="false" [closeOnSelect]="true" (change)="selectAnioVehiculo()" [(ngModel)]="!! annoselpagina3?
-              annoselpagina3:
-              !! annoselpagina2 ?
-              annoselpagina2
-              : itemAnioVehiculo">
+              [clearable]="false" [closeOnSelect]="true" (change)="selectAnioVehiculo()" [(ngModel)]="itemAnioVehiculo">
               <ng-template ng-notfound-tmp>
                 <div class="ng-option disabled">No hay años que mostrar</div>
               </ng-template>
@@ -58,23 +45,14 @@
                 {{ item }}
               </ng-option>
             </ng-select>
-            <label *ngIf='disabled == false'>
-              {{ annoselpagina3.sDato}}
-            </label>
           </div>
           <div [ngClass]="{ nodoce: showchiquito}" class="col-12 col-md-3 mb-4">
             <p class="m-0 mb-2">Marca:</p>
-            <ng-select id="cmbMarcas" [disabled]="disabled == false" [hidden]="disabled==false"
+            <ng-select id="cmbMarcas"
               [items]="catMarcaVehiculo" bindLabel="sDato" placeholder="MARCA" appendTo="body" [searchable]="false"
-              [clearable]="false" [closeOnSelect]="true" (change)="selectMarca()" [(ngModel)]="!! marcaselpagina3?
-              marcaselpagina3:
-              !! marcaselpagina2 ?
-              marcaselpagina2
-              : itemMarcaVehiculo" [ngbTooltip]="ttMarcas" tooltipClass="my-custom-class">
+              [clearable]="false" [closeOnSelect]="true" (change)="selectMarca()" [(ngModel)]="itemMarcaVehiculo" [ngbTooltip]="ttMarcas" tooltipClass="my-custom-class">
               <ng-template #ttMarcas>
                 <b *ngIf="!!itemMarcaVehiculo">{{itemMarcaVehiculo.sDato}}</b>
-                <b *ngIf="!!marcaselpagina3">{{marcaselpagina3.sDato}}</b>
-                <b *ngIf="!!marcaselpagina2">{{marcaselpagina2.sDato}}</b>
               </ng-template>
               <ng-option ng-options="item as item.sLlave for item.sDato in catMarcaVehiculo">
                 {{ item }}
@@ -83,24 +61,15 @@
                 <div class="ng-option disabled">No hay marcas que mostrar</div>
               </ng-template>
             </ng-select>
-            <label *ngIf='disabled == false'>
-              {{marcaselpagina3.sDato}}
-            </label>
           </div>
 
           <div [ngClass]="{ nodoce: showchiquito}" class="col-12 col-md-3 mb-4">
             <p class="m-0 mb-2">Descripción</p>
-            <ng-select id="cmbDescripcion" [disabled]="disabled == false" [hidden]="disabled==false"
+            <ng-select id="cmbDescripcion"
               [items]="catDescripcionVehiculo" bindLabel="sDato" placeholder="DESCRIPCIÓN" appendTo="body"
-              [searchable]="true" [clearable]="false" [closeOnSelect]="true" (change)="selectDescripcion()" [(ngModel)]="!! descripselpagina3 ?
-              descripselpagina3:
-              !! descripselpagina2 ?
-              descripselpagina2
-              : itemDescripcionVehiculo" [ngbTooltip]="ttDescripcion" tooltipClass="my-custom-class">
+              [searchable]="true" [clearable]="false" [closeOnSelect]="true" (change)="selectDescripcion()" [(ngModel)]="itemDescripcionVehiculo" [ngbTooltip]="ttDescripcion" tooltipClass="my-custom-class">
               <ng-template #ttDescripcion>
                 <b *ngIf="!!itemDescripcionVehiculo">{{itemDescripcionVehiculo.sDato}}</b>
-                <b *ngIf="!!descripselpagina3">{{ descripselpagina3.sDato }}</b>
-                <b *ngIf="!!descripselpagina2">{{ descripselpagina2.sDato }}</b>
               </ng-template>
               <ng-option ng-options="item as item.sLlave for item.sDato in catDescripcionVehiculo">
                 {{ item }}
@@ -111,9 +80,6 @@
                 </div>
               </ng-template>
             </ng-select>
-            <label *ngIf='disabled == false'>
-              {{descripselpagina3.sDato}}
-            </label>
           </div>
         </div>
       </div>
