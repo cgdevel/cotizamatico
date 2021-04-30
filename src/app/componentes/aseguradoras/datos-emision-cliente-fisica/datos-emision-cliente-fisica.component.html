@@ -15,7 +15,8 @@
             [ngClass]="{ Existe: this.nombre!='' ,NoExiste: this.nombre=='' || this.nombre.length<3}" 
             onkeypress="return(
                           !(
-                          ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 48 > event.charCode || event.charCode >  57 ))
+                            event.charCode > 32 && 
+                            ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 48 > event.charCode || event.charCode >  57 ))
                         )"
           />
           <ngb-alert [dismissible]="false" type="danger" *ngIf="this.nombre=='' " class="alert-danger">
@@ -29,7 +30,9 @@
             [(ngModel)]="apellidopaterno" 
             [ngClass]="{ Existe: apellidopaterno!='' , NoExiste: apellidopaterno=='' || apellidopaterno.length<3}" 
             class="form-control"  
-            onkeypress="return( !(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))
+            onkeypress="return( !(
+              event.charCode > 32 && 
+              ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))
           "/>
           <ngb-alert [dismissible]="false" type="danger" *ngIf="this.apellidopaterno=='' " class="alert-danger">
             Dato obligatorio
@@ -42,7 +45,9 @@
             [(ngModel)]="apellidomaterno" 
             [ngClass]="{ Existe: apellidomaterno!='' , NoExiste: apellidomaterno==''|| apellidomaterno.length<3}" 
             class="form-control"  
-            onkeypress="return( !(( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))
+            onkeypress="return( !(
+              event.charCode > 32 && 
+              ( 64>event.charCode || event.charCode > 90) && (97>event.charCode || event.charCode > 122 ) && ( 192>=event.charCode || event.charCode >= 255)))
           "/>
           <ngb-alert [dismissible]="false" type="danger" *ngIf="this.apellidomaterno=='' " class="alert-danger">
             Dato obligatorio
@@ -62,7 +67,8 @@
               onkeypress="return( !!(
                       ( 97 <= event.charCode  && event.charCode < 123 )||
                       ( 65 <= event.charCode  && event.charCode < 91 )||
-                      ( 48 <= event.charCode  && event.charCode < 58 ) ))"
+                      ( 48 <= event.charCode  && event.charCode < 58 ) 
+                      ))"
             >
             <ngb-alert [dismissible]="false" type="danger" *ngIf="formRFC.controls.RFCIn.errors?.pattern &&  RFC.length == 13 " class="alert-danger">
               RFC no válido, verifique HOMOCLAVE
