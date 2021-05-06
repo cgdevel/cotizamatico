@@ -161,7 +161,8 @@ export class DatosPagoComponent implements OnInit {
   CargarMediosPago(): void {
     const medios: CatalogoModel[] = [];
     medios.push({ sDato: 'TARJETA DE CREDITO', sLlave: '0' });
-    medios.push({ sDato: 'PAGO EN BANCO', sLlave: '1' });
+    medios.push({ sDato: 'TARJETA DE DEBITO', sLlave: '1' });
+    medios.push({ sDato: 'PAGO EN BANCO', sLlave: '2' });
     this.catMedioPago = medios;
   }
 

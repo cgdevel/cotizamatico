@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { InfovehiculoService } from '../servicios/infovehiculo.service';
 import { Constantes } from '../core/Constantes';
 import { SecureStorageServiceService } from '../core/secure-storage-service.service';
+import { ReturnStatement } from '@angular/compiler';
 
 @Component({
   selector: 'app-login',
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
     this.getAplicacionesId();
 
     this.route.params.subscribe((p) => {
+      console.log(p);
       this.usuario = p.UserId;
       this.IniciarSesionMinisitio();
     });
@@ -35,6 +37,10 @@ export class LoginComponent implements OnInit {
   IniciarSesionMinisitio() {
     const apps = this.storageService.getJsonValue(Constantes.sesiones.appsId);
     console.log(apps);
+
+    if (this.usuario.toLowerCase() === 'login') {
+      return;
+    }
 
     this.service
       .getInicioSesion({
@@ -58,8 +64,6 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/']);
         },
         (err) => {
-          console.log('Error: Inicio Sesión 2');
-          console.log(err.message);
           alert('Error de inicio de sesión');
         }
       );

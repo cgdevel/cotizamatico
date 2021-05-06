@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Constantes } from '../../core/Constantes';
 import { SecureStorageServiceService } from '../../core/secure-storage-service.service';
 
@@ -10,7 +11,11 @@ import { SecureStorageServiceService } from '../../core/secure-storage-service.s
 export class HeaderComponent implements OnInit {
   sesion: any;
 
-  constructor(private storageService: SecureStorageServiceService) {}
+  constructor(
+    private storageService: SecureStorageServiceService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     const sesion = this.storageService.getJsonValue(
@@ -18,9 +23,10 @@ export class HeaderComponent implements OnInit {
     );
     console.log(sesion);
     if (sesion === null || sesion === undefined) {
-      alert('La sesión no se ha iniciado');
+      alert('No se ha iniciado una sesión');
       // Se lo agregue para corregir error en tooltips
-      this.sesion={FriendlyName:'Invitado'};
+      // this.sesion = { FriendlyName: 'Invitado' };
+      this.router.navigate(['/autos/login']);
     } else {
       this.sesion = sesion;
     }
