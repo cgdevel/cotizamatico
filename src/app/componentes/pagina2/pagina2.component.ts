@@ -374,6 +374,7 @@ export class Pagina2Component implements OnInit {
               Descripcion: element.Descripcion,
             });
           }
+          console.log(this.AseguradorasPoDesc)
         },
         (err) => {
           console.log('Error');

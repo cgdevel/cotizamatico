@@ -93,14 +93,14 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  getCotizacionEjemploMapfre() {
-    this.service.getOneCotizacion().subscribe(
-      (cat) => {
-        console.log(cat);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
+  // getCotizacionEjemploMapfre() {
+  //   this.service.getOneCotizacion().subscribe(
+  //     (cat) => {
+  //       console.log(cat);
+  //     },
+  //     (err) => {
+  //       console.log(err);
+  //     }
+  //   );
+  // }
 }

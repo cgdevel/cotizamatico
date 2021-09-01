@@ -13,6 +13,8 @@ import { InfovehiculoComponent } from './componentes/pagina1/infovehiculo/infove
 import { Pagina2Component } from './componentes/pagina2/pagina2.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { EffectsModule } from '@ngrx/effects';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools'
 import { from } from 'rxjs';
 import {
   NgbModule,
@@ -31,6 +33,10 @@ import { DatosEmisionClienteFisicaComponent } from '../app/componentes/asegurado
 import { EmisionFinalComponent } from './componentes/emision-final/emision-final.component';
 import { DatosEmisionClienteMoralComponent } from './componentes/aseguradoras/datos-emision-cliente-moral/datos-emision-cliente-moral.component';
 import { LoginComponent } from './login/login.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { CotizamaticoEffects } from './effects/cotizamatico.effects';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +71,14 @@ import { LoginComponent } from './login/login.component';
     NgbAlertModule,
     CookieModule.forRoot(),
     NgxSliderModule,
+    // StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(reducers, {
+      metaReducers
+    }),
+    EffectsModule.forRoot([
+      CotizamaticoEffects
+    ]),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [],
   bootstrap: [AppComponent],

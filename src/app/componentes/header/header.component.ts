@@ -25,10 +25,10 @@ export class HeaderComponent implements OnInit {
     if (sesion === null || sesion === undefined) {
       alert('No se ha iniciado una sesión');
       // Se lo agregue para corregir error en tooltips
-      // this.sesion = { FriendlyName: 'Invitado' };
-      this.router.navigate(['/autos/login']);
+      this.sesion = { FriendlyName: 'Invitado' };
+      // this.router.navigate(['/autos/login']);
     } else {
-      this.sesion = sesion;
+      // this.sesion = sesion;
     }
   }
 }
