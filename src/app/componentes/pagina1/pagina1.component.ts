@@ -9,6 +9,8 @@ import { RequestIdPeticionCotizacion } from 'src/app/interphaces/request/Request
 import { CotizamaticoActionsTypes, GetIdPeticion } from 'src/app/actions/cotizamatico.actions';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../reducers'
+import { InfovehiculoService } from 'src/app/servicios/infovehiculo.service';
+import { RequestCatalogoCotizamatico } from 'src/app/interphaces/request/RequestCatalogoCotizamatico.model';
 @Component({
   selector: 'app-pagina1',
   templateUrl: './pagina1.component.html',
@@ -19,10 +21,12 @@ export class Pagina1Component implements OnInit {
   constructor(
     private cookieService: CookieService,
     private storageService: SecureStorageServiceService,
-    private store: Store<fromRoot.State> 
+    private store: Store<fromRoot.State>,
+    private infovehiculoService: InfovehiculoService,
   ) {}
   
   sesion: any;
+  ubicacion:any;
 
   size: number;
   verCarousle: boolean;
@@ -260,8 +264,26 @@ requestIdPeticion: RequestIdPeticionCotizacion={
     // console.log(this.clienteCodigoPostal)
     this.ValidarDatosObligatorios();
     this.requestIdPeticion.cotizacion.Domicilio.sCodigoPostal= parseInt(e,10);
+      const req: RequestCatalogoCotizamatico = {
+        Filtro: e,
+        IdAplication: 2,
+        NombreCatalogo: 'Sepomex',
+      };
+        this.infovehiculoService.getCatalogosCotizamatico(req).subscribe((data) => {
+        this.ubicacion = JSON.parse(data.CatalogoJsonString);
+        this.requestIdPeticion.cotizacion.Domicilio.iIdUbicacion        = parseInt(this.ubicacion[0].Ubicacion[0].iIdUbicacion,10);
+        this.requestIdPeticion.cotizacion.Domicilio.iIdMunicipio        = parseInt(this.ubicacion[0].Municipio.iIdMunicipio);
+        this.requestIdPeticion.cotizacion.Domicilio.sUbicacion          = this.ubicacion[0].Ubicacion[0].sUbicacion;
+        this.requestIdPeticion.cotizacion.Domicilio.sMunicipio          = this.ubicacion[0].Municipio.sMunicipio;
+        this.requestIdPeticion.cotizacion.Domicilio.iIdEstado           = parseInt(this.ubicacion[0].Municipio.Estado.iIdEstado,10);
+        this.requestIdPeticion.cotizacion.Domicilio.iEstadoPais         = parseInt(this.ubicacion[0].Municipio.Estado.iEstadoPais,10);
+        this.requestIdPeticion.cotizacion.Domicilio.iClaveEstadoCepomex = parseInt(this.ubicacion[0].Municipio.Estado.iClaveEstadoCepomex,10);
+        this.requestIdPeticion.cotizacion.Domicilio.sEstado             = this.ubicacion[0].Municipio.Estado.sEstado;
+        // console.log(this.ubicacion)
+      });
   }
 
+  
   handlerClienteFechaNacimiento(e: FechasModel) {
     this.clienteFechaNacimiento = e;
     this.ValidarDatosObligatorios();

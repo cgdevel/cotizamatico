@@ -13,6 +13,16 @@ export interface State{
         tipoDePersona:boolean;
         iSexo: number;
     };
+    domicilio:{
+        iIdUbicacion        :number ,
+        iIdMunicipio        :number,
+        sUbicacion          :string,
+        sMunicipio          :string,
+        iIdEstado           :number ,
+        iEstadoPais         :number ,
+        iClaveEstadoCepomex :number ,
+        sEstado             :string 
+    };
     vehiculo:{
         marca : {sLlave: any, sDato: any};
         tipo:{sLlave: any, sDato: any};
@@ -41,6 +51,16 @@ const initialState: State = {
         telefono: null,
         tipoDePersona: null,
         iSexo:null
+    },
+    domicilio:{
+        iIdUbicacion        :null ,
+        iIdMunicipio        :null ,
+        sUbicacion          :'',
+        sMunicipio          :'',
+        iIdEstado           :null ,
+        iEstadoPais         :null ,
+        iClaveEstadoCepomex :null ,
+        sEstado             :'' 
     },
     vehiculo:{
         marca :{sLlave:'',sDato:''},
@@ -91,6 +111,16 @@ export function reducer (state = initialState, action: CotizamaticoActions ) : S
                     telefono: action.payload.cotizacion.Persona.sTelefono,
                     tipoDePersona: action.payload.cotizacion.Persona.bSiNoPersonaMoral,
                     iSexo: action.payload.cotizacion.Persona.iSexo
+                },
+                domicilio:{
+                    iIdUbicacion        :action.payload.cotizacion.Domicilio.iIdUbicacion ,
+                    iIdMunicipio        :action.payload.cotizacion.Domicilio.iIdMunicipio ,
+                    sUbicacion          :action.payload.cotizacion.Domicilio.sUbicacion,
+                    sMunicipio          :action.payload.cotizacion.Domicilio.sMunicipio,
+                    iIdEstado           :action.payload.cotizacion.Domicilio.iIdEstado ,
+                    iEstadoPais         :action.payload.cotizacion.Domicilio.iEstadoPais ,
+                    iClaveEstadoCepomex :action.payload.cotizacion.Domicilio.iClaveEstadoCepomex ,
+                    sEstado             :action.payload.cotizacion.Domicilio.sEstado 
                 },
                 vehiculo:{
                     modelo:{
