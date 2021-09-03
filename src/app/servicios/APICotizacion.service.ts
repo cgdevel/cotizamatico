@@ -12,31 +12,7 @@ import {environment} from "../../environments/environment"
      constructor(private http: HttpClient) { }
     
      getIdPeticion( payload : RequestIdPeticionCotizacion ){
-        return this.http.post<ResponseIdPeticionCotizacion>( `${environment.url_APICotizacion}/cotizacion`, payload
-      //   { 
-      //      ...payload,
-      //           User: "COTIZAMATICO",
-      //           Device: "EMULATOR30X1X5X0",
-      //           Token: "7C2C8D3B-C488-4D14-B360-6B94013A0C4E",
-      //           Credencial: {
-      //             IdCredential: 3418,
-      //             IdProfile: 85
-      //          },
-      //          SubRamo: {
-      //             iIdSubRamo: 1,
-      //             Ramo: null,
-      //             iLineaNegocio: 0,
-      //             iEstatus: 0,
-      //             iIdMostar: 0,
-      //             iOrdenPresentacion: 0,
-      //             sSubramo: "AUTOS",
-      //             sAlias: null,
-      //             sDescripcion: null,
-      //             lineaNegocio: null
-      //          }
-      // }
-
-         );
+        return this.http.post<ResponseIdPeticionCotizacion>( `${environment.url_APICotizacion}/cotizacion`, payload);
      }
 
      getIdCotizaicon( payload : RequestIdCotizacion ){

@@ -20,7 +20,7 @@ export interface RequestIdPeticionCotizacion{
                                     sNombre :  string ,
                                      sApellidoPaterno : string ,
                                     sApellidoMaterno : string,
-                                    sFechaNacimiento : any,
+                                    sFechaNacimiento : string,
                                     sRfc : string,
                                     iEdad :  number ,
                                     iSexo : number,
@@ -32,11 +32,11 @@ export interface RequestIdPeticionCotizacion{
                                     bSinoFuma : number,
                                     bSiNoPersonaMoral : boolean
                    },
-                    Credencial : {
+                    Credencial ? : {
                                     IdCredential : number,
                                     IdProfile : number
                    },
-                    SubRamo : {
+                    SubRamo ? : {
                                     iIdSubRamo : number,
                                     Ramo : any,
                                     iLineaNegocio  : number,
@@ -93,7 +93,7 @@ export interface RequestIdPeticionCotizacion{
                         idFactor :number
                     }>
     },
-     User : string ,
-     Device : string ,
-     Token : string  
+     User? : string ,
+     Device? : string ,
+     Token? : string  
 }

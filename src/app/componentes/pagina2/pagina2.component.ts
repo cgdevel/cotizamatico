@@ -28,6 +28,7 @@ export class Pagina2Component implements OnInit {
     private route: ActivatedRoute,
     private infovehiculoService: InfovehiculoService
   ) {}
+  itemVacio = { sDato: '', sLlave: '' };
   AseguradorasPoDesc: Aseguradoras[] = [];
   Aseguradoras: Aseguradoras[] = [];
   aseguradora: string;
@@ -385,10 +386,11 @@ export class Pagina2Component implements OnInit {
 
   ngOnInit(): void {
     // console.log(history.state)
-    this.vermodelo = history.state.tipove;
-    this.veranno = history.state.anniove;
-    this.vermarca = history.state.marcave;
-    this.verdescripcion = history.state.descve;
+    
+    this.vermodelo = !!history.state.tipove ?history.state.tipove : this.itemVacio;
+    this.veranno = !!history.state.anniove ?  history.state.anniove : this.itemVacio;
+    this.vermarca = !!history.state.marcave ? history.state.marcave : this.itemVacio;
+    this.verdescripcion = !!history.state.descve ? history.state.descve : this.itemVacio  ;
     this.Aseguradoras = this.getAsePorDescrip(this.verdescripcion.sLlave);
     // console.log(this.Aseguradoras);
     this.nombre = history.state.namease;

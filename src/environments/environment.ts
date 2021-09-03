@@ -10,8 +10,12 @@ export const environment = {
   url_api_common: 'https://api.aarco.com.mx/AarcoAPICommon/api',
   url_api_one: 'http://192.168.211.15:7092',
   url_APICotizacion : 'https://api.aarco.com.mx/AarcoAPICommon_dev1/api'
+  // url_APICotizacion : 'https://api.aarco.com.mx/AarcoAPICommon_dev1/api'
+
 };
 
+
+// apunta todo a pruebas dev5 cors 
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

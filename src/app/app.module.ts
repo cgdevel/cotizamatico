@@ -36,6 +36,7 @@ import { LoginComponent } from './login/login.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { CotizamaticoEffects } from './effects/cotizamatico.effects';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { CotizamaticoEffects } from './effects/cotizamatico.effects';
     EffectsModule.forRoot([
       CotizamaticoEffects
     ]),
-    StoreDevtoolsModule.instrument()
+    !environment.production ? StoreDevtoolsModule.instrument() : []
+    // StoreDevtoolsModule.instrument()
   ],
   providers: [],
   bootstrap: [AppComponent],

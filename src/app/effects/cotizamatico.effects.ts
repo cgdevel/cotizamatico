@@ -11,15 +11,12 @@ import {of} from 'rxjs'
 export class CotizamaticoEffects {
 constructor( private store:Store<fromRoot.State>, private actions$: Actions , private apiCotizacionService:APICotizacionService){}
 
-@Effect({ dispatch: false})
+@Effect()
 GetIdPeticion$ = this.actions$.pipe(
     ofType<GetIdPeticion>(CotizamaticoActionsTypes.GetIdPeticion),
     mergeMap( action => 
         this.apiCotizacionService.getIdPeticion(action.payload).pipe(
-        map( idPeticion =>  {
-            console.log(idPeticion)
-            this.store.dispatch(new GetIdPeticionResponse({ idPeticionCotizacion: idPeticion.idPeticionCotizacion, error: idPeticion.error}))} 
-            ),
+        map(data => new GetIdPeticionResponse(data)),
         catchError(err => {
             return of(new Error(err.message));
           })

@@ -1,4 +1,4 @@
 export interface ResponseIdPeticionCotizacion {
-     idPeticionCotizacion : number,
-     error : any
+     IdPeticionCotizacion : number,
+     Error : any
 }
