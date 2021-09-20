@@ -121,7 +121,7 @@ ngOnInit(): void {
      requestIdCotizacion.IdPeticion = id.iDPeticion;
      this.store.dispatch(new GetCotizacion(requestIdCotizacion));
    });
-  },20000)
+  },90000)
 
   
   // console.log(history.state)

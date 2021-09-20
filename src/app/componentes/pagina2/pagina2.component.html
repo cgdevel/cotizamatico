@@ -1132,11 +1132,67 @@
               <div id="letrasgrad">Cotizamático</div>
               <div id="fivth">$5000</div>
             </div>
-            <div class="col-md-3 col-sm-3 mb-2">
-              <div>Primer pago: ${{responseCotizacionJSON[0].PrecioCotizacion[1].PrimaSemestralPrimerPago}}</div>
-              <div class="d-none d-md-block">1 pago de ${{responseCotizacionJSON[0].PrecioCotizacion[1].PrimaSemestralSubsecuente}}</div>
-              <div id="tan">TOTAL: ${{responseCotizacionJSON[0].PrecioCotizacion[1].PrimaSemestral}}</div>
+            <div class="col-md-3 col-sm-3 mb-2" *ngIf="ampliaplus">
+              <div *ngIf="semestral" >
+                <div>Primer pago: ${{ responseCotizacionJSON[0].PrecioCotizacion[0].PrimaSemestralPrimerPago}}</div>
+                <div class="d-none d-md-block">y 1 Pago de ${{ responseCotizacionJSON[0].PrecioCotizacion[0].PrimaSemestralSubsecuente}}</div>
+                <div id="tan">TOTAL: ${{ responseCotizacionJSON[0].PrecioCotizacion[0].PrimaSemestral}}</div>
+              </div>
+              <div *ngIf="trimestral" >
+                <div>Primer pago: ${{ responseCotizacionJSON[0].PrecioCotizacion[0].PrimaTrimestralPrimerPago}}</div>
+                <div class="d-none d-md-block">y 3 Pagos de ${{ responseCotizacionJSON[0].PrecioCotizacion[0].PrimaTrimestralSubsecuente}}</div>
+                <div id="tan">TOTAL: ${{ responseCotizacionJSON[0].PrecioCotizacion[0].PrimaTrimestral}}</div>
+              </div>
+              <div *ngIf="anual" >
+                <div id="tan">TOTAL: ${{ responseCotizacionJSON[0].PrecioCotizacion[0].dPrimaNeta}}</div>
+              </div>
+              <div *ngIf="mensual" >
+                <div>Primer pago: ${{ responseCotizacionJSON[0].PrecioCotizacion[0].PrimaMensualPrimerPago}}</div>
+                <div class="d-none d-md-block">y 11 Pagos de ${{ responseCotizacionJSON[0].PrecioCotizacion[0].PrimaMensualSubsecuente}}</div>
+                <div id="tan">TOTAL: ${{ responseCotizacionJSON[0].PrecioCotizacion[0].PrimaMensual}}</div>
+              </div>
             </div>
+            <div class="col-md-3 col-sm-3 mb-2" *ngIf="amplia">
+              <div *ngIf="semestral" >
+                <div>Primer pago: ${{ responseCotizacionJSON[0].PrecioCotizacion[1].PrimaSemestralPrimerPago}}</div>
+                <div class="d-none d-md-block">y 1 Pago de ${{ responseCotizacionJSON[0].PrecioCotizacion[1].PrimaSemestralSubsecuente}}</div>
+                <div id="tan">TOTAL: ${{ responseCotizacionJSON[0].PrecioCotizacion[1].PrimaSemestral}}</div>
+              </div>
+              <div *ngIf="trimestral" >
+                <div>Primer pago: ${{ responseCotizacionJSON[0].PrecioCotizacion[1].PrimaTrimestralPrimerPago}}</div>
+                <div class="d-none d-md-block">y 3 Pagos de ${{ responseCotizacionJSON[0].PrecioCotizacion[1].PrimaTrimestralSubsecuente}}</div>
+                <div id="tan">TOTAL: ${{ responseCotizacionJSON[0].PrecioCotizacion[1].PrimaTrimestral}}</div>
+              </div>
+              <div *ngIf="anual" >
+                <div id="tan">TOTAL: ${{ responseCotizacionJSON[0].PrecioCotizacion[1].dPrimaNeta}}</div>
+              </div>
+              <div *ngIf="mensual" >
+                <div>Primer pago: ${{ responseCotizacionJSON[0].PrecioCotizacion[1].PrimaMensualPrimerPago}}</div>
+                <div class="d-none d-md-block">y 11 Pagos de ${{ responseCotizacionJSON[0].PrecioCotizacion[1].PrimaMensualSubsecuente}}</div>
+                <div id="tan">TOTAL: ${{ responseCotizacionJSON[0].PrecioCotizacion[1].PrimaMensual}}</div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-3 mb-2" *ngIf="limitada">
+              <div *ngIf="semestral" >
+                <div>Primer pago: ${{ responseCotizacionJSON[0].PrecioCotizacion[2].PrimaSemestralPrimerPago}}</div>
+                <div class="d-none d-md-block">y 1 Pago de ${{ responseCotizacionJSON[0].PrecioCotizacion[2].PrimaSemestralSubsecuente}}</div>
+                <div id="tan">TOTAL: ${{ responseCotizacionJSON[0].PrecioCotizacion[2].PrimaSemestral}}</div>
+              </div>
+              <div *ngIf="trimestral" >
+                <div>Primer pago: ${{ responseCotizacionJSON[0].PrecioCotizacion[2].PrimaTrimestralPrimerPago}}</div>
+                <div class="d-none d-md-block">y 3 Pagos de ${{ responseCotizacionJSON[0].PrecioCotizacion[2].PrimaTrimestralSubsecuente}}</div>
+                <div id="tan">TOTAL: ${{ responseCotizacionJSON[0].PrecioCotizacion[2].PrimaTrimestral}}</div>
+              </div>
+              <div *ngIf="anual" >
+                <div id="tan">TOTAL: ${{ responseCotizacionJSON[0].PrecioCotizacion[2].dPrimaNeta}}</div>
+              </div>
+              <div *ngIf="mensual" >
+                <div>Primer pago: ${{ responseCotizacionJSON[0].PrecioCotizacion[2].PrimaMensualPrimerPago}}</div>
+                <div class="d-none d-md-block">y 11 Pagos de ${{ responseCotizacionJSON[0].PrecioCotizacion[2].PrimaMensualSubsecuente}}</div>
+                <div id="tan">TOTAL: ${{ responseCotizacionJSON[0].PrecioCotizacion[2].PrimaMensual}}</div>
+              </div>
+            </div>
+            
             <div class="col">
               <button
                 class="btn btn-primary"
@@ -1235,11 +1291,67 @@
               <div id="letrasgrad">Cotizamático</div>
               <div id="fivth">$5000</div>
             </div>
-            <div class="col-md-3 col-sm-3 mb-2">
-              <div>Primer pago: ${{item.PrecioCotizacion[1].PrimaSemestralPrimerPago}}</div>
-              <div class="d-none d-md-block">Pago(s) de ${{item.PrecioCotizacion[1].PrimaSemestralSubsecuente}}</div>
-              <div id="tan">TOTAL: ${{item.PrecioCotizacion[1].PrimaSemestral}}</div>
+            <div class="col-md-3 col-sm-3 mb-2" *ngIf="amplia">
+              <div *ngIf="semestral" >
+                <div>Primer pago: ${{item.PrecioCotizacion[1].PrimaSemestralPrimerPago}}</div>
+                <div class="d-none d-md-block">y 1 Pago de ${{item.PrecioCotizacion[1].PrimaSemestralSubsecuente}}</div>
+                <div id="tan">TOTAL: ${{item.PrecioCotizacion[1].PrimaSemestral}}</div>
+              </div>
+              <div *ngIf="trimestral" >
+                <div>Primer pago: ${{item.PrecioCotizacion[1].PrimaTrimestralPrimerPago}}</div>
+                <div class="d-none d-md-block">y 3 Pagos de ${{item.PrecioCotizacion[1].PrimaTrimestralSubsecuente}}</div>
+                <div id="tan">TOTAL: ${{item.PrecioCotizacion[1].PrimaTrimestral}}</div>
+              </div>
+              <div *ngIf="anual" >
+                <div id="tan">TOTAL: ${{item.PrecioCotizacion[1].dPrimaNeta}}</div>
+              </div>
+              <div *ngIf="mensual" >
+                <div>Primer pago: ${{item.PrecioCotizacion[1].PrimaMensualPrimerPago}}</div>
+                <div class="d-none d-md-block">y 11 Pagos de ${{item.PrecioCotizacion[1].PrimaMensualSubsecuente}}</div>
+                <div id="tan">TOTAL: ${{item.PrecioCotizacion[1].PrimaMensual}}</div>
+              </div>
             </div>
+            <div class="col-md-3 col-sm-3 mb-2" *ngIf="ampliaplus">
+              <div *ngIf="semestral" >
+                <div>Primer pago: ${{item.PrecioCotizacion[0].PrimaSemestralPrimerPago}}</div>
+                <div class="d-none d-md-block">y 1 Pago de ${{item.PrecioCotizacion[0].PrimaSemestralSubsecuente}}</div>
+                <div id="tan">TOTAL: ${{item.PrecioCotizacion[0].PrimaSemestral}}</div>
+              </div>
+              <div *ngIf="trimestral" >
+                <div>Primer pago: ${{item.PrecioCotizacion[0].PrimaTrimestralPrimerPago}}</div>
+                <div class="d-none d-md-block">y 3 Pagos de ${{item.PrecioCotizacion[0].PrimaTrimestralSubsecuente}}</div>
+                <div id="tan">TOTAL: ${{item.PrecioCotizacion[0].PrimaTrimestral}}</div>
+              </div>
+              <div *ngIf="anual" >
+                <div id="tan">TOTAL: ${{item.PrecioCotizacion[0].dPrimaNeta}}</div>
+              </div>
+              <div *ngIf="mensual" >
+                <div>Primer pago: ${{item.PrecioCotizacion[0].PrimaMensualPrimerPago}}</div>
+                <div class="d-none d-md-block">y 11 Pagos de ${{item.PrecioCotizacion[0].PrimaMensualSubsecuente}}</div>
+                <div id="tan">TOTAL: ${{item.PrecioCotizacion[0].PrimaMensual}}</div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-3 mb-2" *ngIf="limitada">
+              <div *ngIf="semestral" >
+                <div>Primer pago: ${{item.PrecioCotizacion[2].PrimaSemestralPrimerPago}}</div>
+                <div class="d-none d-md-block">y 1 Pago de ${{item.PrecioCotizacion[2].PrimaSemestralSubsecuente}}</div>
+                <div id="tan">TOTAL: ${{item.PrecioCotizacion[2].PrimaSemestral}}</div>
+              </div>
+              <div *ngIf="trimestral" >
+                <div>Primer pago: ${{item.PrecioCotizacion[2].PrimaTrimestralPrimerPago}}</div>
+                <div class="d-none d-md-block">y 3 Pagos de ${{item.PrecioCotizacion[2].PrimaTrimestralSubsecuente}}</div>
+                <div id="tan">TOTAL: ${{item.PrecioCotizacion[2].PrimaTrimestral}}</div>
+              </div>
+              <div *ngIf="anual" >
+                <div id="tan">TOTAL: ${{item.PrecioCotizacion[2].dPrimaNeta}}</div>
+              </div>
+              <div *ngIf="mensual" >
+                <div>Primer pago: ${{item.PrecioCotizacion[2].PrimaMensualPrimerPago}}</div>
+                <div class="d-none d-md-block">y 11 Pagos de ${{item.PrecioCotizacion[2].PrimaMensualSubsecuente}}</div>
+                <div id="tan">TOTAL: ${{item.PrecioCotizacion[2].PrimaMensual}}</div>
+              </div>
+            </div>
+          
             <div class="col">
               <button
                 class="btn btn-primary"
