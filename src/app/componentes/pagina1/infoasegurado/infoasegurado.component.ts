@@ -190,8 +190,8 @@ export class InfoaseguradoComponent implements OnInit {
       for (let c = 0; c < this.nombresepa.length; c++){
         this.clienteNombre += this.nombresepa[c] + ' ';
       }
-      this.emitClienteNombre.emit(this.clienteNombre);
-      const guardacookieNombre = this.clienteNombre ;
+      this.emitClienteNombre.emit(this.clienteNombre.trim( ));
+      const guardacookieNombre = this.clienteNombre.trim( ) ;
       this.cookieService.put('Nombre', guardacookieNombre);
     }
   }

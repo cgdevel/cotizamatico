@@ -4,7 +4,7 @@ export interface RequestIdPeticionCotizacion{
                     FechaInicioVigencia :  string ,
                     Domicilio : {
                                     iIdUbicacion : number,
-                                    sCodigoPostal :  number ,
+                                    sCodigoPostal :  string ,
                                     iIdMunicipio : number,
                                     sUbicacion :  string ,
                                     sMunicipio :  string ,
@@ -36,7 +36,7 @@ export interface RequestIdPeticionCotizacion{
                                     IdCredential : number,
                                     IdProfile : number
                    },
-                    SubRamo ? : {
+                    SubRamo : {
                                     iIdSubRamo : number,
                                     Ramo : any,
                                     iLineaNegocio  : number,

@@ -1059,7 +1059,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-sm-12">
-      <div class="card mb-4" id="estesi" *ngIf="Aseguradoras[0]">
+      <div class="card mb-4" id="estesi" *ngIf="!!responseCotizacionJSON[0]">
         <div class="container px-0">
           <div class="col-12 px-0">
             <div id="mejop" class="card-header text-center">
@@ -1074,57 +1074,57 @@
               <img
                 src="../../../assets/iconosase/AXA.svg"
                 style="width: 140px"
-                *ngIf="Aseguradoras[0].Compania === 'AXA SEG'"
+                *ngIf="responseCotizacionJSON[0].IdAseguradora === 1"
               />
               <img
                 src="../../../assets/iconosase/CHUBB.svg"
                 style="width: 140px"
-                *ngIf="Aseguradoras[0].Compania === 'CHUBB'"
+                *ngIf="responseCotizacionJSON[0].IdAseguradora === 2"
               />
               <img
                 src="../../../assets/iconosase/SURA.svg"
                 style="width: 140px"
-                *ngIf="Aseguradoras[0].Compania === 'SURA'"
+                *ngIf="responseCotizacionJSON[0].IdAseguradora ===  4"
               />
               <img
                 src="../../../assets/iconosase/ZURICH.svg"
                 style="width: 140px"
-                *ngIf="Aseguradoras[0].Compania === 'ZURICH'"
+                *ngIf="responseCotizacionJSON[0].IdAseguradora === 5"
               />
               <img
                 src="../../../assets/iconosase/MAPFRE.svg"
                 style="width: 140px"
-                *ngIf="Aseguradoras[0].Compania === 'MAPFRE T'"
+                *ngIf="responseCotizacionJSON[0].IdAseguradora === 6"
               />
               <img
                 src="../../../assets/iconosase/QUALITAS.svg"
                 style="width: 140px"
-                *ngIf="Aseguradoras[0].Compania === 'QUALITAS'"
+                *ngIf="responseCotizacionJSON[0].IdAseguradora === 26"
               />
               <img
                 src="../../../assets/iconosase/BANORTE.svg"
                 style="width: 140px"
-                *ngIf="Aseguradoras[0].Compania === 'BANORTE'"
+                *ngIf="responseCotizacionJSON[0].IdAseguradora === 27"
               />
               <img
                 src="../../../assets/iconosase/HDI.svg"
                 style="width: 140px"
-                *ngIf="Aseguradoras[0].Compania === 'HDI'"
+                *ngIf="responseCotizacionJSON[0].IdAseguradora === 553"
               />
               <img
                 src="../../../assets/iconosase/AFIRME.svg"
                 style="width: 140px"
-                *ngIf="Aseguradoras[0].Compania === 'AFIRME'"
+                *ngIf="responseCotizacionJSON[0].IdAseguradora === 494"
               />
               <img
                 src="../../../assets/iconosase/ANA.svg"
                 style="width: 140px"
-                *ngIf="Aseguradoras[0].Compania === 'ANA SEG'"
+                *ngIf="responseCotizacionJSON[0].IdAseguradora === 450"
               />
               <img
                 src="../../../assets/iconosase/AIG.svg"
                 style="width: 140px"
-                *ngIf="Aseguradoras[0].Compania === 'AIG MEX'"
+                *ngIf="responseCotizacionJSON[0].IdAseguradora === 3"
               />
             </div>
             <div class="col-md-3 col-sm-3 mb-2">
@@ -1133,10 +1133,9 @@
               <div id="fivth">$5000</div>
             </div>
             <div class="col-md-3 col-sm-3 mb-2">
-              <div class="d-none d-md-block">Precio regular $6,000</div>
-              <div>Primer pago: $1,000</div>
-              <div class="d-none d-md-block">3 pagos de $1,000.000</div>
-              <div id="tan">TOTAL ANUAL: $1,000.000</div>
+              <div>Primer pago: ${{responseCotizacionJSON[0].PrecioCotizacion[1].PrimaSemestralPrimerPago}}</div>
+              <div class="d-none d-md-block">1 pago de ${{responseCotizacionJSON[0].PrecioCotizacion[1].PrimaSemestralSubsecuente}}</div>
+              <div id="tan">TOTAL: ${{responseCotizacionJSON[0].PrecioCotizacion[1].PrimaSemestral}}</div>
             </div>
             <div class="col">
               <button
@@ -1169,64 +1168,64 @@
       <div
         class="card mb-4"
         id="estesi"
-        *ngFor="let item of Aseguradoras | slice: 1"
+        *ngFor="let item of responseCotizacionJSON | slice: 1"
       >
         <div class="container py-4 text-center text-md-left">
           <div class="row">
             <div class="col">
               <!-- {{ item.Compania }} -->
               <img
-                *ngIf="item.Compania === 'AXA SEG'"
+                *ngIf="item.IdAseguradora === 1"
                 src="../../../assets/iconosase/AXA.svg"
                 style="width: 140px"
               />
               <img
-                *ngIf="item.Compania === 'CHUBB'"
+                *ngIf="item.IdAseguradora=== 2"
                 src="../../../assets/iconosase/CHUBB.svg"
                 style="width: 140px"
               />
               <img
-                *ngIf="item.Compania === 'SURA'"
+                *ngIf="item.IdAseguradora=== 4"
                 src="../../../assets/iconosase/SURA.svg"
                 style="width: 140px"
               />
               <img
-                *ngIf="item.Compania === 'ZURICH'"
+                *ngIf="item.IdAseguradora=== 5"
                 src="../../../assets/iconosase/ZURICH.svg"
                 style="width: 140px"
               />
               <img
-                *ngIf="item.Compania === 'MAPFRE T'"
+                *ngIf="item.IdAseguradora=== 6"
                 src="../../../assets/iconosase/MAPFRE.svg"
                 style="width: 140px"
               />
               <img
-                *ngIf="item.Compania === 'QUALITAS'"
+                *ngIf="item.IdAseguradora=== 26"
                 src="../../../assets/iconosase/QUALITAS.svg"
                 style="width: 140px"
               />
               <img
-                *ngIf="item.Compania === 'BANORTE'"
+                *ngIf="item.IdAseguradora=== 27"
                 src="../../../assets/iconosase/BANORTE.svg"
                 style="width: 140px"
               />
               <img
-                *ngIf="item.Compania === 'HDI'"
+                *ngIf="item.IdAseguradora=== 553"
                 src="../../../assets/iconosase/HDI.svg"
                 style="width: 140px"
               />
               <img
-                *ngIf="item.Compania === 'AFIRME'"
+                *ngIf="item.IdAseguradora=== 494"
                 src="../../../assets/iconosase/AFIRME.svg"
                 style="width: 140px"
               />
               <img
-                *ngIf="item.Compania === 'ANA SEG'"
+                *ngIf="item.IdAseguradora=== 450"
                 src="../../../assets/iconosase/ANA.svg"
                 style="width: 140px"
               />
               <img
-                *ngIf="item.Compania === 'AIG MEX'"
+                *ngIf="item.IdAseguradora=== 3"
                 src="../../../assets/iconosase/AIG.svg"
                 style="width: 140px"
               />
@@ -1237,10 +1236,9 @@
               <div id="fivth">$5000</div>
             </div>
             <div class="col-md-3 col-sm-3 mb-2">
-              <div class="d-none d-md-block">Precio regular $6,000</div>
-              <div>Primer pago: $1,000</div>
-              <div class="d-none d-md-block">3 pagos de $1,000.000</div>
-              <div id="tan">TOTAL ANUAL: $1,000.000</div>
+              <div>Primer pago: ${{item.PrecioCotizacion[1].PrimaSemestralPrimerPago}}</div>
+              <div class="d-none d-md-block">Pago(s) de ${{item.PrecioCotizacion[1].PrimaSemestralSubsecuente}}</div>
+              <div id="tan">TOTAL: ${{item.PrecioCotizacion[1].PrimaSemestral}}</div>
             </div>
             <div class="col">
               <button
@@ -1271,22 +1269,22 @@
       </div>
       <div class="row">
         <div class="col">
+          <!-- [state]="{
+            modsel: vermodelo,
+            marsel: vermarca,
+            descsel: verdescripcion,
+            annosel: veranno,
+            nomsel: nombre,
+            emsel: email,
+            telsel: telefono,
+            generosel: genero,
+            codigosel: codigopostal,
+            fechasel: fechanac,
+            pag: pago,
+            polizasel: !!poliza ? poliza : cobertura
+          }" -->
           <button
             class="btn btn-primary"
-           [state]="{
-                  modsel: vermodelo,
-                  marsel: vermarca,
-                  descsel: verdescripcion,
-                  annosel: veranno,
-                  nomsel: nombre,
-                  emsel: email,
-                  telsel: telefono,
-                  generosel: genero,
-                  codigosel: codigopostal,
-                  fechasel: fechanac,
-                  pag: pago,
-                  polizasel: !!poliza ? poliza : cobertura
-                }"
             style="margin-bottom: 27px"
             [routerLink]="['/vermas']"
             routerLinkActive="router-link-active"
@@ -1311,26 +1309,26 @@
               <h6>Mi auto es:</h6>
             </div>
           </div>
-          <div class="row" style="margin-left: 2px">{{ vermodelo.sDato }}</div>
+          <div class="row" style="margin-left: 2px">{{ (vermodelo$ | async) }}</div>
           <div class="row">
             <div class="col-12">
               <h6>Año:</h6>
             </div>
           </div>
-          <div class="row" style="margin-left: 2px">{{ veranno.sDato }}</div>
+          <div class="row" style="margin-left: 2px">{{  (veranno$ | async).sDato }}</div>
           <div class="row">
             <div class="col-12">
               <h6>Marca:</h6>
             </div>
           </div>
-          <div class="row" style="margin-left: 2px">{{ vermarca.sDato }}</div>
+          <div class="row" style="margin-left: 2px">{{ (vermarca$ | async).sDato }}</div>
           <div class="row">
             <div class="col-12">
               <h6>Descripción:</h6>
             </div>
           </div>
           <div class="row" style="margin-left: 2px">
-            {{ verdescripcion.sDato }}
+            {{ (verdescripcion$ | async).sDato}}
           </div>
           <div class="row">
             <div class="col-12 mb-4">

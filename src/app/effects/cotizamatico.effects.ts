@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import {mergeMap, catchError , tap, map} from 'rxjs/Operators'
 import * as fromRoot from '../reducers'
 import { Store } from "@ngrx/store";
-import { CotizamaticoActionsTypes, GetIdPeticion, GetIdPeticionResponse } from "../actions/cotizamatico.actions";
+import { CotizamaticoActionsTypes, GetIdPeticion, GetIdPeticionResponse, GetCotizacion,GetCotizacionResponse } from "../actions/cotizamatico.actions";
 import {Actions, Effect , ofType} from '@ngrx/effects'
 import { APICotizacionService } from "../servicios/APICotizacion.service";
 import {of} from 'rxjs' 
@@ -20,6 +20,18 @@ GetIdPeticion$ = this.actions$.pipe(
         catchError(err => {
             return of(new Error(err.message));
           })
+    ))
+)
+
+@Effect()
+GetCotizacion$=this.actions$.pipe(
+    ofType<GetCotizacion>(CotizamaticoActionsTypes.GetCotizacion),
+        mergeMap( action=>
+            this.apiCotizacionService.getIdCotizacion(action.payload).pipe(
+                map( datos => new GetCotizacionResponse(datos)),
+                    catchError(err =>{
+                        return of(new Error(err.message));
+                })
     ))
 )
 

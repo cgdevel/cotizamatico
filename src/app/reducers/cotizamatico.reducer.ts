@@ -1,5 +1,5 @@
 import { state } from '@angular/animations';
-import {CotizamaticoActionsTypes,CotizamaticoActions, GetIdPeticion } from '../actions/cotizamatico.actions'
+import {CotizamaticoActionsTypes,CotizamaticoActions, GetIdPeticion, ModificarVehiculo } from '../actions/cotizamatico.actions'
 import { CatalogoModel } from '../interphaces/models/Catalogos.model'
 import { FechasModel } from '../interphaces/models/Fechas.model'
 
@@ -7,11 +7,24 @@ export interface State{
     asegurado:{
         nombre : string;
         correo : string;
-        cP     : number;
+        cP     : string;
         fechaDeNacimiento: string ;
         telefono: number;
         tipoDePersona:boolean;
         iSexo: number;
+    };
+    
+    SubRamo: {
+        iIdSubRamo: number,
+        Ramo: null,
+        iLineaNegocio: number,
+        iEstatus: number,
+        iIdMostar: number,
+        iOrdenPresentacion: number,
+        sSubramo: string,
+        sAlias: null,
+        sDescripcion: null,
+        lineaNegocio: null
     };
     domicilio:{
         iIdUbicacion        :number ,
@@ -25,7 +38,6 @@ export interface State{
     };
     vehiculo:{
         marca : {sLlave: any, sDato: any};
-        tipo:{sLlave: any, sDato: any};
         modelo :{sLlave: any, sDato: any};
         descripción:{sLlave: any, sDato: any};
     };
@@ -38,50 +50,84 @@ export interface State{
         idCotizacion: number;
         error: any;
         jsonCotizacion: Array<string>;
-    }
+    };
+    
     
 }
 
 const initialState: State = {
-    asegurado:{
-        nombre : '',
-        correo : '',
-        cP      : null,
+    asegurado: {
+        nombre: '',
+        correo: '',
+        cP: null,
         fechaDeNacimiento: '',
         telefono: null,
         tipoDePersona: null,
-        iSexo:null
+        iSexo: null
     },
-    domicilio:{
-        iIdUbicacion        :null ,
-        iIdMunicipio        :null ,
-        sUbicacion          :'',
-        sMunicipio          :'',
-        iIdEstado           :null ,
-        iEstadoPais         :null ,
-        iClaveEstadoCepomex :null ,
-        sEstado             :'' 
+    SubRamo: {
+        iIdSubRamo: null,
+        Ramo: null,
+        iLineaNegocio: null,
+        iEstatus: null,
+        iIdMostar: null,
+        iOrdenPresentacion: null,
+        sSubramo: '',
+        sAlias: null,
+        sDescripcion: null,
+        lineaNegocio: null
     },
-    vehiculo:{
-        marca :{sLlave:'',sDato:''},
-        tipo:{sLlave:'',sDato:''},
-        modelo :{sLlave:'',sDato:''},
-        descripción:{sLlave:'',sDato:''}
+    domicilio: {
+        iIdUbicacion: null,
+        iIdMunicipio: null,
+        sUbicacion: '',
+        sMunicipio: '',
+        iIdEstado: null,
+        iEstadoPais: null,
+        iClaveEstadoCepomex: null,
+        sEstado: ''
     },
-    iDPeticionResponse:{
+    vehiculo: {
+        marca: { sLlave: '', sDato: '' },
+        modelo: { sLlave: '', sDato: '' },
+        descripción: { sLlave: '', sDato: '' }
+    },
+    iDPeticionResponse: {
         iDPeticion: 0,
         error: null
     },
-    cotizacionResponse:{
-        estatus:  null,
-        idCotizacion:  null,
-        error:  null,
+    cotizacionResponse: {
+        estatus: null,
+        idCotizacion: null,
+        error: null,
         jsonCotizacion: []
     }
 }
 
 export function reducer (state = initialState, action: CotizamaticoActions ) : State{
     switch (action.type) {
+        case CotizamaticoActionsTypes.ModificarVehiculo: 
+        return {
+            ...state,
+            SubRamo: {
+                sSubramo: action.payload.tipo.sDato,
+                iIdSubRamo: action.payload.tipo.sLlave,
+                Ramo: state.SubRamo.Ramo,
+                iLineaNegocio: state.SubRamo.iLineaNegocio,
+                iEstatus: state.SubRamo.iEstatus,
+                iIdMostar: state.SubRamo.iIdMostar,
+                iOrdenPresentacion: state.SubRamo.iOrdenPresentacion,
+                sAlias: state.SubRamo.sAlias,
+                sDescripcion: state.SubRamo.sDescripcion,
+                lineaNegocio: state.SubRamo.lineaNegocio
+            },
+            vehiculo: {
+                marca: action.payload.marca,
+                descripción: action.payload.descripcion,
+                modelo: action.payload.modelo
+            }
+            
+        };
         case CotizamaticoActionsTypes.GetIdPeticionResponse:
             return {
                 ...state,
@@ -112,6 +158,18 @@ export function reducer (state = initialState, action: CotizamaticoActions ) : S
                     tipoDePersona: action.payload.cotizacion.Persona.bSiNoPersonaMoral,
                     iSexo: action.payload.cotizacion.Persona.iSexo
                 },
+                SubRamo:{
+                    iIdSubRamo: action.payload.cotizacion.SubRamo.iIdSubRamo,
+                    sSubramo: action.payload.cotizacion.SubRamo.sSubramo,
+                    Ramo: null,
+                    iLineaNegocio: 0,
+                    iEstatus: 0,
+                    iIdMostar: 0,
+                    iOrdenPresentacion: 0,
+                    sAlias: null,
+                    sDescripcion: null,
+                    lineaNegocio: null
+                },
                 domicilio:{
                     iIdUbicacion        :action.payload.cotizacion.Domicilio.iIdUbicacion ,
                     iIdMunicipio        :action.payload.cotizacion.Domicilio.iIdMunicipio ,
@@ -131,10 +189,6 @@ export function reducer (state = initialState, action: CotizamaticoActions ) : S
                         sLlave: action.payload.cotizacion.Vehiculo.DescripcionModelo.iIdDescripcionModelo,
                         sDato:action.payload.cotizacion.Vehiculo.DescripcionModelo.sDescripcion
                     },
-                    tipo:{
-                        sLlave: action.payload.cotizacion.SubRamo.iIdSubRamo,
-                        sDato:action.payload.cotizacion.SubRamo.sSubramo
-                    },
                     marca:{
                         sLlave: action.payload.cotizacion.Vehiculo.Marca.iIdMarca,
                         sDato:action.payload.cotizacion.Vehiculo.Marca.sMarca
@@ -147,3 +201,7 @@ export function reducer (state = initialState, action: CotizamaticoActions ) : S
 
 export const IDPeticionResponse= (state: State) => state.iDPeticionResponse
 export const IDCotizacionResponse = (state: State) => state.cotizacionResponse
+export const selectTipo = (state: State) => state.SubRamo.sSubramo
+export const selectModelo = (state: State) => state.vehiculo.modelo
+export const selectMarca = (state: State) => state.vehiculo.marca
+export const selectDescripcion = (state: State) => state.vehiculo.descripción

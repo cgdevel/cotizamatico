@@ -6,11 +6,14 @@ import { SecureStorageServiceService } from '../../core/secure-storage-service.s
 import { FechasModel } from '../../interphaces/models/Fechas.model';
 import { CatalogoModel } from '../../interphaces/models/Catalogos.model';
 import { RequestIdPeticionCotizacion } from 'src/app/interphaces/request/RequestIdPeticionCotizacion';
-import { CotizamaticoActionsTypes, GetIdPeticion } from 'src/app/actions/cotizamatico.actions';
+import { CotizamaticoActionsTypes, GetCotizacion, GetCotizacionResponse, GetIdPeticion , GetCoberturasporAse} from 'src/app/actions/cotizamatico.actions';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../reducers'
 import { InfovehiculoService } from 'src/app/servicios/infovehiculo.service';
 import { RequestCatalogoCotizamatico } from 'src/app/interphaces/request/RequestCatalogoCotizamatico.model';
+import { selectIdPeticionResponse } from 'src/app/selectors/cotizamatico.selectors';
+import { RequestIdCotizacion } from 'src/app/interphaces/request/RequestIdCotizacion';
+import { RequestCatalogoCoberturas } from 'src/app/interphaces/request/RequesteCatalogoCoberturas';
 @Component({
   selector: 'app-pagina1',
   templateUrl: './pagina1.component.html',
@@ -24,7 +27,7 @@ export class Pagina1Component implements OnInit {
     private store: Store<fromRoot.State>,
     private infovehiculoService: InfovehiculoService,
   ) {}
-  
+
   sesion: any;
   ubicacion:any;
 
@@ -133,50 +136,25 @@ requestIdPeticion: RequestIdPeticionCotizacion={
                  },
                  Compania: null,
                  sXmls: null,
-                 iIva:null,
-                 iIdAseguradora: null,
-                 iDescuento: null
+                 iIva: 0.0,
+                 iIdAseguradora: 0,
+                 iDescuento: 0.0
   },
   PaqueteCoberturasApi:{
-                 idPaquete:null,
-                 idAseguradora:null,
-                 CoberturasApi:[
-                 {
-                                 idCobertura:null,
-                                 idTipoCobertura:null,
-                                 idFactor:null
-                 },
-                 {
-                                 idCobertura:null,
-                                 idTipoCobertura:null,
-                                 idFactor:null
-                 },
-                 {
-                                 idCobertura:null,
-                                 idTipoCobertura:null,
-                                 idFactor:null
-                 },
-                 {
-                                 idCobertura:null,
-                                 idTipoCobertura:null,
-                                 idFactor:null
-                 },
-                 {
-                                 idCobertura:null,
-                                 idTipoCobertura:null,
-                                 idFactor:null
-                 }
-                 ]
+    idPaquete:1,
+    idAseguradora:null,
+    CoberturasApi:null
   },
               User: "COTIZAMATICO",
               Device: "EMULATOR30X1X5X0",
               Token: "7C2C8D3B-C488-4D14-B360-6B94013A0C4E"
 }
-
-
-
-
-  
+requestCoberAse: RequestCatalogoCoberturas={
+  iIdAseguradoraSubRamo: 0,
+  iIdProducto: 0,
+  iIdCoberturaPorProducto: 0,
+  iIdTipoValor: 0
+}
 
   ngOnInit(): void {
     const sesion = this.storageService.getJsonValue(
@@ -211,6 +189,8 @@ requestIdPeticion: RequestIdPeticionCotizacion={
   handlerVehiculoTipo(e: CatalogoModel) {
     this.vehiculoTipo = e;
     this.ValidarDatosObligatorios();
+    this.requestIdPeticion.cotizacion.SubRamo.iIdSubRamo = !!e ? parseInt(e.sLlave,10) : null;
+    this.requestIdPeticion.cotizacion.SubRamo.sSubramo= !!e ? e.sDato: null;
   }
 
   handlerVehiculoAnio(e: CatalogoModel) {
@@ -235,6 +215,7 @@ requestIdPeticion: RequestIdPeticionCotizacion={
 
   handlerClienteNombre(e: string) {
     this.clienteNombre = e;
+    this.clienteNombre.trim( );
     this.ValidarDatosObligatorios();
     this.requestIdPeticion.cotizacion.Persona.sNombre= e;
   }
@@ -263,7 +244,7 @@ requestIdPeticion: RequestIdPeticionCotizacion={
     // console.log(e);
     // console.log(this.clienteCodigoPostal)
     this.ValidarDatosObligatorios();
-    this.requestIdPeticion.cotizacion.Domicilio.sCodigoPostal= parseInt(e,10);
+    this.requestIdPeticion.cotizacion.Domicilio.sCodigoPostal= e;
       const req: RequestCatalogoCotizamatico = {
         Filtro: e,
         IdAplication: 2,
@@ -283,7 +264,7 @@ requestIdPeticion: RequestIdPeticionCotizacion={
       });
   }
 
-  
+
   handlerClienteFechaNacimiento(e: FechasModel) {
     this.clienteFechaNacimiento = e;
     this.ValidarDatosObligatorios();
@@ -332,6 +313,9 @@ requestIdPeticion: RequestIdPeticionCotizacion={
   }
 
   getIdPeticion(){
+    // this.store.dispatch( new GetCoberturasporAse(this.requestCoberAse.) )     
      this.store.dispatch( new GetIdPeticion(this.requestIdPeticion) )
+    // console.log(this.requestIdPeticion)
+
   }
 }

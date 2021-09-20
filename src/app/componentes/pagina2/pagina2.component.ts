@@ -14,6 +14,15 @@ import { InfovehiculoService } from '../../servicios/infovehiculo.service';
 import AseguradoraCobJson from '../../seeds/asegcob.json';
 import AseguradoraJson from '../../interphaces/aseguradoras';
 import AseguradoraCobJ from '../../interphaces/aseguradoracob';
+import {selectCotizacionResponse, selectIdPeticionResponse} from '../../selectors/cotizamatico.selectors';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../reducers';
+import { CotizamaticoActionsTypes, GetCotizacion, GetCotizacionResponse, ModificarVehiculo } from 'src/app/actions/cotizamatico.actions';
+import { RequestIdCotizacion } from 'src/app/interphaces/request/RequestIdCotizacion';
+import{ResponseIdCotizacion} from 'src/app/interphaces/response/ResponseIdCotizacion';
+import { Observable } from 'rxjs';
+import { selectMarca, selectDescripcion, selectModelo, selectTipo } from 'src/app/selectors/cotizamatico.selectors';
+import { map } from 'rxjs/Operators';
 
 @Component({
   selector: 'app-pagina2',
@@ -26,7 +35,9 @@ export class Pagina2Component implements OnInit {
   cobtothe : number;
   constructor(
     private route: ActivatedRoute,
-    private infovehiculoService: InfovehiculoService
+    private infovehiculoService: InfovehiculoService,
+    private store: Store<fromRoot.State>,
+
   ) {}
   itemVacio = { sDato: '', sLlave: '' };
   AseguradorasPoDesc: Aseguradoras[] = [];
@@ -40,10 +51,10 @@ export class Pagina2Component implements OnInit {
   // VARIABLE DE LA QUE DEPENDE EDITAR DATOS
   show = false;
   // Variables a las que asigno datos de pagina1
-  vermodelo: CatalogoModel;
-  vermarca: CatalogoModel;
-  verdescripcion: CatalogoModel;
-  veranno: CatalogoModel;
+  vermodelo$: Observable<any>;
+  vermarca$: Observable<any>;
+  verdescripcion$: Observable<any>;
+  veranno$: Observable<any>;
   nombre: any;
   email: any;
   telefono: any;
@@ -88,6 +99,86 @@ export class Pagina2Component implements OnInit {
   marca: CatalogoModel;
   descripcion: CatalogoModel;
   anno: CatalogoModel;
+
+  responseCotizacionJSON =new Array
+ngOnInit(): void {
+  let requestIdCotizacion: RequestIdCotizacion={
+    User: "COTIZAMATICO",
+    Device: "EMULATOR30X1X5X0",
+    Token: "7C2C8D3B-C488-4D14-B360-6B94013A0C4E",
+    IdPeticion: null
+  }
+  let ResponseIdCotizacion:ResponseIdCotizacion={
+    JsonCotizacion: [],
+    Estatus: null,
+    IdCotizacion: null,
+    Error: null
+  }
+  setTimeout(() => {
+    this.store.select(selectIdPeticionResponse).subscribe(id=>{
+      console.log(id.iDPeticion);
+      if(id.iDPeticion === null) return
+     requestIdCotizacion.IdPeticion = id.iDPeticion;
+     this.store.dispatch(new GetCotizacion(requestIdCotizacion));
+   });
+  },20000)
+
+  
+  // console.log(history.state)
+  this.store.select(selectCotizacionResponse).subscribe(res => 
+    {
+      if(!res.jsonCotizacion.length) 
+      {
+        return
+      } else{
+          this.responseCotizacionJSON=[];
+        //   res.jsonCotizacion.forEach(element => {
+        //   let json=JSON.parse(element)
+        //   this.responseCotizacionJSON.push(json)
+        // });
+        for (let index = 0; index < res.jsonCotizacion.length; index++) {
+          const element = JSON.parse(res.jsonCotizacion[index]);
+          this.responseCotizacionJSON.push(element);
+        }
+        console.log(this.responseCotizacionJSON);
+      }
+    })
+  this.vermodelo$ = this.store.select(selectTipo)
+  this.veranno$ = this.store.select(selectModelo)
+  this.vermarca$ = this.store.select(selectMarca)
+  this.verdescripcion$ = this.store.select(selectDescripcion)
+  this.verdescripcion$.subscribe(desc => {
+    console.log(desc)
+    this.Aseguradoras=this.getAsePorDescrip(desc.sLlave)
+
+  })
+  // this.Aseguradoras = this.getAsePorDescrip(this.verdescripcion$);
+  // console.log(this.Aseguradoras);
+  this.nombre = history.state.namease;
+  // console.log(this.nombre);
+  this.email = history.state.emailase;
+  this.telefono = history.state.phonease;
+  this.genero = history.state.tipoperase;
+  this.codigopostal = history.state.cpase;
+  // console.log(this.codigopostal);
+  this.fechanac = history.state.fechanacase;
+  this.amplia = true;
+  this.descMEDIO = true;
+  this.anual = true;
+  this.cobtothe= 10;
+  this.cobDamage = 5 ;
+  this.una = history.state.sizeta;
+  for (let index = 0; AseguradoraCobJson.length < index; index++) {
+    const element = AseguradoraCobJson[index];
+  }
+  for (const nombre of AseguradoraCobJson) {
+    // console.log(nombre);
+    for (const cobertura of nombre.coberturas) {
+      // console.log(cobertura.default);
+    }
+  }
+} // init
+
   // Funciones cobertura
   Ampliaplus() {
     // tiene selected this.statusAP
@@ -289,33 +380,34 @@ export class Pagina2Component implements OnInit {
     console.log(this.robototal);
   }
   guarda() {
+    this.store.dispatch(new ModificarVehiculo({
+      modelo: {
+        sLlave: this.anno.sLlave,
+        sDato: this.anno.sDato
+      },
+      marca: {
+        sLlave: this.marca.sLlave,
+        sDato: this.marca.sDato
+      },
+      descripcion: {
+        sLlave: this.descripcion.sLlave,
+        sDato: this.descripcion.sDato
+      },
+      tipo: {
+        sLlave: this.modelo.sLlave,
+        sDato: this.modelo.sDato
+      }
+
+    }))
     this.show = false;
-    // console.log("Informacion asegurado")
-    // console.log(this.nombre)
-    // console.log(this.email)
-    // console.log(this.telefono)
-    // console.log(this.codigopostal)
-    // console.log(this.mesnaci)
-    // console.log(this.yearnaci)
-    // console.log(this.dianaci)
-    // console.log(this.strstatemu)
-    // console.log(this.boostatemu)
-    // console.log(this.strstatehom)
-    // console.log(this.boostatehom)
-    // console.log(this.strstateemp)
-    // console.log(this.boostateemp)
-    // console.log("Informacion vehículo página 1")
+    //this.vermodelo.sDato = this.modelo.sDato;
+    // this.vermarca.sDato = this.marca.sDato;
+    // this.veranno.sDato = this.anno.sDato;
+    // this.verdescripcion.sDato = this.descripcion.sDato;
+    // this.Aseguradoras = [];
+    // this.Aseguradoras = this.getAsePorDescrip(this.descripcion.sLlave);
     // console.log(this.vermodelo+' '+this.vermarca+' '+this.verdescripcion+' '+this.veranno)
-    // console.log("Informacion vehículo editada en página dos")
-    // console.log(this.modelo+' '+this.anno+' '+this.marca+' '+this.descripcion)
-    // console.log("Informacion vehículo actualizada")
-    this.vermodelo.sDato = this.modelo.sDato;
-    this.vermarca.sDato = this.marca.sDato;
-    this.veranno.sDato = this.anno.sDato;
-    this.verdescripcion.sDato = this.descripcion.sDato;
-    this.Aseguradoras = [];
-    this.Aseguradoras = this.getAsePorDescrip(this.descripcion.sLlave);
-    // console.log(this.vermodelo+' '+this.vermarca+' '+this.verdescripcion+' '+this.veranno)
+    
   }
   // FUNCIONES EVENT EMITTER DE INFOVEHICULO
   emitTipoVehiculo(e) {
@@ -375,46 +467,14 @@ export class Pagina2Component implements OnInit {
               Descripcion: element.Descripcion,
             });
           }
-          console.log(this.AseguradorasPoDesc)
+          // console.log(this.AseguradorasPoDesc)
         },
         (err) => {
-          console.log('Error');
+          return // console.log('Error');
         }
       );
     return this.AseguradorasPoDesc;
   }
 
-  ngOnInit(): void {
-    // console.log(history.state)
-    
-    this.vermodelo = !!history.state.tipove ?history.state.tipove : this.itemVacio;
-    this.veranno = !!history.state.anniove ?  history.state.anniove : this.itemVacio;
-    this.vermarca = !!history.state.marcave ? history.state.marcave : this.itemVacio;
-    this.verdescripcion = !!history.state.descve ? history.state.descve : this.itemVacio  ;
-    this.Aseguradoras = this.getAsePorDescrip(this.verdescripcion.sLlave);
-    // console.log(this.Aseguradoras);
-    this.nombre = history.state.namease;
-    // console.log(this.nombre);
-    this.email = history.state.emailase;
-    this.telefono = history.state.phonease;
-    this.genero = history.state.tipoperase;
-    this.codigopostal = history.state.cpase;
-    // console.log(this.codigopostal);
-    this.fechanac = history.state.fechanacase;
-    this.amplia = true;
-    this.descMEDIO = true;
-    this.anual = true;
-    this.cobtothe= 10;
-    this.cobDamage = 5 ;
-    this.una = history.state.sizeta;
-    for (let index = 0; AseguradoraCobJson.length < index; index++) {
-      const element = AseguradoraCobJson[index];
-    }
-    for (const nombre of AseguradoraCobJson) {
-      // console.log(nombre);
-      for (const cobertura of nombre.coberturas) {
-        // console.log(cobertura.default);
-      }
-    }
-  } // init
+  
 }
