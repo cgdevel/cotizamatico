@@ -400,6 +400,8 @@ ngOnInit(): void {
 
     }))
     this.show = false;
+    
+    
     //this.vermodelo.sDato = this.modelo.sDato;
     // this.vermarca.sDato = this.marca.sDato;
     // this.veranno.sDato = this.anno.sDato;

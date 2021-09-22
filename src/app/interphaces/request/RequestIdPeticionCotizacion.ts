@@ -64,7 +64,9 @@ export interface RequestIdPeticionCotizacion{
                                                     iIdSubMarca : number,
                                                     iIdMarcaSubramo : number,
                                                     iIdMostrar  : number,
-                                                    sSubMarca :  string 
+                                                    sSubMarca :  string,
+                                                    bSiNoCotizamatico: number,
+                                                    bSiNoFlotillas: number 
                                    },
                                     Modelo : {
                                                     iIdModelo : number,
@@ -78,8 +80,8 @@ export interface RequestIdPeticionCotizacion{
                                    },
                                     iValorPolizaMultiAnual : number,
                    },
-                    Compania : null,
-                    sXmls : null,
+                    Compania : any,
+                    sXmls : any,
                     iIva : number,
                     iIdAseguradora  : number,
                     iDescuento :number,

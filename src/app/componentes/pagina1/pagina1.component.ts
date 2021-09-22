@@ -14,6 +14,7 @@ import { RequestCatalogoCotizamatico } from 'src/app/interphaces/request/Request
 import { selectIdPeticionResponse } from 'src/app/selectors/cotizamatico.selectors';
 import { RequestIdCotizacion } from 'src/app/interphaces/request/RequestIdCotizacion';
 import { RequestCatalogoCoberturas } from 'src/app/interphaces/request/RequesteCatalogoCoberturas';
+
 @Component({
   selector: 'app-pagina1',
   templateUrl: './pagina1.component.html',
@@ -58,12 +59,15 @@ export class Pagina1Component implements OnInit {
 
   datosValidos: boolean;
 
+  year;
+  month;
+  date;
 
 // VARIABLE QUE SE MANDA PARA OBTENER EL IDPETICION
 requestIdPeticion: RequestIdPeticionCotizacion={
   cotizacion: {
                  iIdCotizacion: 0,
-                 FechaInicioVigencia: "06/07/2021 16:08",
+                 FechaInicioVigencia: null,
                  Domicilio: {
                                  iIdUbicacion: null,
                                  sCodigoPostal: null,
@@ -109,10 +113,10 @@ requestIdPeticion: RequestIdPeticionCotizacion={
                   sAlias: null,
                   sDescripcion: null,
                   lineaNegocio: null
-               }
-                 ,Sucursal: null,
-                 Asociado: null,
-                 Vehiculo: {
+               },
+               Sucursal: null,
+               Asociado: null,
+               Vehiculo: {
                                  iValorUnidad: null,
                                  iValorFactura: null,
                                  sTipoCarga: null,
@@ -126,6 +130,14 @@ requestIdPeticion: RequestIdPeticionCotizacion={
                                                  iIdModelo: null,
                                                  sModelo: null
                                  },
+                                SubMarca: {
+                                    iIdSubMarca: null,
+                                    iIdMarcaSubramo: null,
+                                    iIdMostrar: null,
+                                    sSubMarca: null,
+                                    bSiNoCotizamatico: null,
+                                    bSiNoFlotillas: null
+                                },
                                  DescripcionModelo: {
                                                  iIdDescripcionModelo: null,
                                                  iIdModeloSubmarca: null,
@@ -134,8 +146,18 @@ requestIdPeticion: RequestIdPeticionCotizacion={
                                  },
                                  iValorPolizaMultiAnual: null
                  },
-                 Compania: null,
-                 sXmls: null,
+                 Compania: {
+                  sNombre: "AARCO",
+                  sConexionCotizamatico: "Cotizamaticos",
+                  sConexionDatosComunes: "AARCODatosComunes",
+                  sConexion3030Net: "AARCO3030DotNet",
+                  sCatalogoService: "http://192.168.211.5/AarcoCommon/CatalogoService.svc",
+                  sCotizacionService: "http://192.168.211.5/AarcoCommon/CotizacionService.svc",
+                  sPersonaService: "http://192.168.211.5/AarcoCommon/PersonaService.svc",
+                  sEquivalenciaService: "http://192.168.211.5/AarcoCommon/EquivalenciaService.svc",
+                  sLoggingService: "http://192.168.211.5/AarcoCommon/LoggingService.svc"
+              },
+              sXmls:null,
                  iIva: 0.0,
                  iIdAseguradora: 0,
                  iDescuento: 0.0
@@ -313,9 +335,17 @@ requestCoberAse: RequestCatalogoCoberturas={
   }
 
   getIdPeticion(){
-    // this.store.dispatch( new GetCoberturasporAse(this.requestCoberAse.) )     
+    // this.store.dispatch( new GetCoberturasporAse(this.requestCoberAse.) ) 
+    var today = new Date();
+    this.year = today.getFullYear();
+    this.date=today.getDate();
+    this.month=today.getMonth()+1;
+    var hour= today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
+    let date=this.date+'/'+this.month+'/'+this.year+" "+hour
+    this.requestIdPeticion.cotizacion.FechaInicioVigencia=date;
+    
      this.store.dispatch( new GetIdPeticion(this.requestIdPeticion) )
-    // console.log(this.requestIdPeticion)
+    console.log(this.requestIdPeticion)
 
   }
 }
