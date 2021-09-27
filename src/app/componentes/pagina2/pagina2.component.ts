@@ -148,7 +148,7 @@ ngOnInit(): void {
   this.vermarca$ = this.store.select(selectMarca)
   this.verdescripcion$ = this.store.select(selectDescripcion)
   this.verdescripcion$.subscribe(desc => {
-    console.log(desc)
+    // console.log(desc)
     this.Aseguradoras=this.getAsePorDescrip(desc.sLlave)
 
   })
