@@ -21,7 +21,7 @@ import { RequestCatalogoCoberturas } from 'src/app/interphaces/request/RequesteC
   styleUrls: ['./pagina1.component.css'],
 })
 export class Pagina1Component implements OnInit {
-
+ 
   constructor(
     private cookieService: CookieService,
     private storageService: SecureStorageServiceService,
@@ -62,6 +62,9 @@ export class Pagina1Component implements OnInit {
   year;
   month;
   date;
+
+  nombresepa = new Array<string>();
+  nombreNOCom: boolean;
 
 // VARIABLE QUE SE MANDA PARA OBTENER EL IDPETICION
 requestIdPeticion: RequestIdPeticionCotizacion={
@@ -239,7 +242,13 @@ requestCoberAse: RequestCatalogoCoberturas={
     this.clienteNombre = e;
     this.clienteNombre.trim( );
     this.ValidarDatosObligatorios();
-    this.requestIdPeticion.cotizacion.Persona.sNombre= e;
+    if (this.clienteTipoPersona !='Moral') {
+      this.verificaCompletoNom(e);
+    }else{
+      // AQUI VA EL NOMBRE CUANDO LA PERSONA ES MORAL
+      this.requestIdPeticion.cotizacion.Persona.sNombre = 'Cliente';
+      this.requestIdPeticion.cotizacion.Persona.sApellidoPaterno = 'Especial';
+    }
   }
 
   handlerClienteMail(e: string) {
@@ -259,6 +268,13 @@ requestCoberAse: RequestCatalogoCoberturas={
     this.ValidarDatosObligatorios();
     this.requestIdPeticion.cotizacion.Persona.bSiNoPersonaMoral= e=='Moral' ? true : false
     this.requestIdPeticion.cotizacion.Persona.iSexo= e=='Masculino' ? 1 : e=='Femenino' ? 2 : null;
+    if (e !='Moral') {
+      this.verificaCompletoNom(this.clienteNombre);
+    }else{
+      // AQUI VA EL NOMBRE CUANDO LA PERSONA ES MORAL
+      this.requestIdPeticion.cotizacion.Persona.sNombre = 'Cliente';
+      this.requestIdPeticion.cotizacion.Persona.sApellidoPaterno = 'Especial';
+    }
   }
 
   handlerClienteCodigoPostal(e: string) {
@@ -349,4 +365,47 @@ requestCoberAse: RequestCatalogoCoberturas={
 
   }
 
+  dividirCadena(cadenaADividir, separador) {
+    const arrayDeCadenas = cadenaADividir.split(separador);
+    for (const object of arrayDeCadenas) {
+      // console.log(object);
+      this.nombresepa.push(object);
+    }
+    console.log(this.nombresepa.length);
+    let tamanoNombre=this.nombresepa.length
+    let petinombre='';
+    for (let index = 0; index < this.nombresepa.length; index++) {
+      const element = this.nombresepa[index];
+      if (index<tamanoNombre-2) {
+        petinombre += element
+        petinombre = petinombre+' '
+        this.requestIdPeticion.cotizacion.Persona.sNombre=petinombre
+      }
+      if (index==tamanoNombre-2) {
+        this.requestIdPeticion.cotizacion.Persona.sApellidoMaterno = element
+      }
+      if (index==tamanoNombre-1) {
+        this.requestIdPeticion.cotizacion.Persona.sApellidoPaterno = element
+      }
+    }
+    // this.requestIdPeticion.cotizacion.Persona.sApellidoPaterno = this.nombresepa[1].toLocaleUpperCase();
+    // this.requestIdPeticion.cotizacion.Persona.sApellidoPaterno = this.nombresepa[2].toLocaleUpperCase();
+   
+  }
+  verificaCompletoNom(cnam: string) {
+    if (cnam === '') {
+      return (this.nombreNOCom = false);
+    } else {
+      let ArrayEmparejamientos = {};
+      const reg = /(([A-Za-záéíóúÁÉÍÓÚ])\w+(\s)){2,}(([A-Za-záéíóúÁÉÍÓÚ]+\w)\s?)/;
+      ArrayEmparejamientos = cnam.match(reg);
+      this.nombreNOCom = reg.test(cnam);
+      if (this.nombreNOCom) {
+        this.dividirCadena(cnam, ' ');
+      } else {
+         this.requestIdPeticion.cotizacion.Persona.sNombre = 'Cliente';
+         this.requestIdPeticion.cotizacion.Persona.sApellidoPaterno = 'Especial';
+      }
+    }
+  }
 }

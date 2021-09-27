@@ -12,6 +12,8 @@ export interface State{
         telefono: number;
         tipoDePersona:boolean;
         iSexo: number;
+        apellidoPaterno: string;
+        apellidoMaterno: string;
     };
     
     SubRamo: {
@@ -63,7 +65,9 @@ const initialState: State = {
         fechaDeNacimiento: '',
         telefono: null,
         tipoDePersona: null,
-        iSexo: null
+        iSexo: null,
+        apellidoMaterno:'',
+        apellidoPaterno:''
     },
     SubRamo: {
         iIdSubRamo: null,
@@ -156,7 +160,10 @@ export function reducer (state = initialState, action: CotizamaticoActions ) : S
                     cP: action.payload.cotizacion.Domicilio.sCodigoPostal,
                     telefono: action.payload.cotizacion.Persona.sTelefono,
                     tipoDePersona: action.payload.cotizacion.Persona.bSiNoPersonaMoral,
-                    iSexo: action.payload.cotizacion.Persona.iSexo
+                    iSexo: action.payload.cotizacion.Persona.iSexo,
+                    apellidoMaterno: action.payload.cotizacion.Persona.sApellidoMaterno,
+                    apellidoPaterno:action.payload.cotizacion.Persona.sApellidoPaterno
+                    
                 },
                 SubRamo:{
                     iIdSubRamo: action.payload.cotizacion.SubRamo.iIdSubRamo,
