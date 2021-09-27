@@ -6,6 +6,7 @@ import { AcentosEspacio } from '../../../interphaces/models/posiAcentosEspacios.
 import { RequestCatalogoCotizamatico } from '../../../interphaces/request/RequestCatalogoCotizamatico.model';
 import { MesesConDiasService } from '../../../servicios/meses-con-dias.service';
 import { CookieService } from 'ngx-cookie';
+import { convertToObject } from 'typescript';
 @Component({
   selector: 'app-infoasegurado',
   templateUrl: './infoasegurado.component.html',
@@ -106,65 +107,65 @@ export class InfoaseguradoComponent implements OnInit {
       this.catNacimientoAnios = this.MesesConDias.getAnnioSinMesesniDia();
       this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion();
       this.catNacimientoDias = this.MesesConDias.getdiassinnada();
-      // Tipo Persona
-      this.cookieTipoDePersona = this.cookieService.get('TipoDePersona');
-      if (this.cookieTipoDePersona !== null) {
-        if (this.cookieTipoDePersona === 'Femenino'){
-          this.clienteEsFemenino = true;
-          this.emitClienteTipoPersona.emit('Femenino');
-        } else if (this.cookieTipoDePersona === 'Masculino'){
-          this.clienteEsMasculino = true;
-          this.emitClienteTipoPersona.emit('Masculino');
-        } else if (this.cookieTipoDePersona === 'Moral'){
-          this.clienteEsMoral = true;
-          this.emitClienteTipoPersona.emit('Moral');
-        } else {
-          this.clienteEsFemenino = false;
-          this.clienteEsMasculino = false;
-          this.clienteEsMoral = false;
-          this.emitClienteTipoPersona.emit('');
-        }
-      }
-      // CodigoPostal
-      this.cookieCP = this.cookieService.get('Codigo Postal');
-      this.cookieCP !== null ? this.clienteCodigoPostal = this.cookieCP : this.clienteCodigoPostal = this.clienteCodigoPostal;
-      this.cookieCP !== null ? this.emitClienteCodigoPostal.emit(this.cookieCP) : this.emitClienteCodigoPostal.emit('');
-      // Fecha de nacimiento
-      this.cookieDiaNaci = this.cookieService.getObject('DiaDeNacimiento');
-      this.cookieMesNaci = this.cookieService.getObject('MesDeNacimiento');
-      this.cookieAnioNaci = this.cookieService.getObject('AnioDeNacimiento');
-      if (this.cookieDiaNaci !== undefined && this.cookieMesNaci !== undefined && this.cookieAnioNaci !== undefined) {
-        this.itemNacimientoDia = this.cookieDiaNaci;
-        this.itemNacimientoMes = this.cookieMesNaci;
-        this.itemNacimeintoAnio = this.cookieAnioNaci;
-        this.emitClienteNacimiento.emit({
-          dia: this.itemNacimientoDia.sDato,
-          mes: this.itemNacimientoMes.sDato,
-          anio: this.itemNacimeintoAnio.sDato
-        });
-      } else {
-        this.emitClienteNacimiento.emit({
-          dia: '',
-          mes: '',
-          anio: ''
-        });
-      }
+      // // Tipo Persona
+      // this.cookieTipoDePersona = this.cookieService.get('TipoDePersona');
+      // if (this.cookieTipoDePersona !== null) {
+      //   if (this.cookieTipoDePersona === 'Femenino'){
+      //     this.clienteEsFemenino = true;
+      //     this.emitClienteTipoPersona.emit('Femenino');
+      //   } else if (this.cookieTipoDePersona === 'Masculino'){
+      //     this.clienteEsMasculino = true;
+      //     this.emitClienteTipoPersona.emit('Masculino');
+      //   } else if (this.cookieTipoDePersona === 'Moral'){
+      //     this.clienteEsMoral = true;
+      //     this.emitClienteTipoPersona.emit('Moral');
+      //   } else {
+      //     this.clienteEsFemenino = false;
+      //     this.clienteEsMasculino = false;
+      //     this.clienteEsMoral = false;
+      //     this.emitClienteTipoPersona.emit('');
+      //   }
+      // }
+      // // CodigoPostal
+      // this.cookieCP = this.cookieService.get('Codigo Postal');
+      // this.cookieCP !== null ? this.clienteCodigoPostal = this.cookieCP : this.clienteCodigoPostal = this.clienteCodigoPostal;
+      // this.cookieCP !== null ? this.emitClienteCodigoPostal.emit(this.cookieCP) : this.emitClienteCodigoPostal.emit('');
+      // // Fecha de nacimiento
+      // this.cookieDiaNaci = this.cookieService.getObject('DiaDeNacimiento');
+      // this.cookieMesNaci = this.cookieService.getObject('MesDeNacimiento');
+      // this.cookieAnioNaci = this.cookieService.getObject('AnioDeNacimiento');
+      // if (this.cookieDiaNaci !== undefined && this.cookieMesNaci !== undefined && this.cookieAnioNaci !== undefined) {
+      //   this.itemNacimientoDia = this.cookieDiaNaci;
+      //   this.itemNacimientoMes = this.cookieMesNaci;
+      //   this.itemNacimeintoAnio = this.cookieAnioNaci;
+      //   this.emitClienteNacimiento.emit({
+      //     dia: this.itemNacimientoDia.sDato,
+      //     mes: this.itemNacimientoMes.sDato,
+      //     anio: this.itemNacimeintoAnio.sDato
+      //   });
+      // } else {
+      //   this.emitClienteNacimiento.emit({
+      //     dia: '',
+      //     mes: '',
+      //     anio: ''
+      //   });
+      // }
 
-      this.cookieNombre = this.cookieService.get('Nombre');
-      if (this.cookieNombre !== null) {
-        this.clienteNombre = this.cookieNombre;
-        this.emitClienteNombre.emit(this.clienteNombre);
-      } else { this.emitClienteNombre.emit(''); }
-      this.cookieEmail = this.cookieService.get('Email');
-      if (this.cookieEmail !== null) {
-        this.clienteMail = this.cookieEmail;
-        this.emitClienteMail.emit(this.clienteMail);
-      }  else { this.emitClienteMail.emit(''); }
-      this.cookieTelefono = this.cookieService.get('Telefono');
-      if (this.cookieTelefono !== null) {
-        this.clienteTelefono = this.cookieTelefono;
-        this.emitClienteTelefono.emit(this.clienteTelefono);
-      } else { this.emitClienteTelefono.emit(''); }
+      // this.cookieNombre = this.cookieService.get('Nombre');
+      // if (this.cookieNombre !== null) {
+      //   this.clienteNombre = this.cookieNombre;
+      //   this.emitClienteNombre.emit(this.clienteNombre);
+      // } else { this.emitClienteNombre.emit(''); }
+      // this.cookieEmail = this.cookieService.get('Email');
+      // if (this.cookieEmail !== null) {
+      //   this.clienteMail = this.cookieEmail;
+      //   this.emitClienteMail.emit(this.clienteMail);
+      // }  else { this.emitClienteMail.emit(''); }
+      // this.cookieTelefono = this.cookieService.get('Telefono');
+      // if (this.cookieTelefono !== null) {
+      //   this.clienteTelefono = this.cookieTelefono;
+      //   this.emitClienteTelefono.emit(this.clienteTelefono);
+      // } else { this.emitClienteTelefono.emit(''); }
 
   }
   onNombreChanged() {
@@ -324,8 +325,8 @@ export class InfoaseguradoComponent implements OnInit {
     this.clienteEsMoralp3 = false;
     
     this.emitClienteTipoPersona.emit('Femenino');
-    const guardacookieTipoDePersona = 'Femenino' ;
-    this.cookieService.put('TipoDePersona', guardacookieTipoDePersona);
+    // const guardacookieTipoDePersona = 'Femenino' ;
+    // this.cookieService.put('TipoDePersona', guardacookieTipoDePersona);
   }
 
   onTipoPersonaMasculinoChange() {
@@ -336,8 +337,8 @@ export class InfoaseguradoComponent implements OnInit {
     this.clienteEsMasculinop3 = true;
     this.clienteEsMoralp3 = false;
     this.emitClienteTipoPersona.emit('Masculino');
-    const guardacookieTipoDePersona = 'Masculino' ;
-    this.cookieService.put('TipoDePersona', guardacookieTipoDePersona);
+    // const guardacookieTipoDePersona = 'Masculino' ;
+    // this.cookieService.put('TipoDePersona', guardacookieTipoDePersona);
   }
 
   onTipoPersonaMoralChange() {
@@ -348,8 +349,8 @@ export class InfoaseguradoComponent implements OnInit {
     this.clienteEsMasculinop3 = false;
     this.clienteEsMoralp3 = true;
     this.emitClienteTipoPersona.emit('Moral');
-    const guardacookieTipoDePersona = 'Moral' ;
-    this.cookieService.put('TipoDePersona', guardacookieTipoDePersona);
+    // const guardacookieTipoDePersona = 'Moral' ;
+    // this.cookieService.put('TipoDePersona', guardacookieTipoDePersona);
   }
 
   onCodigoPostalChanged() {
@@ -379,127 +380,23 @@ export class InfoaseguradoComponent implements OnInit {
         }
 
         this.emitClienteCodigoPostal.emit(this.clienteCodigoPostal);
-        const guardacookieCodigoPostal = this.clienteCodigoPostal ;
-        this.cookieService.put('Codigo Postal', guardacookieCodigoPostal);
+        // const guardacookieCodigoPostal = this.clienteCodigoPostal ;
+        // this.cookieService.put('Codigo Postal', guardacookieCodigoPostal);
       });
       }
   } // oncodigochanged
 
   selectNacimientoDia() {
-    if ( this.itemNacimientoDia.sDato !== '') {
-      if (this.itemNacimientoMes === undefined && this.itemNacimeintoAnio !== undefined){
-        this.emitClienteNacimiento.emit({
-          dia: this.itemNacimientoDia.sDato,
-          mes: '',
-          anio: this.itemNacimeintoAnio.sDato
-        });
-      } else if (this.itemNacimientoMes !== undefined && this.itemNacimeintoAnio === undefined) {
-        this.emitClienteNacimiento.emit({
-          dia: this.itemNacimientoDia.sDato,
-          mes: this.itemNacimientoMes.sDato,
-          anio: ''
-        });
-      } else if (this.itemNacimientoMes === undefined && this.itemNacimeintoAnio === undefined) {
-        this.emitClienteNacimiento.emit({
-          dia: this.itemNacimientoDia.sDato,
-          mes: '',
-          anio: ''
-        });
-      } else {
-        this.emitClienteNacimiento.emit({
-          dia: this.itemNacimientoDia.sDato,
-          mes: this.itemNacimientoMes.sDato,
-          anio: this.itemNacimeintoAnio.sDato
-        });
-      }
-    }
-    const guardacookieDiaNacimiento = this.itemNacimientoDia;
-    this.cookieService.putObject('DiaDeNacimiento', guardacookieDiaNacimiento);
+    this.verificafechacompleta(this.itemNacimeintoAnio,this.itemNacimientoMes,this.itemNacimientoDia)
   }
 
   selectNacimientoMes() {
-    if ( this.itemNacimientoMes.sDato !== '') {
-      if (this.itemNacimientoDia === undefined && this.itemNacimeintoAnio === undefined){
-        this.emitClienteNacimiento.emit({
-          dia: '',
-          mes: this.itemNacimientoMes.sDato,
-          anio: ''
-        });
-      } else if (this.itemNacimientoDia !== undefined && this.itemNacimeintoAnio === undefined){
-        const no = Number(this.itemNacimientoMes.sLlave);
-        this.catNacimientoDias = [];
-        const noo = Number(this.itemNacimientoDia.sDato);
-        if ( noo > no) {
-          this.itemNacimientoDia = {sDato: '', sLlave: ''};
-          this.catNacimientoDias = this.dameduracion(this.itemNacimientoMes.sLlave);
-        }else{
-          this.catNacimientoDias = this.dameduracion(this.itemNacimientoMes.sLlave);
-          this.itemNacimientoDia = this.itemNacimientoDia;
-        }
-        this.emitClienteNacimiento.emit({
-          dia: this.itemNacimientoDia.sDato,
-          mes: this.itemNacimientoMes.sDato,
-          anio: ''
-        });
-
-      } else if (this.itemNacimientoDia === undefined && this.itemNacimeintoAnio !== undefined) {
-        this.emitClienteNacimiento.emit({
-          dia: '',
-          mes: this.itemNacimientoMes.sDato,
-          anio: this.itemNacimeintoAnio.sDato
-        });
-      } else {
-        this.emitClienteNacimiento.emit({
-          dia: this.itemNacimientoDia.sDato,
-          mes: this.itemNacimientoMes.sDato,
-          anio: this.itemNacimeintoAnio.sDato
-        });
-      }
-    }
-    const guardacookieMesNacimiento = {
-      sDato: this.itemNacimientoMes.sDato,
-      sLlave: this.itemNacimientoMes.sLlave
-    } ;
-    this.cookieService.putObject('MesDeNacimiento', guardacookieMesNacimiento);
+    this.verificafechacompleta(this.itemNacimeintoAnio,this.itemNacimientoMes,this.itemNacimientoDia)
   }
 
   selectNacimientoAnio() {
-    if (this.itemNacimeintoAnio.sDato !== ''){
-      if (this.itemNacimientoMes === undefined && this.itemNacimientoDia === undefined ){
-        this.emitClienteNacimiento.emit({
-          dia: '',
-          mes: '',
-          anio: this.itemNacimeintoAnio.sDato
-        });
-      } else if (this.itemNacimientoMes !== undefined && this.itemNacimientoDia === undefined){
-        this.catNacimientoMeses = [];
-        this.catNacimientoDias = [];
-        this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion(this.itemNacimeintoAnio.sDato);
-        this.catNacimientoDias = this.dameduracion(this.itemNacimientoMes.sLlave);
-        this.emitClienteNacimiento.emit({
-          dia: '',
-          mes: this.itemNacimientoMes.sDato,
-          anio: this.itemNacimeintoAnio.sDato
-        });
-      } else if (this.itemNacimientoMes === undefined && this.itemNacimientoDia !== undefined){
-        this.emitClienteNacimiento.emit({
-          dia: this.itemNacimientoDia.sDato,
-          mes: '',
-          anio: this.itemNacimeintoAnio.sDato
-        });
-      } else {
-        this.emitClienteNacimiento.emit({
-          dia: this.itemNacimientoDia.sDato,
-          mes: this.itemNacimientoMes.sDato,
-          anio: this.itemNacimeintoAnio.sDato
-        });
-      }
-    }
-    const guardacookieAnioNacimiento = {
-      sDato: this.itemNacimeintoAnio.sDato,
-      sLlave: this.itemNacimeintoAnio.sLlave
-    } ;
-    this.cookieService.putObject('AnioDeNacimiento', guardacookieAnioNacimiento);
+    this.catNacimientoMeses = [];
+    this.verificafechacompleta(this.itemNacimeintoAnio.sLlave,this.itemNacimientoMes,this.itemNacimientoDia)
   }
 
   dameduracion( mes: string){
@@ -512,4 +409,105 @@ export class InfoaseguradoComponent implements OnInit {
     // console.log(mesdura);
     return mesdura;
   }
+
+
+  verificafechacompleta(year?:any,mes?:any,dia?:any){
+    if (year!=undefined && mes != undefined && dia == undefined) {
+      this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion(this.itemNacimeintoAnio.sDato);
+      this.catNacimientoDias=[];
+      this.catNacimientoMeses.forEach(element => {
+        if (element.sDato==this.itemNacimientoMes.sDato) {
+          this.itemNacimientoMes.sLlave=element.sLlave
+        }
+      });
+      this.catNacimientoDias=this.dameduracion(this.itemNacimientoMes.sLlave)
+      this.emitClienteNacimiento.emit({
+        dia: '',
+        mes: this.itemNacimientoMes.sDato,
+        anio: this.itemNacimeintoAnio.sDato
+      });
+    }
+    if (year!=undefined && mes == undefined && dia != undefined) {
+      this.catNacimientoMeses = [];
+      this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion(this.itemNacimeintoAnio.sDato);
+      this.emitClienteNacimiento.emit({
+        dia: this.itemNacimientoDia.sDato,
+        mes: '',
+        anio: this.itemNacimeintoAnio.sDato
+      });
+    }
+    if (year!=undefined && mes == undefined && dia == undefined) {
+      this.catNacimientoMeses = [];
+      this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion(this.itemNacimeintoAnio.sDato);
+      this.emitClienteNacimiento.emit({
+        dia: '',
+        mes: '',
+        anio: this.itemNacimeintoAnio.sDato
+      });
+    }
+    if (year==undefined && mes != undefined && dia != undefined) {
+      let duracionMes=  parseInt(mes.sLlave,10)
+      let diaSeleccionado= parseInt(dia.sDato,10)
+      if (duracionMes<diaSeleccionado) {
+        this.catNacimientoDias=[];
+        this.catNacimientoMeses.forEach(element => {
+          if (element.sDato==this.itemNacimientoMes.sDato) {
+            this.itemNacimientoMes.sLlave=element.sLlave
+          }
+        });
+        this.itemNacimientoDia={sDato:'',sLlave:''};
+        this.catNacimientoDias=this.dameduracion(this.itemNacimientoMes.sLlave)
+        this.emitClienteNacimiento.emit({
+          dia: '',
+          mes: this.itemNacimientoMes.sDato,
+          anio: ''
+        });
+      }
+      this.emitClienteNacimiento.emit({
+        dia: this.itemNacimientoDia.sDato,
+        mes: this.itemNacimientoMes.sDato,
+        anio: ''
+      });
+    }
+    if (year==undefined && mes != undefined && dia == undefined) {
+      this.catNacimientoDias=[];
+      this.catNacimientoDias=this.dameduracion(this.itemNacimientoMes.sLlave);
+      this.emitClienteNacimiento.emit({
+        dia: '',
+        mes: this.itemNacimientoMes.sDato,
+        anio: ''
+      });
+    }
+    if (year!=undefined && mes != undefined && dia != undefined) {
+      this.catNacimientoMeses = [];
+      this.catNacimientoMeses = this.MesesConDias.getMesesconDuracion(this.itemNacimeintoAnio.sDato);
+      let duracionMes=  parseInt(mes.sLlave,10)
+      let diaSeleccionado= parseInt(dia.sDato,10)
+      if (duracionMes<diaSeleccionado) {
+        this.catNacimientoDias=[];
+        this.catNacimientoMeses.forEach(element => {
+          if (element.sDato==this.itemNacimientoMes.sDato) {
+            this.itemNacimientoMes.sLlave=element.sLlave
+          }
+        });
+        this.itemNacimientoDia={sDato:'',sLlave:''};
+        this.catNacimientoDias=this.dameduracion(this.itemNacimientoMes.sLlave)
+    }else{
+      this.catNacimientoDias=[];
+      this.catNacimientoMeses.forEach(element => {
+        if (element.sDato==this.itemNacimientoMes.sDato) {
+          this.itemNacimientoMes.sLlave=element.sLlave
+        }
+      });
+      this.catNacimientoDias=this.dameduracion(this.itemNacimientoMes.sLlave)
+      this.itemNacimientoDia=this.itemNacimientoDia
+      this.emitClienteNacimiento.emit({
+        dia: this.itemNacimientoDia.sDato,
+        mes: this.itemNacimientoMes.sDato,
+        anio: this.itemNacimeintoAnio.sDato
+      });
+    }
+    }
+  }
+
 }

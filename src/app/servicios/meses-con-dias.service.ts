@@ -13,6 +13,8 @@ Meses: Mesesbisiynobisi[] = [];
   bisiesto: boolean;
   constructor() { }
 getMesesconDuracion(annio?: string){
+  this.Months = [];
+
   this.Meses.push(
     {IdMes: 1,
     NombreMes: 'Enero',
@@ -63,21 +65,21 @@ getMesesconDuracion(annio?: string){
     DuracionBisi: 31,
     DuracionNoBisi: 31}
     );
+    console.log(this.Months.length)
   if (annio === '') {
-    this.Months = [];
     const today = new Date();
     this.year = today.getFullYear();
     this.year % 4 === 0  ? (this.year % 100 === 0 ? (this.year % 400 === 0 ? (this.bisiesto = true) :
     (this.bisiesto = false)) : (this.bisiesto = true)) : (this.bisiesto = false);
     if (this.bisiesto) {
-      for (let index = 0; index < this.Meses.length; index++) {
+      for (let index = 0; index < 12; index++) {
         const element = this.Meses[index].NombreMes.toString();
         const indexS = this.Meses[index].DuracionBisi.toString();
         this.Months.push({sLlave: indexS, sDato: element});
       }
       return this.Months;
     } else {
-      for (let index = 0; index < this.Meses.length; index++) {
+      for (let index = 0; index < 12; index++) {
         const element = this.Meses[index].NombreMes.toString();
         const indexS = this.Meses[index].DuracionNoBisi.toString();
         this.Months.push({sLlave: indexS, sDato: element});
@@ -85,14 +87,16 @@ getMesesconDuracion(annio?: string){
       return this.Months;
       }
   } else {
-    // console.log(annio);
-    this.year = Number(annio);
+    if (annio!=='') {
+      
+      // console.log(annio);
+    this.year = parseInt(annio,10);
     // console.log(this.year);
     this.year % 4 === 0  ? (this.year % 100 === 0 ? (this.year % 400 === 0 ? (this.bisiesto = true) :
   (this.bisiesto = false)) : (this.bisiesto = true)) : (this.bisiesto = false);
-    if (this.bisiesto) {
+    if (this.bisiesto== true) {
       this.Months = [];
-      for (let index = 0; index < this.Meses.length; index++) {
+      for (let index = 0; index < 12; index++) {
         const element = this.Meses[index].NombreMes.toString();
         const indexS = this.Meses[index].DuracionBisi.toString();
         this.Months.push({sLlave: indexS, sDato: element});
@@ -100,13 +104,14 @@ getMesesconDuracion(annio?: string){
       return this.Months;
     } else {
       this.Months = [];
-      for (let index = 0; index < this.Meses.length; index++) {
+      for (let index = 0; index < 12; index++) {
         const element = this.Meses[index].NombreMes.toString();
         const indexS = this.Meses[index].DuracionNoBisi.toString();
         this.Months.push({sLlave: indexS, sDato: element});
       }
       return this.Months;
       }
+    }
   }
 }
 

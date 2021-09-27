@@ -348,4 +348,5 @@ requestCoberAse: RequestCatalogoCoberturas={
     console.log(this.requestIdPeticion)
 
   }
+
 }

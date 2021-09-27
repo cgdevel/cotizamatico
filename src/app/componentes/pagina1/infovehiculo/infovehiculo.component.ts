@@ -53,34 +53,34 @@ export class InfovehiculoComponent implements OnInit {
     this.catMarcaVehiculo = [];
     this.catTipoVehiculo = [];
     this.getTiposVehiculos();
-    this.cookieModelo = this.cookieService.getObject('modelo');
-    if (this.cookieModelo != null) {
-      this.itemTipoVehiculo = this.cookieModelo;
-      this.emitTipoVehiculo.emit(this.itemTipoVehiculo);
-    } else {
-      this.emitTipoVehiculo.emit(this.itemVacio);
-    }
-    this.cookieAnio = this.cookieService.getObject('anio');
-    if (this.cookieAnio != null) {
-      this.itemAnioVehiculo = this.cookieAnio;
-      this.emitAnioVehiculo.emit(this.itemAnioVehiculo);
-    } else {
-      this.emitAnioVehiculo.emit(this.itemVacio);
-    }
-    this.cookieMarca = this.cookieService.getObject('marca');
-    if (this.cookieMarca != null) {
-      this.itemMarcaVehiculo = this.cookieMarca;
-      this.emitMarcaVehiculo.emit(this.itemMarcaVehiculo);
-    } else {
-      this.emitMarcaVehiculo.emit(this.itemVacio);
-    }
-    this.cookieDescrip = this.cookieService.getObject('descripcion');
-    if (this.cookieDescrip != null) {
-      this.itemDescripcionVehiculo = this.cookieDescrip;
-      this.emitDescripcion.emit(this.itemDescripcionVehiculo);
-    } else {
-      this.emitDescripcion.emit(this.itemVacio);
-    }
+    // this.cookieModelo = this.cookieService.getObject('modelo');
+    // if (this.cookieModelo != null) {
+    //   this.itemTipoVehiculo = this.cookieModelo;
+    //   this.emitTipoVehiculo.emit(this.itemTipoVehiculo);
+    // } else {
+    //   this.emitTipoVehiculo.emit(this.itemVacio);
+    // }
+    // this.cookieAnio = this.cookieService.getObject('anio');
+    // if (this.cookieAnio != null) {
+    //   this.itemAnioVehiculo = this.cookieAnio;
+    //   this.emitAnioVehiculo.emit(this.itemAnioVehiculo);
+    // } else {
+    //   this.emitAnioVehiculo.emit(this.itemVacio);
+    // }
+    // this.cookieMarca = this.cookieService.getObject('marca');
+    // if (this.cookieMarca != null) {
+    //   this.itemMarcaVehiculo = this.cookieMarca;
+    //   this.emitMarcaVehiculo.emit(this.itemMarcaVehiculo);
+    // } else {
+    //   this.emitMarcaVehiculo.emit(this.itemVacio);
+    // }
+    // this.cookieDescrip = this.cookieService.getObject('descripcion');
+    // if (this.cookieDescrip != null) {
+    //   this.itemDescripcionVehiculo = this.cookieDescrip;
+    //   this.emitDescripcion.emit(this.itemDescripcionVehiculo);
+    // } else {
+    //   this.emitDescripcion.emit(this.itemVacio);
+    // }
     // console.log(this.cookieService.getObject('modelo'));
     //  this.peticionIdPeticion.cotizacion.Credencial= {
     //   IdCredential: 3418,
