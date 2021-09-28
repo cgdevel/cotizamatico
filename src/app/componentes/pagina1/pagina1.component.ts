@@ -21,7 +21,7 @@ import { RequestCatalogoCoberturas } from 'src/app/interphaces/request/RequesteC
   styleUrls: ['./pagina1.component.css'],
 })
 export class Pagina1Component implements OnInit {
- 
+  
   constructor(
     private cookieService: CookieService,
     private storageService: SecureStorageServiceService,
@@ -62,7 +62,9 @@ export class Pagina1Component implements OnInit {
   year;
   month;
   date;
-
+  edad: number;
+  age:number;
+ 
   nombresepa = new Array<string>();
   nombreNOCom: boolean;
 
@@ -359,10 +361,56 @@ export class Pagina1Component implements OnInit {
     var hour= today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
     let date=this.date+'/'+this.month+'/'+this.year+" "+hour
     this.requestIdPeticion.cotizacion.FechaInicioVigencia=date;
+      // switch (this.clienteFechaNacimiento.mes) {
+      //   case 'Enero':
+      //     this.age=1;
+      //   break;
+      //   case 'Febrero ':
+      //     this.age=2;
+      //   break;
+      //   case 'Marzo':
+      //     this.age=3;
+      //   break;
+      //   case 'Abril':
+      //     this.age=4;
+      //   break;
+      //   case 'Mayo':
+      //     this.age=5;
+      //   break;
+      //   case 'Junio':
+      //     this.age=6;
+      //   break;
+      //   case 'Julio':
+      //     this.age=7;
+      //   break;
+      //   case 'Agosto':
+      //     this.age=8;
+      //   break;
+      //   case 'Septiembre':
+      //     this.age=9;
+      //   break;
+      //   case 'Octubre':
+      //     this.age=10;
+      //   break;
+      //   case 'Noviembre':
+      //     this.age=11;
+      //   break;
+      //   case 'Diciembre':
+      //     this.age=12;
+      //   break;
+      //   default: ''
+      //     break;
+      // }
+      // if (this.age <= parseInt(this.month,10)  ) {
+      //   let age1 = (parseInt(this.year,10) - parseInt(this.clienteFechaNacimiento.anio,10));
+      //   this.requestIdPeticion.cotizacion.Persona.iEdad = age1;
+      // } else {
+      //   let age2= parseInt(this.year,10) - parseInt(this.clienteFechaNacimiento.anio,10)- 1;
+      //   this.requestIdPeticion.cotizacion.Persona.iEdad = age2;
+      // }  
     
      this.store.dispatch( new GetIdPeticion(this.requestIdPeticion) )
     console.log(this.requestIdPeticion)
-
   }
 
   dividirCadena(cadenaADividir, separador) {
@@ -406,4 +454,6 @@ export class Pagina1Component implements OnInit {
       }
     }
   }
+
+  
 }
