@@ -17,12 +17,13 @@ import AseguradoraCobJ from '../../interphaces/aseguradoracob';
 import {selectCotizacionResponse, selectIdPeticionResponse} from '../../selectors/cotizamatico.selectors';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../reducers';
-import { CotizamaticoActionsTypes, GetCotizacion, GetCotizacionResponse, ModificarVehiculo } from 'src/app/actions/cotizamatico.actions';
+import { CotizamaticoActionsTypes, GetCotizacion, GetCotizacionResponse, GetIdPeticion, ModificarVehiculo } from 'src/app/actions/cotizamatico.actions';
 import { RequestIdCotizacion } from 'src/app/interphaces/request/RequestIdCotizacion';
 import{ResponseIdCotizacion} from 'src/app/interphaces/response/ResponseIdCotizacion';
 import { Observable } from 'rxjs';
 import { selectMarca, selectDescripcion, selectModelo, selectTipo } from 'src/app/selectors/cotizamatico.selectors';
-import { map } from 'rxjs/Operators';
+import { map, take } from 'rxjs/Operators';
+import {requestIdPeticion} from 'src/app/interphaces/requesIdPeticionCotizzacion';
 
 @Component({
   selector: 'app-pagina2',
@@ -100,26 +101,22 @@ export class Pagina2Component implements OnInit {
   descripcion: CatalogoModel;
   anno: CatalogoModel;
 
-  responseCotizacionJSON =new Array
-ngOnInit(): void {
-  let requestIdCotizacion: RequestIdCotizacion={
+  requestIdCotizacion: RequestIdCotizacion={
     User: "COTIZAMATICO",
     Device: "EMULATOR30X1X5X0",
     Token: "7C2C8D3B-C488-4D14-B360-6B94013A0C4E",
     IdPeticion: null
   }
-  let ResponseIdCotizacion:ResponseIdCotizacion={
-    JsonCotizacion: [],
-    Estatus: null,
-    IdCotizacion: null,
-    Error: null
-  }
+ 
+  responseCotizacionJSON =new Array
+ngOnInit(): void {
+  
   setTimeout(() => {
     this.store.select(selectIdPeticionResponse).subscribe(id=>{
       console.log(id.iDPeticion);
       if(id.iDPeticion === null) return
-     requestIdCotizacion.IdPeticion = id.iDPeticion;
-     this.store.dispatch(new GetCotizacion(requestIdCotizacion));
+     this.requestIdCotizacion.IdPeticion = id.iDPeticion;
+     this.store.dispatch(new GetCotizacion(this.requestIdCotizacion));
    });
   },90000)
 
@@ -399,6 +396,28 @@ ngOnInit(): void {
       }
 
     }))
+
+
+    requestIdPeticion.cotizacion.Vehiculo.DescripcionModelo.sDescripcion= this.descripcion.sDato
+    requestIdPeticion.cotizacion.Vehiculo.DescripcionModelo.iIdDescripcionModelo =parseInt(this.descripcion.sLlave,10) 
+    requestIdPeticion.cotizacion.Vehiculo.Modelo.iIdModelo= parseInt(this.anno.sLlave,10) 
+    requestIdPeticion.cotizacion.Vehiculo.Modelo.sModelo=this.anno.sDato
+    requestIdPeticion.cotizacion.Vehiculo.Marca.iIdMarca=parseInt(this.marca.sLlave,10) 
+    requestIdPeticion.cotizacion.Vehiculo.Marca.sMarca=this.marca.sDato
+    requestIdPeticion.cotizacion.SubRamo.sSubramo=this.modelo.sDato
+    requestIdPeticion.cotizacion.SubRamo.iIdSubRamo=parseInt(this.modelo.sLlave,10) 
+
+    this.store.dispatch( new GetIdPeticion(requestIdPeticion) )
+   
+    setTimeout(()=>
+      {
+          this.store.select(selectIdPeticionResponse).pipe(take(1)).subscribe(
+          selectCotizacionResponse=>{
+            this.requestIdCotizacion.IdPeticion= selectCotizacionResponse.iDPeticion
+            return this.store.dispatch( new GetCotizacion(this.requestIdCotizacion) )
+          })
+      },9000)
+    
     this.show = false;
     
     

@@ -14,7 +14,7 @@ import { RequestCatalogoCotizamatico } from 'src/app/interphaces/request/Request
 import { selectIdPeticionResponse } from 'src/app/selectors/cotizamatico.selectors';
 import { RequestIdCotizacion } from 'src/app/interphaces/request/RequestIdCotizacion';
 import { RequestCatalogoCoberturas } from 'src/app/interphaces/request/RequesteCatalogoCoberturas';
-
+import {requestIdPeticion} from 'src/app/interphaces/requesIdPeticionCotizzacion';
 @Component({
   selector: 'app-pagina1',
   templateUrl: './pagina1.component.html',
@@ -68,114 +68,8 @@ export class Pagina1Component implements OnInit {
   nombresepa = new Array<string>();
   nombreNOCom: boolean;
 
-// VARIABLE QUE SE MANDA PARA OBTENER EL IDPETICION
-  requestIdPeticion: RequestIdPeticionCotizacion={
-    cotizacion: {
-                  iIdCotizacion: 0,
-                  FechaInicioVigencia: null,
-                  Domicilio: {
-                                  iIdUbicacion: null,
-                                  sCodigoPostal: null,
-                                  iIdMunicipio: null,
-                                  sUbicacion: null,
-                                  sMunicipio: null,
-                                  iIdEstado: null,
-                                  iEstadoPais: null,
-                                  iClaveEstadoCepomex: null,
-                                  sEstado: null,
-                                  sCalle: null,
-                                  sNumeroExterior: null,
-                                  sNumeroInterior: null
-                  },
-                  Persona: {
-                                  sNombre: null,
-                                  sApellidoPaterno: null,
-                                  sApellidoMaterno: null,
-                                  sFechaNacimiento: null,
-                                  sRfc: null,
-                                  iEdad: null,
-                                  iSexo: null,
-                                  sEmail: null,
-                                  sTelefono: null,
-                                  iIdPais: null,
-                                  sNacionalidad: null,
-                                  iIdOcupacion: null,
-                                  bSinoFuma: null,
-                                  bSiNoPersonaMoral: null
-                  },
-                  Credencial: {
-                    IdCredential: 3418,
-                    IdProfile: 85
-                },
-                SubRamo: {
-                    iIdSubRamo: 1,
-                    Ramo: null,
-                    iLineaNegocio: 0,
-                    iEstatus: 0,
-                    iIdMostar: 0,
-                    iOrdenPresentacion: 0,
-                    sSubramo: "AUTOS",
-                    sAlias: null,
-                    sDescripcion: null,
-                    lineaNegocio: null
-                },
-                Sucursal: null,
-                Asociado: null,
-                Vehiculo: {
-                                  iValorUnidad: null,
-                                  iValorFactura: null,
-                                  sTipoCarga: null,
-                                  iIdTipoCarga: null,
-                                  FechaFactura: null,
-                                  Marca: {
-                                                  iIdMarca: null,
-                                                  sMarca: null
-                                  },
-                                  Modelo: {
-                                                  iIdModelo: null,
-                                                  sModelo: null
-                                  },
-                                  SubMarca: {
-                                      iIdSubMarca: null,
-                                      iIdMarcaSubramo: null,
-                                      iIdMostrar: null,
-                                      sSubMarca: null,
-                                      bSiNoCotizamatico: null,
-                                      bSiNoFlotillas: null
-                                  },
-                                  DescripcionModelo: {
-                                                  iIdDescripcionModelo: null,
-                                                  iIdModeloSubmarca: null,
-                                                  iIdMostrar: null,
-                                                  sDescripcion: null
-                                  },
-                                  iValorPolizaMultiAnual: null
-                  },
-                  Compania: {
-                    sNombre: "AARCO",
-                    sConexionCotizamatico: "Cotizamaticos",
-                    sConexionDatosComunes: "AARCODatosComunes",
-                    sConexion3030Net: "AARCO3030DotNet",
-                    sCatalogoService: "http://192.168.211.5/AarcoCommon/CatalogoService.svc",
-                    sCotizacionService: "http://192.168.211.5/AarcoCommon/CotizacionService.svc",
-                    sPersonaService: "http://192.168.211.5/AarcoCommon/PersonaService.svc",
-                    sEquivalenciaService: "http://192.168.211.5/AarcoCommon/EquivalenciaService.svc",
-                    sLoggingService: "http://192.168.211.5/AarcoCommon/LoggingService.svc"
-                },
-                sXmls:null,
-                  iIva: 0.0,
-                  iIdAseguradora: 0,
-                  iDescuento: 0.0
-    },
-    PaqueteCoberturasApi:{
-      idPaquete:1,
-      idAseguradora:null,
-      CoberturasApi:null
-    },
-                User: "COTIZAMATICO",
-                Device: "EMULATOR30X1X5X0",
-                Token: "7C2C8D3B-C488-4D14-B360-6B94013A0C4E"
-  }
+  
+
 
   requestCoberAse: RequestCatalogoCoberturas={
     iIdAseguradoraSubRamo: 0,
@@ -217,28 +111,28 @@ export class Pagina1Component implements OnInit {
   handlerVehiculoTipo(e: CatalogoModel) {
     this.vehiculoTipo = e;
     this.ValidarDatosObligatorios();
-    this.requestIdPeticion.cotizacion.SubRamo.iIdSubRamo = !!e ? parseInt(e.sLlave,10) : null;
-    this.requestIdPeticion.cotizacion.SubRamo.sSubramo= !!e ? e.sDato: null;
+    requestIdPeticion.cotizacion.SubRamo.iIdSubRamo = !!e ? parseInt(e.sLlave,10) : null;
+    requestIdPeticion.cotizacion.SubRamo.sSubramo= !!e ? e.sDato: null;
   }
 
   handlerVehiculoAnio(e: CatalogoModel) {
     this.vehiculoAnio = e;
     this.ValidarDatosObligatorios();
-    this.requestIdPeticion.cotizacion.Vehiculo.Modelo.sModelo= !!e ? e.sDato: null;
-    this.requestIdPeticion.cotizacion.Vehiculo.Modelo.iIdModelo = !!e ? parseInt(e.sLlave,10) : null;
+    requestIdPeticion.cotizacion.Vehiculo.Modelo.sModelo= !!e ? e.sDato: null;
+    requestIdPeticion.cotizacion.Vehiculo.Modelo.iIdModelo = !!e ? parseInt(e.sLlave,10) : null;
   }
 
   handlerVehiculoMarca(e: CatalogoModel) {
     this.vehiculoMarca = e;
     this.ValidarDatosObligatorios();
-    this.requestIdPeticion.cotizacion.Vehiculo.Marca.iIdMarca = !!e ? parseInt(e.sLlave,10) : null;
-    this.requestIdPeticion.cotizacion.Vehiculo.Marca.sMarca= !!e ? e.sDato: null;
+    requestIdPeticion.cotizacion.Vehiculo.Marca.iIdMarca = !!e ? parseInt(e.sLlave,10) : null;
+    requestIdPeticion.cotizacion.Vehiculo.Marca.sMarca= !!e ? e.sDato: null;
   }
   handlerVehiculoDescripcion(e: CatalogoModel) {
     this.vehiculoDescripcion = e;
     this.ValidarDatosObligatorios();
-    this.requestIdPeticion.cotizacion.Vehiculo.DescripcionModelo.iIdDescripcionModelo = !!e ? parseInt(e.sLlave,10) : null;
-    this.requestIdPeticion.cotizacion.Vehiculo.DescripcionModelo.sDescripcion= !!e ? e.sDato: null;
+    requestIdPeticion.cotizacion.Vehiculo.DescripcionModelo.iIdDescripcionModelo = !!e ? parseInt(e.sLlave,10) : null;
+    requestIdPeticion.cotizacion.Vehiculo.DescripcionModelo.sDescripcion= !!e ? e.sDato: null;
   }
 
   handlerClienteNombre(e: string) {
@@ -249,35 +143,28 @@ export class Pagina1Component implements OnInit {
       this.verificaCompletoNom(e);
     }else{
       // AQUI VA EL NOMBRE CUANDO LA PERSONA ES MORAL
-      this.requestIdPeticion.cotizacion.Persona.sNombre = 'Cliente';
-      this.requestIdPeticion.cotizacion.Persona.sApellidoPaterno = 'Especial';
+      requestIdPeticion.cotizacion.Persona.sNombre = 'Cliente';
+      requestIdPeticion.cotizacion.Persona.sApellidoPaterno = 'Especial';
     }
   }
 
   handlerClienteMail(e: string) {
     this.clienteMail = e;
     this.ValidarDatosObligatorios();
-    this.requestIdPeticion.cotizacion.Persona.sEmail=e;
+    requestIdPeticion.cotizacion.Persona.sEmail=e;
   }
 
   handlerClienteTelefono(e: string) {
     this.clienteTelefono = e;
     this.ValidarDatosObligatorios();
-    this.requestIdPeticion.cotizacion.Persona.sTelefono=parseInt(e,10);
+    requestIdPeticion.cotizacion.Persona.sTelefono=parseInt(e,10);
   }
 
   handlerClienteTipoPersona(e: string) {
     this.clienteTipoPersona = e;
     this.ValidarDatosObligatorios();
-    this.requestIdPeticion.cotizacion.Persona.bSiNoPersonaMoral= e=='Moral' ? true : false
-    this.requestIdPeticion.cotizacion.Persona.iSexo= e=='Masculino' ? 1 : e=='Femenino' ? 2 : null;
-    if (e !='Moral') {
-      this.verificaCompletoNom(this.clienteNombre);
-    }else{
-      // AQUI VA EL NOMBRE CUANDO LA PERSONA ES MORAL
-      this.requestIdPeticion.cotizacion.Persona.sNombre = 'Cliente';
-      this.requestIdPeticion.cotizacion.Persona.sApellidoPaterno = 'Especial';
-    }
+    requestIdPeticion.cotizacion.Persona.bSiNoPersonaMoral= e=='Moral' ? true : false
+    requestIdPeticion.cotizacion.Persona.iSexo= e=='Masculino' ? 1 : e=='Femenino' ? 2 : null;
   }
 
   handlerClienteCodigoPostal(e: string) {
@@ -285,7 +172,7 @@ export class Pagina1Component implements OnInit {
     // console.log(e);
     // console.log(this.clienteCodigoPostal)
     this.ValidarDatosObligatorios();
-    this.requestIdPeticion.cotizacion.Domicilio.sCodigoPostal= e;
+    requestIdPeticion.cotizacion.Domicilio.sCodigoPostal= e;
       const req: RequestCatalogoCotizamatico = {
         Filtro: e,
         IdAplication: 2,
@@ -293,14 +180,14 @@ export class Pagina1Component implements OnInit {
       };
         this.infovehiculoService.getCatalogosCotizamatico(req).subscribe((data) => {
         this.ubicacion = JSON.parse(data.CatalogoJsonString);
-        this.requestIdPeticion.cotizacion.Domicilio.iIdUbicacion        = parseInt(this.ubicacion[0].Ubicacion[0].iIdUbicacion,10);
-        this.requestIdPeticion.cotizacion.Domicilio.iIdMunicipio        = parseInt(this.ubicacion[0].Municipio.iIdMunicipio);
-        this.requestIdPeticion.cotizacion.Domicilio.sUbicacion          = this.ubicacion[0].Ubicacion[0].sUbicacion;
-        this.requestIdPeticion.cotizacion.Domicilio.sMunicipio          = this.ubicacion[0].Municipio.sMunicipio;
-        this.requestIdPeticion.cotizacion.Domicilio.iIdEstado           = parseInt(this.ubicacion[0].Municipio.Estado.iIdEstado,10);
-        this.requestIdPeticion.cotizacion.Domicilio.iEstadoPais         = parseInt(this.ubicacion[0].Municipio.Estado.iEstadoPais,10);
-        this.requestIdPeticion.cotizacion.Domicilio.iClaveEstadoCepomex = parseInt(this.ubicacion[0].Municipio.Estado.iClaveEstadoCepomex,10);
-        this.requestIdPeticion.cotizacion.Domicilio.sEstado             = this.ubicacion[0].Municipio.Estado.sEstado;
+        requestIdPeticion.cotizacion.Domicilio.iIdUbicacion        = parseInt(this.ubicacion[0].Ubicacion[0].iIdUbicacion,10);
+        requestIdPeticion.cotizacion.Domicilio.iIdMunicipio        = parseInt(this.ubicacion[0].Municipio.iIdMunicipio);
+        requestIdPeticion.cotizacion.Domicilio.sUbicacion          = this.ubicacion[0].Ubicacion[0].sUbicacion;
+        requestIdPeticion.cotizacion.Domicilio.sMunicipio          = this.ubicacion[0].Municipio.sMunicipio;
+        requestIdPeticion.cotizacion.Domicilio.iIdEstado           = parseInt(this.ubicacion[0].Municipio.Estado.iIdEstado,10);
+        requestIdPeticion.cotizacion.Domicilio.iEstadoPais         = parseInt(this.ubicacion[0].Municipio.Estado.iEstadoPais,10);
+        requestIdPeticion.cotizacion.Domicilio.iClaveEstadoCepomex = parseInt(this.ubicacion[0].Municipio.Estado.iClaveEstadoCepomex,10);
+        requestIdPeticion.cotizacion.Domicilio.sEstado             = this.ubicacion[0].Municipio.Estado.sEstado;
         // console.log(this.ubicacion)
       });
   }
@@ -308,7 +195,7 @@ export class Pagina1Component implements OnInit {
   handlerClienteFechaNacimiento(e: FechasModel) {
     this.clienteFechaNacimiento = e;
     this.ValidarDatosObligatorios();
-    this.requestIdPeticion.cotizacion.Persona.sFechaNacimiento=e.dia+"/"+e.mes+"/"+ e.anio;
+    requestIdPeticion.cotizacion.Persona.sFechaNacimiento=e.dia+"/"+e.mes+"/"+ e.anio;
   }
 
   ValidarDatosObligatorios() {
@@ -360,7 +247,7 @@ export class Pagina1Component implements OnInit {
     this.month=today.getMonth()+1;
     var hour= today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
     let date=this.date+'/'+this.month+'/'+this.year+" "+hour
-    this.requestIdPeticion.cotizacion.FechaInicioVigencia=date;
+    requestIdPeticion.cotizacion.FechaInicioVigencia=date;
       // switch (this.clienteFechaNacimiento.mes) {
       //   case 'Enero':
       //     this.age=1;
@@ -403,18 +290,18 @@ export class Pagina1Component implements OnInit {
       // }
       // if (this.age <= parseInt(this.month,10)  ) {
       //   let age1 = (parseInt(this.year,10) - parseInt(this.clienteFechaNacimiento.anio,10));
-      //   this.requestIdPeticion.cotizacion.Persona.iEdad = age1;
+      //   requestIdPeticion.cotizacion.Persona.iEdad = age1;
       // } else {
       //   let age2= parseInt(this.year,10) - parseInt(this.clienteFechaNacimiento.anio,10)- 1;
-      //   this.requestIdPeticion.cotizacion.Persona.iEdad = age2;
+      //   requestIdPeticion.cotizacion.Persona.iEdad = age2;
       // }  
     
-     this.store.dispatch( new GetIdPeticion(this.requestIdPeticion) )
-    console.log(this.requestIdPeticion)
+     this.store.dispatch( new GetIdPeticion(requestIdPeticion) )
+    console.log(requestIdPeticion)
   }
 
   dividirCadena(cadenaADividir, separador) {
-    this.requestIdPeticion.cotizacion.Persona.sNombre='';
+    requestIdPeticion.cotizacion.Persona.sNombre='';
     const arrayDeCadenas = cadenaADividir.split(separador);
     for (const object of arrayDeCadenas) {
       // console.log(object);
@@ -423,17 +310,23 @@ export class Pagina1Component implements OnInit {
     // console.log(this.nombresepa.length);
     let tamanoNombre=this.nombresepa.length
     let petinombre='';
-    
-    let index=0
-    do {
+    // let index=0
+    // do {
+    //   const element = this.nombresepa[index];
+    //   petinombre += element
+    //   petinombre = petinombre+' '
+    //   index+=1
+    //   console.log(petinombre);
+    // } while (index<tamanoNombre-1);
+    for (let index = 0; index <tamanoNombre-2; index++) {
       const element = this.nombresepa[index];
       petinombre += element
       petinombre = petinombre+' '
-      index+=1
-    } while (index<tamanoNombre-2);
-    this.requestIdPeticion.cotizacion.Persona.sApellidoMaterno = this.nombresepa[tamanoNombre-2]
-    this.requestIdPeticion.cotizacion.Persona.sApellidoPaterno = this.nombresepa[tamanoNombre-1]
-    this.requestIdPeticion.cotizacion.Persona.sNombre=petinombre
+      console.log(petinombre);
+    }
+    requestIdPeticion.cotizacion.Persona.sApellidoMaterno = this.nombresepa[tamanoNombre-2]
+    requestIdPeticion.cotizacion.Persona.sApellidoPaterno = this.nombresepa[tamanoNombre-1]
+    requestIdPeticion.cotizacion.Persona.sNombre=petinombre
 
    
   }
@@ -449,8 +342,8 @@ export class Pagina1Component implements OnInit {
       if (this.nombreNOCom) {
         this.dividirCadena(cnam, ' ');
       } else {
-         this.requestIdPeticion.cotizacion.Persona.sNombre = 'Cliente';
-         this.requestIdPeticion.cotizacion.Persona.sApellidoPaterno = 'Especial';
+         requestIdPeticion.cotizacion.Persona.sNombre = 'Cliente';
+         requestIdPeticion.cotizacion.Persona.sApellidoPaterno = 'Especial';
       }
     }
   }
