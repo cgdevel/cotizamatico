@@ -9,7 +9,7 @@ export interface State{
         correo : string;
         cP     : string;
         fechaDeNacimiento: string ;
-        telefono: number;
+        telefono: string;
         tipoDePersona:boolean;
         iSexo: number;
         apellidoPaterno: string;

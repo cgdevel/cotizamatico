@@ -17,20 +17,22 @@ export interface RequestIdPeticionCotizacion{
                                     sNumeroInterior : any
                    },
                     Persona : {
+                                    IdPersona: string ,
                                     sNombre :  string ,
-                                     sApellidoPaterno : string ,
+                                    sApellidoPaterno : string ,
                                     sApellidoMaterno : string,
                                     sFechaNacimiento : string,
                                     sRfc : string,
                                     iEdad :  number ,
                                     iSexo : number,
                                     sEmail :  string ,
-                                    sTelefono : number,
+                                    sTelefono : string,
                                     iIdPais : number,
                                     sNacionalidad : any,
                                     iIdOcupacion : number,
-                                    bSinoFuma : number,
-                                    bSiNoPersonaMoral : boolean
+                                    bSinoFuma : boolean,
+                                    bSiNoPersonaMoral : boolean,
+                                    sCurp: string
                    },
                     Credencial ? : {
                                     IdCredential : number,
@@ -38,19 +40,26 @@ export interface RequestIdPeticionCotizacion{
                    },
                     SubRamo : {
                                     iIdSubRamo : number,
-                                    Ramo : any,
-                                    iLineaNegocio  : number,
-                                    iEstatus  : number,
-                                    iIdMostar  : number,
-                                    iOrdenPresentacion  : number,
-                                    sSubramo : string ,
-                                    sAlias : any,
-                                    sDescripcion : string,
-                                    lineaNegocio : any
+                                    // Ramo : any,
+                                    // iLineaNegocio  : number,
+                                    // iEstatus  : number,
+                                    // iIdMostar  : number,
+                                    // iOrdenPresentacion  : number,
+                                    sSubramo : string 
+                                    // sAlias : any,
+                                    // sDescripcion : string,
+                                    // lineaNegocio : any
                    },
-                    Sucursal : any,
-                    Asociado : any,
+                    Sucursal :  {
+                        iIdSucursal: number,
+                        sSucursal: string
+                    },
+                    Asociado : {
+                        iIdAsociado:     number,
+                        sClaveAsociado:  string
+                      },
                     Vehiculo : {
+                                    iIdVehiculoCotizacion: number,
                                     iValorUnidad : number,
                                     iValorFactura : number,
                                     sTipoCarga : null,
@@ -76,7 +85,10 @@ export interface RequestIdPeticionCotizacion{
                                                     iIdDescripcionModelo : number,
                                                     iIdModeloSubmarca : number,
                                                     iIdMostrar  : number,
-                                                    sDescripcion : string 
+                                                    sDescripcion : string,
+                                                    bSiNoCotizamatico: boolean,
+                                                    bSiNoFlotillas: boolean
+                                         
                                    },
                                     iValorPolizaMultiAnual : number,
                    },
@@ -85,6 +97,12 @@ export interface RequestIdPeticionCotizacion{
                     iIva : number,
                     iIdAseguradora  : number,
                     iDescuento :number,
+                    iTipoDispositivo: number,
+                    iTipoCotizacion: number,
+                    bAsistencias: boolean,
+                    sCotizacionTemporal: string,
+                    Documento3030: any,
+                
     },
      PaqueteCoberturasApi :{
                     idPaquete :number,

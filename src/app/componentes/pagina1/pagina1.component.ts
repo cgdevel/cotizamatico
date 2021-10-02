@@ -157,7 +157,7 @@ export class Pagina1Component implements OnInit {
   handlerClienteTelefono(e: string) {
     this.clienteTelefono = e;
     this.ValidarDatosObligatorios();
-    requestIdPeticion.cotizacion.Persona.sTelefono=parseInt(e,10);
+    requestIdPeticion.cotizacion.Persona.sTelefono=e;
   }
 
   handlerClienteTipoPersona(e: string) {
@@ -185,17 +185,85 @@ export class Pagina1Component implements OnInit {
         requestIdPeticion.cotizacion.Domicilio.sUbicacion          = this.ubicacion[0].Ubicacion[0].sUbicacion;
         requestIdPeticion.cotizacion.Domicilio.sMunicipio          = this.ubicacion[0].Municipio.sMunicipio;
         requestIdPeticion.cotizacion.Domicilio.iIdEstado           = parseInt(this.ubicacion[0].Municipio.Estado.iIdEstado,10);
+        requestIdPeticion.cotizacion.Domicilio.sEstado             = this.ubicacion[0].Municipio.Estado.sEstado;
         requestIdPeticion.cotizacion.Domicilio.iEstadoPais         = parseInt(this.ubicacion[0].Municipio.Estado.iEstadoPais,10);
         requestIdPeticion.cotizacion.Domicilio.iClaveEstadoCepomex = parseInt(this.ubicacion[0].Municipio.Estado.iClaveEstadoCepomex,10);
-        requestIdPeticion.cotizacion.Domicilio.sEstado             = this.ubicacion[0].Municipio.Estado.sEstado;
-        // console.log(this.ubicacion)
+        requestIdPeticion.cotizacion.Persona.iIdPais             = parseInt(this.ubicacion[0].Municipio.Estado.iEstadoPais,10);
+        console.log(this.ubicacion)
       });
   }
 
   handlerClienteFechaNacimiento(e: FechasModel) {
     this.clienteFechaNacimiento = e;
     this.ValidarDatosObligatorios();
+    requestIdPeticion.cotizacion.Persona.sRfc="XXXXAAMMDD000";
     requestIdPeticion.cotizacion.Persona.sFechaNacimiento=e.dia+"/"+e.mes+"/"+ e.anio;
+    var today = new Date();
+    this.year = today.getFullYear();
+    this.date=today.getDate();
+    this.month=today.getMonth()+1;
+    switch (e.mes) {
+        case 'Enero':
+          this.age=1;
+        break;
+        case 'Febrero ':
+          this.age=2;
+        break;
+        case 'Marzo':
+          this.age=3;
+        break;
+        case 'Abril':
+          this.age=4;
+        break;
+        case 'Mayo':
+          this.age=5;
+        break;
+        case 'Junio':
+          this.age=6;
+        break;
+        case 'Julio':
+          this.age=7;
+        break;
+        case 'Agosto':
+          this.age=8;
+        break;
+        case 'Septiembre':
+          this.age=9;
+        break;
+        case 'Octubre':
+          this.age=10;
+        break;
+        case 'Noviembre':
+          this.age=11;
+        break;
+        case 'Diciembre':
+          this.age=12;
+        break;
+        default: ''
+          break;
+      }
+      if (this.age <= parseInt(this.month,10)  ) {
+        let age1 = (parseInt(this.year,10) - parseInt(this.clienteFechaNacimiento.anio,10));
+        requestIdPeticion.cotizacion.Persona.iEdad = age1;
+      } else {
+        let age2= parseInt(this.year,10) - parseInt(this.clienteFechaNacimiento.anio,10)- 1;
+        requestIdPeticion.cotizacion.Persona.iEdad = age2;
+      } 
+// // para generar rfc
+//       if (this.age<10 && parseInt(e.dia,10)<10) {
+//         requestIdPeticion.cotizacion.Persona.sRfc='XXXX' + e.anio + '0' + this.age + '0' + e.dia + 'XXX';
+//       } 
+//       if (this.age<10 && parseInt(e.dia,10)>=10) {
+//         requestIdPeticion.cotizacion.Persona.sRfc='XXXX' + e.anio + '0' + this.age + e.dia + 'XXX'
+//       }
+//       if (this.age>=10 && parseInt(e.dia,10)<10) {
+//         requestIdPeticion.cotizacion.Persona.sRfc='XXXX' + e.anio  + this.age + '0' + e.dia + 'XXX';
+//       } 
+//       if (this.age>=10 && parseInt(e.dia,10)>=10) {
+//         requestIdPeticion.cotizacion.Persona.sRfc='XXXX' + e.anio  + this.age + e.dia + 'XXX'
+//       }
+      
+       
   }
 
   ValidarDatosObligatorios() {
@@ -248,54 +316,7 @@ export class Pagina1Component implements OnInit {
     var hour= today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
     let date=this.date+'/'+this.month+'/'+this.year+" "+hour
     requestIdPeticion.cotizacion.FechaInicioVigencia=date;
-      // switch (this.clienteFechaNacimiento.mes) {
-      //   case 'Enero':
-      //     this.age=1;
-      //   break;
-      //   case 'Febrero ':
-      //     this.age=2;
-      //   break;
-      //   case 'Marzo':
-      //     this.age=3;
-      //   break;
-      //   case 'Abril':
-      //     this.age=4;
-      //   break;
-      //   case 'Mayo':
-      //     this.age=5;
-      //   break;
-      //   case 'Junio':
-      //     this.age=6;
-      //   break;
-      //   case 'Julio':
-      //     this.age=7;
-      //   break;
-      //   case 'Agosto':
-      //     this.age=8;
-      //   break;
-      //   case 'Septiembre':
-      //     this.age=9;
-      //   break;
-      //   case 'Octubre':
-      //     this.age=10;
-      //   break;
-      //   case 'Noviembre':
-      //     this.age=11;
-      //   break;
-      //   case 'Diciembre':
-      //     this.age=12;
-      //   break;
-      //   default: ''
-      //     break;
-      // }
-      // if (this.age <= parseInt(this.month,10)  ) {
-      //   let age1 = (parseInt(this.year,10) - parseInt(this.clienteFechaNacimiento.anio,10));
-      //   requestIdPeticion.cotizacion.Persona.iEdad = age1;
-      // } else {
-      //   let age2= parseInt(this.year,10) - parseInt(this.clienteFechaNacimiento.anio,10)- 1;
-      //   requestIdPeticion.cotizacion.Persona.iEdad = age2;
-      // }  
-    
+    requestIdPeticion.cotizacion.Persona.bSinoFuma=false;
      this.store.dispatch( new GetIdPeticion(requestIdPeticion) )
     console.log(requestIdPeticion)
   }

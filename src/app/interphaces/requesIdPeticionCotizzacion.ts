@@ -19,6 +19,7 @@ export let requestIdPeticion: RequestIdPeticionCotizacion ={
                                   sNumeroInterior: null
                   },
                   Persona: {
+                                  IdPersona: null,
                                   sNombre: null,
                                   sApellidoPaterno: null,
                                   sApellidoMaterno: null,
@@ -30,9 +31,10 @@ export let requestIdPeticion: RequestIdPeticionCotizacion ={
                                   sTelefono: null,
                                   iIdPais: null,
                                   sNacionalidad: null,
-                                  iIdOcupacion: null,
+                                  iIdOcupacion: 0,
                                   bSinoFuma: null,
-                                  bSiNoPersonaMoral: null
+                                  bSiNoPersonaMoral: null,
+                                  sCurp:null
                   },
                   Credencial: {
                     IdCredential: 3418,
@@ -40,23 +42,31 @@ export let requestIdPeticion: RequestIdPeticionCotizacion ={
                 },
                 SubRamo: {
                     iIdSubRamo: 1,
-                    Ramo: null,
-                    iLineaNegocio: 0,
-                    iEstatus: 0,
-                    iIdMostar: 0,
-                    iOrdenPresentacion: 0,
-                    sSubramo: "AUTOS",
-                    sAlias: null,
-                    sDescripcion: null,
-                    lineaNegocio: null
+                    // Ramo: null,
+                    // iLineaNegocio: 0,
+                    // iEstatus: 0,
+                    // iIdMostar: 0,
+                    // iOrdenPresentacion: 0,
+                    sSubramo: "AUTOS"
+                    // sAlias: null,
+                    // sDescripcion: null,
+                    // lineaNegocio: null
                 },
-                Sucursal: null,
-                Asociado: null,
+                Sucursal:  {
+                  iIdSucursal: 1,
+                  sSucursal: null
+              }
+          ,
+                Asociado: {
+                  iIdAsociado:     14177,
+                  sClaveAsociado:  "MM5157"
+                },
                 Vehiculo: {
-                                  iValorUnidad: null,
-                                  iValorFactura: null,
+                                  iIdVehiculoCotizacion:null,
+                                  iValorUnidad: 0,
+                                  iValorFactura: 0,
                                   sTipoCarga: null,
-                                  iIdTipoCarga: null,
+                                  iIdTipoCarga: 0,
                                   FechaFactura: null,
                                   Marca: {
                                                   iIdMarca: null,
@@ -68,19 +78,22 @@ export let requestIdPeticion: RequestIdPeticionCotizacion ={
                                   },
                                   SubMarca: {
                                       iIdSubMarca: null,
-                                      iIdMarcaSubramo: null,
-                                      iIdMostrar: null,
+                                      iIdMarcaSubramo: 0,
+                                      iIdMostrar: 0,
                                       sSubMarca: null,
                                       bSiNoCotizamatico: null,
                                       bSiNoFlotillas: null
                                   },
                                   DescripcionModelo: {
                                                   iIdDescripcionModelo: null,
-                                                  iIdModeloSubmarca: null,
+                                                  iIdModeloSubmarca: 0,
                                                   iIdMostrar: null,
-                                                  sDescripcion: null
+                                                  sDescripcion: null,
+                                                  bSiNoCotizamatico: null,
+                                                  bSiNoFlotillas: null
+                                      
                                   },
-                                  iValorPolizaMultiAnual: null
+                                  iValorPolizaMultiAnual: 0
                   },
                   Compania: {
                     sNombre: "AARCO",
@@ -93,16 +106,20 @@ export let requestIdPeticion: RequestIdPeticionCotizacion ={
                     sEquivalenciaService: "http://192.168.211.5/AarcoCommon/EquivalenciaService.svc",
                     sLoggingService: "http://192.168.211.5/AarcoCommon/LoggingService.svc"
                 },
-                sXmls:null,
-                  iIva: 0.0,
+                sXmls: {
+                  XMLRSA:  "C:\\inetpub\\api.aarco.com.mx\\AarcoAPICommon_PBAS\\XmlCotizacionEmision\\xmlCotizacionRsa.xml"
+              },
+                  iIva: 1.16,
                   iIdAseguradora: 0,
-                  iDescuento: 0.0
+                  iDescuento: 0.0,
+                  iTipoDispositivo: 101,
+                  iTipoCotizacion: 0,
+                  bAsistencias: false,
+                  sCotizacionTemporal: null,
+                  Documento3030: null
+              
     },
-    PaqueteCoberturasApi:{
-      idPaquete:1,
-      idAseguradora:null,
-      CoberturasApi:null
-    },
+    PaqueteCoberturasApi: null,
                 User: "COTIZAMATICO",
                 Device: "EMULATOR30X1X5X0",
                 Token: "7C2C8D3B-C488-4D14-B360-6B94013A0C4E"

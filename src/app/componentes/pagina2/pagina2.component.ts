@@ -124,7 +124,7 @@ ngOnInit(): void {
   // console.log(history.state)
   this.store.select(selectCotizacionResponse).subscribe(res => 
     {
-      if(!res.jsonCotizacion.length) 
+      if(!res.jsonCotizacion.length&& res.idCotizacion!=1) 
       {
         return
       } else{
