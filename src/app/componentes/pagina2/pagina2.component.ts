@@ -257,6 +257,7 @@ ngOnInit(): void {
     this.ampliaplus =false;
     this.amplia     =false;
     this.limitada   =false;
+    this.basica     =false;
     this.cobertura=undefined;
     if (this.poliza=='Amplia Plus') {
       this.cobDamage = 3;
