@@ -112,7 +112,7 @@ export let requestIdPeticion: RequestIdPeticionCotizacion ={
                   iIva: 1.16,
                   iIdAseguradora: 0,
                   iDescuento: 0.0,
-                  iTipoDispositivo: 101,
+                  iTipoDispositivo: null,
                   iTipoCotizacion: 0,
                   bAsistencias: false,
                   sCotizacionTemporal: null,

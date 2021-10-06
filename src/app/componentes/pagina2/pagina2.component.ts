@@ -253,6 +253,10 @@ ngOnInit(): void {
   }
   // Función para select versión repsonsiva
   ChangePoliza(){
+    // Limpia variables NoResponsiva
+    this.ampliaplus =false;
+    this.amplia     =false;
+    this.limitada   =false;
     this.cobertura=undefined;
     if (this.poliza=='Amplia Plus') {
       this.cobDamage = 3;
@@ -261,6 +265,13 @@ ngOnInit(): void {
       this.cobDamage = 5;
       this.cobtothe = 10 ;
     }
+  }
+  ChangePago(){
+    // Limpia variables NoResponsiva
+    this.semestral  =false;
+    this.trimestral =false;
+    this.anual      =false;
+    this.mensual    =false;
   }
   // Funciones descuento
   Descuentoalto() {
