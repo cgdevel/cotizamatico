@@ -89,6 +89,8 @@ export class Pagina2Component implements OnInit {
   statusT = 'NoSelected';
   statusS = 'NoSelected';
   statusAn = 'NoSelected';
+  noBasica=0;
+  siBasica=0;
   // Valores del switch
   as: boolean;
   des: boolean;
@@ -119,8 +121,6 @@ ngOnInit(): void {
      this.store.dispatch(new GetCotizacion(this.requestIdCotizacion));
    });
   },90000)
-
-  
   // console.log(history.state)
   this.store.select(selectCotizacionResponse).subscribe(res => 
     {
@@ -138,8 +138,19 @@ ngOnInit(): void {
           this.responseCotizacionJSON.push(element);
         }
         console.log(this.responseCotizacionJSON);
+        this.responseCotizacionJSON.forEach(element => {
+          let i=element.PrecioCotizacion.length
+          console.log(i)
+          if (i<=3) {
+            this.noBasica+=1;
+          }else{
+            this.siBasica+=1;
+          }
+        });
+        console.log(this.noBasica,this.siBasica)
       }
     })
+  
   this.vermodelo$ = this.store.select(selectTipo)
   this.veranno$ = this.store.select(selectModelo)
   this.vermarca$ = this.store.select(selectMarca)
@@ -245,6 +256,22 @@ ngOnInit(): void {
     this.statusB = this.basica ? 'Selected' : 'NoSelected';
     this.cobertura = 3;
     this.poliza ="Básica";
+    // this.store.select(selectCotizacionResponse).subscribe(res => 
+    //   {
+    //     if(!res.jsonCotizacion.length&& res.idCotizacion!=1) 
+    //     {
+    //       return
+    //     } else{
+    //         this.responseCotizacionJSON=[];
+    //       for (let index = 0; index < res.jsonCotizacion.length; index++) {
+    //         const element = JSON.parse(res.jsonCotizacion[index]);
+    //         this.responseCotizacionJSON.push(element);
+    //       }
+    //       console.log(this.responseCotizacionJSON);
+    //     }
+    //   })
+     
+        
 
     // console.log("Básica :"+' '+this.basica+' '+this.statusB)
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
