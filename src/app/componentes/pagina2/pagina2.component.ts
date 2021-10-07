@@ -137,17 +137,22 @@ ngOnInit(): void {
           const element = JSON.parse(res.jsonCotizacion[index]);
           this.responseCotizacionJSON.push(element);
         }
+        // OBTIENE EL IDPRODUCTO DE PRECIOCOTIZACION POR CADA this.Aseguradora Y DESHABILITAR BOTON BASICA
         console.log(this.responseCotizacionJSON);
-        this.responseCotizacionJSON.forEach(element => {
-          let i=element.PrecioCotizacion.length
-          console.log(i)
-          if (i<=3) {
-            this.noBasica+=1;
-          }else{
-            this.siBasica+=1;
+        this.siBasica=0;
+        this.noBasica=0;
+        for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
+          const for1 = this.responseCotizacionJSON[index].PrecioCotizacion;
+          for (let index = 0; index < for1.length; index++) {
+            const for2 = for1[index].IdProducto;
+            if (for2<=3) {
+                  this.noBasica+=1;
+                }else{
+                  this.siBasica+=1;
+                }
           }
-        });
-        console.log(this.noBasica,this.siBasica)
+        }
+        console.log(this.noBasica,this.siBasica);
       }
     })
   
