@@ -31,10 +31,7 @@ import {requestIdPeticion} from 'src/app/interphaces/requesIdPeticionCotizzacion
   styleUrls: ['./pagina2.component.css'],
 })
 export class Pagina2Component implements OnInit {
-  @Output() emitFormaPago = new EventEmitter<string>();
-  cobDamage: number;
-  cobtothe : number;
-  constructor(
+constructor(
     private route: ActivatedRoute,
     private infovehiculoService: InfovehiculoService,
     private store: Store<fromRoot.State>,
@@ -102,95 +99,101 @@ export class Pagina2Component implements OnInit {
   marca: CatalogoModel;
   descripcion: CatalogoModel;
   anno: CatalogoModel;
-
+  //VARIABLES INPUT DE COMPONENTE COBERTURAS
+  @Output() emitFormaPago = new EventEmitter<string>();
+  cobDamage: number;
+  cobtothe : number;
+  Damage: number;
+  totalTheft: number;     
+  civilLiability : number;
+  medicalExpenses: number;
+  driverAccident : number;
+  ocuppantsLiability: number;
   requestIdCotizacion: RequestIdCotizacion={
     User: "COTIZAMATICO",
     Device: "EMULATOR30X1X5X0",
     Token: "7C2C8D3B-C488-4D14-B360-6B94013A0C4E",
     IdPeticion: null
   }
- 
   responseCotizacionJSON =new Array
-ngOnInit(): void {
-  
-  setTimeout(() => {
-    this.store.select(selectIdPeticionResponse).subscribe(id=>{
-      console.log(id.iDPeticion);
-      if(id.iDPeticion === null) return
-     this.requestIdCotizacion.IdPeticion = id.iDPeticion;
-     this.store.dispatch(new GetCotizacion(this.requestIdCotizacion));
-   });
-  },90000)
-  // console.log(history.state)
-  this.store.select(selectCotizacionResponse).subscribe(res => 
-    {
-      if(!res.jsonCotizacion.length&& res.idCotizacion!=1) 
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.store.select(selectIdPeticionResponse).subscribe(id=>{
+        console.log(id.iDPeticion);
+        if(id.iDPeticion === null) return
+      this.requestIdCotizacion.IdPeticion = id.iDPeticion;
+      this.store.dispatch(new GetCotizacion(this.requestIdCotizacion));
+    });
+    },90000)
+    // console.log(history.state)
+    this.store.select(selectCotizacionResponse).subscribe(res => 
       {
-        return
-      } else{
-          this.responseCotizacionJSON=[];
-        //   res.jsonCotizacion.forEach(element => {
-        //   let json=JSON.parse(element)
-        //   this.responseCotizacionJSON.push(json)
-        // });
-        for (let index = 0; index < res.jsonCotizacion.length; index++) {
-          const element = JSON.parse(res.jsonCotizacion[index]);
-          this.responseCotizacionJSON.push(element);
-        }
-        // OBTIENE EL IDPRODUCTO DE PRECIOCOTIZACION POR CADA this.Aseguradora Y DESHABILITAR BOTON BASICA
-        console.log(this.responseCotizacionJSON);
-        this.siBasica=0;
-        this.noBasica=0;
-        for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-          const for1 = this.responseCotizacionJSON[index].PrecioCotizacion;
-          for (let index = 0; index < for1.length; index++) {
-            const for2 = for1[index].IdProducto;
-            if (for2<=3) {
-                  this.noBasica+=1;
-                }else{
-                  this.siBasica+=1;
-                }
+        if(!res.jsonCotizacion.length&& res.idCotizacion!=1) 
+        {
+          return
+        } else{
+            this.responseCotizacionJSON=[];
+          //   res.jsonCotizacion.forEach(element => {
+          //   let json=JSON.parse(element)
+          //   this.responseCotizacionJSON.push(json)
+          // });
+          for (let index = 0; index < res.jsonCotizacion.length; index++) {
+            const element = JSON.parse(res.jsonCotizacion[index]);
+            this.responseCotizacionJSON.push(element);
           }
+          // OBTIENE EL IDPRODUCTO DE PRECIOCOTIZACION POR CADA this.Aseguradora Y DESHABILITAR BOTON BASICA
+          console.log(this.responseCotizacionJSON);
+          this.siBasica=0;
+          this.noBasica=0;
+          for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
+            const for1 = this.responseCotizacionJSON[index].PrecioCotizacion;
+            for (let index = 0; index < for1.length; index++) {
+              const for2 = for1[index].IdProducto;
+              if (for2<=3) {
+                    this.noBasica+=1;
+                  }else{
+                    this.siBasica+=1;
+                  }
+            }
+          }
+          console.log(this.noBasica,this.siBasica);
         }
-        console.log(this.noBasica,this.siBasica);
-      }
-    })
-  
-  this.vermodelo$ = this.store.select(selectTipo)
-  this.veranno$ = this.store.select(selectModelo)
-  this.vermarca$ = this.store.select(selectMarca)
-  this.verdescripcion$ = this.store.select(selectDescripcion)
-  this.verdescripcion$.subscribe(desc => {
-    // console.log(desc)
-    this.Aseguradoras=this.getAsePorDescrip(desc.sLlave)
+      })
+    
+    this.vermodelo$ = this.store.select(selectTipo)
+    this.veranno$ = this.store.select(selectModelo)
+    this.vermarca$ = this.store.select(selectMarca)
+    this.verdescripcion$ = this.store.select(selectDescripcion)
+    this.verdescripcion$.subscribe(desc => {
+      // console.log(desc)
 
-  })
-  // this.Aseguradoras = this.getAsePorDescrip(this.verdescripcion$);
-  // console.log(this.Aseguradoras);
-  this.nombre = history.state.namease;
-  // console.log(this.nombre);
-  this.email = history.state.emailase;
-  this.telefono = history.state.phonease;
-  this.genero = history.state.tipoperase;
-  this.codigopostal = history.state.cpase;
-  // console.log(this.codigopostal);
-  this.fechanac = history.state.fechanacase;
-  this.amplia = true;
-  this.descMEDIO = true;
-  this.anual = true;
-  this.cobtothe= 10;
-  this.cobDamage = 5 ;
-  this.una = history.state.sizeta;
-  for (let index = 0; AseguradoraCobJson.length < index; index++) {
-    const element = AseguradoraCobJson[index];
-  }
-  for (const nombre of AseguradoraCobJson) {
-    // console.log(nombre);
-    for (const cobertura of nombre.coberturas) {
-      // console.log(cobertura.default);
+    })
+    // this.Aseguradoras = this.getAsePorDescrip(this.verdescripcion$);
+    // console.log(this.Aseguradoras);
+    this.nombre = history.state.namease;
+    // console.log(this.nombre);
+    this.email = history.state.emailase;
+    this.telefono = history.state.phonease;
+    this.genero = history.state.tipoperase;
+    this.codigopostal = history.state.cpase;
+    // console.log(this.codigopostal);
+    this.fechanac = history.state.fechanacase;
+    this.amplia = true;
+    this.descMEDIO = true;
+    this.anual = true;
+    this.cobtothe= 10;
+    this.cobDamage = 5 ;
+    this.una = history.state.sizeta;
+    for (let index = 0; AseguradoraCobJson.length < index; index++) {
+      const element = AseguradoraCobJson[index];
     }
-  }
-} // init
+    for (const nombre of AseguradoraCobJson) {
+      // console.log(nombre);
+      for (const cobertura of nombre.coberturas) {
+        // console.log(cobertura.default);
+      }
+    }
+  } // init
 
   // Funciones cobertura
   Ampliaplus() {
@@ -491,54 +494,24 @@ ngOnInit(): void {
     // console.log(e);
     this.descripcion = e;
   }
-  afirme() {
-    this.aseguradora = 'AFIRME';
-    // console.log(this.aseguradora);
-    return this.aseguradora;
-  }
-  axxa() {
-    this.aseguradora = 'AXXA';
-    // console.log(this.aseguradora);
-    return this.aseguradora;
-  }
-  qualitas() {
-    this.aseguradora = 'QUALITAS';
-    // console.log(this.aseguradora);
-    return this.aseguradora;
-  }
 
-  getAsePorDescrip(Desc: string) {
-    this.AseguradorasPoDesc = [];
-    this.infovehiculoService
-      .getApiAseguradoras({
-        IdCotizamatico: Desc,
-      })
-      .subscribe(
-        (cat) => {
-          if (cat === undefined) {
-            console.log('Error');
-          }
-          // console.log(cat);
-          for (let index = 0; index < cat.length; index++) {
-            const element = cat[index];
-            this.AseguradorasPoDesc.push({
-              IdModeloCotizamatico: element.IdModeloCotizamatico,
-              IdAseguradora: element.IdAseguradora,
-              Compania: element.Compania,
-              IdModeloAseguradora: element.IdModeloAseguradora,
-              Marca: element.Marca,
-              Submarca: element.Submarca,
-              Modelo: element.Modelo,
-              Descripcion: element.Descripcion,
-            });
-          }
-          // console.log(this.AseguradorasPoDesc)
-        },
-        (err) => {
-          return // console.log('Error');
-        }
-      );
-    return this.AseguradorasPoDesc;
+  handlerOptionsDamage(e: number) {
+   this.Damage=e
+  }
+  handlerOptionstotalTheft(e: number) {
+    this.totalTheft=e;        
+  }      
+  handlerOptionscivilLiability( e: number) {
+    this.civilLiability =e;    
+  }  
+  handlerOptionsmedicalExpenses(e: number) {
+    this.medicalExpenses =e;  
+  }  
+  handlerOptionsdriverAccident(e: number) {
+    this.driverAccident  =e;  
+  } 
+  handlerOptionsocuppantsLiability(e: number) {
+    this.ocuppantsLiability=e;
   }
 
   
