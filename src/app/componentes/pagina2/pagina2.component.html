@@ -1051,8 +1051,8 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <app-coberturas
       [polizaSelect]="poliza"
-      [valueDamage]="this.cobDamage"
-      [valuetotalTheft]="this.cobtothe"
+      [valueDamage]="cobDamage"
+      [valuetotalTheft]="cobtothe"
       (EmisorOptionsDamage)="handlerOptionsDamage($event)"
       (EmisorOptionstotalTheft)="handlerOptionstotalTheft($event)"
       (EmisorOptionscivilLiability)="handlerOptionscivilLiability($event)"
@@ -1200,7 +1200,7 @@
                 <div id="tan">TOTAL: ${{ responseCotizacionJSON[0].PrecioCotizacion[2].PrimaMensual}}</div>
               </div>
             </div>
-            <div class="col-md-3 col-sm-3 mb-2" *ngIf="basica    ||(this.poliza=='Básica' && !!this.poliza) && responseCotizacionJSON[0].PrecioCotizacion[0].IdProducto==4">
+            <div class="col-md-3 col-sm-3 mb-2" *ngIf="basica    ||(this.poliza=='Básica' && !!this.poliza) && responseCotizacionJSON[0].PrecioCotizacion[0].IdProducto==4 && siBasica !=0">
               <div *ngIf="semestral||(!!pago && pago=='Semestral')">
                 <div>Primer pago: ${{ responseCotizacionJSON[0].PrecioCotizacion[3].PrimaSemestralPrimerPago}}</div>
                 <div class="d-md-block">y 1 Pago de ${{ responseCotizacionJSON[0].PrecioCotizacion[3].PrimaSemestralSubsecuente}}</div>
@@ -1319,7 +1319,7 @@
               <div id="oferta"      *ngIf=" item.DescuentoAdicional !==0">Descuento Adicional</div>
               <div id="fivth"       *ngIf=" item.DescuentoAdicional !==0">{{item.DescuentoAdicional}}</div>
             </div>
-            <div class="col-md-3 col-sm-3 mb-2" *ngIf="amplia ||(!!this.poliza && this.poliza=='Amplia') && item.PrecioCotizacion[item].IdProducto==1 ">
+            <div class="col-md-3 col-sm-3 mb-2" *ngIf="amplia ||(!!this.poliza && this.poliza=='Amplia') && item.PrecioCotizacion.IdProducto==1 ">
               <div *ngIf="semestral ||(!!pago && pago=='Semestral')">
                 <div>Primer pago: ${{item.PrecioCotizacion[1].PrimaSemestralPrimerPago}}</div>
                 <div class="d-md-block">y 1 Pago de ${{item.PrecioCotizacion[1].PrimaSemestralSubsecuente}}</div>
@@ -1339,7 +1339,7 @@
                 <div id="tan">TOTAL: ${{item.PrecioCotizacion[1].PrimaMensual}}</div>
               </div>
             </div>
-            <div class="col-md-3 col-sm-3 mb-2" *ngIf="ampliaplus  ||(this.poliza=='Amplia Plus' && !!this.poliza)  && item.PrecioCotizacion[item].IdProducto==2 ">
+            <div class="col-md-3 col-sm-3 mb-2" *ngIf="ampliaplus  ||(this.poliza=='Amplia Plus' && !!this.poliza)  && item.PrecioCotizacion.IdProducto==2 ">
               <div *ngIf="semestral ||(!!pago && pago=='Semestral')">
                 <div>Primer pago: ${{item.PrecioCotizacion[0].PrimaSemestralPrimerPago}}</div>
                 <div class="d-md-block">y 1 Pago de ${{item.PrecioCotizacion[0].PrimaSemestralSubsecuente}}</div>
@@ -1359,7 +1359,7 @@
                 <div id="tan">TOTAL: ${{item.PrecioCotizacion[0].PrimaMensual}}</div>
               </div>
             </div>
-            <div class="col-md-3 col-sm-3 mb-2" *ngIf="limitada    ||(this.poliza=='Limitada' && !!this.poliza)  && item.PrecioCotizacion[item].IdProducto==3 ">
+            <div class="col-md-3 col-sm-3 mb-2" *ngIf="limitada    ||(this.poliza=='Limitada' && !!this.poliza)  && item.PrecioCotizacion.IdProducto==3 ">
               <div *ngIf="semestral ||(!!pago && pago=='Semestral')">
                 <div>Primer pago: ${{item.PrecioCotizacion[2].PrimaSemestralPrimerPago}}</div>
                 <div class="d-md-block">y 1 Pago de ${{item.PrecioCotizacion[2].PrimaSemestralSubsecuente}}</div>
@@ -1379,7 +1379,7 @@
                 <div id="tan">TOTAL: ${{item.PrecioCotizacion[2].PrimaMensual}}</div>
               </div>
             </div>
-            <div class="col-md-3 col-sm-3 mb-2" *ngIf="basica    ||(this.poliza=='Básica' && !!this.poliza)  && item.PrecioCotizacion[item].IdProducto==4">
+            <div class="col-md-3 col-sm-3 mb-2" *ngIf="basica    ||(this.poliza=='Básica' && !!this.poliza)  && item.PrecioCotizacion[item].IdProducto==4 && siBasica != 0" >
               <div *ngIf="semestral ||(!!pago && pago=='Semestral')">
                 <div>Primer pago: ${{item.PrecioCotizacion[3].PrimaSemestralPrimerPago}}</div>
                 <div class="d-md-block">y 1 Pago de ${{item.PrecioCotizacion[3].PrimaSemestralSubsecuente}}</div>
@@ -1531,8 +1531,8 @@
       <app-coberturas
         [cobertura]="cobertura"
         [polizaSelect]="poliza"
-        [valueDamage]="this.cobDamage"
-        [valuetotalTheft]="this.cobtothe"
+        [valueDamage]="cobDamage"
+        [valuetotalTheft]="cobtothe"
         (EmisorOptionsDamage)="handlerOptionsDamage($event)"
         (EmisorOptionstotalTheft)="handlerOptionstotalTheft($event)"
         (EmisorOptionscivilLiability)="handlerOptionscivilLiability($event)"
