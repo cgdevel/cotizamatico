@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
       this.sesion = { FriendlyName: 'Invitado' };
       // this.router.navigate(['/autos/login']);
     } else {
-      // this.sesion = sesion;
+      this.sesion = sesion;
     }
   }
 }

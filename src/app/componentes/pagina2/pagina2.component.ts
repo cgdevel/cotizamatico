@@ -160,13 +160,6 @@ ngOnInit(): void {
   this.veranno$ = this.store.select(selectModelo)
   this.vermarca$ = this.store.select(selectMarca)
   this.verdescripcion$ = this.store.select(selectDescripcion)
-  this.verdescripcion$.subscribe(desc => {
-    // console.log(desc)
-    this.Aseguradoras=this.getAsePorDescrip(desc.sLlave)
-
-  })
-  // this.Aseguradoras = this.getAsePorDescrip(this.verdescripcion$);
-  // console.log(this.Aseguradoras);
   this.nombre = history.state.namease;
   // console.log(this.nombre);
   this.email = history.state.emailase;
@@ -181,15 +174,6 @@ ngOnInit(): void {
   this.cobtothe= 10;
   this.cobDamage = 5 ;
   this.una = history.state.sizeta;
-  for (let index = 0; AseguradoraCobJson.length < index; index++) {
-    const element = AseguradoraCobJson[index];
-  }
-  for (const nombre of AseguradoraCobJson) {
-    // console.log(nombre);
-    for (const cobertura of nombre.coberturas) {
-      // console.log(cobertura.default);
-    }
-  }
 } // init
 
   // Funciones cobertura
@@ -373,7 +357,7 @@ ngOnInit(): void {
     // console.log("Anual :"+' '+this.anual+' '+this.statusAn)
     // this.emitFormaPago( 'Trimestral' );
     this.pago = 'Trimestral';
-    console.log(this.emitFormaPago);
+    // console.log(this.emitFormaPago);
   }
   Semestral() {
     // tiene selected this.statusS
@@ -505,40 +489,6 @@ ngOnInit(): void {
     this.aseguradora = 'QUALITAS';
     // console.log(this.aseguradora);
     return this.aseguradora;
-  }
-
-  getAsePorDescrip(Desc: string) {
-    this.AseguradorasPoDesc = [];
-    this.infovehiculoService
-      .getApiAseguradoras({
-        IdCotizamatico: Desc,
-      })
-      .subscribe(
-        (cat) => {
-          if (cat === undefined) {
-            console.log('Error');
-          }
-          // console.log(cat);
-          for (let index = 0; index < cat.length; index++) {
-            const element = cat[index];
-            this.AseguradorasPoDesc.push({
-              IdModeloCotizamatico: element.IdModeloCotizamatico,
-              IdAseguradora: element.IdAseguradora,
-              Compania: element.Compania,
-              IdModeloAseguradora: element.IdModeloAseguradora,
-              Marca: element.Marca,
-              Submarca: element.Submarca,
-              Modelo: element.Modelo,
-              Descripcion: element.Descripcion,
-            });
-          }
-          // console.log(this.AseguradorasPoDesc)
-        },
-        (err) => {
-          return // console.log('Error');
-        }
-      );
-    return this.AseguradorasPoDesc;
   }
 
   
