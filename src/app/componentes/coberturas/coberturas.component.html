@@ -14,7 +14,9 @@
           <ngx-slider
             [(value)]="valueDamage"
             [options]="optionsDamage"
+            (valueChange)="eventvalueDamage($event)"
           ></ngx-slider>
+          
           <ng-template #materialDamageTooltip>
             <b>Ampara los daños o pérdidas materiales que sufra el vehículo</b>
           </ng-template>
@@ -28,6 +30,7 @@
           <ngx-slider
             [(value)]="valuetotalTheft"
             [options]="optionstotalTheft"
+            (valueChange)="eventvaluetotalTheft($event)"
           ></ngx-slider>
           <ng-template #totalTheftTooltip>
             <b
@@ -46,6 +49,7 @@
           <ngx-slider
             [(value)]="valuecivilLiability"
             [options]="optionscivilLiability"
+            (valueChange)="eventvaluecivilLiability($event)"
           ></ngx-slider>
           <ng-template #civilLiabilityTooltip>
             <b
@@ -64,6 +68,7 @@
           <ngx-slider
             [(value)]="valuemedicalExpenses"
             [options]="optionsmedicalExpenses"
+            (valueChange)="eventvaluemedicalExpenses($event)"
           ></ngx-slider>
           <ng-template #medicalExpensesTooltip>
             <b
@@ -84,6 +89,7 @@
           <ngx-slider
             [(value)]="valuedriverAccident"
             [options]="optionsdriverAccident"
+            (valueChange)="eventvaluedriverAccident($event)"
           ></ngx-slider>
           <ng-template #driverAccidentTooltip>
             <b
@@ -101,6 +107,7 @@
           <ngx-slider
             [(value)]="valueocuppantsLiability"
             [options]="optionsocuppantsLiability"
+            (valueChange)="eventvalueocuppantsLiability($event)"
           ></ngx-slider>
           <ng-template #ocuppantsLiabilityTooltip>
             <b
@@ -448,6 +455,7 @@
           <ngx-slider
             [(value)]="valueDamage"
             [options]="optionsDamage"
+            (valueChange)="eventvalueDamage($event)"
           ></ngx-slider>
           <ng-template #materialDamageTooltip>
             <b>Ampara los daños o pérdidas materiales que sufra el vehículo</b>
@@ -463,6 +471,7 @@
           <ngx-slider
             [(value)]="valuetotalTheft"
             [options]="optionstotalTheft"
+            (valueChange)="eventvaluetotalTheft($event)"
           ></ngx-slider>
           <ng-template #totalTheft>
             <b
@@ -481,6 +490,7 @@
           <ngx-slider
             [(value)]="valuecivilLiability"
             [options]="optionscivilLiability"
+            (valueChange)="eventvaluecivilLiability($event)"
           ></ngx-slider>
           <ng-template #civilLiability>
             <b
@@ -499,6 +509,7 @@
           <ngx-slider
             [(value)]="valuemedicalExpenses"
             [options]="optionsmedicalExpenses"
+            (valueChange)="eventvaluemedicalExpenses($event)"
           ></ngx-slider>
           <ng-template #medicalExpenses>
             <b
@@ -519,6 +530,7 @@
           <ngx-slider
             [(value)]="valuedriverAccident"
             [options]="optionsdriverAccident"
+            (valueChange)="eventvaluedriverAccident($event)"
           ></ngx-slider>
           <ng-template #driverAccident>
             <b
@@ -537,6 +549,7 @@
           <ngx-slider
             [(value)]="valueocuppantsLiability"
             [options]="optionsocuppantsLiability"
+            (valueChange)="eventvalueocuppantsLiability($event)"
           ></ngx-slider>
           <ng-template #ocuppantsLiabilityTooltip>
             <b
@@ -882,6 +895,7 @@
           <ngx-slider
             [(value)]="valuetotalTheft"
             [options]="optionstotalTheft"
+            (valueChange)="eventvaluetotalTheft($event)"
           ></ngx-slider>
           <ng-template #totalTheft>
             <b
@@ -899,6 +913,7 @@
           <ngx-slider
             [(value)]="valuecivilLiability"
             [options]="optionscivilLiability"
+            (valueChange)="eventvaluecivilLiability($event)"
           ></ngx-slider>
           <ng-template #civilLiability>
             <b
@@ -916,6 +931,7 @@
           <ngx-slider
             [(value)]="valuemedicalExpenses"
             [options]="optionsmedicalExpenses"
+            (valueChange)="eventvaluemedicalExpenses($event)"
           ></ngx-slider>
           <ng-template #medicalExpenses>
             <b
@@ -935,6 +951,7 @@
           <ngx-slider
             [(value)]="valuedriverAccident"
             [options]="optionsdriverAccident"
+            (valueChange)="eventvaluedriverAccident($event)"
           ></ngx-slider>
           <ng-template #driverAccident>
             <b
@@ -952,6 +969,7 @@
           <ngx-slider
             [(value)]="valueocuppantsLiability"
             [options]="optionsocuppantsLiability"
+            (valueChange)="eventvalueocuppantsLiability($event)"
           ></ngx-slider>
           <ng-template #ocuppantsLiabilityTooltip>
             <b
@@ -1099,6 +1117,7 @@
           <ngx-slider
             [(value)]="valuecivilLiability"
             [options]="optionscivilLiability"
+            (valueChange)="eventvaluecivilLiability($event)"
           ></ngx-slider>
           <ng-template #civilLiability>
             <b
@@ -1116,6 +1135,7 @@
           <ngx-slider
             [(value)]="valuemedicalExpenses"
             [options]="optionsmedicalExpenses"
+            (valueChange)="eventvaluemedicalExpenses($event)"
           ></ngx-slider>
           <ng-template #medicalExpenses>
             <b
@@ -1135,6 +1155,7 @@
           <ngx-slider
             [(value)]="valuedriverAccident"
             [options]="optionsdriverAccident"
+            (valueChange)="eventvaluedriverAccident($event)"
           ></ngx-slider>
           <ng-template #driverAccident>
             <b
@@ -1152,6 +1173,7 @@
           <ngx-slider
             [(value)]="valueocuppantsLiability"
             [options]="optionsocuppantsLiability"
+            (valueChange)="eventvalueocuppantsLiability($event)"
           ></ngx-slider>
           <ng-template #ocuppantsLiabilityTooltip>
             <b
