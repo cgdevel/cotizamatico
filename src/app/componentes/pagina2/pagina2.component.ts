@@ -499,10 +499,10 @@ constructor(
 
   handlerOptionsDamage(e: number) {
    this.Damage=e;
-   if (this.poliza=='Amplia') {
-     this.responseCotizacionJSON.forEach(element => {
-       let Aseguradora=element.idAseguradora
-          switch (Aseguradora) {
+   if (this.poliza=='Amplia'|| this.amplia) {
+    for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
+      let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora,10);
+      switch (element) {
             // case 1  :
             // break;
             case 2  :
@@ -620,20 +620,30 @@ constructor(
               }
             break;
             default:  
+            requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
+              ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi,
+                {
+                  idCobertura: 1887,       //cobertura por producto
+                  idTipoCobertura:2,    //suma asegurada o deducible
+                  idFactor:e 
+                }
+                )
             requestIdPeticion.PaqueteCoberturasApi={
               ...requestIdPeticion.PaqueteCoberturasApi,
-              idPaquete:null,
-              idAseguradora:null,
-              CoberturasApi: null
+              idPaquete:1,
+              idAseguradora:553,
+              CoberturasApi: [
+                ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
+              ]
             }
             break;
-          }
-     });
+      }
+    }
    } 
-   if (this.poliza=='Amplia Plus') {
-    this.responseCotizacionJSON.forEach(element => {
-      let Aseguradora = element.idAseguradora
-          switch (Aseguradora) {
+   if (this.poliza=='Amplia Plus'|| this.ampliaplus) {
+    for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
+      let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora,10);
+      switch (element) {
                 // case 1  :
                 // break;
             case 2:
@@ -746,147 +756,151 @@ constructor(
                     CoberturasApi: null
                 }
                 break;
-            }
-    });  
+      }
+    }  
    } 
+   console.log(requestIdPeticion)
   }
   handlerOptionstotalTheft(e: number) {
     this.totalTheft=e; 
-    if (this.poliza=='Amplia') {
-      this.responseCotizacionJSON.forEach(element => {
-        let Aseguradora=element.idAseguradora
-           switch (Aseguradora) {
-             // case 1  :
-             // break;
-             case 2  :
-               requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-                 ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi,
-                   {
-                     idCobertura: 4	,       //cobertura por producto
-                     idTipoCobertura:2,    //suma asegurada o deducible
-                     idFactor:e 
-                   }
-                   )
-               requestIdPeticion.PaqueteCoberturasApi={
-                 ...requestIdPeticion.PaqueteCoberturasApi,
-                 idPaquete:1,
-                 idAseguradora:2,
-                 CoberturasApi: [
-                   ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-                 ]
-               }
-             break;
-             case 4  :
-               requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-                 ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi,
-                   {
-                     idCobertura: 228,       //cobertura por producto
-                     idTipoCobertura:2,    //suma asegurada o deducible
-                     idFactor:e 
-                   }
-                   )
-               requestIdPeticion.PaqueteCoberturasApi={
-                 ...requestIdPeticion.PaqueteCoberturasApi,
-                 idPaquete:1,
-                 idAseguradora:4,
-                 CoberturasApi: [
-                   ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-                 ]
-               }
-             break;
-             case 5   :
-               requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-                 ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi,
-                   {
-                     idCobertura: 266,       //cobertura por producto
-                     idTipoCobertura:2,    //suma asegurada o deducible
-                     idFactor:e 
-                   }
-                   )
-               requestIdPeticion.PaqueteCoberturasApi={
-                 ...requestIdPeticion.PaqueteCoberturasApi,
-                 idPaquete:1,
-                 idAseguradora:5,
-                 CoberturasApi: [
-                   ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-                 ]
-               }
-             break;
-             // case 6  :
-             // break;
-             // case 26	:
-             // break;
-             case 27	:
-               requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-                 ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi,
-                   {
-                     idCobertura: 115,       //cobertura por producto
-                     idTipoCobertura:2,    //suma asegurada o deducible
-                     idFactor:e 
-                   }
-                   )
-               requestIdPeticion.PaqueteCoberturasApi={
-                 ...requestIdPeticion.PaqueteCoberturasApi,
-                 idPaquete:1,
-                 idAseguradora:27,
-                 CoberturasApi: [
-                   ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-                 ]
-               }
-             break;
-             // case 450:
-             // break;
-             case 494:
-               requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-                 ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi,
-                   {
-                     idCobertura: 1793,       //cobertura por producto
-                     idTipoCobertura:2,    //suma asegurada o deducible
-                     idFactor:e 
-                   }
-                   )
-               requestIdPeticion.PaqueteCoberturasApi={
-                 ...requestIdPeticion.PaqueteCoberturasApi,
-                 idPaquete:1,
-                 idAseguradora:494,
-                 CoberturasApi: [
-                   ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-                 ]
-               }
-             break;
-             case 553:
-               requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-                 ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi,
-                   {
-                     idCobertura: 1889,       //cobertura por producto
-                     idTipoCobertura:2,    //suma asegurada o deducible
-                     idFactor:e 
-                   }
-                   )
-               requestIdPeticion.PaqueteCoberturasApi={
-                 ...requestIdPeticion.PaqueteCoberturasApi,
-                 idPaquete:1,
-                 idAseguradora:553,
-                 CoberturasApi: [
-                   ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-                 ]
-               }
-             break;
-             default:  
-             requestIdPeticion.PaqueteCoberturasApi={
-               ...requestIdPeticion.PaqueteCoberturasApi,
-               idPaquete:null,
-               idAseguradora:null,
-               CoberturasApi: null
-             }
-             break;
-           }
-      });
+    if (this.poliza=='Amplia' || this.amplia) {
+      console.log(this.amplia)
+      for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
+        let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora,10);
+        switch (element) {
+          // case 1  :
+          // break;
+          case 2  :
+            requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
+              ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi,
+                {
+                  idCobertura: 4	,       //cobertura por producto
+                  idTipoCobertura:2,    //suma asegurada o deducible
+                  idFactor:e 
+                }
+                )
+            requestIdPeticion.PaqueteCoberturasApi={
+              ...requestIdPeticion.PaqueteCoberturasApi,
+              idPaquete:1,
+              idAseguradora:2,
+              CoberturasApi: [
+                ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
+              ]
+            }
+            console.log(requestIdPeticion.PaqueteCoberturasApi);
+          break;
+          case 4  :
+            requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
+              ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi,
+                {
+                  idCobertura: 228,       //cobertura por producto
+                  idTipoCobertura:2,    //suma asegurada o deducible
+                  idFactor:e 
+                }
+                )
+            requestIdPeticion.PaqueteCoberturasApi={
+              ...requestIdPeticion.PaqueteCoberturasApi,
+              idPaquete:1,
+              idAseguradora:4,
+              CoberturasApi: [
+                ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
+              ]
+            }
+          break;
+          case 5   :
+            requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
+              ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi,
+                {
+                  idCobertura: 266,       //cobertura por producto
+                  idTipoCobertura:2,    //suma asegurada o deducible
+                  idFactor:e 
+                }
+                )
+            requestIdPeticion.PaqueteCoberturasApi={
+              ...requestIdPeticion.PaqueteCoberturasApi,
+              idPaquete:1,
+              idAseguradora:5,
+              CoberturasApi: [
+                ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
+              ]
+            }
+          break;
+          // case 6  :
+          // break;
+          // case 26	:
+          // break;
+          case 27	:
+            requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
+              ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi,
+                {
+                  idCobertura: 115,       //cobertura por producto
+                  idTipoCobertura:2,    //suma asegurada o deducible
+                  idFactor:e 
+                }
+                )
+            requestIdPeticion.PaqueteCoberturasApi={
+              ...requestIdPeticion.PaqueteCoberturasApi,
+              idPaquete:1,
+              idAseguradora:27,
+              CoberturasApi: [
+                ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
+              ]
+            }
+          break;
+          // case 450:
+          // break;
+          case 494:
+            requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
+              ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi,
+                {
+                  idCobertura: 1793,       //cobertura por producto
+                  idTipoCobertura:2,    //suma asegurada o deducible
+                  idFactor:e 
+                }
+                )
+            requestIdPeticion.PaqueteCoberturasApi={
+              ...requestIdPeticion.PaqueteCoberturasApi,
+              idPaquete:1,
+              idAseguradora:494,
+              CoberturasApi: [
+                ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
+              ]
+            }
+          break;
+          case 553:
+            requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
+              ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi,
+                {
+                  idCobertura: 1889,       //cobertura por producto
+                  idTipoCobertura:2,    //suma asegurada o deducible
+                  idFactor:e 
+                }
+                )
+            requestIdPeticion.PaqueteCoberturasApi={
+              ...requestIdPeticion.PaqueteCoberturasApi,
+              idPaquete:1,
+              idAseguradora:553,
+              CoberturasApi: [
+                ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
+              ]
+            }
+          break;
+          default:  
+          requestIdPeticion.PaqueteCoberturasApi={
+            ...requestIdPeticion.PaqueteCoberturasApi,
+            idPaquete:null,
+            idAseguradora:null,
+            CoberturasApi: null
+          }
+          break;
+        }
+        
+      }
     } 
-    if (this.poliza=='Amplia Plus') {
-      this.responseCotizacionJSON.forEach(element => {
-        let Aseguradora = element.idAseguradora
-            switch (Aseguradora) {
+    if (this.poliza=='Amplia Plus' || this.ampliaplus) {
+      for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
+        let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora,10);
+        switch (element) {
                   // case 1  :
                   // break;
               case 2:
@@ -999,13 +1013,14 @@ constructor(
                       CoberturasApi: null
                   }
                   break;
-              }
-      });  
+        }
+     
     }
-    if (this.poliza=='Limitada') {
-      this.responseCotizacionJSON.forEach(element => {
-        let Aseguradora = element.idAseguradora
-            switch (Aseguradora) {
+    }
+    if (this.poliza=='Limitada'|| this.limitada) {
+      for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
+        let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora,10);
+        switch (element) {
                   // case 1  :
                   // break;
               case 2:
@@ -1105,9 +1120,9 @@ constructor(
                       CoberturasApi: null
                   }
                   break;
-              }
-      });  
-     }        
+        }
+      }  
+    }        
   }      
   handlerOptionscivilLiability( e: number) {
     this.civilLiability =e;    
@@ -1122,7 +1137,6 @@ constructor(
     this.ocuppantsLiability=e;
   }
   consultanuevosprecios(){
-    console.log(requestIdPeticion);
     this.store.dispatch(new GetIdPeticion(requestIdPeticion))
   }
   
