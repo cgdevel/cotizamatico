@@ -15,6 +15,8 @@ import { selectIdPeticionResponse } from 'src/app/selectors/cotizamatico.selecto
 import { RequestIdCotizacion } from 'src/app/interphaces/request/RequestIdCotizacion';
 import { RequestCatalogoCoberturas } from 'src/app/interphaces/request/RequesteCatalogoCoberturas';
 import {requestIdPeticion} from 'src/app/interphaces/requesIdPeticionCotizzacion';
+import { selectSesion } from 'src/app/selectors/login.selectors';
+import { Session } from 'inspector';
 @Component({
   selector: 'app-pagina1',
   templateUrl: './pagina1.component.html',
@@ -29,6 +31,7 @@ export class Pagina1Component implements OnInit {
     private infovehiculoService: InfovehiculoService,
   ) {}
 
+  sesionByJson: Observable<any>;
   sesion: any;
   ubicacion:any;
 
@@ -82,7 +85,12 @@ export class Pagina1Component implements OnInit {
     const sesion = this.storageService.getJsonValue(
       Constantes.sesiones.datosSesion
     );
-
+    this.sesionByJson = this.store.select(selectSesion)
+    this.sesionByJson.subscribe(sesion => {
+      console.log(sesion);
+      // requestIdPeticion.cotizacion.Credencial.IdCredential=parseInt(sesion.IdCredential,10) ;
+      // requestIdPeticion.cotizacion.Credencial.IdProfile=parseInt(sesion.Profiles[0].IdProfile,10) ; 
+    })
     if (sesion !== null && sesion !== undefined) {
       this.sesion = sesion;
     }
@@ -189,7 +197,7 @@ export class Pagina1Component implements OnInit {
         requestIdPeticion.cotizacion.Domicilio.iEstadoPais         = parseInt(this.ubicacion[0].Municipio.Estado.iEstadoPais,10);
         requestIdPeticion.cotizacion.Domicilio.iClaveEstadoCepomex = parseInt(this.ubicacion[0].Municipio.Estado.iClaveEstadoCepomex,10);
         requestIdPeticion.cotizacion.Persona.iIdPais             = parseInt(this.ubicacion[0].Municipio.Estado.iEstadoPais,10);
-        console.log(this.ubicacion)
+        // console.log(this.ubicacion)
       });
   }
 

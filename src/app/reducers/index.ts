@@ -7,12 +7,15 @@ import {
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 import * as fromCotizamatico from '../reducers/cotizamatico.reducer'
+import * as fromLogin from '../reducers/login.reducer'
 export interface State {
   cotizamatico: fromCotizamatico.State;
+  sesion: fromLogin.State
 }
 
 export const reducers: ActionReducerMap<State> = {
- cotizamatico: fromCotizamatico.reducer
+ cotizamatico: fromCotizamatico.reducer,
+ sesion: fromLogin.reducer
 };
 
 

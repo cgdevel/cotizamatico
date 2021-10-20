@@ -1319,7 +1319,7 @@
               <div id="oferta"      *ngIf=" item.DescuentoAdicional !==0">Descuento Adicional</div>
               <div id="fivth"       *ngIf=" item.DescuentoAdicional !==0">{{item.DescuentoAdicional}}</div>
             </div>
-            <div class="col-md-3 col-sm-3 mb-2" *ngIf="amplia ||(!!this.poliza && this.poliza=='Amplia') && item.PrecioCotizacion.IdProducto==1 ">
+            <div class="col-md-3 col-sm-3 mb-2" *ngIf="amplia ||( this.poliza=='Amplia'&& !!this.poliza ) && item.PrecioCotizacion.IdProducto==1 ">
               <div *ngIf="semestral ||(!!pago && pago=='Semestral')">
                 <div>Primer pago: ${{item.PrecioCotizacion[1].PrimaSemestralPrimerPago}}</div>
                 <div class="d-md-block">y 1 Pago de ${{item.PrecioCotizacion[1].PrimaSemestralSubsecuente}}</div>
@@ -1540,6 +1540,16 @@
         (EmisorOptionsdriverAccident)="handlerOptionsdriverAccident($event)"
         (EmisorOptionsocuppantsLiability)="handlerOptionsocuppantsLiability($event)"
       ></app-coberturas>
+      <div class="row mb-4">
+        <div class="col-12">
+          <button
+            class="btn btn-primary cargando"
+            (click)="consultanuevosprecios()"
+          >
+            Cargando
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -96,3 +96,12 @@ span {
   width: 100% !important;
   height: 100% !important;
 }
+
+@media (max-width: 576px) {
+  .cargando {
+    font-size: 14px !important;
+    margin-top: 24px !important;
+    width: 84px !important;
+    margin-left: -16px !important;
+  }
+}
