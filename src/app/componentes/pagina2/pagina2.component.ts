@@ -499,13 +499,16 @@ constructor(
 
   handlerOptionsDamage(e: number) {
    this.Damage=e;
+   console.log(requestIdPeticion)
    if (this.poliza=='Amplia'|| this.amplia) {
     for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
       let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora,10);
+      console.log(element)
       switch (element) {
             // case 1  :
             // break;
             case 2  :
+              console.log('CHUB')
               requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
                 ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi,
                   {
