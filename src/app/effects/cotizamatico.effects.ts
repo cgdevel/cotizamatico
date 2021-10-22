@@ -23,12 +23,17 @@ GetIdPeticion$ = this.actions$.pipe(
     ))
 )
 
-@Effect()
+@Effect({dispatch: false})
 GetCotizacion$=this.actions$.pipe(
     ofType<GetCotizacion>(CotizamaticoActionsTypes.GetCotizacion),
         mergeMap( action=>
             this.apiCotizacionService.getIdCotizacion(action.payload).pipe(
-                map( datos => new GetCotizacionResponse(datos)),
+                map( datos => {
+                    this.store.dispatch(new GetCotizacionResponse(datos))
+                    if(datos.Estatus !== 2){
+                        this.store.dispatch(new GetCotizacion(action.payload))
+                    }
+                }),
                     catchError(err =>{
                         return of(new Error(err.message));
                 })

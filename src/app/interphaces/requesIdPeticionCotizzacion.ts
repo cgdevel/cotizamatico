@@ -119,11 +119,11 @@ export let requestIdPeticion: RequestIdPeticionCotizacion ={
                   Documento3030: null
               
     },
-    PaqueteCoberturasApi: { 
+    PaqueteCoberturasApi: [{ 
       idPaquete :1,
       idAseguradora :2,
       CoberturasApi: []
-},
+}],
                 User: "COTIZAMATICO",
                 Device: "EMULATOR30X1X5X0",
                 Token: "7C2C8D3B-C488-4D14-B360-6B94013A0C4E"

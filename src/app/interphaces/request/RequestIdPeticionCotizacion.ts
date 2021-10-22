@@ -104,7 +104,7 @@ export interface RequestIdPeticionCotizacion{
                     Documento3030: any,
                 
     },
-     PaqueteCoberturasApi :{
+     PaqueteCoberturasApi :Array<{
                     idPaquete :number,
                     idAseguradora :number,
                     CoberturasApi : Array < {
@@ -112,7 +112,7 @@ export interface RequestIdPeticionCotizacion{
                         idTipoCobertura :number,
                         idFactor :number
                     }>
-    },
+    }>,
      User? : string ,
      Device? : string ,
      Token? : string  
