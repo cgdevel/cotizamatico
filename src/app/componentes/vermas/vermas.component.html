@@ -143,88 +143,70 @@
                         </td>
                       </tr>
                       <tr *ngIf="this.poliza=='Limitada' " >
-                        <div *ngIf=" pago=='Semestral' ">
-                          <td align="center" *ngFor="let item of responseCotizacionJSON">
+                        <td align="center" *ngFor="let item of responseCotizacionJSON">
+                          <div *ngIf=" pago=='Semestral' ">
                             <p>Primer pago: ${{item.PrecioCotizacion[2].PrimaSemestralPrimerPago}}</p>
                             <p>y 1 Pago de ${{item.PrecioCotizacion[2].PrimaSemestralSubsecuente}}</p>
                             <p>TOTAL: ${{item.PrecioCotizacion[2].PrimaSemestral}}</p>
-                          </td>
-                        </div>
-                        <div *ngIf=" pago=='Trimestral'">
-                          <td align="center" *ngFor="let item of responseCotizacionJSON">
+                          </div>
+                          <div *ngIf=" pago=='Trimestral'">
                             <p>Primer pago: ${{item.PrecioCotizacion[2].PrimaTrimestralPrimerPago}}</p>
                             <p>y 3 Pagos de ${{item.PrecioCotizacion[2].PrimaTrimestralSubsecuente}}</p>
                             <p>TOTAL: ${{item.PrecioCotizacion[2].PrimaTrimestral}}</p>
-                          </td>
-                        </div>
-                        <div *ngIf=" pago=='Anual' ">
-                          <td align="center" *ngFor="let item of responseCotizacionJSON">
+                          </div>
+                          <div *ngIf=" pago=='Anual' ">
                             <p>TOTAL: ${{item.PrecioCotizacion[2].dPrimaNeta}}</p>
-                          </td>
-                        </div>
-                        <div *ngIf=" pago=='Mensual' ">
-                          <td align="center" *ngFor="let item of responseCotizacionJSON">
+                          </div>
+                          <div *ngIf=" pago=='Mensual' ">
                             <p>Primer pago: ${{item.PrecioCotizacion[2].PrimaMensualPrimerPago}}</p>
                             <p>y 11 Pagos de ${{item.PrecioCotizacion[2].PrimaMensualSubsecuente}}</p>
                             <p>TOTAL: ${{item.PrecioCotizacion[2].PrimaMensual}}</p>
-                          </td>
-                        </div>
+                          </div>
+                        </td>
                       </tr>
                       <tr class="btd" *ngIf="this.poliza=='Amplia Plus' " >
-                        <div *ngIf=" pago=='Semestral' ">
-                          <td align="center" *ngFor="let item of responseCotizacionJSON">
-                            <p>Primer pago: ${{item.PrecioCotizacion[0].PrimaSemestralPrimerPago}}</p>
-                            <p>y 1 Pago de ${{item.PrecioCotizacion[0].PrimaSemestralSubsecuente}}</p>
-                            <p>TOTAL: ${{item.PrecioCotizacion[0].PrimaSemestral}}</p>
-                          </td>
-                        </div>
-                        <div *ngIf=" pago=='Trimestral'">
-                          <td align="center" *ngFor="let item of responseCotizacionJSON">
-                            <p>Primer pago: ${{item.PrecioCotizacion[0].PrimaTrimestralPrimerPago}}</p>
-                            <p>y 3 Pagos de ${{item.PrecioCotizacion[0].PrimaTrimestralSubsecuente}}</p>
-                            <p>TOTAL: ${{item.PrecioCotizacion[0].PrimaTrimestral}}</p>
-                          </td>
-                        </div>
-                        <div *ngIf=" pago=='Anual' ">
-                          <td align="center" *ngFor="let item of responseCotizacionJSON">
-                            <p>TOTAL: ${{item.PrecioCotizacion[0].dPrimaNeta}}</p>
-                          </td>
-                        </div>
-                        <div *ngIf=" pago=='Mensual' ">
-                          <td align="center" *ngFor="let item of responseCotizacionJSON">
-                            <p>Primer pago: ${{item.PrecioCotizacion[0].PrimaMensualPrimerPago}}</p>
-                            <p>y 11 Pagos de ${{item.PrecioCotizacion[0].PrimaMensualSubsecuente}}</p>
-                            <p>TOTAL: ${{item.PrecioCotizacion[0].PrimaMensual}}</p>
-                          </td>
-                        </div>
+                        <td align="center" *ngFor="let item of responseCotizacionJSON">
+                          <div *ngIf=" pago=='Semestral' ">
+                              <p>Primer pago: ${{item.PrecioCotizacion[0].PrimaSemestralPrimerPago}}</p>
+                              <p>y 1 Pago de ${{item.PrecioCotizacion[0].PrimaSemestralSubsecuente}}</p>
+                              <p>TOTAL: ${{item.PrecioCotizacion[0].PrimaSemestral}}</p>
+                          </div>
+                          <div *ngIf=" pago=='Trimestral'">
+                              <p>Primer pago: ${{item.PrecioCotizacion[0].PrimaTrimestralPrimerPago}}</p>
+                              <p>y 3 Pagos de ${{item.PrecioCotizacion[0].PrimaTrimestralSubsecuente}}</p>
+                              <p>TOTAL: ${{item.PrecioCotizacion[0].PrimaTrimestral}}</p>
+                          </div>
+                          <div *ngIf=" pago=='Anual' ">
+                              <p>TOTAL: ${{item.PrecioCotizacion[0].dPrimaNeta}}</p>
+                          </div>
+                          <div *ngIf=" pago=='Mensual' ">
+                              <p>Primer pago: ${{item.PrecioCotizacion[0].PrimaMensualPrimerPago}}</p>
+                              <p>y 11 Pagos de ${{item.PrecioCotizacion[0].PrimaMensualSubsecuente}}</p>
+                              <p>TOTAL: ${{item.PrecioCotizacion[0].PrimaMensual}}</p>
+                          </div>
+                        </td>
                       </tr>
                       <tr class="btd" *ngIf="this.poliza=='Amplia' " >
-                        <div *ngIf=" pago=='Semestral' ">
-                          <td align="center" *ngFor="let item of responseCotizacionJSON">
-                            <p>Primer pago: ${{item.PrecioCotizacion[1].PrimaSemestralPrimerPago}}</p>
-                            <p>y 1 Pago de ${{item.PrecioCotizacion[1].PrimaSemestralSubsecuente}}</p>
-                            <p>TOTAL: ${{item.PrecioCotizacion[1].PrimaSemestral}}</p>
-                          </td>
-                        </div>
-                        <div *ngIf=" pago=='Trimestral'">
-                          <td align="center" *ngFor="let item of responseCotizacionJSON">
-                            <p>Primer pago: ${{item.PrecioCotizacion[1].PrimaTrimestralPrimerPago}}</p>
-                            <p>y 3 Pagos de ${{item.PrecioCotizacion[1].PrimaTrimestralSubsecuente}}</p>
-                            <p>TOTAL: ${{item.PrecioCotizacion[1].PrimaTrimestral}}</p>
-                          </td>
-                        </div>
-                        <div *ngIf=" pago=='Anual' ">
-                          <td align="center" *ngFor="let item of responseCotizacionJSON">
-                            <p>TOTAL: ${{item.PrecioCotizacion[1].dPrimaNeta}}</p>
-                          </td>
-                        </div>
-                        <div *ngIf=" pago=='Mensual' ">
-                          <td align="center" *ngFor="let item of responseCotizacionJSON">
-                            <p>Primer pago: ${{item.PrecioCotizacion[1].PrimaMensualPrimerPago}}</p>
-                            <p>y 11 Pagos de ${{item.PrecioCotizacion[1].PrimaMensualSubsecuente}}</p>
-                            <p>TOTAL: ${{item.PrecioCotizacion[1].PrimaMensual}}</p>
-                          </td>
-                        </div>
+                        <td align="center" *ngFor="let item of responseCotizacionJSON"> 
+                          <div *ngIf=" pago=='Semestral' ">
+                              <p>Primer pago: ${{item.PrecioCotizacion[1].PrimaSemestralPrimerPago}}</p>
+                              <p>y 1 Pago de ${{item.PrecioCotizacion[1].PrimaSemestralSubsecuente}}</p>
+                              <p>TOTAL: ${{item.PrecioCotizacion[1].PrimaSemestral}}</p>
+                          </div>
+                          <div *ngIf=" pago=='Trimestral'">
+                              <p>Primer pago: ${{item.PrecioCotizacion[1].PrimaTrimestralPrimerPago}}</p>
+                              <p>y 3 Pagos de ${{item.PrecioCotizacion[1].PrimaTrimestralSubsecuente}}</p>
+                              <p>TOTAL: ${{item.PrecioCotizacion[1].PrimaTrimestral}}</p>
+                          </div>
+                          <div *ngIf=" pago=='Anual' ">
+                              <p>TOTAL: ${{item.PrecioCotizacion[1].dPrimaNeta}}</p>
+                          </div>
+                          <div *ngIf=" pago=='Mensual' ">
+                              <p>Primer pago: ${{item.PrecioCotizacion[1].PrimaMensualPrimerPago}}</p>
+                              <p>y 11 Pagos de ${{item.PrecioCotizacion[1].PrimaMensualSubsecuente}}</p>
+                              <p>TOTAL: ${{item.PrecioCotizacion[1].PrimaMensual}}</p>
+                          </div>
+                        </td>
                       </tr>
                       <!-- <td class="btd" *ngFor="let item of Aseguradoras">
                         <tr
