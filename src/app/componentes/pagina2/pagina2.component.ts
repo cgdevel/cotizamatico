@@ -119,15 +119,12 @@ constructor(
   }
   responseCotizacionJSON =new Array
   ngOnInit(): void {
-    // setTimeout(() => {
       this.store.select(selectIdPeticionResponse).subscribe(id=>{
         console.log(id.iDPeticion);
         if(id.iDPeticion === null) return
       this.requestIdCotizacion.IdPeticion = id.iDPeticion;
       this.store.dispatch(new GetCotizacion(this.requestIdCotizacion));
     });
-    // },90000)
-    // console.log(history.state)
     this.store.select(selectCotizacionResponse).subscribe(res => 
       {
         if(!res.jsonCotizacion.length&& res.idCotizacion!=1) 
@@ -186,15 +183,6 @@ constructor(
     this.cobtothe= 10;
     this.cobDamage = 5 ;
     this.una = history.state.sizeta;
-    for (let index = 0; AseguradoraCobJson.length < index; index++) {
-      const element = AseguradoraCobJson[index];
-    }
-    for (const nombre of AseguradoraCobJson) {
-      // console.log(nombre);
-      for (const cobertura of nombre.coberturas) {
-        // console.log(cobertura.default);
-      }
-    }
   } // init
 
   // Funciones cobertura
@@ -212,7 +200,7 @@ constructor(
     this.cobDamage = 3;
     this.cobtothe = 5 ;
     this.poliza ="Amplia Plus";
-    // requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.length);
+    requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
     // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
@@ -232,7 +220,7 @@ constructor(
     this.cobDamage = 5;
     this.cobtothe = 10 ;
     this.poliza ="Amplia";
-    // requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.length);
+    requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
     // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
@@ -250,7 +238,7 @@ constructor(
     this.statusL = this.limitada ? 'Selected' : 'NoSelected';
     this.cobertura = 2;
     this.poliza ="Limitada";
-    // requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.length);
+    requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
@@ -268,7 +256,7 @@ constructor(
     this.statusB = this.basica ? 'Selected' : 'NoSelected';
     this.cobertura = 3;
     this.poliza ="Básica";
-    // requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.length);
+    requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     // this.store.select(selectCotizacionResponse).subscribe(res => 
     //   {
     //     if(!res.jsonCotizacion.length&& res.idCotizacion!=1) 
@@ -299,7 +287,7 @@ constructor(
     this.limitada   =false;
     this.basica     =false;
     this.cobertura=undefined;
-    // requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.length);
+    requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     if (this.poliza=='Amplia Plus') {
       this.cobDamage = 3;
       this.cobtothe = 5 ;
@@ -500,7 +488,7 @@ constructor(
 
   handlerOptionsDamage(e: number) {
    this.Damage=e;
-   // requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.length);
+   requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
    if (this.poliza=='Amplia'|| this.amplia) {
     for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
       let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora,10);
@@ -596,7 +584,9 @@ constructor(
     for (let index = 0; index < requestIdPeticion.PaqueteCoberturasApi.length; index++) {
       let newPaqueteCoberturasAPI = requestIdPeticion.PaqueteCoberturasApi[index];
       console.log(newPaqueteCoberturasAPI)
-      Object.assign(newPaqueteCoberturasAPI,newPaqueteCoberturasAPI)
+      let ob = {...newPaqueteCoberturasAPI, ...newPaqueteCoberturasAPI} ;
+      console.log(newPaqueteCoberturasAPI)
+      console.log(ob)
     }
    } 
    if (this.poliza=='Amplia Plus'|| this.ampliaplus) {
@@ -733,7 +723,7 @@ constructor(
 
   handlerOptionstotalTheft(e: number) {
     this.totalTheft=e; 
-    // requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.length);
+    requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     if (this.poliza == 'Amplia' || this.amplia) {
       for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
           let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
@@ -1102,7 +1092,7 @@ constructor(
 
   handlerOptionscivilLiability( e: number) {
     this.civilLiability =e;
-    // requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.length);
+    requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     if (this.poliza == 'Amplia' || this.amplia) {
       for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
           let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
@@ -1419,7 +1409,7 @@ constructor(
 
   handlerOptionsmedicalExpenses(e: number) {
     this.medicalExpenses =e;
-    // requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.length);
+    requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     if (this.poliza == 'Amplia' || this.amplia) {
       for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
           let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
@@ -1769,7 +1759,7 @@ constructor(
 
   handlerOptionsdriverAccident(e: number) {
     this.driverAccident  =e;
-    // requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.length);
+    requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     if (this.poliza == 'Amplia' || this.amplia) {
       for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
           let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
@@ -2106,7 +2096,7 @@ constructor(
 
   handlerOptionsocuppantsLiability(e: number) {
     this.ocuppantsLiability=e;
-    // requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.length);
+    requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     if (this.poliza == 'Amplia' || this.amplia) {
       for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
           let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
@@ -2336,49 +2326,43 @@ constructor(
 
   consultanuevosprecios(){
     this.store.dispatch(new GetIdPeticion(requestIdPeticion))
-    // this.store.select(selectIdPeticionResponse).subscribe(id=>{
-    //   console.log(id.iDPeticion);
-    // });
-    setTimeout(() => {
-      this.store.select(selectIdPeticionResponse).subscribe(id=>{
-        console.log(id.iDPeticion);
-        if(id.iDPeticion === null) return
-      this.requestIdCotizacion.IdPeticion = id.iDPeticion;
-      this.store.dispatch(new GetCotizacion(this.requestIdCotizacion));
+    this.store.select(selectIdPeticionResponse).subscribe(id=>{
+      console.log(id.iDPeticion);
+      if(id.iDPeticion === null) return
+    this.requestIdCotizacion.IdPeticion = id.iDPeticion;
+    this.store.dispatch(new GetCotizacion(this.requestIdCotizacion));
     });
-    },90000)
-    this.store.select(selectCotizacionResponse).subscribe(res => 
+    this.store.select(selectCotizacionResponse).subscribe(res => {
+      if(!res.jsonCotizacion.length&& res.idCotizacion!=1) 
       {
-        if(!res.jsonCotizacion.length&& res.idCotizacion!=1) 
-        {
-          return
-        } else{
-            this.responseCotizacionJSON=[];
-          //   res.jsonCotizacion.forEach(element => {
-          //   let json=JSON.parse(element)
-          //   this.responseCotizacionJSON.push(json)
-          // });
-          for (let index = 0; index < res.jsonCotizacion.length; index++) {
-            const element = JSON.parse(res.jsonCotizacion[index]);
-            this.responseCotizacionJSON.push(element);
-          }
-          // OBTIENE EL IDPRODUCTO DE PRECIOCOTIZACION POR CADA this.Aseguradora Y DESHABILITAR BOTON BASICA
-          console.log(this.responseCotizacionJSON);
-          this.siBasica=0;
-          this.noBasica=0;
-          for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-            const for1 = this.responseCotizacionJSON[index].PrecioCotizacion;
-            for (let index = 0; index < for1.length; index++) {
-              const for2 = for1[index].IdProducto;
-              if (for2<=3) {
-                    this.noBasica+=1;
-                  }else{
-                    this.siBasica+=1;
-                  }
-            }
-          }
-          console.log(this.noBasica,this.siBasica);
+        return
+      } else{
+          this.responseCotizacionJSON=[];
+        //   res.jsonCotizacion.forEach(element => {
+        //   let json=JSON.parse(element)
+        //   this.responseCotizacionJSON.push(json)
+        // });
+        for (let index = 0; index < res.jsonCotizacion.length; index++) {
+          const element = JSON.parse(res.jsonCotizacion[index]);
+          this.responseCotizacionJSON.push(element);
         }
+        // OBTIENE EL IDPRODUCTO DE PRECIOCOTIZACION POR CADA this.Aseguradora Y DESHABILITAR BOTON BASICA
+        console.log(this.responseCotizacionJSON);
+        this.siBasica=0;
+        this.noBasica=0;
+        for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
+          const for1 = this.responseCotizacionJSON[index].PrecioCotizacion;
+          for (let index = 0; index < for1.length; index++) {
+            const for2 = for1[index].IdProducto;
+            if (for2<=3) {
+                  this.noBasica+=1;
+                }else{
+                  this.siBasica+=1;
+                }
+          }
+        }
+        console.log(this.noBasica,this.siBasica);
+      }
     })
     console.log(requestIdPeticion)
   }

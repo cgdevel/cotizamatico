@@ -3,11 +3,11 @@
     <div class="col-4">
       <div class="form-group">
         <label for="poliza">Tipo de poliza</label>
-        <select class="form-control" id="poliza">
+        <select [(ngModel)]="poliza" class="form-control" id="poliza">
           <option>Amplia Plus</option>
           <option selected>Amplia</option>
           <option>Limitada</option>
-          <option>Básica</option>
+          <option disabled="siBasica == 0">Básica</option>
         </select>
       </div>
     </div>
@@ -24,7 +24,7 @@
     <div class="col-4">
       <div class="form-group">
         <label for="pago">Forma de pago</label>
-        <select class="form-control" id="pago">
+        <select [(ngModel)]="pago" class="form-control" id="pago">
           <option>Mensual</option>
           <option>Trimestral</option>
           <option>Semestral</option>
@@ -84,22 +84,149 @@
                   >
                     <tbody>
                       <tr id="padou">
-                        <td align="center" *ngFor="let item of Aseguradoras">
+                        <td align="center" *ngFor="let item of responseCotizacionJSON ">
                           <img
-                            src="{{ item.logo }}"
-                            alt="{{ item.nombre }}"
-                            class="svg__movil"
+                            *ngIf="item.IdAseguradora === 1"
+                            src="../../../assets/iconosase/AXA.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="item.IdAseguradora=== 2|| item.IdAseguradora=== 11"
+                            src="../../../assets/iconosase/CHUBB.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="item.IdAseguradora=== 4"
+                            src="../../../assets/iconosase/SURA.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="item.IdAseguradora=== 5"
+                            src="../../../assets/iconosase/ZURICH.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="item.IdAseguradora=== 6"
+                            src="../../../assets/iconosase/MAPFRE.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="item.IdAseguradora=== 26"
+                            src="../../../assets/iconosase/QUALITAS.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="item.IdAseguradora=== 425 || item.IdAseguradora=== 27"
+                            src="../../../assets/iconosase/BANORTE.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="item.IdAseguradora=== 553"
+                            src="../../../assets/iconosase/HDI.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="item.IdAseguradora=== 494"
+                            src="../../../assets/iconosase/AFIRME.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="item.IdAseguradora=== 450"
+                            src="../../../assets/iconosase/ANA.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="item.IdAseguradora=== 3"
+                            src="../../../assets/iconosase/AIG.svg"
+                            style="width: 140px"
                           />
                         </td>
                       </tr>
-                      <tr class="btd">
-                        <td align="center" *ngFor="let item of Aseguradoras">
-                          <p>1er pago: $ {{ item.primerPago }}</p>
-                          <p>11 Pagos: $ {{ item.pagos }}</p>
-                          <p>Total: $ {{ item.total }}</p>
-                        </td>
+                      <tr *ngIf="this.poliza=='Limitada' " >
+                        <div *ngIf=" pago=='Semestral' ">
+                          <td align="center" *ngFor="let item of responseCotizacionJSON">
+                            <p>Primer pago: ${{item.PrecioCotizacion[2].PrimaSemestralPrimerPago}}</p>
+                            <p>y 1 Pago de ${{item.PrecioCotizacion[2].PrimaSemestralSubsecuente}}</p>
+                            <p>TOTAL: ${{item.PrecioCotizacion[2].PrimaSemestral}}</p>
+                          </td>
+                        </div>
+                        <div *ngIf=" pago=='Trimestral'">
+                          <td align="center" *ngFor="let item of responseCotizacionJSON">
+                            <p>Primer pago: ${{item.PrecioCotizacion[2].PrimaTrimestralPrimerPago}}</p>
+                            <p>y 3 Pagos de ${{item.PrecioCotizacion[2].PrimaTrimestralSubsecuente}}</p>
+                            <p>TOTAL: ${{item.PrecioCotizacion[2].PrimaTrimestral}}</p>
+                          </td>
+                        </div>
+                        <div *ngIf=" pago=='Anual' ">
+                          <td align="center" *ngFor="let item of responseCotizacionJSON">
+                            <p>TOTAL: ${{item.PrecioCotizacion[2].dPrimaNeta}}</p>
+                          </td>
+                        </div>
+                        <div *ngIf=" pago=='Mensual' ">
+                          <td align="center" *ngFor="let item of responseCotizacionJSON">
+                            <p>Primer pago: ${{item.PrecioCotizacion[2].PrimaMensualPrimerPago}}</p>
+                            <p>y 11 Pagos de ${{item.PrecioCotizacion[2].PrimaMensualSubsecuente}}</p>
+                            <p>TOTAL: ${{item.PrecioCotizacion[2].PrimaMensual}}</p>
+                          </td>
+                        </div>
                       </tr>
-                      <td class="btd" *ngFor="let item of Aseguradoras">
+                      <tr class="btd" *ngIf="this.poliza=='Amplia Plus' " >
+                        <div *ngIf=" pago=='Semestral' ">
+                          <td align="center" *ngFor="let item of responseCotizacionJSON">
+                            <p>Primer pago: ${{item.PrecioCotizacion[0].PrimaSemestralPrimerPago}}</p>
+                            <p>y 1 Pago de ${{item.PrecioCotizacion[0].PrimaSemestralSubsecuente}}</p>
+                            <p>TOTAL: ${{item.PrecioCotizacion[0].PrimaSemestral}}</p>
+                          </td>
+                        </div>
+                        <div *ngIf=" pago=='Trimestral'">
+                          <td align="center" *ngFor="let item of responseCotizacionJSON">
+                            <p>Primer pago: ${{item.PrecioCotizacion[0].PrimaTrimestralPrimerPago}}</p>
+                            <p>y 3 Pagos de ${{item.PrecioCotizacion[0].PrimaTrimestralSubsecuente}}</p>
+                            <p>TOTAL: ${{item.PrecioCotizacion[0].PrimaTrimestral}}</p>
+                          </td>
+                        </div>
+                        <div *ngIf=" pago=='Anual' ">
+                          <td align="center" *ngFor="let item of responseCotizacionJSON">
+                            <p>TOTAL: ${{item.PrecioCotizacion[0].dPrimaNeta}}</p>
+                          </td>
+                        </div>
+                        <div *ngIf=" pago=='Mensual' ">
+                          <td align="center" *ngFor="let item of responseCotizacionJSON">
+                            <p>Primer pago: ${{item.PrecioCotizacion[0].PrimaMensualPrimerPago}}</p>
+                            <p>y 11 Pagos de ${{item.PrecioCotizacion[0].PrimaMensualSubsecuente}}</p>
+                            <p>TOTAL: ${{item.PrecioCotizacion[0].PrimaMensual}}</p>
+                          </td>
+                        </div>
+                      </tr>
+                      <tr class="btd" *ngIf="this.poliza=='Amplia' " >
+                        <div *ngIf=" pago=='Semestral' ">
+                          <td align="center" *ngFor="let item of responseCotizacionJSON">
+                            <p>Primer pago: ${{item.PrecioCotizacion[1].PrimaSemestralPrimerPago}}</p>
+                            <p>y 1 Pago de ${{item.PrecioCotizacion[1].PrimaSemestralSubsecuente}}</p>
+                            <p>TOTAL: ${{item.PrecioCotizacion[1].PrimaSemestral}}</p>
+                          </td>
+                        </div>
+                        <div *ngIf=" pago=='Trimestral'">
+                          <td align="center" *ngFor="let item of responseCotizacionJSON">
+                            <p>Primer pago: ${{item.PrecioCotizacion[1].PrimaTrimestralPrimerPago}}</p>
+                            <p>y 3 Pagos de ${{item.PrecioCotizacion[1].PrimaTrimestralSubsecuente}}</p>
+                            <p>TOTAL: ${{item.PrecioCotizacion[1].PrimaTrimestral}}</p>
+                          </td>
+                        </div>
+                        <div *ngIf=" pago=='Anual' ">
+                          <td align="center" *ngFor="let item of responseCotizacionJSON">
+                            <p>TOTAL: ${{item.PrecioCotizacion[1].dPrimaNeta}}</p>
+                          </td>
+                        </div>
+                        <div *ngIf=" pago=='Mensual' ">
+                          <td align="center" *ngFor="let item of responseCotizacionJSON">
+                            <p>Primer pago: ${{item.PrecioCotizacion[1].PrimaMensualPrimerPago}}</p>
+                            <p>y 11 Pagos de ${{item.PrecioCotizacion[1].PrimaMensualSubsecuente}}</p>
+                            <p>TOTAL: ${{item.PrecioCotizacion[1].PrimaMensual}}</p>
+                          </td>
+                        </div>
+                      </tr>
+                      <!-- <td class="btd" *ngFor="let item of Aseguradoras">
                         <tr
                           align="center"
                           *ngFor="let itemAse of item.coberturas"
@@ -129,26 +256,13 @@
                             />
                           </svg>
                         </tr>
-                      </td>
+                      </td> -->
                       <tr>
-                        <td align="center" *ngFor="let item of Aseguradoras">
+                        <td align="center" *ngFor="let item of  responseCotizacionJSON  ">
                           <button
                             class="btn btn-primary"
                             [routerLink]="['/contrata']"
                             routerLinkActive="router-link-active"
-                            [state]="{
-                              modsel: vermodelo,
-                              marsel: vermarca,
-                              descsel: verdescripcion,
-                              annosel: veranno,
-                              nomsel: nombre,
-                              emsel: email,
-                              telsel: telefono,
-                              generosel: genero,
-                              codigosel: codigopostal,
-                              fechasel: fechanaci,
-                              asesel: item.nombre
-                            }"
                           >
                             Contrata
                           </button>
@@ -157,7 +271,7 @@
                     </tbody>
                   </table>
                 </div>
-                <div
+                <!-- <div
                   id="carouselExampleControls"
                   style="margin-bottom: 70px"
                   class="carousel slide"
@@ -400,7 +514,7 @@
                     ></span>
                     <span class="sr-only">Next</span>
                   </a>
-                </div>
+                </div> -->
                 <div class="container" *ngIf="this.verCarousle">
                   <div class="row">
                     <button

@@ -7,6 +7,10 @@ import { InfovehiculoService } from '../../servicios/infovehiculo.service';
 import aseguradorasSeed from '../../seeds/aseguradora.json';
 import AseguradoraJson from '../../interphaces/aseguradoras';
 const FileSaver = require('file-saver');
+import * as fromRoot from '../../reducers';
+import { Store } from '@ngrx/store';
+import {selectCotizacionResponse} from '../../selectors/cotizamatico.selectors';
+
 @Component({
   selector: 'app-vermas',
   templateUrl: './vermas.component.html',
@@ -15,7 +19,8 @@ const FileSaver = require('file-saver');
 export class VermasComponent implements OnInit {
   constructor(
     private locate: Location,
-    private infovehiculoService: InfovehiculoService
+    private infovehiculoService: InfovehiculoService,
+    private store: Store<fromRoot.State>
   ) {}
   verCarousle: boolean;
   resizeObservable$: Observable<Event>;
@@ -34,11 +39,17 @@ export class VermasComponent implements OnInit {
   AseguradorasPoDesc: Aseguradoras[] = [];
   aseguradorasFromSer: AseguradoraJson[] = [];
   Aseguradoras: AseguradoraJson[] = [];
+  responseCotizacionJSON =new Array
+  noBasica=0;
+  siBasica=0;
+  pago = 'Anual';
+  poliza = 'Amplia Plus';
   ngOnInit(): void {
     this.vermodelo = history.state.modsel;
     this.vermarca = history.state.marsel;
     this.verdescripcion = history.state.descsel;
-    this.Aseguradoras = this.getAsePorDescrip(this.verdescripcion.sLlave);
+    this.getAsePorDescrip();
+    // this.Aseguradoras = this.getAsePorDescrip(this.verdescripcion.sLlave);
     this.veranno = history.state.annosel;
     this.nombre = history.state.nomsel;
     this.email = history.state.emsel;
@@ -62,44 +73,43 @@ export class VermasComponent implements OnInit {
       }
     });
   }
-  getAsePorDescrip(Desc: string) {
-    this.infovehiculoService
-      .getApiAseguradoras({
-        IdCotizamatico: Desc,
-      })
-      .subscribe(
-        (cat) => {
-          if (cat === undefined) {
-            console.log('Error');
-          }
-          // console.log(cat);
-          cat.forEach((element) => {
-            this.AseguradorasPoDesc.push({
-              IdModeloCotizamatico: element.IdModeloCotizamatico,
-              IdAseguradora: element.IdAseguradora,
-              Compania: element.Compania,
-              IdModeloAseguradora: element.IdModeloAseguradora,
-              Marca: element.Marca,
-              Submarca: element.Submarca,
-              Modelo: element.Modelo,
-              Descripcion: element.Descripcion,
-            });
-          });
-          this.AseguradorasPoDesc.forEach((ase) => {
-            aseguradorasSeed.forEach((asejson) => {
-              if (ase.Compania === asejson.nombre) {
-                console.log(ase.Compania, asejson.nombre);
-                this.aseguradorasFromSer.push(asejson);
-              }
-            });
-          });
-        },
-        (err) => {
-          console.log('Error');
+  getAsePorDescrip() {
+    this.store.select(selectCotizacionResponse).subscribe(res => {
+      if(!res.jsonCotizacion.length&& res.idCotizacion!=1) 
+      {
+        return
+      } else{
+          this.responseCotizacionJSON=[];
+        //   res.jsonCotizacion.forEach(element => {
+        //   let json=JSON.parse(element)
+        //   this.responseCotizacionJSON.push(json)
+        // });
+        for (let index = 0; index < res.jsonCotizacion.length; index++) {
+          const element = JSON.parse(res.jsonCotizacion[index]);
+          this.responseCotizacionJSON.push(element);
         }
-      );
-    return this.aseguradorasFromSer;
+        // OBTIENE EL IDPRODUCTO DE PRECIOCOTIZACION POR CADA this.Aseguradora Y DESHABILITAR BOTON BASICA
+        console.log(this.responseCotizacionJSON);
+        this.siBasica=0;
+        this.noBasica=0;
+        for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
+          const for1 = this.responseCotizacionJSON[index].PrecioCotizacion;
+          for (let index = 0; index < for1.length; index++) {
+            const for2 = for1[index].IdProducto;
+            if (for2<=3) {
+                  this.noBasica+=1;
+                }else{
+                  this.siBasica+=1;
+                }
+          }
+        }
+        console.log(this.noBasica,this.siBasica);
+      }
+    })
+    
+    
   }
+
   onback() {
     this.locate.back();
   }
