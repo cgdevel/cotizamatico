@@ -74,12 +74,15 @@ export class Pagina1Component implements OnInit {
   
 
 
-  requestCoberAse: RequestCatalogoCoberturas={
-    iIdAseguradoraSubRamo: 0,
-    iIdProducto: 0,
-    iIdCoberturaPorProducto: 0,
-    iIdTipoValor: 0
-  }
+  // requestCoberAse: RequestCatalogoCoberturas={
+  //   NombreCatalogo:null,
+  //   valoresFactorCoberturaProducto:{
+  //     iIdAseguradoraSubRamo: 0,
+  //     iIdProducto: 0,
+  //     iIdCoberturaPorProducto: 0,
+  //     iIdTipoValor: 0
+  //   }
+  // }
 
   ngOnInit(): void {
     const sesion = this.storageService.getJsonValue(
@@ -325,6 +328,16 @@ export class Pagina1Component implements OnInit {
     let date=this.date+'/'+this.month+'/'+this.year+" "+hour
     requestIdPeticion.cotizacion.FechaInicioVigencia=date;
     requestIdPeticion.cotizacion.Persona.bSinoFuma=false;
+    requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
+    requestIdPeticion.PaqueteCoberturasApi.push({
+      idAseguradora:null,
+      idPaquete:1,
+      CoberturasApi:[{
+        idCobertura:null,
+        idFactor:null,
+        idTipoCobertura:null
+      }]
+    });
      this.store.dispatch( new GetIdPeticion(requestIdPeticion) )
     console.log(requestIdPeticion)
   }

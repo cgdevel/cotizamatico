@@ -14,12 +14,14 @@ import { RequestCatalogoCommon } from '../interphaces/request/RequestCatalogoCom
 import { ResponseCatalogoCommon } from '../interphaces/response/ResponseCatalogoCommon.Model';
 import { ResponseAplicacionesId } from '../interphaces/response/ResponseAplicacionesId.mode';
 import { RequestInicioSesion } from '../interphaces/request/RequestInicioSesion.model';
+import { RequestCatalogoCoberturas } from '../interphaces/request/RequesteCatalogoCoberturas';
+import { ResponseCatalogoCoberturas } from '../interphaces/response/ReponseCatalogoCoberturas';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InfovehiculoService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private https :HttpClient) {}
   Nacionalidades = new Array<RequestNacionalidad>();
   Ocupaciones = new Array<CatalogoModel>();
   EstadoCivs = new Array<CatalogoModel>();
@@ -322,4 +324,13 @@ export class InfovehiculoService {
     );
     return responsepdf;
   }
+
+
+  getnIdCobertura(request: RequestCatalogoCoberturas){
+      return this.https.post<ResponseCatalogoCoberturas>(
+        `${environment.url_APICotizacion}/Catalogo`,
+        request
+      );
+  }
+  
 }

@@ -39,7 +39,7 @@
     <div class="col-12">
       <div class="container">
         <div class="row">
-          <div class="col-8 col-md-2" *ngIf="!this.verCarousle">
+          <div class="col-8 col-md-2" *ngIf="!this.verCarousle" style="padding-top: 70px;">
             <div class="coberturas__card">
               <h5>Coberturas Incluidas</h5>
               <p>Daños Materiales</p>
@@ -253,7 +253,7 @@
                     </tbody>
                   </table>
                 </div>
-                <!-- <div
+                <div
                   id="carouselExampleControls"
                   style="margin-bottom: 70px"
                   class="carousel slide"
@@ -266,10 +266,60 @@
                         <div class="row">
                           <div class="col-12 d-flex justify-content-center">
                             <img
-                              src="{{ Aseguradoras[0].logo }}"
-                              alt="{{ Aseguradoras[0].nombre }}"
-                              class="svg__movil"
-                            />
+                            *ngIf="responseCotizacionJSON[0].IdAseguradora === 1"
+                            src="../../../assets/iconosase/AXA.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="responseCotizacionJSON[0].IdAseguradora === 2|| responseCotizacionJSON[0].IdAseguradora === 11"
+                            src="../../../assets/iconosase/CHUBB.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="responseCotizacionJSON[0].IdAseguradora === 4"
+                            src="../../../assets/iconosase/SURA.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="responseCotizacionJSON[0].IdAseguradora === 5"
+                            src="../../../assets/iconosase/ZURICH.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="responseCotizacionJSON[0].IdAseguradora === 6"
+                            src="../../../assets/iconosase/MAPFRE.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="responseCotizacionJSON[0].IdAseguradora === 26"
+                            src="../../../assets/iconosase/QUALITAS.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="responseCotizacionJSON[0].IdAseguradora === 425 || responseCotizacionJSON[0].IdAseguradora === 27"
+                            src="../../../assets/iconosase/BANORTE.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="responseCotizacionJSON[0].IdAseguradora === 553"
+                            src="../../../assets/iconosase/HDI.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="responseCotizacionJSON[0].IdAseguradora === 494"
+                            src="../../../assets/iconosase/AFIRME.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="responseCotizacionJSON[0].IdAseguradora === 450"
+                            src="../../../assets/iconosase/ANA.svg"
+                            style="width: 140px"
+                          />
+                          <img
+                            *ngIf="responseCotizacionJSON[0].IdAseguradora === 3"
+                            src="../../../assets/iconosase/AIG.svg"
+                            style="width: 140px"
+                          />
                           </div>
                           <div class="col-12">
                             <div
@@ -290,7 +340,7 @@
                                   <p id="pm">Valor 110</p>
                                   <p id="pm">Extension RC</p>
                                 </div>
-                                <div class="col-3">
+                                <!-- <div class="col-3">
                                   <p
                                     id="pm"
                                     *ngFor="
@@ -323,7 +373,7 @@
                                       />
                                     </svg>
                                   </p>
-                                </div>
+                                </div> -->
                               </div>
                             </div>
                           </div>
@@ -346,19 +396,6 @@
                               "
                               [routerLink]="['/contrata']"
                               routerLinkActive="router-link-active"
-                              [state]="{
-                                modsel: vermodelo,
-                                marsel: vermarca,
-                                descsel: verdescripcion,
-                                annosel: veranno,
-                                nomsel: nombre,
-                                emsel: email,
-                                telsel: telefono,
-                                generosel: genero,
-                                codigosel: codigopostal,
-                                fechasel: fechanaci,
-                                asesel: Aseguradoras[0].nombre
-                              }"
                             >
                               Contratar
                             </button>
@@ -368,15 +405,65 @@
                     </div>
                     <div
                       class="carousel-item"
-                      *ngFor="let items of Aseguradoras | slice: 1"
+                      *ngFor="let item of responseCotizacionJSON | slice: 1"
                     >
                       <div class="container mw-100">
                         <div class="row">
                           <div class="col-12 d-flex justify-content-center">
                             <img
-                              src="{{ items.logo }}"
-                              alt="{{ items.nombre }}"
-                              class="svg__movil"
+                              *ngIf="item.IdAseguradora === 1"
+                              src="../../../assets/iconosase/AXA.svg"
+                              style="width: 140px"
+                            />
+                            <img
+                              *ngIf="item.IdAseguradora=== 2|| item.IdAseguradora=== 11"
+                              src="../../../assets/iconosase/CHUBB.svg"
+                              style="width: 140px"
+                            />
+                            <img
+                              *ngIf="item.IdAseguradora=== 4"
+                              src="../../../assets/iconosase/SURA.svg"
+                              style="width: 140px"
+                            />
+                            <img
+                              *ngIf="item.IdAseguradora=== 5"
+                              src="../../../assets/iconosase/ZURICH.svg"
+                              style="width: 140px"
+                            />
+                            <img
+                              *ngIf="item.IdAseguradora=== 6"
+                              src="../../../assets/iconosase/MAPFRE.svg"
+                              style="width: 140px"
+                            />
+                            <img
+                              *ngIf="item.IdAseguradora=== 26"
+                              src="../../../assets/iconosase/QUALITAS.svg"
+                              style="width: 140px"
+                            />
+                            <img
+                              *ngIf="item.IdAseguradora=== 425 || item.IdAseguradora=== 27"
+                              src="../../../assets/iconosase/BANORTE.svg"
+                              style="width: 140px"
+                            />
+                            <img
+                              *ngIf="item.IdAseguradora=== 553"
+                              src="../../../assets/iconosase/HDI.svg"
+                              style="width: 140px"
+                            />
+                            <img
+                              *ngIf="item.IdAseguradora=== 494"
+                              src="../../../assets/iconosase/AFIRME.svg"
+                              style="width: 140px"
+                            />
+                            <img
+                              *ngIf="item.IdAseguradora=== 450"
+                              src="../../../assets/iconosase/ANA.svg"
+                              style="width: 140px"
+                            />
+                            <img
+                              *ngIf="item.IdAseguradora=== 3"
+                              src="../../../assets/iconosase/AIG.svg"
+                              style="width: 140px"
                             />
                           </div>
                           <div class="col-12">
@@ -398,7 +485,7 @@
                                   <p id="pm">Valor 110</p>
                                   <p id="pm">Extension RC</p>
                                 </div>
-                                <div class="col-3">
+                                <!-- <div class="col-3">
                                   <p
                                     id="pm"
                                     *ngFor="let cobertura of items.coberturas"
@@ -428,7 +515,7 @@
                                       />
                                     </svg>
                                   </p>
-                                </div>
+                                </div> -->
                               </div>
                             </div>
                           </div>
@@ -451,19 +538,6 @@
                               "
                               [routerLink]="['/contrata']"
                               routerLinkActive="router-link-active"
-                              [state]="{
-                                modsel: vermodelo,
-                                marsel: vermarca,
-                                descsel: verdescripcion,
-                                annosel: veranno,
-                                nomsel: nombre,
-                                emsel: email,
-                                telsel: telefono,
-                                generosel: genero,
-                                codigosel: codigopostal,
-                                fechasel: fechanaci,
-                                asesel: items.nombre
-                              }"
                             >
                               Contratar
                             </button>
@@ -496,7 +570,7 @@
                     ></span>
                     <span class="sr-only">Next</span>
                   </a>
-                </div> -->
+                </div>
                 <div class="container" *ngIf="this.verCarousle">
                   <div class="row">
                     <button
