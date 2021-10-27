@@ -463,6 +463,15 @@ export class InfoaseguradoComponent implements OnInit {
           anio: ''
         });
       }
+      if (duracionMes>diaSeleccionado || duracionMes==diaSeleccionado ) {
+        this.catNacimientoDias=[];
+        this.catNacimientoMeses.forEach(element => {
+          if (element.sDato==this.itemNacimientoMes.sDato) {
+            this.itemNacimientoMes.sLlave=element.sLlave
+          }
+        });
+        this.catNacimientoDias=this.dameduracion(this.itemNacimientoMes.sLlave)
+      }
       this.emitClienteNacimiento.emit({
         dia: this.itemNacimientoDia.sDato,
         mes: this.itemNacimientoMes.sDato,
