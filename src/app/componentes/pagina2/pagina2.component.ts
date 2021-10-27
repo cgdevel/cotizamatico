@@ -191,49 +191,6 @@ constructor(
     this.cobtothe= 10;
     this.cobDamage = 5 ;
     this.una = history.state.sizeta;
-    const req: RequestCatalogoCoberturas = {
-      NombreCatalogo:"ValoresFactorCoberturaProducto",
-      valoresCoberturas:{
-        iIdAseguradoraSubRamo: null,
-        iIdProducto: 1,
-        iIdCoberturaPorProducto: null,
-        iIdTipoValor: null
-      }
-    };
-    this.infovehiculoService.getnIdCobertura(req).pipe(map((s)=>{ 
-      let sJson=s.CatalogoJsonString
-      console.log(sJson)
-      for (let index = 0; index < sJson.length; index++) {
-        const element = sJson[index];
-        console.log(element)
-      }
-      })
-    );
-    
-
-//     this.infovehiculoService.getnIdCobertura(req).pipe(
-//       map( datos => {
-        
-//           // if(datos.CatalogoJsonString!=undefined){
-//           //     this.arraycoberturasAdicionalesSlider.push({
-//           //       nIdAseguradoraSubRamo:              datos.CatalogoJsonString.nIdAseguradoraSubRamo,
-//           //       sAseguradora:                       datos.CatalogoJsonString.sAseguradora,
-//           //       nIdCoberturaPorProducto:            datos.CatalogoJsonString.nIdCoberturaPorProducto,
-//           //       sCobertura:                         datos.CatalogoJsonString.sCobertura,
-//           //       nIdProducto:                        datos.CatalogoJsonString.nIdProducto,
-//           //       sProducto:                          datos.CatalogoJsonString.sProducto,
-//           //       nIdCatalogoValor:                   datos.CatalogoJsonString.nIdCatalogoValor,
-//           //       sValorCatalogoValor:                datos.CatalogoJsonString.sValorCatalogoValor,
-//           //       nIdTipoValor:                       datos.CatalogoJsonString.nIdTipoValor,
-//           //       sTipoValor:                         datos.CatalogoJsonString.sTipoValor,
-//           //       bSiNoAdicionales:                   datos.CatalogoJsonString.bSiNoAdicionales,
-//           //       bSiNoDefault:                       datos.CatalogoJsonString.bSiNoDefault
-//           //     })
-//           // }
-//       })
-// )
-
- 
   } // init
 
   // Funciones cobertura
@@ -251,7 +208,7 @@ constructor(
     this.cobDamage = 3;
     this.cobtothe = 5 ;
     this.poliza ="Amplia Plus";
-    requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
+    // requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
     // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
@@ -271,7 +228,7 @@ constructor(
     this.cobDamage = 5;
     this.cobtothe = 10 ;
     this.poliza ="Amplia";
-    requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
+    // requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
     // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
@@ -289,7 +246,7 @@ constructor(
     this.statusL = this.limitada ? 'Selected' : 'NoSelected';
     this.cobertura = 2;
     this.poliza ="Limitada";
-    requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
+    // requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     // console.log("Limitada :"+' '+this.limitada+' '+this.statusL)
     // console.log("Amplia Plus:"+' '+this.ampliaplus+' '+this.statusAP)
     // console.log("Amplia :"+' '+this.amplia+' '+this.statusA)
@@ -307,7 +264,7 @@ constructor(
     this.statusB = this.basica ? 'Selected' : 'NoSelected';
     this.cobertura = 3;
     this.poliza ="Básica";
-    requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
+    // requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     // this.store.select(selectCotizacionResponse).subscribe(res => 
     //   {
     //     if(!res.jsonCotizacion.length&& res.idCotizacion!=1) 
@@ -338,7 +295,7 @@ constructor(
     this.limitada   =false;
     this.basica     =false;
     this.cobertura=undefined;
-    requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
+    // requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     if (this.poliza=='Amplia Plus') {
       this.cobDamage = 3;
       this.cobtothe = 5 ;
@@ -540,599 +497,189 @@ constructor(
   handlerOptionsDamage(e: number) {
    this.Damage=e;
    requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
-   
    if (this.poliza=='Amplia'|| this.amplia) {
-    for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-      let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora,10);
-      console.log(element)
-      // switch (element) {
-      //       // case 1  :
-      //       // break;
-      //       case 2  :
-
-
-
-
-      //         requestIdPeticion.PaqueteCoberturasApi.push({
-      //               idPaquete:1,
-      //               idAseguradora:2,
-      //               CoberturasApi: [{
-      //               idCobertura: 1,       //cobertura por producto
-      //               idTipoCobertura:2,    //suma asegurada o deducible
-      //               idFactor:e
-      //             }]
-      //         })
-      //       break;
-      //       case 4  :
-      //         requestIdPeticion.PaqueteCoberturasApi.push({
-      //           idPaquete:1,
-      //           idAseguradora:4,
-      //           CoberturasApi: [{
-      //             idCobertura: 226,       //cobertura por producto
-      //             idTipoCobertura:2,    //suma asegurada o deducible
-      //             idFactor:e 
-      //           }]
-      //         })
-      //       break;
-      //       case 5  :
-      //         requestIdPeticion.PaqueteCoberturasApi.push({
-      //           idPaquete:1,
-      //           idAseguradora:5,
-      //           CoberturasApi: [{
-      //             idCobertura: 264,       //cobertura por producto
-      //             idTipoCobertura:2,    //suma asegurada o deducible
-      //             idFactor:e 
-      //           }]
-      //         })
-      //       break;
-      //       // case 6  :
-      //       // break;
-      //       // case 26	:
-      //       // break;
-      //       case 27	:
-      //         requestIdPeticion.PaqueteCoberturasApi.push({
-      //           idPaquete:1,
-      //           idAseguradora:27,
-      //           CoberturasApi: [{
-      //             idCobertura: 113,       //cobertura por producto
-      //             idTipoCobertura:2,    //suma asegurada o deducible
-      //             idFactor:e 
-      //           }]
-      //         })
-      //       break;
-      //       // case 450:
-      //       // break;
-      //       case 494:
-      //             requestIdPeticion.PaqueteCoberturasApi.push({
-      //               idPaquete:1,
-      //               idAseguradora:494,
-      //               CoberturasApi: [{
-      //                 idCobertura: 1791,       //cobertura por producto
-      //                 idTipoCobertura:2,    //suma asegurada o deducible
-      //                 idFactor:e 
-      //               }]
-      //             })
-      //       break;
-      //       case 553:
-      //         requestIdPeticion.PaqueteCoberturasApi.push({
-      //           idPaquete:1,
-      //           idAseguradora:553,
-      //           CoberturasApi: [{
-      //             idCobertura: 1887,       //cobertura por producto
-      //             idTipoCobertura:2,    //suma asegurada o deducible
-      //             idFactor:e 
-      //           }]
-      //         })
-      //       break;
-      //       default:  
-      //       break;
-      // }
+      const req: RequestCatalogoCoberturas = {
+        NombreCatalogo:"ValoresFactorCoberturaProducto",
+        valoresCoberturas:{
+          iIdAseguradoraSubRamo: null,
+          iIdProducto: 1,
+          iIdCoberturaPorProducto: null,
+          iIdTipoValor: null
+        }
+      };
+      for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
+        let element1 = parseInt(this.responseCotizacionJSON[index].IdAseguradora,10);
+        console.log(element1)
+        this.infovehiculoService.getnIdCobertura(req).subscribe((s)=>{ 
+          let sJson = JSON.parse(s.CatalogoJsonString)
+          for (let index = 0; index < sJson.length; index++) {
+            const element = sJson[index];
+            if ( parseInt(element.nIdAseguradoraSubRamo,10)  == element1 && (element.sCobertura=='Ded Daños Materiales'||element.sCobertura=='Daños Materiales' ) && (e.toString()== element.sValorCatalogoValor) ) {
+                      requestIdPeticion.PaqueteCoberturasApi.push({
+                      idPaquete:1,
+                      idAseguradora:element1,
+                      CoberturasApi: [{
+                      idCobertura: parseInt(element.nIdCoberturaPorProducto,10) ,       //cobertura por producto
+                      idTipoCobertura:2,    //suma asegurada o deducible
+                      idFactor: parseInt(element.nIdCatalogoValor,10) 
+                    }]
+                })
+            }
+          }
+          
+        });
+        
+      }
+      // console.log( requestIdPeticion.PaqueteCoberturasApi);
     }
-    for (let index = 0; index < requestIdPeticion.PaqueteCoberturasApi.length; index++) {
-      let newPaqueteCoberturasAPI = requestIdPeticion.PaqueteCoberturasApi[index];
-      console.log(newPaqueteCoberturasAPI)
-      let ob = {...newPaqueteCoberturasAPI, ...newPaqueteCoberturasAPI} ;
-      console.log(newPaqueteCoberturasAPI)
-      console.log(ob)
-    }
-   } 
+
    if (this.poliza=='Amplia Plus'|| this.ampliaplus) {
+    const req: RequestCatalogoCoberturas = {
+      NombreCatalogo:"ValoresFactorCoberturaProducto",
+      valoresCoberturas:{
+        iIdAseguradoraSubRamo: null,
+        iIdProducto: 2,
+        iIdCoberturaPorProducto: null,
+        iIdTipoValor: null
+      }
+    };
     for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-      let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora,10);
-      // switch (element) {
-      //           // case 1  :
-      //           // break;
-      //       case 2:
-      //           requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-      //                {
-      //               idCobertura: 12, //cobertura por producto
-      //               idTipoCobertura: 2, //suma asegurada o deducible
-      //               idFactor: e
-      //           })
-      //           requestIdPeticion.PaqueteCoberturasApi = {
-      //               ...requestIdPeticion.PaqueteCoberturasApi,
-      //               idPaquete: 2,
-      //               idAseguradora: null,
-      //               CoberturasApi: [
-      //                   ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-      //               ]
-      //           }
-      //           break;
-      //       case 4:
-      //           requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-      //             {
-      //               idCobertura: 237	, //cobertura por producto
-      //               idTipoCobertura: 2, //suma asegurada o deducible
-      //               idFactor: e
-      //           })
-      //           requestIdPeticion.PaqueteCoberturasApi = {
-      //               ...requestIdPeticion.PaqueteCoberturasApi,
-      //               idPaquete: 2,
-      //               idAseguradora: null,
-      //               CoberturasApi: [
-      //                   ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-      //               ]
-      //           }
-      //           break;
-      //       case 5:
-      //           requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-      //                {
-      //               idCobertura: 275, //cobertura por producto
-      //               idTipoCobertura: 2, //suma asegurada o deducible
-      //               idFactor: e
-      //           })
-      //           requestIdPeticion.PaqueteCoberturasApi = {
-      //               ...requestIdPeticion.PaqueteCoberturasApi,
-      //               idPaquete: 2,
-      //               idAseguradora: null,
-      //               CoberturasApi: [
-      //                   ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-      //               ]
-      //           }
-      //           break;
-      //           // case 6  :
-      //           // break;
-      //           // case 26	:
-      //           // break;
-      //       case 27:
-      //           requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-      //                {
-      //               idCobertura: 124, //cobertura por producto
-      //               idTipoCobertura: 2, //suma asegurada o deducible
-      //               idFactor: e
-      //           })
-      //           requestIdPeticion.PaqueteCoberturasApi = {
-      //               ...requestIdPeticion.PaqueteCoberturasApi,
-      //               idPaquete: 2,
-      //               idAseguradora: null,
-      //               CoberturasApi: [
-      //                   ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-      //               ]
-      //           }
-      //           break;
-      //           // case 450:
-      //           // break;
-      //       case 494:
-      //           requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-      //                {
-      //               idCobertura: 1776, //cobertura por producto
-      //               idTipoCobertura: 2, //suma asegurada o deducible
-      //               idFactor: e
-      //           })
-      //           requestIdPeticion.PaqueteCoberturasApi = {
-      //               ...requestIdPeticion.PaqueteCoberturasApi,
-      //               idPaquete: 2,
-      //               idAseguradora: null,
-      //               CoberturasApi: [
-      //                   ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-      //               ]
-      //           }
-      //           break;
-      //       case 553:
-      //           requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-      //                {
-      //               idCobertura: 1870, //cobertura por producto
-      //               idTipoCobertura: 2, //suma asegurada o deducible
-      //               idFactor: e
-      //           })
-      //           requestIdPeticion.PaqueteCoberturasApi = {
-      //               ...requestIdPeticion.PaqueteCoberturasApi,
-      //               idPaquete: 2,
-      //               idAseguradora: null,
-      //               CoberturasApi: [
-      //                   ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-      //               ]
-      //           }
-      //           break;
-      //       default:
-      //         requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-              
-      //           {
-      //             idCobertura: null,       //cobertura por producto
-      //             idTipoCobertura:null,    //suma asegurada o deducible
-      //             idFactor:null 
-      //           }
-      //           )
-      //         requestIdPeticion.PaqueteCoberturasApi={
-      //           ...requestIdPeticion.PaqueteCoberturasApi,
-      //           idPaquete:2,
-      //           idAseguradora:null,
-      //           CoberturasApi: [
-      //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-      //           ]
-      //         }
-      //       break;
-      // }
-    }  
-   } 
-   console.log(requestIdPeticion)
+      let element1 = parseInt(this.responseCotizacionJSON[index].IdAseguradora,10);
+      console.log(element1)
+      this.infovehiculoService.getnIdCobertura(req).subscribe((s)=>{ 
+        let sJson = JSON.parse(s.CatalogoJsonString)
+        for (let index = 0; index < sJson.length; index++) {
+          const element = sJson[index];
+          if ( parseInt(element.nIdAseguradoraSubRamo,10)  == element1 && (element.sCobertura=='Ded Daños Materiales'||element.sCobertura=='Daños Materiales' ) && (e.toString()== element.sValorCatalogoValor) ) {
+                    requestIdPeticion.PaqueteCoberturasApi.push({
+                    idPaquete:2,
+                    idAseguradora:element1,
+                    CoberturasApi: [{
+                    idCobertura: parseInt(element.nIdCoberturaPorProducto,10) ,       //cobertura por producto
+                    idTipoCobertura:2,    //suma asegurada o deducible
+                    idFactor: parseInt(element.nIdCatalogoValor,10) 
+                  }]
+              })
+          }
+        }
+        
+      });
+      
+    }
+    // console.log( requestIdPeticion.PaqueteCoberturasApi);
+    }
+    console.log(requestIdPeticion)
   }
 
   handlerOptionstotalTheft(e: number) {
     this.totalTheft=e; 
     requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
-    if (this.poliza == 'Amplia' || this.amplia) {
+    if (this.poliza=='Amplia'|| this.amplia) {
+      const req: RequestCatalogoCoberturas = {
+        NombreCatalogo:"ValoresFactorCoberturaProducto",
+        valoresCoberturas:{
+          iIdAseguradoraSubRamo: null,
+          iIdProducto: 1,
+          iIdCoberturaPorProducto: null,
+          iIdTipoValor: null
+        }
+      };
       for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-          let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
-          console.log(element)
-          // switch (element) {
-          //     // case 1  :
-          //     // break;
-          // case 2:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: 4, //cobertura por producto
-          //         idTipoCobertura: 2, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 1,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          // case 4:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: 228, //cobertura por producto
-          //         idTipoCobertura: 2, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 1,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          // case 5:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: 266, //cobertura por producto
-          //         idTipoCobertura: 2, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 1,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          //     // case 6  :
-          //     // break;
-          //     // case 26	:
-          //     // break;
-          // case 27:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-          //         {
-          //         idCobertura: 115, //cobertura por producto
-          //         idTipoCobertura: 2, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 1,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          //     // case 450:
-          //     // break;
-          // case 494:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-          //         {
-          //         idCobertura: 1793, //cobertura por producto
-          //         idTipoCobertura: 2, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 1,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          // case 553:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-          //         {
-          //         idCobertura: 1889, //cobertura por producto
-          //         idTipoCobertura: 2, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 1,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          // default:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-          //         {
-          //         idCobertura: null, //cobertura por producto
-          //         idTipoCobertura: null, //suma asegurada o deducible
-          //         idFactor: null
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 1,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          // }
+        let element1 = parseInt(this.responseCotizacionJSON[index].IdAseguradora,10);
+        console.log(element1)
+        this.infovehiculoService.getnIdCobertura(req).subscribe((s)=>{ 
+          let sJson = JSON.parse(s.CatalogoJsonString)
+          for (let index = 0; index < sJson.length; index++) {
+            const element = sJson[index];
+            if ( parseInt(element.nIdAseguradoraSubRamo,10)  == element1 && (element.sCobertura=='Ded Robo Total'||element.sCobertura=='Robo Total' ) && (e.toString()== element.sValorCatalogoValor) ) {
+                      requestIdPeticion.PaqueteCoberturasApi.push({
+                      idPaquete:1,
+                      idAseguradora:element1,
+                      CoberturasApi: [{
+                      idCobertura: parseInt(element.nIdCoberturaPorProducto,10) ,       //cobertura por producto
+                      idTipoCobertura:2,    //suma asegurada o deducible
+                      idFactor: parseInt(element.nIdCatalogoValor,10) 
+                    }]
+                })
+            }
+          }
+          
+        });
+        
       }
+      // console.log( requestIdPeticion.PaqueteCoberturasApi);
     }
-    if (this.poliza=='Amplia Plus'|| this.ampliaplus) {
-      for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-        let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora,10);
-        // switch (element) {
-        //           // case 1  :
-        //           // break;
-        //       case 2:
-        //           requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-        //                {
-        //               idCobertura: 14, //cobertura por producto
-        //               idTipoCobertura: 2, //suma asegurada o deducible
-        //               idFactor: e
-        //           })
-        //           requestIdPeticion.PaqueteCoberturasApi = {
-        //               ...requestIdPeticion.PaqueteCoberturasApi,
-        //               idPaquete: 2,
-        //               idAseguradora: null,
-        //               CoberturasApi: [
-        //                   ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //               ]
-        //           }
-        //           break;
-        //       case 4:
-        //           requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-        //                {
-        //               idCobertura: 239, //cobertura por producto
-        //               idTipoCobertura: 2, //suma asegurada o deducible
-        //               idFactor: e
-        //           })
-        //           requestIdPeticion.PaqueteCoberturasApi = {
-        //               ...requestIdPeticion.PaqueteCoberturasApi,
-        //               idPaquete: 2,
-        //               idAseguradora: null,
-        //               CoberturasApi: [
-        //                   ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //               ]
-        //           }
-        //           break;
-        //       case 5:
-        //           requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-        //                {
-        //               idCobertura: 277, //cobertura por producto
-        //               idTipoCobertura: 2, //suma asegurada o deducible
-        //               idFactor: e
-        //           })
-        //           requestIdPeticion.PaqueteCoberturasApi = {
-        //               ...requestIdPeticion.PaqueteCoberturasApi,
-        //               idPaquete: 2,
-        //               idAseguradora: null,
-        //               CoberturasApi: [
-        //                   ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //               ]
-        //           }
-        //           break;
-        //           // case 6  :
-        //           // break;
-        //           // case 26	:
-        //           // break;
-        //       case 27:
-        //           requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-        //                {
-        //               idCobertura: 126, //cobertura por producto
-        //               idTipoCobertura: 2, //suma asegurada o deducible
-        //               idFactor: e
-        //           })
-        //           requestIdPeticion.PaqueteCoberturasApi = {
-        //               ...requestIdPeticion.PaqueteCoberturasApi,
-        //               idPaquete: 2,
-        //               idAseguradora: null,
-        //               CoberturasApi: [
-        //                   ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //               ]
-        //           }
-        //           break;
-        //           // case 450:
-        //           // break;
-        //       case 494:
-        //           requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-        //                {
-        //               idCobertura: 1778, //cobertura por producto
-        //               idTipoCobertura: 2, //suma asegurada o deducible
-        //               idFactor: e
-        //           })
-        //           requestIdPeticion.PaqueteCoberturasApi = {
-        //               ...requestIdPeticion.PaqueteCoberturasApi,
-        //               idPaquete: 2,
-        //               idAseguradora: null,
-        //               CoberturasApi: [
-        //                   ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //               ]
-        //           }
-        //           break;
-        //       case 553:
-        //           requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-        //                {
-        //               idCobertura: 1872, //cobertura por producto
-        //               idTipoCobertura: 2, //suma asegurada o deducible
-        //               idFactor: e
-        //           })
-        //           requestIdPeticion.PaqueteCoberturasApi = {
-        //               ...requestIdPeticion.PaqueteCoberturasApi,
-        //               idPaquete: 2,
-        //               idAseguradora: null,
-        //               CoberturasApi: [
-        //                   ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //               ]
-        //           }
-        //           break;
-        //       default:
-        //         requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-                
-        //           {
-        //             idCobertura: null,       //cobertura por producto
-        //             idTipoCobertura:null,    //suma asegurada o deducible
-        //             idFactor:null 
-        //           }
-        //           )
-        //         requestIdPeticion.PaqueteCoberturasApi={
-        //           ...requestIdPeticion.PaqueteCoberturasApi,
-        //           idPaquete:2,
-        //           idAseguradora:null,
-        //           CoberturasApi: [
-        //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //           ]
-        //         }
-        //       break;
-        // }
-      }  
+
+   if (this.poliza=='Amplia Plus'|| this.ampliaplus) {
+    const req: RequestCatalogoCoberturas = {
+      NombreCatalogo:"ValoresFactorCoberturaProducto",
+      valoresCoberturas:{
+        iIdAseguradoraSubRamo: null,
+        iIdProducto: 2,
+        iIdCoberturaPorProducto: null,
+        iIdTipoValor: null
+      }
+    };
+    for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
+      let element1 = parseInt(this.responseCotizacionJSON[index].IdAseguradora,10);
+      console.log(element1)
+      this.infovehiculoService.getnIdCobertura(req).subscribe((s)=>{ 
+        let sJson = JSON.parse(s.CatalogoJsonString)
+        for (let index = 0; index < sJson.length; index++) {
+          const element = sJson[index];
+          if ( parseInt(element.nIdAseguradoraSubRamo,10)  == element1 && (element.sCobertura=='Ded Robo Total'||element.sCobertura=='Robo Total' ) && (e.toString()== element.sValorCatalogoValor) ) {
+                    requestIdPeticion.PaqueteCoberturasApi.push({
+                    idPaquete:2,
+                    idAseguradora:element1,
+                    CoberturasApi: [{
+                    idCobertura: parseInt(element.nIdCoberturaPorProducto,10) ,       //cobertura por producto
+                    idTipoCobertura:2,    //suma asegurada o deducible
+                    idFactor: parseInt(element.nIdCatalogoValor,10) 
+                  }]
+              })
+          }
+        }
+        
+      });
+      
     }
+    // console.log( requestIdPeticion.PaqueteCoberturasApi);
+    }
+
     if (this.poliza == 'Limitada' || this.limitada) {
+      const req: RequestCatalogoCoberturas = {
+        NombreCatalogo:"ValoresFactorCoberturaProducto",
+        valoresCoberturas:{
+          iIdAseguradoraSubRamo: null,
+          iIdProducto: 3,
+          iIdCoberturaPorProducto: null,
+          iIdTipoValor: null
+        }
+      };
       for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-          let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
-          console.log(element)
-          // switch (element) {
-          //   // case 1  :
-          //   // break;
-          //   case 2:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //       idCobertura: 30, //cobertura por producto
-          //       idTipoCobertura: 2, //suma asegurada o deducible
-          //       idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //       ...requestIdPeticion.PaqueteCoberturasApi,
-          //       idPaquete: 3,
-          //       idAseguradora: null,
-          //       CoberturasApi: [
-          //         ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //       ]
-          //     }
-          //   break;
-          //   // case 6  :
-          //   // break;
-          //   case 5:
-          //       requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //       idCobertura: 294, //cobertura por producto
-          //       idTipoCobertura: 2, //suma asegurada o deducible
-          //       idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //       ...requestIdPeticion.PaqueteCoberturasApi,
-          //       idPaquete: 3,
-          //       idAseguradora: null,
-          //       CoberturasApi: [
-          //         ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //       ]
-          //     }
-          //   break;
-          //   // case 6  :
-          //   // break;
-          //   // case 26	:
-          //   // break;
-          //   case 27:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //       idCobertura: 142, //cobertura por producto
-          //       idTipoCobertura: 2, //suma asegurada o deducible
-          //       idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //       ...requestIdPeticion.PaqueteCoberturasApi,
-          //       idPaquete: 3,
-          //       idAseguradora: null,
-          //       CoberturasApi: [
-          //         ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //       ]
-          //     }
-          //   break;
-          //   // case 450:
-          //   // break;
-          //   case 494:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //       idCobertura: 1805, //cobertura por producto
-          //       idTipoCobertura: 2, //suma asegurada o deducible
-          //       idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //       ...requestIdPeticion.PaqueteCoberturasApi,
-          //       idPaquete: 3,
-          //       idAseguradora: null,
-          //       CoberturasApi: [
-          //         ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //       ]
-          //     }
-          //   break;
-          //   case 553:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: 1901, //cobertura por producto
-          //         idTipoCobertura: 2, //suma asegurada o deducible
-          //         idFactor: e
-          //       })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //       ...requestIdPeticion.PaqueteCoberturasApi,
-          //       idPaquete: 3,
-          //       idAseguradora: null,
-          //       CoberturasApi: [
-          //         ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //       ]
-          //     }
-          //   break;
-          //   default:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-          //         {
-          //         idCobertura: null, //cobertura por producto
-          //         idTipoCobertura: null, //suma asegurada o deducible
-          //         idFactor: null
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 3,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          // }
+        let element1 = parseInt(this.responseCotizacionJSON[index].IdAseguradora,10);
+        console.log(element1)
+        this.infovehiculoService.getnIdCobertura(req).subscribe((s)=>{ 
+          let sJson = JSON.parse(s.CatalogoJsonString)
+          for (let index = 0; index < sJson.length; index++) {
+            const element = sJson[index];
+            if ( parseInt(element.nIdAseguradoraSubRamo,10)  == element1 && (element.sCobertura=='Ded Robo Total'||element.sCobertura=='Robo Total' ) && (e.toString()== element.sValorCatalogoValor) ) {
+                      requestIdPeticion.PaqueteCoberturasApi.push({
+                      idPaquete:3,
+                      idAseguradora:element1,
+                      CoberturasApi: [{
+                      idCobertura: parseInt(element.nIdCoberturaPorProducto,10) ,       //cobertura por producto
+                      idTipoCobertura:2,    //suma asegurada o deducible
+                      idFactor: parseInt(element.nIdCatalogoValor,10) 
+                    }]
+                })
+            }
+          }
+          
+        });
+        
       }
+      // console.log( requestIdPeticion.PaqueteCoberturasApi);
     }
    console.log(requestIdPeticion)
   }
@@ -1141,665 +688,231 @@ constructor(
     this.civilLiability =e;
     requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     if (this.poliza == 'Amplia' || this.amplia) {
+      const req: RequestCatalogoCoberturas = {
+          NombreCatalogo: "ValoresFactorCoberturaProducto",
+          valoresCoberturas: {
+              iIdAseguradoraSubRamo: null,
+              iIdProducto: 1,
+              iIdCoberturaPorProducto: null,
+              iIdTipoValor: null
+          }
+      };
       for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-          let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
-          console.log(element)
-          // switch (element) {
-          //     // case 1  :
-          //     // break;
-          // case 2:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: 5, //cobertura por producto
-          //         idTipoCobertura: 1, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 1,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          // case 4:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: 229, //cobertura por producto
-          //         idTipoCobertura: 1, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 1,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          // case 5:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: 267, //cobertura por producto
-          //         idTipoCobertura: 1, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 1,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          //     // case 6  :
-          //     // break;
-          //     // case 26	:
-          //     // break;
-          //     // case 27	:
-          //     // break;
-          //     // case 450:
-          //     // break;
-          // case 494:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: 1795, //cobertura por producto
-          //         idTipoCobertura: 1, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 1,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          // case 553:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: 1890, //cobertura por producto
-          //         idTipoCobertura: 1, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 1,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          // default:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: null, //cobertura por producto
-          //         idTipoCobertura: null, //suma asegurada o deducible
-          //         idFactor: null
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 1,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          // }
+          let element1 = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
+          console.log(element1)
+          this.infovehiculoService.getnIdCobertura(req).subscribe((s) => {
+              let sJson = JSON.parse(s.CatalogoJsonString)
+                  for (let index = 0; index < sJson.length; index++) {
+                      const element = sJson[index];
+                      if (parseInt(element.nIdAseguradoraSubRamo, 10) == element1 && (element.sCobertura == 'Responsabilidad Civil') && (e.toString() == element.sValorCatalogoValor)) {
+                          requestIdPeticion.PaqueteCoberturasApi.push({
+                              idPaquete: 1,
+                              idAseguradora: element1,
+                              CoberturasApi: [{
+                                      idCobertura: parseInt(element.nIdCoberturaPorProducto, 10), //cobertura por producto
+                                      idTipoCobertura: 1, //suma asegurada o deducible
+                                      idFactor: parseInt(element.nIdCatalogoValor, 10)
+                                  }
+                              ]
+                          })
+                      }
+                  }
+  
+          });
+  
       }
+      // console.log( requestIdPeticion.PaqueteCoberturasApi);
     }
+  
     if (this.poliza == 'Amplia Plus' || this.ampliaplus) {
+        const req: RequestCatalogoCoberturas = {
+            NombreCatalogo: "ValoresFactorCoberturaProducto",
+            valoresCoberturas: {
+                iIdAseguradoraSubRamo: null,
+                iIdProducto: 2,
+                iIdCoberturaPorProducto: null,
+                iIdTipoValor: null
+            }
+        };
         for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-            let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
-            console.log(element)
-            // switch (element) {
-            //     // case 1  :
-            //     // break;
-            // case 2:
-            //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-            //         idCobertura: 15, //cobertura por producto
-            //         idTipoCobertura: 1, //suma asegurada o deducible
-            //         idFactor: e
-            //     })
-            //     requestIdPeticion.PaqueteCoberturasApi = {
-            //         ...requestIdPeticion.PaqueteCoberturasApi,
-            //         idPaquete: 2,
-            //         idAseguradora: null,
-            //         CoberturasApi: [
-            //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-            //         ]
-            //     }
-            //     break;
-            // case 4:
-            //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-            //         idCobertura: 240, //cobertura por producto
-            //         idTipoCobertura: 1, //suma asegurada o deducible
-            //         idFactor: e
-            //     })
-            //     requestIdPeticion.PaqueteCoberturasApi = {
-            //         ...requestIdPeticion.PaqueteCoberturasApi,
-            //         idPaquete: 2,
-            //         idAseguradora: null,
-            //         CoberturasApi: [
-            //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-            //         ]
-            //     }
-            //     break;
-            // case 5:
-            //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-            //         idCobertura: 278, //cobertura por producto
-            //         idTipoCobertura: 1, //suma asegurada o deducible
-            //         idFactor: e
-            //     })
-            //     requestIdPeticion.PaqueteCoberturasApi = {
-            //         ...requestIdPeticion.PaqueteCoberturasApi,
-            //         idPaquete: 2,
-            //         idAseguradora: null,
-            //         CoberturasApi: [
-            //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-            //         ]
-            //     }
-            //     break;
-            //     // case 6  :
-            //     // break;
-            //     // case 26	:
-            //     // break;
-            //     // case 27	:
-            //     // break;
-            //     // case 450:
-            //     // break;
-            // case 494:
-            //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-            //         idCobertura: 1780, //cobertura por producto
-            //         idTipoCobertura: 1, //suma asegurada o deducible
-            //         idFactor: e
-            //     })
-            //     requestIdPeticion.PaqueteCoberturasApi = {
-            //         ...requestIdPeticion.PaqueteCoberturasApi,
-            //         idPaquete: 2,
-            //         idAseguradora: null,
-            //         CoberturasApi: [
-            //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-            //         ]
-            //     }
-            //     break;
-            // case 553:
-            //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-            //         idCobertura: 1873, //cobertura por producto
-            //         idTipoCobertura: 1, //suma asegurada o deducible
-            //         idFactor: e
-            //     })
-            //     requestIdPeticion.PaqueteCoberturasApi = {
-            //         ...requestIdPeticion.PaqueteCoberturasApi,
-            //         idPaquete: 2,
-            //         idAseguradora: null,
-            //         CoberturasApi: [
-            //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-            //         ]
-            //     }
-            //     break;
-            // default:
-            //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-            //         idCobertura: null, //cobertura por producto
-            //         idTipoCobertura: null, //suma asegurada o deducible
-            //         idFactor: null
-            //     })
-            //     requestIdPeticion.PaqueteCoberturasApi = {
-            //         ...requestIdPeticion.PaqueteCoberturasApi,
-            //         idPaquete: 2,
-            //         idAseguradora: null,
-            //         CoberturasApi: [
-            //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-            //         ]
-            //     }
-            //     break;
-            // }
+            let element1 = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
+            console.log(element1)
+            this.infovehiculoService.getnIdCobertura(req).subscribe((s) => {
+                let sJson = JSON.parse(s.CatalogoJsonString)
+                    for (let index = 0; index < sJson.length; index++) {
+                        const element = sJson[index];
+                        if (parseInt(element.nIdAseguradoraSubRamo, 10) == element1 && (element.sCobertura == 'Responsabilidad Civil') && (e.toString() == element.sValorCatalogoValor)) {
+                            requestIdPeticion.PaqueteCoberturasApi.push({
+                                idPaquete: 2,
+                                idAseguradora: element1,
+                                CoberturasApi: [{
+                                        idCobertura: parseInt(element.nIdCoberturaPorProducto, 10), //cobertura por producto
+                                        idTipoCobertura: 1, //suma asegurada o deducible
+                                        idFactor: parseInt(element.nIdCatalogoValor, 10)
+                                    }
+                                ]
+                            })
+                        }
+                    }
+    
+            });
+    
         }
+        // console.log( requestIdPeticion.PaqueteCoberturasApi);
     }
+  
     if (this.poliza == 'Limitada' || this.limitada) {
+        const req: RequestCatalogoCoberturas = {
+            NombreCatalogo: "ValoresFactorCoberturaProducto",
+            valoresCoberturas: {
+                iIdAseguradoraSubRamo: null,
+                iIdProducto: 3,
+                iIdCoberturaPorProducto: null,
+                iIdTipoValor: null
+            }
+        };
         for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-            let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
-            console.log(element)
-            // switch (element) {
-            //     // case 1  :
-            //     // break;
-            // case 2:
-            //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-            //         idCobertura: 31, //cobertura por producto
-            //         idTipoCobertura: 1, //suma asegurada o deducible
-            //         idFactor: e
-            //     })
-            //     requestIdPeticion.PaqueteCoberturasApi = {
-            //         ...requestIdPeticion.PaqueteCoberturasApi,
-            //         idPaquete: 3,
-            //         idAseguradora: null,
-            //         CoberturasApi: [
-            //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-            //         ]
-            //     }
-            //     break;
-            //     // case 4  :
-            //     // break;
-            // case 5:
-            //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-            //         idCobertura: 295, //cobertura por producto
-            //         idTipoCobertura: 1, //suma asegurada o deducible
-            //         idFactor: e
-            //     })
-            //     requestIdPeticion.PaqueteCoberturasApi = {
-            //         ...requestIdPeticion.PaqueteCoberturasApi,
-            //         idPaquete: 3,
-            //         idAseguradora: null,
-            //         CoberturasApi: [
-            //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-            //         ]
-            //     }
-            //     break;
-            //     // case 6  :
-            //     // break;
-            //     // case 26	:
-            //     // break;
-            //     // case 27	:
-            //     // break;
-            //     // case 450:
-            //     // break;
-            // case 494:
-            //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-            //         idCobertura: 1807, //cobertura por producto
-            //         idTipoCobertura: 1, //suma asegurada o deducible
-            //         idFactor: e
-            //     })
-            //     requestIdPeticion.PaqueteCoberturasApi = {
-            //         ...requestIdPeticion.PaqueteCoberturasApi,
-            //         idPaquete: 3,
-            //         idAseguradora: null,
-            //         CoberturasApi: [
-            //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-            //         ]
-            //     }
-            //     break;
-            // case 553:
-            //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-            //         idCobertura: 1902, //cobertura por producto
-            //         idTipoCobertura: 1, //suma asegurada o deducible
-            //         idFactor: e
-            //     })
-            //     requestIdPeticion.PaqueteCoberturasApi = {
-            //         ...requestIdPeticion.PaqueteCoberturasApi,
-            //         idPaquete: 3,
-            //         idAseguradora: null,
-            //         CoberturasApi: [
-            //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-            //         ]
-            //     }
-            //     break;
-            // default:
-            //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-            //         idCobertura: null, //cobertura por producto
-            //         idTipoCobertura: null, //suma asegurada o deducible
-            //         idFactor: null
-            //     })
-            //     requestIdPeticion.PaqueteCoberturasApi = {
-            //         ...requestIdPeticion.PaqueteCoberturasApi,
-            //         idPaquete: 3,
-            //         idAseguradora: null,
-            //         CoberturasApi: [
-            //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-            //         ]
-            //     }
-            //     break;
-            // }
+            let element1 = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
+            console.log(element1)
+            this.infovehiculoService.getnIdCobertura(req).subscribe((s) => {
+                let sJson = JSON.parse(s.CatalogoJsonString)
+                    for (let index = 0; index < sJson.length; index++) {
+                        const element = sJson[index];
+                        if (parseInt(element.nIdAseguradoraSubRamo, 10) == element1 && (element.sCobertura == 'Responsabilidad Civil') && (e.toString() == element.sValorCatalogoValor)) {
+                            requestIdPeticion.PaqueteCoberturasApi.push({
+                                idPaquete: 3,
+                                idAseguradora: element1,
+                                CoberturasApi: [{
+                                        idCobertura: parseInt(element.nIdCoberturaPorProducto, 10), //cobertura por producto
+                                        idTipoCobertura: 1, //suma asegurada o deducible
+                                        idFactor: parseInt(element.nIdCatalogoValor, 10)
+                                    }
+                                ]
+                            })
+                        }
+                    }
+    
+            });
+    
         }
+        // console.log( requestIdPeticion.PaqueteCoberturasApi);
     }
-    console.log(requestIdPeticion)
+
+    console.log(requestIdPeticion)  
   }
 
   handlerOptionsmedicalExpenses(e: number) {
     this.medicalExpenses =e;
     requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     if (this.poliza == 'Amplia' || this.amplia) {
+      const req: RequestCatalogoCoberturas = {
+          NombreCatalogo: "ValoresFactorCoberturaProducto",
+          valoresCoberturas: {
+              iIdAseguradoraSubRamo: null,
+              iIdProducto: 1,
+              iIdCoberturaPorProducto: null,
+              iIdTipoValor: null
+          }
+      };
       for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-          let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
-          console.log(element)
-        //   switch (element) {
-        //       // case 1  :
-        //       // break;
-        //   case 2:
-        //       requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-        //           idCobertura: 7, //cobertura por producto
-        //           idTipoCobertura: 1, //suma asegurada o deducible
-        //           idFactor: e
-        //       })
-        //       requestIdPeticion.PaqueteCoberturasApi = {
-        //           ...requestIdPeticion.PaqueteCoberturasApi,
-        //           idPaquete: 1,
-        //           idAseguradora: null,
-        //           CoberturasApi: [
-        //               ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //           ]
-        //       }
-        //       break;
-        //   case 4:
-        //       requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-        //           idCobertura: 231, //cobertura por producto
-        //           idTipoCobertura: 1, //suma asegurada o deducible
-        //           idFactor: e
-        //       })
-        //       requestIdPeticion.PaqueteCoberturasApi = {
-        //           ...requestIdPeticion.PaqueteCoberturasApi,
-        //           idPaquete: 1,
-        //           idAseguradora: null,
-        //           CoberturasApi: [
-        //               ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //           ]
-        //       }
-        //       break;
-        //   case 5:
-        //       requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-        //           idCobertura: 269, //cobertura por producto
-        //           idTipoCobertura: 1, //suma asegurada o deducible
-        //           idFactor: e
-        //       })
-        //       requestIdPeticion.PaqueteCoberturasApi = {
-        //           ...requestIdPeticion.PaqueteCoberturasApi,
-        //           idPaquete: 1,
-        //           idAseguradora: null,
-        //           CoberturasApi: [
-        //               ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //           ]
-        //       }
-        //       break;
-        //       // case 6  :
-        //       // break;
-        //       // case 26	:
-        //       // break;
-			  // case 27	:
-        //       requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-        //           {
-        //           idCobertura: 118, //cobertura por producto
-        //           idTipoCobertura: 1, //suma asegurada o deducible
-        //           idFactor: e
-        //       })
-        //       requestIdPeticion.PaqueteCoberturasApi = {
-        //           ...requestIdPeticion.PaqueteCoberturasApi,
-        //           idPaquete: 1,
-        //           idAseguradora: null,
-        //           CoberturasApi: [
-        //               ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //           ]
-        //       }
-        //       break;
-        //       // case 450:
-        //       // break;
-			  // // case 494  :
-        //       // break;
-        //   case 553:
-        //       requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-        //           {
-        //           idCobertura: 1893, //cobertura por producto
-        //           idTipoCobertura: 1, //suma asegurada o deducible
-        //           idFactor: e
-        //       })
-        //       requestIdPeticion.PaqueteCoberturasApi = {
-        //           ...requestIdPeticion.PaqueteCoberturasApi,
-        //           idPaquete: 1,
-        //           idAseguradora: null,
-        //           CoberturasApi: [
-        //               ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //           ]
-        //       }
-        //       break;
-        //   default:
-        //       requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-        //           {
-        //           idCobertura: null, //cobertura por producto
-        //           idTipoCobertura: null, //suma asegurada o deducible
-        //           idFactor: null
-        //       })
-        //       requestIdPeticion.PaqueteCoberturasApi = {
-        //           ...requestIdPeticion.PaqueteCoberturasApi,
-        //           idPaquete: 1,
-        //           idAseguradora: null,
-        //           CoberturasApi: [
-        //               ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //           ]
-        //       }
-        //       break;
-        //   }
+          let element1 = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
+          console.log(element1)
+          this.infovehiculoService.getnIdCobertura(req).subscribe((s) => {
+              let sJson = JSON.parse(s.CatalogoJsonString)
+                  for (let index = 0; index < sJson.length; index++) {
+                      const element = sJson[index];
+                      if (parseInt(element.nIdAseguradoraSubRamo, 10) == element1 && (element.sCobertura == 'Gastos Médicos Ocupantes') && (e.toString() == element.sValorCatalogoValor)) {
+                          requestIdPeticion.PaqueteCoberturasApi.push({
+                              idPaquete: 1,
+                              idAseguradora: element1,
+                              CoberturasApi: [{
+                                      idCobertura: parseInt(element.nIdCoberturaPorProducto, 10), //cobertura por producto
+                                      idTipoCobertura: 1, //suma asegurada o deducible
+                                      idFactor: parseInt(element.nIdCatalogoValor, 10)
+                                  }
+                              ]
+                          })
+                      }
+                  }
+  
+          });
+  
       }
+      // console.log( requestIdPeticion.PaqueteCoberturasApi);
     }
-    if (this.poliza=='Amplia Plus'|| this.ampliaplus) {
-      for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-          let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
-          console.log(element)
-      //     switch (element) {
-      //         // case 1  :
-      //         // break;
-      //     case 2:
-      //         requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-      //             idCobertura: 17, //cobertura por producto
-      //             idTipoCobertura: 1, //suma asegurada o deducible
-      //             idFactor: e
-      //         })
-      //         requestIdPeticion.PaqueteCoberturasApi = {
-      //             ...requestIdPeticion.PaqueteCoberturasApi,
-      //             idPaquete: 2,
-      //             idAseguradora: null,
-      //             CoberturasApi: [
-      //                 ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-      //             ]
-      //         }
-      //         break;
-      //     case 4:
-      //       requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-      //           idCobertura: 242, //cobertura por producto
-      //           idTipoCobertura: 1, //suma asegurada o deducible
-      //           idFactor: e
-      //       })
-      //       requestIdPeticion.PaqueteCoberturasApi = {
-      //           ...requestIdPeticion.PaqueteCoberturasApi,
-      //           idPaquete: 2,
-      //           idAseguradora: null,
-      //           CoberturasApi: [
-      //               ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-      //           ]
-      //       }
-      //     break;
-      //     case 5:
-      //       requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-      //           idCobertura: 280, //cobertura por producto
-      //           idTipoCobertura: 1, //suma asegurada o deducible
-      //           idFactor: e
-      //       })
-      //       requestIdPeticion.PaqueteCoberturasApi = {
-      //           ...requestIdPeticion.PaqueteCoberturasApi,
-      //           idPaquete: 2,
-      //           idAseguradora: null,
-      //           CoberturasApi: [
-      //               ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-      //           ]
-      //       }
-      //     break;
-      //         // case 6  :
-      //         // break;
-      //         // case 26	:
-      //         // break;
-			//     case 27	:
-      //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-      //         {
-      //         idCobertura: 129, //cobertura por producto
-      //         idTipoCobertura: 1, //suma asegurada o deducible
-      //         idFactor: e
-      //     })
-      //     requestIdPeticion.PaqueteCoberturasApi = {
-      //         ...requestIdPeticion.PaqueteCoberturasApi,
-      //         idPaquete: 2,
-      //         idAseguradora: null,
-      //         CoberturasApi: [
-      //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-      //         ]
-      //     }
-      //   break;
-      //         // case 450:
-      //         // break;
-		  //     case 494  :
-			//   requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-			// 		  {
-			// 		  idCobertura: 1782, //cobertura por producto
-			// 		  idTipoCobertura: 1, //suma asegurada o deducible
-			// 		  idFactor: e
-			// 	  })
-			//   requestIdPeticion.PaqueteCoberturasApi = {
-			// 	  ...requestIdPeticion.PaqueteCoberturasApi,
-			// 	  idPaquete: 2,
-			// 	  idAseguradora: null,
-			// 	  CoberturasApi: [
-			// 		  ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-			// 	  ]
-			//   }
-		  // break;
-      //     case 553:
-      //         requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-      //             {
-      //             idCobertura: 1877, //cobertura por producto
-      //             idTipoCobertura: 1, //suma asegurada o deducible
-      //             idFactor: e
-      //         })
-      //         requestIdPeticion.PaqueteCoberturasApi = {
-      //             ...requestIdPeticion.PaqueteCoberturasApi,
-      //             idPaquete: 2,
-      //             idAseguradora: null,
-      //             CoberturasApi: [
-      //                 ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-      //             ]
-      //         }
-      //         break;
-      //     default:
-      //         requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-      //             {
-      //             idCobertura: null, //cobertura por producto
-      //             idTipoCobertura: null, //suma asegurada o deducible
-      //             idFactor: null
-      //         })
-      //         requestIdPeticion.PaqueteCoberturasApi = {
-      //             ...requestIdPeticion.PaqueteCoberturasApi,
-      //             idPaquete: 2,
-      //             idAseguradora: null,
-      //             CoberturasApi: [
-      //                 ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-      //             ]
-      //         }
-      //         break;
-      //     }
-      }
+    
+    if (this.poliza == 'Amplia Plus' || this.ampliaplus) {
+        const req: RequestCatalogoCoberturas = {
+            NombreCatalogo: "ValoresFactorCoberturaProducto",
+            valoresCoberturas: {
+                iIdAseguradoraSubRamo: null,
+                iIdProducto: 2,
+                iIdCoberturaPorProducto: null,
+                iIdTipoValor: null
+            }
+        };
+        for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
+            let element1 = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
+            console.log(element1)
+            this.infovehiculoService.getnIdCobertura(req).subscribe((s) => {
+                let sJson = JSON.parse(s.CatalogoJsonString)
+                    for (let index = 0; index < sJson.length; index++) {
+                        const element = sJson[index];
+                        if (parseInt(element.nIdAseguradoraSubRamo, 10) == element1 && (element.sCobertura == 'Gastos Médicos Ocupantes') && (e.toString() == element.sValorCatalogoValor)) {
+                            requestIdPeticion.PaqueteCoberturasApi.push({
+                                idPaquete: 2,
+                                idAseguradora: element1,
+                                CoberturasApi: [{
+                                        idCobertura: parseInt(element.nIdCoberturaPorProducto, 10), //cobertura por producto
+                                        idTipoCobertura: 1, //suma asegurada o deducible
+                                        idFactor: parseInt(element.nIdCatalogoValor, 10)
+                                    }
+                                ]
+                            })
+                        }
+                    }
+    
+            });
+    
+        }
+        // console.log( requestIdPeticion.PaqueteCoberturasApi);
     }
+    
     if (this.poliza == 'Limitada' || this.limitada) {
-      for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-          let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
-          console.log(element)
-          // switch (element) {
-          //     // case 1  :
-          //     // break;
-          // case 2:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura:  33, //cobertura por producto
-          //         idTipoCobertura: 1, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 3,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          //     // case 4  :
-          //     // break;
-          // case 5:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: 297, //cobertura por producto
-          //         idTipoCobertura: 1, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 3,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          //     // case 6  :
-          //     // break;
-          //     // case 26	:
-          //     // break;
-          // case 27	:
-          //   requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //       idCobertura: 145, //cobertura por producto
-          //       idTipoCobertura: 1, //suma asegurada o deducible
-          //       idFactor: e
-          //     })
-          //   requestIdPeticion.PaqueteCoberturasApi = {
-          //     ...requestIdPeticion.PaqueteCoberturasApi,
-          //     idPaquete: 3,
-          //     idAseguradora: null,
-          //     CoberturasApi: [
-          //       ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //     ]
-          //   }
-          // break;
-          //     // case 450:
-          //     // break;
-          // case 494:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: 1809, //cobertura por producto
-          //         idTipoCobertura: 1, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 3,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          // case 553:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: 1905, //cobertura por producto
-          //         idTipoCobertura: 1, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 3,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          // default:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: null, //cobertura por producto
-          //         idTipoCobertura: null, //suma asegurada o deducible
-          //         idFactor: null
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 3,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          // }
-      }
+        const req: RequestCatalogoCoberturas = {
+            NombreCatalogo: "ValoresFactorCoberturaProducto",
+            valoresCoberturas: {
+                iIdAseguradoraSubRamo: null,
+                iIdProducto: 3,
+                iIdCoberturaPorProducto: null,
+                iIdTipoValor: null
+            }
+        };
+        for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
+            let element1 = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
+            console.log(element1)
+            this.infovehiculoService.getnIdCobertura(req).subscribe((s) => {
+                let sJson = JSON.parse(s.CatalogoJsonString)
+                    for (let index = 0; index < sJson.length; index++) {
+                        const element = sJson[index];
+                        if (parseInt(element.nIdAseguradoraSubRamo, 10) == element1 && (element.sCobertura == 'Gastos Médicos Ocupantes') && (e.toString() == element.sValorCatalogoValor)) {
+                            requestIdPeticion.PaqueteCoberturasApi.push({
+                                idPaquete: 3,
+                                idAseguradora: element1,
+                                CoberturasApi: [{
+                                        idCobertura: parseInt(element.nIdCoberturaPorProducto, 10), //cobertura por producto
+                                        idTipoCobertura: 1, //suma asegurada o deducible
+                                        idFactor: parseInt(element.nIdCatalogoValor, 10)
+                                    }
+                                ]
+                            })
+                        }
+                    }
+    
+            });
+    
+        }
+        // console.log( requestIdPeticion.PaqueteCoberturasApi);
     }
     console.log(requestIdPeticion)
   }
@@ -1808,567 +921,233 @@ constructor(
     this.driverAccident  =e;
     requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     if (this.poliza == 'Amplia' || this.amplia) {
+      const req: RequestCatalogoCoberturas = {
+          NombreCatalogo: "ValoresFactorCoberturaProducto",
+          valoresCoberturas: {
+              iIdAseguradoraSubRamo: null,
+              iIdProducto: 1,
+              iIdCoberturaPorProducto: null,
+              iIdTipoValor: null
+          }
+      };
       for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-          let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
-          console.log(element)
-        //   switch (element) {
-        //         // case 1  :
-        //         // break;
-        //     case 2:
-        //         requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-        //             idCobertura: 3091, //cobertura por producto
-        //             idTipoCobertura: 1, //suma asegurada o deducible
-        //             idFactor: e
-        //         })
-        //         requestIdPeticion.PaqueteCoberturasApi = {
-        //             ...requestIdPeticion.PaqueteCoberturasApi,
-        //             idPaquete: 1,
-        //             idAseguradora: null,
-        //             CoberturasApi: [
-        //                 ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //             ]
-        //         }
-        //         break;
-        //     case 4:
-        //         requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-        //             idCobertura: 233, //cobertura por producto
-        //             idTipoCobertura: 1, //suma asegurada o deducible
-        //             idFactor: e
-        //         })
-        //         requestIdPeticion.PaqueteCoberturasApi = {
-        //             ...requestIdPeticion.PaqueteCoberturasApi,
-        //             idPaquete: 1,
-        //             idAseguradora: null,
-        //             CoberturasApi: [
-        //                 ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //             ]
-        //         }
-        //         break;
-        //     case 5:
-        //         requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-        //             idCobertura: 271, //cobertura por producto
-        //             idTipoCobertura: 1, //suma asegurada o deducible
-        //             idFactor: e
-        //         })
-        //         requestIdPeticion.PaqueteCoberturasApi = {
-        //             ...requestIdPeticion.PaqueteCoberturasApi,
-        //             idPaquete: 1,
-        //             idAseguradora: null,
-        //             CoberturasApi: [
-        //                 ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //             ]
-        //         }
-        //         break;
-        //         // case 6  :
-        //         // break;
-        //         // case 26	:
-        //         // break;
-        //     case 27	:
-        //         requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-        //             {
-        //             idCobertura: 120, //cobertura por producto
-        //             idTipoCobertura: 1, //suma asegurada o deducible
-        //             idFactor: e
-        //         })
-        //         requestIdPeticion.PaqueteCoberturasApi = {
-        //             ...requestIdPeticion.PaqueteCoberturasApi,
-        //             idPaquete: 1,
-        //             idAseguradora: null,
-        //             CoberturasApi: [
-        //                 ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //             ]
-        //         }
-        //         break;
-        //         // case 450:
-        //         // break;
-        //     case 494  :
-        // requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-        //             {
-        //             idCobertura: 1799, //cobertura por producto
-        //             idTipoCobertura: 1, //suma asegurada o deducible
-        //             idFactor: e
-        //         })
-        //         requestIdPeticion.PaqueteCoberturasApi = {
-        //             ...requestIdPeticion.PaqueteCoberturasApi,
-        //             idPaquete: 1,
-        //             idAseguradora: null,
-        //             CoberturasApi: [
-        //                 ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //             ]
-        //         }
-        //     break;
-        //     case 553:
-        //         requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-        //             {
-        //             idCobertura: 1895, //cobertura por producto
-        //             idTipoCobertura: 1, //suma asegurada o deducible
-        //             idFactor: e
-        //         })
-        //         requestIdPeticion.PaqueteCoberturasApi = {
-        //             ...requestIdPeticion.PaqueteCoberturasApi,
-        //             idPaquete: 1,
-        //             idAseguradora: null,
-        //             CoberturasApi: [
-        //                 ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //             ]
-        //         }
-        //         break;
-        //     default:
-        //       requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-        //           {
-        //           idCobertura: null, //cobertura por producto
-        //           idTipoCobertura: null, //suma asegurada o deducible
-        //           idFactor: null
-        //       })
-        //       requestIdPeticion.PaqueteCoberturasApi = {
-        //           ...requestIdPeticion.PaqueteCoberturasApi,
-        //           idPaquete: 1,
-        //           idAseguradora: null,
-        //           CoberturasApi: [
-        //               ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //           ]
-        //       }
-        //       break;
-        //   }
+          let element1 = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
+          console.log(element1)
+          this.infovehiculoService.getnIdCobertura(req).subscribe((s) => {
+              let sJson = JSON.parse(s.CatalogoJsonString)
+                  for (let index = 0; index < sJson.length; index++) {
+                      const element = sJson[index];
+                      if (parseInt(element.nIdAseguradoraSubRamo, 10) == element1 && (element.sCobertura == 'Accidentes Al Conductor') && (e.toString() == element.sValorCatalogoValor)) {
+                          requestIdPeticion.PaqueteCoberturasApi.push({
+                              idPaquete: 1,
+                              idAseguradora: element1,
+                              CoberturasApi: [{
+                                      idCobertura: parseInt(element.nIdCoberturaPorProducto, 10), //cobertura por producto
+                                      idTipoCobertura: 1, //suma asegurada o deducible
+                                      idFactor: parseInt(element.nIdCatalogoValor, 10)
+                                  }
+                              ]
+                          })
+                      }
+                  }
+  
+          });
+  
       }
+      // console.log( requestIdPeticion.PaqueteCoberturasApi);
     }
-    if (this.poliza=='Amplia Plus'|| this.ampliaplus) {
-      for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-          let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
-          console.log(element)
-        //   switch (element) {
-        //       // case 1  :
-        //       // break;
-        //   case 2:
-        //       requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-        //           idCobertura: 19, //cobertura por producto
-        //           idTipoCobertura: 1, //suma asegurada o deducible
-        //           idFactor: e
-        //       })
-        //       requestIdPeticion.PaqueteCoberturasApi = {
-        //           ...requestIdPeticion.PaqueteCoberturasApi,
-        //           idPaquete: 2,
-        //           idAseguradora: null,
-        //           CoberturasApi: [
-        //               ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //           ]
-        //       }
-        //       break;
-        //   case 4:
-        //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-        //         idCobertura: 244, //cobertura por producto
-        //         idTipoCobertura: 1, //suma asegurada o deducible
-        //         idFactor: e
-        //     })
-        //     requestIdPeticion.PaqueteCoberturasApi = {
-        //         ...requestIdPeticion.PaqueteCoberturasApi,
-        //         idPaquete: 2,
-        //         idAseguradora: null,
-        //         CoberturasApi: [
-        //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //         ]
-        //     }
-        //   break;
-        //   case 5:
-        //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-        //         idCobertura: 282, //cobertura por producto
-        //         idTipoCobertura: 1, //suma asegurada o deducible
-        //         idFactor: e
-        //     })
-        //     requestIdPeticion.PaqueteCoberturasApi = {
-        //         ...requestIdPeticion.PaqueteCoberturasApi,
-        //         idPaquete: 2,
-        //         idAseguradora: null,
-        //         CoberturasApi: [
-        //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //         ]
-        //     }
-        //   break;
-        //       // case 6  :
-        //       // break;
-        //       // case 26	:
-        //       // break;
-			  //   case 27	:
-        //   requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-        //       {
-        //       idCobertura: 131, //cobertura por producto
-        //       idTipoCobertura: 1, //suma asegurada o deducible
-        //       idFactor: e
-        //   })
-        //   requestIdPeticion.PaqueteCoberturasApi = {
-        //       ...requestIdPeticion.PaqueteCoberturasApi,
-        //       idPaquete: 2,
-        //       idAseguradora: null,
-        //       CoberturasApi: [
-        //           ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //       ]
-        //   }
-        // break;
-        //       // case 450:
-        //       // break;
-		    //   // case 494:
-        //       // break;
-        //   case 553:
-        //       requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-        //           {
-        //           idCobertura: 1879, //cobertura por producto
-        //           idTipoCobertura: 1, //suma asegurada o deducible
-        //           idFactor: e
-        //       })
-        //       requestIdPeticion.PaqueteCoberturasApi = {
-        //           ...requestIdPeticion.PaqueteCoberturasApi,
-        //           idPaquete: 2,
-        //           idAseguradora: null,
-        //           CoberturasApi: [
-        //               ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //           ]
-        //       }
-        //       break;
-        //   default:
-        //       requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-        //           {
-        //           idCobertura: null, //cobertura por producto
-        //           idTipoCobertura: null, //suma asegurada o deducible
-        //           idFactor: null
-        //       })
-        //       requestIdPeticion.PaqueteCoberturasApi = {
-        //           ...requestIdPeticion.PaqueteCoberturasApi,
-        //           idPaquete: 2,
-        //           idAseguradora: null,
-        //           CoberturasApi: [
-        //               ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-        //           ]
-        //       }
-        //       break;
-        //   }
-      }
+    
+    if (this.poliza == 'Amplia Plus' || this.ampliaplus) {
+        const req: RequestCatalogoCoberturas = {
+            NombreCatalogo: "ValoresFactorCoberturaProducto",
+            valoresCoberturas: {
+                iIdAseguradoraSubRamo: null,
+                iIdProducto: 2,
+                iIdCoberturaPorProducto: null,
+                iIdTipoValor: null
+            }
+        };
+        for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
+            let element1 = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
+            console.log(element1)
+            this.infovehiculoService.getnIdCobertura(req).subscribe((s) => {
+                let sJson = JSON.parse(s.CatalogoJsonString)
+                    for (let index = 0; index < sJson.length; index++) {
+                        const element = sJson[index];
+                        if (parseInt(element.nIdAseguradoraSubRamo, 10) == element1 && (element.sCobertura == 'Accidentes Al Conductor') && (e.toString() == element.sValorCatalogoValor)) {
+                            requestIdPeticion.PaqueteCoberturasApi.push({
+                                idPaquete: 2,
+                                idAseguradora: element1,
+                                CoberturasApi: [{
+                                        idCobertura: parseInt(element.nIdCoberturaPorProducto, 10), //cobertura por producto
+                                        idTipoCobertura: 1, //suma asegurada o deducible
+                                        idFactor: parseInt(element.nIdCatalogoValor, 10)
+                                    }
+                                ]
+                            })
+                        }
+                    }
+    
+            });
+    
+        }
+        // console.log( requestIdPeticion.PaqueteCoberturasApi);
     }
+    
     if (this.poliza == 'Limitada' || this.limitada) {
-      for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-          let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
-          console.log(element)
-          // switch (element) {
-          //     // case 1  :
-          //     // break;
-          //     case 2:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: 3092, //cobertura por producto
-          //         idTipoCobertura: 1, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 3,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          //     // case 4  :
-          //     // break;
-          //     case 5:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: 299, //cobertura por producto
-          //         idTipoCobertura: 1, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 3,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          //     // case 6  :
-          //     // break;
-          //     // case 26	:
-          //     // break;
-          //     case 27	:
-          //   requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //       idCobertura: 147, //cobertura por producto
-          //       idTipoCobertura: 1, //suma asegurada o deducible
-          //       idFactor: e
-          //     })
-          //   requestIdPeticion.PaqueteCoberturasApi = {
-          //     ...requestIdPeticion.PaqueteCoberturasApi,
-          //     idPaquete: 3,
-          //     idAseguradora: null,
-          //     CoberturasApi: [
-          //       ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //     ]
-          //   }
-          // break;
-          //     // case 450:
-          //     // break;
-			    //     // case 494:
-          //     // break;
-          //     case 553:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: 1907, //cobertura por producto
-          //         idTipoCobertura: 1, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 3,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          //     default:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: null, //cobertura por producto
-          //         idTipoCobertura: null, //suma asegurada o deducible
-          //         idFactor: null
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 3,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          // }
-      }
+        const req: RequestCatalogoCoberturas = {
+            NombreCatalogo: "ValoresFactorCoberturaProducto",
+            valoresCoberturas: {
+                iIdAseguradoraSubRamo: null,
+                iIdProducto: 3,
+                iIdCoberturaPorProducto: null,
+                iIdTipoValor: null
+            }
+        };
+        for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
+            let element1 = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
+            console.log(element1)
+            this.infovehiculoService.getnIdCobertura(req).subscribe((s) => {
+                let sJson = JSON.parse(s.CatalogoJsonString)
+                    for (let index = 0; index < sJson.length; index++) {
+                        const element = sJson[index];
+                        if (parseInt(element.nIdAseguradoraSubRamo, 10) == element1 && (element.sCobertura == 'Accidentes Al Conductor') && (e.toString() == element.sValorCatalogoValor)) {
+                            requestIdPeticion.PaqueteCoberturasApi.push({
+                                idPaquete: 3,
+                                idAseguradora: element1,
+                                CoberturasApi: [{
+                                        idCobertura: parseInt(element.nIdCoberturaPorProducto, 10), //cobertura por producto
+                                        idTipoCobertura: 1, //suma asegurada o deducible
+                                        idFactor: parseInt(element.nIdCatalogoValor, 10)
+                                    }
+                                ]
+                            })
+                        }
+                    }
+    
+            });
+    
+        }
+        // console.log( requestIdPeticion.PaqueteCoberturasApi);
     }
-    console.log(requestIdPeticion)
+    console.log(requestIdPeticion)  
   }
 
   handlerOptionsocuppantsLiability(e: number) {
     this.ocuppantsLiability=e;
     requestIdPeticion.PaqueteCoberturasApi.splice(0,requestIdPeticion.PaqueteCoberturasApi.length);
     if (this.poliza == 'Amplia' || this.amplia) {
+      const req: RequestCatalogoCoberturas = {
+          NombreCatalogo: "ValoresFactorCoberturaProducto",
+          valoresCoberturas: {
+              iIdAseguradoraSubRamo: null,
+              iIdProducto: 1,
+              iIdCoberturaPorProducto: null,
+              iIdTipoValor: null
+          }
+      };
       for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-          let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
-          console.log(element)
-          // switch (element) {
-          //       // case 1  :
-          //       // break;
-          //   case 2:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //       idCobertura: 3091, //cobertura por producto
-          //       idTipoCobertura: 1, //suma asegurada o deducible
-          //       idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //       ...requestIdPeticion.PaqueteCoberturasApi,
-          //       idPaquete: 1,
-          //       idAseguradora: null,
-          //       CoberturasApi: [
-          //         ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //       ]
-          //     }
-          //   break;
-				  //       // case 4:
-          //       // break;
-				  //       // case 5:
-          //       // break;
-          //       // case 6  :
-          //       // break;
-          //       // case 26	:
-          //       // break;
-          //   case 27	:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-          //         {
-          //         idCobertura: 120, //cobertura por producto
-          //         idTipoCobertura: 1, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 1,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //   break;
-          //       // case 450:
-          //       // break;
-          //       // case 494  :
-          //       // break;
-          //       // case 553:
-          //       // break;
-          //   default:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-          //         {
-          //         idCobertura: null, //cobertura por producto
-          //         idTipoCobertura: null, //suma asegurada o deducible
-          //         idFactor: null
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 1,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          // }
+          let element1 = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
+          console.log(element1)
+          this.infovehiculoService.getnIdCobertura(req).subscribe((s) => {
+              let sJson = JSON.parse(s.CatalogoJsonString)
+                  for (let index = 0; index < sJson.length; index++) {
+                      const element = sJson[index];
+                      if (parseInt(element.nIdAseguradoraSubRamo, 10) == element1 && (element.sCobertura == 'RC Daños a Ocupantes') && (e.toString() == element.sValorCatalogoValor)) {
+                          requestIdPeticion.PaqueteCoberturasApi.push({
+                              idPaquete: 1,
+                              idAseguradora: element1,
+                              CoberturasApi: [{
+                                      idCobertura: parseInt(element.nIdCoberturaPorProducto, 10), //cobertura por producto
+                                      idTipoCobertura: 1, //suma asegurada o deducible
+                                      idFactor: parseInt(element.nIdCatalogoValor, 10)
+                                  }
+                              ]
+                          })
+                      }
+                  }
+  
+          });
+  
       }
+      // console.log( requestIdPeticion.PaqueteCoberturasApi);
     }
-    if (this.poliza=='Amplia Plus'|| this.ampliaplus) {
-      for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-          let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
-          console.log(element)
-          // switch (element) {
-          //     // case 1  :
-          //     // break;
-          //   case 2:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //       idCobertura: 4357, //cobertura por producto
-          //       idTipoCobertura: 1, //suma asegurada o deducible
-          //       idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //       ...requestIdPeticion.PaqueteCoberturasApi,
-          //       idPaquete: 2,
-          //       idAseguradora: null,
-          //       CoberturasApi: [
-          //         ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //       ]
-          //     }
-          //   break;
-          //     // case 4:
-          //     // break;
-			    //   case 5:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //       idCobertura: 289, //cobertura por producto
-          //       idTipoCobertura: 1, //suma asegurada o deducible
-          //       idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //       ...requestIdPeticion.PaqueteCoberturasApi,
-          //       idPaquete: 2,
-          //       idAseguradora: null,
-          //       CoberturasApi: [
-          //         ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //       ]
-          //     }
-          //   break;
-          //     // case 6  :
-          //     // break;
-          //     // case 26	:
-          //     // break;
-			    //   case 27	:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-          //       {
-          //       idCobertura: 4320, //cobertura por producto
-          //       idTipoCobertura: 1, //suma asegurada o deducible
-          //       idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //       ...requestIdPeticion.PaqueteCoberturasApi,
-          //       idPaquete: 2,
-          //       idAseguradora: null,
-          //       CoberturasApi: [
-          //         ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //       ]
-          //     }
-          //   break;
-          //     // case 450:
-          //     // break;
-		      //     // case 494:
-          //     // break;
-			    //     // case 553:
-          //     // break;
-          //   default:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push(
-          //         {
-          //         idCobertura: null, //cobertura por producto
-          //         idTipoCobertura: null, //suma asegurada o deducible
-          //         idFactor: null
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 2,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //   break;
-          // }
-      }
+    
+    if (this.poliza == 'Amplia Plus' || this.ampliaplus) {
+        const req: RequestCatalogoCoberturas = {
+            NombreCatalogo: "ValoresFactorCoberturaProducto",
+            valoresCoberturas: {
+                iIdAseguradoraSubRamo: null,
+                iIdProducto: 2,
+                iIdCoberturaPorProducto: null,
+                iIdTipoValor: null
+            }
+        };
+        for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
+            let element1 = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
+            console.log(element1)
+            this.infovehiculoService.getnIdCobertura(req).subscribe((s) => {
+                let sJson = JSON.parse(s.CatalogoJsonString)
+                    for (let index = 0; index < sJson.length; index++) {
+                        const element = sJson[index];
+                        if (parseInt(element.nIdAseguradoraSubRamo, 10) == element1 && (element.sCobertura == 'RC Daños a Ocupantes') && (e.toString() == element.sValorCatalogoValor)) {
+                            requestIdPeticion.PaqueteCoberturasApi.push({
+                                idPaquete: 2,
+                                idAseguradora: element1,
+                                CoberturasApi: [{
+                                        idCobertura: parseInt(element.nIdCoberturaPorProducto, 10), //cobertura por producto
+                                        idTipoCobertura: 1, //suma asegurada o deducible
+                                        idFactor: parseInt(element.nIdCatalogoValor, 10)
+                                    }
+                                ]
+                            })
+                        }
+                    }
+    
+            });
+    
+        }
+        // console.log( requestIdPeticion.PaqueteCoberturasApi);
     }
+    
     if (this.poliza == 'Limitada' || this.limitada) {
-      for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
-          let element = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
-          console.log(element)
-          // switch (element) {
-          //     // case 1  :
-          //     // break;
-          //     case 2:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura:  4365, //cobertura por producto
-          //         idTipoCobertura: 1, //suma asegurada o deducible
-          //         idFactor: e
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 3,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          //     // case 4  :
-          //     // break;
-          //     // case 5:
-          //     // break;
-          //     // case 6  :
-          //     // break;
-          //     // case 26	:
-          //     // break;
-          //     case 27	:
-          //       requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //           idCobertura: 4323, //cobertura por producto
-          //           idTipoCobertura: 1, //suma asegurada o deducible
-          //           idFactor: e
-          //         })
-          //       requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 3,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //           ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //       }
-          //     break;
-          //     // case 450:
-          //     // break;
-			    //     // case 494:
-          //     // break;
-          //     // case 553:
-          //     // break;
-          //     default:
-          //     requestIdPeticion.PaqueteCoberturasApi.CoberturasApi.push({
-          //         idCobertura: null, //cobertura por producto
-          //         idTipoCobertura: null, //suma asegurada o deducible
-          //         idFactor: null
-          //     })
-          //     requestIdPeticion.PaqueteCoberturasApi = {
-          //         ...requestIdPeticion.PaqueteCoberturasApi,
-          //         idPaquete: 3,
-          //         idAseguradora: null,
-          //         CoberturasApi: [
-          //             ...requestIdPeticion.PaqueteCoberturasApi.CoberturasApi
-          //         ]
-          //     }
-          //     break;
-          // }
-      }
+        const req: RequestCatalogoCoberturas = {
+            NombreCatalogo: "ValoresFactorCoberturaProducto",
+            valoresCoberturas: {
+                iIdAseguradoraSubRamo: null,
+                iIdProducto: 3,
+                iIdCoberturaPorProducto: null,
+                iIdTipoValor: null
+            }
+        };
+        for (let index = 0; index < this.responseCotizacionJSON.length; index++) {
+            let element1 = parseInt(this.responseCotizacionJSON[index].IdAseguradora, 10);
+            console.log(element1)
+            this.infovehiculoService.getnIdCobertura(req).subscribe((s) => {
+                let sJson = JSON.parse(s.CatalogoJsonString)
+                    for (let index = 0; index < sJson.length; index++) {
+                        const element = sJson[index];
+                        if (parseInt(element.nIdAseguradoraSubRamo, 10) == element1 && (element.sCobertura == 'RC Daños a Ocupantes') && (e.toString() == element.sValorCatalogoValor)) {
+                            requestIdPeticion.PaqueteCoberturasApi.push({
+                                idPaquete: 3,
+                                idAseguradora: element1,
+                                CoberturasApi: [{
+                                        idCobertura: parseInt(element.nIdCoberturaPorProducto, 10), //cobertura por producto
+                                        idTipoCobertura: 1, //suma asegurada o deducible
+                                        idFactor: parseInt(element.nIdCatalogoValor, 10)
+                                    }
+                                ]
+                            })
+                        }
+                    }
+    
+            });
+    
+        }
+        // console.log( requestIdPeticion.PaqueteCoberturasApi);
     }
     console.log(requestIdPeticion)
+  
   }
 
   consultanuevosprecios(){

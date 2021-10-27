@@ -327,7 +327,7 @@ export class InfovehiculoService {
 
 
   getnIdCobertura(request: RequestCatalogoCoberturas){
-      return this.https.post<ResponseCatalogoCoberturas>(
+      return this.https.post<any>(
         `${environment.url_APICotizacion}/Catalogo`,
         request
       );
