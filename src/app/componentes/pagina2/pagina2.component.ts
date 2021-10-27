@@ -455,14 +455,14 @@ constructor(
 
     this.store.dispatch( new GetIdPeticion(requestIdPeticion) )
    
-    setTimeout(()=>
-      {
+    // setTimeout(()=>
+    //   {
           this.store.select(selectIdPeticionResponse).pipe(take(1)).subscribe(
           selectCotizacionResponse=>{
             this.requestIdCotizacion.IdPeticion= selectCotizacionResponse.iDPeticion
             return this.store.dispatch( new GetCotizacion(this.requestIdCotizacion) )
           })
-      },9000)
+      // },9000)
     
     this.show = false;
     

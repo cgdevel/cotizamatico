@@ -40,19 +40,85 @@
       <div class="container">
         <div class="row">
           <div class="col-8 col-md-2" *ngIf="!this.verCarousle" style="padding-top: 70px;">
-            <div class="coberturas__card">
+            <div class="coberturas__card" *ngIf="this.poliza=='Amplia Plus' " >
               <h5>Coberturas Incluidas</h5>
-              <p>Daños Materiales</p>
-              <p>Robo Total</p>
-              <p>Responsabilidad Civil</p>
-              <p>Gastos Médicos Ocupantes</p>
-              <p>Asistencia legal</p>
-              <p>Servicios de Asistencia</p>
-              <p>Auto Sustituto</p>
-              <p>Eliminación de deducible</p>
-              <p>R.C en el extranjero</p>
-              <p>Valor 110</p>
-              <p>Extensión R.C</p>
+              <p>Daños Materiales	</p>
+              <p>Robo Total	</p>
+              <p>Responsabilidad Civil</p>	
+              <p>Gtos. Médicos Ocup.	</p>
+              <p>Acc. Conductor	</p>
+              <p>RC Daños a Ocupantes</p>	
+              <p>Auto Sustituto</p>	
+              <p>Elim. Deducible	</p>
+              <p>Dev. Primas	</p>
+              <p>RC en el extranjero	</p>
+              <p>Extensión de RC	</p>
+              <p>Deducible 0 %	</p>
+              <p>Robo Parcial	</p>
+              <p>Seguro de llantas	</p>
+              <p>Gtos. Transporte	</p>
+              <p>Reparación en Agencia </p>	
+              <div class="">
+                <button
+                  class="btn btn-primary pull-right mt-4"
+                  style="
+                    background-color: #21c7ed;
+                    border-color: #21c7ed;
+                    margin-top: 14px;
+                    border-radius: 10px;
+                  "
+                  (click)="onback()"
+                  routerLinkActive="router-link-active"
+                >
+                  Regresar
+                </button>
+              </div>
+            </div>
+            <div class="coberturas__card" *ngIf="this.poliza=='Amplia' " >
+              <h5>Coberturas Incluidas</h5>
+              <p> Daños Materiales </p>
+              <p> Robo Total </p>
+              <p> Responsabilidad Civil </p>
+              <p> Gtos. Médicos Ocup. </p>
+              <p> Acc. Conductor </p>
+              <p> RC Daños a Ocupantes </p>
+              <p> Auto Sustituto </p>
+              <p> Elim. Deducible </p>
+              <p> Dev. Primas </p>
+              <p> RC en el extranjero </p>
+              <p> Extensión de RC </p>
+              <p> Deducible 0 % </p>
+              <p> Robo Parcial </p>
+              <p> Seguro de llantas </p>
+              <p> Gtos. Transporte </p>
+              <p> Reparación en Agencia </p>
+              <div class="">
+                <button
+                  class="btn btn-primary pull-right mt-4"
+                  style="
+                    background-color: #21c7ed;
+                    border-color: #21c7ed;
+                    margin-top: 14px;
+                    border-radius: 10px;
+                  "
+                  (click)="onback()"
+                  routerLinkActive="router-link-active"
+                >
+                  Regresar
+                </button>
+              </div>
+            </div>
+            <div class="coberturas__card" *ngIf="this.poliza=='Limitada' " >
+              <p> Robo Total </p>
+              <p> Responsabilidad Civil </p>
+              <p> Gtos. Médicos Ocup. </p>
+              <p> Acc. Conductor </p>
+              <p> RC Daños a Ocupantes </p>
+              <p> Auto Sustituto </p>
+              <p> RC en el extranjero </p>
+              <p> Extensión de RC </p>
+              <p> Robo Parcial </p>
+
               <div class="">
                 <button
                   class="btn btn-primary pull-right mt-4"
